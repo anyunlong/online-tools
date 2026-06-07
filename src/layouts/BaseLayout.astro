@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { en, zh, deepGet } from '../i18n/utils.js';
 
 export interface Props {
   title: string;
@@ -7,8 +8,26 @@ export interface Props {
   image?: string;
   schema?: Record<string, any>;
 }
+
 const { title, description, image, schema } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url.origin).href;
+const zhUrl = new URL('/zh' + Astro.url.pathname, Astro.site || Astro.url.origin).href;
+
+// Build flat key map for client-side i18n: { "en": { "site.name": "Online Toolbox", ... }, "zh": {...} }
+function flatten(obj: any, prefix = ''): Record<string, string> {
+  const result: Record<string, string> = {};
+  for (const [k, v] of Object.entries(obj)) {
+    const key = prefix ? `${prefix}.${k}` : k;
+    if (typeof v === 'object' && v !== null && !Array.isArray(v)) {
+      Object.assign(result, flatten(v, key));
+    } else {
+      result[key] = String(v);
+    }
+  }
+  return result;
+}
+
+const i18nFlat = JSON.stringify({ en: flatten(en), zh: flatten(zh) });
 ---
 
 <!doctype html>
@@ -31,7 +50,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url.origin)
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <link rel="alternate" hreflang="en" href={canonicalURL} />
+    <link rel="alternate" hreflang="zh" href={zhUrl} />
+    <link rel="alternate" hreflang="x-default" href={canonicalURL} />
     {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>}
+    <script is:inline>
+      window.__I18N__ = {i18nFlat};
+    </script>
   </head>
   <body class="min-h-screen flex flex-col bg-surface-950">
     <slot />
