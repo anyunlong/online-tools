@@ -12,6 +12,9 @@ export interface Props {
 const { title, description, category, keywords } = Astro.props;
 const pageUrl = new URL(Astro.url.pathname, Astro.site || Astro.url.origin).href;
 
+// Extract tool ID from URL path for i18n (e.g. /password-generator/ → password-generator)
+const toolId = Astro.url.pathname.replace(/^\/|\/$/g, '') || 'index';
+
 const webAppSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
@@ -67,12 +70,13 @@ const combinedSchema = [webAppSchema, breadcrumbSchema];
         <a
           href="/"
           class="text-xs text-surface-500 hover:text-brand-400 no-underline transition-colors"
+          data-i18n="ui.home"
         >Home</a>
         <span class="text-surface-600">/</span>
-        <span class="text-xs text-surface-400">{category}</span>
+        <span class="text-xs text-surface-400" data-i18n={`categories.${category}`}>{category}</span>
       </div>
-      <h1 class="text-2xl font-bold text-white">{title}</h1>
-      <p class="text-sm text-surface-400 mt-1.5">{description}</p>
+      <h1 class="text-2xl font-bold text-white" data-i18n={`tools.${toolId}.name`}>{title}</h1>
+      <p class="text-sm text-surface-400 mt-1.5" data-i18n={`tools.${toolId}.desc`}>{description}</p>
     </div>
     <div
       class="bg-surface-900 border border-surface-700/30 rounded-2xl shadow-xl shadow-black/20 p-5 sm:p-6"
