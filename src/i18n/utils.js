@@ -48,26 +48,26 @@ function buildEn() {
 
   // Tools
   en.tools = {
-    'password-generator': { name: 'Password Generator', desc: 'Generate strong random passwords' },
-    'timestamp': { name: 'Timestamp Converter', desc: 'Convert Unix timestamps to dates' },
-    'json-formatter': { name: 'JSON Formatter', desc: 'Format, compress & validate JSON' },
-    'base64': { name: 'Base64 Encoder', desc: 'Encode and decode Base64' },
-    'url-encode': { name: 'URL Encoder', desc: 'URL encoding and decoding' },
-    'word-counter': { name: 'Word Counter', desc: 'Count characters, words & lines' },
-    'md5': { name: 'MD5 Hash', desc: 'Calculate MD5 hash values' },
-    'uuid-generator': { name: 'UUID Generator', desc: 'Generate random UUID v4' },
-    'unicode': { name: 'Unicode Converter', desc: 'Convert between Unicode and Chinese' },
-    'case-converter': { name: 'Case Converter', desc: 'UPPER, lower, Title & camelCase' },
-    'qr-code': { name: 'QR Code Generator', desc: 'Generate QR codes online' },
-    'color-picker': { name: 'Color Picker', desc: 'Pick colors & convert HEX/RGB/HSL' },
-    'csv-to-json': { name: 'CSV to JSON', desc: 'Convert CSV data to JSON' },
-    'sha256': { name: 'SHA256 Hash', desc: 'Calculate SHA256 hash values' },
-    'html-entity': { name: 'HTML Entity Encoder', desc: 'Encode and decode HTML entities' },
-    'ip-lookup': { name: 'IP Lookup', desc: 'Lookup public IP & geolocation' },
-    'countdown': { name: 'Countdown Timer', desc: 'Custom date countdown timer' },
-    'regex': { name: 'Regex Tester', desc: 'Test regex patterns with highlighting' },
-    'image-compress': { name: 'Image Compressor', desc: 'Compress images in browser' },
-    'number-base': { name: 'Number Base Converter', desc: 'Binary, Octal, Decimal & Hex' }
+    'password-generator': { name: 'Password Generator', desc: 'Generate strong random passwords', howto: 'Choose password length and character types (uppercase, lowercase, numbers, symbols), then click Generate for a secure random password. We recommend 16+ characters. All generation happens locally in your browser.' },
+    'timestamp': { name: 'Timestamp Converter', desc: 'Convert Unix timestamps to dates', howto: 'Enter a Unix timestamp (seconds or milliseconds) to convert to a readable date, or pick a date to get its timestamp. Supports timezone switching. Useful for API debugging and log analysis.' },
+    'json-formatter': { name: 'JSON Formatter', desc: 'Format, compress & validate JSON', howto: 'Paste JSON into the input box. Click Format to beautify or Compress to minify. Automatically validates JSON syntax and shows errors with location. All processing happens in your browser — data is never uploaded.' },
+    'base64': { name: 'Base64 Encoder', desc: 'Encode and decode Base64', howto: 'Enter text and click Encode to get Base64, or paste Base64 and click Decode to restore. Common uses: data transfer, Data URLs, and API authentication. All done locally.' },
+    'url-encode': { name: 'URL Encoder', desc: 'URL encoding and decoding', howto: 'Enter text or a URL to encode (special characters → %XX) or decode (restore readable format). Useful for building API requests and processing query parameters.' },
+    'word-counter': { name: 'Word Counter', desc: 'Count characters, words & lines', howto: 'Paste or type text to see real-time counts: total characters, words, lines, paragraphs, and Chinese characters. Great for writing, translation, and essays. Data never leaves your browser.' },
+    'md5': { name: 'MD5 Hash', desc: 'Calculate MD5 hash values', howto: 'Enter text or upload a file to generate a 32-character MD5 hash. Useful for file integrity checks and data deduplication. Note: MD5 is not secure for passwords — use SHA256 instead.' },
+    'uuid-generator': { name: 'UUID Generator', desc: 'Generate random UUID v4', howto: 'Click Generate to get a random UUID v4 (128-bit universally unique identifier). Perfect for database primary keys, distributed system IDs, and file naming. Each generation is unique.' },
+    'unicode': { name: 'Unicode Converter', desc: 'Convert between Unicode and Chinese', howto: 'Enter Chinese text to automatically convert to Unicode escape sequences (\\\\uXXXX), or paste Unicode to restore Chinese. Handy for string escaping and JSON encoding in programming.' },
+    'case-converter': { name: 'Case Converter', desc: 'UPPER, lower, Title & camelCase', howto: 'Enter text and choose a transformation: UPPERCASE, lowercase, Title Case, Sentence case, camelCase, snake_case, and more. Great for code variable naming and document formatting.' },
+    'qr-code': { name: 'QR Code Generator', desc: 'Generate QR codes online', howto: 'Enter a URL or text to instantly generate a QR code. Adjust size and download as PNG. Perfect for sharing links, WiFi passwords, and contact info. Generation is entirely local.' },
+    'color-picker': { name: 'Color Picker', desc: 'Pick colors & convert HEX/RGB/HSL', howto: 'Use the color picker to select a color, and instantly see conversions to HEX, RGB, HSL, and other formats. Ideal for designers and frontend developers.' },
+    'csv-to-json': { name: 'CSV to JSON', desc: 'Convert CSV data to JSON', howto: 'Paste CSV data or upload a CSV file to automatically convert to JSON array format. Supports custom delimiters and header detection. All conversion happens in your browser.' },
+    'sha256': { name: 'SHA256 Hash', desc: 'Calculate SHA256 hash values', howto: 'Enter text or upload a file to generate a 64-character SHA256 hash. SHA256 is far more secure than MD5 — suitable for password storage, digital signatures, and blockchain verification.' },
+    'html-entity': { name: 'HTML Entity Encoder', desc: 'Encode and decode HTML entities', howto: 'Enter text and click Encode to convert special characters to HTML entities (e.g., &lt;), or Decode to restore. Useful for web development and XSS prevention.' },
+    'ip-lookup': { name: 'IP Lookup', desc: 'Lookup public IP & geolocation', howto: 'Automatically displays your current public IP address. Enter any IP to look up its location (country/city/ISP). Useful for network diagnostics and traffic analysis.' },
+    'countdown': { name: 'Countdown Timer', desc: 'Custom date countdown timer', howto: 'Select a target date and time to see the remaining days, hours, minutes, and seconds. Perfect for event countdowns, project deadlines, and birthday reminders.' },
+    'regex': { name: 'Regex Tester', desc: 'Test regex patterns with highlighting', howto: 'Enter a regex pattern and test text to see real-time highlighting of matches. Supports flags (g/i/m) and shows capture group info. Great for debugging and learning regex.' },
+    'image-compress': { name: 'Image Compressor', desc: 'Compress images in browser', howto: 'Upload PNG, JPEG, or WebP images, adjust compression quality, and download. All processing happens locally — original images are never uploaded to any server, protecting your privacy.' },
+    'number-base': { name: 'Number Base Converter', desc: 'Binary, Octal, Decimal & Hex', howto: 'Enter a number in any base to automatically convert to binary, octal, decimal, and hexadecimal. Useful for programming, computer architecture study, and embedded development.' }
   };
 
   // Header
@@ -75,15 +75,88 @@ function buildEn() {
   
   // Footer
   en.footer = { 
+    about: 'About',
+    contact: 'Contact',
+    privacy: 'Privacy Policy',
     copyright: '© 2026 4uses.com · All free, no registration',
-    tagline: 'All tools free to use · No registration · No data uploaded',
-    privacy: 'All computation runs locally in your browser, keeping your data secure'
+    tagline: 'All tools free to use · No registration · No data uploaded'
   };
   
   // Home
   en.home = {
     hero: 'Online Toolbox',
     desc: 'Free online tools: JSON Formatter, Base64 Encoder, Timestamp Converter, UUID Generator, QR Code Generator and 20+ more utilities. No registration required.'
+  };
+
+  // Privacy Policy
+  en.privacy = {
+    title: 'Privacy Policy',
+    lastUpdated: 'Last updated: May 30, 2026',
+    overview: {
+      title: '1. Overview',
+      text: '4uses.com ("we", "our", or "us") is committed to protecting your privacy. All tools on this website run locally in your browser — we do not upload, store, or process your data on any server.'
+    },
+    data: {
+      title: '2. Data We Collect',
+      text: 'We do not require registration and do not collect personal information. Your usage data (files, text, images) stays in your browser and is never transmitted to our servers.'
+    },
+    cookies: {
+      title: '3. Cookies & Advertising',
+      text: 'We use Google AdSense to display advertisements. Google and its partners use cookies to serve ads based on your prior visits to this site and other websites.',
+      optout: 'You may opt out of personalized advertising by visiting Google Ads Settings. We also use Google\'s CMP (Consent Management Platform) to obtain your consent for cookies in accordance with GDPR.'
+    },
+    thirdParty: {
+      title: '4. Third-Party Services',
+      text: 'We use the following third-party services that may collect information:',
+      adsense: 'Google AdSense — advertising network (privacy policy at policies.google.com)',
+      analytics: 'Google Analytics — anonymous traffic analysis (if enabled)'
+    },
+    rights: {
+      title: '5. Your Rights (GDPR)',
+      text: 'If you are in the European Economic Area (EEA), the UK, or Switzerland, you have the right to access, correct, or delete your personal data. Since we do not collect personal data, these rights are inherently upheld. For questions, please contact us.'
+    },
+    contact: {
+      title: '6. Contact',
+      text: 'If you have questions about this Privacy Policy, please visit our Contact page.'
+    }
+  };
+
+  // About
+  en.about = {
+    title: 'About 4uses',
+    what: {
+      title: 'What is 4uses?',
+      text: '4uses.com is a collection of free, browser-based online tools. From JSON formatting to image compression, hash calculation to QR code generation — all tools work directly in your browser with no registration, no uploads, and no limits.'
+    },
+    why: {
+      title: 'Why "4uses"?',
+      text: 'The name stands for "for uses" — tools for every use case you encounter in daily work and life. Our goal is to provide simple, fast, privacy-respecting utilities that just work.'
+    },
+    privacy: {
+      title: 'Our Philosophy',
+      text: 'We believe online tools should respect your privacy. Every tool on 4uses runs entirely in your browser using client-side JavaScript. Your files and data never leave your device. No accounts, no tracking beyond basic analytics, no nonsense.'
+    },
+    contact: {
+      title: 'Get in Touch',
+      text: 'Have a suggestion or found a bug? We\'d love to hear from you! Visit our Contact page to get in touch.'
+    }
+  };
+
+  // Contact
+  en.contact = {
+    title: 'Contact Us',
+    reach: {
+      title: 'Reach Out',
+      text: 'We welcome your feedback, suggestions, and bug reports. Whether you\'ve found an issue with a tool, have an idea for a new one, or just want to say hello — we\'d love to hear from you.'
+    },
+    email: {
+      title: 'Email',
+      label: 'Email us at:'
+    },
+    response: {
+      title: 'Response Time',
+      text: 'We strive to respond to all messages within 24-48 hours. For urgent matters, please include "[Urgent]" in your subject line.'
+    }
   };
 
   return en;

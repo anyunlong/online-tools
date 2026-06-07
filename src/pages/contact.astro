@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const pageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contact 4uses',
+  description: 'Contact the 4uses team — suggestions, bug reports, and feedback.'
+};
+---
+
+<BaseLayout
+  title="Contact | 4uses"
+  description="Contact the 4uses team — suggestions, bug reports, and feedback."
+  schema={pageSchema}
+>
+  <Header />
+  <main class="flex-1 max-w-3xl mx-auto px-4 py-8 w-full">
+    <h1 class="text-2xl font-bold text-white mb-6" data-i18n="contact.title">Contact Us</h1>
+
+    <section class="mb-6">
+      <h2 class="text-lg font-semibold text-surface-200 mb-3" data-i18n="contact.reach.title">Reach Out</h2>
+      <p class="text-sm text-surface-400 leading-relaxed" data-i18n="contact.reach.text">
+        We welcome your feedback, suggestions, and bug reports. Whether you've found an issue with a tool, have an idea for a new one, or just want to say hello — we'd love to hear from you.
+      </p>
+    </section>
+
+    <section class="mb-6">
+      <h2 class="text-lg font-semibold text-surface-200 mb-3" data-i18n="contact.email.title">Email</h2>
+      <p class="text-sm text-surface-400 leading-relaxed">
+        <span data-i18n="contact.email.label">Email us at:</span>
+        <a href="mailto:hello@4uses.com" class="text-brand-400 hover:underline ml-1">hello@4uses.com</a>
+      </p>
+    </section>
+
+    <section class="mb-6">
+      <h2 class="text-lg font-semibold text-surface-200 mb-3" data-i18n="contact.response.title">Response Time</h2>
+      <p class="text-sm text-surface-400 leading-relaxed" data-i18n="contact.response.text">
+        We strive to respond to all messages within 24-48 hours. For urgent matters, please include "[Urgent]" in your subject line.
+      </p>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
