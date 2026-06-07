@@ -1,6 +1,9 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
+import sitemap from '@astrojs/sitemap';
+
 export default defineConfig({
-  site: 'https://online-tools.vercel.app',
+  site: 'https://4uses.com',
+  integrations: [sitemap()],
   vite: { plugins: [tailwindcss()] }
 });

@@ -10,9 +10,56 @@ export interface Props {
   keywords: string[];
 }
 const { title, description, category, keywords } = Astro.props;
+const pageUrl = new URL(Astro.url.pathname, Astro.site || Astro.url.origin).href;
+
+const webAppSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: title,
+  url: pageUrl,
+  description: description,
+  applicationCategory: 'UtilityApplication',
+  operatingSystem: 'All',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD'
+  }
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: new URL('/', Astro.site || Astro.url.origin).href
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: category,
+      item: pageUrl
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: title,
+      item: pageUrl
+    }
+  ]
+};
+
+const combinedSchema = [webAppSchema, breadcrumbSchema];
 ---
 
-<BaseLayout title={`${title} | Online Tools`} description={description}>
+<BaseLayout
+  title={`${title} - Free Online Tool | 4uses`}
+  description={description}
+  schema={combinedSchema}
+>
   <Header />
   <main class="flex-1 max-w-6xl mx-auto px-4 py-8 w-full">
     <div class="mb-6">
