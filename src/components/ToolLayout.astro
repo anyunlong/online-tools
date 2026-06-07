@@ -83,6 +83,11 @@ const combinedSchema = [webAppSchema, breadcrumbSchema];
     >
       <slot />
     </div>
+    <div class="mt-8 max-w-3xl" data-i18n={`tools.${toolId}.howto`}>
+      <div class="text-sm text-surface-400 leading-relaxed space-y-3">
+        <slot name="info" />
+      </div>
+    </div>
   </main>
   <Footer />
 </BaseLayout>

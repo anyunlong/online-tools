@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const pageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'About 4uses | Free Online Tools',
+  description: 'About 4uses.com — a collection of free online tools you can use directly in your browser.'
+};
+---
+
+<BaseLayout
+  title="About 4uses | Free Online Tools"
+  description="About 4uses.com — a collection of free online tools you can use directly in your browser."
+  schema={pageSchema}
+>
+  <Header />
+  <main class="flex-1 max-w-3xl mx-auto px-4 py-8 w-full">
+    <h1 class="text-2xl font-bold text-white mb-6" data-i18n="about.title">About 4uses</h1>
+
+    <section class="mb-6">
+      <h2 class="text-lg font-semibold text-surface-200 mb-3" data-i18n="about.what.title">What is 4uses?</h2>
+      <p class="text-sm text-surface-400 leading-relaxed" data-i18n="about.what.text">
+        4uses.com is a collection of free, browser-based online tools. From JSON formatting to image compression, hash calculation to QR code generation — all tools work directly in your browser with no registration, no uploads, and no limits.
+      </p>
+    </section>
+
+    <section class="mb-6">
+      <h2 class="text-lg font-semibold text-surface-200 mb-3" data-i18n="about.why.title">Why "4uses"?</h2>
+      <p class="text-sm text-surface-400 leading-relaxed" data-i18n="about.why.text">
+        The name stands for "for uses" — tools for every use case you encounter in daily work and life. Our goal is to provide simple, fast, privacy-respecting utilities that just work.
+      </p>
+    </section>
+
+    <section class="mb-6">
+      <h2 class="text-lg font-semibold text-surface-200 mb-3" data-i18n="about.privacy.title">Our Philosophy</h2>
+      <p class="text-sm text-surface-400 leading-relaxed" data-i18n="about.privacy.text">
+        We believe online tools should respect your privacy. Every tool on 4uses runs entirely in your browser using client-side JavaScript. Your files and data never leave your device. No accounts, no tracking beyond basic analytics, no nonsense.
+      </p>
+    </section>
+
+    <section class="mb-6">
+      <h2 class="text-lg font-semibold text-surface-200 mb-3" data-i18n="about.contact.title">Get in Touch</h2>
+      <p class="text-sm text-surface-400 leading-relaxed" data-i18n="about.contact.text">
+        Have a suggestion or found a bug? We'd love to hear from you! Visit our <a href="/contact" class="text-brand-400 hover:underline">Contact page</a> to get in touch.
+      </p>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
