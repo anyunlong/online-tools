@@ -4,6 +4,24 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import tools from '../data/tools.json';
 
+const siteUrl = 'https://4uses.com';
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: '4uses',
+  url: siteUrl,
+  description: 'Free online tools: JSON Formatter, Base64 Encoder, Timestamp Converter, UUID Generator, QR Code Generator and 20+ more utilities. No registration required.',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: `${siteUrl}/?q={search_term_string}`
+    },
+    'query-input': 'required name=search_term_string'
+  }
+};
+
 const catOrder = [
   'Encode/Decode', 'Hash', 'Text', 'Time', 'Dev Tools',
   'Convert', 'Formatter', 'Generator', 'Security', 'Design',
@@ -35,8 +53,9 @@ for (const t of tools) {
 ---
 
 <BaseLayout
-  title="Online Toolbox | Online Tools"
+  title="Online Toolbox | 4uses"
   description="Free online tools: JSON Formatter, Base64 Encoder, Timestamp Converter, UUID Generator, QR Code Generator and 20+ more utilities. No registration required."
+  schema={websiteSchema}
 >
   <Header />
   <main class="flex-1 max-w-6xl mx-auto px-4 py-8 w-full">

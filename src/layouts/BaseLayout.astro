@@ -5,8 +5,10 @@ export interface Props {
   title: string;
   description: string;
   image?: string;
+  schema?: Record<string, any>;
 }
-const { title, description, image } = Astro.props;
+const { title, description, image, schema } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url.origin).href;
 ---
 
 <!doctype html>
@@ -15,16 +17,21 @@ const { title, description, image } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
     <title>{title}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Online Tools" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="4uses" />
     {image && <meta property="og:image" content={image} />}
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>}
   </head>
   <body class="min-h-screen flex flex-col bg-surface-950">
     <slot />
