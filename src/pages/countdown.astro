@@ -1,0 +1,44 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Input from '../components/Input.astro';
+import Button from '../components/Button.astro';
+import StatCard from '../components/StatCard.astro';
+---
+
+<ToolLayout
+  title="Countdown Timer"
+  description="Custom date countdown timer"
+  category="Time"
+  keywords={["countdown", "timer", "date"]}
+>
+  <div class="flex items-center gap-3 flex-wrap">
+    <Input id="target" type="datetime-local" />
+    <Button onclick="start()">Start</Button>
+  </div>
+  <div class="grid grid-cols-4 gap-3 mt-5">
+    <StatCard id="d" label="Days" value="0" />
+    <StatCard id="h" label="Hrs" value="0" />
+    <StatCard id="m" label="Min" value="0" />
+    <StatCard id="s" label="Sec" value="0" />
+  </div>
+<script is:inline>
+var timer;
+function start() {
+  clearInterval(timer);
+  timer = setInterval(function() {
+    var diff = new Date(document.getElementById('target').value) - Date.now();
+    if (diff <= 0) {
+      clearInterval(timer);
+      document.getElementById('d').textContent = '0';
+      document.getElementById('h').textContent = '0';
+      document.getElementById('m').textContent = '0';
+      document.getElementById('s').textContent = '0';
+      return;
+    }
+    document.getElementById('d').textContent = Math.floor(diff / 86400000);
+    document.getElementById('h').textContent = Math.floor(diff / 3600000) % 24;
+    document.getElementById('m').textContent = Math.floor(diff / 60000) % 60;
+    document.getElementById('s').textContent = Math.floor(diff / 1000) % 60;
+  }, 1000);
+}
+</script></ToolLayout>

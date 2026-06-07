@@ -1,0 +1,3 @@
+function format(){try{const j=JSON.parse(document.getElementById('inp').value);document.getElementById('out').textContent=JSON.stringify(j,null,2);document.getElementById('msg').textContent='✓ JSON 有效';document.getElementById('msg').className='text-emerald-600 text-xs mt-2';}catch(e){document.getElementById('msg').textContent='✗ '+e.message;document.getElementById('msg').className='text-red-500 text-xs mt-2';}}
+function compress(){try{document.getElementById('out').textContent=JSON.stringify(JSON.parse(document.getElementById('inp').value));}catch(e){document.getElementById('out').textContent=e.message;}}
+function validate(){format();}

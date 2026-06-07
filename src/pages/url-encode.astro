@@ -1,0 +1,33 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import DualPane from '../components/DualPane.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="URL Encoder"
+  description="URL encoding and decoding"
+  category="Encode/Decode"
+  keywords={["url", "encode", "decode"]}
+>
+  <DualPane>
+    <Textarea id="inp" slot="input" label="Input" placeholder="Enter text or URL encoded" rows="12" class="tool-area" />
+    <Textarea id="out" slot="output" label="Output" rows="12" readonly />
+  </DualPane>
+  <div class="flex gap-2 mt-4">
+    <Button onclick="encode()">Encode</Button>
+    <Button variant="secondary" onclick="decode()">Decode</Button>
+  </div>
+<script is:inline>
+function encode() {
+  document.getElementById('out').value = encodeURIComponent(document.getElementById('inp').value);
+}
+function decode() {
+  try {
+    document.getElementById('out').value = decodeURIComponent(document.getElementById('inp').value);
+  } catch (_) {
+    document.getElementById('out').value = 'Decoding failed: invalid URL encoding';
+  }
+}
+</script></ToolLayout>

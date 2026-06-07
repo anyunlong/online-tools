@@ -1,0 +1,45 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+---
+
+<ToolLayout
+  title="Image Compressor"
+  description="Compress images locally in browser"
+  category="Image"
+  keywords={["image", "compress", "online"]}
+>
+  <div class="space-y-4">
+    <input type="file" id="file" accept="image/*" class="text-sm text-surface-300 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:bg-brand-500 file:text-white hover:file:bg-brand-400 file:cursor-pointer file:transition-colors" onchange="compress()" />
+    <div class="grid grid-cols-2 gap-4 text-sm hidden" id="result-area">
+      <div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-3">
+        <div class="text-xs text-surface-400">Original</div>
+        <div id="orig-size" class="font-mono mt-1"></div>
+      </div>
+      <div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-3">
+        <div class="text-xs text-surface-400">Compressed</div>
+        <div id="new-size" class="font-mono text-brand-400 mt-1"></div>
+      </div>
+    </div>
+    <canvas id="canvas" class="hidden"></canvas>
+    <img id="preview" class="max-w-full rounded-xl mt-3 hidden shadow-lg" />
+  </div>
+<script is:inline>
+async function compress() {
+  var f = document.getElementById('file').files[0];
+  if (!f) return;
+  document.getElementById('orig-size').textContent = (f.size / 1024).toFixed(1) + ' KB';
+  var img = await createImageBitmap(f);
+  var c = document.getElementById('canvas');
+  c.width = img.width;
+  c.height = img.height;
+  c.getContext('2d').drawImage(img, 0, 0);
+  c.toBlob(function(b) {
+    document.getElementById('new-size').textContent = (b.size / 1024).toFixed(1) + ' KB';
+    document.getElementById('result-area').classList.remove('hidden');
+    var u = URL.createObjectURL(b);
+    var p = document.getElementById('preview');
+    p.src = u;
+    p.classList.remove('hidden');
+  }, 'image/webp', 0.6);
+}
+</script></ToolLayout>

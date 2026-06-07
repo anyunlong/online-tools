@@ -1,0 +1,28 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import StatCard from '../components/StatCard.astro';
+---
+
+<ToolLayout
+  title="Word Counter"
+  description="Count characters, words, lines and CJK characters"
+  category="Text"
+  keywords={["word", "count", "character"]}
+>
+  <Textarea id="inp" placeholder="Enter text..." rows="10" oninput="count()" />
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
+    <StatCard id="chars" label="Characters" value="0" />
+    <StatCard id="words" label="Words" value="0" />
+    <StatCard id="lines" label="Lines" value="0" />
+    <StatCard id="cn" label="CN Chars" value="0" />
+  </div>
+<script is:inline>
+function count() {
+  var t = document.getElementById('inp').value;
+  document.getElementById('chars').textContent = t.length;
+  document.getElementById('words').textContent = (t.match(/\S+/g) || []).length;
+  document.getElementById('lines').textContent = t.split('\n').length;
+  document.getElementById('cn').textContent = (t.match(/[\u4e00-\u9fff]/g) || []).length;
+}
+</script></ToolLayout>

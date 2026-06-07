@@ -1,0 +1,37 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import DualPane from '../components/DualPane.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Base64 Encoder"
+  description="Encode and decode Base64 online"
+  category="Encode/Decode"
+  keywords={["base64", "encode", "decode"]}
+>
+  <DualPane>
+    <Textarea id="inp" slot="input" label="Input" placeholder="Enter text or Base64" rows="12" class="tool-area" />
+    <Textarea id="out" slot="output" label="Output" rows="12" readonly class="tool-area" />
+  </DualPane>
+  <div class="flex gap-2 mt-4">
+    <Button onclick="encode()">Encode</Button>
+    <Button variant="secondary" onclick="decode()">Decode</Button>
+  </div>
+<script is:inline>
+function encode() {
+  try {
+    document.getElementById('out').value = btoa(unescape(encodeURIComponent(document.getElementById('inp').value)));
+  } catch (e) {
+    document.getElementById('out').value = 'Error: ' + e.message;
+  }
+}
+function decode() {
+  try {
+    document.getElementById('out').value = decodeURIComponent(escape(atob(document.getElementById('inp').value.trim())));
+  } catch (e) {
+    document.getElementById('out').value = 'Error: ' + e.message;
+  }
+}
+</script></ToolLayout>

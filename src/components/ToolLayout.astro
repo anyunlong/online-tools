@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  category: string;
+  keywords: string[];
+}
+const { title, description, category, keywords } = Astro.props;
+---
+
+<BaseLayout title={`${title} | Online Tools`} description={description}>
+  <Header />
+  <main class="flex-1 max-w-6xl mx-auto px-4 py-8 w-full">
+    <div class="mb-6">
+      <div class="flex items-center gap-2 mb-2">
+        <a
+          href="/"
+          class="text-xs text-surface-500 hover:text-brand-400 no-underline transition-colors"
+        >Home</a>
+        <span class="text-surface-600">/</span>
+        <span class="text-xs text-surface-400">{category}</span>
+      </div>
+      <h1 class="text-2xl font-bold text-white">{title}</h1>
+      <p class="text-sm text-surface-400 mt-1.5">{description}</p>
+    </div>
+    <div
+      class="bg-surface-900 border border-surface-700/30 rounded-2xl shadow-xl shadow-black/20 p-5 sm:p-6"
+    >
+      <slot />
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,1 @@
+fetch('https://api.ipify.org?format=json').then(r=>r.json()).then(d=>{document.getElementById('ip').textContent=d.ip;}).catch(()=>document.getElementById('ip').textContent='获取失败');fetch('http://ip-api.com/json/?lang=zh-CN').then(r=>r.json()).then(d=>{document.getElementById('info').textContent=d.country+' '+d.regionName+' '+d.city+' | '+d.isp;}).catch(()=>{});

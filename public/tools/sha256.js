@@ -1,0 +1,1 @@
+async function hash(){const t=document.getElementById('inp').value;if(!t){document.getElementById('result').textContent='—';return;}const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t));document.getElementById('result').textContent=Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('').toUpperCase();}

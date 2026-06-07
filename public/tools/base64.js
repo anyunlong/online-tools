@@ -1,0 +1,2 @@
+function encode(){try{document.getElementById('out').value=btoa(unescape(encodeURIComponent(document.getElementById('inp').value)));}catch(e){document.getElementById('out').value='错误: '+e.message;}}
+function decode(){try{document.getElementById('out').value=decodeURIComponent(escape(atob(document.getElementById('inp').value.trim())));}catch(e){document.getElementById('out').value='错误: '+e.message;}}

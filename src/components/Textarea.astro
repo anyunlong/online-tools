@@ -1,0 +1,24 @@
+---
+export interface Props {
+  id: string;
+  label?: string;
+  placeholder?: string;
+  rows?: string;
+  readonly?: boolean;
+  class?: string;
+  oninput?: string;
+  onchange?: string;
+}
+const { id, label, placeholder = '', rows = '8', readonly = false, class: cls = '', oninput, onchange } = Astro.props;
+---
+
+{label && <label for={id} class="text-sm text-surface-300 mb-1.5 block font-medium">{label}</label>}
+<textarea
+  id={id}
+  rows={rows}
+  placeholder={placeholder}
+  readonly={readonly}
+  class={`w-full rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-sm text-surface-100 placeholder:text-surface-500 focus:border-brand-500 focus:ring-1 focus:ring-brand-500/30 focus:bg-surface-800 transition-all duration-200 resize-y ${readonly ? 'cursor-default' : ''} ${cls}`}
+  oninput={oninput}
+  onchange={onchange}
+></textarea>
