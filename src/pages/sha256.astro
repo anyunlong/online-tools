@@ -1,0 +1,24 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+---
+
+<ToolLayout
+  title="SHA256 Hash"
+  description="Calculate SHA256 hash values online"
+  category="Hash"
+  keywords={["sha256", "hash", "hash"]}
+>
+  <Textarea id="inp" placeholder="Enter text" rows="8" oninput="hash()" class="tool-area" />
+  <div class="mt-4 bg-surface-800/40 border border-surface-700/30 rounded-xl p-4">
+    <div class="text-xs text-surface-400 mb-1.5">SHA256</div>
+    <div id="result" class="text-sm font-mono text-brand-400 break-all select-all">—</div>
+  </div>
+<script is:inline>
+async function hash() {
+  var t = document.getElementById('inp').value;
+  if (!t) { document.getElementById('result').textContent = '—'; return; }
+  var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(t));
+  document.getElementById('result').textContent = Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0');}).join('').toUpperCase();
+}
+</script></ToolLayout>

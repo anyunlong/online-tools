@@ -1,0 +1,33 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Input from '../components/Input.astro';
+import StatCard from '../components/StatCard.astro';
+---
+
+<ToolLayout
+  title="Number Base Converter"
+  description="Convert between binary, octal, decimal and hex"
+  category="Math"
+  keywords={["base", "binary", "hex", "convert"]}
+>
+  <Input id="num" class="w-full tool-area" placeholder="Enter a number" oninput="convert()" />
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
+    <StatCard id="bin" label="binary" />
+    <StatCard id="oct" label="Octal" />
+    <StatCard id="dec" label="Decimal" />
+    <StatCard id="hex" label="hex" />
+  </div>
+<script is:inline>
+function convert() {
+  var v = document.getElementById('num').value.trim();
+  var n = parseInt(v);
+  if (isNaN(n)) {
+    ['bin','oct','dec','hex'].forEach(function(id){document.getElementById(id).textContent='—';});
+    return;
+  }
+  document.getElementById('bin').textContent = n.toString(2);
+  document.getElementById('oct').textContent = n.toString(8);
+  document.getElementById('dec').textContent = n.toString(10);
+  document.getElementById('hex').textContent = n.toString(16).toUpperCase();
+}
+</script></ToolLayout>

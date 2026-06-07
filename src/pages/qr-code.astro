@@ -1,0 +1,36 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Input from '../components/Input.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="QR Code Generator"
+  description="Generate QR code images online"
+  category="Generator"
+  keywords={["qr", "qr", "generate"]}
+>
+  <Input id="url" class="w-full" placeholder="Enter text..." value="https://" />
+  <div class="mt-3">
+    <Button onclick="genQR()">Generate QR Code</Button>
+  </div>
+  <div id="qr-area" class="mt-5 flex justify-center"></div>
+<script is:inline>
+function genQR() {
+  var t = document.getElementById('url').value;
+  if (!t) return;
+  var api = 'https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=' + encodeURIComponent(t);
+  var area = document.getElementById('qr-area');
+  area.innerHTML = '';
+  var img = document.createElement('img');
+  img.src = api; img.alt = 'QR Code'; img.className = 'border rounded-lg'; img.loading = 'lazy';
+  img.onerror = function() {
+    var p = document.createElement('p');
+    p.textContent = '\u751f\u6210\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u8f93\u5165';
+    p.style.color = '#f87171';
+    area.innerHTML = ''; area.appendChild(p);
+  };
+  area.appendChild(img);
+}
+genQR();
+</script></ToolLayout>

@@ -1,0 +1,35 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Case Converter"
+  description="Convert text case: UPPER, lower, Title, camelCase"
+  category="Text"
+  keywords={["case", "convert", "english"]}
+>
+  <Textarea id="inp" placeholder="Enter English text" rows="8" />
+  <div class="flex flex-wrap gap-2 mt-3">
+    <Button variant="secondary" size="sm" onclick="apply('upper')">UPPERCASE</Button>
+    <Button variant="secondary" size="sm" onclick="apply('lower')">lowercase</Button>
+    <Button variant="secondary" size="sm" onclick="apply('title')">Title Case</Button>
+    <Button variant="secondary" size="sm" onclick="apply('camel')">camelCase</Button>
+  </div>
+  <div
+    id="result"
+    class="mt-3 bg-surface-800/40 border border-surface-700/30 rounded-xl p-4 text-sm tool-area min-h-[48px]"
+  ></div>
+<script is:inline>
+function apply(type) {
+  var t = document.getElementById('inp').value;
+  var r = document.getElementById('result');
+  switch (type) {
+    case 'upper': r.textContent = t.toUpperCase(); break;
+    case 'lower': r.textContent = t.toLowerCase(); break;
+    case 'title': r.textContent = t.replace(/\b\w/g, function(c){return c.toUpperCase();}); break;
+    case 'camel': r.textContent = t.replace(/[-_\s]+(.)?/g, function(_,c){return c?c.toUpperCase():'';}).replace(/^./, function(c){return c.toLowerCase();}); break;
+  }
+}
+</script></ToolLayout>

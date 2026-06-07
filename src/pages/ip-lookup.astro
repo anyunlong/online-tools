@@ -1,0 +1,18 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+---
+
+<ToolLayout
+  title="IP Lookup"
+  description="Lookup your public IP address and geolocation"
+  category="Network"
+  keywords={["ip", "lookup", "address"]}
+>
+  <div class="text-center py-4">
+    <div id="ip" class="text-4xl font-mono font-bold text-brand-400 mb-3">Loading...</div>
+    <div id="info" class="text-sm text-surface-400"></div>
+  </div>
+<script is:inline>
+fetch('https://api.ipify.org?format=json').then(function(r){return r.json();}).then(function(d){document.getElementById('ip').textContent = d.ip;}).catch(function(){document.getElementById('ip').textContent='Failed to fetch';});
+fetch('http://ip-api.com/json/?lang=en').then(function(r){return r.json();}).then(function(d){document.getElementById('info').textContent = d.country + ' ' + d.regionName + ' ' + d.city + ' | ' + d.isp;}).catch(function(){});
+</script></ToolLayout>

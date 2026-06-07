@@ -1,0 +1,22 @@
+[
+  {"id":"password-generator","name":"Password Generator","desc":"Generate strong random passwords","cat":"Security"},
+  {"id":"timestamp","name":"Timestamp Converter","desc":"Convert Unix timestamps to dates","cat":"Time"},
+  {"id":"json-formatter","name":"JSON Formatter","desc":"Format, compress & validate JSON","cat":"Formatter"},
+  {"id":"base64","name":"Base64 Encoder","desc":"Encode and decode Base64","cat":"Encode/Decode"},
+  {"id":"url-encode","name":"URL Encoder","desc":"URL encoding and decoding","cat":"Encode/Decode"},
+  {"id":"word-counter","name":"Word Counter","desc":"Count characters, words & lines","cat":"Text"},
+  {"id":"md5","name":"MD5 Hash","desc":"Calculate MD5 hash values","cat":"Hash"},
+  {"id":"uuid-generator","name":"UUID Generator","desc":"Generate random UUID v4","cat":"Dev Tools"},
+  {"id":"unicode","name":"Unicode Converter","desc":"Convert between Unicode and Chinese","cat":"Encode/Decode"},
+  {"id":"case-converter","name":"Case Converter","desc":"UPPER, lower, Title & camelCase","cat":"Text"},
+  {"id":"qr-code","name":"QR Code Generator","desc":"Generate QR codes online","cat":"Generator"},
+  {"id":"color-picker","name":"Color Picker","desc":"Pick colors & convert HEX/RGB/HSL","cat":"Design"},
+  {"id":"csv-to-json","name":"CSV to JSON","desc":"Convert CSV data to JSON","cat":"Convert"},
+  {"id":"sha256","name":"SHA256 Hash","desc":"Calculate SHA256 hash values","cat":"Hash"},
+  {"id":"html-entity","name":"HTML Entity Encoder","desc":"Encode and decode HTML entities","cat":"Encode/Decode"},
+  {"id":"ip-lookup","name":"IP Lookup","desc":"Lookup public IP & geolocation","cat":"Network"},
+  {"id":"countdown","name":"Countdown Timer","desc":"Custom date countdown timer","cat":"Time"},
+  {"id":"regex","name":"Regex Tester","desc":"Test regex patterns with highlighting","cat":"Dev Tools"},
+  {"id":"image-compress","name":"Image Compressor","desc":"Compress images in browser","cat":"Image"},
+  {"id":"number-base","name":"Number Base Converter","desc":"Binary, Octal, Decimal & Hex","cat":"Math"}
+]

@@ -1,0 +1,32 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="UUID Generator"
+  description="Generate UUID v4 online"
+  category="Dev Tools"
+  keywords={["uuid", "guid", "generator"]}
+>
+  <div class="text-center">
+    <Button size="lg" onclick="gen()">Generate UUID</Button>
+    <div
+      id="result"
+      class="text-xl font-mono bg-surface-800/40 border border-surface-700/30 rounded-xl p-5 mt-4 text-brand-400 min-h-[56px] select-all break-all"
+    ></div>
+    <button
+      onclick="copy()"
+      class="text-xs text-brand-400 hover:text-brand-300 mt-3 transition-colors"
+    >Copy</button>
+  </div>
+<script is:inline>
+function gen() {
+  document.getElementById('result').textContent = crypto.randomUUID();
+}
+function copy() {
+  var el = document.getElementById('result');
+  navigator.clipboard.writeText(el.textContent);
+}
+gen();
+</script></ToolLayout>

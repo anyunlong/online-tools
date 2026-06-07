@@ -1,0 +1,36 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Input from '../components/Input.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Timestamp Converter"
+  description="Convert Unix timestamps to dates and back"
+  category="Time"
+  keywords={["timestamp", "unix", "convert"]}
+>
+  <div class="flex gap-3 flex-wrap items-center">
+    <Input id="ts" type="number" class="flex-1 min-w-[200px]" placeholder="Enter timestamp (seconds)" />
+    <Button onclick="tsToDate()">→ Date</Button>
+  </div>
+  <div class="flex gap-3 flex-wrap items-center mt-3">
+    <Input id="dt" type="datetime-local" class="flex-1 min-w-[200px]" />
+    <Button onclick="dateToTs()">→ Timestamp</Button>
+  </div>
+  <div id="ts-result" class="mt-4 text-sm bg-surface-800/40 border border-surface-700/30 rounded-xl p-3 min-h-[40px] text-surface-200"></div>
+  <div id="current" class="text-xs text-surface-500 mt-2"></div>
+<script is:inline>
+function tsToDate() {
+  var v = document.getElementById('ts').value;
+  var d = new Date(v.length > 10 ? v * 1 : v * 1000);
+  document.getElementById('ts-result').textContent = d.toLocaleString('zh-CN', {timeZone: 'Asia/Shanghai'});
+}
+function dateToTs() {
+  var v = document.getElementById('dt').value;
+  document.getElementById('ts-result').textContent = 'sec: ' + Math.floor(new Date(v).getTime() / 1000) + ' | ms: ' + new Date(v).getTime();
+}
+document.getElementById('current').textContent = 'Current timestamp (sec): ' + Math.floor(Date.now() / 1000);
+var now = new Date();
+document.getElementById('dt').value = now.toISOString().slice(0, 16);
+</script></ToolLayout>

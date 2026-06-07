@@ -1,0 +1,30 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import DualPane from '../components/DualPane.astro';
+import Textarea from '../components/Textarea.astro';
+---
+
+<ToolLayout
+  title="Unicode Converter"
+  description="Convert between Unicode and Chinese"
+  category="Encode/Decode"
+  keywords={["unicode", "chinese", "encode"]}
+>
+  <DualPane>
+    <Textarea id="cn" slot="input" label="Chinese" placeholder="Enter Chinese text" rows="8" oninput="cnToUni()" />
+    <Textarea id="uni" slot="output" label="Unicode" placeholder="\u4F60\u597D" rows="8" oninput="uniToCn()" class="tool-area" />
+  </DualPane>
+<script is:inline>
+function cnToUni() {
+  const cn = document.getElementById('cn').value;
+  document.getElementById('uni').value = cn.split('').map(function (c) {
+    return '\\u' + c.charCodeAt(0).toString(16).padStart(4, '0');
+  }).join('');
+}
+function uniToCn() {
+  const uni = document.getElementById('uni').value;
+  document.getElementById('cn').value = uni.replace(/\\u([0-9a-fA-F]{4})/g, function (_, c) {
+    return String.fromCharCode(parseInt(c, 16));
+  });
+}
+</script></ToolLayout>

@@ -1,0 +1,2 @@
+function encode(){const d=document.createElement('div');d.appendChild(document.createTextNode(document.getElementById('inp').value));document.getElementById('out').value=d.innerHTML;}
+function decode(){const d=document.createElement('div');d.innerHTML=document.getElementById('inp').value;document.getElementById('out').value=d.textContent;}

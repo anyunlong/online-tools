@@ -1,0 +1,2 @@
+function cnToUni(){document.getElementById('uni').value=document.getElementById('cn').value.split('').map(c=>'\\u'+c.charCodeAt(0).toString(16).padStart(4,'0')).join('');}
+function uniToCn(){document.getElementById('cn').value=document.getElementById('uni').value.replace(/\\u([0-9a-fA-F]{4})/g,(_,c)=>String.fromCharCode(parseInt(c,16)));}

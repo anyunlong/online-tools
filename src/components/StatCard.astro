@@ -1,0 +1,17 @@
+---
+export interface Props {
+  label: string;
+  value?: string;
+  id: string;
+  class?: string;
+}
+const { label, value = '—', id, class: extraClass = '' } = Astro.props;
+---
+
+<div
+  class={`bg-surface-800/40 border border-surface-700/30 rounded-xl p-4 text-center
+    hover:border-surface-600/50 transition-all duration-200 ${extraClass}`}
+>
+  <div id={id} class="text-xl font-bold text-brand-400">{value}</div>
+  <div class="text-xs text-surface-400 mt-1">{label}</div>
+</div>

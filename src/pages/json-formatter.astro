@@ -1,0 +1,44 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="JSON Formatter"
+  description="Format, compress and validate JSON online"
+  category="format"
+  keywords={["json", "format", "validate"]}
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <Textarea id="inp" label="Input" placeholder='{"key":"value"}' rows="14" class="tool-area" />
+    <div>
+      <label for="out" class="text-sm text-surface-300 mb-1.5 block font-medium">Output</label>
+      <pre id="out" class="w-full h-72 rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 overflow-auto"></pre>
+    </div>
+  </div>
+  <div class="flex gap-2 mt-4">
+    <Button onclick="format()">Format</Button>
+    <Button variant="secondary" onclick="compress()">Compress</Button>
+  </div>
+  <div id="msg" class="text-xs mt-2 text-surface-400"></div>
+<script is:inline>
+function format() {
+  try {
+    const j = JSON.parse(document.getElementById('inp').value);
+    document.getElementById('out').textContent = JSON.stringify(j, null, 2);
+    document.getElementById('msg').textContent = '✓ Valid JSON';
+    document.getElementById('msg').className = 'text-xs mt-2 text-brand-400';
+  } catch (e) {
+    document.getElementById('msg').textContent = '✗ ' + e.message;
+    document.getElementById('msg').className = 'text-xs mt-2 text-red-400';
+  }
+}
+function compress() {
+  try {
+    document.getElementById('out').textContent = JSON.stringify(JSON.parse(document.getElementById('inp').value));
+  } catch (e) {
+    document.getElementById('out').textContent = e.message;
+  }
+}
+</script></ToolLayout>

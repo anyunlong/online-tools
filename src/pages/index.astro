@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import tools from '../data/tools.json';
+
+const catOrder = [
+  'Encode/Decode', 'Hash', 'Text', 'Time', 'Dev Tools',
+  'Convert', 'Formatter', 'Generator', 'Security', 'Design',
+  'Image', 'Math', 'Network',
+];
+
+const catEmoji: Record<string, string> = {
+  'Encode/Decode': '\u{1F510}',
+  'Hash': '\u{1F512}',
+  'Text': '\u{1F4DD}',
+  'Time': '\u{23F0}',
+  'Dev Tools': '\u{1F6E0}',
+  'Convert': '\u{1F504}',
+  'Formatter': '\u{1F4CB}',
+  'Generator': '\u{2728}',
+  'Security': '\u{1F6E1}',
+  'Design': '\u{1F3A8}',
+  'Image': '\u{1F5BC}',
+  'Math': '\u{1F522}',
+  'Network': '\u{1F310}',
+};
+
+const categories = catOrder.filter(cat => tools.some(t => t.cat === cat));
+for (const t of tools) {
+  if (!catOrder.includes(t.cat)) {
+    categories.push(t.cat);
+  }
+}
+---
+
+<BaseLayout
+  title="Online Toolbox | Online Tools"
+  description="Free online tools: JSON Formatter, Base64 Encoder, Timestamp Converter, UUID Generator, QR Code Generator and 20+ more utilities. No registration required."
+>
+  <Header />
+  <main class="flex-1 max-w-6xl mx-auto px-4 py-8 w-full">
+    <div class="text-center mb-12">
+      <h1 class="text-3xl font-bold">
+        <span class="bg-gradient-to-r from-brand-400 via-brand-300 to-brand-200 bg-clip-text text-transparent">
+          Online Toolbox
+        </span>
+      </h1>
+      <p class="mt-3 text-surface-400">All free · No registration · No data uploaded</p>
+      <p class="mt-1 text-xs text-surface-500">{tools.length} useful tools, continuously updated</p>
+    </div>
+
+    {categories.map(cat => (
+      <section class="mb-10">
+        <h2 class="text-base font-semibold text-surface-200 mb-3 flex items-center gap-2">
+          <span class="w-1.5 h-5 bg-gradient-to-b from-brand-500 to-brand-700 rounded-full inline-block"></span>
+          {catEmoji[cat] && <span>{catEmoji[cat]}</span>}
+          {cat}
+          <span class="text-xs text-surface-500 font-normal ml-1">
+            ({tools.filter(t => t.cat === cat).length})
+          </span>
+        </h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+          {tools.filter(t => t.cat === cat).map(tool => (
+            <a
+              href={`/${tool.id}`}
+              class="block bg-surface-900 border border-surface-800 rounded-2xl p-4
+                hover:border-brand-500/40 hover:shadow-lg hover:shadow-brand-500/10
+                hover:-translate-y-0.5 transition-all duration-200 no-underline group"
+            >
+              <div class="font-medium text-sm text-surface-100 group-hover:text-brand-400 transition-colors">
+                {tool.name}
+              </div>
+              <div class="text-xs text-surface-500 mt-1 line-clamp-2">
+                {tool.desc}
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+  </main>
+  <Footer />
+</BaseLayout>

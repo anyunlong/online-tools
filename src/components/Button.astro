@@ -1,0 +1,24 @@
+---
+export interface Props {
+  variant?: 'primary' | 'secondary' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+  onclick?: string;
+}
+
+const { variant = 'primary', size = 'md', class: cls = '', onclick } = Astro.props;
+
+const base = 'inline-flex items-center justify-center font-medium rounded-xl transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer';
+
+const variantClass = {
+  primary: 'bg-gradient-to-r from-brand-500 to-brand-600 text-white hover:from-brand-400 hover:to-brand-500 shadow-lg shadow-brand-500/20',
+  secondary: 'bg-surface-800 text-surface-200 border border-surface-700 hover:bg-surface-700 hover:text-white hover:border-surface-600',
+  ghost: 'bg-transparent text-surface-400 hover:text-white hover:bg-surface-800/50',
+}[variant];
+
+const sizeClass = { sm: 'px-3 py-1.5 text-xs', md: 'px-4 py-2 text-sm', lg: 'px-6 py-2.5 text-base' }[size];
+---
+
+<button class={`${base} ${variantClass} ${sizeClass} ${cls}`} onclick={onclick}>
+  <slot />
+</button>

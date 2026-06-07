@@ -1,0 +1,33 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import DualPane from '../components/DualPane.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="HTML Entity Encoder"
+  description="Encode and decode HTML entities"
+  category="Encode/Decode"
+  keywords={["html", "entity", "escape"]}
+>
+  <DualPane>
+    <Textarea id="inp" slot="input" label="Input" placeholder="<div>&amp;</div>" rows="10" />
+    <Textarea id="out" slot="output" label="Output" rows="10" readonly />
+  </DualPane>
+  <div class="flex gap-2 mt-4">
+    <Button onclick="encode()">Encode</Button>
+    <Button variant="secondary" onclick="decode()">Decode</Button>
+  </div>
+<script is:inline>
+function encode() {
+  const d = document.createElement('div');
+  d.appendChild(document.createTextNode(document.getElementById('inp').value));
+  document.getElementById('out').value = d.innerHTML;
+}
+function decode() {
+  const d = document.createElement('div');
+  d.innerHTML = document.getElementById('inp').value;
+  document.getElementById('out').value = d.textContent;
+}
+</script></ToolLayout>
