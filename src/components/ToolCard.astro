@@ -1,0 +1,54 @@
+---
+export interface Props {
+  tool: {
+    id: string;
+    name: string;
+    desc: string;
+    cat: string;
+  };
+}
+
+const catEmoji: Record<string, string> = {
+  'Encode/Decode': '\u{1F510}',
+  'Hash': '\u{1F512}',
+  'Text': '\u{1F4DD}',
+  'Time': '\u{23F0}',
+  'Dev Tools': '\u{1F6E0}',
+  'Convert': '\u{1F504}',
+  'Formatter': '\u{1F4CB}',
+  'Generator': '\u{2728}',
+  'Security': '\u{1F6E1}',
+  'Design': '\u{1F3A8}',
+  'Image': '\u{1F5BC}',
+  'Math': '\u{1F522}',
+  'Network': '\u{1F310}',
+};
+
+const { tool } = Astro.props;
+const emoji = catEmoji[tool.cat] || '\u{1F527}';
+---
+
+<a
+  href={`/${tool.id}`}
+  class="group flex flex-col gap-3 border border-border bg-card/60 p-5 rounded-xl transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:bg-card hover:shadow-lg hover:shadow-primary/10 no-underline"
+>
+  <div class="flex items-start justify-between gap-3">
+    <span
+      aria-hidden="true"
+      class="flex size-11 items-center justify-center rounded-lg bg-secondary text-xl transition-colors group-hover:bg-primary/15"
+    >
+      {emoji}
+    </span>
+    <span class="inline-flex items-center rounded-md bg-secondary/80 px-2 py-0.5 text-xs font-normal text-muted-foreground">
+      {tool.cat}
+    </span>
+  </div>
+  <div>
+    <h3 class="text-base font-semibold text-foreground transition-colors group-hover:text-primary">
+      {tool.name}
+    </h3>
+    <p class="mt-1 text-sm leading-relaxed text-muted-foreground">
+      {tool.desc}
+    </p>
+  </div>
+</a>

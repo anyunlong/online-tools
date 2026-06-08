@@ -1,0 +1,69 @@
+---
+const catEmoji: Record<string, string> = {
+  'Encode/Decode': '\u{1F510}',
+  'Hash': '\u{1F512}',
+  'Text': '\u{1F4DD}',
+  'Time': '\u{23F0}',
+  'Dev Tools': '\u{1F6E0}',
+  'Convert': '\u{1F504}',
+  'Formatter': '\u{1F4CB}',
+  'Generator': '\u{2728}',
+  'Security': '\u{1F6E1}',
+  'Design': '\u{1F3A8}',
+  'Image': '\u{1F5BC}',
+  'Math': '\u{1F522}',
+  'Network': '\u{1F310}',
+};
+
+const featuredTools = [
+  { id: 'password-generator', name: 'Password Generator', desc: 'Generate strong random passwords', cat: 'Security' },
+  { id: 'json-formatter', name: 'JSON Formatter', desc: 'Format, compress & validate JSON', cat: 'Formatter' },
+  { id: 'timestamp', name: 'Timestamp Converter', desc: 'Convert Unix timestamps to dates', cat: 'Time' },
+  { id: 'qr-code', name: 'QR Code Generator', desc: 'Generate QR codes online', cat: 'Generator' },
+  { id: 'md5', name: 'MD5 Hash', desc: 'Calculate MD5 hash values', cat: 'Hash' },
+  { id: 'base64', name: 'Base64 Encoder', desc: 'Encode and decode Base64', cat: 'Encode/Decode' },
+];
+---
+
+<section id="featured" class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+  <div class="mb-6">
+    <h2 class="text-2xl font-bold tracking-tight text-foreground">Most Popular</h2>
+    <p class="mt-1 text-sm text-muted-foreground">
+      The tools our users reach for the most.
+    </p>
+  </div>
+
+  <div class="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2">
+    {
+      featuredTools.map((tool) => {
+        const emoji = catEmoji[tool.cat] || '\u{1F527}';
+        return (
+          <div class="flex w-72 shrink-0 snap-start flex-col gap-4 border border-border bg-gradient-to-b from-card to-card/40 rounded-xl p-6">
+            <span
+              aria-hidden="true"
+              class="flex size-14 items-center justify-center rounded-xl bg-primary/15 text-3xl"
+            >
+              {emoji}
+            </span>
+            <div class="flex-1">
+              <h3 class="text-lg font-semibold text-foreground">{tool.name}</h3>
+              <p class="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                {tool.desc}. Fast, private and free to use right in your browser.
+              </p>
+            </div>
+            <a
+              href={`/${tool.id}`}
+              class="inline-flex items-center justify-center gap-2 rounded-md bg-secondary text-secondary-foreground hover:bg-secondary/80 h-9 w-full px-4 text-sm font-medium transition-colors no-underline"
+            >
+              Use Now
+              <span class="text-sm">→</span>
+            </a>
+            <span class="text-xs text-muted-foreground">
+              {emoji} {tool.cat}
+            </span>
+          </div>
+        );
+      })
+    }
+  </div>
+</section>

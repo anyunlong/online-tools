@@ -1,4 +1,6 @@
 @import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -47,6 +49,7 @@
 }
 
 :root {
+  /* Dark theme by default for 4uses */
   --background: oklch(0.13 0.02 280);
   --foreground: oklch(0.97 0.01 280);
   --card: oklch(0.18 0.025 280);
@@ -121,39 +124,10 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
   html {
     @apply font-sans;
   }
-}
-
-.tool-area {
-  font-family: "SF Mono", "Fira Code", "Cascadia Code", "JetBrains Mono",
-    "Consolas", monospace;
-}
-
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #0f172a;
-}
-::-webkit-scrollbar-thumb {
-  background: #334155;
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #475569;
-}
-
-::selection {
-  background: var(--primary);
-  color: var(--primary-foreground);
 }
 
 @layer utilities {
