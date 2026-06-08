@@ -22,7 +22,7 @@
 | Vercel 部署 | ✅ | 自动部署已配置 |
 | 域名绑定 | ✅ | 4uses.com + HTTPS |
 | SEO 优化 | ✅ | sitemap.xml, robots.txt, JSON-LD, canonical, meta tags |
-| Search Console | 🔜 | 等用户提供 TXT 验证码 |
+| Search Console | ✅ | HTML 文件验证完成（google4ae8b8da930e6f4f.html） |
 | AdSense | 🔜 | 等用户申请 |
 | ads.txt | ⚠️ | 已放占位，AdSense 通过后需更新真实 pub-ID |
 
@@ -54,9 +54,9 @@
 ## TODO / 持续迭代
 
 ### 短期
-- [ ] 提交 Google Search Console（等用户给验证码）
-- [ ] 申请 Google AdSense（用户操作）
-- [ ] AdSense 通过后更新 ads.txt 真实 pub-ID
+- [x] 提交 Google Search Console（已验证）
+- [x] 申请 Google AdSense（已提交审核）
+- [ ] AdSense 审核通过后更新 ads.txt 真实 pub-ID
 - [ ] 检查 Vercel 部署日志确认 SEO 改动已上线
 
 ### 中期
