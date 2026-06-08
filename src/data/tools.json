@@ -238,5 +238,65 @@
     "name": "Unit Converter",
     "desc": "Convert between common units",
     "cat": "Math"
+  },
+  {
+    "id": "text-to-binary",
+    "name": "Text to Binary Converter",
+    "desc": "Convert text to binary representation",
+    "cat": "Encode/Decode"
+  },
+  {
+    "id": "hex-to-text",
+    "name": "Hex to Text Converter",
+    "desc": "Convert between hexadecimal and text",
+    "cat": "Encode/Decode"
+  },
+  {
+    "id": "list-randomizer",
+    "name": "List Randomizer",
+    "desc": "Randomize the order of any list",
+    "cat": "Text"
+  },
+  {
+    "id": "meta-tag-generator",
+    "name": "Meta Tag Generator",
+    "desc": "Generate SEO meta tags for web pages",
+    "cat": "Generator"
+  },
+  {
+    "id": "text-repeater",
+    "name": "Text Repeater",
+    "desc": "Repeat text multiple times",
+    "cat": "Text"
+  },
+  {
+    "id": "bmi-calculator",
+    "name": "BMI Calculator",
+    "desc": "Calculate your Body Mass Index",
+    "cat": "Math"
+  },
+  {
+    "id": "age-calculator",
+    "name": "Age Calculator",
+    "desc": "Calculate exact age from birth date",
+    "cat": "Time"
+  },
+  {
+    "id": "pomodoro",
+    "name": "Pomodoro Timer",
+    "desc": "Focus timer using the Pomodoro technique",
+    "cat": "Time"
+  },
+  {
+    "id": "morse-code",
+    "name": "Morse Code Translator",
+    "desc": "Convert text to Morse code and back",
+    "cat": "Encode/Decode"
+  },
+  {
+    "id": "emoji-picker",
+    "name": "Emoji Keyboard",
+    "desc": "Browse and copy emoji characters",
+    "cat": "Text"
   }
 ]

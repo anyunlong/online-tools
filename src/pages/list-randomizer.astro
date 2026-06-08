@@ -1,0 +1,44 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="List Randomizer"
+  description="Randomize the order of any list"
+  category="Text"
+  keywords={["random", "shuffle", "list", "sort"]}
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <Textarea id="inp" label="Input" placeholder="Paste list items, one per line..." rows="12" class="tool-area" />
+    <div>
+      <label for="out" class="text-sm text-surface-300 mb-1.5 block font-medium">Output</label>
+      <div id="out" class="w-full h-72 rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 overflow-auto font-mono"></div>
+    </div>
+  </div>
+  <div class="flex gap-2 mt-4">
+    <Button onclick="process()">Shuffle</Button>
+    <Button variant="secondary" onclick="clearAll()">Clear</Button>
+  </div>
+  <div id="msg" class="text-xs mt-2 text-surface-400"></div>
+<script is:inline>
+function process() {
+  const text = document.getElementById('inp').value;
+  if (!text) return;
+  const lines = text.split('\n').filter(l => l.trim());
+  for (let i = lines.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [lines[i], lines[j]] = [lines[j], lines[i]]; }
+  document.getElementById('out').textContent = lines.join('\n');
+  document.getElementById('msg').textContent = `${lines.length} items shuffled`;
+}
+
+function clearAll() {
+  document.getElementById('inp').value = '';
+  document.getElementById('out').innerHTML = '';
+  document.getElementById('msg').textContent = '';
+}
+</script>
+<slot name="info" slot="info">
+  <p>Paste a list (one item per line) and click Shuffle to randomize the order. Great for raffles, team assignments, playlist shuffling, and random sampling.</p>
+</slot>
+</ToolLayout>

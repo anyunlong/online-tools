@@ -1,0 +1,52 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="BMI Calculator"
+  description="Calculate your Body Mass Index"
+  category="Math"
+  keywords={["bmi", "calculator", "health", "weight"]}
+>
+  <div class="space-y-4">
+    <div class='space-y-3'><div><label class='text-sm text-surface-300 block mb-1'>Unit</label><select id='unit' onchange='toggleUnit()' class='bg-surface-800 border border-surface-700 rounded-lg px-3 py-1.5 text-sm text-surface-100'><option value='metric'>Metric (cm / kg)</option><option value='imperial'>Imperial (ft/in / lbs)</option></select></div><div id='metric' class='grid grid-cols-2 gap-3'><div><label class='text-sm text-surface-300 block mb-1'>Height (cm)</label><input id='cm' type='number' value='170' class='bg-surface-800 border border-surface-700 rounded-lg px-3 py-1.5 text-sm text-surface-100 w-full' /></div><div><label class='text-sm text-surface-300 block mb-1'>Weight (kg)</label><input id='kg' type='number' value='70' class='bg-surface-800 border border-surface-700 rounded-lg px-3 py-1.5 text-sm text-surface-100 w-full' /></div></div><div id='imperial' style='display:none' class='grid grid-cols-3 gap-3'><div><label class='text-sm text-surface-300 block mb-1'>Feet</label><input id='ft' type='number' value='5' class='bg-surface-800 border border-surface-700 rounded-lg px-3 py-1.5 text-sm text-surface-100 w-full' /></div><div><label class='text-sm text-surface-300 block mb-1'>Inches</label><input id='inch' type='number' value='7' class='bg-surface-800 border border-surface-700 rounded-lg px-3 py-1.5 text-sm text-surface-100 w-full' /></div><div><label class='text-sm text-surface-300 block mb-1'>Weight (lbs)</label><input id='lbs' type='number' value='155' class='bg-surface-800 border border-surface-700 rounded-lg px-3 py-1.5 text-sm text-surface-100 w-full' /></div></div></div>
+    <div class="flex gap-2">
+      <Button onclick="generate()">Calculate BMI</Button>
+      <Button variant="secondary" onclick="copyResult()">Copy</Button>
+    </div>
+    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
+  </div>
+<script is:inline>
+function toggleUnit() { const m = document.getElementById('unit').value === 'metric'; document.getElementById('metric').style.display = m ? 'grid' : 'none'; document.getElementById('imperial').style.display = m ? 'none' : 'grid'; }
+function generate() {
+  let bmi;
+  if (document.getElementById('unit').value === 'metric') {
+    const h = parseFloat(document.getElementById('cm').value) / 100;
+    const w = parseFloat(document.getElementById('kg').value);
+    bmi = w / (h * h);
+  } else {
+    const h = parseFloat(document.getElementById('ft').value) * 12 + parseFloat(document.getElementById('inch').value);
+    const w = parseFloat(document.getElementById('lbs').value);
+    bmi = (w / (h * h)) * 703;
+  }
+  if (!bmi || isNaN(bmi)) { document.getElementById('result').textContent = 'Please enter valid numbers'; return; }
+  let cat = bmi < 18.5 ? 'Underweight' : bmi < 25 ? 'Normal weight' : bmi < 30 ? 'Overweight' : 'Obese';
+  let color = cat === 'Normal weight' ? 'text-green-400' : cat === 'Underweight' ? 'text-blue-400' : 'text-orange-400';
+  document.getElementById('result').innerHTML = `BMI: <span class='text-2xl font-bold'>${bmi.toFixed(1)}</span><br/>Category: <span class='${color}'>${cat}</span>`;
+}
+
+function copyResult() {
+  const text = document.getElementById('result').textContent;
+  if (!text) return;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('[onclick="copyResult()"]');
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy', 2000);
+  });
+}
+</script>
+<slot name="info" slot="info">
+  <p>Enter your height and weight to calculate your BMI. Supports metric (cm/kg) and imperial (ft/in/lbs) units. Shows your BMI category from Underweight to Obese based on WHO standards.</p>
+</slot>
+</ToolLayout>

@@ -1,0 +1,64 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Pomodoro Timer"
+  description="Focus timer using the Pomodoro technique"
+  category="Time"
+  keywords={["pomodoro", "timer", "focus", "productivity"]}
+>
+  <div class="space-y-4">
+    
+    <div class="flex gap-2">
+      <Button onclick="generate()"></Button>
+      <Button variant="secondary" onclick="copyResult()">Copy</Button>
+    </div>
+    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
+  </div>
+<script is:inline>
+let pomRunning = false, pomSeconds = 25 * 60, pomTotal, pomInterval, pomSessions = 0, pomIsBreak = false;
+function generate() {
+  if (!pomRunning) { startPom(); } else { pausePom(); }
+}
+function startPom() {
+  pomRunning = true; pomTotal = pomSeconds;
+  document.querySelector('[onclick="generate()"]').textContent = 'Pause';
+  pomInterval = setInterval(() => {
+    pomSeconds--;
+    updatePomDisplay();
+    if (pomSeconds <= 0) {
+      clearInterval(pomInterval); pomRunning = false;
+      if (!pomIsBreak) { pomSessions++; pomIsBreak = true; pomSeconds = pomSessions % 4 === 0 ? 15 * 60 : 5 * 60; }
+      else { pomIsBreak = false; pomSeconds = 25 * 60; }
+      document.querySelector('[onclick="generate()"]').textContent = 'Start';
+      updatePomDisplay();
+      const el = document.getElementById('result');
+      el.textContent = pomIsBreak ? 'Time for a break!' : 'Break over! Ready to work?';
+    }
+  }, 1000);
+}
+function pausePom() { clearInterval(pomInterval); pomRunning = false; document.querySelector('[onclick="generate()"]').textContent = 'Resume'; }
+function resetPom() { clearInterval(pomInterval); pomRunning = false; pomIsBreak = false; pomSeconds = 25 * 60; pomSessions = 0; document.querySelector('[onclick="generate()"]').textContent = 'Start'; updatePomDisplay(); document.getElementById('result').textContent = ''; }
+function updatePomDisplay() {
+  const m = Math.floor(pomSeconds / 60); const s = pomSeconds % 60;
+  const pct = pomTotal ? (pomSeconds / pomTotal * 100) : 0;
+  document.getElementById('result').innerHTML = `<div class='text-5xl font-mono font-bold text-center text-brand-400'>${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}</div><div class='text-center text-xs text-surface-500 mt-2'>${pomIsBreak ? 'Break' : 'Focus'} · Session ${pomSessions + 1}</div><div class='mt-3 flex justify-center gap-2'><button onclick='resetPom()' class='px-3 py-1 text-xs rounded-lg bg-surface-700 text-surface-300 hover:bg-surface-600'>Reset</button></div>`;
+}
+updatePomDisplay();
+
+function copyResult() {
+  const text = document.getElementById('result').textContent;
+  if (!text) return;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('[onclick="copyResult()"]');
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy', 2000);
+  });
+}
+</script>
+<slot name="info" slot="info">
+  <p>Work for 25 minutes, then take a 5-minute break. After 4 work sessions, take a longer 15-minute break. The Pomodoro Technique helps maintain focus and prevent burnout.</p>
+</slot>
+</ToolLayout>

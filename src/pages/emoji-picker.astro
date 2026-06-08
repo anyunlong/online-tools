@@ -1,0 +1,55 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Emoji Keyboard"
+  description="Browse and copy emoji characters"
+  category="Text"
+  keywords={["emoji", "smiley", "copy", "paste"]}
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <Textarea id="inp" label="Input" placeholder="Search emoji by name (e.g. smile, heart, cat)..." rows="12" class="tool-area" />
+    <div>
+      <label for="out" class="text-sm text-surface-300 mb-1.5 block font-medium">Output</label>
+      <div id="out" class="w-full h-72 rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 overflow-auto font-mono"></div>
+    </div>
+  </div>
+  <div class="flex gap-2 mt-4">
+    <Button onclick="process()"></Button>
+    <Button variant="secondary" onclick="clearAll()">Clear</Button>
+  </div>
+  <div id="msg" class="text-xs mt-2 text-surface-400"></div>
+<script is:inline>
+const EMOJIS = [
+  {e:'😀',n:'grinning face',c:'smileys'},{e:'😃',n:'grinning face with big eyes',c:'smileys'},{e:'😄',n:'grinning face with smiling eyes',c:'smileys'},{e:'😁',n:'beaming face',c:'smileys'},{e:'😅',n:'grinning face with sweat',c:'smileys'},{e:'😂',n:'face with tears of joy',c:'smileys'},{e:'🤣',n:'rolling on the floor laughing',c:'smileys'},{e:'😊',n:'smiling face with smiling eyes',c:'smileys'},{e:'😇',n:'smiling face with halo',c:'smileys'},{e:'🙂',n:'slightly smiling face',c:'smileys'},{e:'😉',n:'winking face',c:'smileys'},{e:'😍',n:'smiling face with heart-eyes',c:'smileys'},{e:'🤩',n:'star-struck',c:'smileys'},{e:'😘',n:'face blowing a kiss',c:'smileys'},{e:'😜',n:'winking face with tongue',c:'smileys'},{e:'🤔',n:'thinking face',c:'smileys'},{e:'😐',n:'neutral face',c:'smileys'},{e:'😶',n:'face without mouth',c:'smileys'},{e:'😏',n:'smirking face',c:'smileys'},{e:'😒',n:'unamused face',c:'smileys'},{e:'🙄',n:'face with rolling eyes',c:'smileys'},{e:'😬',n:'grimacing face',c:'smileys'},{e:'😴',n:'sleeping face',c:'smileys'},{e:'😪',n:'sleepy face',c:'smileys'},{e:'🤒',n:'face with thermometer',c:'smileys'},{e:'😷',n:'face with medical mask',c:'smileys'},{e:'🤮',n:'face vomiting',c:'smileys'},{e:'😎',n:'smiling face with sunglasses',c:'smileys'},{e:'🤓',n:'nerd face',c:'smileys'},{e:'😢',n:'crying face',c:'smileys'},{e:'😭',n:'loudly crying face',c:'smileys'},{e:'😤',n:'face with steam from nose',c:'smileys'},{e:'😡',n:'pouting face',c:'smileys'},{e:'🤬',n:'face with symbols on mouth',c:'smileys'},{e:'❤️',n:'red heart',c:'symbols'},{e:'🧡',n:'orange heart',c:'symbols'},{e:'💛',n:'yellow heart',c:'symbols'},{e:'💚',n:'green heart',c:'symbols'},{e:'💙',n:'blue heart',c:'symbols'},{e:'💜',n:'purple heart',c:'symbols'},{e:'🖤',n:'black heart',c:'symbols'},{e:'💔',n:'broken heart',c:'symbols'},{e:'💯',n:'hundred points',c:'symbols'},{e:'💥',n:'collision',c:'symbols'},{e:'💫',n:'dizzy',c:'symbols'},{e:'⭐',n:'star',c:'symbols'},{e:'🔥',n:'fire',c:'symbols'},{e:'💧',n:'droplet',c:'symbols'},{e:'🎉',n:'party popper',c:'symbols'},{e:'🎊',n:'confetti ball',c:'symbols'},{e:'👍',n:'thumbs up',c:'people'},{e:'👎',n:'thumbs down',c:'people'},{e:'👏',n:'clapping hands',c:'people'},{e:'🙌',n:'raising hands',c:'people'},{e:'💪',n:'flexed biceps',c:'people'},{e:'✍️',n:'writing hand',c:'people'},{e:'🙏',n:'folded hands',c:'people'},{e:'💃',n:'woman dancing',c:'people'},{e:'🕺',n:'man dancing',c:'people'},{e:'🐶',n:'dog face',c:'animals'},{e:'🐱',n:'cat face',c:'animals'},{e:'🐭',n:'mouse face',c:'animals'},{e:'🐹',n:'hamster face',c:'animals'},{e:'🐰',n:'rabbit face',c:'animals'},{e:'🦊',n:'fox face',c:'animals'},{e:'🐻',n:'bear face',c:'animals'},{e:'🐼',n:'panda face',c:'animals'},{e:'🐨',n:'koala',c:'animals'},{e:'🐯',n:'tiger face',c:'animals'},{e:'🦁',n:'lion face',c:'animals'},{e:'🐮',n:'cow face',c:'animals'},{e:'🐷',n:'pig face',c:'animals'},{e:'🐸',n:'frog face',c:'animals'},{e:'🐵',n:'monkey face',c:'animals'},{e:'🍎',n:'red apple',c:'food'},{e:'🍊',n:'tangerine',c:'food'},{e:'🍋',n:'lemon',c:'food'},{e:'🍌',n:'banana',c:'food'},{e:'🍉',n:'watermelon',c:'food'},{e:'🍇',n:'grapes',c:'food'},{e:'🍓',n:'strawberry',c:'food'},{e:'🍒',n:'cherries',c:'food'},{e:'🍑',n:'peach',c:'food'},{e:'🥕',n:'carrot',c:'food'},{e:'🌽',n:'ear of corn',c:'food'},{e:'🍕',n:'pizza',c:'food'},{e:'🍔',n:'hamburger',c:'food'},{e:'🍟',n:'french fries',c:'food'},{e:'🌮',n:'taco',c:'food'},{e:'🍣',n:'sushi',c:'food'},{e:'🎂',n:'birthday cake',c:'food'},{e:'🍩',n:'doughnut',c:'food'},{e:'☕',n:'hot beverage',c:'food'},{e:'🍺',n:'beer mug',c:'food'},{e:'🌍',n:'globe showing Europe-Africa',c:'travel'},{e:'🏠',n:'house',c:'travel'},{e:'🏢',n:'office building',c:'travel'},{e:'🏫',n:'school',c:'travel'},{e:'🏥',n:'hospital',c:'travel'},{e:'🚗',n:'car',c:'travel'},{e:'🚌',n:'bus',c:'travel'},{e:'✈️',n:'airplane',c:'travel'},{e:'🚀',n:'rocket',c:'travel'},{e:'⛵',n:'sailboat',c:'travel'},{e:'⚽',n:'soccer ball',c:'activities'},{e:'🏀',n:'basketball',c:'activities'},{e:'🎾',n:'tennis',c:'activities'},{e:'🎮',n:'video game',c:'activities'},{e:'🎵',n:'musical note',c:'activities'},{e:'🎸',n:'guitar',c:'activities'},{e:'📚',n:'books',c:'objects'},{e:'💡',n:'light bulb',c:'objects'},{e:'🔑',n:'key',c:'objects'},{e:'🔒',n:'locked',c:'objects'},{e:'💰',n:'money bag',c:'objects'},{e:'📱',n:'mobile phone',c:'objects'},{e:'💻',n:'laptop',c:'objects'},{e:'🖥️',n:'desktop computer',c:'objects'},{e:'📷',n:'camera',c:'objects'},{e:'⏰',n:'alarm clock',c:'objects'},{e:'🛒',n:'shopping cart',c:'objects'}];
+function process() {
+  const q = document.getElementById('inp').value.trim().toLowerCase();
+  const filtered = q ? EMOJIS.filter(e => e.n.includes(q) || e.c.includes(q)) : EMOJIS;
+  let html = '<div class=\'flex flex-wrap gap-2\'>';
+  for (const em of filtered) {
+    html += `<button onclick='copyEmoji("${em.e}")' title='${em.n}' class='text-2xl p-2 rounded-lg hover:bg-surface-700 transition-colors cursor-pointer border border-transparent hover:border-surface-600'>${em.e}</button>`;
+  }
+  html += '</div>';
+  document.getElementById('out').innerHTML = html;
+  document.getElementById('msg').textContent = `Showing ${filtered.length} of ${EMOJIS.length} emojis`;
+}
+function copyEmoji(e) {
+  navigator.clipboard.writeText(e).then(() => {
+    document.getElementById('msg').textContent = `Copied: ${e}`;
+  });
+}
+process();
+
+function clearAll() {
+  document.getElementById('inp').value = '';
+  document.getElementById('out').innerHTML = '';
+  document.getElementById('msg').textContent = '';
+}
+</script>
+<slot name="info" slot="info">
+  <p>Browse emojis by category: Smileys, People, Animals, Food, Activities, Travel, Objects, Symbols. Click any emoji to copy it to clipboard. Use the search to find emojis by name.</p>
+</slot>
+</ToolLayout>

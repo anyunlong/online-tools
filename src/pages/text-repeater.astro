@@ -1,0 +1,44 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Text Repeater"
+  description="Repeat text multiple times"
+  category="Text"
+  keywords={["repeat", "text", "duplicate", "multiply"]}
+>
+  <div class="space-y-4">
+    <div class='space-y-3'><div><label class='text-sm text-surface-300 block mb-1'>Text to repeat</label><input id='txt' class='bg-surface-800 border border-surface-700 rounded-lg px-3 py-1.5 text-sm text-surface-100 w-full' placeholder='Enter text...' /></div><div class='flex gap-4 items-end'><div><label class='text-sm text-surface-300 block mb-1'>Times</label><input id='n' type='number' value='5' min='1' max='1000' class='bg-surface-800 border border-surface-700 rounded-lg px-3 py-1.5 text-sm text-surface-100 w-24' /></div><div><label class='text-sm text-surface-300 block mb-1'>Separator</label><select id='sep' class='bg-surface-800 border border-surface-700 rounded-lg px-3 py-1.5 text-sm text-surface-100'><option value='\n'>New line</option><option value=' '>Space</option><option value=', '>Comma</option><option value='custom'>Custom</option></select></div></div><div id='customSep' style='display:none'><label class='text-sm text-surface-300 block mb-1'>Custom separator</label><input id='csep' class='bg-surface-800 border border-surface-700 rounded-lg px-3 py-1.5 text-sm text-surface-100 w-full' placeholder='---' /></div></div>
+    <div class="flex gap-2">
+      <Button onclick="generate()">Repeat</Button>
+      <Button variant="secondary" onclick="copyResult()">Copy</Button>
+    </div>
+    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
+  </div>
+<script is:inline>
+function generate() {
+  const txt = document.getElementById('txt').value;
+  const n = parseInt(document.getElementById('n').value) || 5;
+  let sep = document.getElementById('sep').value;
+  if (sep === 'custom') sep = document.getElementById('csep').value || '---';
+  if (sep === '\\n') sep = '\n';
+  const result = Array(n).fill(txt).join(sep);
+  document.getElementById('result').textContent = result;
+}
+
+function copyResult() {
+  const text = document.getElementById('result').textContent;
+  if (!text) return;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('[onclick="copyResult()"]');
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy', 2000);
+  });
+}
+</script>
+<slot name="info" slot="info">
+  <p>Enter text and specify how many times to repeat it. Choose a separator (newline, space, comma, or custom). Useful for generating test data and placeholder content.</p>
+</slot>
+</ToolLayout>
