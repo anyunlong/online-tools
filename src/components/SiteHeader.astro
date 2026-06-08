@@ -1,0 +1,148 @@
+---
+const navLinks = [
+  { label: "Home", href: "/" },
+  { label: "All Tools", href: "/#tools" },
+  { label: "Categories", href: "/#categories" },
+  { label: "About", href: "/about" },
+];
+---
+
+<header
+  class="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl"
+>
+  <div class="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2 text-lg font-bold tracking-tight no-underline">
+      <span
+        class="flex size-8 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-accent text-sm font-black text-primary-foreground"
+      >4</span>
+      <span class="text-foreground" data-i18n="site.name">4uses</span>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden items-center gap-1 md:flex">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground no-underline"
+          >{link.label}</a>
+        ))
+      }
+    </nav>
+
+    <!-- Right actions -->
+    <div class="flex items-center gap-2">
+      <!-- Search (desktop) -->
+      <div class="relative hidden sm:block">
+        <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm leading-none text-muted-foreground">🔍</span>
+        <input
+          type="search"
+          placeholder="Search tools..."
+          class="flex h-9 w-40 rounded-md border border-input bg-secondary/60 pl-9 pr-3 py-1 text-sm text-foreground shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 lg:w-56"
+          aria-label="Search tools"
+        />
+      </div>
+
+      <!-- Lang switcher -->
+      <div id="lang-switcher-group" class="flex items-center rounded-lg border border-border bg-secondary/60 p-0.5 text-xs font-medium">
+        <button data-lang="EN" class="lang-btn rounded-md px-2 py-1 transition-colors bg-primary text-primary-foreground" aria-pressed="true">EN</button>
+        <button data-lang="中文" class="lang-btn rounded-md px-2 py-1 transition-colors text-muted-foreground hover:text-foreground" aria-pressed="false">中文</button>
+      </div>
+
+      <!-- Mobile menu toggle -->
+      <button id="mobile-menu-btn" class="inline-flex items-center justify-center rounded-md p-2 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground md:hidden bg-transparent border-0 cursor-pointer" aria-label="Toggle menu">
+        <span id="mobile-menu-icon" class="text-lg leading-none">☰</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile nav -->
+  <nav id="mobile-nav" class="hidden border-t border-border bg-background px-4 py-3 md:hidden">
+    {
+      navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="mobile-nav-link block rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground no-underline"
+        >{link.label}</a>
+      ))
+    }
+  </nav>
+</header>
+
+<script>
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  const mobileIcon = document.getElementById('mobile-menu-icon');
+  const mobileNav = document.getElementById('mobile-nav');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+  mobileBtn?.addEventListener('click', () => {
+    const isOpen = !mobileNav?.classList.contains('hidden');
+    if (isOpen) {
+      mobileNav?.classList.add('hidden');
+      if (mobileIcon) mobileIcon.textContent = '\u2630';
+    } else {
+      mobileNav?.classList.remove('hidden');
+      if (mobileIcon) mobileIcon.textContent = '\u2715';
+    }
+  });
+
+  mobileLinks.forEach(function(link) {
+    link.addEventListener('click', function() {
+      mobileNav?.classList.add('hidden');
+      if (mobileIcon) mobileIcon.textContent = '\u2630';
+    });
+  });
+
+  function getLang() {
+    return localStorage.getItem('lang') || 'en';
+  }
+
+  function setLangUI(lang) {
+    var btns = document.querySelectorAll('.lang-btn');
+    var activeClass = 'bg-primary text-primary-foreground';
+    var inactiveClass = 'text-muted-foreground hover:text-foreground';
+    btns.forEach(function(btn) {
+      var btnLang = btn.getAttribute('data-lang');
+      var isEN = lang === 'en' && btnLang === 'EN';
+      var isZH = lang === 'zh' && btnLang === '\u4e2d\u6587';
+      btn.className = 'lang-btn rounded-md px-2 py-1 transition-colors ' + (isEN || isZH ? activeClass : inactiveClass);
+      btn.setAttribute('aria-pressed', isEN || isZH ? 'true' : 'false');
+    });
+  }
+
+  function applyTranslations() {
+    var lang = getLang();
+    var langKey = lang === 'zh' ? 'zh' : 'en';
+    document.documentElement.lang = langKey;
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      var text = window.__I18N__ && window.__I18N__[langKey] && window.__I18N__[langKey][key];
+      if (text) {
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+          el.placeholder = text;
+        } else {
+          el.textContent = text;
+        }
+      }
+    });
+  }
+
+  function switchLang(target) {
+    var next = target === 'EN' ? 'en' : 'zh';
+    localStorage.setItem('lang', next);
+    setLangUI(next);
+    applyTranslations();
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      switchLang(btn.getAttribute('data-lang') || 'EN');
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    setLangUI(getLang());
+    applyTranslations();
+  });
+</script>

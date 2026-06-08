@@ -1,0 +1,151 @@
+---
+import ToolCard from './ToolCard.astro';
+import tools from '../data/tools.json';
+
+const catOrder = [
+  'Encode/Decode', 'Hash', 'Text', 'Time', 'Dev Tools',
+  'Convert', 'Formatter', 'Generator', 'Security', 'Design',
+  'Image', 'Math', 'Network',
+];
+
+const catEmoji: Record<string, string> = {
+  'Encode/Decode': '\u{1F510}',
+  'Hash': '\u{1F512}',
+  'Text': '\u{1F4DD}',
+  'Time': '\u{23F0}',
+  'Dev Tools': '\u{1F6E0}',
+  'Convert': '\u{1F504}',
+  'Formatter': '\u{1F4CB}',
+  'Generator': '\u{2728}',
+  'Security': '\u{1F6E1}',
+  'Design': '\u{1F3A8}',
+  'Image': '\u{1F5BC}',
+  'Math': '\u{1F522}',
+  'Network': '\u{1F310}',
+};
+
+const categories = catOrder.filter(cat => tools.some(t => t.cat === cat));
+---
+
+<section id="categories" class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+  <!-- Search -->
+  <div class="relative mx-auto max-w-2xl">
+    <span class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-lg leading-none text-muted-foreground">🔍</span>
+    <input
+      id="tools-search"
+      type="search"
+      placeholder="Search for a tool..."
+      class="h-14 w-full rounded-xl border border-border bg-card/60 pl-12 pr-4 text-base text-foreground shadow-sm backdrop-blur-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+      aria-label="Search for a tool"
+    />
+  </div>
+
+  <!-- Category pills -->
+  <div class="no-scrollbar -mx-4 mt-6 flex gap-2 overflow-x-auto px-4 pb-1">
+    <button
+      data-category=""
+      class="cat-pill shrink-0 rounded-full border px-4 py-2 text-sm font-medium transition-colors border-primary bg-primary text-primary-foreground"
+    >
+      All
+    </button>
+    {categories.map(cat => (
+      <button
+        data-category={cat}
+        class="cat-pill flex shrink-0 items-center gap-1.5 rounded-full border px-4 py-2 text-sm font-medium transition-colors border-border bg-secondary/60 text-muted-foreground hover:text-foreground"
+      >
+        <span aria-hidden="true">{catEmoji[cat] || ''}</span>
+        {cat}
+      </button>
+    ))}
+  </div>
+
+  <!-- Tool grid -->
+  <div id="tools" class="mt-8 scroll-mt-20">
+    <div class="mb-5 flex items-baseline justify-between">
+      <h2 class="text-2xl font-bold tracking-tight text-foreground">All Tools</h2>
+      <span id="tools-count" class="text-sm text-muted-foreground">{tools.length} tools</span>
+    </div>
+
+    <div id="tools-grid" class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {tools.map(tool => (
+        <div data-cat={tool.cat} data-name={tool.name} data-desc={tool.desc} class="tool-card-wrapper">
+          <ToolCard tool={tool} />
+        </div>
+      ))}
+    </div>
+
+    <div id="tools-empty" class="hidden rounded-xl border border-dashed border-border py-16 text-center text-muted-foreground">
+      No tools found for <span id="tools-empty-query" class="font-medium text-foreground"></span>
+    </div>
+  </div>
+</section>
+
+<script>
+  var searchInput = document.getElementById('tools-search');
+  var toolsCount = document.getElementById('tools-count');
+  var toolsGrid = document.getElementById('tools-grid');
+  var toolsEmpty = document.getElementById('tools-empty');
+  var toolsEmptyQuery = document.getElementById('tools-empty-query');
+  var catPills = document.querySelectorAll('.cat-pill');
+  var cardWrappers = document.querySelectorAll('.tool-card-wrapper');
+
+  var activeCategory = '';
+
+  function filterTools() {
+    var query = (searchInput && searchInput.value || '').trim().toLowerCase();
+    var visibleCount = 0;
+
+    cardWrappers.forEach(function(wrapper) {
+      var cat = wrapper.getAttribute('data-cat') || '';
+      var name = (wrapper.getAttribute('data-name') || '').toLowerCase();
+      var desc = (wrapper.getAttribute('data-desc') || '').toLowerCase();
+
+      var matchesCat = !activeCategory || cat === activeCategory;
+      var matchesQuery = !query || name.indexOf(query) !== -1 || desc.indexOf(query) !== -1;
+
+      if (matchesCat && matchesQuery) {
+        wrapper.style.display = '';
+        visibleCount++;
+      } else {
+        wrapper.style.display = 'none';
+      }
+    });
+
+    if (toolsCount) {
+      toolsCount.textContent = visibleCount + ' ' + (visibleCount === 1 ? 'tool' : 'tools');
+    }
+
+    if (visibleCount === 0) {
+      if (toolsGrid) toolsGrid.classList.add('hidden');
+      if (toolsEmpty) toolsEmpty.classList.remove('hidden');
+      if (toolsEmptyQuery) {
+        toolsEmptyQuery.textContent = query ? '\u201C' + query + '\u201D' : '';
+      }
+    } else {
+      if (toolsGrid) toolsGrid.classList.remove('hidden');
+      if (toolsEmpty) toolsEmpty.classList.add('hidden');
+    }
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', filterTools);
+  }
+
+  catPills.forEach(function(pill) {
+    pill.addEventListener('click', function() {
+      activeCategory = pill.getAttribute('data-category') || '';
+
+      catPills.forEach(function(p) {
+        var isActive = p === pill;
+        var baseClasses = 'cat-pill shrink-0 rounded-full border px-4 py-2 text-sm font-medium transition-colors';
+        if (isActive) {
+          p.className = baseClasses + ' border-primary bg-primary text-primary-foreground';
+        } else {
+          p.className = baseClasses + ' border-border bg-secondary/60 text-muted-foreground hover:text-foreground';
+        }
+      });
+
+      filterTools();
+    });
+  });
+</script>
