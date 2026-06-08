@@ -1,0 +1,44 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="HTML Minifier"
+  description="Minify HTML to reduce page size"
+  category="Dev Tools"
+  keywords={["html", "minify", "compress"]}
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <Textarea id="inp" label="Input" placeholder="Paste HTML code..." rows="12" class="tool-area" />
+    <div>
+      <label for="out" class="text-sm text-surface-300 mb-1.5 block font-medium">Output</label>
+      <div id="out" class="w-full h-72 rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 overflow-auto font-mono"></div>
+    </div>
+  </div>
+  <div class="flex gap-2 mt-4">
+    <Button onclick="process()">Minify</Button>
+    <Button variant="secondary" onclick="clearAll()">Clear</Button>
+  </div>
+  <div id="msg" class="text-xs mt-2 text-surface-400"></div>
+<script is:inline>
+function process() {
+  let html = document.getElementById('inp').value;
+  if (!html) return;
+  const original = html.length;
+  html = html.replace(/<!--[\s\S]*?-->/g, '').replace(/>\s+</g, '><').replace(/\s{2,}/g, ' ').replace(/\n/g, '').trim();
+  document.getElementById('out').textContent = html;
+  document.getElementById('msg').textContent = `Original: ${(original/1024).toFixed(1)}KB -> Minified: ${(html.length/1024).toFixed(1)}KB (${((1-html.length/original)*100).toFixed(1)}% smaller)`;
+}
+
+function clearAll() {
+  document.getElementById('inp').value = '';
+  document.getElementById('out').innerHTML = '';
+  document.getElementById('msg').textContent = '';
+}
+</script>
+<slot name="info" slot="info">
+  <p>Paste your HTML code and click Minify to remove whitespace and comments. Compare before and after sizes. All processing stays local.</p>
+</slot>
+</ToolLayout>
