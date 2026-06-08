@@ -1,0 +1,54 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="JWT Decoder"
+  description="Decode and inspect JWT tokens"
+  category="Dev Tools"
+  keywords={["jwt", "token", "decode", "auth"]}
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <Textarea id="inp" label="Input" placeholder="Paste JWT token (eyJhbGciOi...)" rows="12" class="tool-area" />
+    <div>
+      <label for="out" class="text-sm text-surface-300 mb-1.5 block font-medium">Output</label>
+      <div id="out" class="w-full h-72 rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 overflow-auto font-mono"></div>
+    </div>
+  </div>
+  <div class="flex gap-2 mt-4">
+    <Button onclick="process()">Decode</Button>
+    <Button variant="secondary" onclick="clearAll()">Clear</Button>
+  </div>
+  <div id="msg" class="text-xs mt-2 text-surface-400"></div>
+<script is:inline>
+function process() {
+  const token = document.getElementById('inp').value.trim();
+  if (!token) return;
+  try {
+    const parts = token.split('.');
+    if (parts.length !== 3) { document.getElementById('msg').textContent = 'Error: Invalid JWT format (need 3 parts)'; return; }
+    const header = JSON.parse(atob(parts[0].replace(/-/g,'+').replace(/_/g,'/')));
+    const payload = JSON.parse(atob(parts[1].replace(/-/g,'+').replace(/_/g,'/')));
+    let info = '';
+    if (payload.exp) { const d = new Date(payload.exp * 1000); info += `Expires: ${d.toLocaleString()}\n`; const now = Date.now()/1000; info += `Status: ${payload.exp > now ? '✅ Valid' : '❌ Expired'}\n`; }
+    if (payload.iat) info += `Issued: ${new Date(payload.iat * 1000).toLocaleString()}\n`;
+    if (payload.sub) info += `Subject: ${payload.sub}\n`;
+    let out = '═══ HEADER ═══\n' + JSON.stringify(header, null, 2) + '\n\n═══ PAYLOAD ═══\n' + JSON.stringify(payload, null, 2);
+    if (info) out += '\n\n═══ INFO ═══\n' + info;
+    document.getElementById('out').textContent = out;
+    document.getElementById('msg').textContent = 'Decoded successfully';
+  } catch(e) { document.getElementById('msg').textContent = 'Error: ' + e.message; }
+}
+
+function clearAll() {
+  document.getElementById('inp').value = '';
+  document.getElementById('out').innerHTML = '';
+  document.getElementById('msg').textContent = '';
+}
+</script>
+<slot name="info" slot="info">
+  <p>Paste a JWT token to decode its header and payload. Displays expiration time, issued-at, subject, and all claims. Decoding happens entirely in your browser — the token is never sent to any server.</p>
+</slot>
+</ToolLayout>

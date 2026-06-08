@@ -1,0 +1,49 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Random String Generator"
+  description="Generate random strings with custom rules"
+  category="Generator"
+  keywords={["random", "string", "token", "api key"]}
+>
+  <div class="space-y-4">
+    <div class="flex flex-wrap items-center gap-3"><label class="text-sm text-surface-300">Length:</label><input id="len" type="number" value="32" min="4" max="256" class="bg-surface-800 border border-surface-700 rounded-lg px-3 py-1.5 text-sm text-surface-100 w-20" /><div class="flex gap-2 ml-4"><label class="text-sm text-surface-300"><input id="upper" type="checkbox" checked class="mr-1" />A-Z</label><label class="text-sm text-surface-300"><input id="lower" type="checkbox" checked class="mr-1" />a-z</label><label class="text-sm text-surface-300"><input id="nums" type="checkbox" checked class="mr-1" />0-9</label><label class="text-sm text-surface-300"><input id="sym" type="checkbox" class="mr-1" />!@#$</label></div></div>
+    <div class="flex gap-2">
+      <Button onclick="generate()">Generate</Button>
+      <Button variant="secondary" onclick="copyResult()">Copy</Button>
+    </div>
+    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
+  </div>
+<script is:inline>
+function generate() {
+  const len = parseInt(document.getElementById('len').value) || 32;
+  let chars = '';
+  if (document.getElementById('upper').checked) chars += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  if (document.getElementById('lower').checked) chars += 'abcdefghijklmnopqrstuvwxyz';
+  if (document.getElementById('nums').checked) chars += '0123456789';
+  if (document.getElementById('sym').checked) chars += '!@#$%^&*()_+-=[]{}|;:,.<>?';
+  if (!chars) { document.getElementById('result').textContent = 'Select at least one character type'; return; }
+  let result = '';
+  const arr = new Uint32Array(len);
+  crypto.getRandomValues(arr);
+  for (let i = 0; i < len; i++) result += chars[arr[i] % chars.length];
+  document.getElementById('result').textContent = result;
+}
+
+function copyResult() {
+  const text = document.getElementById('result').textContent;
+  if (!text) return;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('[onclick="copyResult()"]');
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy', 2000);
+  });
+}
+</script>
+<slot name="info" slot="info">
+  <p>Choose character types (uppercase, lowercase, numbers, symbols) and string length, then generate random strings. Useful for API keys, tokens, temporary passwords, and test data.</p>
+</slot>
+</ToolLayout>
