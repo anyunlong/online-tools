@@ -1,0 +1,47 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="URL Slug Generator"
+  description="Convert text to URL-friendly slugs"
+  category="Text"
+  keywords={["slug", "url", "permalink"]}
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <Textarea id="inp" label="Input" placeholder="Enter title or text..." rows="12" class="tool-area" />
+    <div>
+      <label for="out" class="text-sm text-surface-300 mb-1.5 block font-medium">Output</label>
+      <div id="out" class="w-full h-72 rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 overflow-auto font-mono"></div>
+    </div>
+  </div>
+  <div class="flex gap-2 mt-4">
+    <Button onclick="process()">Generate Slug</Button>
+    <Button variant="secondary" onclick="clearAll()">Clear</Button>
+  </div>
+  <div id="msg" class="text-xs mt-2 text-surface-400"></div>
+<script is:inline>
+function process() {
+  let text = document.getElementById('inp').value;
+  if (!text) return;
+  text = text.toLowerCase().trim()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/[\s_]+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+  document.getElementById('out').textContent = text;
+  document.getElementById('msg').textContent = 'Slug generated';
+}
+
+function clearAll() {
+  document.getElementById('inp').value = '';
+  document.getElementById('out').innerHTML = '';
+  document.getElementById('msg').textContent = '';
+}
+</script>
+<slot name="info" slot="info">
+  <p>Enter any text and it will be automatically converted to a URL-friendly slug (lowercase, spaces to hyphens, special characters removed). Perfect for blog post URLs, file names, and SEO optimization.</p>
+</slot>
+</ToolLayout>

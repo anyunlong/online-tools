@@ -1,0 +1,44 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="CSS Minifier"
+  description="Minify CSS to reduce file size"
+  category="Dev Tools"
+  keywords={["css", "minify", "compress", "optimize"]}
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <Textarea id="inp" label="Input" placeholder="Paste CSS code..." rows="12" class="tool-area" />
+    <div>
+      <label for="out" class="text-sm text-surface-300 mb-1.5 block font-medium">Output</label>
+      <div id="out" class="w-full h-72 rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 overflow-auto font-mono"></div>
+    </div>
+  </div>
+  <div class="flex gap-2 mt-4">
+    <Button onclick="process()">Minify</Button>
+    <Button variant="secondary" onclick="clearAll()">Clear</Button>
+  </div>
+  <div id="msg" class="text-xs mt-2 text-surface-400"></div>
+<script is:inline>
+function process() {
+  let css = document.getElementById('inp').value;
+  if (!css) return;
+  const original = css.length;
+  css = css.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\s+/g, ' ').replace(/\s*([{}:;,])\s*/g, '$1').replace(/;}/g, '}').trim();
+  document.getElementById('out').textContent = css;
+  document.getElementById('msg').textContent = `Original: ${(original/1024).toFixed(1)}KB → Minified: ${(css.length/1024).toFixed(1)}KB (${((1-css.length/original)*100).toFixed(1)}% smaller)`;
+}
+
+function clearAll() {
+  document.getElementById('inp').value = '';
+  document.getElementById('out').innerHTML = '';
+  document.getElementById('msg').textContent = '';
+}
+</script>
+<slot name="info" slot="info">
+  <p>Paste your CSS code and click Minify to remove whitespace, comments, and unnecessary characters. Compare original and minified sizes instantly. All processing is local.</p>
+</slot>
+</ToolLayout>

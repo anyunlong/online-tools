@@ -1,0 +1,48 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Percentage Calculator"
+  description="Calculate percentages quickly"
+  category="Math"
+  keywords={["percentage", "calculator", "percent", "math"]}
+>
+  <div class="space-y-4">
+    <div class="space-y-4"><div><label class="text-sm text-surface-300 block mb-1">What is <input id="p1" type="number" value="20" class="bg-surface-800 border border-surface-700 rounded px-2 py-0.5 w-16 text-sm text-surface-100" />% of <input id="n1" type="number" value="200" class="bg-surface-800 border border-surface-700 rounded px-2 py-0.5 w-20 text-sm text-surface-100" />?</label></div><div><label class="text-sm text-surface-300 block mb-1"><input id="n2" type="number" value="50" class="bg-surface-800 border border-surface-700 rounded px-2 py-0.5 w-20 text-sm text-surface-100" /> is what % of <input id="n3" type="number" value="200" class="bg-surface-800 border border-surface-700 rounded px-2 py-0.5 w-20 text-sm text-surface-100" />?</label></div><div><label class="text-sm text-surface-300 block mb-1">Increase/Decrease: from <input id="from" type="number" value="100" class="bg-surface-800 border border-surface-700 rounded px-2 py-0.5 w-20 text-sm text-surface-100" /> to <input id="to" type="number" value="150" class="bg-surface-800 border border-surface-700 rounded px-2 py-0.5 w-20 text-sm text-surface-100" /></label></div></div>
+    <div class="flex gap-2">
+      <Button onclick="generate()">Calculate</Button>
+      <Button variant="secondary" onclick="copyResult()">Copy</Button>
+    </div>
+    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
+  </div>
+<script is:inline>
+function generate() {
+  const p1 = parseFloat(document.getElementById('p1').value) || 0;
+  const n1 = parseFloat(document.getElementById('n1').value) || 0;
+  const n2 = parseFloat(document.getElementById('n2').value) || 0;
+  const n3 = parseFloat(document.getElementById('n3').value) || 0;
+  const from = parseFloat(document.getElementById('from').value) || 0;
+  const to = parseFloat(document.getElementById('to').value) || 0;
+  let r = '';
+  r += `${p1}% of ${n1} = <b>${(p1/100*n1).toFixed(2)}</b>\n`;
+  if (n3) r += `${n2} is <b>${((n2/n3)*100).toFixed(2)}%</b> of ${n3}\n`;
+  if (from && to) { const change = ((to-from)/from*100); r += `From ${from} to ${to}: <b>${change > 0 ? '+' : ''}${change.toFixed(2)}%</b>\n`; }
+  document.getElementById('result').innerHTML = r.replace(/\n/g, '<br/>');
+}
+
+function copyResult() {
+  const text = document.getElementById('result').textContent;
+  if (!text) return;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('[onclick="copyResult()"]');
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy', 2000);
+  });
+}
+</script>
+<slot name="info" slot="info">
+  <p>Calculate percentage of a number, find what percent one number is of another, or compute percentage increase/decrease. Three calculators in one simple interface.</p>
+</slot>
+</ToolLayout>

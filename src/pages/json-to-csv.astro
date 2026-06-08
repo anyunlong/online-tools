@@ -1,0 +1,60 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="JSON to CSV Converter"
+  description="Convert JSON data to CSV format"
+  category="Convert"
+  keywords={["json", "csv", "convert", "export"]}
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <Textarea id="inp" label="Input" placeholder="Paste JSON array, e.g. [{name: John, age: 30}]" rows="12" class="tool-area" />
+    <div>
+      <label for="out" class="text-sm text-surface-300 mb-1.5 block font-medium">Output</label>
+      <div id="out" class="w-full h-72 rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 overflow-auto font-mono"></div>
+    </div>
+  </div>
+  <div class="flex gap-2 mt-4">
+    <Button onclick="process()">Convert to CSV</Button>
+    <Button variant="secondary" onclick="clearAll()">Clear</Button>
+  </div>
+  <div id="msg" class="text-xs mt-2 text-surface-400"></div>
+<script is:inline>
+function process() {
+  try {
+    const data = JSON.parse(document.getElementById('inp').value);
+    if (!Array.isArray(data)) { document.getElementById('msg').textContent = 'Error: Input must be a JSON array'; return; }
+    if (data.length === 0) { document.getElementById('msg').textContent = 'Error: Empty array'; return; }
+    const flatten = (obj, prefix = '') => {
+      let result = {};
+      for (const [k, v] of Object.entries(obj)) {
+        const key = prefix ? prefix + '.' + k : k;
+        if (typeof v === 'object' && v !== null && !Array.isArray(v)) Object.assign(result, flatten(v, key));
+        else result[key] = v;
+      }
+      return result;
+    };
+    const keys = Object.keys(data.reduce((acc, obj) => { Object.assign(acc, flatten(obj)); return acc; }, {}));
+    let csv = keys.join(',') + '\n';
+    for (const row of data) {
+      const flat = flatten(row);
+      csv += keys.map(k => { const v = flat[k]; if (v === undefined || v === null) return ''; const s = String(v); return s.includes(',') || s.includes('"') ? '"' + s.replace(/"/g, '""') + '"' : s; }).join(',') + '\n';
+    }
+    document.getElementById('out').textContent = csv;
+    document.getElementById('msg').textContent = `Converted ${data.length} rows, ${keys.length} columns`;
+  } catch(e) { document.getElementById('msg').textContent = 'Error: ' + e.message; }
+}
+
+function clearAll() {
+  document.getElementById('inp').value = '';
+  document.getElementById('out').innerHTML = '';
+  document.getElementById('msg').textContent = '';
+}
+</script>
+<slot name="info" slot="info">
+  <p>Paste a JSON array of objects and click Convert to get CSV output. Handles nested objects by flattening with dot notation. All processing happens locally in your browser.</p>
+</slot>
+</ToolLayout>

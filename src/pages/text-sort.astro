@@ -1,0 +1,52 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Text Line Sorter"
+  description="Sort text lines alphabetically"
+  category="Text"
+  keywords={["sort", "order", "alphabetize", "lines"]}
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <Textarea id="inp" label="Input" placeholder="Paste lines to sort..." rows="12" class="tool-area" />
+    <div>
+      <label for="out" class="text-sm text-surface-300 mb-1.5 block font-medium">Output</label>
+      <div id="out" class="w-full h-72 rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 overflow-auto font-mono"></div>
+    </div>
+  </div>
+  <div class="flex gap-2 mt-4">
+    <Button onclick="process()">Sort A-Z</Button>
+    <Button variant="secondary" onclick="clearAll()">Clear</Button>
+  </div>
+  <div id="msg" class="text-xs mt-2 text-surface-400"></div>
+<script is:inline>
+let sortMode = 'asc';
+function process() {
+  const text = document.getElementById('inp').value;
+  if (!text) return;
+  let lines = text.split('\n').filter(l => l.trim());
+  if (document.getElementById('rmdup')?.checked) lines = [...new Set(lines)];
+  if (sortMode === 'asc') lines.sort((a,b) => a.localeCompare(b));
+  else if (sortMode === 'desc') lines.sort((a,b) => b.localeCompare(a));
+  else lines.sort(() => Math.random() - 0.5);
+  document.getElementById('out').textContent = lines.join('\n');
+  document.getElementById('msg').textContent = `${lines.length} lines sorted`;
+  const btn = document.querySelector('[onclick="process()"]');
+  if (sortMode === 'asc') { sortMode = 'desc'; btn.textContent = 'Sort Z-A'; }
+  else if (sortMode === 'desc') { sortMode = 'random'; btn.textContent = 'Shuffle'; }
+  else { sortMode = 'asc'; btn.textContent = 'Sort A-Z'; }
+}
+
+function clearAll() {
+  document.getElementById('inp').value = '';
+  document.getElementById('out').innerHTML = '';
+  document.getElementById('msg').textContent = '';
+}
+</script>
+<slot name="info" slot="info">
+  <p>Paste your text and choose sort order: ascending (A-Z), descending (Z-A), or random shuffle. Optionally remove duplicate lines. Useful for organizing lists, cleaning data, and alphabetizing references.</p>
+</slot>
+</ToolLayout>
