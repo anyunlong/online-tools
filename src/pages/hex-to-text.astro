@@ -1,0 +1,57 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Hex to Text Converter"
+  description="Convert between hexadecimal and text"
+  category="Encode/Decode"
+  keywords={["hex", "hexadecimal", "text", "encode"]}
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <Textarea id="inp" label="Input" placeholder="Enter text or hex bytes (e.g. 48656c6c6f)..." rows="12" class="tool-area" />
+    <div>
+      <label for="out" class="text-sm text-surface-300 mb-1.5 block font-medium">Output</label>
+      <div id="out" class="w-full h-72 rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 overflow-auto font-mono"></div>
+    </div>
+  </div>
+  <div class="flex gap-2 mt-4">
+    <Button onclick="process()">Convert to Hex</Button>
+    <Button variant="secondary" onclick="clearAll()">Clear</Button>
+  </div>
+  <div id="msg" class="text-xs mt-2 text-surface-400"></div>
+<script is:inline>
+let hexMode = 'toHex';
+function process() {
+  const text = document.getElementById('inp').value.trim();
+  if (!text) return;
+  if (hexMode === 'toHex') {
+    let out = '';
+    for (let i = 0; i < text.length; i++) out += text.charCodeAt(i).toString(16).padStart(2,'0');
+    document.getElementById('out').textContent = out;
+    hexMode = 'toText';
+    document.querySelector('[onclick="process()"]').textContent = 'Convert to Text';
+    document.getElementById('msg').textContent = `${text.length} characters -> ${out.length} hex digits`;
+  } else {
+    const hex = text.replace(/\s/g,'');
+    let out = '';
+    for (let i = 0; i < hex.length; i += 2) out += String.fromCharCode(parseInt(hex.substr(i,2),16));
+    document.getElementById('out').textContent = out;
+    hexMode = 'toHex';
+    document.querySelector('[onclick="process()"]').textContent = 'Convert to Hex';
+    document.getElementById('msg').textContent = `${hex.length/2} characters decoded`;
+  }
+}
+
+function clearAll() {
+  document.getElementById('inp').value = '';
+  document.getElementById('out').innerHTML = '';
+  document.getElementById('msg').textContent = '';
+}
+</script>
+<slot name="info" slot="info">
+  <p>Enter text to convert to hexadecimal, or paste hex bytes to decode back to text. Each character becomes two hex digits. Useful for debugging, data analysis, and low-level programming.</p>
+</slot>
+</ToolLayout>

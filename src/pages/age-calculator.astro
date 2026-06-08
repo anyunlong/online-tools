@@ -1,0 +1,52 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Age Calculator"
+  description="Calculate exact age from birth date"
+  category="Time"
+  keywords={["age", "birthday", "calculator", "date"]}
+>
+  <div class="space-y-4">
+    <div><label class='text-sm text-surface-300 block mb-1'>Birth Date</label><input id='bday' type='date' class='bg-surface-800 border border-surface-700 rounded-lg px-3 py-1.5 text-sm text-surface-100 w-full' /></div>
+    <div class="flex gap-2">
+      <Button onclick="generate()">Calculate Age</Button>
+      <Button variant="secondary" onclick="copyResult()">Copy</Button>
+    </div>
+    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
+  </div>
+<script is:inline>
+function generate() {
+  const bday = document.getElementById('bday').value;
+  if (!bday) { document.getElementById('result').textContent = 'Please select your birth date'; return; }
+  const birth = new Date(bday);
+  const now = new Date();
+  if (birth > now) { document.getElementById('result').textContent = 'Birth date cannot be in the future!'; return; }
+  let years = now.getFullYear() - birth.getFullYear();
+  let months = now.getMonth() - birth.getMonth();
+  let days = now.getDate() - birth.getDate();
+  if (days < 0) { months--; const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0); days += prevMonth.getDate(); }
+  if (months < 0) { years--; months += 12; }
+  const totalDays = Math.floor((now - birth) / (1000*60*60*24));
+  document.getElementById('result').innerHTML = `Age: <span class='text-2xl font-bold text-brand-400'>${years}</span> years, ${months} months, ${days} days<br/><br/>` +
+    `Total: ${totalDays.toLocaleString()} days<br/>` +
+    `${(totalDays * 24).toLocaleString()} hours<br/>` +
+    `${(totalDays * 1440).toLocaleString()} minutes`;
+}
+
+function copyResult() {
+  const text = document.getElementById('result').textContent;
+  if (!text) return;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('[onclick="copyResult()"]');
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy', 2000);
+  });
+}
+</script>
+<slot name="info" slot="info">
+  <p>Enter your birth date to calculate your exact age in years, months, and days. Also shows total months, weeks, days, hours, and even seconds lived. Fun and useful!</p>
+</slot>
+</ToolLayout>

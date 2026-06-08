@@ -1,0 +1,57 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Text to Binary Converter"
+  description="Convert text to binary representation"
+  category="Encode/Decode"
+  keywords={["binary", "text", "encode", "bits"]}
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <Textarea id="inp" label="Input" placeholder="Enter text to convert to binary..." rows="12" class="tool-area" />
+    <div>
+      <label for="out" class="text-sm text-surface-300 mb-1.5 block font-medium">Output</label>
+      <div id="out" class="w-full h-72 rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 overflow-auto font-mono"></div>
+    </div>
+  </div>
+  <div class="flex gap-2 mt-4">
+    <Button onclick="process()">Convert to Binary</Button>
+    <Button variant="secondary" onclick="clearAll()">Clear</Button>
+  </div>
+  <div id="msg" class="text-xs mt-2 text-surface-400"></div>
+<script is:inline>
+let mode = 'toBinary';
+function process() {
+  const text = document.getElementById('inp').value;
+  if (!text) return;
+  if (mode === 'toBinary') {
+    let out = '';
+    for (let i = 0; i < text.length; i++) out += text.charCodeAt(i).toString(2).padStart(8,'0') + ' ';
+    document.getElementById('out').textContent = out.trim();
+    mode = 'toText';
+    document.querySelector('[onclick="process()"]').textContent = 'Convert to Text';
+    document.getElementById('msg').textContent = `${text.length} characters converted to binary`;
+  } else {
+    const binary = text.replace(/\s/g,'');
+    let out = '';
+    for (let i = 0; i < binary.length; i += 8) out += String.fromCharCode(parseInt(binary.substr(i,8),2));
+    document.getElementById('out').textContent = out;
+    mode = 'toBinary';
+    document.querySelector('[onclick="process()"]').textContent = 'Convert to Binary';
+    document.getElementById('msg').textContent = `Binary converted back to text`;
+  }
+}
+
+function clearAll() {
+  document.getElementById('inp').value = '';
+  document.getElementById('out').innerHTML = '';
+  document.getElementById('msg').textContent = '';
+}
+</script>
+<slot name="info" slot="info">
+  <p>Enter any text and see its binary representation (8-bit per character). Also converts binary back to text. Great for learning how computers encode characters.</p>
+</slot>
+</ToolLayout>

@@ -1,0 +1,63 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Morse Code Translator"
+  description="Convert text to Morse code and back"
+  category="Encode/Decode"
+  keywords={["morse", "code", "translate", "dots"]}
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <Textarea id="inp" label="Input" placeholder="Enter text or Morse code (use . for dot, - for dash, space between letters)..." rows="12" class="tool-area" />
+    <div>
+      <label for="out" class="text-sm text-surface-300 mb-1.5 block font-medium">Output</label>
+      <div id="out" class="w-full h-72 rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 overflow-auto font-mono"></div>
+    </div>
+  </div>
+  <div class="flex gap-2 mt-4">
+    <Button onclick="process()">To Morse</Button>
+    <Button variant="secondary" onclick="clearAll()">Clear</Button>
+  </div>
+  <div id="msg" class="text-xs mt-2 text-surface-400"></div>
+<script is:inline>
+const MORSE = {A:'.-',B:'-...',C:'-.-.',D:'-..',E:'.',F:'..-.',G:'--.',H:'....',I:'..',J:'.---',K:'-.-',L:'.-..',M:'--',N:'-.',O:'---',P:'.--.',Q:'--.-',R:'.-.',S:'...',T:'-',U:'..-',V:'...-',W:'.--',X:'-..-',Y:'-.--',Z:'--..',0:'-----',1:'.----',2:'..---',3:'...--',4:'....-',5:'.....',6:'-....',7:'--...',8:'---..',9:'----.', '.':'.-.-.-',',':'--..--','?':'..--..',"'":'.----.','!':'-.-.--','/':'-..-.','(':'-.--.',')':'-.--.-','&':'.-...',':':'---...',';':'-.-.-.','=':'-...-','+':'.-.-.','-':'-....-','_':'..--.-','"':'.-..-.','$':'...-..-','@':'.--.-.'};
+const REV = {}; for (const [k,v] of Object.entries(MORSE)) REV[v] = k;
+let morseMode = 'toMorse';
+function process() {
+  const text = document.getElementById('inp').value.trim();
+  if (!text) return;
+  if (morseMode === 'toMorse') {
+    let out = '';
+    for (const c of text.toUpperCase()) out += (MORSE[c] || c) + ' ';
+    document.getElementById('out').textContent = out.trim();
+    morseMode = 'toText';
+    document.querySelector('[onclick="process()"]').textContent = 'To Text';
+    document.getElementById('msg').textContent = 'Converted to Morse code';
+  } else {
+    const words = text.split('  ');
+    let out = '';
+    for (const w of words) {
+      const letters = w.trim().split(' ');
+      for (const l of letters) out += REV[l] || '?';
+      out += ' ';
+    }
+    document.getElementById('out').textContent = out.trim();
+    morseMode = 'toMorse';
+    document.querySelector('[onclick="process()"]').textContent = 'To Morse';
+    document.getElementById('msg').textContent = 'Decoded from Morse code';
+  }
+}
+
+function clearAll() {
+  document.getElementById('inp').value = '';
+  document.getElementById('out').innerHTML = '';
+  document.getElementById('msg').textContent = '';
+}
+</script>
+<slot name="info" slot="info">
+  <p>Enter text to convert to Morse code (dots and dashes), or paste Morse code to decode back to text. Includes the full international Morse code alphabet and numbers.</p>
+</slot>
+</ToolLayout>

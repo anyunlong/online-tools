@@ -1,0 +1,52 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Meta Tag Generator"
+  description="Generate SEO meta tags for web pages"
+  category="Generator"
+  keywords={["meta", "tags", "seo", "html", "open graph"]}
+>
+  <div class="space-y-4">
+    <div class='space-y-3'><div><label class='text-sm text-surface-300 block mb-1'>Page Title</label><input id='title' class='bg-surface-800 border border-surface-700 rounded-lg px-3 py-1.5 text-sm text-surface-100 w-full' placeholder='My Page Title' /></div><div><label class='text-sm text-surface-300 block mb-1'>Description</label><input id='desc' class='bg-surface-800 border border-surface-700 rounded-lg px-3 py-1.5 text-sm text-surface-100 w-full' placeholder='Page description (150-160 chars)' /></div><div class='grid grid-cols-2 gap-3'><div><label class='text-sm text-surface-300 block mb-1'>Keywords</label><input id='kw' class='bg-surface-800 border border-surface-700 rounded-lg px-3 py-1.5 text-sm text-surface-100 w-full' placeholder='keyword1, keyword2' /></div><div><label class='text-sm text-surface-300 block mb-1'>Author</label><input id='author' class='bg-surface-800 border border-surface-700 rounded-lg px-3 py-1.5 text-sm text-surface-100 w-full' placeholder='Your Name' /></div></div><div class='grid grid-cols-2 gap-3'><div><label class='text-sm text-surface-300 block mb-1'>Page URL</label><input id='url' class='bg-surface-800 border border-surface-700 rounded-lg px-3 py-1.5 text-sm text-surface-100 w-full' placeholder='https://example.com/page' /></div><div><label class='text-sm text-surface-300 block mb-1'>Image URL (OG)</label><input id='img' class='bg-surface-800 border border-surface-700 rounded-lg px-3 py-1.5 text-sm text-surface-100 w-full' placeholder='https://example.com/image.jpg' /></div></div></div>
+    <div class="flex gap-2">
+      <Button onclick="generate()">Generate Tags</Button>
+      <Button variant="secondary" onclick="copyResult()">Copy</Button>
+    </div>
+    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
+  </div>
+<script is:inline>
+function generate() {
+  const t = document.getElementById('title').value || 'Page Title';
+  const d = document.getElementById('desc').value || 'Page description';
+  const k = document.getElementById('kw').value || '';
+  const a = document.getElementById('author').value || '';
+  const u = document.getElementById('url').value || '';
+  const img = document.getElementById('img').value || '';
+  let tags = `<meta charset='UTF-8'>\n<meta name='viewport' content='width=device-width, initial-scale=1'>\n<title>${t}</title>\n<meta name='description' content='${d}'>`;
+  if (k) tags += `\n<meta name='keywords' content='${k}'>`;
+  if (a) tags += `\n<meta name='author' content='${a}'>`;
+  tags += `\n<meta name='robots' content='index, follow'>`;
+  if (u) { tags += `\n<link rel='canonical' href='${u}'>`; tags += `\n<meta property='og:url' content='${u}'>`; }
+  tags += `\n<meta property='og:title' content='${t}'>\n<meta property='og:description' content='${d}'>`;
+  if (img) tags += `\n<meta property='og:image' content='${img}'>`;
+  tags += `\n<meta property='og:type' content='website'>\n<meta name='twitter:card' content='summary_large_image'>`;
+  document.getElementById('result').textContent = tags;
+}
+
+function copyResult() {
+  const text = document.getElementById('result').textContent;
+  if (!text) return;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('[onclick="copyResult()"]');
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy', 2000);
+  });
+}
+</script>
+<slot name="info" slot="info">
+  <p>Fill in your page title, description, keywords, and author to generate complete HTML meta tags. Includes Open Graph tags for social media and basic SEO tags. Copy and paste into your HTML head.</p>
+</slot>
+</ToolLayout>
