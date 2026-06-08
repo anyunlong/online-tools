@@ -1,0 +1,49 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="HTTP Status Codes"
+  description="Reference for all HTTP status codes"
+  category="Network"
+  keywords={["http", "status", "codes", "reference"]}
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <Textarea id="inp" label="Input" placeholder="Search by code or description (e.g. 404, not found)..." rows="12" class="tool-area" />
+    <div>
+      <label for="out" class="text-sm text-surface-300 mb-1.5 block font-medium">Output</label>
+      <div id="out" class="w-full h-72 rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 overflow-auto font-mono"></div>
+    </div>
+  </div>
+  <div class="flex gap-2 mt-4">
+    <Button onclick="process()"></Button>
+    <Button variant="secondary" onclick="clearAll()">Clear</Button>
+  </div>
+  <div id="msg" class="text-xs mt-2 text-surface-400"></div>
+<script is:inline>
+const CODES = [{c:100,n:'Continue',d:'The server has received the request headers and the client should proceed to send the request body.'},{c:101,n:'Switching Protocols',d:'The server is switching protocols as requested by the client.'},{c:200,n:'OK',d:'The request has succeeded.'},{c:201,n:'Created',d:'The request has been fulfilled and a new resource has been created.'},{c:204,n:'No Content',d:'The server successfully processed the request but is not returning any content.'},{c:301,n:'Moved Permanently',d:'The requested resource has been permanently moved to a new URL.'},{c:302,n:'Found',d:'The requested resource is temporarily available at a different URL.'},{c:304,n:'Not Modified',d:'The resource has not been modified since the version specified by the request headers.'},{c:307,n:'Temporary Redirect',d:'The request should be repeated with another URL but future requests should still use the original URL.'},{c:400,n:'Bad Request',d:'The server cannot process the request due to a client error.'},{c:401,n:'Unauthorized',d:'Authentication is required and has failed or has not been provided.'},{c:403,n:'Forbidden',d:'The server understood the request but refuses to authorize it.'},{c:404,n:'Not Found',d:'The requested resource could not be found on the server.'},{c:405,n:'Method Not Allowed',d:'The request method is not supported for the requested resource.'},{c:408,n:'Request Timeout',d:'The server timed out waiting for the request.'},{c:409,n:'Conflict',d:'The request conflicts with the current state of the server.'},{c:410,n:'Gone',d:'The requested resource is no longer available and will not be available again.'},{c:413,n:'Payload Too Large',d:'The request is larger than the server is willing or able to process.'},{c:414,n:'URI Too Long',d:'The URI provided was too long for the server to process.'},{c:415,n:'Unsupported Media Type',d:'The request entity has a media type which the server does not support.'},{c:418,n:'I am a teapot',d:'The server refuses to brew coffee because it is a teapot (RFC 2324).'},{c:422,n:'Unprocessable Entity',d:'The server understands the content type but was unable to process the instructions.'},{c:429,n:'Too Many Requests',d:'The user has sent too many requests in a given amount of time.'},{c:500,n:'Internal Server Error',d:'The server encountered an unexpected condition that prevented it from fulfilling the request.'},{c:502,n:'Bad Gateway',d:'The server received an invalid response from an upstream server.'},{c:503,n:'Service Unavailable',d:'The server is currently unable to handle the request due to temporary overloading or maintenance.'},{c:504,n:'Gateway Timeout',d:'The server did not receive a timely response from an upstream server.'}];
+function process() {
+  const q = document.getElementById('inp').value.trim().toLowerCase();
+  const filtered = q ? CODES.filter(c => String(c.c).includes(q) || c.n.toLowerCase().includes(q) || c.d.toLowerCase().includes(q)) : CODES;
+  let html = '<table class=\'w-full text-xs\'><thead><tr class=\'text-surface-400 border-b border-surface-700\'><th class=\'py-2 px-2 text-left w-16\'>Code</th><th class=\'py-2 px-2 text-left\'>Name</th><th class=\'py-2 px-2 text-left hidden sm:table-cell\'>Description</th></tr></thead><tbody>';
+  for (const c of filtered) {
+    const cls = c.c < 200 ? 'text-blue-400' : c.c < 300 ? 'text-green-400' : c.c < 400 ? 'text-yellow-400' : c.c < 500 ? 'text-orange-400' : 'text-red-400';
+    html += `<tr class=\'border-b border-surface-800/50 hover:bg-surface-800/30\'><td class=\'py-2 px-2 font-mono font-bold ${cls}\'>${c.c}</td><td class=\'py-2 px-2 text-surface-200\'>${c.n}</td><td class=\'py-2 px-2 text-surface-400 hidden sm:table-cell\'>${c.d}</td></tr>`;
+  }
+  html += '</tbody></table>';
+  document.getElementById('out').innerHTML = html;
+  document.getElementById('msg').textContent = `Showing ${filtered.length} of ${CODES.length} status codes`;
+}
+
+function clearAll() {
+  document.getElementById('inp').value = '';
+  document.getElementById('out').innerHTML = '';
+  document.getElementById('msg').textContent = '';
+}
+</script>
+<slot name="info" slot="info">
+  <p>Browse all HTTP status codes organized by category: 1xx Informational, 2xx Success, 3xx Redirection, 4xx Client Error, 5xx Server Error. Search by code number or description.</p>
+</slot>
+</ToolLayout>

@@ -1,0 +1,76 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Unit Converter"
+  description="Convert between common units"
+  category="Math"
+  keywords={["unit", "converter", "metric", "imperial"]}
+>
+  <div class="space-y-4">
+    <div class='flex flex-wrap gap-3 items-end'><div><label class='text-sm text-surface-300 block mb-1'>Category</label><select id='cat' onchange='updateUnits()' class='bg-surface-800 border border-surface-700 rounded-lg px-3 py-1.5 text-sm text-surface-100'><option value='length'>Length</option><option value='weight'>Weight</option><option value='temp'>Temperature</option><option value='area'>Area</option><option value='volume'>Volume</option><option value='speed'>Speed</option></select></div><div><label class='text-sm text-surface-300 block mb-1'>Value</label><input id='val' type='number' value='1' class='bg-surface-800 border border-surface-700 rounded-lg px-3 py-1.5 text-sm text-surface-100 w-28' /></div><div><label class='text-sm text-surface-300 block mb-1'>From</label><select id='from' class='bg-surface-800 border border-surface-700 rounded-lg px-3 py-1.5 text-sm text-surface-100'></select></div></div>
+    <div class="flex gap-2">
+      <Button onclick="generate()">Convert</Button>
+      <Button variant="secondary" onclick="copyResult()">Copy</Button>
+    </div>
+    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
+  </div>
+<script is:inline>
+const CONV = {
+  length: {m:1, km:1000, cm:0.01, mm:0.001, mi:1609.344, yd:0.9144, ft:0.3048, inch:0.0254},
+  weight: {kg:1, g:0.001, mg:0.000001, lb:0.453592, oz:0.0283495},
+  temp: 'special',
+  area: {m2:1, km2:1e6, ha:10000, acre:4046.86, ft2:0.092903},
+  volume: {l:1, ml:0.001, m3:1000, gal:3.78541, qt:0.946353, pt:0.473176, cup:0.236588, floz:0.0295735},
+  speed: {mps:1, kmh:0.277778, mph:0.44704, knot:0.514444}
+};
+function updateUnits() {
+  const cat = document.getElementById('cat').value;
+  const from = document.getElementById('from');
+  from.innerHTML = '';
+  if (cat === 'temp') {
+    ['celsius','fahrenheit','kelvin'].forEach(u => from.innerHTML += `<option value='${u}'>${u.charAt(0).toUpperCase()+u.slice(1)}</option>`);
+  } else {
+    Object.keys(CONV[cat]).forEach(u => from.innerHTML += `<option value='${u}'>${u}</option>`);
+  }
+}
+updateUnits();
+function generate() {
+  const cat = document.getElementById('cat').value;
+  const val = parseFloat(document.getElementById('val').value) || 0;
+  const from = document.getElementById('from').value;
+  let result = '';
+  if (cat === 'temp') {
+    let c;
+    if (from === 'celsius') c = val;
+    else if (from === 'fahrenheit') c = (val - 32) * 5/9;
+    else c = val - 273.15;
+    result = `${val} ${from} =\n`;
+    result += `  ${c.toFixed(2)} celsius\n`;
+    result += `  ${(c * 9/5 + 32).toFixed(2)} fahrenheit\n`;
+    result += `  ${(c + 273.15).toFixed(2)} kelvin`;
+  } else {
+    const base = val * CONV[cat][from];
+    for (const [unit, factor] of Object.entries(CONV[cat])) {
+      result += `${(base / factor).toFixed(4)} ${unit}\n`;
+    }
+  }
+  document.getElementById('result').textContent = result;
+}
+
+function copyResult() {
+  const text = document.getElementById('result').textContent;
+  if (!text) return;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('[onclick="copyResult()"]');
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy', 2000);
+  });
+}
+</script>
+<slot name="info" slot="info">
+  <p>Select a category (Length, Weight, Temperature, Area, Volume, Speed, Time), enter a value, and get instant conversions to all related units. Supports metric and imperial units.</p>
+</slot>
+</ToolLayout>

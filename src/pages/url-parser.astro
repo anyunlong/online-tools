@@ -1,0 +1,58 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="URL Parser"
+  description="Parse and decode URL components"
+  category="Dev Tools"
+  keywords={["url", "parse", "query", "parameters"]}
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <Textarea id="inp" label="Input" placeholder="https://example.com/path?key=value&foo=bar#section" rows="12" class="tool-area" />
+    <div>
+      <label for="out" class="text-sm text-surface-300 mb-1.5 block font-medium">Output</label>
+      <div id="out" class="w-full h-72 rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 overflow-auto font-mono"></div>
+    </div>
+  </div>
+  <div class="flex gap-2 mt-4">
+    <Button onclick="process()">Parse URL</Button>
+    <Button variant="secondary" onclick="clearAll()">Clear</Button>
+  </div>
+  <div id="msg" class="text-xs mt-2 text-surface-400"></div>
+<script is:inline>
+function process() {
+  const url = document.getElementById('inp').value.trim();
+  if (!url) return;
+  try {
+    const u = new URL(url);
+    let out = `Protocol:   ${u.protocol}\n`;
+    out += `Hostname:   ${u.hostname}\n`;
+    out += `Port:       ${u.port || '(default)'}\n`;
+    out += `Pathname:   ${u.pathname}\n`;
+    out += `Search:     ${u.search || '(none)'}\n`;
+    out += `Hash:       ${u.hash || '(none)'}\n`;
+    out += `Origin:     ${u.origin}\n\n`;
+    out += `=== Query Parameters ===\n`;
+    const params = u.searchParams;
+    if ([...params].length === 0) out += '(none)\n';
+    for (const [k, v] of params) out += `  ${k} = ${v}\n`;
+    document.getElementById('out').textContent = out;
+    document.getElementById('msg').textContent = 'URL parsed successfully';
+  } catch(e) {
+    document.getElementById('msg').textContent = 'Invalid URL: ' + e.message;
+  }
+}
+
+function clearAll() {
+  document.getElementById('inp').value = '';
+  document.getElementById('out').innerHTML = '';
+  document.getElementById('msg').textContent = '';
+}
+</script>
+<slot name="info" slot="info">
+  <p>Paste any URL to see its components broken down: protocol, hostname, port, path, query parameters, and hash. Each query parameter is shown individually in a table.</p>
+</slot>
+</ToolLayout>

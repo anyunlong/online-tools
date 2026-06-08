@@ -1,0 +1,48 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="SQL Formatter"
+  description="Format and beautify SQL queries"
+  category="Dev Tools"
+  keywords={["sql", "format", "beautify", "query"]}
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <Textarea id="inp" label="Input" placeholder="SELECT id, name, email FROM users WHERE status = 'active' ORDER BY name" rows="12" class="tool-area" />
+    <div>
+      <label for="out" class="text-sm text-surface-300 mb-1.5 block font-medium">Output</label>
+      <div id="out" class="w-full h-72 rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 overflow-auto font-mono"></div>
+    </div>
+  </div>
+  <div class="flex gap-2 mt-4">
+    <Button onclick="process()">Format SQL</Button>
+    <Button variant="secondary" onclick="clearAll()">Clear</Button>
+  </div>
+  <div id="msg" class="text-xs mt-2 text-surface-400"></div>
+<script is:inline>
+function process() {
+  let sql = document.getElementById('inp').value.trim();
+  if (!sql) return;
+  const keywords = ['SELECT','FROM','WHERE','AND','OR','ORDER BY','GROUP BY','HAVING','LIMIT','OFFSET','INSERT INTO','VALUES','UPDATE','SET','DELETE FROM','JOIN','LEFT JOIN','RIGHT JOIN','INNER JOIN','OUTER JOIN','ON','AS','UNION','CASE','WHEN','THEN','ELSE','END'];
+  for (const kw of keywords) {
+    const re = new RegExp('\\b' + kw.replace(/ /g, '\\s+') + '\\b', 'gi');
+    sql = sql.replace(re, '\n' + kw.toUpperCase());
+  }
+  sql = sql.replace(/\n\s*\n/g, '\n').replace(/,/g, ',\n  ').replace(/\n\s*\n/g, '\n').trim();
+  document.getElementById('out').textContent = sql;
+  document.getElementById('msg').textContent = 'SQL formatted';
+}
+
+function clearAll() {
+  document.getElementById('inp').value = '';
+  document.getElementById('out').innerHTML = '';
+  document.getElementById('msg').textContent = '';
+}
+</script>
+<slot name="info" slot="info">
+  <p>Paste your SQL query and click Format to add proper indentation and line breaks. Makes complex queries readable. Supports SELECT, INSERT, UPDATE, DELETE, and JOIN clauses.</p>
+</slot>
+</ToolLayout>

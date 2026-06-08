@@ -1,0 +1,62 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Color Contrast Checker"
+  description="Check WCAG color contrast ratios"
+  category="Design"
+  keywords={["color", "contrast", "wcag", "accessibility"]}
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <Textarea id="inp" label="Input" placeholder="" rows="12" class="tool-area" />
+    <div>
+      <label for="out" class="text-sm text-surface-300 mb-1.5 block font-medium">Output</label>
+      <div id="out" class="w-full h-72 rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 overflow-auto font-mono"></div>
+    </div>
+  </div>
+  <div class="flex gap-2 mt-4">
+    <Button onclick="process()">Check Contrast</Button>
+    <Button variant="secondary" onclick="clearAll()">Clear</Button>
+  </div>
+  <div id="msg" class="text-xs mt-2 text-surface-400"></div>
+<script is:inline>
+function process() {
+  const fg = document.getElementById('fg')?.value || '#000000';
+  const bg = document.getElementById('bg')?.value || '#ffffff';
+  const l1 = getLuminance(fg);
+  const l2 = getLuminance(bg);
+  const ratio = (Math.max(l1,l2) + 0.05) / (Math.min(l1,l2) + 0.05);
+  let out = `Contrast Ratio: ${ratio.toFixed(2)}:1\n\n`;
+  out += `Normal Text:\n`;
+  out += `  AA (4.5:1): ${ratio >= 4.5 ? 'PASS' : 'FAIL'}\n`;
+  out += `  AAA (7:1): ${ratio >= 7 ? 'PASS' : 'FAIL'}\n\n`;
+  out += `Large Text:\n`;
+  out += `  AA (3:1): ${ratio >= 3 ? 'PASS' : 'FAIL'}\n`;
+  out += `  AAA (4.5:1): ${ratio >= 4.5 ? 'PASS' : 'FAIL'}`;
+  document.getElementById('out').textContent = out;
+  document.getElementById('msg').textContent = '';
+}
+function hexToRgb(hex) {
+  hex = hex.replace('#','');
+  if (hex.length === 3) hex = hex.split('').map(c=>c+c).join('');
+  return [parseInt(hex.substr(0,2),16),parseInt(hex.substr(2,2),16),parseInt(hex.substr(4,2),16)];
+}
+function getLuminance(hex) {
+  const [r,g,b] = hexToRgb(hex);
+  const [rs,gs,bs] = [r,g,b].map(v=>{v/=255;return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4)});
+  return 0.2126*rs+0.7152*gs+0.0722*bs;
+}
+
+function clearAll() {
+  document.getElementById('inp').value = '';
+  document.getElementById('out').innerHTML = '';
+  document.getElementById('msg').textContent = '';
+}
+</script>
+<slot name="info" slot="info">
+  <p>Enter foreground and background colors in HEX format to check their contrast ratio. Shows WCAG compliance levels for normal text (AA/AAA) and large text. Essential for accessible web design.</p>
+</slot>
+</ToolLayout>

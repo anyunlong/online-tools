@@ -178,5 +178,65 @@
     "name": "Percentage Calculator",
     "desc": "Calculate percentages quickly",
     "cat": "Math"
+  },
+  {
+    "id": "json-validator",
+    "name": "JSON Validator",
+    "desc": "Validate and format JSON online",
+    "cat": "Formatter"
+  },
+  {
+    "id": "js-minifier",
+    "name": "JavaScript Minifier",
+    "desc": "Minify JavaScript to reduce file size",
+    "cat": "Dev Tools"
+  },
+  {
+    "id": "html-minifier",
+    "name": "HTML Minifier",
+    "desc": "Minify HTML to reduce page size",
+    "cat": "Dev Tools"
+  },
+  {
+    "id": "sql-formatter",
+    "name": "SQL Formatter",
+    "desc": "Format and beautify SQL queries",
+    "cat": "Dev Tools"
+  },
+  {
+    "id": "url-parser",
+    "name": "URL Parser",
+    "desc": "Parse and decode URL components",
+    "cat": "Dev Tools"
+  },
+  {
+    "id": "http-status",
+    "name": "HTTP Status Codes",
+    "desc": "Reference for all HTTP status codes",
+    "cat": "Network"
+  },
+  {
+    "id": "color-contrast",
+    "name": "Color Contrast Checker",
+    "desc": "Check WCAG color contrast ratios",
+    "cat": "Design"
+  },
+  {
+    "id": "date-calculator",
+    "name": "Date Calculator",
+    "desc": "Add or subtract days from a date",
+    "cat": "Time"
+  },
+  {
+    "id": "stopwatch",
+    "name": "Online Stopwatch",
+    "desc": "Precise online stopwatch and timer",
+    "cat": "Time"
+  },
+  {
+    "id": "unit-converter",
+    "name": "Unit Converter",
+    "desc": "Convert between common units",
+    "cat": "Math"
   }
 ]

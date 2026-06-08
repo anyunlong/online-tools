@@ -1,0 +1,48 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="JSON Validator"
+  description="Validate and format JSON online"
+  category="Formatter"
+  keywords={["json", "validate", "check", "format"]}
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <Textarea id="inp" label="Input" placeholder="Paste JSON to validate..." rows="12" class="tool-area" />
+    <div>
+      <label for="out" class="text-sm text-surface-300 mb-1.5 block font-medium">Output</label>
+      <div id="out" class="w-full h-72 rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 overflow-auto font-mono"></div>
+    </div>
+  </div>
+  <div class="flex gap-2 mt-4">
+    <Button onclick="process()">Validate & Format</Button>
+    <Button variant="secondary" onclick="clearAll()">Clear</Button>
+  </div>
+  <div id="msg" class="text-xs mt-2 text-surface-400"></div>
+<script is:inline>
+function process() {
+  try {
+    const data = JSON.parse(document.getElementById('inp').value);
+    document.getElementById('out').textContent = JSON.stringify(data, null, 2);
+    document.getElementById('msg').textContent = 'Valid JSON';
+    document.getElementById('msg').className = 'text-xs mt-2 text-green-400';
+  } catch(e) {
+    document.getElementById('out').textContent = '';
+    document.getElementById('msg').textContent = 'Invalid JSON: ' + e.message;
+    document.getElementById('msg').className = 'text-xs mt-2 text-red-400';
+  }
+}
+
+function clearAll() {
+  document.getElementById('inp').value = '';
+  document.getElementById('out').innerHTML = '';
+  document.getElementById('msg').textContent = '';
+}
+</script>
+<slot name="info" slot="info">
+  <p>Paste JSON text and instantly see if it's valid. Shows exact error location for invalid JSON. Click Format to beautify. All processing stays in your browser.</p>
+</slot>
+</ToolLayout>
