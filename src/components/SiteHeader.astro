@@ -1,10 +1,10 @@
 ---
 const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "All Tools", href: "/#tools" },
-  { label: "Categories", href: "/#categories" },
-  { label: "Blog", href: "/blog" },
-  { label: "About", href: "/about" },
+  { label: "Home", href: "/", i18n: "ui.home" },
+  { label: "All Tools", href: "/#tools", i18n: "header.allTools" },
+  { label: "Categories", href: "/#categories", i18n: "footer.categories" },
+  { label: "Blog", href: "/blog", i18n: "header.blog" },
+  { label: "About", href: "/about", i18n: "footer.about" },
 ];
 ---
 
@@ -27,6 +27,7 @@ const navLinks = [
           <a
             href={link.href}
             class="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground no-underline"
+            data-i18n={link.i18n}
           >{link.label}</a>
         ))
       }
@@ -40,6 +41,7 @@ const navLinks = [
         <input
           type="search"
           placeholder="Search tools..."
+          data-i18n="home.searchPlaceholder"
           class="flex h-9 w-40 rounded-md border border-input bg-secondary/60 pl-9 pr-3 py-1 text-sm text-foreground shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 lg:w-56"
           aria-label="Search tools"
         />
@@ -65,6 +67,7 @@ const navLinks = [
         <a
           href={link.href}
           class="mobile-nav-link block rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground no-underline"
+          data-i18n={link.i18n}
         >{link.label}</a>
       ))
     }

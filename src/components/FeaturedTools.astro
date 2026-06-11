@@ -27,8 +27,8 @@ const featuredTools = [
 
 <section id="featured" class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
   <div class="mb-6">
-    <h2 class="text-2xl font-bold tracking-tight text-foreground">Most Popular</h2>
-    <p class="mt-1 text-sm text-muted-foreground">
+    <h2 class="text-2xl font-bold tracking-tight text-foreground" data-i18n="home.mostPopular">Most Popular</h2>
+    <p class="mt-1 text-sm text-muted-foreground" data-i18n="home.popularDesc">
       The tools our users reach for the most.
     </p>
   </div>
@@ -55,7 +55,7 @@ const featuredTools = [
               href={`/${tool.id}`}
               class="inline-flex items-center justify-center gap-2 rounded-md bg-secondary text-secondary-foreground hover:bg-secondary/80 h-9 w-full px-4 text-sm font-medium transition-colors no-underline"
             >
-              Use Now
+              <span data-i18n="home.useNow">Use Now</span>
               <span class="text-sm">→</span>
             </a>
             <span class="text-xs text-muted-foreground">

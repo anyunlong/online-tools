@@ -1,8 +1,8 @@
 {
   "site": {
-    "name": "在线工具箱",
+    "name": "4uses",
     "tagline": "全部免费 · 无需注册 · 数据不上传",
-    "subtitle": "20+ 实用工具，持续更新"
+    "subtitle": "100+ 实用工具，持续更新"
   },
   "ui": {
     "generate": "生成",
@@ -349,18 +349,42 @@
   },
   "header": {
     "allTools": "全部工具",
-    "about": "关于"
+    "about": "关于",
+    "blog": "博客"
   },
   "footer": {
     "about": "关于",
     "contact": "联系我们",
     "privacy": "隐私政策",
-    "copyright": "© 2026 4uses.com · 全部免费，无需注册",
-    "tagline": "所有工具免费使用 · 无需注册 · 数据不上传"
+    "blog": "博客",
+    "copyright": "© 2026 4uses · 保留所有权利",
+    "tagline": "所有工具免费使用 · 无需注册 · 数据不上传",
+    "tools": "工具",
+    "categories": "分类",
+    "company": "关于",
+    "description": "100+ 免费在线实用工具，无需注册，无限制，完全在浏览器中保护隐私。"
   },
   "home": {
     "hero": "在线工具箱",
-    "desc": "免费在线工具：JSON 格式化、Base64 编解码、时间戳转换、UUID 生成、二维码生成等 20+ 实用工具，无需注册。"
+    "desc": "免费在线工具：JSON 格式化、Base64 编解码、时间戳转换、UUID 生成、二维码生成等 100+ 实用工具，无需注册。",
+    "heroBadge": "100+ 免费工具，持续更新",
+    "heroSubtitle": "100+ 免费实用工具 — 无需注册，无限制。编码、格式化、转换和生成，一切在浏览器中完成。",
+    "exploreTools": "探索工具",
+    "popularTools": "热门工具",
+    "searchPlaceholder": "搜索工具...",
+    "allCategory": "全部",
+    "allToolsHeading": "全部工具",
+    "noToolsFound": "未找到工具：",
+    "mostPopular": "最受欢迎",
+    "popularDesc": "用户最常使用的工具。",
+    "useNow": "立即使用",
+    "trustedWorldwide": "受到全球开发者信赖",
+    "monthlyUsers": "月活跃用户",
+    "toolsAvailable": "可用工具",
+    "averageRating": "平均评分",
+    "tools": "工具",
+    "free": "免费",
+    "registration": "无需注册"
   },
   "privacy": {
     "title": "隐私政策",

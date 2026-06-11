@@ -1,8 +1,8 @@
 ---
 const stats = [
-  { value: "50+", label: "Tools" },
-  { value: "100%", label: "Free" },
-  { value: "No", label: "Registration" },
+  { value: "100+", label: "Tools", i18n: "home.tools" },
+  { value: "100%", label: "Free", i18n: "home.free" },
+  { value: "No", label: "Registration", i18n: "home.registration" },
 ];
 ---
 
@@ -21,7 +21,7 @@ const stats = [
   <div class="mx-auto max-w-4xl px-4 py-20 text-center sm:px-6 sm:py-28 lg:px-8">
     <span class="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/60 px-3 py-1 text-xs font-medium text-muted-foreground">
       <span class="text-sm leading-none">🔥</span>
-      50+ free utilities, always growing
+      <span data-i18n="home.heroBadge">100+ free utilities, always growing</span>
     </span>
 
     <h1 class="mt-6 text-balance text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
@@ -30,8 +30,8 @@ const stats = [
       for Everyday Tasks
     </h1>
 
-    <p class="mx-auto mt-5 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground">
-      50+ free utilities — no sign-up, no limits. Encode, format, convert
+    <p class="mx-auto mt-5 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground" data-i18n="home.heroSubtitle">
+      100+ free utilities — no sign-up, no limits. Encode, format, convert
       and generate, all in your browser.
     </p>
 
@@ -40,14 +40,14 @@ const stats = [
         href="#tools"
         class="inline-flex items-center justify-center gap-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 h-12 w-full px-6 text-base font-medium transition-colors sm:w-auto no-underline"
       >
-        Explore Tools
+        <span data-i18n="home.exploreTools">Explore Tools</span>
         <span class="text-sm">→</span>
       </a>
       <a
         href="#featured"
         class="inline-flex items-center justify-center rounded-md bg-secondary text-secondary-foreground hover:bg-secondary/80 h-12 w-full px-6 text-base font-medium transition-colors sm:w-auto no-underline"
       >
-        Popular Tools
+        <span data-i18n="home.popularTools">Popular Tools</span>
       </a>
     </div>
 
@@ -56,7 +56,7 @@ const stats = [
         stats.map((s) => (
           <div class="rounded-xl border border-border bg-card/50 px-4 py-5 backdrop-blur-sm">
             <dt class="text-2xl font-bold text-foreground sm:text-3xl">{s.value}</dt>
-            <dd class="mt-1 text-sm text-muted-foreground">{s.label}</dd>
+            <dd class="mt-1 text-sm text-muted-foreground" data-i18n={s.i18n}>{s.label}</dd>
           </div>
         ))
       }
