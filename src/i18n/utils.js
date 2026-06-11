@@ -8,9 +8,9 @@ function buildEn() {
   const en = JSON.parse(JSON.stringify(zh)); // deep copy structure
   
   // Site
-  en.site.name = 'Online Toolbox';
+  en.site.name = '4uses';
   en.site.tagline = 'All free · No registration · No data uploaded';
-  en.site.subtitle = '20+ useful tools, continuously updated';
+  en.site.subtitle = '100+ useful tools, continuously updated';
 
   // UI
   en.ui.generate = 'Generate';
@@ -151,21 +151,44 @@ function buildEn() {
   };
 
   // Header
-  en.header = { allTools: 'All Tools', about: 'About' };
+  en.header = { allTools: 'All Tools', about: 'About', blog: 'Blog' };
   
   // Footer
   en.footer = { 
     about: 'About',
     contact: 'Contact',
     privacy: 'Privacy Policy',
-    copyright: '© 2026 4uses.com · All free, no registration',
-    tagline: 'All tools free to use · No registration · No data uploaded'
+    blog: 'Blog',
+    copyright: '© 2026 4uses.com · All rights reserved',
+    tagline: 'All tools free to use · No registration · No data uploaded',
+    tools: 'Tools',
+    categories: 'Categories',
+    company: 'Company',
+    description: '100+ free online utilities for everyday tasks. No sign-up, no limits, fully private in your browser.',
   };
   
   // Home
   en.home = {
     hero: 'Online Toolbox',
-    desc: 'Free online tools: JSON Formatter, Base64 Encoder, Timestamp Converter, UUID Generator, QR Code Generator and 20+ more utilities. No registration required.'
+    desc: 'Free online tools: JSON Formatter, Base64 Encoder, Timestamp Converter, UUID Generator, QR Code Generator and 100+ more utilities. No registration required.',
+    heroBadge: '100+ free utilities, always growing',
+    heroSubtitle: '100+ free utilities — no sign-up, no limits. Encode, format, convert and generate, all in your browser.',
+    exploreTools: 'Explore Tools',
+    popularTools: 'Popular Tools',
+    searchPlaceholder: 'Search for a tool...',
+    allCategory: 'All',
+    allToolsHeading: 'All Tools',
+    noToolsFound: 'No tools found for',
+    mostPopular: 'Most Popular',
+    popularDesc: 'The tools our users reach for the most.',
+    useNow: 'Use Now',
+    trustedWorldwide: 'Trusted by developers worldwide',
+    monthlyUsers: 'Monthly Users',
+    toolsAvailable: 'Tools Available',
+    averageRating: 'Average Rating',
+    tools: 'Tools',
+    free: 'Free',
+    registration: 'No Registration',
   };
 
   // Privacy Policy

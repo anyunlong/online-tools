@@ -11,6 +11,7 @@ const categories = catOrder.filter(cat => tools.some(t => t.cat === cat));
 
 const toolLinks = tools.slice(0, 5).map(t => ({ id: t.id, name: t.name }));
 const companyLinks = [
+  { label: 'Blog', href: '/blog' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
   { label: 'Privacy', href: '/privacy' },
@@ -30,15 +31,15 @@ const currentYear = new Date().getFullYear();
           </span>
           <span class="text-foreground">4uses</span>
         </a>
-        <p class="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
-          50+ free online utilities for everyday tasks. No sign-up, no
+        <p class="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground" data-i18n="footer.description">
+          100+ free online utilities for everyday tasks. No sign-up, no
           limits, fully private in your browser.
         </p>
       </div>
 
       <!-- Tools -->
       <div>
-        <h3 class="text-sm font-semibold text-foreground">Tools</h3>
+        <h3 class="text-sm font-semibold text-foreground" data-i18n="footer.tools">Tools</h3>
         <ul class="mt-3 space-y-2">
           {toolLinks.map(t => (
             <li>
@@ -52,7 +53,7 @@ const currentYear = new Date().getFullYear();
 
       <!-- Categories -->
       <div>
-        <h3 class="text-sm font-semibold text-foreground">Categories</h3>
+        <h3 class="text-sm font-semibold text-foreground" data-i18n="footer.categories">Categories</h3>
         <ul class="mt-3 space-y-2">
           {categories.slice(0, 6).map(cat => (
             <li>
@@ -66,7 +67,7 @@ const currentYear = new Date().getFullYear();
 
       <!-- Company -->
       <div>
-        <h3 class="text-sm font-semibold text-foreground">Company</h3>
+        <h3 class="text-sm font-semibold text-foreground" data-i18n="footer.company">Company</h3>
         <ul class="mt-3 space-y-2">
           {companyLinks.map(link => (
             <li>
@@ -80,7 +81,7 @@ const currentYear = new Date().getFullYear();
     </div>
 
     <div class="mt-10 border-t border-border pt-6 text-center text-sm text-muted-foreground">
-      &copy; {currentYear} 4uses. All rights reserved.
+      <span data-i18n="footer.copyright">&copy; {currentYear} 4uses. All rights reserved.</span>
     </div>
   </div>
 </footer>
