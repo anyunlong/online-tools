@@ -12,6 +12,6 @@ const { label, value = '—', id, class: extraClass = '' } = Astro.props;
   class={`bg-surface-800/40 border border-surface-700/30 rounded-xl p-4 text-center
     hover:border-surface-600/50 transition-all duration-200 ${extraClass}`}
 >
-  <div id={id} class="text-xl font-bold text-brand-400">{value}</div>
+  <div id={id} class="text-xl font-bold text-brand-400 break-all">{value}</div>
   <div class="text-xs text-surface-400 mt-1">{label}</div>
 </div>

@@ -99,7 +99,10 @@ const navLinks = [
   });
 
   function getLang() {
-    return localStorage.getItem('lang') || 'en';
+    var saved = localStorage.getItem('lang');
+    if (saved) return saved;
+    var browserLang = navigator.language && navigator.language.startsWith('zh') ? 'zh' : 'en';
+    return browserLang;
   }
 
   function setLangUI(lang) {
@@ -135,6 +138,7 @@ const navLinks = [
   function switchLang(target) {
     var next = target === 'EN' ? 'en' : 'zh';
     localStorage.setItem('lang', next);
+    document.documentElement.lang = next;
     setLangUI(next);
     applyTranslations();
   }
