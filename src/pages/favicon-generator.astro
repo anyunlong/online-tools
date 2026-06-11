@@ -1,0 +1,74 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Favicon Generator"
+  description="Generate favicon HTML tags for your website"
+  category="Image"
+  keywords={["favicon", "icon", "html", "generate"]}
+>
+  <p class="text-sm text-surface-400 mb-4">Generate the complete set of favicon link tags for your website. Upload an image or specify a URL.</p>
+  <div class="mb-4">
+    <label class="text-sm text-surface-300 mb-1.5 block">Favicon Image URL or upload</label>
+    <div class="flex gap-2">
+      <input type="text" id="url" placeholder="/favicon.ico or https://..." value="/favicon.ico" class="flex-1 rounded-xl border border-surface-700 bg-surface-800/50 px-3 py-2 text-sm text-surface-100 placeholder:text-surface-500" oninput="generate()" />
+      <input type="file" id="file" accept="image/*" class="hidden" onchange="handleFile()" />
+      <Button variant="secondary" onclick="document.getElementById('file').click()">Upload</Button>
+    </div>
+  </div>
+  <div id="preview" class="mb-4"></div>
+  <div class="flex gap-2 mb-4">
+    <Button onclick="copyTags()">Copy HTML</Button>
+  </div>
+  <div class="text-xs text-surface-400 mb-1">HTML Tags (paste in &lt;head&gt;):</div>
+  <div id="output" class="w-full rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 font-mono break-all min-h-[48px] whitespace-pre-wrap"></div>
+<script is:inline>
+function handleFile() {
+  var file = document.getElementById('file').files[0];
+  if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    document.getElementById('url').value = e.target.result;
+    generate();
+  };
+  reader.readAsDataURL(file);
+}
+function generate() {
+  var url = document.getElementById('url').value.trim();
+  if (!url) { document.getElementById('output').textContent = ''; document.getElementById('preview').innerHTML = ''; return; }
+  document.getElementById('preview').innerHTML = '<img src="' + url + '" class="w-8 h-8 rounded" onerror="this.style.display=\'none\'" />';
+  var tags = '<link rel="icon" type="image/x-icon" href="' + url + '">\n';
+  tags += '<link rel="icon" type="image/png" sizes="32x32" href="' + url + '">\n';
+  tags += '<link rel="icon" type="image/png" sizes="16x16" href="' + url + '">\n';
+  tags += '<link rel="apple-touch-icon" sizes="180x180" href="' + url + '">\n';
+  tags += '<link rel="manifest" href="/site.webmanifest">\n';
+  tags += '<meta name="theme-color" content="#6366f1">';
+  document.getElementById('output').textContent = tags;
+}
+function copyTags() {
+  var t = document.getElementById('output').textContent;
+  if (!t) return;
+  navigator.clipboard.writeText(t).then(function() {
+    var btn = document.querySelector('[onclick="copyTags()"]');
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = 'Copy HTML'; }, 1500);
+  });
+}
+generate();
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Favicon Generator?</h2>
+  <p class="mb-3">A favicon generator creates the complete set of HTML link tags needed to display your website's icon across browsers, browser tabs, bookmarks, and mobile home screens. It covers traditional favicon.ico, modern PNG icons, and Apple touch icons.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Setting up a new website and needing all favicon tags in one go</li>
+    <li>Ensuring your site icon appears correctly on iPhones, Android, and all browsers</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Enter a URL or upload an image. Copy the generated HTML tags into your website's &lt;head&gt; section.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/meta-tag-generator/" class="text-primary hover:underline">Meta Tag Generator</a> for generating SEO meta tags to complement your favicon setup.</p>
+</div>
+</ToolLayout>

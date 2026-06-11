@@ -1,0 +1,65 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="JavaScript Beautifier"
+  description="Beautify and format JavaScript/TypeScript code"
+  category="Dev Tools"
+  keywords={["javascript", "beautify", "format", "js"]}
+>
+  <Textarea id="inp" placeholder="Paste minified or messy JavaScript..." rows="12" class="tool-area" />
+  <div class="flex gap-2 mt-4">
+    <Button onclick="beautify()">Beautify JS</Button>
+    <Button variant="secondary" onclick="copyOut()">Copy</Button>
+  </div>
+  <div class="text-xs text-surface-400 mt-3 mb-1">Formatted JavaScript:</div>
+  <div id="out" class="w-full rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 font-mono overflow-auto min-h-[200px] max-h-[500px] whitespace-pre"></div>
+<script is:inline>
+function beautify() {
+  var js = document.getElementById('inp').value;
+  var indent = 2;
+  var out = '', level = 0;
+  var i = 0;
+  while (i < js.length) {
+    var c = js[i];
+    if (c === '{') { out += '{\n' + ' '.repeat((level + 1) * indent); level++; i++; }
+    else if (c === '}') { level = Math.max(0, level - 1); out += '\n' + ' '.repeat(level * indent) + '}'; i++; }
+    else if (c === ';') { out += ';\n' + ' '.repeat(level * indent); i++; }
+    else if (c === '"' || c === "'" || c === '`') {
+      var quote = c, str = quote; i++;
+      while (i < js.length && js[i] !== quote) { if (js[i] === '\\') { str += js[i] + js[i+1]; i += 2; } else { str += js[i]; i++; } }
+      out += str + (i < js.length ? quote : ''); i++;
+    }
+    else if (c === '/' && js[i+1] === '/') { while (i < js.length && js[i] !== '\n') { out += js[i]; i++; } }
+    else if (c === '/' && js[i+1] === '*') { while (i < js.length && !(js[i] === '*' && js[i+1] === '/')) { out += js[i]; i++; } out += '*/'; i += 2; }
+    else { out += c; i++; }
+  }
+  document.getElementById('out').textContent = out;
+}
+function copyOut() {
+  var t = document.getElementById('out').textContent;
+  if (!t) return;
+  navigator.clipboard.writeText(t).then(function() {
+    var btn = document.querySelector('[onclick="copyOut()"]');
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = 'Copy'; }, 1500);
+  });
+}
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a JavaScript Beautifier?</h2>
+  <p class="mb-3">A JavaScript beautifier reformats compressed or inconsistently styled JS code with proper indentation, semicolons on separate lines, and preserved string literals and comments. It makes minified production code readable for debugging and learning.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Deobfuscating and understanding minified JavaScript from third-party libraries</li>
+    <li>Reformatting team code to match your project's indentation and style guidelines</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Paste your JavaScript and click Beautify JS to format it with consistent curly brace placement and indentation.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/js-minifier/" class="text-primary hover:underline">JavaScript Minifier</a> for compressing JS code for production deployment.</p>
+</div>
+</ToolLayout>

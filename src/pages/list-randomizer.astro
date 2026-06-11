@@ -38,7 +38,17 @@ function clearAll() {
   document.getElementById('msg').textContent = '';
 }
 </script>
-<slot name="info" slot="info">
-  <p>Paste a list (one item per line) and click Shuffle to randomize the order. Great for raffles, team assignments, playlist shuffling, and random sampling.</p>
-</slot>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a List Randomizer?</h2>
+  <p class="mb-3">A list randomizer shuffles the order of items in any list randomly — like shuffling a deck of cards. It's the digital equivalent of drawing names from a hat, perfect for when you need a fair, unbiased random order.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Running raffles, giveaways, or random prize drawings fairly without bias</li>
+    <li>Randomizing team assignments, presentation orders, or playlist sequences</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Paste your list (one item per line) and click Shuffle to randomize the order instantly.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/text-sort/" class="text-primary hover:underline">Text Line Sorter</a> for organizing lists alphabetically instead of randomly.</p>
+</div>
 </ToolLayout>

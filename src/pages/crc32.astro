@@ -1,0 +1,42 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="CRC32 Checksum"
+  description="Calculate CRC32 checksum for text"
+  category="Hash"
+  keywords={["crc32", "checksum", "hash"]}
+>
+  <Textarea id="inp" placeholder="Enter text to calculate CRC32..." rows="8" class="tool-area" />
+  <div class="flex gap-2 mt-4 mb-4">
+    <Button onclick="calc()">Calculate CRC32</Button>
+  </div>
+  <div class="text-xs text-surface-400 mb-1">CRC32 (Hex):</div>
+  <div id="out" class="w-full rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-lg text-brand-400 font-mono text-center break-all min-h-[48px]"></div>
+<script is:inline>
+function calc() {
+  var str = document.getElementById('inp').value;
+  var table = [];
+  for (var n = 0; n < 256; n++) { var c = n; for (var k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; table[n] = c; }
+  var crc = 0xFFFFFFFF;
+  for (var i = 0; i < str.length; i++) crc = table[(crc ^ str.charCodeAt(i)) & 0xFF] ^ (crc >>> 8);
+  document.getElementById('out').textContent = ((crc ^ 0xFFFFFFFF) >>> 0).toString(16).toUpperCase().padStart(8,'0');
+}
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is CRC32?</h2>
+  <p class="mb-3">CRC32 (Cyclic Redundancy Check) produces a 32-bit (8-character hex) checksum used to detect errors in data transmission and storage. It's widely used in network protocols, ZIP files, and PNG images for fast integrity checking.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Verifying data integrity after file transfers or network transmissions</li>
+    <li>Generating quick, non-cryptographic checksums for deduplication</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Enter any text and click Calculate to get the 8-character hexadecimal CRC32 checksum.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/md5/" class="text-primary hover:underline">MD5 Hash Generator</a> for an older but widely supported hash algorithm.</p>
+</div>
+</ToolLayout>

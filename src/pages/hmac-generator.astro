@@ -1,0 +1,50 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Input from '../components/Input.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="HMAC Generator"
+  description="Generate HMAC signatures with SHA256"
+  category="Hash"
+  keywords={["hmac", "hash", "signature", "sha256"]}
+>
+  <div class="space-y-4">
+    <div>
+      <label for="key" class="text-sm text-surface-300 mb-1.5 block">Secret Key</label>
+      <Input id="key" placeholder="Enter secret key..." class="w-full" />
+    </div>
+    <Textarea id="msg" placeholder="Enter message to sign..." rows="6" class="tool-area" />
+    <Button onclick="generate()">Generate HMAC-SHA256</Button>
+    <div class="text-xs text-surface-400 mt-3 mb-1">HMAC Signature (Hex):</div>
+    <div id="out" class="w-full rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-sm text-surface-100 font-mono break-all min-h-[48px]"></div>
+  </div>
+<script is:inline>
+async function generate() {
+  var key = document.getElementById('key').value;
+  var msg = document.getElementById('msg').value;
+  if (!key || !msg) { document.getElementById('out').textContent = 'Enter both a secret key and a message.'; return; }
+  var enc = new TextEncoder();
+  var keyData = enc.encode(key);
+  var cryptoKey = await crypto.subtle.importKey('raw', keyData, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+  var sig = await crypto.subtle.sign('HMAC', cryptoKey, enc.encode(msg));
+  var arr = Array.from(new Uint8Array(sig));
+  document.getElementById('out').textContent = arr.map(function(b) { return b.toString(16).padStart(2,'0'); }).join('');
+}
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is an HMAC Generator?</h2>
+  <p class="mb-3">HMAC (Hash-based Message Authentication Code) combines a secret key with a message to produce a unique signature that verifies both the message's authenticity and integrity. It's widely used for API authentication, JWT signing, and data integrity checks.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Signing API requests to authenticate that they came from a trusted client</li>
+    <li>Verifying that a message hasn't been tampered with during transmission</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Enter a secret key and message, then click Generate to create an HMAC-SHA256 hex signature.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/sha256/" class="text-primary hover:underline">SHA256 Hash Generator</a> for standard one-way hashing without a key.</p>
+</div>
+</ToolLayout>

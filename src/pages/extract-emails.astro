@@ -1,0 +1,62 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Email Extractor"
+  description="Extract email addresses from any text"
+  category="Text"
+  keywords={["email", "extract", "parse", "find"]}
+>
+  <Textarea id="inp" placeholder="Paste text containing email addresses..." rows="12" class="tool-area" />
+  <div class="flex gap-2 mt-4">
+    <Button onclick="extract()">Extract Emails</Button>
+    <Button variant="secondary" onclick="copyRes()">Copy All</Button>
+  </div>
+  <div class="flex items-center gap-4 mt-3 text-xs text-surface-400">
+    <span>Found: <strong id="found-count" class="text-brand-400">0</strong></span>
+    <span>Unique: <strong id="unique-count" class="text-brand-400">0</strong></span>
+  </div>
+  <div id="result" class="mt-3 bg-surface-800/40 border border-surface-700/30 rounded-xl p-3 text-sm text-surface-100 font-mono max-h-[200px] overflow-y-auto min-h-[48px] space-y-1"></div>
+<script is:inline>
+function extract() {
+  var text = document.getElementById('inp').value;
+  var re = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
+  var matches = text.match(re) || [];
+  var unique = [];
+  var seen = {};
+  for (var i = 0; i < matches.length; i++) {
+    if (!seen[matches[i]]) { seen[matches[i]] = true; unique.push(matches[i]); }
+  }
+  document.getElementById('found-count').textContent = matches.length;
+  document.getElementById('unique-count').textContent = unique.length;
+  document.getElementById('result').innerHTML = unique.map(function(e) { return '<div class="text-brand-400">' + e + '</div>'; }).join('') || '<p class="text-surface-500">No email addresses found.</p>';
+}
+function copyRes() {
+  var emails = [];
+  var divs = document.getElementById('result').querySelectorAll('.text-brand-400');
+  for (var i = 0; i < divs.length; i++) emails.push(divs[i].textContent);
+  if (!emails.length) return;
+  navigator.clipboard.writeText(emails.join('\n')).then(function() {
+    var btn = document.querySelector('[onclick="copyRes()"]');
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = 'Copy All'; }, 1500);
+  });
+}
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is an Email Extractor?</h2>
+  <p class="mb-3">An email extractor scans any block of text and pulls out every email address it finds using pattern matching. It automatically deduplicates results and shows both total matches and unique addresses — perfect for mining contact lists from documents.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Extracting contact information from large documents, email threads, or web scrapes</li>
+    <li>Building contact lists from text-based data exports or meeting notes</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Paste any text containing emails and click Extract. Copy all unique results in one click.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/duplicate-remover/" class="text-primary hover:underline">Duplicate Line Remover</a> for cleaning up extracted lists.</p>
+</div>
+</ToolLayout>

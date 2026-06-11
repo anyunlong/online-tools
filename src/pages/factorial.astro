@@ -1,0 +1,58 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Input from '../components/Input.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Factorial Calculator"
+  description="Calculate factorials (n!) for large numbers"
+  category="Math"
+  keywords={["factorial", "math", "combinatorics"]}
+>
+  <div class="flex gap-3 items-end flex-wrap mb-4">
+    <div>
+      <label for="n" class="text-sm text-surface-300 mb-1.5 block">Number (n)</label>
+      <Input id="n" type="number" value="10" class="w-32" min="0" max="1000" />
+    </div>
+    <Button onclick="calc()">Calculate n!</Button>
+  </div>
+  <div id="result" class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-4 min-h-[60px]"></div>
+<script is:inline>
+function calc() {
+  var n = parseInt(document.getElementById('n').value);
+  if (isNaN(n) || n < 0) { document.getElementById('result').innerHTML = '<p class="text-sm text-red-400">Enter a non-negative integer.</p>'; return; }
+  if (n > 1000) { document.getElementById('result').innerHTML = '<p class="text-sm text-surface-400">Numbers above 1000 may be slow or too large to display.</p>'; return; }
+  var result = '1';
+  for (var i = 2; i <= n; i++) {
+    var carry = 0;
+    var temp = '';
+    for (var j = result.length - 1; j >= 0; j--) {
+      var prod = parseInt(result[j]) * i + carry;
+      temp = (prod % 10) + temp;
+      carry = Math.floor(prod / 10);
+    }
+    while (carry > 0) { temp = (carry % 10) + temp; carry = Math.floor(carry / 10); }
+    result = temp;
+  }
+  var digits = result.length;
+  var display = result;
+  if (digits > 200) display = result.substring(0, 100) + '\n\n... (' + (digits - 200) + ' digits omitted) ...\n\n' + result.substring(digits - 100);
+  document.getElementById('result').innerHTML = '<div class="text-xs text-surface-400 mb-1">' + n + '! = </div><div class="text-sm text-surface-100 font-mono break-all whitespace-pre-wrap max-h-[400px] overflow-y-auto">' + display + '</div><div class="text-xs text-surface-500 mt-2">' + digits + ' digits</div>';
+}
+calc();
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Factorial Calculator?</h2>
+  <p class="mb-3">A factorial (n!) is the product of all positive integers from 1 to n — for example, 5! = 120. Factorials grow incredibly fast and are fundamental to combinatorics, probability, and algorithm analysis.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Solving permutation and combination problems in mathematics or computer science</li>
+    <li>Calculating possible arrangements for scheduling, seating, or optimization problems</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Enter a number (0-1000) and click Calculate to see the full factorial result with digit count.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/percentage-calculator/" class="text-primary hover:underline">Percentage Calculator</a> for everyday percentage calculations.</p>
+</div>
+</ToolLayout>

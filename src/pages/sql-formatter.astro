@@ -42,7 +42,17 @@ function clearAll() {
   document.getElementById('msg').textContent = '';
 }
 </script>
-<slot name="info" slot="info">
-  <p>Paste your SQL query and click Format to add proper indentation and line breaks. Makes complex queries readable. Supports SELECT, INSERT, UPDATE, DELETE, and JOIN clauses.</p>
-</slot>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a SQL Formatter?</h2>
+  <p class="mb-3">A SQL formatter takes messy, unreadable SQL queries and reformats them with consistent indentation, line breaks, and keyword capitalization. Complex queries with multiple JOINs, subqueries, and conditions become dramatically easier to understand and maintain.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Making sense of auto-generated SQL or queries copied from database logs</li>
+    <li>Standardizing code style across a team by formatting all SQL to a consistent layout</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Paste your SQL query and click Format to add proper indentation and line breaks for readability.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/json-formatter/" class="text-primary hover:underline">JSON Formatter</a> for formatting another structured data format.</p>
+</div>
 </ToolLayout>

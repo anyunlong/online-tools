@@ -43,7 +43,17 @@ function clearAll() {
   document.getElementById('msg').textContent = '';
 }
 </script>
-<slot name="info" slot="info">
-  <p>Browse all HTTP status codes organized by category: 1xx Informational, 2xx Success, 3xx Redirection, 4xx Client Error, 5xx Server Error. Search by code number or description.</p>
-</slot>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What are HTTP Status Codes?</h2>
+  <p class="mb-3">HTTP status codes are three-digit numbers returned by web servers to indicate the result of a request. They range from 1xx (informational) through 5xx (server errors), with familiar codes like 200 (OK), 404 (Not Found), and 500 (Internal Server Error).</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Debugging API or website errors by looking up what a specific status code means</li>
+    <li>Learning which status codes are appropriate when designing REST API responses</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Browse all status codes organized by category, or search by number or description to find a specific code.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/regex/" class="text-primary hover:underline">Regex Tester</a> for building patterns to parse HTTP response data.</p>
+</div>
 </ToolLayout>

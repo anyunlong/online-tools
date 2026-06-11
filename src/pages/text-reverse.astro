@@ -1,0 +1,48 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Text Reverser"
+  description="Reverse any text string instantly"
+  category="Text"
+  keywords={["reverse", "text", "flip"]}
+>
+  <Textarea id="inp" placeholder="Enter text to reverse..." rows="10" class="tool-area" oninput="reverse()" />
+  <div class="text-xs text-surface-400 mt-3 mb-1">Reversed Text:</div>
+  <div id="out" class="w-full rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-sm text-surface-100 font-mono break-all min-h-[48px]"></div>
+  <div class="flex gap-2 mt-3">
+    <Button onclick="reverse()">Reverse</Button>
+    <Button variant="secondary" onclick="copyOut()">Copy</Button>
+  </div>
+<script is:inline>
+function reverse() {
+  var t = document.getElementById('inp').value;
+  document.getElementById('out').textContent = t.split('').reverse().join('');
+}
+function copyOut() {
+  var t = document.getElementById('out').textContent;
+  if (!t) return;
+  navigator.clipboard.writeText(t).then(function() {
+    var btn = document.querySelector('[onclick="copyOut()"]');
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = 'Copy'; }, 1500);
+  });
+}
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Text Reverser?</h2>
+  <p class="mb-3">A text reverser flips your text backwards character by character. It's a simple but useful tool for creating mirrored text effects, testing palindrome strings, or encoding messages in a fun way.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Checking if a word or phrase is a palindrome (reads the same forwards and backwards)</li>
+    <li>Creating decorative mirrored text effects for social media or design projects</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Enter text to see it reversed in real time, or click Reverse to process. Use Copy to grab the result.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/case-converter/" class="text-primary hover:underline">Case Converter</a> for transforming text capitalization.</p>
+</div>
+</ToolLayout>

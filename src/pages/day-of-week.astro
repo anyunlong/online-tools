@@ -1,0 +1,50 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Input from '../components/Input.astro';
+---
+
+<ToolLayout
+  title="Day of Week Finder"
+  description="Find what day of the week any date falls on"
+  category="Time"
+  keywords={["day", "week", "date", "calendar"]}
+>
+  <Input id="dt" type="date" class="w-full" oninput="find()" />
+  <div id="result" class="mt-5 bg-surface-800/40 border border-surface-700/30 rounded-xl p-5 text-center"></div>
+<script is:inline>
+function find() {
+  var v = document.getElementById('dt').value;
+  if (!v) { document.getElementById('result').innerHTML = '<p class="text-surface-400">Select a date to find its day of the week</p>'; return; }
+  var d = new Date(v + 'T12:00:00');
+  var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var dayName = days[d.getDay()];
+  var dateStr = d.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+  var isWeekend = d.getDay() === 0 || d.getDay() === 6;
+  var dayOfYear = Math.floor((d - new Date(d.getFullYear(), 0, 0)) / 86400000);
+  var weekNum = Math.ceil(dayOfYear / 7);
+  document.getElementById('result').innerHTML =
+    '<div class="text-4xl font-bold ' + (isWeekend ? 'text-brand-400' : 'text-brand-400') + '">' + dayName + '</div>' +
+    '<div class="text-sm text-surface-400 mt-2">' + dateStr + '</div>' +
+    '<div class="flex justify-center gap-4 mt-4 text-xs text-surface-500">' +
+    '<span>Day ' + dayOfYear + ' of year</span><span>Week ' + weekNum + '</span>' +
+    (isWeekend ? '<span class="text-brand-400">Weekend!</span>' : '<span>Weekday</span>') +
+    '</div>';
+}
+var now = new Date();
+document.getElementById('dt').value = now.toISOString().slice(0, 10);
+find();
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Day of Week Finder?</h2>
+  <p class="mb-3">A day of week finder tells you which day of the week any date falls on — past, present, or future. It also shows the day number within the year and current week number, helping with long-term planning and calendar calculations.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Checking what day of the week a future event like a birthday or holiday falls on</li>
+    <li>Determining the day of week for historical dates or past events</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Pick any date to instantly see what day of the week it falls on and its position in the year.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/date-calculator/" class="text-primary hover:underline">Date Calculator</a> for adding or subtracting days between dates.</p>
+</div>
+</ToolLayout>

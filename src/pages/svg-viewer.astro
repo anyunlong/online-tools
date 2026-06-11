@@ -1,0 +1,63 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="SVG Viewer"
+  description="Paste SVG code for live preview"
+  category="Image"
+  keywords={["svg", "viewer", "preview", "vector"]}
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <Textarea id="inp" label="SVG Code" placeholder="Paste SVG code here..." rows="12" class="tool-area font-mono text-xs" oninput="preview()" />
+    <div>
+      <label class="text-sm text-surface-300 mb-1.5 block font-medium">Preview</label>
+      <div id="preview" class="w-full h-72 rounded-xl border border-surface-700 bg-[#ffffff08] flex items-center justify-center overflow-hidden">
+        <p class="text-surface-500 text-sm">Paste SVG code to preview</p>
+      </div>
+    </div>
+  </div>
+  <div class="flex gap-2 mt-4">
+    <Button onclick="copySVG()">Copy SVG</Button>
+    <Button variant="secondary" onclick="downloadSVG()">Download SVG</Button>
+  </div>
+  <div id="error" class="text-xs text-red-400 mt-2"></div>
+<script is:inline>
+function preview() {
+  var svg = document.getElementById('inp').value;
+  document.getElementById('error').textContent = '';
+  if (!svg.trim()) { document.getElementById('preview').innerHTML = '<p class="text-surface-500 text-sm">Paste SVG code to preview</p>'; return; }
+  document.getElementById('preview').innerHTML = svg;
+}
+function copySVG() {
+  var svg = document.getElementById('inp').value;
+  if (!svg) return;
+  navigator.clipboard.writeText(svg).then(function() {
+    var btn = document.querySelector('[onclick="copySVG()"]');
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = 'Copy SVG'; }, 1500);
+  });
+}
+function downloadSVG() {
+  var svg = document.getElementById('inp').value;
+  if (!svg) return;
+  var blob = new Blob([svg], {type: 'image/svg+xml'});
+  var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'image.svg'; a.click();
+}
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is an SVG Viewer?</h2>
+  <p class="mb-3">An SVG viewer renders SVG (Scalable Vector Graphics) code as a live preview right in your browser. SVGs are resolution-independent vector images that stay crisp at any size, making them the go-to format for icons, logos, and illustrations on the web.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Quickly previewing SVG code from icon libraries, design tools, or hand-written markup</li>
+    <li>Debugging SVG rendering issues before adding the graphic to your website</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Paste any SVG code to see a live preview. Copy or download the SVG when ready.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/image-compress/" class="text-primary hover:underline">Image Compressor</a> for compressing raster images like PNG and JPEG.</p>
+</div>
+</ToolLayout>

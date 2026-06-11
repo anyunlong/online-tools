@@ -34,4 +34,18 @@ function decode() {
     document.getElementById('out').value = 'Error: ' + e.message;
   }
 }
-</script></ToolLayout>
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is Base64 Encoding?</h2>
+  <p class="mb-3">Base64 encoding converts binary data or text into a set of 64 ASCII characters that can be safely transmitted over text-based protocols like email, HTTP, and JSON. It's not encryption — it's an encoding scheme for data portability.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Embedding images or files directly in HTML or CSS using Data URLs</li>
+    <li>Encoding credentials for HTTP Basic Authentication headers</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Enter your text and click Encode to get the Base64 string, or paste a Base64 string and click Decode to restore the original.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/url-encode/" class="text-primary hover:underline">URL Encoder</a> for encoding text for safe use in web addresses.</p>
+</div>
+</ToolLayout>

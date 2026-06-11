@@ -51,7 +51,17 @@ function clearAll() {
   document.getElementById('msg').textContent = '';
 }
 </script>
-<slot name="info" slot="info">
-  <p>Enter any text and see its binary representation (8-bit per character). Also converts binary back to text. Great for learning how computers encode characters.</p>
-</slot>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Text to Binary Converter?</h2>
+  <p class="mb-3">A text to binary converter translates each character of your text into its 8-bit binary representation — the actual 0s and 1s that computers use to store and transmit data. It reveals the fundamental connection between human-readable text and the digital language of computers.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Learning how character encoding works in computer science and digital communications</li>
+    <li>Creating binary-encoded messages for educational demonstrations or puzzle games</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Enter any text to see its binary representation, or paste binary to decode back to readable text.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/hex-to-text/" class="text-primary hover:underline">Hex to Text Converter</a> for another common computer encoding format.</p>
+</div>
 </ToolLayout>

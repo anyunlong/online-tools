@@ -1,0 +1,64 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Input from '../components/Input.astro';
+---
+
+<ToolLayout
+  title="Bytes Converter"
+  description="Convert between bytes, KB, MB, GB, and TB"
+  category="Convert"
+  keywords={["bytes", "kilobytes", "megabytes", "gigabytes"]}
+>
+  <div class="flex gap-3 items-end flex-wrap">
+    <div class="flex-1 min-w-[120px]">
+      <label for="val" class="text-sm text-surface-300 mb-1.5 block font-medium">Value</label>
+      <Input id="val" type="number" value="1" class="w-full" oninput="convert()" />
+    </div>
+    <div>
+      <label for="unit" class="text-sm text-surface-300 mb-1.5 block font-medium">Unit</label>
+      <select id="unit" class="rounded-xl border border-surface-700 bg-surface-800/50 px-3 py-2 text-sm text-surface-100" onchange="convert()">
+        <option value="1">Bytes (B)</option>
+        <option value="1024">Kilobytes (KB)</option>
+        <option value="1048576">Megabytes (MB)</option>
+        <option value="1073741824">Gigabytes (GB)</option>
+        <option value="1099511627776">Terabytes (TB)</option>
+      </select>
+    </div>
+  </div>
+  <div id="results" class="mt-5 grid grid-cols-2 sm:grid-cols-5 gap-3"></div>
+<script is:inline>
+var units = [
+  { name: 'Bytes (B)', div: 1 },
+  { name: 'KB', div: 1024 },
+  { name: 'MB', div: 1048576 },
+  { name: 'GB', div: 1073741824 },
+  { name: 'TB', div: 1099511627776 }
+];
+function convert() {
+  var val = parseFloat(document.getElementById('val').value) || 0;
+  var unitBytes = parseInt(document.getElementById('unit').value);
+  var bytes = val * unitBytes;
+  var html = '';
+  for (var i = 0; i < units.length; i++) {
+    html += '<div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-3 text-center">' +
+      '<div class="text-sm text-surface-400">' + units[i].name + '</div>' +
+      '<div class="text-lg font-mono font-bold text-brand-400">' + (bytes / units[i].div).toFixed(4) + '</div></div>';
+  }
+  document.getElementById('results').innerHTML = html;
+}
+convert();
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Bytes Converter?</h2>
+  <p class="mb-3">A bytes converter translates digital storage values between common units: bytes, kilobytes (KB), megabytes (MB), gigabytes (GB), and terabytes (TB). It uses the binary standard (1 KB = 1024 bytes) used by operating systems and memory specifications.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Understanding file sizes, disk capacity, and memory specifications in different units</li>
+    <li>Converting between the units shown in your OS and the units used in programming</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Enter a value, select the unit, and see instant conversions to all five digital storage units.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/unit-converter/" class="text-primary hover:underline">Unit Converter</a> for converting physical measurements like length and weight.</p>
+</div>
+</ToolLayout>

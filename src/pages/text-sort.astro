@@ -46,7 +46,17 @@ function clearAll() {
   document.getElementById('msg').textContent = '';
 }
 </script>
-<slot name="info" slot="info">
-  <p>Paste your text and choose sort order: ascending (A-Z), descending (Z-A), or random shuffle. Optionally remove duplicate lines. Useful for organizing lists, cleaning data, and alphabetizing references.</p>
-</slot>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Text Line Sorter?</h2>
+  <p class="mb-3">A text line sorter arranges lines of text in alphabetical order (ascending or descending) or randomizes them. It can also remove duplicate lines, making it a powerful tool for cleaning up and organizing lists, references, and data.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Alphabetizing bibliographies, reference lists, or glossaries for academic papers</li>
+    <li>Deduplicating and organizing mailing lists, inventory items, or keyword collections</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Paste your list (one item per line), choose a sort order, and click Sort to organize the lines.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/word-counter/" class="text-primary hover:underline">Word Counter</a> for analyzing text statistics alongside sorting.</p>
+</div>
 </ToolLayout>

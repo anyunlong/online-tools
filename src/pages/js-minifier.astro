@@ -38,7 +38,17 @@ function clearAll() {
   document.getElementById('msg').textContent = '';
 }
 </script>
-<slot name="info" slot="info">
-  <p>Paste your JavaScript code and click Minify to remove whitespace, comments, and shorten variable names where safe. Compare original and minified sizes. All local.</p>
-</slot>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a JavaScript Minifier?</h2>
+  <p class="mb-3">A JavaScript minifier compresses your JS code by removing whitespace, comments, and unnecessary characters, while keeping the code functionally identical. Minified JavaScript files load faster and use less bandwidth — a critical optimization for production websites.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Optimizing JavaScript bundles before deploying to production to reduce page load time</li>
+    <li>Checking how much file size can be saved by minifying a particular script</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Paste your JavaScript code and click Minify to see the compressed version and size comparison.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/css-minifier/" class="text-primary hover:underline">CSS Minifier</a> for reducing stylesheet file sizes alongside your JavaScript.</p>
+</div>
 </ToolLayout>

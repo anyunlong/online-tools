@@ -38,7 +38,17 @@ function clearAll() {
   document.getElementById('msg').textContent = '';
 }
 </script>
-<slot name="info" slot="info">
-  <p>Paste your HTML code and click Minify to remove whitespace and comments. Compare before and after sizes. All processing stays local.</p>
-</slot>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is an HTML Minifier?</h2>
+  <p class="mb-3">An HTML minifier strips out unnecessary characters from your HTML code — including whitespace between tags, comments, and optional quotation marks — without affecting how the page renders. This can reduce HTML file sizes by 10-30%, making pages load noticeably faster.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Preparing static HTML pages for production to maximize page speed and SEO performance</li>
+    <li>Reducing the size of HTML email templates to stay under email client limits</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Paste your HTML code and click Minify to remove whitespace and comments, then compare sizes.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/js-minifier/" class="text-primary hover:underline">JavaScript Minifier</a> for also compressing the scripts within your HTML pages.</p>
+</div>
 </ToolLayout>

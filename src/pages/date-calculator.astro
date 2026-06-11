@@ -48,7 +48,17 @@ function copyResult() {
   });
 }
 </script>
-<slot name="info" slot="info">
-  <p>Pick a date and add or subtract days, weeks, or months. Also calculate the difference between two dates. Perfect for project planning, deadline tracking, and event scheduling.</p>
-</slot>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Date Calculator?</h2>
+  <p class="mb-3">A date calculator lets you add or subtract days, weeks, or months from any date, and also calculate the exact number of days between two dates. It eliminates the need to count days on a calendar manually and accounts for varying month lengths and leap years.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Calculating project deadlines, delivery dates, or contract end dates from a start date</li>
+    <li>Determining the number of days between events — like calculating a person's age or warranty period</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Pick a date and add or subtract days, weeks, or months, or calculate the difference between two dates.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/timestamp/" class="text-primary hover:underline">Timestamp Converter</a> for working with Unix timestamps instead of calendar dates.</p>
+</div>
 </ToolLayout>

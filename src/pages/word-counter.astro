@@ -25,4 +25,18 @@ function count() {
   document.getElementById('lines').textContent = t.split('\n').length;
   document.getElementById('cn').textContent = (t.match(/[\u4e00-\u9fff]/g) || []).length;
 }
-</script></ToolLayout>
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Word Counter?</h2>
+  <p class="mb-3">A word counter analyzes your text and instantly shows statistics including character count, word count, line count, and paragraph count. It's an essential tool for writers, students, and anyone who needs to hit a specific text length.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Checking if an essay, article, or social media post meets length requirements</li>
+    <li>Tracking character limits for meta descriptions, tweets, or SMS messages</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Paste or type your text to see real-time counts of characters, words, lines, and paragraphs.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/text-sort/" class="text-primary hover:underline">Text Line Sorter</a> for organizing and alphabetizing lists.</p>
+</div>
+</ToolLayout>

@@ -43,7 +43,17 @@ function copyResult() {
   });
 }
 </script>
-<slot name="info" slot="info">
-  <p>Choose character types (uppercase, lowercase, numbers, symbols) and string length, then generate random strings. Useful for API keys, tokens, temporary passwords, and test data.</p>
-</slot>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Random String Generator?</h2>
+  <p class="mb-3">A random string generator creates unpredictable strings of characters based on rules you define — choosing from uppercase letters, lowercase letters, numbers, and special symbols. It's perfect for generating secure tokens, API keys, and test data.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Creating API keys, access tokens, or temporary passwords for development and testing</li>
+    <li>Generating random sample data for populating test databases or mock interfaces</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Select character types and length, then click Generate to get one or more random strings.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/password-generator/" class="text-primary hover:underline">Password Generator</a> for creating strong, secure passwords specifically.</p>
+</div>
 </ToolLayout>

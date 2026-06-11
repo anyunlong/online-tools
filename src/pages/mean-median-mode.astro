@@ -1,0 +1,55 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Mean, Median, Mode Calculator"
+  description="Calculate statistical measures from a set of numbers"
+  category="Math"
+  keywords={["mean", "median", "mode", "statistics"]}
+>
+  <Textarea id="inp" placeholder="Enter numbers separated by commas, spaces, or newlines..." rows="6" class="tool-area" />
+  <div class="flex gap-2 mt-4">
+    <Button onclick="calc()">Calculate</Button>
+    <Button variant="secondary" onclick="sample()">Load Sample</Button>
+  </div>
+  <div id="result" class="mt-4 grid grid-cols-2 sm:grid-cols-5 gap-3"></div>
+<script is:inline>
+function calc() {
+  var nums = document.getElementById('inp').value.split(/[\s,]+/).map(function(x) { return parseFloat(x); }).filter(function(x) { return !isNaN(x); });
+  if (nums.length === 0) { document.getElementById('result').innerHTML = '<p class="text-sm text-surface-400 col-span-full">Enter numbers to calculate statistics.</p>'; return; }
+  nums.sort(function(a,b){return a-b;});
+  var sum = 0, min = nums[0], max = nums[nums.length-1];
+  for (var i = 0; i < nums.length; i++) sum += nums[i];
+  var mean = sum / nums.length;
+  var median = nums.length % 2 === 0 ? (nums[nums.length/2-1] + nums[nums.length/2]) / 2 : nums[Math.floor(nums.length/2)];
+  var freq = {}, maxFreq = 0, modes = [];
+  for (var i = 0; i < nums.length; i++) { var v = nums[i]; freq[v] = (freq[v]||0)+1; if (freq[v] > maxFreq) maxFreq = freq[v]; }
+  for (var k in freq) if (freq[k] === maxFreq) modes.push(parseFloat(k));
+  var mode = maxFreq > 1 ? modes.join(', ') : 'None';
+  var range = max - min;
+  document.getElementById('result').innerHTML =
+    '<div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-3 text-center"><div class="text-xs text-surface-400">Count</div><div class="text-xl font-bold text-surface-100">' + nums.length + '</div></div>' +
+    '<div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-3 text-center"><div class="text-xs text-surface-400">Mean</div><div class="text-xl font-bold text-brand-400">' + mean.toFixed(2) + '</div></div>' +
+    '<div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-3 text-center"><div class="text-xs text-surface-400">Median</div><div class="text-xl font-bold text-brand-400">' + median + '</div></div>' +
+    '<div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-3 text-center"><div class="text-xs text-surface-400">Mode</div><div class="text-lg font-bold text-brand-400">' + mode + '</div></div>' +
+    '<div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-3 text-center"><div class="text-xs text-surface-400">Range</div><div class="text-xl font-bold text-surface-100">' + range + '</div></div>';
+}
+function sample() { document.getElementById('inp').value = '12 15 18 22 15 19 15 21 18 17'; calc(); }
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Mean, Median, Mode Calculator?</h2>
+  <p class="mb-3">This statistical calculator computes the five essential measures from any set of numbers: count, mean (average), median (middle value), mode (most frequent value), and range (max − min). These are the foundation of descriptive statistics.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Analyzing test scores, survey results, or any numerical dataset for central tendency</li>
+    <li>Quickly summarizing data without opening spreadsheet software</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Enter numbers separated by commas, spaces, or newlines and click Calculate for instant statistics.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/percentage-calculator/" class="text-primary hover:underline">Percentage Calculator</a> for calculating percentages from your dataset.</p>
+</div>
+</ToolLayout>

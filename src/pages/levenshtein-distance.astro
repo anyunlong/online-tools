@@ -1,0 +1,60 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Levenshtein Distance"
+  description="Calculate string similarity using Levenshtein distance"
+  category="Text"
+  keywords={["levenshtein", "distance", "similarity", "fuzzy"]}
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <Textarea id="inp1" label="String 1" placeholder="Enter first string..." rows="6" class="tool-area" />
+    <Textarea id="inp2" label="String 2" placeholder="Enter second string..." rows="6" class="tool-area" />
+  </div>
+  <div class="flex gap-2 mt-4">
+    <Button onclick="calc()">Calculate Distance</Button>
+  </div>
+  <div id="result" class="mt-4 space-y-2"></div>
+<script is:inline>
+function calc() {
+  var a = document.getElementById('inp1').value;
+  var b = document.getElementById('inp2').value;
+  if (!a || !b) { document.getElementById('result').innerHTML = '<p class="text-sm text-surface-400">Enter both strings to calculate.</p>'; return; }
+  var m = a.length, n = b.length;
+  var dp = [];
+  for (var i = 0; i <= m; i++) { dp[i] = []; dp[i][0] = i; }
+  for (var j = 0; j <= n; j++) dp[0][j] = j;
+  for (var i = 1; i <= m; i++) {
+    for (var j = 1; j <= n; j++) {
+      dp[i][j] = Math.min(dp[i-1][j] + 1, dp[i][j-1] + 1, dp[i-1][j-1] + (a[i-1] === b[j-1] ? 0 : 1));
+    }
+  }
+  var dist = dp[m][n];
+  var maxLen = Math.max(m, n);
+  var similarity = maxLen ? Math.round((1 - dist / maxLen) * 100) : 100;
+  document.getElementById('result').innerHTML =
+    '<div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-4 space-y-2">' +
+    '<div class="text-3xl font-bold text-brand-400">' + dist + '</div>' +
+    '<div class="text-sm text-surface-300">Edit distance (insertions, deletions, substitutions)</div>' +
+    '<div class="text-sm text-surface-300">Similarity: <span class="text-brand-400 font-semibold">' + similarity + '%</span></div>' +
+    '<div class="text-xs text-surface-500">String 1 length: ' + m + ' | String 2 length: ' + n + '</div>' +
+    '</div>';
+}
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is Levenshtein Distance?</h2>
+  <p class="mb-3">Levenshtein distance measures how different two strings are by counting the minimum number of single-character edits (insertions, deletions, or substitutions) needed to change one string into the other. It's the foundation of spell checkers, fuzzy search, and DNA sequence comparison.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Implementing "did you mean?" suggestions in search bars and form validation</li>
+    <li>Comparing file paths, URLs, or identifiers to find near-matches</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Enter two strings and click Calculate to see the edit distance and similarity percentage.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/text-diff/" class="text-primary hover:underline">Text Diff Checker</a> for visually comparing two blocks of text line by line.</p>
+</div>
+</ToolLayout>

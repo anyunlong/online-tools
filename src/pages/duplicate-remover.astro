@@ -1,0 +1,63 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Duplicate Line Remover"
+  description="Remove duplicate lines from text"
+  category="Text"
+  keywords={["duplicate", "remove", "unique", "dedupe"]}
+>
+  <Textarea id="inp" placeholder="Paste text with duplicate lines..." rows="12" class="tool-area" />
+  <div class="flex gap-2 mt-4">
+    <Button onclick="remove()">Remove Duplicates</Button>
+    <Button variant="secondary" onclick="copyRes()">Copy</Button>
+  </div>
+  <div class="flex items-center gap-4 mt-3 text-xs text-surface-400">
+    <span>Lines: <strong id="ln-count" class="text-surface-200">0</strong></span>
+    <span>Unique: <strong id="unq-count" class="text-brand-400">0</strong></span>
+    <span>Removed: <strong id="rem-count" class="text-red-400">0</strong></span>
+  </div>
+  <div class="text-xs text-surface-400 mt-3 mb-1">Result:</div>
+  <div id="out" class="w-full rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-sm text-surface-100 font-mono break-all min-h-[48px] whitespace-pre-wrap"></div>
+<script is:inline>
+function remove() {
+  var lines = document.getElementById('inp').value.split('\n');
+  var total = lines.length;
+  var unique = [];
+  var seen = {};
+  for (var i = 0; i < lines.length; i++) {
+    var l = lines[i];
+    if (!seen.hasOwnProperty(l)) { seen[l] = true; unique.push(l); }
+  }
+  document.getElementById('out').textContent = unique.join('\n');
+  document.getElementById('ln-count').textContent = total;
+  document.getElementById('unq-count').textContent = unique.length;
+  document.getElementById('rem-count').textContent = total - unique.length;
+}
+function copyRes() {
+  var t = document.getElementById('out').textContent;
+  if (!t) return;
+  navigator.clipboard.writeText(t).then(function() {
+    var btn = document.querySelector('[onclick="copyRes()"]');
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = 'Copy'; }, 1500);
+  });
+}
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Duplicate Line Remover?</h2>
+  <p class="mb-3">A duplicate line remover scans your text line by line and removes repeated entries, keeping only the first occurrence of each line. It's perfect for cleaning up lists, deduplicating email addresses, and consolidating data.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Merging and cleaning mailing lists or contact databases that contain duplicates</li>
+    <li>Condensing log files or data exports that repeat the same entries</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Paste your text and click Remove Duplicates. The deduplicated result, original line count, and removed count are shown.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/text-sort/" class="text-primary hover:underline">Text Line Sorter</a> for organizing lines alphabetically after removing duplicates.</p>
+</div>
+</ToolLayout>

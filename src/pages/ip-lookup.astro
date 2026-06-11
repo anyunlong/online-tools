@@ -15,4 +15,17 @@ import ToolLayout from '../components/ToolLayout.astro';
 <script is:inline>
 fetch('https://api.ipify.org?format=json').then(function(r){return r.json();}).then(function(d){document.getElementById('ip').textContent = d.ip;}).catch(function(){document.getElementById('ip').textContent='Failed to fetch';});
 fetch('http://ip-api.com/json/?lang=en').then(function(r){return r.json();}).then(function(d){document.getElementById('info').textContent = d.country + ' ' + d.regionName + ' ' + d.city + ' | ' + d.isp;}).catch(function(){});
-</script></ToolLayout>
+</script><div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is IP Lookup?</h2>
+  <p class="mb-3">IP lookup reveals the geographical location and Internet Service Provider associated with any IP address. Every device connected to the internet has an IP address, and looking it up can tell you the country, city, and ISP behind that address.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Investigating the origin of suspicious login attempts or server access in your logs</li>
+    <li>Checking if your VPN or proxy is correctly masking your real location</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Your current IP is shown automatically. Enter any other IP address to look up its location and ISP details.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/url-parser/" class="text-primary hover:underline">URL Parser</a> for breaking down web addresses into their components.</p>
+</div>
+</ToolLayout>

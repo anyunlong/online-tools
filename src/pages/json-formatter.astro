@@ -41,4 +41,18 @@ function compress() {
     document.getElementById('out').textContent = e.message;
   }
 }
-</script></ToolLayout>
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a JSON Formatter?</h2>
+  <p class="mb-3">A JSON formatter takes raw, compressed JSON data and reformats it with proper indentation and line breaks so it's easy to read and debug. It also validates your JSON syntax and tells you exactly where errors are.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Making sense of minified JSON from API responses or configuration files</li>
+    <li>Finding and fixing syntax errors like missing commas or unmatched brackets</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Paste your JSON and click Format to beautify it, or Compress to minify for production.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/json-validator/" class="text-primary hover:underline">JSON Validator</a> for quick syntax checking without reformatting.</p>
+</div>
+</ToolLayout>

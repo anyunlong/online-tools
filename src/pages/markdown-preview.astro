@@ -56,7 +56,17 @@ function clearAll() {
   document.getElementById('msg').textContent = '';
 }
 </script>
-<slot name="info" slot="info">
-  <p>Type or paste Markdown on the left to see a live preview on the right. Supports headings, lists, code blocks, tables, links, images, and more. Great for drafting README files and documentation.</p>
-</slot>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Markdown Previewer?</h2>
+  <p class="mb-3">A Markdown previewer lets you write Markdown syntax on one side and see the rendered HTML output on the other in real time. Markdown is the lightweight markup language used by GitHub, Reddit, and countless documentation sites for writing formatted text without learning HTML.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Drafting README files, project documentation, or wiki pages for GitHub repositories</li>
+    <li>Writing blog posts or forum replies with rich formatting like headings, lists, and code blocks</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Type or paste Markdown on the left panel; the formatted preview updates on the right in real time.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/html-entity/" class="text-primary hover:underline">HTML Entity Encoder</a> for encoding special characters in your Markdown content.</p>
+</div>
 </ToolLayout>

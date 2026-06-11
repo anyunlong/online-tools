@@ -27,4 +27,18 @@ function uniToCn() {
     return String.fromCharCode(parseInt(c, 16));
   });
 }
-</script></ToolLayout>
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Unicode Converter?</h2>
+  <p class="mb-3">A Unicode converter translates text characters into their Unicode escape sequences (like \u4E2D\u6587 for Chinese) and vice versa. Unicode is the universal character encoding standard that assigns a unique number to every character across all writing systems.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Escaping non-Latin characters in JavaScript, JSON, or CSS source code</li>
+    <li>Decoding Unicode escape sequences found in API responses or log files</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Enter Chinese or other text to convert to \uXXXX format, or paste Unicode escapes to decode back to readable text.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/hex-to-text/" class="text-primary hover:underline">Hex to Text Converter</a> for converting between hexadecimal and text.</p>
+</div>
+</ToolLayout>

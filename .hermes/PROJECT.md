@@ -15,16 +15,21 @@
 
 | 项目 | 状态 | 备注 |
 |------|------|------|
-| 框架搭建 | ✅ | 21 页（首页 + 20 工具），9 大分类 |
-| 英文化 | ✅ | 全部翻译英文，面向海外用户 |
-| JS 内联 | ✅ | 所有脚本内联到页面，无外部文件 |
-| GitHub 推送 | ✅ | commit 129aba1 |
-| Vercel 部署 | ✅ | 自动部署已配置 |
+| 框架搭建 | ✅ | 首页 + 51 工具，13 大分类 |
+| 首页重构 | ✅ | v0 设计：Hero/搜索/卡片/精选 |
+| 英文化 | ✅ | i18n 中英双语切换 |
+| JS 内联 | ✅ | 全静态无外部依赖 |
+| GitHub 推送 | ✅ | SSH 443 直连（4s） |
+| Vercel 部署 | ✅ | 自动部署 |
+| Vercel Analytics | ✅ | 实时访客统计 |
 | 域名绑定 | ✅ | 4uses.com + HTTPS |
-| SEO 优化 | ✅ | sitemap.xml, robots.txt, JSON-LD, canonical, meta tags |
-| Search Console | ✅ | HTML 文件验证完成（google4ae8b8da930e6f4f.html） |
-| AdSense | 🔜 | 等用户申请 |
-| ads.txt | ⚠️ | 已放占位，AdSense 通过后需更新真实 pub-ID |
+| SEO 优化 | ✅ | sitemap/robots/JSON-LD/canonical |
+| Search Console | ✅ | HTML 文件验证 |
+| 工具页正文 | 🔄 | 51 页全加 What/When/How/Related |
+| 新工具页面 | 🔜 | 目标 100 个工具（+49） |
+| Blog 栏目 | 🔜 | 5 篇初始文章 + 工具教程 |
+| AdSense | ❌ | 被拒（关联已停用账号） |
+| Media.net | 🔜 | AdSense 替代方案 |
 
 ## 项目文件关键路径
 

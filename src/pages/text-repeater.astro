@@ -38,7 +38,17 @@ function copyResult() {
   });
 }
 </script>
-<slot name="info" slot="info">
-  <p>Enter text and specify how many times to repeat it. Choose a separator (newline, space, comma, or custom). Useful for generating test data and placeholder content.</p>
-</slot>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Text Repeater?</h2>
+  <p class="mb-3">A text repeater duplicates any piece of text a specified number of times, with your choice of separator between repetitions. It's a simple but surprisingly useful tool for generating bulk test data and placeholder content.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Creating large volumes of test data for stress-testing forms, databases, or APIs</li>
+    <li>Generating repeated placeholder text for layout and design mockups</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Enter your text, set the number of repetitions and a separator, then copy the repeated output.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/lorem-ipsum/" class="text-primary hover:underline">Lorem Ipsum Generator</a> for generating realistic-looking placeholder text for designs.</p>
+</div>
 </ToolLayout>
