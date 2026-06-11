@@ -30,4 +30,17 @@ function decode() {
   d.innerHTML = document.getElementById('inp').value;
   document.getElementById('out').value = d.textContent;
 }
-</script></ToolLayout>
+</script><div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is HTML Entity Encoding?</h2>
+  <p class="mb-3">HTML entity encoding converts special characters like `<`, `>`, `&`, and quotes into their safe HTML entity equivalents (such as &amp;lt;, &amp;gt;, and &amp;amp;). This prevents browsers from interpreting these characters as HTML markup, which is critical for web security.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Displaying code snippets or HTML examples on a web page without them being rendered</li>
+    <li>Preventing Cross-Site Scripting (XSS) attacks by sanitising user-submitted content</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Enter text and click Encode to convert special characters to HTML entities, or Decode to reverse the process.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/url-encode/" class="text-primary hover:underline">URL Encoder</a> for encoding text specifically for use in web addresses.</p>
+</div>
+</ToolLayout>

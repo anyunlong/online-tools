@@ -1,0 +1,66 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Image to Base64"
+  description="Convert images to Base64 data URLs"
+  category="Image"
+  keywords={["image", "base64", "data-url", "encode"]}
+>
+  <div class="mb-4">
+    <label class="text-sm text-surface-300 mb-1.5 block">Upload Image</label>
+    <input type="file" id="file" accept="image/*" class="block w-full text-sm text-surface-400 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-brand-500 file:text-white hover:file:bg-brand-400 file:cursor-pointer" onchange="convert()" />
+  </div>
+  <div id="preview" class="mb-4 flex justify-center"></div>
+  <div id="info" class="text-xs text-surface-400 mb-2"></div>
+  <div class="flex gap-2 mb-4">
+    <Button onclick="copyBase64()">Copy Data URL</Button>
+    <Button variant="secondary" onclick="downloadHTML()">Download HTML</Button>
+  </div>
+  <div class="text-xs text-surface-400 mb-1">Base64 Data URL:</div>
+  <div id="output" class="w-full rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 font-mono break-all max-h-[200px] overflow-y-auto min-h-[48px]"></div>
+<script is:inline>
+var base64Result = '';
+function convert() {
+  var file = document.getElementById('file').files[0];
+  if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    base64Result = e.target.result;
+    document.getElementById('output').textContent = base64Result.substring(0, 500) + (base64Result.length > 500 ? '...' : '');
+    document.getElementById('preview').innerHTML = '<img src="' + base64Result + '" class="max-w-full max-h-64 rounded-xl" alt="Preview" />';
+    document.getElementById('info').textContent = 'File: ' + file.name + ' | Type: ' + file.type + ' | Size: ' + (file.size / 1024).toFixed(1) + ' KB | Base64 length: ' + base64Result.length + ' chars';
+  };
+  reader.readAsDataURL(file);
+}
+function copyBase64() {
+  if (!base64Result) return;
+  navigator.clipboard.writeText(base64Result).then(function() {
+    var btn = document.querySelector('[onclick="copyBase64()"]');
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = 'Copy Data URL'; }, 1500);
+  });
+}
+function downloadHTML() {
+  if (!base64Result) return;
+  var html = '<!DOCTYPE html>\n<html>\n<body>\n<img src="' + base64Result + '" alt="Image">\n</body>\n</html>';
+  var blob = new Blob([html], {type: 'text/html'});
+  var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'image.html'; a.click();
+}
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is Image to Base64?</h2>
+  <p class="mb-3">Image to Base64 converts any image file into a Base64-encoded data URL that can be embedded directly in HTML, CSS, or JSON — eliminating the need for separate image files. Data URLs are self-contained strings that browsers can render without additional HTTP requests.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Embedding small icons or logos directly in HTML emails that block external images</li>
+    <li>Creating self-contained HTML files that include all images without external dependencies</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Upload any image, and the Base64 data URL is generated instantly. Copy it or download as a standalone HTML file.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/base64/" class="text-primary hover:underline">Base64 Encoder</a> for encoding text strings to Base64 format.</p>
+</div>
+</ToolLayout>

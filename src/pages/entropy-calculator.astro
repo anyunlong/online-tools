@@ -1,0 +1,50 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Entropy Calculator"
+  description="Calculate Shannon entropy of text"
+  category="Security"
+  keywords={["entropy", "security", "randomness", "shannon"]}
+>
+  <Textarea id="inp" placeholder="Enter text to analyze entropy..." rows="10" class="tool-area" oninput="calc()" />
+  <div class="flex gap-2 mt-4">
+    <Button onclick="calc()">Calculate Entropy</Button>
+  </div>
+  <div id="result" class="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-3"></div>
+<script is:inline>
+function calc() {
+  var text = document.getElementById('inp').value;
+  if (!text) { document.getElementById('result').innerHTML = ''; return; }
+  var freq = {};
+  for (var i = 0; i < text.length; i++) { var c = text[i]; freq[c] = (freq[c] || 0) + 1; }
+  var entropy = 0;
+  var unique = Object.keys(freq).length;
+  for (var k in freq) { var p = freq[k] / text.length; entropy -= p * Math.log2(p); }
+  var maxEntropy = Math.log2(Math.min(unique, 256));
+  var efficiency = maxEntropy ? Math.round((entropy / maxEntropy) * 100) : 0;
+  var level = entropy < 3 ? 'Low (repetitive)' : entropy < 5 ? 'Medium' : entropy < 7 ? 'High (random-like)' : 'Very High';
+  document.getElementById('result').innerHTML =
+    '<div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-4 text-center"><div class="text-xs text-surface-400">Entropy</div><div class="text-2xl font-bold text-brand-400">' + entropy.toFixed(3) + '</div><div class="text-xs text-surface-500">bits/char</div></div>' +
+    '<div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-4 text-center"><div class="text-xs text-surface-400">Level</div><div class="text-lg font-bold text-surface-100">' + level + '</div></div>' +
+    '<div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-4 text-center"><div class="text-xs text-surface-400">Unique Chars</div><div class="text-2xl font-bold text-brand-400">' + unique + '</div></div>' +
+    '<div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-4 text-center"><div class="text-xs text-surface-400">Efficiency</div><div class="text-2xl font-bold text-brand-400">' + efficiency + '%</div><div class="text-xs text-surface-500">of max</div></div>';
+}
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is an Entropy Calculator?</h2>
+  <p class="mb-3">Shannon entropy measures how unpredictable or random a piece of text is — in bits per character. High entropy means the text is more random (like a password or encryption key), while low entropy means it's more predictable (like natural language).</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Evaluating the randomness of generated passwords, tokens, or encryption keys</li>
+    <li>Analyzing data compression potential — high entropy data compresses poorly</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Enter any text to see its Shannon entropy, randomness level, unique character count, and efficiency.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/random-string/" class="text-primary hover:underline">Random String Generator</a> to generate high-entropy strings for testing.</p>
+</div>
+</ToolLayout>

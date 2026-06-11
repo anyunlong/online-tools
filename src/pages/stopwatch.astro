@@ -38,7 +38,17 @@ function copyResult() {
   });
 }
 </script>
-<slot name="info" slot="info">
-  <p>Click Start to begin timing. Use Lap to record split times, Pause to temporarily stop, and Reset to clear. Displays hours, minutes, seconds, and milliseconds. Runs entirely in your browser.</p>
-</slot>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is an Online Stopwatch?</h2>
+  <p class="mb-3">An online stopwatch is a precise digital timer that measures elapsed time down to the millisecond. It offers start, pause, lap, and reset functions — just like a physical stopwatch but more accurate and always available in your browser.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Timing workouts, presentations, cooking, or any activity where you need to track duration</li>
+    <li>Measuring code execution time or page load performance during development</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Click Start to begin timing. Use Lap for split times, Pause to temporarily stop, and Reset to clear.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/countdown/" class="text-primary hover:underline">Countdown Timer</a> for counting down to a specific date instead of measuring elapsed time.</p>
+</div>
 </ToolLayout>

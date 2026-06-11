@@ -1,0 +1,47 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import DualPane from '../components/DualPane.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="ROT13 Cipher"
+  description="Encode and decode text with ROT13 cipher"
+  category="Encode/Decode"
+  keywords={["rot13", "cipher", "encode", "decode"]}
+>
+  <DualPane>
+    <Textarea id="inp" slot="input" label="Input" placeholder="Enter text..." rows="12" class="tool-area" />
+    <Textarea id="out" slot="output" label="Output" rows="12" readonly class="tool-area" />
+  </DualPane>
+  <div class="flex gap-2 mt-4">
+    <Button onclick="convert()">Encode / Decode</Button>
+  </div>
+<script is:inline>
+function convert() {
+  var t = document.getElementById('inp').value;
+  var out = '';
+  for (var i = 0; i < t.length; i++) {
+    var c = t.charCodeAt(i);
+    if (c >= 65 && c <= 90) out += String.fromCharCode(((c - 65 + 13) % 26) + 65);
+    else if (c >= 97 && c <= 122) out += String.fromCharCode(((c - 97 + 13) % 26) + 97);
+    else out += t[i];
+  }
+  document.getElementById('out').value = out;
+}
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is ROT13?</h2>
+  <p class="mb-3">ROT13 (rotate by 13 places) is a simple letter substitution cipher that replaces each letter with the letter 13 positions ahead in the alphabet. Since the alphabet has 26 letters, applying ROT13 twice returns the original text — the same function both encodes and decodes.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Obfuscating spoilers, puzzle answers, or offensive content in online forums</li>
+    <li>Learning about classical cryptography and substitution ciphers</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Enter text and click Encode/Decode — ROT13 works both ways since applying it twice restores the original text.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/base64/" class="text-primary hover:underline">Base64 Encoder</a> for a more practical encoding scheme.</p>
+</div>
+</ToolLayout>

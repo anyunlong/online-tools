@@ -1,0 +1,65 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Input from '../components/Input.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Tip Calculator"
+  description="Calculate tips and split bills easily"
+  category="Math"
+  keywords={["tip", "calculator", "bill", "split"]}
+>
+  <div class="space-y-3">
+    <div>
+      <label for="bill" class="text-sm text-surface-300 mb-1.5 block">Bill Amount ($)</label>
+      <Input id="bill" type="number" value="50" class="w-full" oninput="calc()" />
+    </div>
+    <div>
+      <label class="text-sm text-surface-300 mb-1.5 block">Tip Percentage</label>
+      <div class="flex gap-2 flex-wrap">
+        <button onclick="setTip(10)" class="px-3 py-1.5 rounded-lg bg-surface-800 text-surface-300 text-xs border border-surface-700 hover:border-brand-500 hover:text-brand-400">10%</button>
+        <button onclick="setTip(15)" class="px-3 py-1.5 rounded-lg bg-surface-800 text-surface-300 text-xs border border-surface-700 hover:border-brand-500 hover:text-brand-400">15%</button>
+        <button onclick="setTip(18)" class="px-3 py-1.5 rounded-lg bg-surface-800 text-surface-300 text-xs border border-surface-700 hover:border-brand-500 hover:text-brand-400">18%</button>
+        <button onclick="setTip(20)" class="px-3 py-1.5 rounded-lg bg-surface-800 text-surface-300 text-xs border border-surface-700 hover:border-brand-500 hover:text-brand-400">20%</button>
+        <button onclick="setTip(25)" class="px-3 py-1.5 rounded-lg bg-surface-800 text-surface-300 text-xs border border-surface-700 hover:border-brand-500 hover:text-brand-400">25%</button>
+      </div>
+    </div>
+    <div>
+      <label for="tipPct" class="text-sm text-surface-300 mb-1.5 block">Custom Tip %</label>
+      <Input id="tipPct" type="number" value="15" class="w-32" oninput="calc()" />
+    </div>
+    <div>
+      <label for="people" class="text-sm text-surface-300 mb-1.5 block">Number of People</label>
+      <Input id="people" type="number" value="1" class="w-32" oninput="calc()" />
+    </div>
+    <div id="result" class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-4"></div>
+  </div>
+<script is:inline>
+function setTip(pct) { document.getElementById('tipPct').value = pct; calc(); }
+function calc() {
+  var bill = parseFloat(document.getElementById('bill').value) || 0;
+  var tipPct = parseFloat(document.getElementById('tipPct').value) || 0;
+  var people = Math.max(1, parseInt(document.getElementById('people').value) || 1);
+  var tip = bill * (tipPct / 100);
+  var total = bill + tip;
+  document.getElementById('result').innerHTML =
+    '<div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-3 text-center"><div class="text-xs text-surface-400">Tip Amount</div><div class="text-xl font-bold text-brand-400">$' + tip.toFixed(2) + '</div></div>' +
+    '<div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-3 text-center"><div class="text-xs text-surface-400">Total Bill</div><div class="text-xl font-bold text-surface-100">$' + total.toFixed(2) + '</div></div>' +
+    '<div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-3 text-center"><div class="text-xs text-surface-400">Per Person</div><div class="text-xl font-bold text-brand-400">$' + (total / people).toFixed(2) + '</div></div>';
+}
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Tip Calculator?</h2>
+  <p class="mb-3">A tip calculator instantly computes how much to tip based on your bill amount and desired percentage, plus splits the total evenly among your group. It handles common tip rates (10%-25%) and custom percentages, removing mental math from dining out.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Splitting a restaurant bill fairly among friends without awkward math</li>
+    <li>Quickly calculating appropriate tips for delivery, rideshare, or salon services</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Enter the bill amount, choose a tip percentage, and set the number of people to split the total.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/percentage-calculator/" class="text-primary hover:underline">Percentage Calculator</a> for other percentage-based calculations.</p>
+</div>
+</ToolLayout>

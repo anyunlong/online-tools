@@ -1,0 +1,61 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Input from '../components/Input.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Timezone Converter"
+  description="Convert time between different timezones"
+  category="Time"
+  keywords={["timezone", "convert", "utc", "gmt"]}
+>
+  <div class="space-y-3">
+    <div>
+      <label for="dt" class="text-sm text-surface-300 mb-1.5 block font-medium">Date & Time</label>
+      <Input id="dt" type="datetime-local" class="w-full" />
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div>
+        <label for="from-tz" class="text-sm text-surface-300 mb-1.5 block font-medium">From Timezone</label>
+        <select id="from-tz" class="w-full rounded-xl border border-surface-700 bg-surface-800/50 px-3 py-2 text-sm text-surface-100" onchange="convert()">
+          <option value="UTC">UTC</option><option value="America/New_York">US Eastern (ET)</option><option value="America/Chicago">US Central (CT)</option><option value="America/Denver">US Mountain (MT)</option><option value="America/Los_Angeles">US Pacific (PT)</option><option value="Europe/London">London (GMT/BST)</option><option value="Europe/Paris">Paris (CET)</option><option value="Europe/Berlin">Berlin (CET)</option><option value="Europe/Moscow">Moscow (MSK)</option><option value="Asia/Shanghai">Shanghai (CST)</option><option value="Asia/Tokyo">Tokyo (JST)</option><option value="Asia/Kolkata">India (IST)</option><option value="Australia/Sydney">Sydney (AEST)</option><option value="Pacific/Auckland">Auckland (NZST)</option>
+        </select>
+      </div>
+      <div>
+        <label for="to-tz" class="text-sm text-surface-300 mb-1.5 block font-medium">To Timezone</label>
+        <select id="to-tz" class="w-full rounded-xl border border-surface-700 bg-surface-800/50 px-3 py-2 text-sm text-surface-100" onchange="convert()">
+          <option value="UTC">UTC</option><option value="America/New_York">US Eastern (ET)</option><option value="America/Chicago">US Central (CT)</option><option value="America/Denver">US Mountain (MT)</option><option value="America/Los_Angeles">US Pacific (PT)</option><option value="Europe/London">London (GMT/BST)</option><option value="Europe/Paris">Paris (CET)</option><option value="Europe/Berlin">Berlin (CET)</option><option value="Europe/Moscow">Moscow (MSK)</option><option value="Asia/Shanghai" selected>Shanghai (CST)</option><option value="Asia/Tokyo">Tokyo (JST)</option><option value="Asia/Kolkata">India (IST)</option><option value="Australia/Sydney">Sydney (AEST)</option><option value="Pacific/Auckland">Auckland (NZST)</option>
+        </select>
+      </div>
+    </div>
+    <Button onclick="convert()">Convert</Button>
+    <div id="result" class="w-full rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-center text-lg text-brand-400 font-mono min-h-[48px]"></div>
+  </div>
+<script is:inline>
+function convert() {
+  var dtVal = document.getElementById('dt').value;
+  if (!dtVal) { document.getElementById('result').textContent = 'Select a date and time'; return; }
+  var fromTz = document.getElementById('from-tz').value;
+  var toTz = document.getElementById('to-tz').value;
+  var d = new Date(dtVal);
+  document.getElementById('result').textContent = d.toLocaleString('en-US', { timeZone: toTz, dateStyle: 'full', timeStyle: 'long' });
+}
+var now = new Date();
+document.getElementById('dt').value = now.toISOString().slice(0, 16);
+convert();
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Timezone Converter?</h2>
+  <p class="mb-3">A timezone converter translates a specific date and time from one timezone to another, accounting for Daylight Saving Time rules automatically. It's essential for scheduling meetings, flights, and events across different parts of the world.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Scheduling international meetings and knowing what local time it will be for all participants</li>
+    <li>Planning travel itineraries and understanding arrival times across timezone boundaries</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Set the date/time, choose the source and target timezones, and click Convert to see the result.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/timestamp/" class="text-primary hover:underline">Timestamp Converter</a> for working with Unix timestamps instead of timezone conversions.</p>
+</div>
+</ToolLayout>

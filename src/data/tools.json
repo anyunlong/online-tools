@@ -298,5 +298,305 @@
     "name": "Emoji Keyboard",
     "desc": "Browse and copy emoji characters",
     "cat": "Text"
+  },
+  {
+    "id": "rot13",
+    "name": "ROT13 Cipher",
+    "desc": "Encode and decode text with ROT13 cipher",
+    "cat": "Encode/Decode"
+  },
+  {
+    "id": "ascii-table",
+    "name": "ASCII Table",
+    "desc": "Complete ASCII character reference table",
+    "cat": "Encode/Decode"
+  },
+  {
+    "id": "sha1",
+    "name": "SHA1 Hash Generator",
+    "desc": "Generate SHA1 hash values from text",
+    "cat": "Hash"
+  },
+  {
+    "id": "sha512",
+    "name": "SHA512 Hash Generator",
+    "desc": "Generate SHA512 hash values from text",
+    "cat": "Hash"
+  },
+  {
+    "id": "crc32",
+    "name": "CRC32 Checksum",
+    "desc": "Calculate CRC32 checksum for text",
+    "cat": "Hash"
+  },
+  {
+    "id": "text-reverse",
+    "name": "Text Reverser",
+    "desc": "Reverse any text string instantly",
+    "cat": "Text"
+  },
+  {
+    "id": "duplicate-remover",
+    "name": "Duplicate Line Remover",
+    "desc": "Remove duplicate lines from text",
+    "cat": "Text"
+  },
+  {
+    "id": "levenshtein-distance",
+    "name": "Levenshtein Distance",
+    "desc": "Calculate string similarity using Levenshtein distance",
+    "cat": "Text"
+  },
+  {
+    "id": "bytes-converter",
+    "name": "Bytes Converter",
+    "desc": "Convert between bytes, KB, MB, GB, and TB",
+    "cat": "Convert"
+  },
+  {
+    "id": "roman-numerals",
+    "name": "Roman Numerals Converter",
+    "desc": "Convert between Roman numerals and numbers",
+    "cat": "Convert"
+  },
+  {
+    "id": "timezone-converter",
+    "name": "Timezone Converter",
+    "desc": "Convert time between different timezones",
+    "cat": "Time"
+  },
+  {
+    "id": "cron-parser",
+    "name": "Cron Expression Parser",
+    "desc": "Parse and explain cron schedule expressions",
+    "cat": "Time"
+  },
+  {
+    "id": "day-of-week",
+    "name": "Day of Week Finder",
+    "desc": "Find what day of the week any date falls on",
+    "cat": "Time"
+  },
+  {
+    "id": "sleep-calculator",
+    "name": "Sleep Cycle Calculator",
+    "desc": "Calculate optimal sleep and wake times based on sleep cycles",
+    "cat": "Time"
+  },
+  {
+    "id": "xml-to-json",
+    "name": "XML to JSON Converter",
+    "desc": "Convert XML data to JSON format",
+    "cat": "Convert"
+  },
+  {
+    "id": "json-to-xml",
+    "name": "JSON to XML Converter",
+    "desc": "Convert JSON data to XML format",
+    "cat": "Convert"
+  },
+  {
+    "id": "xml-formatter",
+    "name": "XML Formatter",
+    "desc": "Format and beautify XML code",
+    "cat": "Formatter"
+  },
+  {
+    "id": "css-beautifier",
+    "name": "CSS Beautifier",
+    "desc": "Beautify and format CSS code",
+    "cat": "Formatter"
+  },
+  {
+    "id": "html-beautifier",
+    "name": "HTML Beautifier",
+    "desc": "Beautify and format HTML code",
+    "cat": "Dev Tools"
+  },
+  {
+    "id": "js-beautifier",
+    "name": "JavaScript Beautifier",
+    "desc": "Beautify and format JavaScript/TypeScript code",
+    "cat": "Dev Tools"
+  },
+  {
+    "id": "user-agent-parser",
+    "name": "User Agent Parser",
+    "desc": "Parse and decode browser user agent strings",
+    "cat": "Dev Tools"
+  },
+  {
+    "id": "mime-lookup",
+    "name": "MIME Type Lookup",
+    "desc": "Look up MIME types by file extension or type",
+    "cat": "Dev Tools"
+  },
+  {
+    "id": "yaml-to-json",
+    "name": "YAML to JSON Converter",
+    "desc": "Convert YAML data to JSON format",
+    "cat": "Dev Tools"
+  },
+  {
+    "id": "json-to-yaml",
+    "name": "JSON to YAML Converter",
+    "desc": "Convert JSON data to YAML format",
+    "cat": "Dev Tools"
+  },
+  {
+    "id": "http-headers-checker",
+    "name": "HTTP Headers Reference",
+    "desc": "Reference for common HTTP request and response headers",
+    "cat": "Network"
+  },
+  {
+    "id": "dns-lookup",
+    "name": "DNS Lookup",
+    "desc": "Perform DNS record lookups for any domain",
+    "cat": "Network"
+  },
+  {
+    "id": "port-checker",
+    "name": "Port Reference",
+    "desc": "Common TCP/UDP network port numbers reference",
+    "cat": "Network"
+  },
+  {
+    "id": "git-cheatsheet",
+    "name": "Git Cheatsheet",
+    "desc": "Quick reference for common Git commands",
+    "cat": "Dev Tools"
+  },
+  {
+    "id": "hash-compare",
+    "name": "Hash Compare",
+    "desc": "Compare two hash values side by side",
+    "cat": "Security"
+  },
+  {
+    "id": "gradient-generator",
+    "name": "CSS Gradient Generator",
+    "desc": "Create and preview CSS linear gradients",
+    "cat": "Design"
+  },
+  {
+    "id": "random-number",
+    "name": "Random Number Generator",
+    "desc": "Generate random numbers within a range",
+    "cat": "Generator"
+  },
+  {
+    "id": "random-color",
+    "name": "Random Color Generator",
+    "desc": "Generate random colors with HEX codes",
+    "cat": "Generator"
+  },
+  {
+    "id": "dice-roller",
+    "name": "Dice Roller",
+    "desc": "Roll virtual dice for games and RPGs",
+    "cat": "Generator"
+  },
+  {
+    "id": "nano-id",
+    "name": "Nano ID Generator",
+    "desc": "Generate compact, URL-friendly unique IDs",
+    "cat": "Generator"
+  },
+  {
+    "id": "password-strength",
+    "name": "Password Strength Checker",
+    "desc": "Check how strong your password is",
+    "cat": "Security"
+  },
+  {
+    "id": "entropy-calculator",
+    "name": "Entropy Calculator",
+    "desc": "Calculate Shannon entropy of text",
+    "cat": "Security"
+  },
+  {
+    "id": "box-shadow",
+    "name": "Box Shadow Generator",
+    "desc": "Create CSS box-shadow effects visually",
+    "cat": "Design"
+  },
+  {
+    "id": "border-radius",
+    "name": "Border Radius Previewer",
+    "desc": "Visualize and generate CSS border-radius values",
+    "cat": "Design"
+  },
+  {
+    "id": "image-to-base64",
+    "name": "Image to Base64",
+    "desc": "Convert images to Base64 data URLs",
+    "cat": "Image"
+  },
+  {
+    "id": "favicon-generator",
+    "name": "Favicon Generator",
+    "desc": "Generate favicon HTML tags for your website",
+    "cat": "Image"
+  },
+  {
+    "id": "svg-viewer",
+    "name": "SVG Viewer",
+    "desc": "Paste SVG code for live preview",
+    "cat": "Image"
+  },
+  {
+    "id": "tip-calculator",
+    "name": "Tip Calculator",
+    "desc": "Calculate tips and split bills easily",
+    "cat": "Math"
+  },
+  {
+    "id": "factorial",
+    "name": "Factorial Calculator",
+    "desc": "Calculate factorials (n!) for large numbers",
+    "cat": "Math"
+  },
+  {
+    "id": "fraction-calculator",
+    "name": "Fraction Calculator",
+    "desc": "Add, subtract, multiply, and divide fractions",
+    "cat": "Math"
+  },
+  {
+    "id": "mean-median-mode",
+    "name": "Mean, Median, Mode Calculator",
+    "desc": "Calculate statistical measures from a set of numbers",
+    "cat": "Math"
+  },
+  {
+    "id": "extract-emails",
+    "name": "Email Extractor",
+    "desc": "Extract email addresses from any text",
+    "cat": "Text"
+  },
+  {
+    "id": "extract-urls",
+    "name": "URL Extractor",
+    "desc": "Extract URLs and links from any text",
+    "cat": "Text"
+  },
+  {
+    "id": "css-triangle",
+    "name": "CSS Triangle Generator",
+    "desc": "Generate pure CSS triangles for tooltips and UI",
+    "cat": "Design"
+  },
+  {
+    "id": "hmac-generator",
+    "name": "HMAC Generator",
+    "desc": "Generate HMAC signatures with SHA256",
+    "cat": "Hash"
+  },
+  {
+    "id": "bcrypt-checker",
+    "name": "Bcrypt Checker",
+    "desc": "Hash passwords with bcrypt and verify hashes",
+    "cat": "Security"
   }
 ]

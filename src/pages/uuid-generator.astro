@@ -29,4 +29,18 @@ function copy() {
   navigator.clipboard.writeText(el.textContent);
 }
 gen();
-</script></ToolLayout>
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a UUID Generator?</h2>
+  <p class="mb-3">A UUID (Universally Unique Identifier) generator creates 128-bit identifiers that are practically guaranteed to be unique across all space and time. Version 4 UUIDs use random numbers, making them ideal for distributed systems where centralized ID assignment isn't possible.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Generating primary keys for database records in multi-server environments</li>
+    <li>Creating unique filenames for user uploads to avoid naming collisions</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Click Generate to create a new random UUID v4. Each click produces a globally unique identifier.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/random-string/" class="text-primary hover:underline">Random String Generator</a> for generating custom tokens and API keys.</p>
+</div>
+</ToolLayout>

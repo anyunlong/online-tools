@@ -1,0 +1,41 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="SHA1 Hash Generator"
+  description="Generate SHA1 hash values from text"
+  category="Hash"
+  keywords={["sha1", "hash", "crypto"]}
+>
+  <Textarea id="inp" placeholder="Enter text to hash..." rows="8" class="tool-area" />
+  <div class="flex gap-2 mt-4 mb-4">
+    <Button onclick="hash()">Generate SHA1</Button>
+  </div>
+  <div class="text-xs text-surface-400 mb-1">Hash Output:</div>
+  <div id="out" class="w-full rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-sm text-surface-100 font-mono break-all min-h-[48px]"></div>
+<script is:inline>
+async function hash() {
+  var t = document.getElementById('inp').value;
+  var data = new TextEncoder().encode(t);
+  var buf = await crypto.subtle.digest('SHA-1', data);
+  var arr = Array.from(new Uint8Array(buf));
+  document.getElementById('out').textContent = arr.map(function(b) { return b.toString(16).padStart(2,'0'); }).join('');
+}
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is SHA1?</h2>
+  <p class="mb-3">SHA1 (Secure Hash Algorithm 1) generates a 160-bit (40-character) hash from any input text. Once widely used for security certificates and git commits, SHA1 is now considered cryptographically broken for security purposes but remains useful for checksums and data integrity.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Verifying data integrity when stronger security isn't required</li>
+    <li>Understanding legacy systems that still use SHA1 for checksums</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Enter any text and click Generate SHA1 to create a 40-character hexadecimal hash.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/sha256/" class="text-primary hover:underline">SHA256 Hash Generator</a> for a cryptographically secure alternative.</p>
+</div>
+</ToolLayout>

@@ -32,4 +32,18 @@ function apply(type) {
     case 'camel': r.textContent = t.replace(/[-_\s]+(.)?/g, function(_,c){return c?c.toUpperCase():'';}).replace(/^./, function(c){return c.toLowerCase();}); break;
   }
 }
-</script></ToolLayout>
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Case Converter?</h2>
+  <p class="mb-3">A case converter transforms text between different capitalization styles — including UPPERCASE, lowercase, Title Case, camelCase, snake_case, and more. Each style serves a different purpose in writing, programming, and design.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Naming variables and functions consistently in code (camelCase for JS, snake_case for Python)</li>
+    <li>Formatting headlines, titles, and document headings to match style guides</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Paste your text and choose a transformation style from the available options to instantly convert.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/text-sort/" class="text-primary hover:underline">Text Line Sorter</a> for alphabetizing and organizing text lines.</p>
+</div>
+</ToolLayout>

@@ -1,0 +1,63 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Input from '../components/Input.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Nano ID Generator"
+  description="Generate compact, URL-friendly unique IDs"
+  category="Generator"
+  keywords={["nanoid", "id", "generator", "unique"]}
+>
+  <div class="flex gap-3 items-end flex-wrap mb-4">
+    <div>
+      <label for="len" class="text-sm text-surface-300 mb-1.5 block">Length</label>
+      <Input id="len" type="number" value="21" class="w-24" />
+    </div>
+    <div>
+      <label for="count" class="text-sm text-surface-300 mb-1.5 block">Count</label>
+      <Input id="count" type="number" value="5" class="w-24" />
+    </div>
+    <Button onclick="generate()">Generate</Button>
+  </div>
+  <div id="result" class="space-y-2"></div>
+<script is:inline>
+var alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz-';
+function nanoid(len) {
+  var id = '';
+  for (var i = 0; i < len; i++) id += alphabet[Math.floor(Math.random() * alphabet.length)];
+  return id;
+}
+function generate() {
+  var len = parseInt(document.getElementById('len').value) || 21;
+  var count = Math.min(parseInt(document.getElementById('count').value) || 5, 20);
+  var html = '';
+  for (var i = 0; i < count; i++) {
+    var id = nanoid(len);
+    html += '<div class="flex items-center gap-3 bg-surface-800/40 border border-surface-700/30 rounded-xl px-4 py-2.5 hover:border-surface-600/50 transition-all"><span class="font-mono text-sm text-brand-400 flex-1 break-all">' + id + '</span><button onclick="copyId(\'' + id + '\',this)" class="text-xs text-surface-400 hover:text-brand-400 transition-colors cursor-pointer">Copy</button></div>';
+  }
+  document.getElementById('result').innerHTML = html;
+}
+function copyId(id, btn) {
+  navigator.clipboard.writeText(id).then(function() {
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = 'Copy'; }, 800);
+  });
+}
+generate();
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Nano ID Generator?</h2>
+  <p class="mb-3">Nano ID is a tiny, URL-friendly unique string generator that's faster and more compact than UUID. At just 21 characters by default, Nano IDs use a custom alphabet of 64 characters optimized for readability and are ideal for JavaScript and Node.js applications.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Generating short, unique keys for database records, cache entries, or file names</li>
+    <li>Creating compact IDs for URL shorteners or public-facing identifiers</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Choose a length and count, then click Generate. Click Copy on any ID to copy it to clipboard.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/uuid-generator/" class="text-primary hover:underline">UUID Generator</a> for standard 128-bit UUIDs instead of compact Nano IDs.</p>
+</div>
+</ToolLayout>

@@ -70,7 +70,17 @@ function copyResult() {
   });
 }
 </script>
-<slot name="info" slot="info">
-  <p>Select a category (Length, Weight, Temperature, Area, Volume, Speed, Time), enter a value, and get instant conversions to all related units. Supports metric and imperial units.</p>
-</slot>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Unit Converter?</h2>
+  <p class="mb-3">A unit converter instantly translates values between different measurement systems — from metric to imperial for length, weight, temperature, and more. It supports seven common categories of measurement and eliminates the need to memorize conversion formulas.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Converting cooking measurements between metric and imperial units when following recipes</li>
+    <li>Translating distances, weights, and temperatures when reading international content or traveling</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Select a category, enter a value, and see instant conversions to all related units in that category.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/number-base/" class="text-primary hover:underline">Number Base Converter</a> for converting between binary, octal, decimal, and hexadecimal.</p>
+</div>
 </ToolLayout>

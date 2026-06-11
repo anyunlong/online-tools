@@ -1,0 +1,80 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Input from '../components/Input.astro';
+---
+
+<ToolLayout
+  title="HTTP Headers Reference"
+  description="Reference for common HTTP request and response headers"
+  category="Network"
+  keywords={["http", "headers", "reference", "web"]}
+>
+  <Input id="search" placeholder="Search headers by name or description..." class="w-full mb-4" oninput="filter()" />
+  <div class="overflow-x-auto max-h-[500px] overflow-y-auto">
+    <table class="w-full text-xs text-surface-300">
+      <thead><tr class="text-surface-400 border-b border-surface-700 sticky top-0 bg-surface-900">
+        <th class="text-left py-2 px-2">Header</th><th class="text-left py-2 px-2">Type</th><th class="text-left py-2 px-2">Description</th>
+      </tr></thead>
+      <tbody id="table-body"></tbody>
+    </table>
+  </div>
+<script is:inline>
+var headers = [
+  ['Accept','Request','Media types the client can handle'],
+  ['Authorization','Request','Authentication credentials for HTTP auth'],
+  ['Cache-Control','General','Directives for caching mechanisms'],
+  ['Content-Encoding','Entity','Encoding type of the body (gzip, deflate)'],
+  ['Content-Length','Entity','Size of the body in bytes'],
+  ['Content-Type','Entity','Media type of the body'],
+  ['Cookie','Request','Stored cookies sent by the client'],
+  ['Cross-Origin-Resource-Policy','Response','Controls cross-origin resource sharing'],
+  ['Date','General','Date and time of the message'],
+  ['ETag','Response','Entity tag for cache validation'],
+  ['Host','Request','Domain name of the server and port'],
+  ['If-Modified-Since','Request','Conditional GET for caching'],
+  ['Last-Modified','Response','Last modification date of the resource'],
+  ['Location','Response','Redirect URL for 3xx responses'],
+  ['Origin','Request','Origin of the cross-site request'],
+  ['Referer','Request','Previous page URL that linked here'],
+  ['Server','Response','Server software information'],
+  ['Set-Cookie','Response','Cookie to be stored by the client'],
+  ['Strict-Transport-Security','Response','Enforce HTTPS (HSTS)'],
+  ['User-Agent','Request','Client application identifier'],
+  ['X-Content-Type-Options','Response','Prevent MIME sniffing'],
+  ['X-Frame-Options','Response','Clickjacking protection'],
+  ['X-XSS-Protection','Response','Cross-site scripting filter'],
+  ['X-Forwarded-For','Request','Client IP through proxy'],
+  ['X-Requested-With','Request','Identifies AJAX requests'],
+  ['Access-Control-Allow-Origin','Response','CORS permission header'],
+  ['Access-Control-Allow-Methods','Response','Allowed HTTP methods for CORS'],
+  ['Accept-Encoding','Request','Compression algorithms client supports'],
+  ['Accept-Language','Request','Preferred language for response'],
+  ['Connection','General','Control connection options'],
+];
+function render(data) {
+  var html = '';
+  for (var i = 0; i < data.length; i++) {
+    html += '<tr class="border-b border-surface-800 hover:bg-surface-800/30"><td class="py-1.5 px-2 font-mono text-brand-400">' + data[i][0] + '</td><td class="py-1.5 px-2">' + data[i][1] + '</td><td class="py-1.5 px-2">' + data[i][2] + '</td></tr>';
+  }
+  document.getElementById('table-body').innerHTML = html;
+}
+function filter() {
+  var q = document.getElementById('search').value.toLowerCase();
+  render(headers.filter(function(r) { return r[0].toLowerCase().includes(q) || r[2].toLowerCase().includes(q); }));
+}
+render(headers);
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is an HTTP Headers Reference?</h2>
+  <p class="mb-3">An HTTP headers reference lists the most common request and response headers used in web communication — from caching and authentication to CORS and security. Understanding headers is essential for web development, API design, and debugging.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Looking up what a specific HTTP header does when debugging API requests</li>
+    <li>Learning which security headers to add for protecting your web application</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Browse the full reference or search by header name or description to find what you need.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/http-status/" class="text-primary hover:underline">HTTP Status Codes</a> for understanding server response codes.</p>
+</div>
+</ToolLayout>

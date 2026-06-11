@@ -33,4 +33,18 @@ function dateToTs() {
 document.getElementById('current').textContent = 'Current timestamp (sec): ' + Math.floor(Date.now() / 1000);
 var now = new Date();
 document.getElementById('dt').value = now.toISOString().slice(0, 16);
-</script></ToolLayout>
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Timestamp Converter?</h2>
+  <p class="mb-3">A timestamp converter translates between Unix timestamps (seconds or milliseconds since January 1, 1970) and human-readable dates. Unix timestamps are widely used in programming, databases, and APIs to represent points in time as simple numbers.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Debugging API responses that return timestamps instead of formatted dates</li>
+    <li>Analyzing server logs, database entries, and event tracking data</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Enter a Unix timestamp to view the corresponding date, or pick a date to get its timestamp value.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/date-calculator/" class="text-primary hover:underline">Date Calculator</a> for adding or subtracting days between dates.</p>
+</div>
+</ToolLayout>

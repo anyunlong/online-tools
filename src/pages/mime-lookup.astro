@@ -1,0 +1,112 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Input from '../components/Input.astro';
+---
+
+<ToolLayout
+  title="MIME Type Lookup"
+  description="Look up MIME types by file extension or type"
+  category="Dev Tools"
+  keywords={["mime", "type", "file", "extension"]}
+>
+  <Input id="search" placeholder="Search by extension, MIME type, or description..." class="w-full mb-4" oninput="filter()" />
+  <div class="overflow-x-auto max-h-[500px] overflow-y-auto">
+    <table class="w-full text-xs text-surface-300">
+      <thead><tr class="text-surface-400 border-b border-surface-700 sticky top-0 bg-surface-900">
+        <th class="text-left py-2 px-2">Extension</th><th class="text-left py-2 px-2">MIME Type</th><th class="text-left py-2 px-2">Description</th>
+      </tr></thead>
+      <tbody id="table-body"></tbody>
+    </table>
+  </div>
+<script is:inline>
+var mimeTypes = [
+  ['aac','audio/aac','AAC audio'],
+  ['avi','video/x-msvideo','AVI video'],
+  ['bin','application/octet-stream','Binary data'],
+  ['bmp','image/bmp','Bitmap image'],
+  ['bz','application/x-bzip','BZip archive'],
+  ['bz2','application/x-bzip2','BZip2 archive'],
+  ['css','text/css','CSS stylesheet'],
+  ['csv','text/csv','CSV spreadsheet'],
+  ['doc','application/msword','Microsoft Word'],
+  ['docx','application/vnd.openxmlformats-officedocument.wordprocessingml.document','Word (OOXML)'],
+  ['eot','application/vnd.ms-fontobject','EOT font'],
+  ['epub','application/epub+zip','ePub ebook'],
+  ['gz','application/gzip','GZip archive'],
+  ['gif','image/gif','GIF image'],
+  ['htm','text/html','HTML document'],
+  ['html','text/html','HTML document'],
+  ['ico','image/vnd.microsoft.icon','Icon file'],
+  ['jar','application/java-archive','Java archive'],
+  ['jpeg','image/jpeg','JPEG image'],
+  ['jpg','image/jpeg','JPEG image'],
+  ['js','application/javascript','JavaScript'],
+  ['json','application/json','JSON data'],
+  ['jsonld','application/ld+json','JSON-LD'],
+  ['md','text/markdown','Markdown'],
+  ['mid','audio/midi','MIDI audio'],
+  ['midi','audio/midi','MIDI audio'],
+  ['mjs','application/javascript','JavaScript module'],
+  ['mp3','audio/mpeg','MP3 audio'],
+  ['mp4','video/mp4','MP4 video'],
+  ['mpeg','video/mpeg','MPEG video'],
+  ['oga','audio/ogg','OGG audio'],
+  ['ogv','video/ogg','OGG video'],
+  ['ogx','application/ogg','OGG container'],
+  ['opus','audio/opus','Opus audio'],
+  ['otf','font/otf','OpenType font'],
+  ['pdf','application/pdf','PDF document'],
+  ['png','image/png','PNG image'],
+  ['ppt','application/vnd.ms-powerpoint','PowerPoint'],
+  ['pptx','application/vnd.openxmlformats-officedocument.presentationml.presentation','PowerPoint (OOXML)'],
+  ['rar','application/vnd.rar','RAR archive'],
+  ['rtf','application/rtf','Rich Text Format'],
+  ['sh','application/x-sh','Shell script'],
+  ['svg','image/svg+xml','SVG image'],
+  ['tar','application/x-tar','TAR archive'],
+  ['tif','image/tiff','TIFF image'],
+  ['tiff','image/tiff','TIFF image'],
+  ['ts','video/mp2t','MPEG transport stream'],
+  ['ttf','font/ttf','TrueType font'],
+  ['txt','text/plain','Plain text'],
+  ['wav','audio/wav','WAV audio'],
+  ['weba','audio/webm','WebM audio'],
+  ['webm','video/webm','WebM video'],
+  ['webp','image/webp','WebP image'],
+  ['woff','font/woff','WOFF font'],
+  ['woff2','font/woff2','WOFF2 font'],
+  ['xhtml','application/xhtml+xml','XHTML'],
+  ['xls','application/vnd.ms-excel','Microsoft Excel'],
+  ['xlsx','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet','Excel (OOXML)'],
+  ['xml','text/xml','XML document'],
+  ['xul','application/vnd.mozilla.xul+xml','XUL document'],
+  ['zip','application/zip','ZIP archive'],
+  ['7z','application/x-7z-compressed','7-Zip archive'],
+];
+function render(data) {
+  var html = '';
+  for (var i = 0; i < data.length; i++) {
+    html += '<tr class="border-b border-surface-800 hover:bg-surface-800/30"><td class="py-1.5 px-2 font-mono text-brand-400">.' + data[i][0] + '</td><td class="py-1.5 px-2 font-mono">' + data[i][1] + '</td><td class="py-1.5 px-2">' + data[i][2] + '</td></tr>';
+  }
+  document.getElementById('table-body').innerHTML = html;
+}
+function filter() {
+  var q = document.getElementById('search').value.toLowerCase();
+  render(mimeTypes.filter(function(r) { return r[0].includes(q) || r[1].toLowerCase().includes(q) || r[2].toLowerCase().includes(q); }));
+}
+render(mimeTypes);
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a MIME Type Lookup?</h2>
+  <p class="mb-3">A MIME type lookup shows the relationship between file extensions and their corresponding internet media types (like text/html for .html files). MIME types tell browsers and servers how to handle files — whether to display them, download them, or process them.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Setting correct Content-Type headers when serving files from a web server</li>
+    <li>Looking up the proper MIME type for file upload validation in web applications</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Browse the full reference table or search by file extension, MIME type, or description.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/http-status/" class="text-primary hover:underline">HTTP Status Codes</a> for another essential web development reference.</p>
+</div>
+</ToolLayout>

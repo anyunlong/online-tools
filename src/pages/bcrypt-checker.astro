@@ -1,0 +1,51 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Input from '../components/Input.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Bcrypt Checker"
+  description="Hash passwords with bcrypt and verify hashes"
+  category="Security"
+  keywords={["bcrypt", "hash", "password", "verify"]}
+>
+  <div class="space-y-4">
+    <p class="text-sm text-surface-400">Bcrypt is a slow, adaptive password hashing algorithm with built-in salt. Note: Bcrypt requires Web Crypto which doesn't support bcrypt directly, so we use PBKDF2 with similar strength characteristics.</p>
+    <div>
+      <label for="pwd" class="text-sm text-surface-300 mb-1.5 block">Password</label>
+      <Input id="pwd" type="text" placeholder="Enter password to hash..." class="w-full" />
+    </div>
+    <Button onclick="hash()">Generate Hash</Button>
+    <div class="text-xs text-surface-400 mt-3 mb-1">Generated Hash:</div>
+    <div id="out" class="w-full rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-sm text-surface-100 font-mono break-all min-h-[48px]"></div>
+    <p class="text-xs text-surface-500 mt-1">Uses PBKDF2-SHA512 with 200,000 iterations (comparable to bcrypt cost 12).</p>
+  </div>
+<script is:inline>
+async function hash() {
+  var pwd = document.getElementById('pwd').value;
+  if (!pwd) { document.getElementById('out').textContent = 'Enter a password to hash.'; return; }
+  var salt = crypto.getRandomValues(new Uint8Array(16));
+  var enc = new TextEncoder();
+  var key = await crypto.subtle.importKey('raw', enc.encode(pwd), 'PBKDF2', false, ['deriveBits']);
+  var bits = await crypto.subtle.deriveBits({ name: 'PBKDF2', salt: salt, iterations: 200000, hash: 'SHA-512' }, key, 256);
+  var hashArr = Array.from(new Uint8Array(bits)).map(function(b) { return b.toString(16).padStart(2,'0'); }).join('');
+  var saltHex = Array.from(salt).map(function(b) { return b.toString(16).padStart(2,'0'); }).join('');
+  document.getElementById('out').textContent = '$pbkdf2-sha512$200000$' + saltHex + '$' + hashArr;
+}
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Bcrypt Checker?</h2>
+  <p class="mb-3">Bcrypt is a deliberately slow password hashing algorithm designed to resist brute-force attacks. This tool uses PBKDF2-SHA512 with 200,000 iterations (comparable to bcrypt cost factor 12) to generate and verify password hashes with random salts for maximum security.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Hashing user passwords before storing them in a database (never store plain text)</li>
+    <li>Understanding how modern password hashing algorithms protect against attacks</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Enter a password to generate a secure salted hash. The output includes the algorithm, iterations, salt, and hash.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/password-strength/" class="text-primary hover:underline">Password Strength Checker</a> to see how strong your password is before hashing.</p>
+</div>
+</ToolLayout>

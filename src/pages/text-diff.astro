@@ -52,7 +52,17 @@ function clearAll() {
   document.getElementById('msg').textContent = '';
 }
 </script>
-<slot name="info" slot="info">
-  <p>Paste two texts into the left and right panels, then click Compare. Differences are highlighted: additions in green, deletions in red. Great for comparing code versions, document revisions, and configuration files.</p>
-</slot>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Text Diff Checker?</h2>
+  <p class="mb-3">A text diff checker compares two blocks of text side by side and highlights every difference — additions, deletions, and modifications. It's the same concept as the `git diff` command developers use daily, but in an easy web interface anyone can use.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Comparing different versions of a document, contract, or article to spot changes</li>
+    <li>Reviewing code changes or configuration file updates before deploying</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Paste original and modified text into the two panels, then click Compare to highlight the differences.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/regex/" class="text-primary hover:underline">Regex Tester</a> for finding patterns within a single block of text.</p>
+</div>
 </ToolLayout>

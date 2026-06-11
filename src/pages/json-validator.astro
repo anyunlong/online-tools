@@ -42,7 +42,17 @@ function clearAll() {
   document.getElementById('msg').textContent = '';
 }
 </script>
-<slot name="info" slot="info">
-  <p>Paste JSON text and instantly see if it's valid. Shows exact error location for invalid JSON. Click Format to beautify. All processing stays in your browser.</p>
-</slot>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a JSON Validator?</h2>
+  <p class="mb-3">A JSON validator checks whether your JSON data is syntactically correct and tells you the exact location of any errors. Even a single missing comma, extra bracket, or trailing comma can break JSON — the validator catches these instantly so you can fix them.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Debugging JSON configuration files that are failing to parse in your application</li>
+    <li>Validating API request or response payloads before sending or processing them</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Paste your JSON to instantly see if it's valid, with exact error locations for invalid JSON.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/json-formatter/" class="text-primary hover:underline">JSON Formatter</a> for beautifying and formatting JSON after validation.</p>
+</div>
 </ToolLayout>

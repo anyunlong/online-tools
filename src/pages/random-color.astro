@@ -1,0 +1,58 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Input from '../components/Input.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Random Color Generator"
+  description="Generate random colors with HEX codes"
+  category="Generator"
+  keywords={["random", "color", "palette", "hex"]}
+>
+  <div class="flex gap-3 items-end mb-4">
+    <div>
+      <label for="count" class="text-sm text-surface-300 mb-1.5 block">Colors</label>
+      <Input id="count" type="number" value="5" class="w-20" />
+    </div>
+    <Button onclick="generate()">Generate</Button>
+  </div>
+  <div id="result" class="grid grid-cols-2 sm:grid-cols-5 gap-3"></div>
+<script is:inline>
+function randomHex() { return '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6,'0').toUpperCase(); }
+function generate() {
+  var count = Math.min(parseInt(document.getElementById('count').value) || 5, 20);
+  var html = '';
+  for (var i = 0; i < count; i++) {
+    var hex = randomHex();
+    html += '<div class="relative group cursor-pointer" onclick="copyColor(\'' + hex + '\',this)"><div class="h-20 rounded-xl shadow-lg" style="background:' + hex + '"></div><div class="mt-1 text-xs font-mono text-center text-surface-300">' + hex + '</div></div>';
+  }
+  document.getElementById('result').innerHTML = html;
+}
+function copyColor(hex, el) {
+  navigator.clipboard.writeText(hex).then(function() {
+    var orig = el.querySelector('div:last-child').textContent;
+    el.querySelector('div:last-child').textContent = 'Copied!';
+    el.querySelector('div:last-child').className = 'mt-1 text-xs font-mono text-center text-brand-400';
+    setTimeout(function() {
+      el.querySelector('div:last-child').textContent = orig;
+      el.querySelector('div:last-child').className = 'mt-1 text-xs font-mono text-center text-surface-300';
+    }, 800);
+  });
+}
+generate();
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Random Color Generator?</h2>
+  <p class="mb-3">A random color generator creates unpredictable color swatches with their HEX codes. It's a fantastic tool for breaking out of color ruts, discovering new color combinations, and finding inspiration for your next design project.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Generating fresh color palette ideas when you're stuck in a design rut</li>
+    <li>Quickly grabbing placeholder colors for UI prototypes and wireframes</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Click Generate to create new random colors. Click any color swatch to copy its HEX code.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/color-picker/" class="text-primary hover:underline">Color Picker</a> for selecting and converting specific colors.</p>
+</div>
+</ToolLayout>

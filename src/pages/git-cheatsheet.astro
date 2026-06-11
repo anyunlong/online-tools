@@ -1,0 +1,97 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Input from '../components/Input.astro';
+---
+
+<ToolLayout
+  title="Git Cheatsheet"
+  description="Quick reference for common Git commands"
+  category="Dev Tools"
+  keywords={["git", "cheatsheet", "commands", "reference"]}
+>
+  <Input id="search" placeholder="Search commands..." class="w-full mb-4" oninput="filter()" />
+  <div class="overflow-x-auto max-h-[500px] overflow-y-auto">
+    <table class="w-full text-xs text-surface-300">
+      <thead><tr class="text-surface-400 border-b border-surface-700 sticky top-0 bg-surface-900">
+        <th class="text-left py-2 px-2">Command</th><th class="text-left py-2 px-2">Description</th>
+      </tr></thead>
+      <tbody id="table-body"></tbody>
+    </table>
+  </div>
+<script is:inline>
+var commands = [
+  ['git init','Initialize a new Git repository'],
+  ['git clone &lt;url&gt;','Clone a repository from a remote URL'],
+  ['git status','Show working tree status'],
+  ['git add &lt;file&gt;','Stage a file for commit'],
+  ['git add .','Stage all changes in the current directory'],
+  ['git commit -m "msg"','Commit staged changes with a message'],
+  ['git commit --amend','Amend the last commit'],
+  ['git push','Push commits to remote repository'],
+  ['git push -u origin main','Push and set upstream branch'],
+  ['git pull','Fetch and merge changes from remote'],
+  ['git fetch','Download objects from remote without merging'],
+  ['git merge &lt;branch&gt;','Merge a branch into the current branch'],
+  ['git rebase &lt;branch&gt;','Reapply commits on top of another branch'],
+  ['git branch','List all local branches'],
+  ['git branch &lt;name&gt;','Create a new branch'],
+  ['git branch -d &lt;name&gt;','Delete a branch'],
+  ['git checkout &lt;branch&gt;','Switch to a branch'],
+  ['git checkout -b &lt;name&gt;','Create and switch to a new branch'],
+  ['git switch &lt;branch&gt;','Switch branches (modern)'],
+  ['git switch -c &lt;name&gt;','Create and switch (modern)'],
+  ['git log','Show commit history'],
+  ['git log --oneline','Compact commit history view'],
+  ['git log --graph --oneline','Visual branch graph of history'],
+  ['git diff','Show unstaged changes'],
+  ['git diff --staged','Show staged changes'],
+  ['git reset &lt;file&gt;','Unstage a file'],
+  ['git reset --hard HEAD','Discard all uncommitted changes'],
+  ['git stash','Temporarily save uncommitted changes'],
+  ['git stash pop','Restore stashed changes'],
+  ['git stash list','List all stashes'],
+  ['git remote -v','Show remote repositories'],
+  ['git remote add origin &lt;url&gt;','Add a remote repository'],
+  ['git tag &lt;name&gt;','Create a lightweight tag'],
+  ['git tag -a v1.0 -m "msg"','Create an annotated tag'],
+  ['git push --tags','Push tags to remote'],
+  ['git revert &lt;commit&gt;','Create a new commit that undoes a previous commit'],
+  ['git cherry-pick &lt;commit&gt;','Apply a specific commit to the current branch'],
+  ['git bisect start','Start binary search to find a buggy commit'],
+  ['git blame &lt;file&gt;','Show who last modified each line of a file'],
+  ['git reflog','Show reference log of HEAD changes'],
+  ['git clean -fd','Remove untracked files and directories'],
+  ['git rm &lt;file&gt;','Remove a file from working tree and stage removal'],
+  ['git mv &lt;old&gt; &lt;new&gt;','Move or rename a file'],
+  ['git config --global user.name "Name"','Set your Git username'],
+  ['git config --global user.email "email"','Set your Git email'],
+  ['git restore &lt;file&gt;','Restore a file to its last committed state'],
+  ['git restore --staged &lt;file&gt;','Unstage a file (modern)'],
+];
+function render(data) {
+  var html = '';
+  for (var i = 0; i < data.length; i++) {
+    html += '<tr class="border-b border-surface-800 hover:bg-surface-800/30"><td class="py-1.5 px-2 font-mono text-brand-400 text-xs">' + data[i][0].replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</td><td class="py-1.5 px-2">' + data[i][1] + '</td></tr>';
+  }
+  document.getElementById('table-body').innerHTML = html;
+}
+function filter() {
+  var q = document.getElementById('search').value.toLowerCase();
+  render(commands.filter(function(r) { return r[0].toLowerCase().includes(q) || r[1].toLowerCase().includes(q); }));
+}
+render(commands);
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Git Cheatsheet?</h2>
+  <p class="mb-3">A Git cheatsheet is a quick-reference guide listing the most commonly used Git commands — from basic operations like commit and push to advanced techniques like rebase, bisect, and cherry-pick. It saves you from having to memorize dozens of commands.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Quickly finding a Git command you rarely use, like reverting a commit or stashing changes</li>
+    <li>Learning Git progressively by exploring commands organized by common workflows</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Browse all 46 commands or search by keyword to find the exact Git command you need.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/text-diff/" class="text-primary hover:underline">Text Diff Checker</a> for comparing file versions like a visual git diff.</p>
+</div>
+</ToolLayout>

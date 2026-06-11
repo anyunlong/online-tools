@@ -1,0 +1,69 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Input from '../components/Input.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Random Number Generator"
+  description="Generate random numbers within a range"
+  category="Generator"
+  keywords={["random", "number", "generator"]}
+>
+  <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-4">
+    <div>
+      <label for="min" class="text-sm text-surface-300 mb-1.5 block">Min</label>
+      <Input id="min" type="number" value="1" class="w-full" />
+    </div>
+    <div>
+      <label for="max" class="text-sm text-surface-300 mb-1.5 block">Max</label>
+      <Input id="max" type="number" value="100" class="w-full" />
+    </div>
+    <div>
+      <label for="count" class="text-sm text-surface-300 mb-1.5 block">Count</label>
+      <Input id="count" type="number" value="5" class="w-full" />
+    </div>
+  </div>
+  <div class="flex gap-2 mb-4">
+    <Button onclick="generate()">Generate</Button>
+    <Button variant="secondary" onclick="copyRes()">Copy</Button>
+  </div>
+  <div id="result" class="flex flex-wrap gap-2"></div>
+<script is:inline>
+function generate() {
+  var min = parseInt(document.getElementById('min').value) || 0;
+  var max = parseInt(document.getElementById('max').value) || 100;
+  var count = Math.min(parseInt(document.getElementById('count').value) || 5, 50);
+  var html = '';
+  for (var i = 0; i < count; i++) {
+    var n = Math.floor(Math.random() * (max - min + 1)) + min;
+    html += '<span class="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-surface-800/50 border border-surface-700 text-xl font-bold text-brand-400 font-mono">' + n + '</span>';
+  }
+  document.getElementById('result').innerHTML = html;
+}
+function copyRes() {
+  var nums = [];
+  var spans = document.getElementById('result').querySelectorAll('span');
+  for (var i = 0; i < spans.length; i++) nums.push(spans[i].textContent);
+  navigator.clipboard.writeText(nums.join(', ')).then(function() {
+    var btn = document.querySelector('[onclick="copyRes()"]');
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = 'Copy'; }, 1500);
+  });
+}
+generate();
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Random Number Generator?</h2>
+  <p class="mb-3">A random number generator produces unpredictable numbers within a range you specify. It's useful for everything from simple dice rolling to generating test data, picking lottery numbers, or assigning random IDs in development.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Generating sample data for testing forms, databases, or API endpoints</li>
+    <li>Running fair drawings, giveaways, or random selections from a range</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Set your minimum and maximum values, choose how many numbers to generate, and click Generate.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/random-string/" class="text-primary hover:underline">Random String Generator</a> for generating random alphanumeric strings.</p>
+</div>
+</ToolLayout>

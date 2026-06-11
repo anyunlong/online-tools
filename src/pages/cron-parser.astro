@@ -1,0 +1,82 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Input from '../components/Input.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Cron Expression Parser"
+  description="Parse and explain cron schedule expressions"
+  category="Time"
+  keywords={["cron", "schedule", "crontab", "parser"]}
+>
+  <Input id="cron" placeholder="Enter cron expression (e.g. */5 * * * *)" value="0 9 * * 1-5" class="w-full mb-4" />
+  <Button onclick="parseCron()">Parse</Button>
+  <div id="result" class="mt-4 space-y-2"></div>
+  <div class="mt-4 text-xs text-surface-500">
+    <p>Format: minute hour day-of-month month day-of-week</p>
+    <p class="mt-1">Examples: <code class="text-brand-400 cursor-pointer" onclick="setExample('*/5 * * * *')">*/5 * * * *</code> (every 5 min) · <code class="text-brand-400 cursor-pointer" onclick="setExample('0 9 * * 1-5')">0 9 * * 1-5</code> (9am weekdays) · <code class="text-brand-400 cursor-pointer" onclick="setExample('0 0 1 * *')">0 0 1 * *</code> (midnight 1st)</p>
+  </div>
+<script is:inline>
+function setExample(v) { document.getElementById('cron').value = v; parseCron(); }
+function parseCron() {
+  var parts = document.getElementById('cron').value.trim().split(/\s+/);
+  if (parts.length !== 5) { document.getElementById('result').innerHTML = '<p class="text-sm text-red-400">Cron expression must have exactly 5 parts (minute hour day-of-month month day-of-week)</p>'; return; }
+  var fields = [
+    { name: 'Minute', value: parts[0], range: '0-59' },
+    { name: 'Hour', value: parts[1], range: '0-23' },
+    { name: 'Day of Month', value: parts[2], range: '1-31' },
+    { name: 'Month', value: parts[3], range: '1-12' },
+    { name: 'Day of Week', value: parts[4], range: '0-7 (0 and 7 = Sunday)' }
+  ];
+  var descs = {
+    '*': 'every {name}',
+    '*/2': 'every 2nd {name}', '*/5': 'every 5th {name}', '*/10': 'every 10th {name}', '*/15': 'every 15th {name}', '*/30': 'every 30th {name}',
+  };
+  function describe(f) {
+    if (f.value === '*') return 'every ' + f.name.toLowerCase();
+    if (f.value.startsWith('*/')) return 'every ' + f.value.substring(2) + (f.value.substring(2) === '1' ? 'st' : f.value.substring(2) === '2' ? 'nd' : f.value.substring(2) === '3' ? 'rd' : 'th') + ' ' + f.name.toLowerCase();
+    if (f.value.includes(',')) return 'at ' + f.value + ' (' + f.name.toLowerCase() + ')';
+    if (f.value.includes('-')) return f.value + ' (' + f.name.toLowerCase() + ' range)';
+    return 'at ' + f.value + ' (' + f.name.toLowerCase() + ')';
+  }
+  var html = '<div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-4"><p class="text-sm text-surface-100 mb-3">This cron job runs:</p><ul class="list-disc pl-5 space-y-1">';
+  for (var i = 0; i < fields.length; i++) {
+    html += '<li class="text-sm text-surface-300"><span class="text-brand-400 font-mono">' + fields[i].value + '</span> → ' + describe(fields[i]) + ' <span class="text-xs text-surface-500">(' + fields[i].range + ')</span></li>';
+  }
+  html += '</ul></div><div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-4 mt-3"><p class="text-sm text-surface-300">Next 5 execution times:</p><div class="mt-2 text-xs text-surface-400 font-mono space-y-0.5" id="next-times">Calculating...</div></div>';
+  document.getElementById('result').innerHTML = html;
+  function checkMatch(val, cronPart, min, max) {
+    if (cronPart === '*') return true;
+    if (cronPart.startsWith('*/')) { var step = parseInt(cronPart.substring(2)); return val % step === 0; }
+    if (cronPart.includes(',')) return cronPart.split(',').indexOf(String(val)) >= 0;
+    if (cronPart.includes('-')) { var r = cronPart.split('-'); return val >= parseInt(r[0]) && val <= parseInt(r[1]); }
+    return parseInt(cronPart) === val;
+  }
+  var d = new Date(); d.setSeconds(0,0);
+  var times = '', count = 0, maxTries = 3000;
+  while (count < 5 && maxTries-- > 0) {
+    d.setMinutes(d.getMinutes() + 1);
+    if (checkMatch(d.getMinutes(), parts[0], 0, 59) && checkMatch(d.getHours(), parts[1], 0, 23) && checkMatch(d.getDate(), parts[2], 1, 31) && checkMatch(d.getMonth() + 1, parts[3], 1, 12) && checkMatch(d.getDay(), parts[4], 0, 7)) {
+      times += '<div>' + d.toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' }) + '</div>';
+      count++;
+    }
+  }
+  document.getElementById('next-times').innerHTML = times || '<div>No upcoming executions found</div>';
+}
+parseCron();
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Cron Expression Parser?</h2>
+  <p class="mb-3">A cron expression parser decodes the 5-field schedule syntax used by cron (Unix job scheduler) into plain English. It also calculates upcoming execution times, helping you verify that your scheduled tasks will run when expected.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Verifying cron schedule expressions before deploying them to production servers</li>
+    <li>Learning cron syntax when setting up automated backups, reports, or maintenance jobs</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Enter a cron expression and click Parse to see what each field means and the next 5 execution times.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/timestamp/" class="text-primary hover:underline">Timestamp Converter</a> for converting Unix timestamps to readable dates.</p>
+</div>
+</ToolLayout>

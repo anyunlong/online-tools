@@ -48,7 +48,17 @@ function clearAll() {
   document.getElementById('msg').textContent = '';
 }
 </script>
-<slot name="info" slot="info">
-  <p>Paste a JWT token to decode its header and payload. Displays expiration time, issued-at, subject, and all claims. Decoding happens entirely in your browser — the token is never sent to any server.</p>
-</slot>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a JWT Decoder?</h2>
+  <p class="mb-3">A JWT (JSON Web Token) decoder unpacks the encoded header and payload of a JWT token to reveal its contents — such as user ID, expiration time, and permissions. JWTs are widely used for stateless authentication in modern web APIs and single sign-on systems.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Debugging authentication issues by inspecting the claims and expiry time in a JWT token</li>
+    <li>Verifying that an API is issuing tokens with the correct user roles and permissions</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Paste a JWT token to decode and view its header, payload, expiration time, and all claims.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/base64/" class="text-primary hover:underline">Base64 Encoder</a> since JWT tokens use Base64 encoding for their header and payload sections.</p>
+</div>
 </ToolLayout>

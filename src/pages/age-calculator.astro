@@ -46,7 +46,17 @@ function copyResult() {
   });
 }
 </script>
-<slot name="info" slot="info">
-  <p>Enter your birth date to calculate your exact age in years, months, and days. Also shows total months, weeks, days, hours, and even seconds lived. Fun and useful!</p>
-</slot>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is an Age Calculator?</h2>
+  <p class="mb-3">An age calculator determines your exact age — down to the day — from your birth date. It also shows your total time lived in months, weeks, days, hours, and even seconds, which can be a fun and fascinating perspective on your life span.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Checking if you meet age requirements for a service, event, or legal purpose</li>
+    <li>Satisfying curiosity about exactly how many days or seconds you've been alive</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Enter your birth date to see your exact age in years, months, and days and total time lived.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/date-calculator/" class="text-primary hover:underline">Date Calculator</a> for calculating the difference between any two dates.</p>
+</div>
 </ToolLayout>

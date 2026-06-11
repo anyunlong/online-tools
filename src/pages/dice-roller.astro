@@ -1,0 +1,51 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Dice Roller"
+  description="Roll virtual dice for games and RPGs"
+  category="Generator"
+  keywords={["dice", "roller", "random", "rpg"]}
+>
+  <div class="flex flex-wrap gap-2 mb-4">
+    <button onclick="roll(4)" class="px-4 py-2 rounded-xl bg-surface-800 text-surface-200 border border-surface-700 hover:bg-brand-500/20 hover:border-brand-500/50 hover:text-brand-400 transition-all text-sm font-semibold">d4</button>
+    <button onclick="roll(6)" class="px-4 py-2 rounded-xl bg-surface-800 text-surface-200 border border-surface-700 hover:bg-brand-500/20 hover:border-brand-500/50 hover:text-brand-400 transition-all text-sm font-semibold">d6</button>
+    <button onclick="roll(8)" class="px-4 py-2 rounded-xl bg-surface-800 text-surface-200 border border-surface-700 hover:bg-brand-500/20 hover:border-brand-500/50 hover:text-brand-400 transition-all text-sm font-semibold">d8</button>
+    <button onclick="roll(10)" class="px-4 py-2 rounded-xl bg-surface-800 text-surface-200 border border-surface-700 hover:bg-brand-500/20 hover:border-brand-500/50 hover:text-brand-400 transition-all text-sm font-semibold">d10</button>
+    <button onclick="roll(12)" class="px-4 py-2 rounded-xl bg-surface-800 text-surface-200 border border-surface-700 hover:bg-brand-500/20 hover:border-brand-500/50 hover:text-brand-400 transition-all text-sm font-semibold">d12</button>
+    <button onclick="roll(20)" class="px-4 py-2 rounded-xl bg-surface-800 text-surface-200 border border-surface-700 hover:bg-brand-500/20 hover:border-brand-500/50 hover:text-brand-400 transition-all text-sm font-semibold">d20</button>
+    <button onclick="roll(100)" class="px-4 py-2 rounded-xl bg-surface-800 text-surface-200 border border-surface-700 hover:bg-brand-500/20 hover:border-brand-500/50 hover:text-brand-400 transition-all text-sm font-semibold">d100</button>
+  </div>
+  <div id="result" class="flex items-center justify-center gap-4 bg-surface-800/40 border border-surface-700/30 rounded-xl p-6 min-h-[100px]">
+    <p class="text-surface-400">Click a die to roll!</p>
+  </div>
+  <div id="history" class="mt-3 flex flex-wrap gap-1.5"></div>
+<script is:inline>
+var history = [];
+function roll(sides) {
+  var result = Math.floor(Math.random() * sides) + 1;
+  history.unshift(sides + ': ' + result);
+  if (history.length > 20) history.pop();
+  var color = '#6366f1';
+  if (result === sides) color = '#22c55e';
+  else if (result === 1) color = '#ef4444';
+  document.getElementById('result').innerHTML = '<div class="text-center"><div class="text-xs text-surface-500 mb-1">d' + sides + '</div><div class="text-5xl font-bold font-mono" style="color:' + color + '">' + result + '</div></div>';
+  document.getElementById('history').innerHTML = history.map(function(h) { return '<span class="text-xs bg-surface-800/50 border border-surface-700 rounded-lg px-2 py-0.5 text-surface-400 font-mono">' + h + '</span>'; }).join('');
+}
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Dice Roller?</h2>
+  <p class="mb-3">A dice roller simulates rolling polyhedral dice — d4 through d100 — right in your browser. It tracks your roll history and visually highlights critical successes (max roll) and failures (1), making it perfect for tabletop RPGs like D&D.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Playing tabletop RPGs like Dungeons & Dragons when you don't have physical dice</li>
+    <li>Making random decisions, like who goes first in a board game</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Click any die button to roll. The result highlights green on max rolls and red on rolls of 1.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/random-number/" class="text-primary hover:underline">Random Number Generator</a> for generating numbers in custom numeric ranges.</p>
+</div>
+</ToolLayout>

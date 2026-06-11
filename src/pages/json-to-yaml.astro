@@ -1,0 +1,92 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="JSON to YAML Converter"
+  description="Convert JSON data to YAML format"
+  category="Dev Tools"
+  keywords={["json", "yaml", "convert"]}
+>
+  <Textarea id="inp" placeholder="Paste JSON here..." rows="12" class="tool-area" />
+  <div class="flex gap-2 mt-4">
+    <Button onclick="convert()">Convert to YAML</Button>
+    <Button variant="secondary" onclick="copyOut()">Copy</Button>
+  </div>
+  <div class="text-xs text-surface-400 mt-3 mb-1">YAML Output:</div>
+  <div id="out" class="w-full rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 font-mono overflow-auto min-h-[200px] max-h-[500px] whitespace-pre"></div>
+  <div id="msg" class="text-xs mt-2 text-surface-400"></div>
+<script is:inline>
+function jsonToYaml(obj, indent) {
+  indent = indent || 0;
+  var spaces = '  '.repeat(indent);
+  if (obj === null) return 'null';
+  if (typeof obj === 'boolean') return obj ? 'true' : 'false';
+  if (typeof obj === 'number') return String(obj);
+  if (typeof obj === 'string') {
+    if (obj.includes(':') || obj.includes('#') || obj.includes('{') || obj.includes('[') || obj.includes('\n') || obj === '') return '"' + obj.replace(/"/g,'\\"') + '"';
+    return obj;
+  }
+  if (Array.isArray(obj)) {
+    if (obj.length === 0) return '[]';
+    var yaml = '';
+    for (var i = 0; i < obj.length; i++) {
+      yaml += spaces + '- ' + jsonToYaml(obj[i], indent + 1).replace(/^  /,'') + '\n';
+    }
+    return yaml;
+  }
+  if (typeof obj === 'object') {
+    var keys = Object.keys(obj);
+    if (keys.length === 0) return '{}';
+    var yaml = '';
+    for (var i = 0; i < keys.length; i++) {
+      var k = keys[i];
+      var v = obj[k];
+      if (typeof v === 'object' && v !== null) {
+        yaml += spaces + k + ':\n' + jsonToYaml(v, indent + 1);
+      } else {
+        yaml += spaces + k + ': ' + jsonToYaml(v, indent) + '\n';
+      }
+    }
+    return yaml;
+  }
+  return String(obj);
+}
+function convert() {
+  try {
+    var json = JSON.parse(document.getElementById('inp').value);
+    var yaml = jsonToYaml(json);
+    document.getElementById('out').textContent = yaml.trim();
+    document.getElementById('msg').textContent = 'Conversion successful';
+    document.getElementById('msg').className = 'text-xs mt-2 text-brand-400';
+  } catch(e) {
+    document.getElementById('msg').textContent = 'Error: ' + e.message;
+    document.getElementById('msg').className = 'text-xs mt-2 text-red-400';
+  }
+}
+function copyOut() {
+  var t = document.getElementById('out').textContent;
+  if (!t) return;
+  navigator.clipboard.writeText(t).then(function() {
+    var btn = document.querySelector('[onclick="copyOut()"]');
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = 'Copy'; }, 1500);
+  });
+}
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a JSON to YAML Converter?</h2>
+  <p class="mb-3">A JSON to YAML converter transforms JSON data into the more human-readable YAML format, commonly used for configuration files in DevOps tools like Docker, Kubernetes, and Ansible. YAML's indentation-based structure makes complex configurations easier to scan and edit.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Creating Docker Compose files, CI/CD pipeline configs, or Kubernetes manifests from JSON data</li>
+    <li>Converting API responses to a more readable configuration format for documentation</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Paste valid JSON and click Convert to YAML to get clean, indented YAML output.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/json-validator/" class="text-primary hover:underline">JSON Validator</a> to check your JSON syntax before conversion.</p>
+</div>
+</ToolLayout>

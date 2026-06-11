@@ -1,0 +1,71 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const allPosts = await getCollection('blog');
+const posts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const blogSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  name: '4uses Blog',
+  description: 'Tips, guides, and insights about online tools for developers, designers, and everyday users.',
+  url: new URL('/blog', Astro.site || Astro.url.origin).href,
+  blogPost: posts.map((post) => ({
+    '@type': 'BlogPosting',
+    headline: post.data.title,
+    description: post.data.description,
+    datePublished: post.data.date.toISOString(),
+    url: new URL(`/blog/${post.id.replace(/\.md$/, '')}`, Astro.site || Astro.url.origin).href,
+  })),
+};
+---
+
+<BaseLayout
+  title="4uses Blog - Online Tools Tips & Guides"
+  description="Tips, guides, and in-depth articles about online tools, web development, security, and productivity. Learn how to use free online tools effectively."
+  schema={blogSchema}
+>
+  <Header />
+  <main class="flex-1 max-w-3xl mx-auto px-4 py-8 w-full">
+    <div class="mb-8">
+      <div class="flex items-center gap-2 mb-3">
+        <a href="/" class="text-xs text-surface-500 hover:text-brand-400 no-underline transition-colors">Home</a>
+        <span class="text-surface-600">/</span>
+        <span class="text-xs text-surface-400">Blog</span>
+      </div>
+      <h1 class="text-3xl font-bold text-white mb-2">4uses Blog</h1>
+      <p class="text-surface-400 text-sm">Tips, guides, and insights about online tools for developers, designers, and everyday users.</p>
+    </div>
+
+    <div class="space-y-6">
+      {posts.map((post) => (
+        <article class="bg-surface-900 border border-surface-700/30 rounded-2xl p-5 sm:p-6 hover:border-surface-600/50 transition-all duration-200">
+          <a href={`/blog/${post.id.replace(/\.md$/, '')}`} class="no-underline group">
+            <div class="flex items-center gap-3 text-xs text-surface-500 mb-2">
+              <time datetime={post.data.date.toISOString()}>
+                {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </time>
+              {post.data.tags.length > 0 && (
+                <div class="flex gap-1.5">
+                  {post.data.tags.map((tag: string) => (
+                    <span class="bg-surface-800 text-surface-400 px-2 py-0.5 rounded-full">{tag}</span>
+                  ))}
+                </div>
+              )}
+            </div>
+            <h2 class="text-lg font-semibold text-white group-hover:text-brand-400 transition-colors mb-1.5">{post.data.title}</h2>
+            <p class="text-sm text-surface-400 leading-relaxed">{post.data.description}</p>
+          </a>
+        </article>
+      ))}
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-surface-800/50 text-center">
+      <p class="text-sm text-surface-500">More articles coming soon. Check back for updates.</p>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

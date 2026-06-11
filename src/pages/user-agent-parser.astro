@@ -1,0 +1,61 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Input from '../components/Input.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="User Agent Parser"
+  description="Parse and decode browser user agent strings"
+  category="Dev Tools"
+  keywords={["user-agent", "parser", "browser", "os"]}
+>
+  <Input id="ua" class="w-full" placeholder="Paste a user agent string..." oninput="parse()" />
+  <div class="flex gap-2 mt-3">
+    <Button onclick="loadCurrent()">Load My UA</Button>
+  </div>
+  <div id="result" class="mt-4 space-y-2"></div>
+<script is:inline>
+function parse() {
+  var ua = document.getElementById('ua').value.trim();
+  if (!ua) { document.getElementById('result').innerHTML = ''; return; }
+  var browser = 'Unknown', os = 'Unknown', device = 'Desktop';
+  if (ua.includes('Firefox/')) browser = 'Firefox ' + (ua.match(/Firefox\/(\d+)/) || [])[1];
+  else if (ua.includes('Edg/')) browser = 'Edge ' + (ua.match(/Edg\/(\d+)/) || [])[1];
+  else if (ua.includes('Chrome/')) browser = 'Chrome ' + (ua.match(/Chrome\/(\d+)/) || [])[1];
+  else if (ua.includes('Safari/') && !ua.includes('Chrome')) browser = 'Safari ' + (ua.match(/Version\/(\d+)/) || [])[1];
+  if (ua.includes('Windows')) os = 'Windows';
+  else if (ua.includes('Mac OS X')) os = 'macOS';
+  else if (ua.includes('Android')) { os = 'Android'; device = 'Mobile'; }
+  else if (ua.includes('iPhone') || ua.includes('iPad')) { os = 'iOS'; device = ua.includes('iPad') ? 'Tablet' : 'Mobile'; }
+  else if (ua.includes('Linux')) os = 'Linux';
+  if (ua.includes('Mobile')) device = 'Mobile';
+  else if (ua.includes('Tablet')) device = 'Tablet';
+  var engine = ua.includes('AppleWebKit') ? 'WebKit' : ua.includes('Gecko/') ? 'Gecko' : 'Unknown';
+  document.getElementById('result').innerHTML =
+    '<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">' +
+    '<div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-4"><div class="text-xs text-surface-400">Browser</div><div class="text-lg font-bold text-brand-400">' + browser + '</div></div>' +
+    '<div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-4"><div class="text-xs text-surface-400">Operating System</div><div class="text-lg font-bold text-brand-400">' + os + '</div></div>' +
+    '<div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-4"><div class="text-xs text-surface-400">Device Type</div><div class="text-lg font-bold text-brand-400">' + device + '</div></div>' +
+    '<div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-4"><div class="text-xs text-surface-400">Engine</div><div class="text-lg font-bold text-brand-400">' + engine + '</div></div>' +
+    '</div>';
+}
+function loadCurrent() {
+  document.getElementById('ua').value = navigator.userAgent;
+  parse();
+}
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a User Agent Parser?</h2>
+  <p class="mb-3">A user agent parser decodes the identifying string that every browser sends to websites — revealing the browser name and version, operating system, device type, and rendering engine. This information helps developers understand their visitors' technical environment.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Debugging browser compatibility issues by understanding what clients are using</li>
+    <li>Analyzing your own browser fingerprint for privacy awareness</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Paste a user agent string or click Load My UA to see your current browser, OS, device, and engine.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/ip-lookup/" class="text-primary hover:underline">IP Lookup</a> for finding geographical information about internet connections.</p>
+</div>
+</ToolLayout>

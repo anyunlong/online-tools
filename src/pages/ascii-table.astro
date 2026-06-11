@@ -1,0 +1,65 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Input from '../components/Input.astro';
+---
+
+<ToolLayout
+  title="ASCII Table"
+  description="Complete ASCII character reference table"
+  category="Encode/Decode"
+  keywords={["ascii", "table", "character", "reference"]}
+>
+  <Input id="search" placeholder="Search by char, code, or description..." class="w-full mb-4" oninput="filter()" />
+  <div class="overflow-x-auto">
+    <table class="w-full text-xs text-surface-300">
+      <thead><tr class="text-surface-400 border-b border-surface-700">
+        <th class="text-left py-2 px-2">Dec</th><th class="text-left py-2 px-2">Hex</th><th class="text-left py-2 px-2">Oct</th><th class="text-left py-2 px-2">Char</th><th class="text-left py-2 px-2">Description</th>
+      </tr></thead>
+      <tbody id="table-body"></tbody>
+    </table>
+  </div>
+<script is:inline>
+var ascii = [];
+for (var i = 0; i < 128; i++) {
+  var desc = '';
+  if (i === 0) desc = 'NUL (Null)';
+  else if (i === 9) desc = 'TAB (Horizontal Tab)';
+  else if (i === 10) desc = 'LF (Line Feed)';
+  else if (i === 13) desc = 'CR (Carriage Return)';
+  else if (i === 32) desc = 'Space';
+  else if (i >= 33 && i <= 47) desc = 'Punctuation';
+  else if (i >= 48 && i <= 57) desc = 'Digit ' + String.fromCharCode(i);
+  else if (i >= 65 && i <= 90) desc = 'Uppercase Letter';
+  else if (i >= 97 && i <= 122) desc = 'Lowercase Letter';
+  else if (i === 127) desc = 'DEL (Delete)';
+  else desc = 'Control Character';
+  ascii.push({ dec: i, hex: i.toString(16).toUpperCase().padStart(2,'0'), oct: i.toString(8).padStart(3,'0'), char: i >= 32 && i < 127 ? String.fromCharCode(i) : '', desc: desc });
+}
+function render(data) {
+  var html = '';
+  for (var i = 0; i < data.length; i++) {
+    var r = data[i];
+    html += '<tr class="border-b border-surface-800 hover:bg-surface-800/30"><td class="py-1.5 px-2 font-mono text-brand-400">' + r.dec + '</td><td class="py-1.5 px-2 font-mono">' + r.hex + '</td><td class="py-1.5 px-2 font-mono">' + r.oct + '</td><td class="py-1.5 px-2 font-mono font-bold text-surface-100">' + r.char + '</td><td class="py-1.5 px-2">' + r.desc + '</td></tr>';
+  }
+  document.getElementById('table-body').innerHTML = html;
+}
+function filter() {
+  var q = document.getElementById('search').value.toLowerCase();
+  render(ascii.filter(function(r) { return r.dec.toString().includes(q) || r.hex.toLowerCase().includes(q) || r.char.toLowerCase().includes(q) || r.desc.toLowerCase().includes(q); }));
+}
+render(ascii);
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is an ASCII Table?</h2>
+  <p class="mb-3">The ASCII (American Standard Code for Information Interchange) table maps 128 characters — including letters, digits, punctuation, and control codes — to numeric values from 0 to 127. It's the foundation of text encoding in computing and still widely used today.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Looking up character codes for programming when you need specific ASCII values</li>
+    <li>Understanding control characters and escape sequences in data processing</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Browse the full table or use the search to filter by character, decimal code, or description.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/unicode/" class="text-primary hover:underline">Unicode Converter</a> for working with characters beyond the ASCII range.</p>
+</div>
+</ToolLayout>

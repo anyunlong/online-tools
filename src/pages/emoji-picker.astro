@@ -49,7 +49,17 @@ function clearAll() {
   document.getElementById('msg').textContent = '';
 }
 </script>
-<slot name="info" slot="info">
-  <p>Browse emojis by category: Smileys, People, Animals, Food, Activities, Travel, Objects, Symbols. Click any emoji to copy it to clipboard. Use the search to find emojis by name.</p>
-</slot>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is an Emoji Picker?</h2>
+  <p class="mb-3">An emoji picker lets you browse, search, and copy emoji characters organized by category — Smileys, People, Animals, Food, and more. Every emoji is just a click away, saving you from digging through your operating system's emoji panel or memorising complex keyboard shortcuts.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Adding emojis to social media posts, messages, or emails quickly without switching apps</li>
+    <li>Finding the perfect emoji by name or browsing categories when you don't know the right one</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Browse emojis by category or search by name. Click any emoji to copy it directly to your clipboard.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/unicode/" class="text-primary hover:underline">Unicode Converter</a> to see the Unicode code points behind each emoji character.</p>
+</div>
 </ToolLayout>

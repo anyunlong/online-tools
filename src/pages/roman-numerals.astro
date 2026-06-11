@@ -1,0 +1,66 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Input from '../components/Input.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Roman Numerals Converter"
+  description="Convert between Roman numerals and numbers"
+  category="Convert"
+  keywords={["roman", "numerals", "convert", "numbers"]}
+>
+  <div class="flex gap-3 mb-4">
+    <Button onclick="setMode('toRoman')" id="btn-roman">Number → Roman</Button>
+    <Button variant="secondary" onclick="setMode('toNum')" id="btn-num">Roman → Number</Button>
+  </div>
+  <Input id="inp" placeholder="Enter a number (1-3999)..." class="w-full" oninput="convert()" />
+  <div class="mt-4">
+    <div class="text-xs text-surface-400 mb-1">Result:</div>
+    <div id="out" class="w-full rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-lg text-brand-400 font-mono text-center min-h-[48px]"></div>
+  </div>
+<script is:inline>
+var mode = 'toRoman';
+var vals = [1000,900,500,400,100,90,50,40,10,9,5,4,1];
+var syms = ['M','CM','D','CD','C','XC','L','XL','X','IX','V','IV','I'];
+function setMode(m) {
+  mode = m;
+  document.getElementById('btn-roman').className = (m === 'toRoman' ? 'inline-flex items-center justify-center font-medium rounded-xl transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer bg-gradient-to-r from-brand-500 to-brand-600 text-white hover:from-brand-400 hover:to-brand-500 shadow-lg shadow-brand-500/20 px-4 py-2 text-sm' : 'inline-flex items-center justify-center font-medium rounded-xl transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer bg-surface-800 text-surface-200 border border-surface-700 hover:bg-surface-700 hover:text-white hover:border-surface-600 px-4 py-2 text-sm');
+  document.getElementById('btn-num').className = (m === 'toNum' ? 'inline-flex items-center justify-center font-medium rounded-xl transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer bg-gradient-to-r from-brand-500 to-brand-600 text-white hover:from-brand-400 hover:to-brand-500 shadow-lg shadow-brand-500/20 px-4 py-2 text-sm' : 'inline-flex items-center justify-center font-medium rounded-xl transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer bg-surface-800 text-surface-200 border border-surface-700 hover:bg-surface-700 hover:text-white hover:border-surface-600 px-4 py-2 text-sm');
+  document.getElementById('inp').placeholder = m === 'toRoman' ? 'Enter a number (1-3999)...' : 'Enter Roman numerals (e.g. MCMXCIX)...';
+  convert();
+}
+function convert() {
+  var v = document.getElementById('inp').value.trim();
+  if (mode === 'toRoman') {
+    var n = parseInt(v);
+    if (isNaN(n) || n < 1 || n > 3999) { document.getElementById('out').textContent = v ? 'Enter a number 1-3999' : ''; return; }
+    var result = '', num = n;
+    for (var i = 0; i < vals.length; i++) { while (num >= vals[i]) { result += syms[i]; num -= vals[i]; } }
+    document.getElementById('out').textContent = result;
+  } else {
+    var roman = {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV:4,I:1};
+    var num = 0;
+    var s = v.toUpperCase();
+    for (var r in roman) {
+      while (s.indexOf(r) === 0) { num += roman[r]; s = s.substring(r.length); }
+    }
+    document.getElementById('out').textContent = s.length === 0 && num > 0 ? num : v ? 'Invalid Roman numeral' : '';
+  }
+}
+document.getElementById('btn-roman').className = 'inline-flex items-center justify-center font-medium rounded-xl transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer bg-gradient-to-r from-brand-500 to-brand-600 text-white hover:from-brand-400 hover:to-brand-500 shadow-lg shadow-brand-500/20 px-4 py-2 text-sm';
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Roman Numerals Converter?</h2>
+  <p class="mb-3">A Roman numerals converter translates between standard numbers (1-3999) and Roman numeral notation using letters I, V, X, L, C, D, and M. Roman numerals appear everywhere from clock faces to movie credits to book chapter headings.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Reading dates written in Roman numerals on buildings, monuments, and movies</li>
+    <li>Converting chapter numbers or outline sections for formal documents</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Choose direction, enter a number or Roman numerals, and see the instant conversion.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/number-base/" class="text-primary hover:underline">Number Base Converter</a> for converting between binary, octal, decimal, and hex.</p>
+</div>
+</ToolLayout>

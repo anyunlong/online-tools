@@ -1,0 +1,41 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="SHA512 Hash Generator"
+  description="Generate SHA512 hash values from text"
+  category="Hash"
+  keywords={["sha512", "hash", "crypto"]}
+>
+  <Textarea id="inp" placeholder="Enter text to hash..." rows="8" class="tool-area" />
+  <div class="flex gap-2 mt-4 mb-4">
+    <Button onclick="hash()">Generate SHA512</Button>
+  </div>
+  <div class="text-xs text-surface-400 mb-1">Hash Output:</div>
+  <div id="out" class="w-full rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-sm text-surface-100 font-mono break-all min-h-[48px]"></div>
+<script is:inline>
+async function hash() {
+  var t = document.getElementById('inp').value;
+  var data = new TextEncoder().encode(t);
+  var buf = await crypto.subtle.digest('SHA-512', data);
+  var arr = Array.from(new Uint8Array(buf));
+  document.getElementById('out').textContent = arr.map(function(b) { return b.toString(16).padStart(2,'0'); }).join('');
+}
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is SHA512?</h2>
+  <p class="mb-3">SHA512 (Secure Hash Algorithm 512-bit) produces a 128-character hexadecimal hash — the longest in the SHA-2 family. Its massive 512-bit output makes it extremely resistant to collision attacks and ideal for high-security applications like digital signatures and password hashing.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Generating highly secure password hashes for user authentication systems</li>
+    <li>Creating digital signatures for documents that require maximum security</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Enter text and click Generate SHA512 to create a 128-character hash directly in your browser.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/sha256/" class="text-primary hover:underline">SHA256 Hash Generator</a> for a shorter but still secure SHA-2 hash.</p>
+</div>
+</ToolLayout>

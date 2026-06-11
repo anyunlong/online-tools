@@ -51,7 +51,17 @@ function clearAll() {
   document.getElementById('msg').textContent = '';
 }
 </script>
-<slot name="info" slot="info">
-  <p>Enter text to convert to hexadecimal, or paste hex bytes to decode back to text. Each character becomes two hex digits. Useful for debugging, data analysis, and low-level programming.</p>
-</slot>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Hex to Text Converter?</h2>
+  <p class="mb-3">A hex to text converter translates between readable text and hexadecimal notation — the base-16 number system that uses digits 0-9 and letters A-F. Each text character is represented by two hex digits, making hex a compact and widely used format in programming and data analysis.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Decoding hexadecimal data found in log files, memory dumps, or network packet captures</li>
+    <li>Encoding text for use in low-level programming, cryptography, or protocol implementations</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Enter text to convert to hex, or paste hex bytes to decode back to the original text.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/unicode/" class="text-primary hover:underline">Unicode Converter</a> for converting text to Unicode escape sequences.</p>
+</div>
 </ToolLayout>

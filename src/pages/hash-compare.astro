@@ -1,0 +1,45 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Hash Compare"
+  description="Compare two hash values side by side"
+  category="Security"
+  keywords={["hash", "compare", "checksum", "verify"]}
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <Textarea id="hash1" label="Expected Hash" placeholder="Paste the expected hash value..." rows="4" class="tool-area" oninput="compare()" />
+    <Textarea id="hash2" label="Actual Hash" placeholder="Paste the actual hash value..." rows="4" class="tool-area" oninput="compare()" />
+  </div>
+  <div id="result" class="mt-4"></div>
+<script is:inline>
+function compare() {
+  var h1 = document.getElementById('hash1').value.trim().toLowerCase();
+  var h2 = document.getElementById('hash2').value.trim().toLowerCase();
+  if (!h1 || !h2) { document.getElementById('result').innerHTML = '<p class="text-sm text-surface-400">Enter both hashes to compare.</p>'; return; }
+  var match = h1 === h2;
+  document.getElementById('result').innerHTML =
+    '<div class="bg-surface-800/40 border border-' + (match ? 'brand-500/50' : 'red-500/50') + ' rounded-xl p-4 flex items-center gap-4">' +
+    '<div class="text-4xl">' + (match ? '✓' : '✗') + '</div>' +
+    '<div><div class="text-lg font-bold ' + (match ? 'text-brand-400' : 'text-red-400') + '">' + (match ? 'Hashes Match!' : 'Hashes Do Not Match') + '</div>' +
+    '<div class="text-xs text-surface-400 mt-1">' + (match ? 'The two hash values are identical. File integrity verified.' : 'The hash values do not match. The file may be corrupted or tampered with.') + '</div></div>' +
+    '</div>';
+}
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Hash Compare?</h2>
+  <p class="mb-3">A hash compare tool checks whether two hash values (like MD5, SHA256, or CRC32) are identical. This is the final step in file integrity verification — after computing a hash of your downloaded file, you compare it against the official checksum to confirm nothing was corrupted or tampered with.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Verifying that a downloaded file matches its published checksum for security</li>
+    <li>Confirming two files are identical by comparing their hash values</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Paste the expected and actual hashes into the two fields. The tool instantly shows if they match.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/sha256/" class="text-primary hover:underline">SHA256 Hash Generator</a> for generating hashes to compare against.</p>
+</div>
+</ToolLayout>

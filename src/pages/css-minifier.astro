@@ -38,7 +38,17 @@ function clearAll() {
   document.getElementById('msg').textContent = '';
 }
 </script>
-<slot name="info" slot="info">
-  <p>Paste your CSS code and click Minify to remove whitespace, comments, and unnecessary characters. Compare original and minified sizes instantly. All processing is local.</p>
-</slot>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a CSS Minifier?</h2>
+  <p class="mb-3">A CSS minifier removes unnecessary characters from stylesheet code — including whitespace, line breaks, comments, and redundant semicolons — without changing how the CSS works. Minified CSS files are significantly smaller, which means faster page loads and better SEO scores.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Preparing CSS files for production deployment to reduce bandwidth and improve load times</li>
+    <li>Comparing original and minified file sizes to measure optimization gains</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Paste your CSS code and click Minify to strip out all unnecessary characters and see the size reduction.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/html-minifier/" class="text-primary hover:underline">HTML Minifier</a> for compressing your HTML alongside your CSS.</p>
+</div>
 </ToolLayout>

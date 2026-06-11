@@ -1,0 +1,58 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Textarea from '../components/Textarea.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="CSS Beautifier"
+  description="Beautify and format CSS code"
+  category="Formatter"
+  keywords={["css", "beautify", "format", "prettify"]}
+>
+  <Textarea id="inp" placeholder="Paste minified or messy CSS..." rows="12" class="tool-area" />
+  <div class="flex gap-2 mt-4">
+    <Button onclick="beautify()">Beautify CSS</Button>
+    <Button variant="secondary" onclick="copyOut()">Copy</Button>
+  </div>
+  <div class="text-xs text-surface-400 mt-3 mb-1">Formatted CSS:</div>
+  <div id="out" class="w-full rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 font-mono overflow-auto min-h-[200px] max-h-[500px] whitespace-pre"></div>
+<script is:inline>
+function beautify() {
+  var css = document.getElementById('inp').value;
+  css = css.replace(/\s*{\s*/g, ' {\n  ').replace(/\s*}\s*/g, '\n}\n').replace(/;\s*/g, ';\n  ').replace(/\n\s*\n/g, '\n').replace(/\s*:\s*/g, ': ');
+  var lines = css.split('\n');
+  var out = '', indent = 0;
+  for (var i = 0; i < lines.length; i++) {
+    var line = lines[i].trim();
+    if (!line) continue;
+    if (line.endsWith('}')) indent = Math.max(0, indent - 1);
+    out += '  '.repeat(indent) + line + '\n';
+    if (line.endsWith('{')) indent++;
+  }
+  document.getElementById('out').textContent = out.trim();
+}
+function copyOut() {
+  var t = document.getElementById('out').textContent;
+  if (!t) return;
+  navigator.clipboard.writeText(t).then(function() {
+    var btn = document.querySelector('[onclick="copyOut()"]');
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = 'Copy'; }, 1500);
+  });
+}
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a CSS Beautifier?</h2>
+  <p class="mb-3">A CSS beautifier takes compressed or poorly formatted stylesheet code and reformats it with consistent indentation, spacing, and line breaks. Beautiful CSS is dramatically easier to read, edit, and debug than minified code.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Unminifying CSS from a production website to understand how its styles work</li>
+    <li>Reformatting CSS written by other developers to match your team's code style</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Paste your CSS code and click Beautify CSS to format it with proper indentation and spacing.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/css-minifier/" class="text-primary hover:underline">CSS Minifier</a> when you want to go in the opposite direction and compress your CSS for production.</p>
+</div>
+</ToolLayout>

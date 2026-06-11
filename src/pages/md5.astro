@@ -58,4 +58,18 @@ function hash() {
   document.getElementById('md5-32').textContent = h;
   document.getElementById('md5-16').textContent = h.substring(8, 24);
 }
-</script></ToolLayout>
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is MD5 Hashing?</h2>
+  <p class="mb-3">MD5 (Message Digest Algorithm 5) produces a 128-bit (32-character) hash value from any input text or file. While once widely used for password storage and file verification, it's now considered cryptographically broken and should only be used for non-security purposes like checksums.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Quickly verifying file integrity after download (checking against provided MD5 checksums)</li>
+    <li>Generating unique identifiers or fingerprints for data deduplication</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Enter text or upload a file to generate the 32-character MD5 hash. For security-sensitive applications, use SHA256 instead.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/sha256/" class="text-primary hover:underline">SHA256 Hash Generator</a> for a cryptographically secure alternative.</p>
+</div>
+</ToolLayout>

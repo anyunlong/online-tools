@@ -1,0 +1,76 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Input from '../components/Input.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Border Radius Previewer"
+  description="Visualize and generate CSS border-radius values"
+  category="Design"
+  keywords={["border-radius", "css", "design"]}
+>
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+    <div><label for="tl" class="text-xs text-surface-400 block mb-1">Top Left</label><Input id="tl" type="number" value="16" class="w-full" oninput="update()" /></div>
+    <div><label for="tr" class="text-xs text-surface-400 block mb-1">Top Right</label><Input id="tr" type="number" value="16" class="w-full" oninput="update()" /></div>
+    <div><label for="br" class="text-xs text-surface-400 block mb-1">Bottom Right</label><Input id="br" type="number" value="16" class="w-full" oninput="update()" /></div>
+    <div><label for="bl" class="text-xs text-surface-400 block mb-1">Bottom Left</label><Input id="bl" type="number" value="16" class="w-full" oninput="update()" /></div>
+  </div>
+  <div class="flex gap-2 mb-4">
+    <button onclick="preset(0)" class="text-xs px-3 py-1.5 rounded-lg bg-surface-800 text-surface-300 border border-surface-700 hover:border-surface-500">Sharp</button>
+    <button onclick="preset(8)" class="text-xs px-3 py-1.5 rounded-lg bg-surface-800 text-surface-300 border border-surface-700 hover:border-surface-500">8px</button>
+    <button onclick="preset(16)" class="text-xs px-3 py-1.5 rounded-lg bg-surface-800 text-surface-300 border border-surface-700 hover:border-surface-500">16px</button>
+    <button onclick="preset(999)" class="text-xs px-3 py-1.5 rounded-lg bg-surface-800 text-surface-300 border border-surface-700 hover:border-surface-500">Pill</button>
+  </div>
+  <div class="flex justify-center mb-4">
+    <div id="preview" class="w-48 h-48 bg-gradient-to-br from-brand-500 to-brand-600 flex items-center justify-center shadow-lg" style="border-radius: 16px 16px 16px 16px">
+      <span class="text-white text-sm font-semibold">Preview</span>
+    </div>
+  </div>
+  <div class="flex gap-2">
+    <Button onclick="copyCSS()">Copy CSS</Button>
+  </div>
+  <div id="css-code" class="mt-3 bg-surface-800/50 border border-surface-700 rounded-xl p-3 text-xs text-surface-100 font-mono break-all"></div>
+<script is:inline>
+function update() {
+  var tl = document.getElementById('tl').value || 0;
+  var tr = document.getElementById('tr').value || 0;
+  var br = document.getElementById('br').value || 0;
+  var bl = document.getElementById('bl').value || 0;
+  var radius = tl + 'px ' + tr + 'px ' + br + 'px ' + bl + 'px';
+  document.getElementById('preview').style.borderRadius = radius;
+  if (tl === tr && tr === br && br === bl) {
+    document.getElementById('css-code').textContent = 'border-radius: ' + tl + 'px;';
+  } else {
+    document.getElementById('css-code').textContent = 'border-radius: ' + radius + ';';
+  }
+}
+function preset(v) {
+  document.getElementById('tl').value = v; document.getElementById('tr').value = v;
+  document.getElementById('br').value = v; document.getElementById('bl').value = v;
+  update();
+}
+function copyCSS() {
+  var t = document.getElementById('css-code').textContent;
+  navigator.clipboard.writeText(t).then(function() {
+    var btn = document.querySelector('[onclick="copyCSS()"]');
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = 'Copy CSS'; }, 1500);
+  });
+}
+update();
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Border Radius Previewer?</h2>
+  <p class="mb-3">A border radius previewer lets you adjust each corner of an element independently and see the result in real time. It generates the exact CSS code needed, whether you want uniform rounded corners or unique shapes with different-radius corners.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Creating pill-shaped buttons, circular avatars, or cards with rounded corners</li>
+    <li>Experimenting with asymmetric corner radii for unique UI shapes</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Adjust each corner radius or use presets. The live preview shows your design. Copy the CSS when satisfied.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/box-shadow/" class="text-primary hover:underline">Box Shadow Generator</a> for adding depth and dimension to your rounded elements.</p>
+</div>
+</ToolLayout>

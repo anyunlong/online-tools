@@ -46,7 +46,17 @@ function copyResult() {
   });
 }
 </script>
-<slot name="info" slot="info">
-  <p>Enter your height and weight to calculate your BMI. Supports metric (cm/kg) and imperial (ft/in/lbs) units. Shows your BMI category from Underweight to Obese based on WHO standards.</p>
-</slot>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a BMI Calculator?</h2>
+  <p class="mb-3">A BMI (Body Mass Index) calculator estimates body fat based on your height and weight. It categorizes results into standard WHO ranges — Underweight, Normal, Overweight, and Obese — to give you a quick health reference point.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Getting a quick health screening to understand if you're in a healthy weight range</li>
+    <li>Tracking weight management progress over time as part of a fitness journey</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Enter your height and weight in either metric or imperial units to calculate your BMI category.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/percentage-calculator/" class="text-primary hover:underline">Percentage Calculator</a> for calculating percent changes in weight or other metrics.</p>
+</div>
 </ToolLayout>

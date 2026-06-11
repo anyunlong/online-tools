@@ -1,0 +1,86 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Input from '../components/Input.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="CSS Gradient Generator"
+  description="Create and preview CSS linear gradients"
+  category="Design"
+  keywords={["gradient", "css", "color", "design"]}
+>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+    <div>
+      <label class="text-sm text-surface-300 mb-1.5 block">Color 1</label>
+      <div class="flex gap-2">
+        <input type="color" id="color1" value="#6366f1" class="w-10 h-10 rounded-lg border border-surface-700 cursor-pointer" oninput="update()" />
+        <Input id="color1hex" value="#6366f1" class="flex-1" oninput="updateFromHex(1)" />
+      </div>
+    </div>
+    <div>
+      <label class="text-sm text-surface-300 mb-1.5 block">Color 2</label>
+      <div class="flex gap-2">
+        <input type="color" id="color2" value="#a855f7" class="w-10 h-10 rounded-lg border border-surface-700 cursor-pointer" oninput="update()" />
+        <Input id="color2hex" value="#a855f7" class="flex-1" oninput="updateFromHex(2)" />
+      </div>
+    </div>
+  </div>
+  <div class="flex gap-3 items-end flex-wrap mb-4">
+    <div>
+      <label for="angle" class="text-sm text-surface-300 mb-1.5 block">Angle</label>
+      <Input id="angle" type="number" value="135" class="w-24" oninput="update()" />
+    </div>
+    <div>
+      <select id="direction" class="rounded-xl border border-surface-700 bg-surface-800/50 px-3 py-2 text-sm text-surface-100" onchange="update()">
+        <option value="custom">Custom Angle</option><option value="0">to top ↑</option><option value="45">↗</option><option value="90">to right →</option><option value="135">↘</option><option value="180">to bottom ↓</option><option value="225">↙</option><option value="270">to left ←</option><option value="315">↖</option>
+      </select>
+    </div>
+  </div>
+  <div id="preview" class="w-full h-32 rounded-xl mb-4 shadow-lg" style="background: linear-gradient(135deg, #6366f1, #a855f7)"></div>
+  <div class="flex gap-2">
+    <Button onclick="copyCSS()">Copy CSS</Button>
+  </div>
+  <div id="css-code" class="mt-3 bg-surface-800/50 border border-surface-700 rounded-xl p-3 text-xs text-surface-100 font-mono break-all"></div>
+<script is:inline>
+function update() {
+  var c1 = document.getElementById('color1').value;
+  var c2 = document.getElementById('color2').value;
+  document.getElementById('color1hex').value = c1;
+  document.getElementById('color2hex').value = c2;
+  var angle = document.getElementById('direction').value;
+  if (angle === 'custom') angle = document.getElementById('angle').value + 'deg';
+  else angle = angle + 'deg';
+  var gradient = 'linear-gradient(' + angle + ', ' + c1 + ', ' + c2 + ')';
+  document.getElementById('preview').style.background = gradient;
+  document.getElementById('css-code').textContent = 'background: ' + gradient + ';';
+}
+function updateFromHex(n) {
+  var hex = document.getElementById('color' + n + 'hex').value;
+  if (/^#[0-9a-fA-F]{6}$/.test(hex)) document.getElementById('color' + n).value = hex;
+  update();
+}
+function copyCSS() {
+  var t = document.getElementById('css-code').textContent;
+  navigator.clipboard.writeText(t).then(function() {
+    var btn = document.querySelector('[onclick="copyCSS()"]');
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = 'Copy CSS'; }, 1500);
+  });
+}
+update();
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a CSS Gradient Generator?</h2>
+  <p class="mb-3">A CSS gradient generator lets you visually create smooth color transitions for website backgrounds, buttons, and UI elements. You pick two colors, choose an angle, and instantly get the CSS code — no hand-coding required.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Designing modern UI backgrounds, hero sections, or button hover effects</li>
+    <li>Experimenting with color combinations to find visually appealing gradients</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Pick two colors and adjust the angle. Copy the CSS code and paste it into your stylesheet.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/color-picker/" class="text-primary hover:underline">Color Picker</a> for selecting and converting colors in multiple formats.</p>
+</div>
+</ToolLayout>

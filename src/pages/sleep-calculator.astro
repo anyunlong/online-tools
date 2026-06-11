@@ -1,0 +1,77 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Input from '../components/Input.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="Sleep Cycle Calculator"
+  description="Calculate optimal sleep and wake times based on sleep cycles"
+  category="Time"
+  keywords={["sleep", "cycle", "calculator", "wake"]}
+>
+  <div class="space-y-4">
+    <p class="text-sm text-surface-400">Average sleep cycle: 90 minutes. Aim for 5-6 full cycles (7.5-9 hours).</p>
+    <div class="flex gap-3 mb-2">
+      <Button onclick="setMode('wake')" id="btn-wake">I want to wake up at...</Button>
+      <Button variant="secondary" onclick="setMode('sleep')" id="btn-sleep">I'm going to bed at...</Button>
+    </div>
+    <div>
+      <label for="time-inp" class="text-sm text-surface-300 mb-1.5 block font-medium" id="time-label">Wake-up time</label>
+      <Input id="time-inp" type="time" value="07:00" class="w-full" oninput="calc()" />
+    </div>
+    <div id="results" class="grid grid-cols-2 sm:grid-cols-3 gap-3"></div>
+    <p class="text-xs text-surface-500" id="recommendation"></p>
+  </div>
+<script is:inline>
+var calcMode = 'wake';
+function setMode(m) {
+  calcMode = m;
+  document.getElementById('btn-wake').className = m === 'wake' ? 'inline-flex items-center justify-center font-medium rounded-xl transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer bg-gradient-to-r from-brand-500 to-brand-600 text-white hover:from-brand-400 hover:to-brand-500 shadow-lg shadow-brand-500/20 px-4 py-2 text-sm' : 'inline-flex items-center justify-center font-medium rounded-xl transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer bg-surface-800 text-surface-200 border border-surface-700 hover:bg-surface-700 hover:text-white hover:border-surface-600 px-4 py-2 text-sm';
+  document.getElementById('btn-sleep').className = m === 'sleep' ? 'inline-flex items-center justify-center font-medium rounded-xl transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer bg-gradient-to-r from-brand-500 to-brand-600 text-white hover:from-brand-400 hover:to-brand-500 shadow-lg shadow-brand-500/20 px-4 py-2 text-sm' : 'inline-flex items-center justify-center font-medium rounded-xl transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer bg-surface-800 text-surface-200 border border-surface-700 hover:bg-surface-700 hover:text-white hover:border-surface-600 px-4 py-2 text-sm';
+  document.getElementById('time-label').textContent = m === 'wake' ? 'Wake-up time' : 'Bedtime';
+  document.getElementById('time-inp').value = m === 'wake' ? '07:00' : '22:00';
+  calc();
+}
+function calc() {
+  var t = document.getElementById('time-inp').value;
+  if (!t) { document.getElementById('results').innerHTML = ''; return; }
+  var parts = t.split(':');
+  var totalMins = parseInt(parts[0]) * 60 + parseInt(parts[1]);
+  var html = '';
+  if (calcMode === 'wake') {
+    for (var i = 6; i >= 3; i--) {
+      var bedTime = totalMins - (i * 90);
+      if (bedTime < 0) bedTime += 24 * 60;
+      var h = Math.floor(bedTime / 60) % 24;
+      var m = bedTime % 60;
+      html += '<div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-3 text-center"><div class="text-xs text-surface-400">' + i + ' cycles (' + (i * 1.5) + 'h)</div><div class="text-lg font-bold text-brand-400">' + String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + '</div><div class="text-xs text-surface-500">bedtime</div></div>';
+    }
+  } else {
+    for (var i = 3; i <= 6; i++) {
+      var wakeTime = totalMins + (i * 90);
+      var h = Math.floor(wakeTime / 60) % 24;
+      var m = wakeTime % 60;
+      html += '<div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-3 text-center"><div class="text-xs text-surface-400">' + i + ' cycles (' + (i * 1.5) + 'h)</div><div class="text-lg font-bold text-brand-400">' + String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + '</div><div class="text-xs text-surface-500">wake time</div></div>';
+    }
+  }
+  document.getElementById('results').innerHTML = html;
+  document.getElementById('recommendation').textContent = calcMode === 'wake' ? 'Go to bed at one of these times to wake up feeling refreshed. It takes ~15 min to fall asleep.' : 'Set your alarm for one of these times for optimal sleep cycles.';
+}
+document.getElementById('btn-wake').className = 'inline-flex items-center justify-center font-medium rounded-xl transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer bg-gradient-to-r from-brand-500 to-brand-600 text-white hover:from-brand-400 hover:to-brand-500 shadow-lg shadow-brand-500/20 px-4 py-2 text-sm';
+calc();
+</script>
+<div slot="info">
+  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Sleep Cycle Calculator?</h2>
+  <p class="mb-3">A sleep cycle calculator uses the science of 90-minute sleep cycles to suggest optimal bedtimes or wake-up times. Waking up between cycles (rather than during deep sleep) helps you feel more refreshed and less groggy in the morning.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+  <ul class="list-disc pl-5 mb-3 space-y-1">
+    <li>Planning your bedtime to wake up naturally and feel well-rested</li>
+    <li>Setting alarm times that align with your body's sleep cycle rhythm</li>
+  </ul>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+  <p class="mb-3">Choose "I want to wake up at..." to find ideal bedtimes, or "I'm going to bed at..." for optimal alarm times.</p>
+  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+  <p>Try our <a href="/stopwatch/" class="text-primary hover:underline">Online Stopwatch</a> for measuring elapsed time during activities.</p>
+</div>
+</ToolLayout>
