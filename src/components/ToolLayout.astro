@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
 import faqData from '../data/faq.json';
+import toolContent from '../data/tool-content.json';
 
 export interface Props {
   title: string;
@@ -18,6 +19,12 @@ const toolId = Astro.url.pathname.replace(/^\/|\/$/g, '') || 'index';
 
 // Look up FAQ entries for this tool
 const faqEntries: Array<{ q: string; a: string }> = faqData[toolId] || [];
+
+// Look up content expansion for this tool
+const tc = toolContent[toolId];
+const deepDive: string | null = tc?.deepDive || null;
+const tips: string[] = tc?.tips || [];
+const commonMistakes: string[] = tc?.commonMistakes || [];
 
 const webAppSchema = {
   '@context': 'https://schema.org',
@@ -106,6 +113,32 @@ const combinedSchema = faqSchema
       <div class="text-sm text-surface-400 leading-relaxed space-y-3">
         <slot name="info" />
       </div>
+      {(deepDive || tips.length > 0 || commonMistakes.length > 0) && (
+        <div class="mt-8 space-y-6">
+          {deepDive && (
+            <div>
+              <h2 class="text-lg font-semibold text-white mb-3">Deep Dive: How {title} Works</h2>
+              <div class="text-sm text-surface-400 leading-relaxed">{deepDive}</div>
+            </div>
+          )}
+          {tips.length > 0 && (
+            <div>
+              <h2 class="text-base font-semibold text-surface-200 mb-2">Pro Tips</h2>
+              <ul class="list-disc pl-5 space-y-1 text-sm text-surface-400">
+                {tips.map(tip => <li>{tip}</li>)}
+              </ul>
+            </div>
+          )}
+          {commonMistakes.length > 0 && (
+            <div>
+              <h2 class="text-base font-semibold text-surface-200 mb-2">Common Mistakes to Avoid</h2>
+              <ul class="list-disc pl-5 space-y-1 text-sm text-surface-400">
+                {commonMistakes.map(m => <li>{m}</li>)}
+              </ul>
+            </div>
+          )}
+        </div>
+      )}
       {faqEntries.length > 0 && (
         <div class="mt-8 border-t border-surface-700/30 pt-6">
           <h2 class="text-lg font-semibold text-white mb-4">Frequently Asked Questions</h2>

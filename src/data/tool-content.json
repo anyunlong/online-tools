@@ -1,0 +1,1238 @@
+{
+  "password-generator": {
+    "deepDive": "Password Generator is a security-focused tool that helps protect digital assets and sensitive information through proven cryptographic principles and security best practices. In today's threat landscape where data breaches and credential theft are commonplace, understanding and properly implementing security measures is no longer optional\u2014it's a fundamental requirement for any application handling user data. Password Generator operates entirely client-side using your browser's JavaScript engine, meaning sensitive inputs like passwords, secrets, or personal data never traverse the network or touch a remote server. This zero-trust, local-only architecture ensures your confidential information remains completely private and under your control at all times. Security tools like this empower developers, system administrators, and everyday users to implement industry-standard protection without deep cryptographic expertise or expensive infrastructure. Whether you're generating secure credentials, validating security configurations, or testing system hardening, having these capabilities instantly available in your browser dramatically lowers the barrier to good security practices.",
+    "tips": [
+      "Never reuse passwords across services\u2014a breach on one site compromises all accounts sharing that password",
+      "Use a password manager to generate and store unique, strong passwords for every service",
+      "Check password strength before using it\u2014even a 'strong' password can be weak if it follows predictable patterns"
+    ],
+    "commonMistakes": [
+      "Generating passwords with insufficient length\u2014anything under 12 characters is vulnerable to brute force",
+      "Using the same password across multiple services\u2014a single breach compromises everything"
+    ]
+  },
+  "timestamp": {
+    "deepDive": "Timestamp Converter helps you work with dates, times, and temporal calculations\u2014one of the most notoriously complex domains in programming. Time-related operations appear deceptively simple but hide tremendous complexity: timezone offsets change with daylight saving rules that vary by jurisdiction, leap seconds get added irregularly, different calendar systems exist globally, and month lengths fluctuate. A seemingly straightforward 'add 30 days' operation must correctly handle month boundaries, leap years, and DST transitions. The Timestamp Converter handles these edge cases so you don't have to, providing accurate results regardless of date range or timezone configuration. Whether you're calculating project deadlines, converting between international time zones for remote team coordination, computing age or tenure from dates, or parsing cron expressions for scheduled automation, having a reliable time utility saves hours of debugging and prevents subtle bugs that only manifest at boundary conditions like year-end or DST changes.",
+    "tips": [
+      "Always verify timezone conversions around DST transition dates\u2014many tools handle these incorrectly",
+      "Use ISO 8601 format (YYYY-MM-DD) for unambiguous date representation in international contexts",
+      "For countdowns and timers, test with dates far in the future and recent past to verify calculations"
+    ],
+    "commonMistakes": [
+      "Using 24-hour format without noting AM/PM distinction when sharing results",
+      "Calculating durations without accounting for DST transitions"
+    ]
+  },
+  "json-formatter": {
+    "deepDive": "JSON Formatter takes unstructured or poorly formatted data and transforms it into clean, readable, standards-compliant output\u2014turning chaos into clarity. Code and data formatting is about more than aesthetics; properly formatted output reduces cognitive load when reading, prevents syntax errors from invisible characters, and ensures consistency across team workflows. The JSON Formatter parses input according to its format specification, builds an internal syntax tree, then regenerates output with proper indentation, spacing, and line breaks according to widely accepted style conventions. This process also catches syntax errors early\u2014if the formatter can't parse your input, there's a structural problem that would cause issues downstream. In professional development workflows, automated formatting tools integrated into CI/CD pipelines enforce coding standards across entire teams, eliminating style debates from code reviews and letting developers focus on logic and architecture.",
+    "tips": [
+      "Format before committing to version control\u2014consistent formatting eliminates meaningless diffs",
+      "Set your editor to auto-format on save, but verify the tool's settings match your team's style guide",
+      "If formatting fails, your code has a syntax error\u2014fix it before the formatter can help"
+    ],
+    "commonMistakes": [
+      "Overwriting the original file without backup before formatting large or critical files",
+      "Formatting generated code that will be regenerated\u2014creates merge conflicts"
+    ]
+  },
+  "base64": {
+    "deepDive": "Base64 Encoder transforms data between different representation formats while preserving all original information, enabling compatibility across diverse systems and protocols. The encoding process maps input characters or bytes to a different symbol set using deterministic rules\u2014no information is lost, and the process is fully reversible through decoding. This distinguishes encoding from hashing or encryption, where data is either irreversibly transformed or requires keys for recovery. Common applications include preparing binary data for text-based transport protocols, escaping special characters in HTML and URLs, converting between character encodings for internationalization, and obfuscating data for safe storage. Encoding is essential infrastructure in modern computing: every email attachment, every JSON API payload, and every URL you visit relies on encoding schemes working correctly behind the scenes. Understanding how different encoding formats work helps developers debug data corruption issues, choose the right format for specific use cases, and build robust data pipelines that handle edge cases gracefully.",
+    "tips": [
+      "Decode suspicious-looking strings to check if they contain hidden payloads or obfuscated content",
+      "When working with APIs, ensure your encoding matches the Content-Type header expectations",
+      "Test encoding with edge cases: empty strings, very long strings, special characters, and Unicode"
+    ],
+    "commonMistakes": [
+      "Confusing encoding with encryption\u2014Base64 and URL encoding provide zero security",
+      "Double-encoding data accidentally\u2014URLs with pre-encoded components get corrupted"
+    ]
+  },
+  "url-encode": {
+    "deepDive": "URL Encoder transforms data between different representation formats while preserving all original information, enabling compatibility across diverse systems and protocols. The encoding process maps input characters or bytes to a different symbol set using deterministic rules\u2014no information is lost, and the process is fully reversible through decoding. This distinguishes encoding from hashing or encryption, where data is either irreversibly transformed or requires keys for recovery. Common applications include preparing binary data for text-based transport protocols, escaping special characters in HTML and URLs, converting between character encodings for internationalization, and obfuscating data for safe storage. Encoding is essential infrastructure in modern computing: every email attachment, every JSON API payload, and every URL you visit relies on encoding schemes working correctly behind the scenes. Understanding how different encoding formats work helps developers debug data corruption issues, choose the right format for specific use cases, and build robust data pipelines that handle edge cases gracefully.",
+    "tips": [
+      "Decode suspicious-looking strings to check if they contain hidden payloads or obfuscated content",
+      "When working with APIs, ensure your encoding matches the Content-Type header expectations",
+      "Test encoding with edge cases: empty strings, very long strings, special characters, and Unicode"
+    ],
+    "commonMistakes": [
+      "Confusing encoding with encryption\u2014Base64 and URL encoding provide zero security",
+      "Double-encoding data accidentally\u2014URLs with pre-encoded components get corrupted"
+    ]
+  },
+  "word-counter": {
+    "deepDive": "Word Counter is a text manipulation utility that helps you process, analyze, or transform text content without writing custom code or scripts. In an era where data is increasingly text-heavy\u2014from log files and API responses to configuration files and user-generated content\u2014having reliable text processing tools at your fingertips saves hours of manual work and eliminates tedious regex crafting. The Word Counter operates entirely in your browser using client-side JavaScript, meaning your text never leaves your device, ensuring complete privacy even for sensitive content like personal notes, business data, or proprietary source code. Text processing tools like this fill a crucial gap between basic text editors (which lack specialized transformations) and full programming environments (which require setup and expertise). Whether you're a developer cleaning up data before import, a writer reformatting content, or a data analyst extracting patterns from unstructured text, having instant access to these transformations dramatically accelerates your workflow and reduces errors from manual editing.",
+    "tips": [
+      "Process text in small batches first to verify the output format before running on large datasets",
+      "Keep a copy of your original text\u2014most text transformations are irreversible",
+      "Combine multiple text tools in sequence for complex data cleaning pipelines"
+    ],
+    "commonMistakes": [
+      "Counting words with naive space-splitting\u2014doesn't handle punctuation, emoji, or CJK characters correctly",
+      "Sorting text without considering locale\u2014string comparison rules vary by language"
+    ]
+  },
+  "md5": {
+    "deepDive": "MD5 Hash is a cryptographic hash function that transforms input data into a fixed-length hexadecimal string, enabling data integrity verification and digital fingerprinting. The MD5 Hash algorithm processes data through multiple rounds of mathematical operations, producing a unique digest that changes dramatically with even a single character modification\u2014a property called the avalanche effect. Unlike encryption, hashing is a one-way function; you cannot reverse a hash back to its original input, making it ideal for password storage when combined with salting. In practice, developers use MD5 Hash for verifying file downloads, generating cache keys, implementing content-addressable storage systems, and creating unique identifiers in distributed systems. While newer algorithms offer stronger security guarantees, MD5 Hash remains widely deployed in legacy systems, checksum verification workflows, and non-security applications where speed and simplicity are prioritized over collision resistance. Understanding hash functions is essential for anyone working with data integrity, authentication protocols, or blockchain technology.",
+    "tips": [
+      "Always verify checksums from a trusted source\u2014compare against the official project website, not forum posts",
+      "Use SHA-256 or stronger for any security-sensitive application; MD5 and SHA-1 are broken",
+      "When comparing hashes, visually check the first 4 and last 4 characters\u2014full string comparison is rarely necessary for quick verification"
+    ],
+    "commonMistakes": [
+      "Storing unsalted hashes\u2014rainbow table attacks can recover original values in seconds",
+      "Truncating hash output to save storage without understanding the security implications"
+    ]
+  },
+  "uuid-generator": {
+    "deepDive": "UUID Generator is a developer utility that streamlines common programming tasks, reducing context-switching and eliminating the need for heavyweight IDE installations for quick operations. Modern software development involves an enormous surface area of tools, formats, and protocols\u2014developers regularly need to format code, validate syntax, encode data, parse URLs, inspect tokens, and reference documentation, often while deep in a debugging session or rapid prototyping flow. The UUID Generator provides instant, lightweight access to these capabilities directly in your browser, with zero installation, zero configuration, and zero data leaving your machine. This client-side, privacy-first architecture is particularly valuable when working with proprietary code, API keys, authentication tokens, or internal configuration that should never touch third-party servers. Developer tools like this complement full IDEs by filling the gap between 'too simple for a script' and 'too quick to launch an IDE', keeping you in flow state and reducing the friction that accumulates across hundreds of micro-tasks throughout a development day.",
+    "tips": [
+      "Use beautifiers before minifiers\u2014make code readable, understand it, then compress for production",
+      "Validate JSON and YAML before committing\u2014syntax errors in config files cause hard-to-debug runtime failures",
+      "Bookmark your most-used dev tools for quick access during debugging sessions"
+    ],
+    "commonMistakes": [
+      "Committing unformatted code\u2014wastes reviewer time and creates noisy diffs",
+      "Minifying before debugging\u2014always debug readable code"
+    ]
+  },
+  "unicode": {
+    "deepDive": "Unicode Converter transforms data between different representation formats while preserving all original information, enabling compatibility across diverse systems and protocols. The encoding process maps input characters or bytes to a different symbol set using deterministic rules\u2014no information is lost, and the process is fully reversible through decoding. This distinguishes encoding from hashing or encryption, where data is either irreversibly transformed or requires keys for recovery. Common applications include preparing binary data for text-based transport protocols, escaping special characters in HTML and URLs, converting between character encodings for internationalization, and obfuscating data for safe storage. Encoding is essential infrastructure in modern computing: every email attachment, every JSON API payload, and every URL you visit relies on encoding schemes working correctly behind the scenes. Understanding how different encoding formats work helps developers debug data corruption issues, choose the right format for specific use cases, and build robust data pipelines that handle edge cases gracefully.",
+    "tips": [
+      "Decode suspicious-looking strings to check if they contain hidden payloads or obfuscated content",
+      "When working with APIs, ensure your encoding matches the Content-Type header expectations",
+      "Test encoding with edge cases: empty strings, very long strings, special characters, and Unicode"
+    ],
+    "commonMistakes": [
+      "Confusing encoding with encryption\u2014Base64 and URL encoding provide zero security",
+      "Double-encoding data accidentally\u2014URLs with pre-encoded components get corrupted"
+    ]
+  },
+  "case-converter": {
+    "deepDive": "Case Converter is a text manipulation utility that helps you process, analyze, or transform text content without writing custom code or scripts. In an era where data is increasingly text-heavy\u2014from log files and API responses to configuration files and user-generated content\u2014having reliable text processing tools at your fingertips saves hours of manual work and eliminates tedious regex crafting. The Case Converter operates entirely in your browser using client-side JavaScript, meaning your text never leaves your device, ensuring complete privacy even for sensitive content like personal notes, business data, or proprietary source code. Text processing tools like this fill a crucial gap between basic text editors (which lack specialized transformations) and full programming environments (which require setup and expertise). Whether you're a developer cleaning up data before import, a writer reformatting content, or a data analyst extracting patterns from unstructured text, having instant access to these transformations dramatically accelerates your workflow and reduces errors from manual editing.",
+    "tips": [
+      "Process text in small batches first to verify the output format before running on large datasets",
+      "Keep a copy of your original text\u2014most text transformations are irreversible",
+      "Combine multiple text tools in sequence for complex data cleaning pipelines"
+    ],
+    "commonMistakes": [
+      "Counting words with naive space-splitting\u2014doesn't handle punctuation, emoji, or CJK characters correctly",
+      "Sorting text without considering locale\u2014string comparison rules vary by language"
+    ]
+  },
+  "qr-code": {
+    "deepDive": "QR Code Generator creates unique, randomized output based on configurable parameters, eliminating the need for manual creation of test data, identifiers, or creative assets. Generation tools solve a fundamental problem in development and design: producing high-quality, varied content at scale without repetitive manual effort. The QR Code Generator uses cryptographically secure or statistically sound randomization algorithms depending on the use case, ensuring generated output meets quality standards whether it's for production systems or development testing. In modern software development, generators are essential for load testing with realistic data, seeding databases during development, creating unique identifiers in distributed systems, and rapid prototyping of UI components. Generation tools also power creative workflows\u2014from placeholder content in design mockups to randomized color palettes and procedural art\u2014enabling designers and developers to explore possibilities quickly before committing to final implementations.",
+    "tips": [
+      "When generating test data, include edge cases (empty values, maximum lengths, special characters) to catch bugs",
+      "Use consistent seeds for reproducible tests\u2014randomness is great for variety but terrible for debugging",
+      "Generate more items than you think you need\u2014it's faster to generate extras than to restart the process"
+    ],
+    "commonMistakes": [
+      "Using Math.random() for cryptographic purposes\u2014it's not cryptographically secure",
+      "Generating identifiers without checking for collisions in existing datasets"
+    ]
+  },
+  "color-picker": {
+    "deepDive": "Color Picker bridges the gap between visual design and code implementation, helping designers and developers collaborate more effectively by providing instant visual feedback and code generation. The perennial challenge in web and UI development is translating visual design intent into precise CSS values\u2014what looks right in a design tool may render differently across browsers, screen sizes, and color profiles. Color Picker provides interactive, real-time previews where you can experiment with visual properties and immediately see the result, then copy the exact production-ready CSS code. This tight feedback loop between visual manipulation and code output dramatically accelerates UI development workflows, reduces the iteration cycles of 'tweak value, rebuild, check' that slow down frontend work, and ensures consistency between design mockups and implemented interfaces.",
+    "tips": [
+      "Copy the generated CSS exactly\u2014manual tweaks often break cross-browser compatibility",
+      "Preview box shadows and border radius at different zoom levels to catch rendering artifacts",
+      "For gradients, include a solid fallback color for older browsers that don't support CSS gradients"
+    ],
+    "commonMistakes": [
+      "Using color alone to convey information\u2014colorblind users won't perceive the difference",
+      "Not checking contrast ratios with actual content\u2014tool previews may differ from real text"
+    ]
+  },
+  "csv-to-json": {
+    "deepDive": "CSV to JSON is a developer utility that streamlines common programming tasks, reducing context-switching and eliminating the need for heavyweight IDE installations for quick operations. Modern software development involves an enormous surface area of tools, formats, and protocols\u2014developers regularly need to format code, validate syntax, encode data, parse URLs, inspect tokens, and reference documentation, often while deep in a debugging session or rapid prototyping flow. The CSV to JSON provides instant, lightweight access to these capabilities directly in your browser, with zero installation, zero configuration, and zero data leaving your machine. This client-side, privacy-first architecture is particularly valuable when working with proprietary code, API keys, authentication tokens, or internal configuration that should never touch third-party servers. Developer tools like this complement full IDEs by filling the gap between 'too simple for a script' and 'too quick to launch an IDE', keeping you in flow state and reducing the friction that accumulates across hundreds of micro-tasks throughout a development day.",
+    "tips": [
+      "Keep a backup of your original data before applying transformations",
+      "Use keyboard shortcuts (if available) to speed up your workflow",
+      "Read the documentation or help section for advanced features"
+    ],
+    "commonMistakes": [
+      [
+        "Not testing with edge cases\u2014empty input, very long strings, special characters",
+        "Assuming the output is correct without verification\u2014always spot-check results"
+      ],
+      [
+        "Overwriting source data without keeping a backup",
+        "Using browser-based tools for processing sensitive enterprise data without checking company policy"
+      ]
+    ]
+  },
+  "sha256": {
+    "deepDive": "SHA256 Hash is a cryptographic hash function that transforms input data into a fixed-length hexadecimal string, enabling data integrity verification and digital fingerprinting. The SHA256 Hash algorithm processes data through multiple rounds of mathematical operations, producing a unique digest that changes dramatically with even a single character modification\u2014a property called the avalanche effect. Unlike encryption, hashing is a one-way function; you cannot reverse a hash back to its original input, making it ideal for password storage when combined with salting. In practice, developers use SHA256 Hash for verifying file downloads, generating cache keys, implementing content-addressable storage systems, and creating unique identifiers in distributed systems. While newer algorithms offer stronger security guarantees, SHA256 Hash remains widely deployed in legacy systems, checksum verification workflows, and non-security applications where speed and simplicity are prioritized over collision resistance. Understanding hash functions is essential for anyone working with data integrity, authentication protocols, or blockchain technology.",
+    "tips": [
+      "Bookmark this tool for quick access when downloading software\u2014it takes seconds to verify integrity",
+      "Combine hash verification with GPG signature checking for maximum security on critical downloads",
+      "Keep a checksum manifest file alongside your important backups for corruption detection"
+    ],
+    "commonMistakes": [
+      "Using MD5 or SHA-1 for security-critical applications\u2014they are cryptographically broken",
+      "Assuming hash uniqueness guarantees no collisions\u2014birthday attacks make collisions statistically likely"
+    ]
+  },
+  "html-entity": {
+    "deepDive": "HTML Entity Encoder transforms data between different representation formats while preserving all original information, enabling compatibility across diverse systems and protocols. The encoding process maps input characters or bytes to a different symbol set using deterministic rules\u2014no information is lost, and the process is fully reversible through decoding. This distinguishes encoding from hashing or encryption, where data is either irreversibly transformed or requires keys for recovery. Common applications include preparing binary data for text-based transport protocols, escaping special characters in HTML and URLs, converting between character encodings for internationalization, and obfuscating data for safe storage. Encoding is essential infrastructure in modern computing: every email attachment, every JSON API payload, and every URL you visit relies on encoding schemes working correctly behind the scenes. Understanding how different encoding formats work helps developers debug data corruption issues, choose the right format for specific use cases, and build robust data pipelines that handle edge cases gracefully.",
+    "tips": [
+      "Always note which encoding you used\u2014Base64, URL encoding, and HTML entities all look different and are decoded differently",
+      "Use URL encoding for query parameters, not for entire URLs\u2014only encode the values, not the separators",
+      "Remember that encoding adds overhead\u2014Base64 increases data size by ~33%"
+    ],
+    "commonMistakes": [
+      "Using the wrong character set when decoding\u2014Latin-1 vs UTF-8 produces garbled text",
+      "Forgetting to re-encode data after modification before transmission"
+    ]
+  },
+  "ip-lookup": {
+    "deepDive": "IP Lookup provides instant visibility into network configuration, connectivity, and protocol details\u2014essential diagnostic capabilities for anyone working with internet-connected systems. Network troubleshooting is notoriously difficult because problems can originate anywhere in the stack: DNS misconfiguration, routing issues, firewall rules, application-level bugs, or upstream provider outages. IP Lookup helps you quickly narrow down the source of issues by providing key diagnostic data points without requiring SSH access to remote servers or installation of specialized network tools. Understanding your network environment is also critical for security\u2014knowing what's exposed, what IP information you're leaking to services, and what ports are accessible helps you assess your attack surface and implement appropriate protections. For developers building web applications, network tools provide the ground truth needed to debug connectivity issues, verify CDN configuration, and ensure APIs are reachable from production environments.",
+    "tips": [
+      "Don't assume HTTP status codes are always accurate\u2014some servers return 200 with error messages in the body",
+      "Document your network configuration and reference materials to speed up future troubleshooting",
+      "Use HTTP header inspection to debug caching issues, redirects, and content-type mismatches"
+    ],
+    "commonMistakes": [
+      "Assuming DNS changes propagate instantly\u2014TTL values control caching duration",
+      "Checking ports locally when the issue is a firewall rule blocking external access"
+    ]
+  },
+  "countdown": {
+    "deepDive": "Countdown Timer helps you work with dates, times, and temporal calculations\u2014one of the most notoriously complex domains in programming. Time-related operations appear deceptively simple but hide tremendous complexity: timezone offsets change with daylight saving rules that vary by jurisdiction, leap seconds get added irregularly, different calendar systems exist globally, and month lengths fluctuate. A seemingly straightforward 'add 30 days' operation must correctly handle month boundaries, leap years, and DST transitions. The Countdown Timer handles these edge cases so you don't have to, providing accurate results regardless of date range or timezone configuration. Whether you're calculating project deadlines, converting between international time zones for remote team coordination, computing age or tenure from dates, or parsing cron expressions for scheduled automation, having a reliable time utility saves hours of debugging and prevents subtle bugs that only manifest at boundary conditions like year-end or DST changes.",
+    "tips": [
+      "Always verify timezone conversions around DST transition dates\u2014many tools handle these incorrectly",
+      "Use ISO 8601 format (YYYY-MM-DD) for unambiguous date representation in international contexts",
+      "For countdowns and timers, test with dates far in the future and recent past to verify calculations"
+    ],
+    "commonMistakes": [
+      "Using 24-hour format without noting AM/PM distinction when sharing results",
+      "Calculating durations without accounting for DST transitions"
+    ]
+  },
+  "regex": {
+    "deepDive": "Regex Tester is a developer utility that streamlines common programming tasks, reducing context-switching and eliminating the need for heavyweight IDE installations for quick operations. Modern software development involves an enormous surface area of tools, formats, and protocols\u2014developers regularly need to format code, validate syntax, encode data, parse URLs, inspect tokens, and reference documentation, often while deep in a debugging session or rapid prototyping flow. The Regex Tester provides instant, lightweight access to these capabilities directly in your browser, with zero installation, zero configuration, and zero data leaving your machine. This client-side, privacy-first architecture is particularly valuable when working with proprietary code, API keys, authentication tokens, or internal configuration that should never touch third-party servers. Developer tools like this complement full IDEs by filling the gap between 'too simple for a script' and 'too quick to launch an IDE', keeping you in flow state and reducing the friction that accumulates across hundreds of micro-tasks throughout a development day.",
+    "tips": [
+      "Use beautifiers before minifiers\u2014make code readable, understand it, then compress for production",
+      "Validate JSON and YAML before committing\u2014syntax errors in config files cause hard-to-debug runtime failures",
+      "Bookmark your most-used dev tools for quick access during debugging sessions"
+    ],
+    "commonMistakes": [
+      "Committing unformatted code\u2014wastes reviewer time and creates noisy diffs",
+      "Minifying before debugging\u2014always debug readable code"
+    ]
+  },
+  "image-compress": {
+    "deepDive": "Image Compressor performs image-related operations directly in your browser using modern Web APIs and client-side processing, eliminating the need to upload files to remote servers or install desktop software. Image processing has traditionally been a resource-intensive task requiring specialized software, but advances in browser capabilities\u2014particularly the Canvas API, Web Workers for background processing, and efficient JavaScript engines\u2014now enable sophisticated image manipulation entirely client-side. The critical advantage of browser-based image tools is privacy: your images never leave your device, which is essential when working with personal photos, proprietary design assets, or confidential documents. Image Compressor leverages these capabilities to provide instant, free image processing that respects your privacy while delivering results comparable to desktop applications for common tasks like compression, format conversion, and metadata handling.",
+    "tips": [
+      "Always keep the original image\u2014compression and conversion are lossy operations for most formats",
+      "Use WebP or AVIF for web images when browser support allows\u2014they offer better compression than JPEG/PNG",
+      "Check your favicon on both light and dark browser themes\u2014some icons disappear against certain backgrounds"
+    ],
+    "commonMistakes": [
+      "Embedding large Base64 images in HTML\u2014increases page size and blocks rendering",
+      "Using favicon sizes that don't cover all platforms\u2014iOS, Android, and desktop have different requirements"
+    ]
+  },
+  "number-base": {
+    "deepDive": "Number Base Converter performs mathematical calculations and conversions that would be tedious or error-prone to do manually, providing instant, accurate results for everyday and specialized math needs. Mathematics underpins virtually every technical field, from engineering and finance to data science and game development, yet translating formulas into correct implementations requires careful attention to precision, edge cases, and numerical stability. The Number Base Converter handles these computational details behind the scenes, so you can focus on the result rather than worrying about floating-point arithmetic, integer overflow, or rounding strategies. Browser-based math tools offer particular advantages: they're always available without installation, they respect your privacy since calculations happen locally, and they can handle a wide range of units and number systems that would require multiple specialized applications otherwise.",
+    "tips": [
+      "Double-check critical calculations with a second method\u2014unit conversion errors can be costly",
+      "Be aware of floating-point limitations in JavaScript\u2014very large or precise numbers may lose accuracy",
+      "Use the appropriate number of decimal places for your context\u2014engineering needs more precision than cooking"
+    ],
+    "commonMistakes": [
+      "Confusing percentage points with percentage change\u2014they're fundamentally different",
+      "Rounding intermediate results instead of only the final answer"
+    ]
+  },
+  "text-diff": {
+    "deepDive": "Text Diff Checker is a text manipulation utility that helps you process, analyze, or transform text content without writing custom code or scripts. In an era where data is increasingly text-heavy\u2014from log files and API responses to configuration files and user-generated content\u2014having reliable text processing tools at your fingertips saves hours of manual work and eliminates tedious regex crafting. The Text Diff Checker operates entirely in your browser using client-side JavaScript, meaning your text never leaves your device, ensuring complete privacy even for sensitive content like personal notes, business data, or proprietary source code. Text processing tools like this fill a crucial gap between basic text editors (which lack specialized transformations) and full programming environments (which require setup and expertise). Whether you're a developer cleaning up data before import, a writer reformatting content, or a data analyst extracting patterns from unstructured text, having instant access to these transformations dramatically accelerates your workflow and reduces errors from manual editing.",
+    "tips": [
+      "Use the word count tool to check if your content meets minimum length requirements for SEO or assignments",
+      "Sort lines alphabetically before deduplication to ensure consistent results with mixed-case entries",
+      "For programming text, be careful with automatic case conversion\u2014it can break case-sensitive identifiers"
+    ],
+    "commonMistakes": [
+      "Modifying text in place without keeping a backup\u2014most text transformations are irreversible",
+      "Applying case conversion to code or config files\u2014breaks case-sensitive identifiers and keys"
+    ]
+  },
+  "lorem-ipsum": {
+    "deepDive": "Lorem Ipsum Generator creates unique, randomized output based on configurable parameters, eliminating the need for manual creation of test data, identifiers, or creative assets. Generation tools solve a fundamental problem in development and design: producing high-quality, varied content at scale without repetitive manual effort. The Lorem Ipsum Generator uses cryptographically secure or statistically sound randomization algorithms depending on the use case, ensuring generated output meets quality standards whether it's for production systems or development testing. In modern software development, generators are essential for load testing with realistic data, seeding databases during development, creating unique identifiers in distributed systems, and rapid prototyping of UI components. Generation tools also power creative workflows\u2014from placeholder content in design mockups to randomized color palettes and procedural art\u2014enabling designers and developers to explore possibilities quickly before committing to final implementations.",
+    "tips": [
+      "For cryptographic purposes like API keys, always use cryptographically secure generators\u2014not Math.random()",
+      "Save your generator settings as URL parameters or bookmarks for reproducible workflows",
+      "Test generated output in your target system before generating thousands of items"
+    ],
+    "commonMistakes": [
+      "Using non-cryptographic generators for security tokens or API keys",
+      "Not setting appropriate length constraints\u2014UUIDs are 36 chars; using shorter IDs risks collisions"
+    ]
+  },
+  "text-sort": {
+    "deepDive": "Text Line Sorter is a text manipulation utility that helps you process, analyze, or transform text content without writing custom code or scripts. In an era where data is increasingly text-heavy\u2014from log files and API responses to configuration files and user-generated content\u2014having reliable text processing tools at your fingertips saves hours of manual work and eliminates tedious regex crafting. The Text Line Sorter operates entirely in your browser using client-side JavaScript, meaning your text never leaves your device, ensuring complete privacy even for sensitive content like personal notes, business data, or proprietary source code. Text processing tools like this fill a crucial gap between basic text editors (which lack specialized transformations) and full programming environments (which require setup and expertise). Whether you're a developer cleaning up data before import, a writer reformatting content, or a data analyst extracting patterns from unstructured text, having instant access to these transformations dramatically accelerates your workflow and reduces errors from manual editing.",
+    "tips": [
+      "Process text in small batches first to verify the output format before running on large datasets",
+      "Keep a copy of your original text\u2014most text transformations are irreversible",
+      "Combine multiple text tools in sequence for complex data cleaning pipelines"
+    ],
+    "commonMistakes": [
+      "Counting words with naive space-splitting\u2014doesn't handle punctuation, emoji, or CJK characters correctly",
+      "Sorting text without considering locale\u2014string comparison rules vary by language"
+    ]
+  },
+  "slug-generator": {
+    "deepDive": "URL Slug Generator is a text manipulation utility that helps you process, analyze, or transform text content without writing custom code or scripts. In an era where data is increasingly text-heavy\u2014from log files and API responses to configuration files and user-generated content\u2014having reliable text processing tools at your fingertips saves hours of manual work and eliminates tedious regex crafting. The URL Slug Generator operates entirely in your browser using client-side JavaScript, meaning your text never leaves your device, ensuring complete privacy even for sensitive content like personal notes, business data, or proprietary source code. Text processing tools like this fill a crucial gap between basic text editors (which lack specialized transformations) and full programming environments (which require setup and expertise). Whether you're a developer cleaning up data before import, a writer reformatting content, or a data analyst extracting patterns from unstructured text, having instant access to these transformations dramatically accelerates your workflow and reduces errors from manual editing.",
+    "tips": [
+      "Use the word count tool to check if your content meets minimum length requirements for SEO or assignments",
+      "Sort lines alphabetically before deduplication to ensure consistent results with mixed-case entries",
+      "For programming text, be careful with automatic case conversion\u2014it can break case-sensitive identifiers"
+    ],
+    "commonMistakes": [
+      "Modifying text in place without keeping a backup\u2014most text transformations are irreversible",
+      "Applying case conversion to code or config files\u2014breaks case-sensitive identifiers and keys"
+    ]
+  },
+  "json-to-csv": {
+    "deepDive": "JSON to CSV Converter is a developer utility that streamlines common programming tasks, reducing context-switching and eliminating the need for heavyweight IDE installations for quick operations. Modern software development involves an enormous surface area of tools, formats, and protocols\u2014developers regularly need to format code, validate syntax, encode data, parse URLs, inspect tokens, and reference documentation, often while deep in a debugging session or rapid prototyping flow. The JSON to CSV Converter provides instant, lightweight access to these capabilities directly in your browser, with zero installation, zero configuration, and zero data leaving your machine. This client-side, privacy-first architecture is particularly valuable when working with proprietary code, API keys, authentication tokens, or internal configuration that should never touch third-party servers. Developer tools like this complement full IDEs by filling the gap between 'too simple for a script' and 'too quick to launch an IDE', keeping you in flow state and reducing the friction that accumulates across hundreds of micro-tasks throughout a development day.",
+    "tips": [
+      "Keep a backup of your original data before applying transformations",
+      "Use keyboard shortcuts (if available) to speed up your workflow",
+      "Read the documentation or help section for advanced features"
+    ],
+    "commonMistakes": [
+      [
+        "Not testing with edge cases\u2014empty input, very long strings, special characters",
+        "Assuming the output is correct without verification\u2014always spot-check results"
+      ],
+      [
+        "Overwriting source data without keeping a backup",
+        "Using browser-based tools for processing sensitive enterprise data without checking company policy"
+      ]
+    ]
+  },
+  "markdown-preview": {
+    "deepDive": "Markdown Preview is a developer utility that streamlines common programming tasks, reducing context-switching and eliminating the need for heavyweight IDE installations for quick operations. Modern software development involves an enormous surface area of tools, formats, and protocols\u2014developers regularly need to format code, validate syntax, encode data, parse URLs, inspect tokens, and reference documentation, often while deep in a debugging session or rapid prototyping flow. The Markdown Preview provides instant, lightweight access to these capabilities directly in your browser, with zero installation, zero configuration, and zero data leaving your machine. This client-side, privacy-first architecture is particularly valuable when working with proprietary code, API keys, authentication tokens, or internal configuration that should never touch third-party servers. Developer tools like this complement full IDEs by filling the gap between 'too simple for a script' and 'too quick to launch an IDE', keeping you in flow state and reducing the friction that accumulates across hundreds of micro-tasks throughout a development day.",
+    "tips": [
+      "When decoding JWTs, never trust the payload content without signature verification\u2014the header and payload are just Base64",
+      "Keep a regex cheatsheet handy\u2014even experienced developers forget quantifier syntax",
+      "For SQL formatting, use uppercase for keywords and consistent indentation to make query structure immediately visible"
+    ],
+    "commonMistakes": [
+      "Trusting JWT payloads without signature verification\u2014the content is just Base64, not authenticated",
+      "Using regex to parse HTML\u2014it's a losing battle against nested structures"
+    ]
+  },
+  "jwt-decoder": {
+    "deepDive": "JWT Decoder is a developer utility that streamlines common programming tasks, reducing context-switching and eliminating the need for heavyweight IDE installations for quick operations. Modern software development involves an enormous surface area of tools, formats, and protocols\u2014developers regularly need to format code, validate syntax, encode data, parse URLs, inspect tokens, and reference documentation, often while deep in a debugging session or rapid prototyping flow. The JWT Decoder provides instant, lightweight access to these capabilities directly in your browser, with zero installation, zero configuration, and zero data leaving your machine. This client-side, privacy-first architecture is particularly valuable when working with proprietary code, API keys, authentication tokens, or internal configuration that should never touch third-party servers. Developer tools like this complement full IDEs by filling the gap between 'too simple for a script' and 'too quick to launch an IDE', keeping you in flow state and reducing the friction that accumulates across hundreds of micro-tasks throughout a development day.",
+    "tips": [
+      "When decoding JWTs, never trust the payload content without signature verification\u2014the header and payload are just Base64",
+      "Keep a regex cheatsheet handy\u2014even experienced developers forget quantifier syntax",
+      "For SQL formatting, use uppercase for keywords and consistent indentation to make query structure immediately visible"
+    ],
+    "commonMistakes": [
+      "Trusting JWT payloads without signature verification\u2014the content is just Base64, not authenticated",
+      "Using regex to parse HTML\u2014it's a losing battle against nested structures"
+    ]
+  },
+  "css-minifier": {
+    "deepDive": "CSS Minifier is a developer utility that streamlines common programming tasks, reducing context-switching and eliminating the need for heavyweight IDE installations for quick operations. Modern software development involves an enormous surface area of tools, formats, and protocols\u2014developers regularly need to format code, validate syntax, encode data, parse URLs, inspect tokens, and reference documentation, often while deep in a debugging session or rapid prototyping flow. The CSS Minifier provides instant, lightweight access to these capabilities directly in your browser, with zero installation, zero configuration, and zero data leaving your machine. This client-side, privacy-first architecture is particularly valuable when working with proprietary code, API keys, authentication tokens, or internal configuration that should never touch third-party servers. Developer tools like this complement full IDEs by filling the gap between 'too simple for a script' and 'too quick to launch an IDE', keeping you in flow state and reducing the friction that accumulates across hundreds of micro-tasks throughout a development day.",
+    "tips": [
+      "Use beautifiers before minifiers\u2014make code readable, understand it, then compress for production",
+      "Validate JSON and YAML before committing\u2014syntax errors in config files cause hard-to-debug runtime failures",
+      "Bookmark your most-used dev tools for quick access during debugging sessions"
+    ],
+    "commonMistakes": [
+      "Committing unformatted code\u2014wastes reviewer time and creates noisy diffs",
+      "Minifying before debugging\u2014always debug readable code"
+    ]
+  },
+  "random-string": {
+    "deepDive": "Random String Generator creates unique, randomized output based on configurable parameters, eliminating the need for manual creation of test data, identifiers, or creative assets. Generation tools solve a fundamental problem in development and design: producing high-quality, varied content at scale without repetitive manual effort. The Random String Generator uses cryptographically secure or statistically sound randomization algorithms depending on the use case, ensuring generated output meets quality standards whether it's for production systems or development testing. In modern software development, generators are essential for load testing with realistic data, seeding databases during development, creating unique identifiers in distributed systems, and rapid prototyping of UI components. Generation tools also power creative workflows\u2014from placeholder content in design mockups to randomized color palettes and procedural art\u2014enabling designers and developers to explore possibilities quickly before committing to final implementations.",
+    "tips": [
+      "When generating test data, include edge cases (empty values, maximum lengths, special characters) to catch bugs",
+      "Use consistent seeds for reproducible tests\u2014randomness is great for variety but terrible for debugging",
+      "Generate more items than you think you need\u2014it's faster to generate extras than to restart the process"
+    ],
+    "commonMistakes": [
+      "Using Math.random() for cryptographic purposes\u2014it's not cryptographically secure",
+      "Generating identifiers without checking for collisions in existing datasets"
+    ]
+  },
+  "percentage-calculator": {
+    "deepDive": "Percentage Calculator performs mathematical calculations and conversions that would be tedious or error-prone to do manually, providing instant, accurate results for everyday and specialized math needs. Mathematics underpins virtually every technical field, from engineering and finance to data science and game development, yet translating formulas into correct implementations requires careful attention to precision, edge cases, and numerical stability. The Percentage Calculator handles these computational details behind the scenes, so you can focus on the result rather than worrying about floating-point arithmetic, integer overflow, or rounding strategies. Browser-based math tools offer particular advantages: they're always available without installation, they respect your privacy since calculations happen locally, and they can handle a wide range of units and number systems that would require multiple specialized applications otherwise.",
+    "tips": [
+      "Double-check critical calculations with a second method\u2014unit conversion errors can be costly",
+      "Be aware of floating-point limitations in JavaScript\u2014very large or precise numbers may lose accuracy",
+      "Use the appropriate number of decimal places for your context\u2014engineering needs more precision than cooking"
+    ],
+    "commonMistakes": [
+      "Confusing percentage points with percentage change\u2014they're fundamentally different",
+      "Rounding intermediate results instead of only the final answer"
+    ]
+  },
+  "json-validator": {
+    "deepDive": "JSON Validator takes unstructured or poorly formatted data and transforms it into clean, readable, standards-compliant output\u2014turning chaos into clarity. Code and data formatting is about more than aesthetics; properly formatted output reduces cognitive load when reading, prevents syntax errors from invisible characters, and ensures consistency across team workflows. The JSON Validator parses input according to its format specification, builds an internal syntax tree, then regenerates output with proper indentation, spacing, and line breaks according to widely accepted style conventions. This process also catches syntax errors early\u2014if the formatter can't parse your input, there's a structural problem that would cause issues downstream. In professional development workflows, automated formatting tools integrated into CI/CD pipelines enforce coding standards across entire teams, eliminating style debates from code reviews and letting developers focus on logic and architecture.",
+    "tips": [
+      "Format before committing to version control\u2014consistent formatting eliminates meaningless diffs",
+      "Set your editor to auto-format on save, but verify the tool's settings match your team's style guide",
+      "If formatting fails, your code has a syntax error\u2014fix it before the formatter can help"
+    ],
+    "commonMistakes": [
+      "Overwriting the original file without backup before formatting large or critical files",
+      "Formatting generated code that will be regenerated\u2014creates merge conflicts"
+    ]
+  },
+  "js-minifier": {
+    "deepDive": "JavaScript Minifier is a developer utility that streamlines common programming tasks, reducing context-switching and eliminating the need for heavyweight IDE installations for quick operations. Modern software development involves an enormous surface area of tools, formats, and protocols\u2014developers regularly need to format code, validate syntax, encode data, parse URLs, inspect tokens, and reference documentation, often while deep in a debugging session or rapid prototyping flow. The JavaScript Minifier provides instant, lightweight access to these capabilities directly in your browser, with zero installation, zero configuration, and zero data leaving your machine. This client-side, privacy-first architecture is particularly valuable when working with proprietary code, API keys, authentication tokens, or internal configuration that should never touch third-party servers. Developer tools like this complement full IDEs by filling the gap between 'too simple for a script' and 'too quick to launch an IDE', keeping you in flow state and reducing the friction that accumulates across hundreds of micro-tasks throughout a development day.",
+    "tips": [
+      "Use beautifiers before minifiers\u2014make code readable, understand it, then compress for production",
+      "Validate JSON and YAML before committing\u2014syntax errors in config files cause hard-to-debug runtime failures",
+      "Bookmark your most-used dev tools for quick access during debugging sessions"
+    ],
+    "commonMistakes": [
+      "Committing unformatted code\u2014wastes reviewer time and creates noisy diffs",
+      "Minifying before debugging\u2014always debug readable code"
+    ]
+  },
+  "html-minifier": {
+    "deepDive": "HTML Minifier is a developer utility that streamlines common programming tasks, reducing context-switching and eliminating the need for heavyweight IDE installations for quick operations. Modern software development involves an enormous surface area of tools, formats, and protocols\u2014developers regularly need to format code, validate syntax, encode data, parse URLs, inspect tokens, and reference documentation, often while deep in a debugging session or rapid prototyping flow. The HTML Minifier provides instant, lightweight access to these capabilities directly in your browser, with zero installation, zero configuration, and zero data leaving your machine. This client-side, privacy-first architecture is particularly valuable when working with proprietary code, API keys, authentication tokens, or internal configuration that should never touch third-party servers. Developer tools like this complement full IDEs by filling the gap between 'too simple for a script' and 'too quick to launch an IDE', keeping you in flow state and reducing the friction that accumulates across hundreds of micro-tasks throughout a development day.",
+    "tips": [
+      "Use beautifiers before minifiers\u2014make code readable, understand it, then compress for production",
+      "Validate JSON and YAML before committing\u2014syntax errors in config files cause hard-to-debug runtime failures",
+      "Bookmark your most-used dev tools for quick access during debugging sessions"
+    ],
+    "commonMistakes": [
+      "Committing unformatted code\u2014wastes reviewer time and creates noisy diffs",
+      "Minifying before debugging\u2014always debug readable code"
+    ]
+  },
+  "sql-formatter": {
+    "deepDive": "SQL Formatter is a developer utility that streamlines common programming tasks, reducing context-switching and eliminating the need for heavyweight IDE installations for quick operations. Modern software development involves an enormous surface area of tools, formats, and protocols\u2014developers regularly need to format code, validate syntax, encode data, parse URLs, inspect tokens, and reference documentation, often while deep in a debugging session or rapid prototyping flow. The SQL Formatter provides instant, lightweight access to these capabilities directly in your browser, with zero installation, zero configuration, and zero data leaving your machine. This client-side, privacy-first architecture is particularly valuable when working with proprietary code, API keys, authentication tokens, or internal configuration that should never touch third-party servers. Developer tools like this complement full IDEs by filling the gap between 'too simple for a script' and 'too quick to launch an IDE', keeping you in flow state and reducing the friction that accumulates across hundreds of micro-tasks throughout a development day.",
+    "tips": [
+      "Use beautifiers before minifiers\u2014make code readable, understand it, then compress for production",
+      "Validate JSON and YAML before committing\u2014syntax errors in config files cause hard-to-debug runtime failures",
+      "Bookmark your most-used dev tools for quick access during debugging sessions"
+    ],
+    "commonMistakes": [
+      "Committing unformatted code\u2014wastes reviewer time and creates noisy diffs",
+      "Minifying before debugging\u2014always debug readable code"
+    ]
+  },
+  "url-parser": {
+    "deepDive": "URL Parser is a developer utility that streamlines common programming tasks, reducing context-switching and eliminating the need for heavyweight IDE installations for quick operations. Modern software development involves an enormous surface area of tools, formats, and protocols\u2014developers regularly need to format code, validate syntax, encode data, parse URLs, inspect tokens, and reference documentation, often while deep in a debugging session or rapid prototyping flow. The URL Parser provides instant, lightweight access to these capabilities directly in your browser, with zero installation, zero configuration, and zero data leaving your machine. This client-side, privacy-first architecture is particularly valuable when working with proprietary code, API keys, authentication tokens, or internal configuration that should never touch third-party servers. Developer tools like this complement full IDEs by filling the gap between 'too simple for a script' and 'too quick to launch an IDE', keeping you in flow state and reducing the friction that accumulates across hundreds of micro-tasks throughout a development day.",
+    "tips": [
+      "Use beautifiers before minifiers\u2014make code readable, understand it, then compress for production",
+      "Validate JSON and YAML before committing\u2014syntax errors in config files cause hard-to-debug runtime failures",
+      "Bookmark your most-used dev tools for quick access during debugging sessions"
+    ],
+    "commonMistakes": [
+      "Committing unformatted code\u2014wastes reviewer time and creates noisy diffs",
+      "Minifying before debugging\u2014always debug readable code"
+    ]
+  },
+  "http-status": {
+    "deepDive": "HTTP Status Codes provides instant visibility into network configuration, connectivity, and protocol details\u2014essential diagnostic capabilities for anyone working with internet-connected systems. Network troubleshooting is notoriously difficult because problems can originate anywhere in the stack: DNS misconfiguration, routing issues, firewall rules, application-level bugs, or upstream provider outages. HTTP Status Codes helps you quickly narrow down the source of issues by providing key diagnostic data points without requiring SSH access to remote servers or installation of specialized network tools. Understanding your network environment is also critical for security\u2014knowing what's exposed, what IP information you're leaking to services, and what ports are accessible helps you assess your attack surface and implement appropriate protections. For developers building web applications, network tools provide the ground truth needed to debug connectivity issues, verify CDN configuration, and ensure APIs are reachable from production environments.",
+    "tips": [
+      "Check DNS from multiple locations if results seem wrong\u2014DNS propagation can take up to 48 hours",
+      "Use IP lookup tools to verify your VPN or proxy is actually routing traffic correctly",
+      "Test port connectivity before blaming application code\u2014firewall rules are the most common culprit"
+    ],
+    "commonMistakes": [
+      "Trusting a single IP lookup source\u2014geolocation databases have varying accuracy",
+      "Testing connectivity only from your own machine when users are on different networks"
+    ]
+  },
+  "color-contrast": {
+    "deepDive": "Color Contrast Checker bridges the gap between visual design and code implementation, helping designers and developers collaborate more effectively by providing instant visual feedback and code generation. The perennial challenge in web and UI development is translating visual design intent into precise CSS values\u2014what looks right in a design tool may render differently across browsers, screen sizes, and color profiles. Color Contrast Checker provides interactive, real-time previews where you can experiment with visual properties and immediately see the result, then copy the exact production-ready CSS code. This tight feedback loop between visual manipulation and code output dramatically accelerates UI development workflows, reduces the iteration cycles of 'tweak value, rebuild, check' that slow down frontend work, and ensures consistency between design mockups and implemented interfaces.",
+    "tips": [
+      "Always check contrast ratios with actual text on actual backgrounds\u2014WCAG compliance is about real readability",
+      "Use the 60-30-10 rule for color distribution in UI design: 60% dominant, 30% secondary, 10% accent",
+      "Test color combinations under different lighting conditions and on different screens before finalizing"
+    ],
+    "commonMistakes": [
+      "Copying CSS without understanding which properties work together\u2014can create unexpected interactions",
+      "Using em/rem units inconsistently\u2014mixing units complicates responsive design"
+    ]
+  },
+  "date-calculator": {
+    "deepDive": "Date Calculator helps you work with dates, times, and temporal calculations\u2014one of the most notoriously complex domains in programming. Time-related operations appear deceptively simple but hide tremendous complexity: timezone offsets change with daylight saving rules that vary by jurisdiction, leap seconds get added irregularly, different calendar systems exist globally, and month lengths fluctuate. A seemingly straightforward 'add 30 days' operation must correctly handle month boundaries, leap years, and DST transitions. The Date Calculator handles these edge cases so you don't have to, providing accurate results regardless of date range or timezone configuration. Whether you're calculating project deadlines, converting between international time zones for remote team coordination, computing age or tenure from dates, or parsing cron expressions for scheduled automation, having a reliable time utility saves hours of debugging and prevents subtle bugs that only manifest at boundary conditions like year-end or DST changes.",
+    "tips": [
+      "Always verify timezone conversions around DST transition dates\u2014many tools handle these incorrectly",
+      "Use ISO 8601 format (YYYY-MM-DD) for unambiguous date representation in international contexts",
+      "For countdowns and timers, test with dates far in the future and recent past to verify calculations"
+    ],
+    "commonMistakes": [
+      "Using 24-hour format without noting AM/PM distinction when sharing results",
+      "Calculating durations without accounting for DST transitions"
+    ]
+  },
+  "stopwatch": {
+    "deepDive": "Online Stopwatch helps you work with dates, times, and temporal calculations\u2014one of the most notoriously complex domains in programming. Time-related operations appear deceptively simple but hide tremendous complexity: timezone offsets change with daylight saving rules that vary by jurisdiction, leap seconds get added irregularly, different calendar systems exist globally, and month lengths fluctuate. A seemingly straightforward 'add 30 days' operation must correctly handle month boundaries, leap years, and DST transitions. The Online Stopwatch handles these edge cases so you don't have to, providing accurate results regardless of date range or timezone configuration. Whether you're calculating project deadlines, converting between international time zones for remote team coordination, computing age or tenure from dates, or parsing cron expressions for scheduled automation, having a reliable time utility saves hours of debugging and prevents subtle bugs that only manifest at boundary conditions like year-end or DST changes.",
+    "tips": [
+      "Always verify timezone conversions around DST transition dates\u2014many tools handle these incorrectly",
+      "Use ISO 8601 format (YYYY-MM-DD) for unambiguous date representation in international contexts",
+      "For countdowns and timers, test with dates far in the future and recent past to verify calculations"
+    ],
+    "commonMistakes": [
+      "Using 24-hour format without noting AM/PM distinction when sharing results",
+      "Calculating durations without accounting for DST transitions"
+    ]
+  },
+  "unit-converter": {
+    "deepDive": "Unit Converter performs mathematical calculations and conversions that would be tedious or error-prone to do manually, providing instant, accurate results for everyday and specialized math needs. Mathematics underpins virtually every technical field, from engineering and finance to data science and game development, yet translating formulas into correct implementations requires careful attention to precision, edge cases, and numerical stability. The Unit Converter handles these computational details behind the scenes, so you can focus on the result rather than worrying about floating-point arithmetic, integer overflow, or rounding strategies. Browser-based math tools offer particular advantages: they're always available without installation, they respect your privacy since calculations happen locally, and they can handle a wide range of units and number systems that would require multiple specialized applications otherwise.",
+    "tips": [
+      "Double-check critical calculations with a second method\u2014unit conversion errors can be costly",
+      "Be aware of floating-point limitations in JavaScript\u2014very large or precise numbers may lose accuracy",
+      "Use the appropriate number of decimal places for your context\u2014engineering needs more precision than cooking"
+    ],
+    "commonMistakes": [
+      "Confusing percentage points with percentage change\u2014they're fundamentally different",
+      "Rounding intermediate results instead of only the final answer"
+    ]
+  },
+  "text-to-binary": {
+    "deepDive": "Text to Binary Converter transforms data between different representation formats while preserving all original information, enabling compatibility across diverse systems and protocols. The encoding process maps input characters or bytes to a different symbol set using deterministic rules\u2014no information is lost, and the process is fully reversible through decoding. This distinguishes encoding from hashing or encryption, where data is either irreversibly transformed or requires keys for recovery. Common applications include preparing binary data for text-based transport protocols, escaping special characters in HTML and URLs, converting between character encodings for internationalization, and obfuscating data for safe storage. Encoding is essential infrastructure in modern computing: every email attachment, every JSON API payload, and every URL you visit relies on encoding schemes working correctly behind the scenes. Understanding how different encoding formats work helps developers debug data corruption issues, choose the right format for specific use cases, and build robust data pipelines that handle edge cases gracefully.",
+    "tips": [
+      "Decode suspicious-looking strings to check if they contain hidden payloads or obfuscated content",
+      "When working with APIs, ensure your encoding matches the Content-Type header expectations",
+      "Test encoding with edge cases: empty strings, very long strings, special characters, and Unicode"
+    ],
+    "commonMistakes": [
+      "Confusing encoding with encryption\u2014Base64 and URL encoding provide zero security",
+      "Double-encoding data accidentally\u2014URLs with pre-encoded components get corrupted"
+    ]
+  },
+  "hex-to-text": {
+    "deepDive": "Hex to Text Converter transforms data between different representation formats while preserving all original information, enabling compatibility across diverse systems and protocols. The encoding process maps input characters or bytes to a different symbol set using deterministic rules\u2014no information is lost, and the process is fully reversible through decoding. This distinguishes encoding from hashing or encryption, where data is either irreversibly transformed or requires keys for recovery. Common applications include preparing binary data for text-based transport protocols, escaping special characters in HTML and URLs, converting between character encodings for internationalization, and obfuscating data for safe storage. Encoding is essential infrastructure in modern computing: every email attachment, every JSON API payload, and every URL you visit relies on encoding schemes working correctly behind the scenes. Understanding how different encoding formats work helps developers debug data corruption issues, choose the right format for specific use cases, and build robust data pipelines that handle edge cases gracefully.",
+    "tips": [
+      "Decode suspicious-looking strings to check if they contain hidden payloads or obfuscated content",
+      "When working with APIs, ensure your encoding matches the Content-Type header expectations",
+      "Test encoding with edge cases: empty strings, very long strings, special characters, and Unicode"
+    ],
+    "commonMistakes": [
+      "Confusing encoding with encryption\u2014Base64 and URL encoding provide zero security",
+      "Double-encoding data accidentally\u2014URLs with pre-encoded components get corrupted"
+    ]
+  },
+  "list-randomizer": {
+    "deepDive": "List Randomizer is a text manipulation utility that helps you process, analyze, or transform text content without writing custom code or scripts. In an era where data is increasingly text-heavy\u2014from log files and API responses to configuration files and user-generated content\u2014having reliable text processing tools at your fingertips saves hours of manual work and eliminates tedious regex crafting. The List Randomizer operates entirely in your browser using client-side JavaScript, meaning your text never leaves your device, ensuring complete privacy even for sensitive content like personal notes, business data, or proprietary source code. Text processing tools like this fill a crucial gap between basic text editors (which lack specialized transformations) and full programming environments (which require setup and expertise). Whether you're a developer cleaning up data before import, a writer reformatting content, or a data analyst extracting patterns from unstructured text, having instant access to these transformations dramatically accelerates your workflow and reduces errors from manual editing.",
+    "tips": [
+      "Use the word count tool to check if your content meets minimum length requirements for SEO or assignments",
+      "Sort lines alphabetically before deduplication to ensure consistent results with mixed-case entries",
+      "For programming text, be careful with automatic case conversion\u2014it can break case-sensitive identifiers"
+    ],
+    "commonMistakes": [
+      "Modifying text in place without keeping a backup\u2014most text transformations are irreversible",
+      "Applying case conversion to code or config files\u2014breaks case-sensitive identifiers and keys"
+    ]
+  },
+  "meta-tag-generator": {
+    "deepDive": "Meta Tag Generator creates unique, randomized output based on configurable parameters, eliminating the need for manual creation of test data, identifiers, or creative assets. Generation tools solve a fundamental problem in development and design: producing high-quality, varied content at scale without repetitive manual effort. The Meta Tag Generator uses cryptographically secure or statistically sound randomization algorithms depending on the use case, ensuring generated output meets quality standards whether it's for production systems or development testing. In modern software development, generators are essential for load testing with realistic data, seeding databases during development, creating unique identifiers in distributed systems, and rapid prototyping of UI components. Generation tools also power creative workflows\u2014from placeholder content in design mockups to randomized color palettes and procedural art\u2014enabling designers and developers to explore possibilities quickly before committing to final implementations.",
+    "tips": [
+      "For cryptographic purposes like API keys, always use cryptographically secure generators\u2014not Math.random()",
+      "Save your generator settings as URL parameters or bookmarks for reproducible workflows",
+      "Test generated output in your target system before generating thousands of items"
+    ],
+    "commonMistakes": [
+      "Using non-cryptographic generators for security tokens or API keys",
+      "Not setting appropriate length constraints\u2014UUIDs are 36 chars; using shorter IDs risks collisions"
+    ]
+  },
+  "text-repeater": {
+    "deepDive": "Text Repeater is a text manipulation utility that helps you process, analyze, or transform text content without writing custom code or scripts. In an era where data is increasingly text-heavy\u2014from log files and API responses to configuration files and user-generated content\u2014having reliable text processing tools at your fingertips saves hours of manual work and eliminates tedious regex crafting. The Text Repeater operates entirely in your browser using client-side JavaScript, meaning your text never leaves your device, ensuring complete privacy even for sensitive content like personal notes, business data, or proprietary source code. Text processing tools like this fill a crucial gap between basic text editors (which lack specialized transformations) and full programming environments (which require setup and expertise). Whether you're a developer cleaning up data before import, a writer reformatting content, or a data analyst extracting patterns from unstructured text, having instant access to these transformations dramatically accelerates your workflow and reduces errors from manual editing.",
+    "tips": [
+      "Use the word count tool to check if your content meets minimum length requirements for SEO or assignments",
+      "Sort lines alphabetically before deduplication to ensure consistent results with mixed-case entries",
+      "For programming text, be careful with automatic case conversion\u2014it can break case-sensitive identifiers"
+    ],
+    "commonMistakes": [
+      "Modifying text in place without keeping a backup\u2014most text transformations are irreversible",
+      "Applying case conversion to code or config files\u2014breaks case-sensitive identifiers and keys"
+    ]
+  },
+  "bmi-calculator": {
+    "deepDive": "BMI Calculator performs mathematical calculations and conversions that would be tedious or error-prone to do manually, providing instant, accurate results for everyday and specialized math needs. Mathematics underpins virtually every technical field, from engineering and finance to data science and game development, yet translating formulas into correct implementations requires careful attention to precision, edge cases, and numerical stability. The BMI Calculator handles these computational details behind the scenes, so you can focus on the result rather than worrying about floating-point arithmetic, integer overflow, or rounding strategies. Browser-based math tools offer particular advantages: they're always available without installation, they respect your privacy since calculations happen locally, and they can handle a wide range of units and number systems that would require multiple specialized applications otherwise.",
+    "tips": [
+      "Double-check critical calculations with a second method\u2014unit conversion errors can be costly",
+      "Be aware of floating-point limitations in JavaScript\u2014very large or precise numbers may lose accuracy",
+      "Use the appropriate number of decimal places for your context\u2014engineering needs more precision than cooking"
+    ],
+    "commonMistakes": [
+      "Confusing percentage points with percentage change\u2014they're fundamentally different",
+      "Rounding intermediate results instead of only the final answer"
+    ]
+  },
+  "age-calculator": {
+    "deepDive": "Age Calculator helps you work with dates, times, and temporal calculations\u2014one of the most notoriously complex domains in programming. Time-related operations appear deceptively simple but hide tremendous complexity: timezone offsets change with daylight saving rules that vary by jurisdiction, leap seconds get added irregularly, different calendar systems exist globally, and month lengths fluctuate. A seemingly straightforward 'add 30 days' operation must correctly handle month boundaries, leap years, and DST transitions. The Age Calculator handles these edge cases so you don't have to, providing accurate results regardless of date range or timezone configuration. Whether you're calculating project deadlines, converting between international time zones for remote team coordination, computing age or tenure from dates, or parsing cron expressions for scheduled automation, having a reliable time utility saves hours of debugging and prevents subtle bugs that only manifest at boundary conditions like year-end or DST changes.",
+    "tips": [
+      "Don't trust browser time for critical applications\u2014client clocks can be inaccurate by minutes",
+      "When calculating age or duration, account for leap years\u2014365 days \u2260 1 year in date math",
+      "Test cron expressions with an online parser before deploying to production\u2014syntax errors cause silent failures"
+    ],
+    "commonMistakes": [
+      "Forgetting that months are zero-indexed in JavaScript but one-indexed everywhere else",
+      "Ignoring timezone offsets when comparing dates across regions"
+    ]
+  },
+  "pomodoro": {
+    "deepDive": "Pomodoro Timer helps you work with dates, times, and temporal calculations\u2014one of the most notoriously complex domains in programming. Time-related operations appear deceptively simple but hide tremendous complexity: timezone offsets change with daylight saving rules that vary by jurisdiction, leap seconds get added irregularly, different calendar systems exist globally, and month lengths fluctuate. A seemingly straightforward 'add 30 days' operation must correctly handle month boundaries, leap years, and DST transitions. The Pomodoro Timer handles these edge cases so you don't have to, providing accurate results regardless of date range or timezone configuration. Whether you're calculating project deadlines, converting between international time zones for remote team coordination, computing age or tenure from dates, or parsing cron expressions for scheduled automation, having a reliable time utility saves hours of debugging and prevents subtle bugs that only manifest at boundary conditions like year-end or DST changes.",
+    "tips": [
+      "Always verify timezone conversions around DST transition dates\u2014many tools handle these incorrectly",
+      "Use ISO 8601 format (YYYY-MM-DD) for unambiguous date representation in international contexts",
+      "For countdowns and timers, test with dates far in the future and recent past to verify calculations"
+    ],
+    "commonMistakes": [
+      "Using 24-hour format without noting AM/PM distinction when sharing results",
+      "Calculating durations without accounting for DST transitions"
+    ]
+  },
+  "morse-code": {
+    "deepDive": "Morse Code Translator transforms data between different representation formats while preserving all original information, enabling compatibility across diverse systems and protocols. The encoding process maps input characters or bytes to a different symbol set using deterministic rules\u2014no information is lost, and the process is fully reversible through decoding. This distinguishes encoding from hashing or encryption, where data is either irreversibly transformed or requires keys for recovery. Common applications include preparing binary data for text-based transport protocols, escaping special characters in HTML and URLs, converting between character encodings for internationalization, and obfuscating data for safe storage. Encoding is essential infrastructure in modern computing: every email attachment, every JSON API payload, and every URL you visit relies on encoding schemes working correctly behind the scenes. Understanding how different encoding formats work helps developers debug data corruption issues, choose the right format for specific use cases, and build robust data pipelines that handle edge cases gracefully.",
+    "tips": [
+      "Decode suspicious-looking strings to check if they contain hidden payloads or obfuscated content",
+      "When working with APIs, ensure your encoding matches the Content-Type header expectations",
+      "Test encoding with edge cases: empty strings, very long strings, special characters, and Unicode"
+    ],
+    "commonMistakes": [
+      "Confusing encoding with encryption\u2014Base64 and URL encoding provide zero security",
+      "Double-encoding data accidentally\u2014URLs with pre-encoded components get corrupted"
+    ]
+  },
+  "emoji-picker": {
+    "deepDive": "Emoji Keyboard is a text manipulation utility that helps you process, analyze, or transform text content without writing custom code or scripts. In an era where data is increasingly text-heavy\u2014from log files and API responses to configuration files and user-generated content\u2014having reliable text processing tools at your fingertips saves hours of manual work and eliminates tedious regex crafting. The Emoji Keyboard operates entirely in your browser using client-side JavaScript, meaning your text never leaves your device, ensuring complete privacy even for sensitive content like personal notes, business data, or proprietary source code. Text processing tools like this fill a crucial gap between basic text editors (which lack specialized transformations) and full programming environments (which require setup and expertise). Whether you're a developer cleaning up data before import, a writer reformatting content, or a data analyst extracting patterns from unstructured text, having instant access to these transformations dramatically accelerates your workflow and reduces errors from manual editing.",
+    "tips": [
+      "Use the word count tool to check if your content meets minimum length requirements for SEO or assignments",
+      "Sort lines alphabetically before deduplication to ensure consistent results with mixed-case entries",
+      "For programming text, be careful with automatic case conversion\u2014it can break case-sensitive identifiers"
+    ],
+    "commonMistakes": [
+      "Modifying text in place without keeping a backup\u2014most text transformations are irreversible",
+      "Applying case conversion to code or config files\u2014breaks case-sensitive identifiers and keys"
+    ]
+  },
+  "rot13": {
+    "deepDive": "ROT13 Cipher transforms data between different representation formats while preserving all original information, enabling compatibility across diverse systems and protocols. The encoding process maps input characters or bytes to a different symbol set using deterministic rules\u2014no information is lost, and the process is fully reversible through decoding. This distinguishes encoding from hashing or encryption, where data is either irreversibly transformed or requires keys for recovery. Common applications include preparing binary data for text-based transport protocols, escaping special characters in HTML and URLs, converting between character encodings for internationalization, and obfuscating data for safe storage. Encoding is essential infrastructure in modern computing: every email attachment, every JSON API payload, and every URL you visit relies on encoding schemes working correctly behind the scenes. Understanding how different encoding formats work helps developers debug data corruption issues, choose the right format for specific use cases, and build robust data pipelines that handle edge cases gracefully.",
+    "tips": [
+      "Always note which encoding you used\u2014Base64, URL encoding, and HTML entities all look different and are decoded differently",
+      "Use URL encoding for query parameters, not for entire URLs\u2014only encode the values, not the separators",
+      "Remember that encoding adds overhead\u2014Base64 increases data size by ~33%"
+    ],
+    "commonMistakes": [
+      "Using the wrong character set when decoding\u2014Latin-1 vs UTF-8 produces garbled text",
+      "Forgetting to re-encode data after modification before transmission"
+    ]
+  },
+  "ascii-table": {
+    "deepDive": "ASCII Table transforms data between different representation formats while preserving all original information, enabling compatibility across diverse systems and protocols. The encoding process maps input characters or bytes to a different symbol set using deterministic rules\u2014no information is lost, and the process is fully reversible through decoding. This distinguishes encoding from hashing or encryption, where data is either irreversibly transformed or requires keys for recovery. Common applications include preparing binary data for text-based transport protocols, escaping special characters in HTML and URLs, converting between character encodings for internationalization, and obfuscating data for safe storage. Encoding is essential infrastructure in modern computing: every email attachment, every JSON API payload, and every URL you visit relies on encoding schemes working correctly behind the scenes. Understanding how different encoding formats work helps developers debug data corruption issues, choose the right format for specific use cases, and build robust data pipelines that handle edge cases gracefully.",
+    "tips": [
+      "Decode suspicious-looking strings to check if they contain hidden payloads or obfuscated content",
+      "When working with APIs, ensure your encoding matches the Content-Type header expectations",
+      "Test encoding with edge cases: empty strings, very long strings, special characters, and Unicode"
+    ],
+    "commonMistakes": [
+      "Confusing encoding with encryption\u2014Base64 and URL encoding provide zero security",
+      "Double-encoding data accidentally\u2014URLs with pre-encoded components get corrupted"
+    ]
+  },
+  "sha1": {
+    "deepDive": "SHA1 Hash Generator is a cryptographic hash function that transforms input data into a fixed-length hexadecimal string, enabling data integrity verification and digital fingerprinting. The SHA1 Hash Generator algorithm processes data through multiple rounds of mathematical operations, producing a unique digest that changes dramatically with even a single character modification\u2014a property called the avalanche effect. Unlike encryption, hashing is a one-way function; you cannot reverse a hash back to its original input, making it ideal for password storage when combined with salting. In practice, developers use SHA1 Hash Generator for verifying file downloads, generating cache keys, implementing content-addressable storage systems, and creating unique identifiers in distributed systems. While newer algorithms offer stronger security guarantees, SHA1 Hash Generator remains widely deployed in legacy systems, checksum verification workflows, and non-security applications where speed and simplicity are prioritized over collision resistance. Understanding hash functions is essential for anyone working with data integrity, authentication protocols, or blockchain technology.",
+    "tips": [
+      "Always verify checksums from a trusted source\u2014compare against the official project website, not forum posts",
+      "Use SHA-256 or stronger for any security-sensitive application; MD5 and SHA-1 are broken",
+      "When comparing hashes, visually check the first 4 and last 4 characters\u2014full string comparison is rarely necessary for quick verification"
+    ],
+    "commonMistakes": [
+      "Storing unsalted hashes\u2014rainbow table attacks can recover original values in seconds",
+      "Truncating hash output to save storage without understanding the security implications"
+    ]
+  },
+  "sha512": {
+    "deepDive": "SHA512 Hash Generator is a cryptographic hash function that transforms input data into a fixed-length hexadecimal string, enabling data integrity verification and digital fingerprinting. The SHA512 Hash Generator algorithm processes data through multiple rounds of mathematical operations, producing a unique digest that changes dramatically with even a single character modification\u2014a property called the avalanche effect. Unlike encryption, hashing is a one-way function; you cannot reverse a hash back to its original input, making it ideal for password storage when combined with salting. In practice, developers use SHA512 Hash Generator for verifying file downloads, generating cache keys, implementing content-addressable storage systems, and creating unique identifiers in distributed systems. While newer algorithms offer stronger security guarantees, SHA512 Hash Generator remains widely deployed in legacy systems, checksum verification workflows, and non-security applications where speed and simplicity are prioritized over collision resistance. Understanding hash functions is essential for anyone working with data integrity, authentication protocols, or blockchain technology.",
+    "tips": [
+      "Bookmark this tool for quick access when downloading software\u2014it takes seconds to verify integrity",
+      "Combine hash verification with GPG signature checking for maximum security on critical downloads",
+      "Keep a checksum manifest file alongside your important backups for corruption detection"
+    ],
+    "commonMistakes": [
+      "Using MD5 or SHA-1 for security-critical applications\u2014they are cryptographically broken",
+      "Assuming hash uniqueness guarantees no collisions\u2014birthday attacks make collisions statistically likely"
+    ]
+  },
+  "crc32": {
+    "deepDive": "CRC32 Checksum is a cryptographic hash function that transforms input data into a fixed-length hexadecimal string, enabling data integrity verification and digital fingerprinting. The CRC32 Checksum algorithm processes data through multiple rounds of mathematical operations, producing a unique digest that changes dramatically with even a single character modification\u2014a property called the avalanche effect. Unlike encryption, hashing is a one-way function; you cannot reverse a hash back to its original input, making it ideal for password storage when combined with salting. In practice, developers use CRC32 Checksum for verifying file downloads, generating cache keys, implementing content-addressable storage systems, and creating unique identifiers in distributed systems. While newer algorithms offer stronger security guarantees, CRC32 Checksum remains widely deployed in legacy systems, checksum verification workflows, and non-security applications where speed and simplicity are prioritized over collision resistance. Understanding hash functions is essential for anyone working with data integrity, authentication protocols, or blockchain technology.",
+    "tips": [
+      "Always verify checksums from a trusted source\u2014compare against the official project website, not forum posts",
+      "Use SHA-256 or stronger for any security-sensitive application; MD5 and SHA-1 are broken",
+      "When comparing hashes, visually check the first 4 and last 4 characters\u2014full string comparison is rarely necessary for quick verification"
+    ],
+    "commonMistakes": [
+      "Storing unsalted hashes\u2014rainbow table attacks can recover original values in seconds",
+      "Truncating hash output to save storage without understanding the security implications"
+    ]
+  },
+  "text-reverse": {
+    "deepDive": "Text Reverser is a text manipulation utility that helps you process, analyze, or transform text content without writing custom code or scripts. In an era where data is increasingly text-heavy\u2014from log files and API responses to configuration files and user-generated content\u2014having reliable text processing tools at your fingertips saves hours of manual work and eliminates tedious regex crafting. The Text Reverser operates entirely in your browser using client-side JavaScript, meaning your text never leaves your device, ensuring complete privacy even for sensitive content like personal notes, business data, or proprietary source code. Text processing tools like this fill a crucial gap between basic text editors (which lack specialized transformations) and full programming environments (which require setup and expertise). Whether you're a developer cleaning up data before import, a writer reformatting content, or a data analyst extracting patterns from unstructured text, having instant access to these transformations dramatically accelerates your workflow and reduces errors from manual editing.",
+    "tips": [
+      "Use the word count tool to check if your content meets minimum length requirements for SEO or assignments",
+      "Sort lines alphabetically before deduplication to ensure consistent results with mixed-case entries",
+      "For programming text, be careful with automatic case conversion\u2014it can break case-sensitive identifiers"
+    ],
+    "commonMistakes": [
+      "Modifying text in place without keeping a backup\u2014most text transformations are irreversible",
+      "Applying case conversion to code or config files\u2014breaks case-sensitive identifiers and keys"
+    ]
+  },
+  "duplicate-remover": {
+    "deepDive": "Duplicate Line Remover is a text manipulation utility that helps you process, analyze, or transform text content without writing custom code or scripts. In an era where data is increasingly text-heavy\u2014from log files and API responses to configuration files and user-generated content\u2014having reliable text processing tools at your fingertips saves hours of manual work and eliminates tedious regex crafting. The Duplicate Line Remover operates entirely in your browser using client-side JavaScript, meaning your text never leaves your device, ensuring complete privacy even for sensitive content like personal notes, business data, or proprietary source code. Text processing tools like this fill a crucial gap between basic text editors (which lack specialized transformations) and full programming environments (which require setup and expertise). Whether you're a developer cleaning up data before import, a writer reformatting content, or a data analyst extracting patterns from unstructured text, having instant access to these transformations dramatically accelerates your workflow and reduces errors from manual editing.",
+    "tips": [
+      "Use the word count tool to check if your content meets minimum length requirements for SEO or assignments",
+      "Sort lines alphabetically before deduplication to ensure consistent results with mixed-case entries",
+      "For programming text, be careful with automatic case conversion\u2014it can break case-sensitive identifiers"
+    ],
+    "commonMistakes": [
+      "Modifying text in place without keeping a backup\u2014most text transformations are irreversible",
+      "Applying case conversion to code or config files\u2014breaks case-sensitive identifiers and keys"
+    ]
+  },
+  "levenshtein-distance": {
+    "deepDive": "Levenshtein Distance is a text manipulation utility that helps you process, analyze, or transform text content without writing custom code or scripts. In an era where data is increasingly text-heavy\u2014from log files and API responses to configuration files and user-generated content\u2014having reliable text processing tools at your fingertips saves hours of manual work and eliminates tedious regex crafting. The Levenshtein Distance operates entirely in your browser using client-side JavaScript, meaning your text never leaves your device, ensuring complete privacy even for sensitive content like personal notes, business data, or proprietary source code. Text processing tools like this fill a crucial gap between basic text editors (which lack specialized transformations) and full programming environments (which require setup and expertise). Whether you're a developer cleaning up data before import, a writer reformatting content, or a data analyst extracting patterns from unstructured text, having instant access to these transformations dramatically accelerates your workflow and reduces errors from manual editing.",
+    "tips": [
+      "Process text in small batches first to verify the output format before running on large datasets",
+      "Keep a copy of your original text\u2014most text transformations are irreversible",
+      "Combine multiple text tools in sequence for complex data cleaning pipelines"
+    ],
+    "commonMistakes": [
+      "Counting words with naive space-splitting\u2014doesn't handle punctuation, emoji, or CJK characters correctly",
+      "Sorting text without considering locale\u2014string comparison rules vary by language"
+    ]
+  },
+  "bytes-converter": {
+    "deepDive": "Bytes Converter is a developer utility that streamlines common programming tasks, reducing context-switching and eliminating the need for heavyweight IDE installations for quick operations. Modern software development involves an enormous surface area of tools, formats, and protocols\u2014developers regularly need to format code, validate syntax, encode data, parse URLs, inspect tokens, and reference documentation, often while deep in a debugging session or rapid prototyping flow. The Bytes Converter provides instant, lightweight access to these capabilities directly in your browser, with zero installation, zero configuration, and zero data leaving your machine. This client-side, privacy-first architecture is particularly valuable when working with proprietary code, API keys, authentication tokens, or internal configuration that should never touch third-party servers. Developer tools like this complement full IDEs by filling the gap between 'too simple for a script' and 'too quick to launch an IDE', keeping you in flow state and reducing the friction that accumulates across hundreds of micro-tasks throughout a development day.",
+    "tips": [
+      "Keep a backup of your original data before applying transformations",
+      "Use keyboard shortcuts (if available) to speed up your workflow",
+      "Read the documentation or help section for advanced features"
+    ],
+    "commonMistakes": [
+      [
+        "Not testing with edge cases\u2014empty input, very long strings, special characters",
+        "Assuming the output is correct without verification\u2014always spot-check results"
+      ],
+      [
+        "Overwriting source data without keeping a backup",
+        "Using browser-based tools for processing sensitive enterprise data without checking company policy"
+      ]
+    ]
+  },
+  "roman-numerals": {
+    "deepDive": "Roman Numerals Converter is a developer utility that streamlines common programming tasks, reducing context-switching and eliminating the need for heavyweight IDE installations for quick operations. Modern software development involves an enormous surface area of tools, formats, and protocols\u2014developers regularly need to format code, validate syntax, encode data, parse URLs, inspect tokens, and reference documentation, often while deep in a debugging session or rapid prototyping flow. The Roman Numerals Converter provides instant, lightweight access to these capabilities directly in your browser, with zero installation, zero configuration, and zero data leaving your machine. This client-side, privacy-first architecture is particularly valuable when working with proprietary code, API keys, authentication tokens, or internal configuration that should never touch third-party servers. Developer tools like this complement full IDEs by filling the gap between 'too simple for a script' and 'too quick to launch an IDE', keeping you in flow state and reducing the friction that accumulates across hundreds of micro-tasks throughout a development day.",
+    "tips": [
+      "Test with small inputs first before processing large amounts of data",
+      "Bookmark this tool for quick access when you need it",
+      "Check the output format matches your expectations before using results in production"
+    ],
+    "commonMistakes": [
+      [
+        "Not testing with edge cases\u2014empty input, very long strings, special characters",
+        "Assuming the output is correct without verification\u2014always spot-check results"
+      ],
+      [
+        "Overwriting source data without keeping a backup",
+        "Using browser-based tools for processing sensitive enterprise data without checking company policy"
+      ]
+    ]
+  },
+  "timezone-converter": {
+    "deepDive": "Timezone Converter helps you work with dates, times, and temporal calculations\u2014one of the most notoriously complex domains in programming. Time-related operations appear deceptively simple but hide tremendous complexity: timezone offsets change with daylight saving rules that vary by jurisdiction, leap seconds get added irregularly, different calendar systems exist globally, and month lengths fluctuate. A seemingly straightforward 'add 30 days' operation must correctly handle month boundaries, leap years, and DST transitions. The Timezone Converter handles these edge cases so you don't have to, providing accurate results regardless of date range or timezone configuration. Whether you're calculating project deadlines, converting between international time zones for remote team coordination, computing age or tenure from dates, or parsing cron expressions for scheduled automation, having a reliable time utility saves hours of debugging and prevents subtle bugs that only manifest at boundary conditions like year-end or DST changes.",
+    "tips": [
+      "Don't trust browser time for critical applications\u2014client clocks can be inaccurate by minutes",
+      "When calculating age or duration, account for leap years\u2014365 days \u2260 1 year in date math",
+      "Test cron expressions with an online parser before deploying to production\u2014syntax errors cause silent failures"
+    ],
+    "commonMistakes": [
+      "Forgetting that months are zero-indexed in JavaScript but one-indexed everywhere else",
+      "Ignoring timezone offsets when comparing dates across regions"
+    ]
+  },
+  "cron-parser": {
+    "deepDive": "Cron Expression Parser helps you work with dates, times, and temporal calculations\u2014one of the most notoriously complex domains in programming. Time-related operations appear deceptively simple but hide tremendous complexity: timezone offsets change with daylight saving rules that vary by jurisdiction, leap seconds get added irregularly, different calendar systems exist globally, and month lengths fluctuate. A seemingly straightforward 'add 30 days' operation must correctly handle month boundaries, leap years, and DST transitions. The Cron Expression Parser handles these edge cases so you don't have to, providing accurate results regardless of date range or timezone configuration. Whether you're calculating project deadlines, converting between international time zones for remote team coordination, computing age or tenure from dates, or parsing cron expressions for scheduled automation, having a reliable time utility saves hours of debugging and prevents subtle bugs that only manifest at boundary conditions like year-end or DST changes.",
+    "tips": [
+      "Don't trust browser time for critical applications\u2014client clocks can be inaccurate by minutes",
+      "When calculating age or duration, account for leap years\u2014365 days \u2260 1 year in date math",
+      "Test cron expressions with an online parser before deploying to production\u2014syntax errors cause silent failures"
+    ],
+    "commonMistakes": [
+      "Forgetting that months are zero-indexed in JavaScript but one-indexed everywhere else",
+      "Ignoring timezone offsets when comparing dates across regions"
+    ]
+  },
+  "day-of-week": {
+    "deepDive": "Day of Week Finder helps you work with dates, times, and temporal calculations\u2014one of the most notoriously complex domains in programming. Time-related operations appear deceptively simple but hide tremendous complexity: timezone offsets change with daylight saving rules that vary by jurisdiction, leap seconds get added irregularly, different calendar systems exist globally, and month lengths fluctuate. A seemingly straightforward 'add 30 days' operation must correctly handle month boundaries, leap years, and DST transitions. The Day of Week Finder handles these edge cases so you don't have to, providing accurate results regardless of date range or timezone configuration. Whether you're calculating project deadlines, converting between international time zones for remote team coordination, computing age or tenure from dates, or parsing cron expressions for scheduled automation, having a reliable time utility saves hours of debugging and prevents subtle bugs that only manifest at boundary conditions like year-end or DST changes.",
+    "tips": [
+      "Don't trust browser time for critical applications\u2014client clocks can be inaccurate by minutes",
+      "When calculating age or duration, account for leap years\u2014365 days \u2260 1 year in date math",
+      "Test cron expressions with an online parser before deploying to production\u2014syntax errors cause silent failures"
+    ],
+    "commonMistakes": [
+      "Forgetting that months are zero-indexed in JavaScript but one-indexed everywhere else",
+      "Ignoring timezone offsets when comparing dates across regions"
+    ]
+  },
+  "sleep-calculator": {
+    "deepDive": "Sleep Cycle Calculator helps you work with dates, times, and temporal calculations\u2014one of the most notoriously complex domains in programming. Time-related operations appear deceptively simple but hide tremendous complexity: timezone offsets change with daylight saving rules that vary by jurisdiction, leap seconds get added irregularly, different calendar systems exist globally, and month lengths fluctuate. A seemingly straightforward 'add 30 days' operation must correctly handle month boundaries, leap years, and DST transitions. The Sleep Cycle Calculator handles these edge cases so you don't have to, providing accurate results regardless of date range or timezone configuration. Whether you're calculating project deadlines, converting between international time zones for remote team coordination, computing age or tenure from dates, or parsing cron expressions for scheduled automation, having a reliable time utility saves hours of debugging and prevents subtle bugs that only manifest at boundary conditions like year-end or DST changes.",
+    "tips": [
+      "Don't trust browser time for critical applications\u2014client clocks can be inaccurate by minutes",
+      "When calculating age or duration, account for leap years\u2014365 days \u2260 1 year in date math",
+      "Test cron expressions with an online parser before deploying to production\u2014syntax errors cause silent failures"
+    ],
+    "commonMistakes": [
+      "Forgetting that months are zero-indexed in JavaScript but one-indexed everywhere else",
+      "Ignoring timezone offsets when comparing dates across regions"
+    ]
+  },
+  "xml-to-json": {
+    "deepDive": "XML to JSON Converter is a developer utility that streamlines common programming tasks, reducing context-switching and eliminating the need for heavyweight IDE installations for quick operations. Modern software development involves an enormous surface area of tools, formats, and protocols\u2014developers regularly need to format code, validate syntax, encode data, parse URLs, inspect tokens, and reference documentation, often while deep in a debugging session or rapid prototyping flow. The XML to JSON Converter provides instant, lightweight access to these capabilities directly in your browser, with zero installation, zero configuration, and zero data leaving your machine. This client-side, privacy-first architecture is particularly valuable when working with proprietary code, API keys, authentication tokens, or internal configuration that should never touch third-party servers. Developer tools like this complement full IDEs by filling the gap between 'too simple for a script' and 'too quick to launch an IDE', keeping you in flow state and reducing the friction that accumulates across hundreds of micro-tasks throughout a development day.",
+    "tips": [
+      "Test with small inputs first before processing large amounts of data",
+      "Bookmark this tool for quick access when you need it",
+      "Check the output format matches your expectations before using results in production"
+    ],
+    "commonMistakes": [
+      [
+        "Not testing with edge cases\u2014empty input, very long strings, special characters",
+        "Assuming the output is correct without verification\u2014always spot-check results"
+      ],
+      [
+        "Overwriting source data without keeping a backup",
+        "Using browser-based tools for processing sensitive enterprise data without checking company policy"
+      ]
+    ]
+  },
+  "json-to-xml": {
+    "deepDive": "JSON to XML Converter is a developer utility that streamlines common programming tasks, reducing context-switching and eliminating the need for heavyweight IDE installations for quick operations. Modern software development involves an enormous surface area of tools, formats, and protocols\u2014developers regularly need to format code, validate syntax, encode data, parse URLs, inspect tokens, and reference documentation, often while deep in a debugging session or rapid prototyping flow. The JSON to XML Converter provides instant, lightweight access to these capabilities directly in your browser, with zero installation, zero configuration, and zero data leaving your machine. This client-side, privacy-first architecture is particularly valuable when working with proprietary code, API keys, authentication tokens, or internal configuration that should never touch third-party servers. Developer tools like this complement full IDEs by filling the gap between 'too simple for a script' and 'too quick to launch an IDE', keeping you in flow state and reducing the friction that accumulates across hundreds of micro-tasks throughout a development day.",
+    "tips": [
+      "Test with small inputs first before processing large amounts of data",
+      "Bookmark this tool for quick access when you need it",
+      "Check the output format matches your expectations before using results in production"
+    ],
+    "commonMistakes": [
+      [
+        "Not testing with edge cases\u2014empty input, very long strings, special characters",
+        "Assuming the output is correct without verification\u2014always spot-check results"
+      ],
+      [
+        "Overwriting source data without keeping a backup",
+        "Using browser-based tools for processing sensitive enterprise data without checking company policy"
+      ]
+    ]
+  },
+  "xml-formatter": {
+    "deepDive": "XML Formatter takes unstructured or poorly formatted data and transforms it into clean, readable, standards-compliant output\u2014turning chaos into clarity. Code and data formatting is about more than aesthetics; properly formatted output reduces cognitive load when reading, prevents syntax errors from invisible characters, and ensures consistency across team workflows. The XML Formatter parses input according to its format specification, builds an internal syntax tree, then regenerates output with proper indentation, spacing, and line breaks according to widely accepted style conventions. This process also catches syntax errors early\u2014if the formatter can't parse your input, there's a structural problem that would cause issues downstream. In professional development workflows, automated formatting tools integrated into CI/CD pipelines enforce coding standards across entire teams, eliminating style debates from code reviews and letting developers focus on logic and architecture.",
+    "tips": [
+      "Use a separate validator to confirm the formatted output is still semantically correct\u2014formatting shouldn't change behavior",
+      "Configure indent size to match your project standards before formatting to avoid inconsistent styles",
+      "For large files, format in sections rather than all at once to isolate potential issues"
+    ],
+    "commonMistakes": [
+      "Formatting without understanding the style guide\u2014inconsistent formatting across tools is confusing",
+      "Assuming the formatter fixes semantic errors\u2014it only fixes syntax and layout"
+    ]
+  },
+  "css-beautifier": {
+    "deepDive": "CSS Beautifier takes unstructured or poorly formatted data and transforms it into clean, readable, standards-compliant output\u2014turning chaos into clarity. Code and data formatting is about more than aesthetics; properly formatted output reduces cognitive load when reading, prevents syntax errors from invisible characters, and ensures consistency across team workflows. The CSS Beautifier parses input according to its format specification, builds an internal syntax tree, then regenerates output with proper indentation, spacing, and line breaks according to widely accepted style conventions. This process also catches syntax errors early\u2014if the formatter can't parse your input, there's a structural problem that would cause issues downstream. In professional development workflows, automated formatting tools integrated into CI/CD pipelines enforce coding standards across entire teams, eliminating style debates from code reviews and letting developers focus on logic and architecture.",
+    "tips": [
+      "Use a separate validator to confirm the formatted output is still semantically correct\u2014formatting shouldn't change behavior",
+      "Configure indent size to match your project standards before formatting to avoid inconsistent styles",
+      "For large files, format in sections rather than all at once to isolate potential issues"
+    ],
+    "commonMistakes": [
+      "Formatting without understanding the style guide\u2014inconsistent formatting across tools is confusing",
+      "Assuming the formatter fixes semantic errors\u2014it only fixes syntax and layout"
+    ]
+  },
+  "html-beautifier": {
+    "deepDive": "HTML Beautifier is a developer utility that streamlines common programming tasks, reducing context-switching and eliminating the need for heavyweight IDE installations for quick operations. Modern software development involves an enormous surface area of tools, formats, and protocols\u2014developers regularly need to format code, validate syntax, encode data, parse URLs, inspect tokens, and reference documentation, often while deep in a debugging session or rapid prototyping flow. The HTML Beautifier provides instant, lightweight access to these capabilities directly in your browser, with zero installation, zero configuration, and zero data leaving your machine. This client-side, privacy-first architecture is particularly valuable when working with proprietary code, API keys, authentication tokens, or internal configuration that should never touch third-party servers. Developer tools like this complement full IDEs by filling the gap between 'too simple for a script' and 'too quick to launch an IDE', keeping you in flow state and reducing the friction that accumulates across hundreds of micro-tasks throughout a development day.",
+    "tips": [
+      "When decoding JWTs, never trust the payload content without signature verification\u2014the header and payload are just Base64",
+      "Keep a regex cheatsheet handy\u2014even experienced developers forget quantifier syntax",
+      "For SQL formatting, use uppercase for keywords and consistent indentation to make query structure immediately visible"
+    ],
+    "commonMistakes": [
+      "Trusting JWT payloads without signature verification\u2014the content is just Base64, not authenticated",
+      "Using regex to parse HTML\u2014it's a losing battle against nested structures"
+    ]
+  },
+  "js-beautifier": {
+    "deepDive": "JavaScript Beautifier is a developer utility that streamlines common programming tasks, reducing context-switching and eliminating the need for heavyweight IDE installations for quick operations. Modern software development involves an enormous surface area of tools, formats, and protocols\u2014developers regularly need to format code, validate syntax, encode data, parse URLs, inspect tokens, and reference documentation, often while deep in a debugging session or rapid prototyping flow. The JavaScript Beautifier provides instant, lightweight access to these capabilities directly in your browser, with zero installation, zero configuration, and zero data leaving your machine. This client-side, privacy-first architecture is particularly valuable when working with proprietary code, API keys, authentication tokens, or internal configuration that should never touch third-party servers. Developer tools like this complement full IDEs by filling the gap between 'too simple for a script' and 'too quick to launch an IDE', keeping you in flow state and reducing the friction that accumulates across hundreds of micro-tasks throughout a development day.",
+    "tips": [
+      "When decoding JWTs, never trust the payload content without signature verification\u2014the header and payload are just Base64",
+      "Keep a regex cheatsheet handy\u2014even experienced developers forget quantifier syntax",
+      "For SQL formatting, use uppercase for keywords and consistent indentation to make query structure immediately visible"
+    ],
+    "commonMistakes": [
+      "Trusting JWT payloads without signature verification\u2014the content is just Base64, not authenticated",
+      "Using regex to parse HTML\u2014it's a losing battle against nested structures"
+    ]
+  },
+  "user-agent-parser": {
+    "deepDive": "User Agent Parser is a developer utility that streamlines common programming tasks, reducing context-switching and eliminating the need for heavyweight IDE installations for quick operations. Modern software development involves an enormous surface area of tools, formats, and protocols\u2014developers regularly need to format code, validate syntax, encode data, parse URLs, inspect tokens, and reference documentation, often while deep in a debugging session or rapid prototyping flow. The User Agent Parser provides instant, lightweight access to these capabilities directly in your browser, with zero installation, zero configuration, and zero data leaving your machine. This client-side, privacy-first architecture is particularly valuable when working with proprietary code, API keys, authentication tokens, or internal configuration that should never touch third-party servers. Developer tools like this complement full IDEs by filling the gap between 'too simple for a script' and 'too quick to launch an IDE', keeping you in flow state and reducing the friction that accumulates across hundreds of micro-tasks throughout a development day.",
+    "tips": [
+      "When decoding JWTs, never trust the payload content without signature verification\u2014the header and payload are just Base64",
+      "Keep a regex cheatsheet handy\u2014even experienced developers forget quantifier syntax",
+      "For SQL formatting, use uppercase for keywords and consistent indentation to make query structure immediately visible"
+    ],
+    "commonMistakes": [
+      "Trusting JWT payloads without signature verification\u2014the content is just Base64, not authenticated",
+      "Using regex to parse HTML\u2014it's a losing battle against nested structures"
+    ]
+  },
+  "mime-lookup": {
+    "deepDive": "MIME Type Lookup is a developer utility that streamlines common programming tasks, reducing context-switching and eliminating the need for heavyweight IDE installations for quick operations. Modern software development involves an enormous surface area of tools, formats, and protocols\u2014developers regularly need to format code, validate syntax, encode data, parse URLs, inspect tokens, and reference documentation, often while deep in a debugging session or rapid prototyping flow. The MIME Type Lookup provides instant, lightweight access to these capabilities directly in your browser, with zero installation, zero configuration, and zero data leaving your machine. This client-side, privacy-first architecture is particularly valuable when working with proprietary code, API keys, authentication tokens, or internal configuration that should never touch third-party servers. Developer tools like this complement full IDEs by filling the gap between 'too simple for a script' and 'too quick to launch an IDE', keeping you in flow state and reducing the friction that accumulates across hundreds of micro-tasks throughout a development day.",
+    "tips": [
+      "Use beautifiers before minifiers\u2014make code readable, understand it, then compress for production",
+      "Validate JSON and YAML before committing\u2014syntax errors in config files cause hard-to-debug runtime failures",
+      "Bookmark your most-used dev tools for quick access during debugging sessions"
+    ],
+    "commonMistakes": [
+      "Committing unformatted code\u2014wastes reviewer time and creates noisy diffs",
+      "Minifying before debugging\u2014always debug readable code"
+    ]
+  },
+  "yaml-to-json": {
+    "deepDive": "YAML to JSON Converter is a developer utility that streamlines common programming tasks, reducing context-switching and eliminating the need for heavyweight IDE installations for quick operations. Modern software development involves an enormous surface area of tools, formats, and protocols\u2014developers regularly need to format code, validate syntax, encode data, parse URLs, inspect tokens, and reference documentation, often while deep in a debugging session or rapid prototyping flow. The YAML to JSON Converter provides instant, lightweight access to these capabilities directly in your browser, with zero installation, zero configuration, and zero data leaving your machine. This client-side, privacy-first architecture is particularly valuable when working with proprietary code, API keys, authentication tokens, or internal configuration that should never touch third-party servers. Developer tools like this complement full IDEs by filling the gap between 'too simple for a script' and 'too quick to launch an IDE', keeping you in flow state and reducing the friction that accumulates across hundreds of micro-tasks throughout a development day.",
+    "tips": [
+      "Use beautifiers before minifiers\u2014make code readable, understand it, then compress for production",
+      "Validate JSON and YAML before committing\u2014syntax errors in config files cause hard-to-debug runtime failures",
+      "Bookmark your most-used dev tools for quick access during debugging sessions"
+    ],
+    "commonMistakes": [
+      "Committing unformatted code\u2014wastes reviewer time and creates noisy diffs",
+      "Minifying before debugging\u2014always debug readable code"
+    ]
+  },
+  "json-to-yaml": {
+    "deepDive": "JSON to YAML Converter is a developer utility that streamlines common programming tasks, reducing context-switching and eliminating the need for heavyweight IDE installations for quick operations. Modern software development involves an enormous surface area of tools, formats, and protocols\u2014developers regularly need to format code, validate syntax, encode data, parse URLs, inspect tokens, and reference documentation, often while deep in a debugging session or rapid prototyping flow. The JSON to YAML Converter provides instant, lightweight access to these capabilities directly in your browser, with zero installation, zero configuration, and zero data leaving your machine. This client-side, privacy-first architecture is particularly valuable when working with proprietary code, API keys, authentication tokens, or internal configuration that should never touch third-party servers. Developer tools like this complement full IDEs by filling the gap between 'too simple for a script' and 'too quick to launch an IDE', keeping you in flow state and reducing the friction that accumulates across hundreds of micro-tasks throughout a development day.",
+    "tips": [
+      "Use beautifiers before minifiers\u2014make code readable, understand it, then compress for production",
+      "Validate JSON and YAML before committing\u2014syntax errors in config files cause hard-to-debug runtime failures",
+      "Bookmark your most-used dev tools for quick access during debugging sessions"
+    ],
+    "commonMistakes": [
+      "Committing unformatted code\u2014wastes reviewer time and creates noisy diffs",
+      "Minifying before debugging\u2014always debug readable code"
+    ]
+  },
+  "http-headers-checker": {
+    "deepDive": "HTTP Headers Reference provides instant visibility into network configuration, connectivity, and protocol details\u2014essential diagnostic capabilities for anyone working with internet-connected systems. Network troubleshooting is notoriously difficult because problems can originate anywhere in the stack: DNS misconfiguration, routing issues, firewall rules, application-level bugs, or upstream provider outages. HTTP Headers Reference helps you quickly narrow down the source of issues by providing key diagnostic data points without requiring SSH access to remote servers or installation of specialized network tools. Understanding your network environment is also critical for security\u2014knowing what's exposed, what IP information you're leaking to services, and what ports are accessible helps you assess your attack surface and implement appropriate protections. For developers building web applications, network tools provide the ground truth needed to debug connectivity issues, verify CDN configuration, and ensure APIs are reachable from production environments.",
+    "tips": [
+      "Don't assume HTTP status codes are always accurate\u2014some servers return 200 with error messages in the body",
+      "Document your network configuration and reference materials to speed up future troubleshooting",
+      "Use HTTP header inspection to debug caching issues, redirects, and content-type mismatches"
+    ],
+    "commonMistakes": [
+      "Assuming DNS changes propagate instantly\u2014TTL values control caching duration",
+      "Checking ports locally when the issue is a firewall rule blocking external access"
+    ]
+  },
+  "dns-lookup": {
+    "deepDive": "DNS Lookup provides instant visibility into network configuration, connectivity, and protocol details\u2014essential diagnostic capabilities for anyone working with internet-connected systems. Network troubleshooting is notoriously difficult because problems can originate anywhere in the stack: DNS misconfiguration, routing issues, firewall rules, application-level bugs, or upstream provider outages. DNS Lookup helps you quickly narrow down the source of issues by providing key diagnostic data points without requiring SSH access to remote servers or installation of specialized network tools. Understanding your network environment is also critical for security\u2014knowing what's exposed, what IP information you're leaking to services, and what ports are accessible helps you assess your attack surface and implement appropriate protections. For developers building web applications, network tools provide the ground truth needed to debug connectivity issues, verify CDN configuration, and ensure APIs are reachable from production environments.",
+    "tips": [
+      "Don't assume HTTP status codes are always accurate\u2014some servers return 200 with error messages in the body",
+      "Document your network configuration and reference materials to speed up future troubleshooting",
+      "Use HTTP header inspection to debug caching issues, redirects, and content-type mismatches"
+    ],
+    "commonMistakes": [
+      "Assuming DNS changes propagate instantly\u2014TTL values control caching duration",
+      "Checking ports locally when the issue is a firewall rule blocking external access"
+    ]
+  },
+  "port-checker": {
+    "deepDive": "Port Reference provides instant visibility into network configuration, connectivity, and protocol details\u2014essential diagnostic capabilities for anyone working with internet-connected systems. Network troubleshooting is notoriously difficult because problems can originate anywhere in the stack: DNS misconfiguration, routing issues, firewall rules, application-level bugs, or upstream provider outages. Port Reference helps you quickly narrow down the source of issues by providing key diagnostic data points without requiring SSH access to remote servers or installation of specialized network tools. Understanding your network environment is also critical for security\u2014knowing what's exposed, what IP information you're leaking to services, and what ports are accessible helps you assess your attack surface and implement appropriate protections. For developers building web applications, network tools provide the ground truth needed to debug connectivity issues, verify CDN configuration, and ensure APIs are reachable from production environments.",
+    "tips": [
+      "Check DNS from multiple locations if results seem wrong\u2014DNS propagation can take up to 48 hours",
+      "Use IP lookup tools to verify your VPN or proxy is actually routing traffic correctly",
+      "Test port connectivity before blaming application code\u2014firewall rules are the most common culprit"
+    ],
+    "commonMistakes": [
+      "Trusting a single IP lookup source\u2014geolocation databases have varying accuracy",
+      "Testing connectivity only from your own machine when users are on different networks"
+    ]
+  },
+  "git-cheatsheet": {
+    "deepDive": "Git Cheatsheet is a developer utility that streamlines common programming tasks, reducing context-switching and eliminating the need for heavyweight IDE installations for quick operations. Modern software development involves an enormous surface area of tools, formats, and protocols\u2014developers regularly need to format code, validate syntax, encode data, parse URLs, inspect tokens, and reference documentation, often while deep in a debugging session or rapid prototyping flow. The Git Cheatsheet provides instant, lightweight access to these capabilities directly in your browser, with zero installation, zero configuration, and zero data leaving your machine. This client-side, privacy-first architecture is particularly valuable when working with proprietary code, API keys, authentication tokens, or internal configuration that should never touch third-party servers. Developer tools like this complement full IDEs by filling the gap between 'too simple for a script' and 'too quick to launch an IDE', keeping you in flow state and reducing the friction that accumulates across hundreds of micro-tasks throughout a development day.",
+    "tips": [
+      "Use beautifiers before minifiers\u2014make code readable, understand it, then compress for production",
+      "Validate JSON and YAML before committing\u2014syntax errors in config files cause hard-to-debug runtime failures",
+      "Bookmark your most-used dev tools for quick access during debugging sessions"
+    ],
+    "commonMistakes": [
+      "Committing unformatted code\u2014wastes reviewer time and creates noisy diffs",
+      "Minifying before debugging\u2014always debug readable code"
+    ]
+  },
+  "hash-compare": {
+    "deepDive": "Hash Compare is a security-focused tool that helps protect digital assets and sensitive information through proven cryptographic principles and security best practices. In today's threat landscape where data breaches and credential theft are commonplace, understanding and properly implementing security measures is no longer optional\u2014it's a fundamental requirement for any application handling user data. Hash Compare operates entirely client-side using your browser's JavaScript engine, meaning sensitive inputs like passwords, secrets, or personal data never traverse the network or touch a remote server. This zero-trust, local-only architecture ensures your confidential information remains completely private and under your control at all times. Security tools like this empower developers, system administrators, and everyday users to implement industry-standard protection without deep cryptographic expertise or expensive infrastructure. Whether you're generating secure credentials, validating security configurations, or testing system hardening, having these capabilities instantly available in your browser dramatically lowers the barrier to good security practices.",
+    "tips": [
+      "Store hashes, not passwords\u2014if your database is compromised, hashed passwords limit the damage",
+      "Regularly audit your security configurations using checker tools to catch misconfigurations early",
+      "Understand what entropy actually measures\u2014high entropy means unpredictable, not necessarily strong"
+    ],
+    "commonMistakes": [
+      "Using MD5 or SHA-1 for password storage\u2014these are trivially crackable with modern hardware",
+      "Trusting client-side entropy calculations as definitive\u2014true randomness requires hardware sources"
+    ]
+  },
+  "gradient-generator": {
+    "deepDive": "CSS Gradient Generator bridges the gap between visual design and code implementation, helping designers and developers collaborate more effectively by providing instant visual feedback and code generation. The perennial challenge in web and UI development is translating visual design intent into precise CSS values\u2014what looks right in a design tool may render differently across browsers, screen sizes, and color profiles. CSS Gradient Generator provides interactive, real-time previews where you can experiment with visual properties and immediately see the result, then copy the exact production-ready CSS code. This tight feedback loop between visual manipulation and code output dramatically accelerates UI development workflows, reduces the iteration cycles of 'tweak value, rebuild, check' that slow down frontend work, and ensures consistency between design mockups and implemented interfaces.",
+    "tips": [
+      "Always check contrast ratios with actual text on actual backgrounds\u2014WCAG compliance is about real readability",
+      "Use the 60-30-10 rule for color distribution in UI design: 60% dominant, 30% secondary, 10% accent",
+      "Test color combinations under different lighting conditions and on different screens before finalizing"
+    ],
+    "commonMistakes": [
+      "Copying CSS without understanding which properties work together\u2014can create unexpected interactions",
+      "Using em/rem units inconsistently\u2014mixing units complicates responsive design"
+    ]
+  },
+  "random-number": {
+    "deepDive": "Random Number Generator creates unique, randomized output based on configurable parameters, eliminating the need for manual creation of test data, identifiers, or creative assets. Generation tools solve a fundamental problem in development and design: producing high-quality, varied content at scale without repetitive manual effort. The Random Number Generator uses cryptographically secure or statistically sound randomization algorithms depending on the use case, ensuring generated output meets quality standards whether it's for production systems or development testing. In modern software development, generators are essential for load testing with realistic data, seeding databases during development, creating unique identifiers in distributed systems, and rapid prototyping of UI components. Generation tools also power creative workflows\u2014from placeholder content in design mockups to randomized color palettes and procedural art\u2014enabling designers and developers to explore possibilities quickly before committing to final implementations.",
+    "tips": [
+      "When generating test data, include edge cases (empty values, maximum lengths, special characters) to catch bugs",
+      "Use consistent seeds for reproducible tests\u2014randomness is great for variety but terrible for debugging",
+      "Generate more items than you think you need\u2014it's faster to generate extras than to restart the process"
+    ],
+    "commonMistakes": [
+      "Using Math.random() for cryptographic purposes\u2014it's not cryptographically secure",
+      "Generating identifiers without checking for collisions in existing datasets"
+    ]
+  },
+  "random-color": {
+    "deepDive": "Random Color Generator creates unique, randomized output based on configurable parameters, eliminating the need for manual creation of test data, identifiers, or creative assets. Generation tools solve a fundamental problem in development and design: producing high-quality, varied content at scale without repetitive manual effort. The Random Color Generator uses cryptographically secure or statistically sound randomization algorithms depending on the use case, ensuring generated output meets quality standards whether it's for production systems or development testing. In modern software development, generators are essential for load testing with realistic data, seeding databases during development, creating unique identifiers in distributed systems, and rapid prototyping of UI components. Generation tools also power creative workflows\u2014from placeholder content in design mockups to randomized color palettes and procedural art\u2014enabling designers and developers to explore possibilities quickly before committing to final implementations.",
+    "tips": [
+      "When generating test data, include edge cases (empty values, maximum lengths, special characters) to catch bugs",
+      "Use consistent seeds for reproducible tests\u2014randomness is great for variety but terrible for debugging",
+      "Generate more items than you think you need\u2014it's faster to generate extras than to restart the process"
+    ],
+    "commonMistakes": [
+      "Using Math.random() for cryptographic purposes\u2014it's not cryptographically secure",
+      "Generating identifiers without checking for collisions in existing datasets"
+    ]
+  },
+  "dice-roller": {
+    "deepDive": "Dice Roller creates unique, randomized output based on configurable parameters, eliminating the need for manual creation of test data, identifiers, or creative assets. Generation tools solve a fundamental problem in development and design: producing high-quality, varied content at scale without repetitive manual effort. The Dice Roller uses cryptographically secure or statistically sound randomization algorithms depending on the use case, ensuring generated output meets quality standards whether it's for production systems or development testing. In modern software development, generators are essential for load testing with realistic data, seeding databases during development, creating unique identifiers in distributed systems, and rapid prototyping of UI components. Generation tools also power creative workflows\u2014from placeholder content in design mockups to randomized color palettes and procedural art\u2014enabling designers and developers to explore possibilities quickly before committing to final implementations.",
+    "tips": [
+      "When generating test data, include edge cases (empty values, maximum lengths, special characters) to catch bugs",
+      "Use consistent seeds for reproducible tests\u2014randomness is great for variety but terrible for debugging",
+      "Generate more items than you think you need\u2014it's faster to generate extras than to restart the process"
+    ],
+    "commonMistakes": [
+      "Using Math.random() for cryptographic purposes\u2014it's not cryptographically secure",
+      "Generating identifiers without checking for collisions in existing datasets"
+    ]
+  },
+  "nano-id": {
+    "deepDive": "Nano ID Generator creates unique, randomized output based on configurable parameters, eliminating the need for manual creation of test data, identifiers, or creative assets. Generation tools solve a fundamental problem in development and design: producing high-quality, varied content at scale without repetitive manual effort. The Nano ID Generator uses cryptographically secure or statistically sound randomization algorithms depending on the use case, ensuring generated output meets quality standards whether it's for production systems or development testing. In modern software development, generators are essential for load testing with realistic data, seeding databases during development, creating unique identifiers in distributed systems, and rapid prototyping of UI components. Generation tools also power creative workflows\u2014from placeholder content in design mockups to randomized color palettes and procedural art\u2014enabling designers and developers to explore possibilities quickly before committing to final implementations.",
+    "tips": [
+      "For cryptographic purposes like API keys, always use cryptographically secure generators\u2014not Math.random()",
+      "Save your generator settings as URL parameters or bookmarks for reproducible workflows",
+      "Test generated output in your target system before generating thousands of items"
+    ],
+    "commonMistakes": [
+      "Using non-cryptographic generators for security tokens or API keys",
+      "Not setting appropriate length constraints\u2014UUIDs are 36 chars; using shorter IDs risks collisions"
+    ]
+  },
+  "password-strength": {
+    "deepDive": "Password Strength Checker is a security-focused tool that helps protect digital assets and sensitive information through proven cryptographic principles and security best practices. In today's threat landscape where data breaches and credential theft are commonplace, understanding and properly implementing security measures is no longer optional\u2014it's a fundamental requirement for any application handling user data. Password Strength Checker operates entirely client-side using your browser's JavaScript engine, meaning sensitive inputs like passwords, secrets, or personal data never traverse the network or touch a remote server. This zero-trust, local-only architecture ensures your confidential information remains completely private and under your control at all times. Security tools like this empower developers, system administrators, and everyday users to implement industry-standard protection without deep cryptographic expertise or expensive infrastructure. Whether you're generating secure credentials, validating security configurations, or testing system hardening, having these capabilities instantly available in your browser dramatically lowers the barrier to good security practices.",
+    "tips": [
+      "Store hashes, not passwords\u2014if your database is compromised, hashed passwords limit the damage",
+      "Regularly audit your security configurations using checker tools to catch misconfigurations early",
+      "Understand what entropy actually measures\u2014high entropy means unpredictable, not necessarily strong"
+    ],
+    "commonMistakes": [
+      "Using MD5 or SHA-1 for password storage\u2014these are trivially crackable with modern hardware",
+      "Trusting client-side entropy calculations as definitive\u2014true randomness requires hardware sources"
+    ]
+  },
+  "entropy-calculator": {
+    "deepDive": "Entropy Calculator is a security-focused tool that helps protect digital assets and sensitive information through proven cryptographic principles and security best practices. In today's threat landscape where data breaches and credential theft are commonplace, understanding and properly implementing security measures is no longer optional\u2014it's a fundamental requirement for any application handling user data. Entropy Calculator operates entirely client-side using your browser's JavaScript engine, meaning sensitive inputs like passwords, secrets, or personal data never traverse the network or touch a remote server. This zero-trust, local-only architecture ensures your confidential information remains completely private and under your control at all times. Security tools like this empower developers, system administrators, and everyday users to implement industry-standard protection without deep cryptographic expertise or expensive infrastructure. Whether you're generating secure credentials, validating security configurations, or testing system hardening, having these capabilities instantly available in your browser dramatically lowers the barrier to good security practices.",
+    "tips": [
+      "Store hashes, not passwords\u2014if your database is compromised, hashed passwords limit the damage",
+      "Regularly audit your security configurations using checker tools to catch misconfigurations early",
+      "Understand what entropy actually measures\u2014high entropy means unpredictable, not necessarily strong"
+    ],
+    "commonMistakes": [
+      "Using MD5 or SHA-1 for password storage\u2014these are trivially crackable with modern hardware",
+      "Trusting client-side entropy calculations as definitive\u2014true randomness requires hardware sources"
+    ]
+  },
+  "box-shadow": {
+    "deepDive": "Box Shadow Generator bridges the gap between visual design and code implementation, helping designers and developers collaborate more effectively by providing instant visual feedback and code generation. The perennial challenge in web and UI development is translating visual design intent into precise CSS values\u2014what looks right in a design tool may render differently across browsers, screen sizes, and color profiles. Box Shadow Generator provides interactive, real-time previews where you can experiment with visual properties and immediately see the result, then copy the exact production-ready CSS code. This tight feedback loop between visual manipulation and code output dramatically accelerates UI development workflows, reduces the iteration cycles of 'tweak value, rebuild, check' that slow down frontend work, and ensures consistency between design mockups and implemented interfaces.",
+    "tips": [
+      "Always check contrast ratios with actual text on actual backgrounds\u2014WCAG compliance is about real readability",
+      "Use the 60-30-10 rule for color distribution in UI design: 60% dominant, 30% secondary, 10% accent",
+      "Test color combinations under different lighting conditions and on different screens before finalizing"
+    ],
+    "commonMistakes": [
+      "Copying CSS without understanding which properties work together\u2014can create unexpected interactions",
+      "Using em/rem units inconsistently\u2014mixing units complicates responsive design"
+    ]
+  },
+  "border-radius": {
+    "deepDive": "Border Radius Previewer bridges the gap between visual design and code implementation, helping designers and developers collaborate more effectively by providing instant visual feedback and code generation. The perennial challenge in web and UI development is translating visual design intent into precise CSS values\u2014what looks right in a design tool may render differently across browsers, screen sizes, and color profiles. Border Radius Previewer provides interactive, real-time previews where you can experiment with visual properties and immediately see the result, then copy the exact production-ready CSS code. This tight feedback loop between visual manipulation and code output dramatically accelerates UI development workflows, reduces the iteration cycles of 'tweak value, rebuild, check' that slow down frontend work, and ensures consistency between design mockups and implemented interfaces.",
+    "tips": [
+      "Copy the generated CSS exactly\u2014manual tweaks often break cross-browser compatibility",
+      "Preview box shadows and border radius at different zoom levels to catch rendering artifacts",
+      "For gradients, include a solid fallback color for older browsers that don't support CSS gradients"
+    ],
+    "commonMistakes": [
+      "Using color alone to convey information\u2014colorblind users won't perceive the difference",
+      "Not checking contrast ratios with actual content\u2014tool previews may differ from real text"
+    ]
+  },
+  "image-to-base64": {
+    "deepDive": "Image to Base64 performs image-related operations directly in your browser using modern Web APIs and client-side processing, eliminating the need to upload files to remote servers or install desktop software. Image processing has traditionally been a resource-intensive task requiring specialized software, but advances in browser capabilities\u2014particularly the Canvas API, Web Workers for background processing, and efficient JavaScript engines\u2014now enable sophisticated image manipulation entirely client-side. The critical advantage of browser-based image tools is privacy: your images never leave your device, which is essential when working with personal photos, proprietary design assets, or confidential documents. Image to Base64 leverages these capabilities to provide instant, free image processing that respects your privacy while delivering results comparable to desktop applications for common tasks like compression, format conversion, and metadata handling.",
+    "tips": [
+      "When converting to Base64, remember that the encoded string is ~33% larger than the binary original",
+      "Test SVG output at different sizes before using in production\u2014scaling can expose rendering bugs",
+      "Compress images before uploading to websites\u2014a 1MB image can often be reduced to 100KB with no visible quality loss"
+    ],
+    "commonMistakes": [
+      "Compressing images too aggressively\u2014visible artifacts are worse than slightly larger files",
+      "Converting SVGs to raster format without keeping the vector original\u2014loses scalability"
+    ]
+  },
+  "favicon-generator": {
+    "deepDive": "Favicon Generator performs image-related operations directly in your browser using modern Web APIs and client-side processing, eliminating the need to upload files to remote servers or install desktop software. Image processing has traditionally been a resource-intensive task requiring specialized software, but advances in browser capabilities\u2014particularly the Canvas API, Web Workers for background processing, and efficient JavaScript engines\u2014now enable sophisticated image manipulation entirely client-side. The critical advantage of browser-based image tools is privacy: your images never leave your device, which is essential when working with personal photos, proprietary design assets, or confidential documents. Favicon Generator leverages these capabilities to provide instant, free image processing that respects your privacy while delivering results comparable to desktop applications for common tasks like compression, format conversion, and metadata handling.",
+    "tips": [
+      "When converting to Base64, remember that the encoded string is ~33% larger than the binary original",
+      "Test SVG output at different sizes before using in production\u2014scaling can expose rendering bugs",
+      "Compress images before uploading to websites\u2014a 1MB image can often be reduced to 100KB with no visible quality loss"
+    ],
+    "commonMistakes": [
+      "Compressing images too aggressively\u2014visible artifacts are worse than slightly larger files",
+      "Converting SVGs to raster format without keeping the vector original\u2014loses scalability"
+    ]
+  },
+  "svg-viewer": {
+    "deepDive": "SVG Viewer performs image-related operations directly in your browser using modern Web APIs and client-side processing, eliminating the need to upload files to remote servers or install desktop software. Image processing has traditionally been a resource-intensive task requiring specialized software, but advances in browser capabilities\u2014particularly the Canvas API, Web Workers for background processing, and efficient JavaScript engines\u2014now enable sophisticated image manipulation entirely client-side. The critical advantage of browser-based image tools is privacy: your images never leave your device, which is essential when working with personal photos, proprietary design assets, or confidential documents. SVG Viewer leverages these capabilities to provide instant, free image processing that respects your privacy while delivering results comparable to desktop applications for common tasks like compression, format conversion, and metadata handling.",
+    "tips": [
+      "Always keep the original image\u2014compression and conversion are lossy operations for most formats",
+      "Use WebP or AVIF for web images when browser support allows\u2014they offer better compression than JPEG/PNG",
+      "Check your favicon on both light and dark browser themes\u2014some icons disappear against certain backgrounds"
+    ],
+    "commonMistakes": [
+      "Embedding large Base64 images in HTML\u2014increases page size and blocks rendering",
+      "Using favicon sizes that don't cover all platforms\u2014iOS, Android, and desktop have different requirements"
+    ]
+  },
+  "tip-calculator": {
+    "deepDive": "Tip Calculator performs mathematical calculations and conversions that would be tedious or error-prone to do manually, providing instant, accurate results for everyday and specialized math needs. Mathematics underpins virtually every technical field, from engineering and finance to data science and game development, yet translating formulas into correct implementations requires careful attention to precision, edge cases, and numerical stability. The Tip Calculator handles these computational details behind the scenes, so you can focus on the result rather than worrying about floating-point arithmetic, integer overflow, or rounding strategies. Browser-based math tools offer particular advantages: they're always available without installation, they respect your privacy since calculations happen locally, and they can handle a wide range of units and number systems that would require multiple specialized applications otherwise.",
+    "tips": [
+      "For percentage calculations, clarify whether you need percentage of, percentage change, or percentage points",
+      "When converting between number bases, verify that the output length matches expectations",
+      "Round only at the final step of multi-step calculations to avoid accumulated rounding errors"
+    ],
+    "commonMistakes": [
+      "Using integer division when decimal results are expected",
+      "Not accounting for order of operations in multi-step calculations"
+    ]
+  },
+  "factorial": {
+    "deepDive": "Factorial Calculator performs mathematical calculations and conversions that would be tedious or error-prone to do manually, providing instant, accurate results for everyday and specialized math needs. Mathematics underpins virtually every technical field, from engineering and finance to data science and game development, yet translating formulas into correct implementations requires careful attention to precision, edge cases, and numerical stability. The Factorial Calculator handles these computational details behind the scenes, so you can focus on the result rather than worrying about floating-point arithmetic, integer overflow, or rounding strategies. Browser-based math tools offer particular advantages: they're always available without installation, they respect your privacy since calculations happen locally, and they can handle a wide range of units and number systems that would require multiple specialized applications otherwise.",
+    "tips": [
+      "For percentage calculations, clarify whether you need percentage of, percentage change, or percentage points",
+      "When converting between number bases, verify that the output length matches expectations",
+      "Round only at the final step of multi-step calculations to avoid accumulated rounding errors"
+    ],
+    "commonMistakes": [
+      "Using integer division when decimal results are expected",
+      "Not accounting for order of operations in multi-step calculations"
+    ]
+  },
+  "fraction-calculator": {
+    "deepDive": "Fraction Calculator performs mathematical calculations and conversions that would be tedious or error-prone to do manually, providing instant, accurate results for everyday and specialized math needs. Mathematics underpins virtually every technical field, from engineering and finance to data science and game development, yet translating formulas into correct implementations requires careful attention to precision, edge cases, and numerical stability. The Fraction Calculator handles these computational details behind the scenes, so you can focus on the result rather than worrying about floating-point arithmetic, integer overflow, or rounding strategies. Browser-based math tools offer particular advantages: they're always available without installation, they respect your privacy since calculations happen locally, and they can handle a wide range of units and number systems that would require multiple specialized applications otherwise.",
+    "tips": [
+      "Double-check critical calculations with a second method\u2014unit conversion errors can be costly",
+      "Be aware of floating-point limitations in JavaScript\u2014very large or precise numbers may lose accuracy",
+      "Use the appropriate number of decimal places for your context\u2014engineering needs more precision than cooking"
+    ],
+    "commonMistakes": [
+      "Confusing percentage points with percentage change\u2014they're fundamentally different",
+      "Rounding intermediate results instead of only the final answer"
+    ]
+  },
+  "mean-median-mode": {
+    "deepDive": "Mean, Median, Mode Calculator performs mathematical calculations and conversions that would be tedious or error-prone to do manually, providing instant, accurate results for everyday and specialized math needs. Mathematics underpins virtually every technical field, from engineering and finance to data science and game development, yet translating formulas into correct implementations requires careful attention to precision, edge cases, and numerical stability. The Mean, Median, Mode Calculator handles these computational details behind the scenes, so you can focus on the result rather than worrying about floating-point arithmetic, integer overflow, or rounding strategies. Browser-based math tools offer particular advantages: they're always available without installation, they respect your privacy since calculations happen locally, and they can handle a wide range of units and number systems that would require multiple specialized applications otherwise.",
+    "tips": [
+      "Double-check critical calculations with a second method\u2014unit conversion errors can be costly",
+      "Be aware of floating-point limitations in JavaScript\u2014very large or precise numbers may lose accuracy",
+      "Use the appropriate number of decimal places for your context\u2014engineering needs more precision than cooking"
+    ],
+    "commonMistakes": [
+      "Confusing percentage points with percentage change\u2014they're fundamentally different",
+      "Rounding intermediate results instead of only the final answer"
+    ]
+  },
+  "extract-emails": {
+    "deepDive": "Email Extractor is a text manipulation utility that helps you process, analyze, or transform text content without writing custom code or scripts. In an era where data is increasingly text-heavy\u2014from log files and API responses to configuration files and user-generated content\u2014having reliable text processing tools at your fingertips saves hours of manual work and eliminates tedious regex crafting. The Email Extractor operates entirely in your browser using client-side JavaScript, meaning your text never leaves your device, ensuring complete privacy even for sensitive content like personal notes, business data, or proprietary source code. Text processing tools like this fill a crucial gap between basic text editors (which lack specialized transformations) and full programming environments (which require setup and expertise). Whether you're a developer cleaning up data before import, a writer reformatting content, or a data analyst extracting patterns from unstructured text, having instant access to these transformations dramatically accelerates your workflow and reduces errors from manual editing.",
+    "tips": [
+      "Process text in small batches first to verify the output format before running on large datasets",
+      "Keep a copy of your original text\u2014most text transformations are irreversible",
+      "Combine multiple text tools in sequence for complex data cleaning pipelines"
+    ],
+    "commonMistakes": [
+      "Counting words with naive space-splitting\u2014doesn't handle punctuation, emoji, or CJK characters correctly",
+      "Sorting text without considering locale\u2014string comparison rules vary by language"
+    ]
+  },
+  "extract-urls": {
+    "deepDive": "URL Extractor is a text manipulation utility that helps you process, analyze, or transform text content without writing custom code or scripts. In an era where data is increasingly text-heavy\u2014from log files and API responses to configuration files and user-generated content\u2014having reliable text processing tools at your fingertips saves hours of manual work and eliminates tedious regex crafting. The URL Extractor operates entirely in your browser using client-side JavaScript, meaning your text never leaves your device, ensuring complete privacy even for sensitive content like personal notes, business data, or proprietary source code. Text processing tools like this fill a crucial gap between basic text editors (which lack specialized transformations) and full programming environments (which require setup and expertise). Whether you're a developer cleaning up data before import, a writer reformatting content, or a data analyst extracting patterns from unstructured text, having instant access to these transformations dramatically accelerates your workflow and reduces errors from manual editing.",
+    "tips": [
+      "Use the word count tool to check if your content meets minimum length requirements for SEO or assignments",
+      "Sort lines alphabetically before deduplication to ensure consistent results with mixed-case entries",
+      "For programming text, be careful with automatic case conversion\u2014it can break case-sensitive identifiers"
+    ],
+    "commonMistakes": [
+      "Modifying text in place without keeping a backup\u2014most text transformations are irreversible",
+      "Applying case conversion to code or config files\u2014breaks case-sensitive identifiers and keys"
+    ]
+  },
+  "css-triangle": {
+    "deepDive": "CSS Triangle Generator bridges the gap between visual design and code implementation, helping designers and developers collaborate more effectively by providing instant visual feedback and code generation. The perennial challenge in web and UI development is translating visual design intent into precise CSS values\u2014what looks right in a design tool may render differently across browsers, screen sizes, and color profiles. CSS Triangle Generator provides interactive, real-time previews where you can experiment with visual properties and immediately see the result, then copy the exact production-ready CSS code. This tight feedback loop between visual manipulation and code output dramatically accelerates UI development workflows, reduces the iteration cycles of 'tweak value, rebuild, check' that slow down frontend work, and ensures consistency between design mockups and implemented interfaces.",
+    "tips": [
+      "Always check contrast ratios with actual text on actual backgrounds\u2014WCAG compliance is about real readability",
+      "Use the 60-30-10 rule for color distribution in UI design: 60% dominant, 30% secondary, 10% accent",
+      "Test color combinations under different lighting conditions and on different screens before finalizing"
+    ],
+    "commonMistakes": [
+      "Copying CSS without understanding which properties work together\u2014can create unexpected interactions",
+      "Using em/rem units inconsistently\u2014mixing units complicates responsive design"
+    ]
+  },
+  "hmac-generator": {
+    "deepDive": "HMAC Generator is a cryptographic hash function that transforms input data into a fixed-length hexadecimal string, enabling data integrity verification and digital fingerprinting. The HMAC Generator algorithm processes data through multiple rounds of mathematical operations, producing a unique digest that changes dramatically with even a single character modification\u2014a property called the avalanche effect. Unlike encryption, hashing is a one-way function; you cannot reverse a hash back to its original input, making it ideal for password storage when combined with salting. In practice, developers use HMAC Generator for verifying file downloads, generating cache keys, implementing content-addressable storage systems, and creating unique identifiers in distributed systems. While newer algorithms offer stronger security guarantees, HMAC Generator remains widely deployed in legacy systems, checksum verification workflows, and non-security applications where speed and simplicity are prioritized over collision resistance. Understanding hash functions is essential for anyone working with data integrity, authentication protocols, or blockchain technology.",
+    "tips": [
+      "Always verify checksums from a trusted source\u2014compare against the official project website, not forum posts",
+      "Use SHA-256 or stronger for any security-sensitive application; MD5 and SHA-1 are broken",
+      "When comparing hashes, visually check the first 4 and last 4 characters\u2014full string comparison is rarely necessary for quick verification"
+    ],
+    "commonMistakes": [
+      "Storing unsalted hashes\u2014rainbow table attacks can recover original values in seconds",
+      "Truncating hash output to save storage without understanding the security implications"
+    ]
+  },
+  "bcrypt-checker": {
+    "deepDive": "Bcrypt Checker is a security-focused tool that helps protect digital assets and sensitive information through proven cryptographic principles and security best practices. In today's threat landscape where data breaches and credential theft are commonplace, understanding and properly implementing security measures is no longer optional\u2014it's a fundamental requirement for any application handling user data. Bcrypt Checker operates entirely client-side using your browser's JavaScript engine, meaning sensitive inputs like passwords, secrets, or personal data never traverse the network or touch a remote server. This zero-trust, local-only architecture ensures your confidential information remains completely private and under your control at all times. Security tools like this empower developers, system administrators, and everyday users to implement industry-standard protection without deep cryptographic expertise or expensive infrastructure. Whether you're generating secure credentials, validating security configurations, or testing system hardening, having these capabilities instantly available in your browser dramatically lowers the barrier to good security practices.",
+    "tips": [
+      "Store hashes, not passwords\u2014if your database is compromised, hashed passwords limit the damage",
+      "Regularly audit your security configurations using checker tools to catch misconfigurations early",
+      "Understand what entropy actually measures\u2014high entropy means unpredictable, not necessarily strong"
+    ],
+    "commonMistakes": [
+      "Using MD5 or SHA-1 for password storage\u2014these are trivially crackable with modern hardware",
+      "Trusting client-side entropy calculations as definitive\u2014true randomness requires hardware sources"
+    ]
+  }
+}
