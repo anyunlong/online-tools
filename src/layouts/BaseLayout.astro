@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
 import { en, zh, deepGet } from '../i18n/utils.js';
 
 export interface Props {
@@ -67,6 +68,7 @@ const i18nFlat = JSON.stringify({ en: flatten(en), zh: flatten(zh) });
   </head>
   <body class="min-h-screen flex flex-col bg-surface-950">
     <Analytics />
+    <SpeedInsights />
     <slot />
   </body>
 </html>
