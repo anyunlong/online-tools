@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
+import faqData from '../data/faq.json';
 
 export interface Props {
   title: string;
@@ -14,6 +15,9 @@ const pageUrl = new URL(Astro.url.pathname, Astro.site || Astro.url.origin).href
 
 // Extract tool ID from URL path for i18n (e.g. /password-generator/ → password-generator)
 const toolId = Astro.url.pathname.replace(/^\/|\/$/g, '') || 'index';
+
+// Look up FAQ entries for this tool
+const faqEntries: Array<{ q: string; a: string }> = faqData[toolId] || [];
 
 const webAppSchema = {
   '@context': 'https://schema.org',
@@ -55,7 +59,22 @@ const breadcrumbSchema = {
   ]
 };
 
-const combinedSchema = [webAppSchema, breadcrumbSchema];
+const faqSchema = faqEntries.length > 0 ? {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqEntries.map(entry => ({
+    '@type': 'Question',
+    name: entry.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: entry.a
+    }
+  }))
+} : null;
+
+const combinedSchema = faqSchema
+  ? [webAppSchema, breadcrumbSchema, faqSchema]
+  : [webAppSchema, breadcrumbSchema];
 ---
 
 <BaseLayout
@@ -87,6 +106,19 @@ const combinedSchema = [webAppSchema, breadcrumbSchema];
       <div class="text-sm text-surface-400 leading-relaxed space-y-3">
         <slot name="info" />
       </div>
+      {faqEntries.length > 0 && (
+        <div class="mt-8 border-t border-surface-700/30 pt-6">
+          <h2 class="text-lg font-semibold text-white mb-4">Frequently Asked Questions</h2>
+          <div class="space-y-4">
+            {faqEntries.map(entry => (
+              <details class="group border border-surface-700/20 rounded-lg bg-surface-800/50">
+                <summary class="cursor-pointer px-4 py-3 text-sm font-medium text-surface-200 hover:text-white transition-colors select-none">{entry.q}</summary>
+                <div class="px-4 pb-3 text-sm text-surface-400 leading-relaxed">{entry.a}</div>
+              </details>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   </main>
   <Footer />
