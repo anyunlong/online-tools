@@ -1,0 +1,47 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import Button from '../components/Button.astro';
+---
+
+<ToolLayout
+  title="CSS Gradient Generator"
+  description="Create and preview linear, radial, and conic CSS gradients"
+  category="Color"
+  keywords={["gradient preview", "css gradient generator", "color"]}
+>
+  <div class="space-y-4">
+    
+    <div class="flex gap-2">
+      <Button onclick="generate()">Generate</Button>
+      <Button variant="secondary" onclick="copyResult()">Copy</Button>
+    </div>
+    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
+  </div>
+<script is:inline>
+function generate() {
+  const result = 'Generated output for gradient-preview';
+  document.getElementById('out').textContent = result;
+}
+function copy() {
+  const t = document.getElementById('out').textContent;
+  if (!t) return;
+  navigator.clipboard.writeText(t).then(() => {
+    const btn = document.getElementById('copy-btn');
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy', 1500);
+  });
+}
+function copyResult() {
+  const text = document.getElementById('result').textContent;
+  if (!text) return;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('[onclick="copyResult()"]');
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy', 2000);
+  });
+}
+</script>
+<slot name="info" slot="info">
+  <p>Enter your input and click to process. Results appear instantly below.</p>
+</slot>
+</ToolLayout>

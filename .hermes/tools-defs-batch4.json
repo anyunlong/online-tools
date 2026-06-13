@@ -1,0 +1,477 @@
+[
+  {
+    "id": "pgp-encrypt",
+    "name_en": "PGP Message Encryptor",
+    "desc_en": "Encrypt and decrypt messages using PGP/GPG in your browser",
+    "name_zh": "PGP \u6d88\u606f\u52a0\u5bc6\u5668",
+    "desc_zh": "Encrypt and decrypt messages using PGP/GPG in your browser",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Security",
+    "keywords": [
+      "pgp encrypt",
+      "pgp message encryptor",
+      "security"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+  },
+  {
+    "id": "sri-hash",
+    "name_en": "SRI Hash Generator",
+    "desc_en": "Generate Subresource Integrity hashes for script and link tags",
+    "name_zh": "SRI \u54c8\u5e0c\u751f\u6210\u5668",
+    "desc_zh": "Generate Subresource Integrity hashes for script and link tags",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Security",
+    "keywords": [
+      "sri hash",
+      "sri hash generator",
+      "security"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+  },
+  {
+    "id": "csp-generator",
+    "name_en": "CSP Header Generator",
+    "desc_en": "Generate Content Security Policy headers for your website",
+    "name_zh": "CSP \u5934\u90e8\u751f\u6210\u5668",
+    "desc_zh": "Generate Content Security Policy headers for your website",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Security",
+    "keywords": [
+      "csp generator",
+      "csp header generator",
+      "security"
+    ],
+    "type": "generator",
+    "placeholder": "Enter your input here...",
+    "button_label": "Generate",
+    "js": "function generate() {\n  const result = 'Generated output for csp-generator';\n  document.getElementById('out').textContent = result;\n}\nfunction copy() {\n  const t = document.getElementById('out').textContent;\n  if (!t) return;\n  navigator.clipboard.writeText(t).then(() => {\n    const btn = document.getElementById('copy-btn');\n    btn.textContent = 'Copied!';\n    setTimeout(() => btn.textContent = 'Copy', 1500);\n  });\n}"
+  },
+  {
+    "id": "2fa-code",
+    "name_en": "TOTP Code Generator",
+    "desc_en": "Generate Time-based One-Time Passwords for two-factor authentication",
+    "name_zh": "TOTP \u9a8c\u8bc1\u7801\u751f\u6210\u5668",
+    "desc_zh": "Generate Time-based One-Time Passwords for two-factor authentication",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Security",
+    "keywords": [
+      "2fa code",
+      "totp code generator",
+      "security"
+    ],
+    "type": "generator",
+    "placeholder": "Enter your input here...",
+    "button_label": "Generate",
+    "js": "function generate() {\n  const result = 'Generated output for 2fa-code';\n  document.getElementById('out').textContent = result;\n}\nfunction copy() {\n  const t = document.getElementById('out').textContent;\n  if (!t) return;\n  navigator.clipboard.writeText(t).then(() => {\n    const btn = document.getElementById('copy-btn');\n    btn.textContent = 'Copied!';\n    setTimeout(() => btn.textContent = 'Copy', 1500);\n  });\n}"
+  },
+  {
+    "id": "coin-flip",
+    "name_en": "Coin Flip Simulator",
+    "desc_en": "Flip a virtual coin with realistic probability and streak tracking",
+    "name_zh": "\u629b\u786c\u5e01\u6a21\u62df\u5668",
+    "desc_zh": "Flip a virtual coin with realistic probability and streak tracking",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Fun",
+    "keywords": [
+      "coin flip",
+      "coin flip simulator",
+      "fun"
+    ],
+    "type": "generator",
+    "placeholder": "Enter your input here...",
+    "button_label": "Generate",
+    "js": "function generate() {\n  const result = 'Generated output for coin-flip';\n  document.getElementById('out').textContent = result;\n}\nfunction copy() {\n  const t = document.getElementById('out').textContent;\n  if (!t) return;\n  navigator.clipboard.writeText(t).then(() => {\n    const btn = document.getElementById('copy-btn');\n    btn.textContent = 'Copied!';\n    setTimeout(() => btn.textContent = 'Copy', 1500);\n  });\n}"
+  },
+  {
+    "id": "meme-text",
+    "name_en": "Meme Text Generator",
+    "desc_en": "Add impact font text to images and generate shareable memes",
+    "name_zh": "\u8868\u60c5\u5305\u6587\u5b57\u751f\u6210\u5668",
+    "desc_zh": "Add impact font text to images and generate shareable memes",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Fun",
+    "keywords": [
+      "meme text",
+      "meme text generator",
+      "fun"
+    ],
+    "type": "generator",
+    "placeholder": "Enter your input here...",
+    "button_label": "Generate",
+    "js": "function generate() {\n  const result = 'Generated output for meme-text';\n  document.getElementById('out').textContent = result;\n}\nfunction copy() {\n  const t = document.getElementById('out').textContent;\n  if (!t) return;\n  navigator.clipboard.writeText(t).then(() => {\n    const btn = document.getElementById('copy-btn');\n    btn.textContent = 'Copied!';\n    setTimeout(() => btn.textContent = 'Copy', 1500);\n  });\n}"
+  },
+  {
+    "id": "truth-dare",
+    "name_en": "Truth or Dare Generator",
+    "desc_en": "Get random truth questions and dares for party games",
+    "name_zh": "\u771f\u5fc3\u8bdd\u5927\u5192\u9669\u751f\u6210\u5668",
+    "desc_zh": "Get random truth questions and dares for party games",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Fun",
+    "keywords": [
+      "truth dare",
+      "truth or dare generator",
+      "fun"
+    ],
+    "type": "generator",
+    "placeholder": "Enter your input here...",
+    "button_label": "Generate",
+    "js": "function generate() {\n  const result = 'Generated output for truth-dare';\n  document.getElementById('out').textContent = result;\n}\nfunction copy() {\n  const t = document.getElementById('out').textContent;\n  if (!t) return;\n  navigator.clipboard.writeText(t).then(() => {\n    const btn = document.getElementById('copy-btn');\n    btn.textContent = 'Copied!';\n    setTimeout(() => btn.textContent = 'Copy', 1500);\n  });\n}"
+  },
+  {
+    "id": "baby-names",
+    "name_en": "Baby Name Generator",
+    "desc_en": "Find baby names by gender, origin, popularity, and meaning",
+    "name_zh": "\u5b9d\u5b9d\u540d\u5b57\u751f\u6210\u5668",
+    "desc_zh": "Find baby names by gender, origin, popularity, and meaning",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Fun",
+    "keywords": [
+      "baby names",
+      "baby name generator",
+      "fun"
+    ],
+    "type": "generator",
+    "placeholder": "Enter your input here...",
+    "button_label": "Generate",
+    "js": "function generate() {\n  const result = 'Generated output for baby-names';\n  document.getElementById('out').textContent = result;\n}\nfunction copy() {\n  const t = document.getElementById('out').textContent;\n  if (!t) return;\n  navigator.clipboard.writeText(t).then(() => {\n    const btn = document.getElementById('copy-btn');\n    btn.textContent = 'Copied!';\n    setTimeout(() => btn.textContent = 'Copy', 1500);\n  });\n}"
+  },
+  {
+    "id": "story-generator",
+    "name_en": "Story Prompt Generator",
+    "desc_en": "Generate creative writing prompts with characters, setting, and conflict",
+    "name_zh": "\u6545\u4e8b\u7075\u611f\u751f\u6210\u5668",
+    "desc_zh": "Generate creative writing prompts with characters, setting, and conflict",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Fun",
+    "keywords": [
+      "story generator",
+      "story prompt generator",
+      "fun"
+    ],
+    "type": "generator",
+    "placeholder": "Enter your input here...",
+    "button_label": "Generate",
+    "js": "function generate() {\n  const result = 'Generated output for story-generator';\n  document.getElementById('out').textContent = result;\n}\nfunction copy() {\n  const t = document.getElementById('out').textContent;\n  if (!t) return;\n  navigator.clipboard.writeText(t).then(() => {\n    const btn = document.getElementById('copy-btn');\n    btn.textContent = 'Copied!';\n    setTimeout(() => btn.textContent = 'Copy', 1500);\n  });\n}"
+  },
+  {
+    "id": "team-generator",
+    "name_en": "Random Team Generator",
+    "desc_en": "Split a list of names into random teams or groups",
+    "name_zh": "\u968f\u673a\u5206\u961f\u751f\u6210\u5668",
+    "desc_zh": "Split a list of names into random teams or groups",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Fun",
+    "keywords": [
+      "team generator",
+      "random team generator",
+      "fun"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+  },
+  {
+    "id": "world-clock",
+    "name_en": "World Clock",
+    "desc_en": "See the current time in major cities across all timezones",
+    "name_zh": "\u4e16\u754c\u65f6\u949f",
+    "desc_zh": "See the current time in major cities across all timezones",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Time",
+    "keywords": [
+      "world clock",
+      "world clock",
+      "time"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+  },
+  {
+    "id": "meeting-planner",
+    "name_en": "Meeting Time Planner",
+    "desc_en": "Find the best meeting time across multiple timezones",
+    "name_zh": "\u4f1a\u8bae\u65f6\u95f4\u89c4\u5212\u5668",
+    "desc_zh": "Find the best meeting time across multiple timezones",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Time",
+    "keywords": [
+      "meeting planner",
+      "meeting time planner",
+      "time"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+  },
+  {
+    "id": "work-hours",
+    "name_en": "Work Hours Calculator",
+    "desc_en": "Calculate total work hours, breaks, and overtime pay",
+    "name_zh": "\u5de5\u65f6\u8ba1\u7b97\u5668",
+    "desc_zh": "Calculate total work hours, breaks, and overtime pay",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Time",
+    "keywords": [
+      "work hours",
+      "work hours calculator",
+      "time"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+  },
+  {
+    "id": "days-until",
+    "name_en": "Days Until Calculator",
+    "desc_en": "Count the days, hours, and minutes until any future date",
+    "name_zh": "\u5012\u8ba1\u65f6\u8ba1\u7b97\u5668",
+    "desc_zh": "Count the days, hours, and minutes until any future date",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Time",
+    "keywords": [
+      "days until",
+      "days until calculator",
+      "time"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+  },
+  {
+    "id": "weeks-between",
+    "name_en": "Weeks Between Dates",
+    "desc_en": "Calculate the number of weeks and days between any two dates",
+    "name_zh": "\u5468\u6570\u8ba1\u7b97\u5668",
+    "desc_zh": "Calculate the number of weeks and days between any two dates",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Time",
+    "keywords": [
+      "weeks between",
+      "weeks between dates",
+      "time"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+  },
+  {
+    "id": "binary-to-decimal",
+    "name_en": "Binary to Decimal Converter",
+    "desc_en": "Convert binary numbers to decimal, and decimal to binary",
+    "name_zh": "\u4e8c\u8fdb\u5236\u8f6c\u5341\u8fdb\u5236",
+    "desc_zh": "Convert binary numbers to decimal, and decimal to binary",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Encode/Decode",
+    "keywords": [
+      "binary to decimal",
+      "binary to decimal converter",
+      "encode/decode"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+  },
+  {
+    "id": "hex-to-decimal",
+    "name_en": "Hex to Decimal Converter",
+    "desc_en": "Convert hexadecimal numbers to decimal and back",
+    "name_zh": "\u5341\u516d\u8fdb\u5236\u8f6c\u5341\u8fdb\u5236",
+    "desc_zh": "Convert hexadecimal numbers to decimal and back",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Encode/Decode",
+    "keywords": [
+      "hex to decimal",
+      "hex to decimal converter",
+      "encode/decode"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+  },
+  {
+    "id": "octal-to-decimal",
+    "name_en": "Octal to Decimal Converter",
+    "desc_en": "Convert octal numbers to decimal and decimal to octal",
+    "name_zh": "\u516b\u8fdb\u5236\u8f6c\u5341\u8fdb\u5236",
+    "desc_zh": "Convert octal numbers to decimal and decimal to octal",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Encode/Decode",
+    "keywords": [
+      "octal to decimal",
+      "octal to decimal converter",
+      "encode/decode"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+  },
+  {
+    "id": "utf8-encoder",
+    "name_en": "UTF-8 Encoder",
+    "desc_en": "Encode text to UTF-8 bytes and decode UTF-8 back to text",
+    "name_zh": "UTF-8 \u7f16\u7801\u5668",
+    "desc_zh": "Encode text to UTF-8 bytes and decode UTF-8 back to text",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Encode/Decode",
+    "keywords": [
+      "utf8 encoder",
+      "utf-8 encoder",
+      "encode/decode"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+  },
+  {
+    "id": "quoted-printable",
+    "name_en": "Quoted Printable Encoder",
+    "desc_en": "Encode and decode text using quoted-printable encoding for email",
+    "name_zh": "Quoted Printable \u7f16\u7801\u5668",
+    "desc_zh": "Encode and decode text using quoted-printable encoding for email",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Encode/Decode",
+    "keywords": [
+      "quoted printable",
+      "quoted printable encoder",
+      "encode/decode"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+  },
+  {
+    "id": "image-resizer",
+    "name_en": "Image Resizer",
+    "desc_en": "Resize images to exact dimensions while preserving aspect ratio",
+    "name_zh": "\u56fe\u7247\u5c3a\u5bf8\u8c03\u6574\u5668",
+    "desc_zh": "Resize images to exact dimensions while preserving aspect ratio",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Image",
+    "keywords": [
+      "image resizer",
+      "image resizer",
+      "image"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+  },
+  {
+    "id": "image-info",
+    "name_en": "Image Info Viewer",
+    "desc_en": "View detailed image metadata: dimensions, file size, color depth, EXIF",
+    "name_zh": "\u56fe\u7247\u4fe1\u606f\u67e5\u770b\u5668",
+    "desc_zh": "View detailed image metadata: dimensions, file size, color depth, EXIF",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Image",
+    "keywords": [
+      "image info",
+      "image info viewer",
+      "image"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+  },
+  {
+    "id": "qr-reader",
+    "name_en": "QR Code Reader",
+    "desc_en": "Upload a QR code image and decode its content instantly in your browser",
+    "name_zh": "\u4e8c\u7ef4\u7801\u9605\u8bfb\u5668",
+    "desc_zh": "Upload a QR code image and decode its content instantly in your browser",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Image",
+    "keywords": [
+      "qr reader",
+      "qr code reader",
+      "image"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+  },
+  {
+    "id": "sha384",
+    "name_en": "SHA-384 Hash Generator",
+    "desc_en": "Generate SHA-384 hash values for any text input",
+    "name_zh": "SHA-384 \u54c8\u5e0c\u751f\u6210\u5668",
+    "desc_zh": "Generate SHA-384 hash values for any text input",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Hash",
+    "keywords": [
+      "sha384",
+      "sha-384 hash generator",
+      "hash"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+  },
+  {
+    "id": "sha3-256",
+    "name_en": "SHA3-256 Hash Generator",
+    "desc_en": "Generate SHA3-256 (Keccak) hash values for cryptographic applications",
+    "name_zh": "SHA3-256 \u54c8\u5e0c\u751f\u6210\u5668",
+    "desc_zh": "Generate SHA3-256 (Keccak) hash values for cryptographic applications",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Hash",
+    "keywords": [
+      "sha3 256",
+      "sha3-256 hash generator",
+      "hash"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+  }
+]

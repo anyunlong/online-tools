@@ -1,0 +1,11 @@
+I need 25 NEW online tool ideas. Output ONLY a valid JSON array.
+
+Existing categories: Hash, Security, Time, Formatter, Encode/Decode, Text, Dev Tools, Generator, Design, Convert, Network, Image, Math
+
+Existing IDs (DO NOT reuse): age-calculator, ascii-table, base64, bcrypt-checker, bmi-calculator, border-radius, box-shadow, bytes-converter, case-converter, color-contrast, color-picker, countdown, crc32, cron-parser, css-beautifier, css-minifier, css-triangle, csv-to-json, date-calculator, day-of-week, dice-roller, dns-lookup, duplicate-remover, emoji-picker, entropy-calculator, extract-emails, extract-urls, factorial, favicon-generator, fraction-calculator, git-cheatsheet, gradient-generator, hash-compare, hex-to-text, hmac-generator, html-beautifier, html-entity, html-minifier, http-headers-checker, http-status, image-compress, image-to-base64, ip-lookup, js-beautifier, js-minifier, json-formatter, json-to-csv, json-to-xml, json-to-yaml, json-validator...
+
+Each tool: browser JavaScript only, practical use cases, long-tail keywords.
+
+JSON format: [{"id":"...", "name":"...", "desc":"...", "cat":"...", "type":"processor|generator"}]
+
+New categories to explore: Finance, Health, Color, SEO, Fun
