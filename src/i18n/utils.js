@@ -10,7 +10,7 @@ function buildEn() {
   // Site
   en.site.name = '4uses';
   en.site.tagline = 'All free · No registration · No data uploaded';
-  en.site.subtitle = '100+ useful tools, continuously updated';
+  en.site.subtitle = '200+ useful tools, continuously updated';
 
   // UI
   en.ui.generate = 'Generate';
@@ -264,15 +264,15 @@ function buildEn() {
     tools: 'Tools',
     categories: 'Categories',
     company: 'Company',
-    description: '100+ free online utilities for everyday tasks. No sign-up, no limits, fully private in your browser.',
+    description: '200+ free online utilities for everyday tasks. No sign-up, no limits, fully private in your browser.',
   };
   
   // Home
   en.home = {
     hero: 'Online Toolbox',
-    desc: 'Free online tools: JSON Formatter, Base64 Encoder, Timestamp Converter, UUID Generator, QR Code Generator and 100+ more utilities. No registration required.',
-    heroBadge: '100+ free utilities, always growing',
-    heroSubtitle: '100+ free utilities — no sign-up, no limits. Encode, format, convert and generate, all in your browser.',
+    desc: 'Free online tools: JSON Formatter, Base64 Encoder, Timestamp Converter, UUID Generator, QR Code Generator and 200+ more utilities. No registration required.',
+    heroBadge: '200+ free utilities, always growing',
+    heroSubtitle: '200+ free utilities — no sign-up, no limits. Encode, format, convert and generate, all in your browser.',
     exploreTools: 'Explore Tools',
     popularTools: 'Popular Tools',
     searchPlaceholder: 'Search for a tool...',
