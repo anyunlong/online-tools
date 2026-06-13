@@ -48,9 +48,9 @@ const navLinks = [
       </div>
 
       <!-- Lang switcher -->
-      <div id="lang-switcher-group" class="flex items-center rounded-lg border border-border bg-secondary/60 p-0.5 text-xs font-medium">
-        <button data-lang="EN" class="lang-btn rounded-md px-2 py-1 transition-colors bg-primary text-primary-foreground" aria-pressed="true">EN</button>
-        <button data-lang="中文" class="lang-btn rounded-md px-2 py-1 transition-colors text-muted-foreground hover:text-foreground" aria-pressed="false">中文</button>
+      <div id="lang-switcher-group" class="flex items-center rounded-lg border border-surface-700 bg-surface-800/50 p-0.5 text-xs font-medium">
+        <button data-lang="EN" class="lang-btn rounded-md px-2 py-1 transition-colors bg-brand-500 text-white" aria-pressed="true">EN</button>
+        <button data-lang="中文" class="lang-btn rounded-md px-2 py-1 transition-colors text-surface-400 hover:text-white" aria-pressed="false">中文</button>
       </div>
 
       <!-- Mobile menu toggle -->
@@ -107,8 +107,8 @@ const navLinks = [
 
   function setLangUI(lang) {
     var btns = document.querySelectorAll('.lang-btn');
-    var activeClass = 'bg-primary text-primary-foreground';
-    var inactiveClass = 'text-muted-foreground hover:text-foreground';
+    var activeClass = 'bg-brand-500 text-white';
+    var inactiveClass = 'text-surface-400 hover:text-white';
     btns.forEach(function(btn) {
       var btnLang = btn.getAttribute('data-lang');
       var isEN = lang === 'en' && btnLang === 'EN';
