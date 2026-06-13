@@ -15,21 +15,23 @@
 
 | 项目 | 状态 | 备注 |
 |------|------|------|
-| 框架搭建 | ✅ | 首页 + 51 工具，13 大分类 |
+| 框架搭建 | ✅ | 首页 + 100 工具，13 大分类 |
 | 首页重构 | ✅ | v0 设计：Hero/搜索/卡片/精选 |
-| 英文化 | ✅ | i18n 中英双语切换 |
+| 英文化 + i18n | ✅ | 中英双语切换 |
 | JS 内联 | ✅ | 全静态无外部依赖 |
 | GitHub 推送 | ✅ | SSH 443 直连（4s） |
-| Vercel 部署 | ✅ | 自动部署 |
-| Vercel Analytics | ✅ | 实时访客统计 |
+| Vercel 部署 | ✅ | 自动部署 + Preview |
+| Vercel Analytics | ✅ | Web Analytics + Speed Insights |
 | 域名绑定 | ✅ | 4uses.com + HTTPS |
 | SEO 优化 | ✅ | sitemap/robots/JSON-LD/canonical |
 | Search Console | ✅ | HTML 文件验证 |
-| 工具页正文 | 🔄 | 51 页全加 What/When/How/Related |
-| 新工具页面 | 🔜 | 目标 100 个工具（+49） |
-| Blog 栏目 | 🔜 | 5 篇初始文章 + 工具教程 |
+| FAQPage Schema | ✅ | 100 工具 × 3 QA = 13,261 词 |
+| 内容扩写 | ✅ | Deep Dive + Tips + Mistakes = 20,693 词 |
+| **每页词数** | **541 词** | 从 155 提升 249% |
+| Blog 栏目 | ✅ | 5 篇文章在线 |
 | AdSense | ❌ | 被拒（关联已停用账号） |
 | Media.net | 🔜 | AdSense 替代方案 |
+| 日 UV | ~3 | 目标 50-100（3 个月） |
 
 ## 项目文件关键路径
 
