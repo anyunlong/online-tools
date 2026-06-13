@@ -547,502 +547,502 @@
       "howto": "输入密码生成安全的加盐哈希值。使用 PBKDF2-SHA512 算法 200,000 次迭代（相当于 bcrypt cost 12）。输出包含算法、迭代次数、盐和哈希值。所有处理在本地完成。"
     },
     "compound-interest": {
-      "name": "复利计算器",
+      "name": "Compound Interest Calculator",
       "desc": "Calculate how your money grows with compound interest over time",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "loan-calculator": {
-      "name": "贷款计算器",
+      "name": "Loan Calculator",
       "desc": "Calculate monthly payments, total interest, and amortization schedule",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "currency-converter": {
-      "name": "货币转换器",
+      "name": "Currency Converter",
       "desc": "Convert between world currencies with real-time exchange rates",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "discount-calculator": {
-      "name": "折扣计算器",
+      "name": "Discount Calculator",
       "desc": "Calculate sale price, discount percentage, and savings instantly",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "sales-tax": {
-      "name": "消费税计算器",
+      "name": "Sales Tax Calculator",
       "desc": "Calculate total price including sales tax for any US state",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "savings-goal": {
-      "name": "储蓄目标计算器",
+      "name": "Savings Goal Calculator",
       "desc": "Plan how long to reach your savings goal with monthly contributions",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "hourly-to-salary": {
-      "name": "时薪年薪转换器",
+      "name": "Hourly to Salary Converter",
       "desc": "Convert hourly wage to annual salary and vice versa",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "split-bill": {
-      "name": "AA 账单计算器",
+      "name": "Split Bill Calculator",
       "desc": "Split a restaurant bill evenly with tip included",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "macro-calculator": {
-      "name": "宏量营养素计算器",
+      "name": "Macro Calculator",
       "desc": "Calculate daily protein, carb, and fat intake based on your goals",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "one-rep-max": {
-      "name": "极限重量计算器",
+      "name": "One Rep Max Calculator",
       "desc": "Estimate your one-rep max for bench, squat, and deadlift",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "pace-calculator": {
-      "name": "跑步配速计算器",
+      "name": "Running Pace Calculator",
       "desc": "Calculate running pace, time, and distance for any race",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "pregnancy-calculator": {
-      "name": "预产期计算器",
+      "name": "Pregnancy Due Date Calculator",
       "desc": "Estimate your baby's due date based on last period or conception",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "blood-alcohol": {
-      "name": "血液酒精计算器",
+      "name": "BAC Calculator",
       "desc": "Estimate blood alcohol content based on drinks, weight, and time",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "ideal-weight": {
-      "name": "理想体重计算器",
+      "name": "Ideal Weight Calculator",
       "desc": "Find your ideal weight range based on height, age, and body frame",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "temperature-converter": {
-      "name": "温度转换器",
+      "name": "Temperature Converter",
       "desc": "Convert between Celsius, Fahrenheit, and Kelvin instantly",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "length-converter": {
-      "name": "长度转换器",
+      "name": "Length Converter",
       "desc": "Convert between meters, feet, inches, miles, and kilometers",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "weight-converter": {
-      "name": "重量转换器",
+      "name": "Weight Converter",
       "desc": "Convert between kilograms, pounds, ounces, and stones",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "speed-converter": {
-      "name": "速度转换器",
+      "name": "Speed Converter",
       "desc": "Convert between mph, kph, knots, and mach",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "area-converter": {
-      "name": "面积转换器",
+      "name": "Area Converter",
       "desc": "Convert between square meters, acres, hectares, and square feet",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "volume-converter": {
-      "name": "体积转换器",
+      "name": "Volume Converter",
       "desc": "Convert between liters, gallons, cups, and milliliters",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "angle-converter": {
-      "name": "角度转换器",
+      "name": "Angle Converter",
       "desc": "Convert between degrees, radians, and gradians",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "cooking-converter": {
-      "name": "烹饪单位转换器",
+      "name": "Cooking Converter",
       "desc": "Convert cooking measurements: cups, tablespoons, teaspoons, ml",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "pressure-converter": {
-      "name": "压力转换器",
+      "name": "Pressure Converter",
       "desc": "Convert between pascal, bar, psi, and atmospheres",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "energy-converter": {
-      "name": "能量转换器",
+      "name": "Energy Converter",
       "desc": "Convert between joules, calories, kWh, and BTUs",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "prime-checker": {
-      "name": "质数检查器",
+      "name": "Prime Number Checker",
       "desc": "Check if a number is prime and find nearby primes",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "gcf-calculator": {
-      "name": "最大公因数计算器",
+      "name": "GCF Calculator",
       "desc": "Find the greatest common factor of two or more numbers",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "lcm-calculator": {
-      "name": "最小公倍数计算器",
+      "name": "LCM Calculator",
       "desc": "Find the least common multiple of two or more numbers",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "scientific-notation": {
-      "name": "科学计数法转换器",
+      "name": "Scientific Notation Converter",
       "desc": "Convert numbers to and from scientific notation",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "ratio-simplifier": {
-      "name": "比率化简器",
+      "name": "Ratio Simplifier",
       "desc": "Simplify ratios to their lowest terms instantly",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "proportion-calculator": {
-      "name": "比例计算器",
+      "name": "Proportion Calculator",
       "desc": "Solve proportions and find the missing value in ratio equations",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "quadratic-solver": {
-      "name": "二次方程求解器",
+      "name": "Quadratic Equation Solver",
       "desc": "Solve quadratic equations and find real and complex roots",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "exponent-calculator": {
-      "name": "指数计算器",
+      "name": "Exponent Calculator",
       "desc": "Calculate powers, roots, and exponential expressions",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "readability-score": {
-      "name": "可读性评分",
+      "name": "Readability Score",
       "desc": "Check readability with Flesch-Kincaid, Gunning Fog, and SMOG indices",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "palindrome-checker": {
-      "name": "回文检查器",
+      "name": "Palindrome Checker",
       "desc": "Check if a word, phrase, or number reads the same backwards",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "anagram-checker": {
-      "name": "字谜检查器",
+      "name": "Anagram Checker",
       "desc": "Check if two words or phrases are anagrams of each other",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "character-frequency": {
-      "name": "字符频率统计",
+      "name": "Character Frequency Counter",
       "desc": "Count how many times each character appears in your text",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "markdown-to-html": {
-      "name": "Markdown 转 HTML",
+      "name": "Markdown to HTML",
       "desc": "Convert Markdown text to clean HTML code instantly",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "text-to-slug": {
-      "name": "URL Slug 生成器",
+      "name": "URL Slug Generator",
       "desc": "Convert any text into a clean, SEO-friendly URL slug",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "text-wrap": {
-      "name": "文本换行工具",
+      "name": "Text Wrapper",
       "desc": "Wrap text to a specific line width or column count",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "whitespace-remover": {
-      "name": "空白字符清除器",
+      "name": "Whitespace Remover",
       "desc": "Remove extra spaces, tabs, and blank lines from text",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "username-generator": {
-      "name": "用户名生成器",
+      "name": "Username Generator",
       "desc": "Generate unique, memorable usernames for social media and gaming",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "fake-name": {
-      "name": "假名生成器",
+      "name": "Fake Name Generator",
       "desc": "Generate realistic random names for testing and placeholder data",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "fake-email": {
-      "name": "假邮箱生成器",
+      "name": "Fake Email Generator",
       "desc": "Generate random email addresses for testing forms and databases",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "phone-generator": {
-      "name": "电话号码生成器",
+      "name": "Phone Number Generator",
       "desc": "Generate random US and international phone numbers for testing",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "credit-card-gen": {
-      "name": "测试信用卡生成器",
+      "name": "Test Credit Card Generator",
       "desc": "Generate valid-format test credit card numbers (no real money)",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "mac-address-gen": {
-      "name": "MAC 地址生成器",
+      "name": "MAC Address Generator",
       "desc": "Generate random MAC addresses for network device testing",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "ipv6-generator": {
-      "name": "IPv6 生成器",
+      "name": "IPv6 Generator",
       "desc": "Generate random IPv6 addresses in various formats",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "hex-color-gen": {
-      "name": "随机颜色生成器",
+      "name": "Random HEX Color Generator",
       "desc": "Generate random colors with their HEX, RGB, and HSL values",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "password-phrase": {
-      "name": "密码短语生成器",
+      "name": "Passphrase Generator",
       "desc": "Generate memorable passphrases using random word combinations",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "barcode-generator": {
-      "name": "条形码生成器",
+      "name": "Barcode Generator",
       "desc": "Generate EAN-13, UPC-A, and Code-128 barcodes as SVG",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "npm-package-json": {
-      "name": "package.json 生成器",
+      "name": "package.json Generator",
       "desc": "Generate a complete package.json file for your Node.js project",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "semver-checker": {
-      "name": "语义版本检查器",
+      "name": "Semver Checker",
       "desc": "Validate and compare semantic version numbers",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "json-diff": {
-      "name": "JSON 差异检查器",
+      "name": "JSON Diff Checker",
       "desc": "Compare two JSON objects and highlight every difference",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "http-status-dog": {
-      "name": "HTTP 状态码参考",
+      "name": "HTTP Status Code Reference",
       "desc": "Quick reference for all HTTP status codes with descriptions",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "ssl-checker": {
-      "name": "SSL 证书检查器",
+      "name": "SSL Certificate Checker",
       "desc": "Check a domain's SSL certificate expiry date and issuer info",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "color-namer": {
-      "name": "CSS 颜色名称查找",
+      "name": "CSS Color Name Finder",
       "desc": "Find the closest named CSS color for any HEX, RGB, or HSL value",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "css-specificity": {
-      "name": "CSS 优先级计算器",
+      "name": "CSS Specificity Calculator",
       "desc": "Calculate CSS selector specificity score and compare selectors",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "html-table-gen": {
-      "name": "HTML 表格生成器",
+      "name": "HTML Table Generator",
       "desc": "Generate responsive HTML tables with custom rows and columns",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "dockerfile-gen": {
-      "name": "Dockerfile 生成器",
+      "name": "Dockerfile Generator",
       "desc": "Generate a basic Dockerfile for Node.js, Python, or Go projects",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "gitignore-gen": {
-      "name": ".gitignore 生成器",
+      "name": ".gitignore Generator",
       "desc": "Generate a .gitignore file for your project's language and framework",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "serp-preview": {
-      "name": "Google 搜索结果预览",
+      "name": "Google SERP Preview",
       "desc": "Preview how your page title and meta description look in Google search results",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "heading-structure": {
-      "name": "标题结构检查器",
+      "name": "Heading Structure Checker",
       "desc": "Analyze your page's heading hierarchy for SEO best practices",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "alt-text-generator": {
-      "name": "Alt 文本生成器",
+      "name": "Alt Text Generator",
       "desc": "Generate descriptive alt text suggestions for your images",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "sitemap-ping": {
-      "name": "Sitemap 推送工具",
+      "name": "Sitemap Ping Tool",
       "desc": "Ping Google and Bing to notify them of your updated sitemap",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "schema-markup": {
-      "name": "Schema 标记生成器",
+      "name": "Schema Markup Generator",
       "desc": "Generate JSON-LD structured data markup for rich search results",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "redirect-checker": {
-      "name": "重定向检查器",
+      "name": "Redirect Checker",
       "desc": "Check URL redirect chains and HTTP status codes",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "canonical-checker": {
-      "name": "Canonical URL 检查器",
+      "name": "Canonical URL Checker",
       "desc": "Check if a page's canonical tag is correctly implemented",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "color-palette": {
-      "name": "调色板生成器",
+      "name": "Color Palette Generator",
       "desc": "Generate harmonious color palettes using color theory rules",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "color-shades": {
-      "name": "颜色渐变生成器",
+      "name": "Color Shades Generator",
       "desc": "Generate lighter tints and darker shades from any base color",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "gradient-preview": {
-      "name": "CSS 渐变生成器",
+      "name": "CSS Gradient Generator",
       "desc": "Create and preview linear, radial, and conic CSS gradients",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "color-blind": {
-      "name": "色盲模拟器",
+      "name": "Color Blindness Simulator",
       "desc": "Simulate how your colors look with different types of color blindness",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "color-extractor": {
-      "name": "图片颜色提取器",
+      "name": "Color Extractor from Image",
       "desc": "Extract the dominant colors from any image uploaded to your browser",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "ssh-key-gen": {
-      "name": "SSH 密钥指纹",
+      "name": "SSH Key Fingerprint",
       "desc": "Calculate and display SSH key fingerprints in MD5 and SHA256",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "ssl-csr-gen": {
-      "name": "CSR 生成器",
+      "name": "CSR Generator",
       "desc": "Generate Certificate Signing Requests for SSL certificates",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "htpasswd-gen": {
-      "name": "htpasswd 生成器",
+      "name": "htpasswd Generator",
       "desc": "Generate Apache htpasswd entries with bcrypt, MD5, or SHA",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "pgp-encrypt": {
-      "name": "PGP 消息加密器",
+      "name": "PGP Message Encryptor",
       "desc": "Encrypt and decrypt messages using PGP/GPG in your browser",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "sri-hash": {
-      "name": "SRI 哈希生成器",
+      "name": "SRI Hash Generator",
       "desc": "Generate Subresource Integrity hashes for script and link tags",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "csp-generator": {
-      "name": "CSP 头部生成器",
+      "name": "CSP Header Generator",
       "desc": "Generate Content Security Policy headers for your website",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "2fa-code": {
-      "name": "TOTP 验证码生成器",
+      "name": "TOTP Code Generator",
       "desc": "Generate Time-based One-Time Passwords for two-factor authentication",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "coin-flip": {
-      "name": "抛硬币模拟器",
+      "name": "Coin Flip Simulator",
       "desc": "Flip a virtual coin with realistic probability and streak tracking",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "meme-text": {
-      "name": "表情包文字生成器",
+      "name": "Meme Text Generator",
       "desc": "Add impact font text to images and generate shareable memes",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "truth-dare": {
-      "name": "真心话大冒险生成器",
+      "name": "Truth or Dare Generator",
       "desc": "Get random truth questions and dares for party games",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "baby-names": {
-      "name": "宝宝名字生成器",
+      "name": "Baby Name Generator",
       "desc": "Find baby names by gender, origin, popularity, and meaning",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "story-generator": {
-      "name": "故事灵感生成器",
+      "name": "Story Prompt Generator",
       "desc": "Generate creative writing prompts with characters, setting, and conflict",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "team-generator": {
-      "name": "随机分队生成器",
+      "name": "Random Team Generator",
       "desc": "Split a list of names into random teams or groups",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "world-clock": {
-      "name": "世界时钟",
+      "name": "World Clock",
       "desc": "See the current time in major cities across all timezones",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "meeting-planner": {
-      "name": "会议时间规划器",
+      "name": "Meeting Time Planner",
       "desc": "Find the best meeting time across multiple timezones",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "work-hours": {
-      "name": "工时计算器",
+      "name": "Work Hours Calculator",
       "desc": "Calculate total work hours, breaks, and overtime pay",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "days-until": {
-      "name": "倒计时计算器",
+      "name": "Days Until Calculator",
       "desc": "Count the days, hours, and minutes until any future date",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "weeks-between": {
-      "name": "周数计算器",
+      "name": "Weeks Between Dates",
       "desc": "Calculate the number of weeks and days between any two dates",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "binary-to-decimal": {
-      "name": "二进制转十进制",
+      "name": "Binary to Decimal Converter",
       "desc": "Convert binary numbers to decimal, and decimal to binary",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "hex-to-decimal": {
-      "name": "十六进制转十进制",
+      "name": "Hex to Decimal Converter",
       "desc": "Convert hexadecimal numbers to decimal and back",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "octal-to-decimal": {
-      "name": "八进制转十进制",
+      "name": "Octal to Decimal Converter",
       "desc": "Convert octal numbers to decimal and decimal to octal",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "utf8-encoder": {
-      "name": "UTF-8 编码器",
+      "name": "UTF-8 Encoder",
       "desc": "Encode text to UTF-8 bytes and decode UTF-8 back to text",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "quoted-printable": {
-      "name": "Quoted Printable 编码器",
+      "name": "Quoted Printable Encoder",
       "desc": "Encode and decode text using quoted-printable encoding for email",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "image-resizer": {
-      "name": "图片尺寸调整器",
+      "name": "Image Resizer",
       "desc": "Resize images to exact dimensions while preserving aspect ratio",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "image-info": {
-      "name": "图片信息查看器",
+      "name": "Image Info Viewer",
       "desc": "View detailed image metadata: dimensions, file size, color depth, EXIF",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "qr-reader": {
-      "name": "二维码阅读器",
+      "name": "QR Code Reader",
       "desc": "Upload a QR code image and decode its content instantly in your browser",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "sha384": {
-      "name": "SHA-384 哈希生成器",
+      "name": "SHA-384 Hash Generator",
       "desc": "Generate SHA-384 hash values for any text input",
       "howto": "输入内容点击处理，结果即时显示。"
     },
     "sha3-256": {
-      "name": "SHA3-256 哈希生成器",
+      "name": "SHA3-256 Hash Generator",
       "desc": "Generate SHA3-256 (Keccak) hash values for cryptographic applications",
       "howto": "输入内容点击处理，结果即时显示。"
     }

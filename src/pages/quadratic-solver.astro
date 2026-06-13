@@ -23,12 +23,14 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function calc() {
-  const v = document.getElementById('inp').value;
-  if (!v) { document.getElementById('out').textContent = '—'; return; }
-  const n = parseFloat(v);
-  if (isNaN(n)) { document.getElementById('out').textContent = 'Invalid'; return; }
-  document.getElementById('out').textContent = 'Result: ' + n;
+function process(){
+  const v=document.getElementById('inp').value.split(/[,\s]+/).map(Number);
+  if(v.length<3||v.some(isNaN)){document.getElementById('out').textContent='Format: a, b, c (ax²+bx+c=0)';return;}
+  if(v[0]===0){document.getElementById('out').textContent='a cannot be 0';return;}
+  const d=v[1]*v[1]-4*v[0]*v[2];
+  if(d>0){const r1=(-v[1]+Math.sqrt(d))/(2*v[0]),r2=(-v[1]-Math.sqrt(d))/(2*v[0]);document.getElementById('out').innerHTML='<div class="text-brand-400">Two real roots:</div><div class="text-lg font-bold">x₁='+r1.toFixed(4)+'</div><div class="text-lg font-bold">x₂='+r2.toFixed(4)+'</div>';}
+  else if(d===0){document.getElementById('out').innerHTML='<div class="text-brand-400">One real root:</div><div class="text-lg font-bold">x='+(-v[1]/(2*v[0])).toFixed(4)+'</div>';}
+  else{const r=-v[1]/(2*v[0]),im=Math.sqrt(-d)/(2*v[0]);document.getElementById('out').innerHTML='<div class="text-brand-400">Complex roots:</div><div class="text-lg font-bold">x='+r.toFixed(4)+' ± '+im.toFixed(4)+'i</div>';}
 }
 function clearAll() {
   document.getElementById('inp').value = '';
@@ -37,6 +39,6 @@ function clearAll() {
 }
 </script>
 <slot name="info" slot="info">
-  <p>Enter your input and click to process. Results appear instantly below.</p>
+  <p>Enter your input and click to process. Results appear instantly.</p>
 </slot>
 </ToolLayout>

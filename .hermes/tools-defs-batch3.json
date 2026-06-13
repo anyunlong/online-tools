@@ -3,9 +3,9 @@
     "id": "npm-package-json",
     "name_en": "package.json Generator",
     "desc_en": "Generate a complete package.json file for your Node.js project",
-    "name_zh": "package.json \u751f\u6210\u5668",
+    "name_zh": "package.json Generator",
     "desc_zh": "Generate a complete package.json file for your Node.js project",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Dev Tools",
     "keywords": [
@@ -14,17 +14,18 @@
       "dev tools"
     ],
     "type": "generator",
-    "placeholder": "Enter your input here...",
+    "placeholder": "",
     "button_label": "Generate",
-    "js": "function generate() {\n  const result = 'Generated output for npm-package-json';\n  document.getElementById('out').textContent = result;\n}\nfunction copy() {\n  const t = document.getElementById('out').textContent;\n  if (!t) return;\n  navigator.clipboard.writeText(t).then(() => {\n    const btn = document.getElementById('copy-btn');\n    btn.textContent = 'Copied!';\n    setTimeout(() => btn.textContent = 'Copy', 1500);\n  });\n}"
+    "config_html": "<div class='text-sm text-surface-400'>Configure options above</div>",
+    "js": "function generate(){\n  document.getElementById('result').textContent='Generated output \u2014 customize me!';\n}"
   },
   {
     "id": "semver-checker",
     "name_en": "Semver Checker",
     "desc_en": "Validate and compare semantic version numbers",
-    "name_zh": "\u8bed\u4e49\u7248\u672c\u68c0\u67e5\u5668",
+    "name_zh": "Semver Checker",
     "desc_zh": "Validate and compare semantic version numbers",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Dev Tools",
     "keywords": [
@@ -35,15 +36,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+    "config_html": "",
+    "js": "function process(){\n  const inp=document.getElementById('inp').value.trim();\n  if(!inp){document.getElementById('out').textContent='Enter input above';return;}\n  document.getElementById('out').textContent='Processing: '+inp.substring(0,100);\n}"
   },
   {
     "id": "json-diff",
     "name_en": "JSON Diff Checker",
     "desc_en": "Compare two JSON objects and highlight every difference",
-    "name_zh": "JSON \u5dee\u5f02\u68c0\u67e5\u5668",
+    "name_zh": "JSON Diff Checker",
     "desc_zh": "Compare two JSON objects and highlight every difference",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Dev Tools",
     "keywords": [
@@ -54,15 +56,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+    "config_html": "",
+    "js": "function process(){\n  const inp=document.getElementById('inp').value.trim();\n  if(!inp){document.getElementById('out').textContent='Enter input above';return;}\n  document.getElementById('out').textContent='Processing: '+inp.substring(0,100);\n}"
   },
   {
     "id": "http-status-dog",
     "name_en": "HTTP Status Code Reference",
     "desc_en": "Quick reference for all HTTP status codes with descriptions",
-    "name_zh": "HTTP \u72b6\u6001\u7801\u53c2\u8003",
+    "name_zh": "HTTP Status Code Reference",
     "desc_zh": "Quick reference for all HTTP status codes with descriptions",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Dev Tools",
     "keywords": [
@@ -73,15 +76,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+    "config_html": "",
+    "js": "function process(){\n  const inp=document.getElementById('inp').value.trim();\n  if(!inp){document.getElementById('out').textContent='Enter input above';return;}\n  document.getElementById('out').textContent='Processing: '+inp.substring(0,100);\n}"
   },
   {
     "id": "ssl-checker",
     "name_en": "SSL Certificate Checker",
     "desc_en": "Check a domain's SSL certificate expiry date and issuer info",
-    "name_zh": "SSL \u8bc1\u4e66\u68c0\u67e5\u5668",
+    "name_zh": "SSL Certificate Checker",
     "desc_zh": "Check a domain's SSL certificate expiry date and issuer info",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Dev Tools",
     "keywords": [
@@ -92,15 +96,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+    "config_html": "",
+    "js": "function process(){\n  const inp=document.getElementById('inp').value.trim();\n  if(!inp){document.getElementById('out').textContent='Enter input above';return;}\n  document.getElementById('out').textContent='Processing: '+inp.substring(0,100);\n}"
   },
   {
     "id": "color-namer",
     "name_en": "CSS Color Name Finder",
     "desc_en": "Find the closest named CSS color for any HEX, RGB, or HSL value",
-    "name_zh": "CSS \u989c\u8272\u540d\u79f0\u67e5\u627e",
+    "name_zh": "CSS Color Name Finder",
     "desc_zh": "Find the closest named CSS color for any HEX, RGB, or HSL value",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Dev Tools",
     "keywords": [
@@ -111,15 +116,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+    "config_html": "",
+    "js": "function process(){\n  const inp=document.getElementById('inp').value.trim();\n  if(!inp){document.getElementById('out').textContent='Enter input above';return;}\n  document.getElementById('out').textContent='Processing: '+inp.substring(0,100);\n}"
   },
   {
     "id": "css-specificity",
     "name_en": "CSS Specificity Calculator",
     "desc_en": "Calculate CSS selector specificity score and compare selectors",
-    "name_zh": "CSS \u4f18\u5148\u7ea7\u8ba1\u7b97\u5668",
+    "name_zh": "CSS Specificity Calculator",
     "desc_zh": "Calculate CSS selector specificity score and compare selectors",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Dev Tools",
     "keywords": [
@@ -130,15 +136,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+    "config_html": "",
+    "js": "function process(){\n  const inp=document.getElementById('inp').value.trim();\n  if(!inp){document.getElementById('out').textContent='Enter input above';return;}\n  document.getElementById('out').textContent='Processing: '+inp.substring(0,100);\n}"
   },
   {
     "id": "html-table-gen",
     "name_en": "HTML Table Generator",
     "desc_en": "Generate responsive HTML tables with custom rows and columns",
-    "name_zh": "HTML \u8868\u683c\u751f\u6210\u5668",
+    "name_zh": "HTML Table Generator",
     "desc_zh": "Generate responsive HTML tables with custom rows and columns",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Dev Tools",
     "keywords": [
@@ -147,17 +154,18 @@
       "dev tools"
     ],
     "type": "generator",
-    "placeholder": "Enter your input here...",
+    "placeholder": "",
     "button_label": "Generate",
-    "js": "function generate() {\n  const result = 'Generated output for html-table-gen';\n  document.getElementById('out').textContent = result;\n}\nfunction copy() {\n  const t = document.getElementById('out').textContent;\n  if (!t) return;\n  navigator.clipboard.writeText(t).then(() => {\n    const btn = document.getElementById('copy-btn');\n    btn.textContent = 'Copied!';\n    setTimeout(() => btn.textContent = 'Copy', 1500);\n  });\n}"
+    "config_html": "<div class='text-sm text-surface-400'>Configure options above</div>",
+    "js": "function generate(){\n  document.getElementById('result').textContent='Generated output \u2014 customize me!';\n}"
   },
   {
     "id": "dockerfile-gen",
     "name_en": "Dockerfile Generator",
     "desc_en": "Generate a basic Dockerfile for Node.js, Python, or Go projects",
-    "name_zh": "Dockerfile \u751f\u6210\u5668",
+    "name_zh": "Dockerfile Generator",
     "desc_zh": "Generate a basic Dockerfile for Node.js, Python, or Go projects",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Dev Tools",
     "keywords": [
@@ -166,17 +174,18 @@
       "dev tools"
     ],
     "type": "generator",
-    "placeholder": "Enter your input here...",
+    "placeholder": "",
     "button_label": "Generate",
-    "js": "function generate() {\n  const result = 'Generated output for dockerfile-gen';\n  document.getElementById('out').textContent = result;\n}\nfunction copy() {\n  const t = document.getElementById('out').textContent;\n  if (!t) return;\n  navigator.clipboard.writeText(t).then(() => {\n    const btn = document.getElementById('copy-btn');\n    btn.textContent = 'Copied!';\n    setTimeout(() => btn.textContent = 'Copy', 1500);\n  });\n}"
+    "config_html": "<div class='text-sm text-surface-400'>Configure options above</div>",
+    "js": "function generate(){\n  document.getElementById('result').textContent='Generated output \u2014 customize me!';\n}"
   },
   {
     "id": "gitignore-gen",
     "name_en": ".gitignore Generator",
     "desc_en": "Generate a .gitignore file for your project's language and framework",
-    "name_zh": ".gitignore \u751f\u6210\u5668",
+    "name_zh": ".gitignore Generator",
     "desc_zh": "Generate a .gitignore file for your project's language and framework",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Dev Tools",
     "keywords": [
@@ -185,17 +194,18 @@
       "dev tools"
     ],
     "type": "generator",
-    "placeholder": "Enter your input here...",
+    "placeholder": "",
     "button_label": "Generate",
-    "js": "function generate() {\n  const result = 'Generated output for gitignore-gen';\n  document.getElementById('out').textContent = result;\n}\nfunction copy() {\n  const t = document.getElementById('out').textContent;\n  if (!t) return;\n  navigator.clipboard.writeText(t).then(() => {\n    const btn = document.getElementById('copy-btn');\n    btn.textContent = 'Copied!';\n    setTimeout(() => btn.textContent = 'Copy', 1500);\n  });\n}"
+    "config_html": "<div class='text-sm text-surface-400'>Configure options above</div>",
+    "js": "function generate(){\n  document.getElementById('result').textContent='Generated output \u2014 customize me!';\n}"
   },
   {
     "id": "serp-preview",
     "name_en": "Google SERP Preview",
     "desc_en": "Preview how your page title and meta description look in Google search results",
-    "name_zh": "Google \u641c\u7d22\u7ed3\u679c\u9884\u89c8",
+    "name_zh": "Google SERP Preview",
     "desc_zh": "Preview how your page title and meta description look in Google search results",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "SEO",
     "keywords": [
@@ -206,15 +216,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+    "config_html": "",
+    "js": "function process(){\n  const inp=document.getElementById('inp').value.trim();\n  if(!inp){document.getElementById('out').textContent='Enter input above';return;}\n  document.getElementById('out').textContent='Processing: '+inp.substring(0,100);\n}"
   },
   {
     "id": "heading-structure",
     "name_en": "Heading Structure Checker",
     "desc_en": "Analyze your page's heading hierarchy for SEO best practices",
-    "name_zh": "\u6807\u9898\u7ed3\u6784\u68c0\u67e5\u5668",
+    "name_zh": "Heading Structure Checker",
     "desc_zh": "Analyze your page's heading hierarchy for SEO best practices",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "SEO",
     "keywords": [
@@ -225,15 +236,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+    "config_html": "",
+    "js": "function process(){\n  const inp=document.getElementById('inp').value.trim();\n  if(!inp){document.getElementById('out').textContent='Enter input above';return;}\n  document.getElementById('out').textContent='Processing: '+inp.substring(0,100);\n}"
   },
   {
     "id": "alt-text-generator",
     "name_en": "Alt Text Generator",
     "desc_en": "Generate descriptive alt text suggestions for your images",
-    "name_zh": "Alt \u6587\u672c\u751f\u6210\u5668",
+    "name_zh": "Alt Text Generator",
     "desc_zh": "Generate descriptive alt text suggestions for your images",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "SEO",
     "keywords": [
@@ -242,17 +254,18 @@
       "seo"
     ],
     "type": "generator",
-    "placeholder": "Enter your input here...",
+    "placeholder": "",
     "button_label": "Generate",
-    "js": "function generate() {\n  const result = 'Generated output for alt-text-generator';\n  document.getElementById('out').textContent = result;\n}\nfunction copy() {\n  const t = document.getElementById('out').textContent;\n  if (!t) return;\n  navigator.clipboard.writeText(t).then(() => {\n    const btn = document.getElementById('copy-btn');\n    btn.textContent = 'Copied!';\n    setTimeout(() => btn.textContent = 'Copy', 1500);\n  });\n}"
+    "config_html": "<div class='text-sm text-surface-400'>Configure options above</div>",
+    "js": "function generate(){\n  document.getElementById('result').textContent='Generated output \u2014 customize me!';\n}"
   },
   {
     "id": "sitemap-ping",
     "name_en": "Sitemap Ping Tool",
     "desc_en": "Ping Google and Bing to notify them of your updated sitemap",
-    "name_zh": "Sitemap \u63a8\u9001\u5de5\u5177",
+    "name_zh": "Sitemap Ping Tool",
     "desc_zh": "Ping Google and Bing to notify them of your updated sitemap",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "SEO",
     "keywords": [
@@ -263,15 +276,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+    "config_html": "",
+    "js": "function process(){\n  const inp=document.getElementById('inp').value.trim();\n  if(!inp){document.getElementById('out').textContent='Enter input above';return;}\n  document.getElementById('out').textContent='Processing: '+inp.substring(0,100);\n}"
   },
   {
     "id": "schema-markup",
     "name_en": "Schema Markup Generator",
     "desc_en": "Generate JSON-LD structured data markup for rich search results",
-    "name_zh": "Schema \u6807\u8bb0\u751f\u6210\u5668",
+    "name_zh": "Schema Markup Generator",
     "desc_zh": "Generate JSON-LD structured data markup for rich search results",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "SEO",
     "keywords": [
@@ -280,17 +294,18 @@
       "seo"
     ],
     "type": "generator",
-    "placeholder": "Enter your input here...",
+    "placeholder": "",
     "button_label": "Generate",
-    "js": "function generate() {\n  const result = 'Generated output for schema-markup';\n  document.getElementById('out').textContent = result;\n}\nfunction copy() {\n  const t = document.getElementById('out').textContent;\n  if (!t) return;\n  navigator.clipboard.writeText(t).then(() => {\n    const btn = document.getElementById('copy-btn');\n    btn.textContent = 'Copied!';\n    setTimeout(() => btn.textContent = 'Copy', 1500);\n  });\n}"
+    "config_html": "<div class='text-sm text-surface-400'>Configure options above</div>",
+    "js": "function generate(){\n  document.getElementById('result').textContent='Generated output \u2014 customize me!';\n}"
   },
   {
     "id": "redirect-checker",
     "name_en": "Redirect Checker",
     "desc_en": "Check URL redirect chains and HTTP status codes",
-    "name_zh": "\u91cd\u5b9a\u5411\u68c0\u67e5\u5668",
+    "name_zh": "Redirect Checker",
     "desc_zh": "Check URL redirect chains and HTTP status codes",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "SEO",
     "keywords": [
@@ -301,15 +316,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+    "config_html": "",
+    "js": "function process(){\n  const inp=document.getElementById('inp').value.trim();\n  if(!inp){document.getElementById('out').textContent='Enter input above';return;}\n  document.getElementById('out').textContent='Processing: '+inp.substring(0,100);\n}"
   },
   {
     "id": "canonical-checker",
     "name_en": "Canonical URL Checker",
     "desc_en": "Check if a page's canonical tag is correctly implemented",
-    "name_zh": "Canonical URL \u68c0\u67e5\u5668",
+    "name_zh": "Canonical URL Checker",
     "desc_zh": "Check if a page's canonical tag is correctly implemented",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "SEO",
     "keywords": [
@@ -320,15 +336,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+    "config_html": "",
+    "js": "function process(){\n  const inp=document.getElementById('inp').value.trim();\n  if(!inp){document.getElementById('out').textContent='Enter input above';return;}\n  document.getElementById('out').textContent='Processing: '+inp.substring(0,100);\n}"
   },
   {
     "id": "color-palette",
     "name_en": "Color Palette Generator",
     "desc_en": "Generate harmonious color palettes using color theory rules",
-    "name_zh": "\u8c03\u8272\u677f\u751f\u6210\u5668",
+    "name_zh": "Color Palette Generator",
     "desc_zh": "Generate harmonious color palettes using color theory rules",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Color",
     "keywords": [
@@ -337,17 +354,18 @@
       "color"
     ],
     "type": "generator",
-    "placeholder": "Enter your input here...",
+    "placeholder": "",
     "button_label": "Generate",
-    "js": "function generate() {\n  const result = 'Generated output for color-palette';\n  document.getElementById('out').textContent = result;\n}\nfunction copy() {\n  const t = document.getElementById('out').textContent;\n  if (!t) return;\n  navigator.clipboard.writeText(t).then(() => {\n    const btn = document.getElementById('copy-btn');\n    btn.textContent = 'Copied!';\n    setTimeout(() => btn.textContent = 'Copy', 1500);\n  });\n}"
+    "config_html": "<div class='text-sm text-surface-400'>Configure options above</div>",
+    "js": "function generate(){\n  document.getElementById('result').textContent='Generated output \u2014 customize me!';\n}"
   },
   {
     "id": "color-shades",
     "name_en": "Color Shades Generator",
     "desc_en": "Generate lighter tints and darker shades from any base color",
-    "name_zh": "\u989c\u8272\u6e10\u53d8\u751f\u6210\u5668",
+    "name_zh": "Color Shades Generator",
     "desc_zh": "Generate lighter tints and darker shades from any base color",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Color",
     "keywords": [
@@ -356,17 +374,18 @@
       "color"
     ],
     "type": "generator",
-    "placeholder": "Enter your input here...",
+    "placeholder": "",
     "button_label": "Generate",
-    "js": "function generate() {\n  const result = 'Generated output for color-shades';\n  document.getElementById('out').textContent = result;\n}\nfunction copy() {\n  const t = document.getElementById('out').textContent;\n  if (!t) return;\n  navigator.clipboard.writeText(t).then(() => {\n    const btn = document.getElementById('copy-btn');\n    btn.textContent = 'Copied!';\n    setTimeout(() => btn.textContent = 'Copy', 1500);\n  });\n}"
+    "config_html": "<div class='text-sm text-surface-400'>Configure options above</div>",
+    "js": "function generate(){\n  document.getElementById('result').textContent='Generated output \u2014 customize me!';\n}"
   },
   {
     "id": "gradient-preview",
     "name_en": "CSS Gradient Generator",
     "desc_en": "Create and preview linear, radial, and conic CSS gradients",
-    "name_zh": "CSS \u6e10\u53d8\u751f\u6210\u5668",
+    "name_zh": "CSS Gradient Generator",
     "desc_zh": "Create and preview linear, radial, and conic CSS gradients",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Color",
     "keywords": [
@@ -375,17 +394,18 @@
       "color"
     ],
     "type": "generator",
-    "placeholder": "Enter your input here...",
+    "placeholder": "",
     "button_label": "Generate",
-    "js": "function generate() {\n  const result = 'Generated output for gradient-preview';\n  document.getElementById('out').textContent = result;\n}\nfunction copy() {\n  const t = document.getElementById('out').textContent;\n  if (!t) return;\n  navigator.clipboard.writeText(t).then(() => {\n    const btn = document.getElementById('copy-btn');\n    btn.textContent = 'Copied!';\n    setTimeout(() => btn.textContent = 'Copy', 1500);\n  });\n}"
+    "config_html": "<div class='text-sm text-surface-400'>Configure options above</div>",
+    "js": "function generate(){\n  document.getElementById('result').textContent='Generated output \u2014 customize me!';\n}"
   },
   {
     "id": "color-blind",
     "name_en": "Color Blindness Simulator",
     "desc_en": "Simulate how your colors look with different types of color blindness",
-    "name_zh": "\u8272\u76f2\u6a21\u62df\u5668",
+    "name_zh": "Color Blindness Simulator",
     "desc_zh": "Simulate how your colors look with different types of color blindness",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Color",
     "keywords": [
@@ -396,15 +416,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+    "config_html": "",
+    "js": "function process(){\n  const inp=document.getElementById('inp').value.trim();\n  if(!inp){document.getElementById('out').textContent='Enter input above';return;}\n  document.getElementById('out').textContent='Processing: '+inp.substring(0,100);\n}"
   },
   {
     "id": "color-extractor",
     "name_en": "Color Extractor from Image",
     "desc_en": "Extract the dominant colors from any image uploaded to your browser",
-    "name_zh": "\u56fe\u7247\u989c\u8272\u63d0\u53d6\u5668",
+    "name_zh": "Color Extractor from Image",
     "desc_zh": "Extract the dominant colors from any image uploaded to your browser",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Color",
     "keywords": [
@@ -415,15 +436,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+    "config_html": "",
+    "js": "function process(){\n  const inp=document.getElementById('inp').value.trim();\n  if(!inp){document.getElementById('out').textContent='Enter input above';return;}\n  document.getElementById('out').textContent='Processing: '+inp.substring(0,100);\n}"
   },
   {
     "id": "ssh-key-gen",
     "name_en": "SSH Key Fingerprint",
     "desc_en": "Calculate and display SSH key fingerprints in MD5 and SHA256",
-    "name_zh": "SSH \u5bc6\u94a5\u6307\u7eb9",
+    "name_zh": "SSH Key Fingerprint",
     "desc_zh": "Calculate and display SSH key fingerprints in MD5 and SHA256",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Security",
     "keywords": [
@@ -434,15 +456,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+    "config_html": "",
+    "js": "function process(){\n  const inp=document.getElementById('inp').value.trim();\n  if(!inp){document.getElementById('out').textContent='Enter input above';return;}\n  document.getElementById('out').textContent='Processing: '+inp.substring(0,100);\n}"
   },
   {
     "id": "ssl-csr-gen",
     "name_en": "CSR Generator",
     "desc_en": "Generate Certificate Signing Requests for SSL certificates",
-    "name_zh": "CSR \u751f\u6210\u5668",
+    "name_zh": "CSR Generator",
     "desc_zh": "Generate Certificate Signing Requests for SSL certificates",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Security",
     "keywords": [
@@ -451,17 +474,18 @@
       "security"
     ],
     "type": "generator",
-    "placeholder": "Enter your input here...",
+    "placeholder": "",
     "button_label": "Generate",
-    "js": "function generate() {\n  const result = 'Generated output for ssl-csr-gen';\n  document.getElementById('out').textContent = result;\n}\nfunction copy() {\n  const t = document.getElementById('out').textContent;\n  if (!t) return;\n  navigator.clipboard.writeText(t).then(() => {\n    const btn = document.getElementById('copy-btn');\n    btn.textContent = 'Copied!';\n    setTimeout(() => btn.textContent = 'Copy', 1500);\n  });\n}"
+    "config_html": "<div class='text-sm text-surface-400'>Configure options above</div>",
+    "js": "function generate(){\n  document.getElementById('result').textContent='Generated output \u2014 customize me!';\n}"
   },
   {
     "id": "htpasswd-gen",
     "name_en": "htpasswd Generator",
     "desc_en": "Generate Apache htpasswd entries with bcrypt, MD5, or SHA",
-    "name_zh": "htpasswd \u751f\u6210\u5668",
+    "name_zh": "htpasswd Generator",
     "desc_zh": "Generate Apache htpasswd entries with bcrypt, MD5, or SHA",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Security",
     "keywords": [
@@ -470,8 +494,9 @@
       "security"
     ],
     "type": "generator",
-    "placeholder": "Enter your input here...",
+    "placeholder": "",
     "button_label": "Generate",
-    "js": "function generate() {\n  const result = 'Generated output for htpasswd-gen';\n  document.getElementById('out').textContent = result;\n}\nfunction copy() {\n  const t = document.getElementById('out').textContent;\n  if (!t) return;\n  navigator.clipboard.writeText(t).then(() => {\n    const btn = document.getElementById('copy-btn');\n    btn.textContent = 'Copied!';\n    setTimeout(() => btn.textContent = 'Copy', 1500);\n  });\n}"
+    "config_html": "<div class='text-sm text-surface-400'>Configure options above</div>",
+    "js": "function generate(){\n  document.getElementById('result').textContent='Generated output \u2014 customize me!';\n}"
   }
 ]

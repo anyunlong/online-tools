@@ -23,10 +23,13 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
+const R={USD:1,EUR:0.92,GBP:0.79,JPY:149.5,CNY:7.24,CAD:1.36,AUD:1.53,INR:83.1};
 function process() {
-  const inp = document.getElementById('inp').value;
-  if (!inp) { document.getElementById('out').textContent = '—'; return; }
-  document.getElementById('out').textContent = inp;
+  const v=document.getElementById('inp').value.trim().split(/\s+/);
+  if(v.length<2){document.getElementById('out').textContent='Format: amount FROM TO (e.g. 100 USD EUR)';return;}
+  const amt=parseFloat(v[0]),from=v[1].toUpperCase(),to=(v[2]||'USD').toUpperCase();
+  if(isNaN(amt)||!R[from]||!R[to]){document.getElementById('out').textContent='Invalid. Try: 100 USD EUR';return;}
+  document.getElementById('out').innerHTML='<span class="text-xl font-bold text-brand-400">'+(amt*R[to]/R[from]).toFixed(2)+'</span> <span class="text-surface-400">'+to+'</span>';
 }
 function clearAll() {
   document.getElementById('inp').value = '';
@@ -35,6 +38,6 @@ function clearAll() {
 }
 </script>
 <slot name="info" slot="info">
-  <p>Enter your input and click to process. Results appear instantly below.</p>
+  <p>Enter your input and click to process. Results appear instantly.</p>
 </slot>
 </ToolLayout>

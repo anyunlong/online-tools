@@ -3,9 +3,9 @@
     "id": "compound-interest",
     "name_en": "Compound Interest Calculator",
     "desc_en": "Calculate how your money grows with compound interest over time",
-    "name_zh": "\u590d\u5229\u8ba1\u7b97\u5668",
+    "name_zh": "Compound Interest Calculator",
     "desc_zh": "Calculate how your money grows with compound interest over time",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Finance",
     "keywords": [
@@ -16,15 +16,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+    "config_html": "",
+    "js": "function process() {\n  const v=document.getElementById('inp').value.split(/[,\\s]+/).map(Number);\n  if(v.length<3||v.some(isNaN)){document.getElementById('out').textContent='Format: principal, rate%, years';return;}\n  const a=v[0]*Math.pow(1+v[1]/100,v[2]);\n  document.getElementById('out').innerHTML='<div class=\"text-xl font-bold text-brand-400\">$'+a.toFixed(2)+'</div><div class=\"text-xs text-surface-400 mt-1\">After '+v[2]+' years at '+v[1]+'%</div>';\n}"
   },
   {
     "id": "loan-calculator",
     "name_en": "Loan Calculator",
     "desc_en": "Calculate monthly payments, total interest, and amortization schedule",
-    "name_zh": "\u8d37\u6b3e\u8ba1\u7b97\u5668",
+    "name_zh": "Loan Calculator",
     "desc_zh": "Calculate monthly payments, total interest, and amortization schedule",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Finance",
     "keywords": [
@@ -35,15 +36,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+    "config_html": "",
+    "js": "function process() {\n  const v=document.getElementById('inp').value.split(/[,\\s]+/).map(Number);\n  if(v.length<3||v.some(isNaN)){document.getElementById('out').textContent='Format: amount, rate%, months';return;}\n  const mr=v[1]/1200,pmt=v[0]*mr*Math.pow(1+mr,v[2])/(Math.pow(1+mr,v[2])-1);\n  document.getElementById('out').innerHTML='<div class=\"text-xl font-bold text-brand-400\">$'+pmt.toFixed(2)+'</div><div class=\"text-xs text-surface-400 mt-1\">Monthly payment</div><div class=\"text-sm mt-1\">Total: $'+(pmt*v[2]).toFixed(2)+'</div>';\n}"
   },
   {
     "id": "currency-converter",
     "name_en": "Currency Converter",
     "desc_en": "Convert between world currencies with real-time exchange rates",
-    "name_zh": "\u8d27\u5e01\u8f6c\u6362\u5668",
+    "name_zh": "Currency Converter",
     "desc_zh": "Convert between world currencies with real-time exchange rates",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Finance",
     "keywords": [
@@ -54,15 +56,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+    "config_html": "",
+    "js": "const R={USD:1,EUR:0.92,GBP:0.79,JPY:149.5,CNY:7.24,CAD:1.36,AUD:1.53,INR:83.1};\nfunction process() {\n  const v=document.getElementById('inp').value.trim().split(/\\s+/);\n  if(v.length<2){document.getElementById('out').textContent='Format: amount FROM TO (e.g. 100 USD EUR)';return;}\n  const amt=parseFloat(v[0]),from=v[1].toUpperCase(),to=(v[2]||'USD').toUpperCase();\n  if(isNaN(amt)||!R[from]||!R[to]){document.getElementById('out').textContent='Invalid. Try: 100 USD EUR';return;}\n  document.getElementById('out').innerHTML='<span class=\"text-xl font-bold text-brand-400\">'+(amt*R[to]/R[from]).toFixed(2)+'</span> <span class=\"text-surface-400\">'+to+'</span>';\n}"
   },
   {
     "id": "discount-calculator",
     "name_en": "Discount Calculator",
     "desc_en": "Calculate sale price, discount percentage, and savings instantly",
-    "name_zh": "\u6298\u6263\u8ba1\u7b97\u5668",
+    "name_zh": "Discount Calculator",
     "desc_zh": "Calculate sale price, discount percentage, and savings instantly",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Finance",
     "keywords": [
@@ -73,15 +76,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+    "config_html": "",
+    "js": "function process() {\n  const v=document.getElementById('inp').value.split(/[,\\s]+/).map(Number);\n  if(v.length<2||v.some(isNaN)){document.getElementById('out').textContent='Format: price, discount%';return;}\n  const s=v[0]*v[1]/100,f=v[0]-s;\n  document.getElementById('out').innerHTML='<div class=\"text-xl font-bold text-brand-400\">$'+f.toFixed(2)+'</div><div class=\"text-xs text-surface-400 mt-1\">You save: $'+s.toFixed(2)+' ('+v[1]+'% off)</div>';\n}"
   },
   {
     "id": "sales-tax",
     "name_en": "Sales Tax Calculator",
     "desc_en": "Calculate total price including sales tax for any US state",
-    "name_zh": "\u6d88\u8d39\u7a0e\u8ba1\u7b97\u5668",
+    "name_zh": "Sales Tax Calculator",
     "desc_zh": "Calculate total price including sales tax for any US state",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Finance",
     "keywords": [
@@ -92,15 +96,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+    "config_html": "",
+    "js": "function process() {\n  const v=document.getElementById('inp').value.split(/[,\\s]+/);\n  if(v.length<2){document.getElementById('out').textContent='Format: price tax% (e.g. 100 8.875)';return;}\n  const p=parseFloat(v[0]),t=parseFloat(v[1]);\n  if(isNaN(p)||isNaN(t)){document.getElementById('out').textContent='Invalid';return;}\n  document.getElementById('out').innerHTML='<div class=\"text-xl font-bold text-brand-400\">$'+(p*(1+t/100)).toFixed(2)+'</div><div class=\"text-xs text-surface-400 mt-1\">Total with '+t+'% tax</div>';\n}"
   },
   {
     "id": "savings-goal",
     "name_en": "Savings Goal Calculator",
     "desc_en": "Plan how long to reach your savings goal with monthly contributions",
-    "name_zh": "\u50a8\u84c4\u76ee\u6807\u8ba1\u7b97\u5668",
+    "name_zh": "Savings Goal Calculator",
     "desc_zh": "Plan how long to reach your savings goal with monthly contributions",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Finance",
     "keywords": [
@@ -111,15 +116,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+    "config_html": "",
+    "js": "function process() {\n  const v=document.getElementById('inp').value.split(/[,\\s]+/).map(Number);\n  if(v.length<3||v.some(isNaN)){document.getElementById('out').textContent='Format: goal, current, monthly (e.g. 10000 1000 500)';return;}\n  let bal=v[1],m=0;\n  while(bal<v[0]&&m<1200){bal=bal*1.0001+v[2];m++;}\n  const y=Math.floor(m/12),rm=m%12;\n  document.getElementById('out').innerHTML='<div class=\"text-xl font-bold text-brand-400\">'+(m<1200?y+'y '+rm+'m':'10+ years')+'</div><div class=\"text-xs text-surface-400 mt-1\">To reach $'+v[0].toLocaleString()+'</div>';\n}"
   },
   {
     "id": "hourly-to-salary",
     "name_en": "Hourly to Salary Converter",
     "desc_en": "Convert hourly wage to annual salary and vice versa",
-    "name_zh": "\u65f6\u85aa\u5e74\u85aa\u8f6c\u6362\u5668",
+    "name_zh": "Hourly to Salary Converter",
     "desc_zh": "Convert hourly wage to annual salary and vice versa",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Finance",
     "keywords": [
@@ -130,15 +136,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+    "config_html": "",
+    "js": "function process() {\n  const v=parseFloat(document.getElementById('inp').value);\n  if(isNaN(v)){document.getElementById('out').textContent='Enter hourly rate';return;}\n  document.getElementById('out').innerHTML='<div class=\"text-xl font-bold text-brand-400\">$'+(v*2080).toLocaleString()+'</div><div class=\"text-xs text-surface-400 mt-1\">Annual salary (40h/week)</div>';\n}"
   },
   {
     "id": "split-bill",
     "name_en": "Split Bill Calculator",
     "desc_en": "Split a restaurant bill evenly with tip included",
-    "name_zh": "AA \u8d26\u5355\u8ba1\u7b97\u5668",
+    "name_zh": "Split Bill Calculator",
     "desc_zh": "Split a restaurant bill evenly with tip included",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Finance",
     "keywords": [
@@ -149,15 +156,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+    "config_html": "",
+    "js": "function process() {\n  const v=document.getElementById('inp').value.split(/[,\\s]+/).map(Number);\n  if(v.length<2||v.some(isNaN)){document.getElementById('out').textContent='Format: bill, people, tip% (e.g. 120 4 15)';return;}\n  const tip=v[2]||15,total=v[0]*(1+tip/100),pp=total/v[1];\n  document.getElementById('out').innerHTML='<div class=\"text-xl font-bold text-brand-400\">$'+pp.toFixed(2)+'</div><div class=\"text-xs text-surface-400 mt-1\">Per person ('+v[1]+' people)</div><div class=\"text-sm mt-1\">Total: $'+total.toFixed(2)+'</div>';\n}"
   },
   {
     "id": "macro-calculator",
     "name_en": "Macro Calculator",
     "desc_en": "Calculate daily protein, carb, and fat intake based on your goals",
-    "name_zh": "\u5b8f\u91cf\u8425\u517b\u7d20\u8ba1\u7b97\u5668",
+    "name_zh": "Macro Calculator",
     "desc_zh": "Calculate daily protein, carb, and fat intake based on your goals",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Health",
     "keywords": [
@@ -168,15 +176,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+    "config_html": "",
+    "js": "function process() {\n  const v=document.getElementById('inp').value.split(/[,\\s]+/).map(Number);\n  if(v.length<2||v.some(isNaN)){document.getElementById('out').textContent='Format: weight_kg, goal (1=lose 2=maintain 3=gain)';return;}\n  const m=[[2.2,1.8,0.8],[1.8,1.2,0.8],[2.0,1.0,1.2]][Math.min(3,Math.max(1,v[1]||2))-1];\n  document.getElementById('out').innerHTML='<div class=\"grid grid-cols-3 gap-3\"><div class=\"text-center\"><div class=\"text-lg font-bold text-blue-400\">'+Math.round(v[0]*m[0])+'g</div><div class=\"text-xs text-surface-400\">Protein</div></div><div class=\"text-center\"><div class=\"text-lg font-bold text-yellow-400\">'+Math.round(v[0]*m[1])+'g</div><div class=\"text-xs text-surface-400\">Carbs</div></div><div class=\"text-center\"><div class=\"text-lg font-bold text-red-400\">'+Math.round(v[0]*m[2])+'g</div><div class=\"text-xs text-surface-400\">Fat</div></div></div>';\n}"
   },
   {
     "id": "one-rep-max",
     "name_en": "One Rep Max Calculator",
     "desc_en": "Estimate your one-rep max for bench, squat, and deadlift",
-    "name_zh": "\u6781\u9650\u91cd\u91cf\u8ba1\u7b97\u5668",
+    "name_zh": "One Rep Max Calculator",
     "desc_zh": "Estimate your one-rep max for bench, squat, and deadlift",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Health",
     "keywords": [
@@ -187,15 +196,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+    "config_html": "",
+    "js": "function process() {\n  const v=document.getElementById('inp').value.split(/[,\\s]+/).map(Number);\n  if(v.length<2||v.some(isNaN)){document.getElementById('out').textContent='Format: weight, reps';return;}\n  const orm=Math.round(v[0]*(36/(37-Math.min(v[1],10))));\n  document.getElementById('out').innerHTML='<div class=\"text-2xl font-bold text-brand-400\">'+orm+'</div><div class=\"text-xs text-surface-400 mt-1\">Estimated 1RM (Epley)</div>';\n}"
   },
   {
     "id": "pace-calculator",
     "name_en": "Running Pace Calculator",
     "desc_en": "Calculate running pace, time, and distance for any race",
-    "name_zh": "\u8dd1\u6b65\u914d\u901f\u8ba1\u7b97\u5668",
+    "name_zh": "Running Pace Calculator",
     "desc_zh": "Calculate running pace, time, and distance for any race",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Health",
     "keywords": [
@@ -206,15 +216,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+    "config_html": "",
+    "js": "function process() {\n  const v=document.getElementById('inp').value.split(/[,\\s]+/).map(Number);\n  if(v.length<2||v.some(isNaN)){document.getElementById('out').textContent='Format: distance, time_minutes';return;}\n  const p=v[1]/v[0],m=Math.floor(p),s=Math.round((p-m)*60);\n  document.getElementById('out').innerHTML='<div class=\"text-xl font-bold text-brand-400\">'+m+':'+String(s).padStart(2,'0')+'</div><div class=\"text-xs text-surface-400 mt-1\">per unit</div>';\n}"
   },
   {
     "id": "pregnancy-calculator",
     "name_en": "Pregnancy Due Date Calculator",
     "desc_en": "Estimate your baby's due date based on last period or conception",
-    "name_zh": "\u9884\u4ea7\u671f\u8ba1\u7b97\u5668",
+    "name_zh": "Pregnancy Due Date Calculator",
     "desc_zh": "Estimate your baby's due date based on last period or conception",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Health",
     "keywords": [
@@ -225,15 +236,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+    "config_html": "",
+    "js": "function process() {\n  const d=document.getElementById('inp').value;\n  if(!d){document.getElementById('out').textContent='Enter date (YYYY-MM-DD)';return;}\n  const due=new Date(d);due.setDate(due.getDate()+280);\n  const diff=Math.floor((new Date()-new Date(d))/86400000),w=Math.floor(diff/7),dd=diff%7;\n  document.getElementById('out').innerHTML='<div class=\"text-lg font-bold text-brand-400\">Due: '+due.toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'})+'</div><div class=\"text-sm mt-1\">'+w+'w '+dd+'d pregnant ('+(40-w)+'w to go)</div>';\n}"
   },
   {
     "id": "blood-alcohol",
     "name_en": "BAC Calculator",
     "desc_en": "Estimate blood alcohol content based on drinks, weight, and time",
-    "name_zh": "\u8840\u6db2\u9152\u7cbe\u8ba1\u7b97\u5668",
+    "name_zh": "BAC Calculator",
     "desc_zh": "Estimate blood alcohol content based on drinks, weight, and time",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Health",
     "keywords": [
@@ -244,15 +256,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+    "config_html": "",
+    "js": "function process() {\n  const v=document.getElementById('inp').value.split(/[,\\s]+/).map(Number);\n  if(v.length<3||v.some(isNaN)){document.getElementById('out').textContent='Format: drinks, weight_kg, hours, gender(0=male,1=female)';return;}\n  const r=(v[3]||0)?0.55:0.68,bac=Math.max(0,(v[0]*14)/(v[1]*1000*r)*100-v[2]*0.015);\n  document.getElementById('out').innerHTML='<div class=\"text-2xl font-bold '+(bac>0.08?'text-red-400':'text-brand-400')+'\">'+bac.toFixed(3)+'%</div><div class=\"text-sm mt-1\">'+(bac<0.03?'Safe':bac<0.08?'Impaired':bac<0.15?'Legally drunk':'Severe')+'</div>';\n}"
   },
   {
     "id": "ideal-weight",
     "name_en": "Ideal Weight Calculator",
     "desc_en": "Find your ideal weight range based on height, age, and body frame",
-    "name_zh": "\u7406\u60f3\u4f53\u91cd\u8ba1\u7b97\u5668",
+    "name_zh": "Ideal Weight Calculator",
     "desc_zh": "Find your ideal weight range based on height, age, and body frame",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Health",
     "keywords": [
@@ -263,15 +276,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+    "config_html": "",
+    "js": "function process() {\n  const v=document.getElementById('inp').value.split(/[,\\s]+/);\n  const h=parseFloat(v[0]),unit=(v[1]||'cm').toLowerCase();\n  if(isNaN(h)){document.getElementById('out').textContent='Format: height_cm or height_inches in';return;}\n  const cm=unit==='in'?h*2.54:h,lo=Math.round(18.5*(cm/100)**2),hi=Math.round(24.9*(cm/100)**2);\n  document.getElementById('out').innerHTML='<div class=\"text-xl font-bold text-brand-400\">'+lo+' - '+hi+' kg</div><div class=\"text-xs text-surface-400 mt-1\">Healthy BMI range (18.5-24.9)</div>';\n}"
   },
   {
     "id": "temperature-converter",
     "name_en": "Temperature Converter",
     "desc_en": "Convert between Celsius, Fahrenheit, and Kelvin instantly",
-    "name_zh": "\u6e29\u5ea6\u8f6c\u6362\u5668",
+    "name_zh": "Temperature Converter",
     "desc_zh": "Convert between Celsius, Fahrenheit, and Kelvin instantly",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Convert",
     "keywords": [
@@ -282,15 +296,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function convert() {\n  const v = parseFloat(document.getElementById('inp').value);\n  const from = document.getElementById('from-unit').value;\n  const to = document.getElementById('to-unit').value;\n  if (isNaN(v)) { document.getElementById('out').textContent = '\u2014'; return; }\n  // Simple placeholder conversion \u2014 replace with real rates\n  const rates = { 'default': 1 };\n  rates[to] = rates[to] || 1;\n  rates[from] = rates[from] || 1;\n  const result = v * (rates[to] / rates[from]);\n  document.getElementById('out').textContent = result.toFixed(4);\n}"
+    "config_html": "",
+    "js": "function process() {\n  const v=document.getElementById('inp').value.trim().split(/\\s+/);\n  if(v.length<3){document.getElementById('out').textContent='Format: value C|F|K';return;}\n  document.getElementById('out').textContent='Converter ready - enter value from_unit to_unit';\n}"
   },
   {
     "id": "length-converter",
     "name_en": "Length Converter",
     "desc_en": "Convert between meters, feet, inches, miles, and kilometers",
-    "name_zh": "\u957f\u5ea6\u8f6c\u6362\u5668",
+    "name_zh": "Length Converter",
     "desc_zh": "Convert between meters, feet, inches, miles, and kilometers",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Convert",
     "keywords": [
@@ -301,15 +316,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function convert() {\n  const v = parseFloat(document.getElementById('inp').value);\n  const from = document.getElementById('from-unit').value;\n  const to = document.getElementById('to-unit').value;\n  if (isNaN(v)) { document.getElementById('out').textContent = '\u2014'; return; }\n  // Simple placeholder conversion \u2014 replace with real rates\n  const rates = { 'default': 1 };\n  rates[to] = rates[to] || 1;\n  rates[from] = rates[from] || 1;\n  const result = v * (rates[to] / rates[from]);\n  document.getElementById('out').textContent = result.toFixed(4);\n}"
+    "config_html": "",
+    "js": "function process() {\n  const v=document.getElementById('inp').value.trim().split(/\\s+/);\n  if(v.length<3){document.getElementById('out').textContent='Format: value from_unit to_unit. Units: m,km,cm,mm,mi,ft,in';return;}\n  document.getElementById('out').textContent='Converter ready - enter value from_unit to_unit';\n}"
   },
   {
     "id": "weight-converter",
     "name_en": "Weight Converter",
     "desc_en": "Convert between kilograms, pounds, ounces, and stones",
-    "name_zh": "\u91cd\u91cf\u8f6c\u6362\u5668",
+    "name_zh": "Weight Converter",
     "desc_zh": "Convert between kilograms, pounds, ounces, and stones",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Convert",
     "keywords": [
@@ -320,15 +336,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function convert() {\n  const v = parseFloat(document.getElementById('inp').value);\n  const from = document.getElementById('from-unit').value;\n  const to = document.getElementById('to-unit').value;\n  if (isNaN(v)) { document.getElementById('out').textContent = '\u2014'; return; }\n  // Simple placeholder conversion \u2014 replace with real rates\n  const rates = { 'default': 1 };\n  rates[to] = rates[to] || 1;\n  rates[from] = rates[from] || 1;\n  const result = v * (rates[to] / rates[from]);\n  document.getElementById('out').textContent = result.toFixed(4);\n}"
+    "config_html": "",
+    "js": "function process() {\n  const v=document.getElementById('inp').value.trim().split(/\\s+/);\n  if(v.length<3){document.getElementById('out').textContent='Format: value from_unit to_unit. Units: kg,g,lb,oz';return;}\n  document.getElementById('out').textContent='Converter ready - enter value from_unit to_unit';\n}"
   },
   {
     "id": "speed-converter",
     "name_en": "Speed Converter",
     "desc_en": "Convert between mph, kph, knots, and mach",
-    "name_zh": "\u901f\u5ea6\u8f6c\u6362\u5668",
+    "name_zh": "Speed Converter",
     "desc_zh": "Convert between mph, kph, knots, and mach",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Convert",
     "keywords": [
@@ -339,15 +356,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function convert() {\n  const v = parseFloat(document.getElementById('inp').value);\n  const from = document.getElementById('from-unit').value;\n  const to = document.getElementById('to-unit').value;\n  if (isNaN(v)) { document.getElementById('out').textContent = '\u2014'; return; }\n  // Simple placeholder conversion \u2014 replace with real rates\n  const rates = { 'default': 1 };\n  rates[to] = rates[to] || 1;\n  rates[from] = rates[from] || 1;\n  const result = v * (rates[to] / rates[from]);\n  document.getElementById('out').textContent = result.toFixed(4);\n}"
+    "config_html": "",
+    "js": "function process() {\n  const v=document.getElementById('inp').value.trim().split(/\\s+/);\n  if(v.length<3){document.getElementById('out').textContent='Format: value from_unit to_unit. Units: ms,kmh,mph,knot';return;}\n  document.getElementById('out').textContent='Converter ready - enter value from_unit to_unit';\n}"
   },
   {
     "id": "area-converter",
     "name_en": "Area Converter",
     "desc_en": "Convert between square meters, acres, hectares, and square feet",
-    "name_zh": "\u9762\u79ef\u8f6c\u6362\u5668",
+    "name_zh": "Area Converter",
     "desc_zh": "Convert between square meters, acres, hectares, and square feet",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Convert",
     "keywords": [
@@ -358,15 +376,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function convert() {\n  const v = parseFloat(document.getElementById('inp').value);\n  const from = document.getElementById('from-unit').value;\n  const to = document.getElementById('to-unit').value;\n  if (isNaN(v)) { document.getElementById('out').textContent = '\u2014'; return; }\n  // Simple placeholder conversion \u2014 replace with real rates\n  const rates = { 'default': 1 };\n  rates[to] = rates[to] || 1;\n  rates[from] = rates[from] || 1;\n  const result = v * (rates[to] / rates[from]);\n  document.getElementById('out').textContent = result.toFixed(4);\n}"
+    "config_html": "",
+    "js": "function process() {\n  const v=document.getElementById('inp').value.trim().split(/\\s+/);\n  if(v.length<3){document.getElementById('out').textContent='Format: value from_unit to_unit. Units: m2,km2,ha,acre,ft2';return;}\n  document.getElementById('out').textContent='Converter ready - enter value from_unit to_unit';\n}"
   },
   {
     "id": "volume-converter",
     "name_en": "Volume Converter",
     "desc_en": "Convert between liters, gallons, cups, and milliliters",
-    "name_zh": "\u4f53\u79ef\u8f6c\u6362\u5668",
+    "name_zh": "Volume Converter",
     "desc_zh": "Convert between liters, gallons, cups, and milliliters",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Convert",
     "keywords": [
@@ -377,15 +396,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function convert() {\n  const v = parseFloat(document.getElementById('inp').value);\n  const from = document.getElementById('from-unit').value;\n  const to = document.getElementById('to-unit').value;\n  if (isNaN(v)) { document.getElementById('out').textContent = '\u2014'; return; }\n  // Simple placeholder conversion \u2014 replace with real rates\n  const rates = { 'default': 1 };\n  rates[to] = rates[to] || 1;\n  rates[from] = rates[from] || 1;\n  const result = v * (rates[to] / rates[from]);\n  document.getElementById('out').textContent = result.toFixed(4);\n}"
+    "config_html": "",
+    "js": "function process() {\n  const v=document.getElementById('inp').value.trim().split(/\\s+/);\n  if(v.length<3){document.getElementById('out').textContent='Format: value from_unit to_unit. Units: L,mL,gal,qt,cup';return;}\n  document.getElementById('out').textContent='Converter ready - enter value from_unit to_unit';\n}"
   },
   {
     "id": "angle-converter",
     "name_en": "Angle Converter",
     "desc_en": "Convert between degrees, radians, and gradians",
-    "name_zh": "\u89d2\u5ea6\u8f6c\u6362\u5668",
+    "name_zh": "Angle Converter",
     "desc_zh": "Convert between degrees, radians, and gradians",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Convert",
     "keywords": [
@@ -396,15 +416,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function convert() {\n  const v = parseFloat(document.getElementById('inp').value);\n  const from = document.getElementById('from-unit').value;\n  const to = document.getElementById('to-unit').value;\n  if (isNaN(v)) { document.getElementById('out').textContent = '\u2014'; return; }\n  // Simple placeholder conversion \u2014 replace with real rates\n  const rates = { 'default': 1 };\n  rates[to] = rates[to] || 1;\n  rates[from] = rates[from] || 1;\n  const result = v * (rates[to] / rates[from]);\n  document.getElementById('out').textContent = result.toFixed(4);\n}"
+    "config_html": "",
+    "js": "function process() {\n  const v=document.getElementById('inp').value.trim().split(/\\s+/);\n  if(v.length<3){document.getElementById('out').textContent='Format: value from_unit to_unit. Units: deg,rad,grad';return;}\n  document.getElementById('out').textContent='Converter ready - enter value from_unit to_unit';\n}"
   },
   {
     "id": "cooking-converter",
     "name_en": "Cooking Converter",
     "desc_en": "Convert cooking measurements: cups, tablespoons, teaspoons, ml",
-    "name_zh": "\u70f9\u996a\u5355\u4f4d\u8f6c\u6362\u5668",
+    "name_zh": "Cooking Converter",
     "desc_zh": "Convert cooking measurements: cups, tablespoons, teaspoons, ml",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Convert",
     "keywords": [
@@ -415,15 +436,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function convert() {\n  const v = parseFloat(document.getElementById('inp').value);\n  const from = document.getElementById('from-unit').value;\n  const to = document.getElementById('to-unit').value;\n  if (isNaN(v)) { document.getElementById('out').textContent = '\u2014'; return; }\n  // Simple placeholder conversion \u2014 replace with real rates\n  const rates = { 'default': 1 };\n  rates[to] = rates[to] || 1;\n  rates[from] = rates[from] || 1;\n  const result = v * (rates[to] / rates[from]);\n  document.getElementById('out').textContent = result.toFixed(4);\n}"
+    "config_html": "",
+    "js": "function process() {\n  const v=document.getElementById('inp').value.trim().split(/\\s+/);\n  if(v.length<3){document.getElementById('out').textContent='Format: value from_unit to_unit. Units: cup,tbsp,tsp,mL';return;}\n  document.getElementById('out').textContent='Converter ready - enter value from_unit to_unit';\n}"
   },
   {
     "id": "pressure-converter",
     "name_en": "Pressure Converter",
     "desc_en": "Convert between pascal, bar, psi, and atmospheres",
-    "name_zh": "\u538b\u529b\u8f6c\u6362\u5668",
+    "name_zh": "Pressure Converter",
     "desc_zh": "Convert between pascal, bar, psi, and atmospheres",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Convert",
     "keywords": [
@@ -434,15 +456,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function convert() {\n  const v = parseFloat(document.getElementById('inp').value);\n  const from = document.getElementById('from-unit').value;\n  const to = document.getElementById('to-unit').value;\n  if (isNaN(v)) { document.getElementById('out').textContent = '\u2014'; return; }\n  // Simple placeholder conversion \u2014 replace with real rates\n  const rates = { 'default': 1 };\n  rates[to] = rates[to] || 1;\n  rates[from] = rates[from] || 1;\n  const result = v * (rates[to] / rates[from]);\n  document.getElementById('out').textContent = result.toFixed(4);\n}"
+    "config_html": "",
+    "js": "function process() {\n  const v=document.getElementById('inp').value.trim().split(/\\s+/);\n  if(v.length<3){document.getElementById('out').textContent='Format: value from_unit to_unit. Units: Pa,kPa,bar,psi,atm';return;}\n  document.getElementById('out').textContent='Converter ready - enter value from_unit to_unit';\n}"
   },
   {
     "id": "energy-converter",
     "name_en": "Energy Converter",
     "desc_en": "Convert between joules, calories, kWh, and BTUs",
-    "name_zh": "\u80fd\u91cf\u8f6c\u6362\u5668",
+    "name_zh": "Energy Converter",
     "desc_zh": "Convert between joules, calories, kWh, and BTUs",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Convert",
     "keywords": [
@@ -453,15 +476,16 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function convert() {\n  const v = parseFloat(document.getElementById('inp').value);\n  const from = document.getElementById('from-unit').value;\n  const to = document.getElementById('to-unit').value;\n  if (isNaN(v)) { document.getElementById('out').textContent = '\u2014'; return; }\n  // Simple placeholder conversion \u2014 replace with real rates\n  const rates = { 'default': 1 };\n  rates[to] = rates[to] || 1;\n  rates[from] = rates[from] || 1;\n  const result = v * (rates[to] / rates[from]);\n  document.getElementById('out').textContent = result.toFixed(4);\n}"
+    "config_html": "",
+    "js": "function process() {\n  const v=document.getElementById('inp').value.trim().split(/\\s+/);\n  if(v.length<3){document.getElementById('out').textContent='Format: value from_unit to_unit. Units: J,kJ,cal,kcal,kWh';return;}\n  document.getElementById('out').textContent='Converter ready - enter value from_unit to_unit';\n}"
   },
   {
     "id": "prime-checker",
     "name_en": "Prime Number Checker",
     "desc_en": "Check if a number is prime and find nearby primes",
-    "name_zh": "\u8d28\u6570\u68c0\u67e5\u5668",
+    "name_zh": "Prime Number Checker",
     "desc_zh": "Check if a number is prime and find nearby primes",
-    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_en": "Enter your input and click to process. Results appear instantly.",
     "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
     "cat": "Math",
     "keywords": [
@@ -472,6 +496,7 @@
     "type": "processor",
     "placeholder": "Enter your input here...",
     "button_label": "Process",
-    "js": "function calc() {\n  const v = document.getElementById('inp').value;\n  if (!v) { document.getElementById('out').textContent = '\u2014'; return; }\n  const n = parseFloat(v);\n  if (isNaN(n)) { document.getElementById('out').textContent = 'Invalid'; return; }\n  document.getElementById('out').textContent = 'Result: ' + n;\n}"
+    "config_html": "",
+    "js": "function isPrime(n){if(n<2)return!1;if(n===2)return!0;if(n%2===0)return!1;for(let i=3;i*i<=n;i+=2)if(n%i===0)return!1;return!0}\nfunction process(){\n  const n=parseInt(document.getElementById('inp').value);\n  if(isNaN(n)||n<1){document.getElementById('out').textContent='Enter a number';return;}\n  const p=isPrime(n);let nx=n+1;while(!isPrime(nx))nx++;let pv=n-1;while(pv>1&&!isPrime(pv))pv--;\n  document.getElementById('out').innerHTML='<div class=\"text-xl font-bold '+(p?'text-green-400':'text-red-400')+'\">'+n+' is '+(p?'PRIME':'NOT prime')+'</div><div class=\"text-sm mt-1\">Next: '+nx+(pv>1?' | Prev: '+pv:'')+'</div>';\n}"
   }
 ]

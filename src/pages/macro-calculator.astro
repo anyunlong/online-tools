@@ -24,9 +24,10 @@ import Button from '../components/Button.astro';
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
 function process() {
-  const inp = document.getElementById('inp').value;
-  if (!inp) { document.getElementById('out').textContent = '—'; return; }
-  document.getElementById('out').textContent = inp;
+  const v=document.getElementById('inp').value.split(/[,\s]+/).map(Number);
+  if(v.length<2||v.some(isNaN)){document.getElementById('out').textContent='Format: weight_kg, goal (1=lose 2=maintain 3=gain)';return;}
+  const m=[[2.2,1.8,0.8],[1.8,1.2,0.8],[2.0,1.0,1.2]][Math.min(3,Math.max(1,v[1]||2))-1];
+  document.getElementById('out').innerHTML='<div class="grid grid-cols-3 gap-3"><div class="text-center"><div class="text-lg font-bold text-blue-400">'+Math.round(v[0]*m[0])+'g</div><div class="text-xs text-surface-400">Protein</div></div><div class="text-center"><div class="text-lg font-bold text-yellow-400">'+Math.round(v[0]*m[1])+'g</div><div class="text-xs text-surface-400">Carbs</div></div><div class="text-center"><div class="text-lg font-bold text-red-400">'+Math.round(v[0]*m[2])+'g</div><div class="text-xs text-surface-400">Fat</div></div></div>';
 }
 function clearAll() {
   document.getElementById('inp').value = '';
@@ -35,6 +36,6 @@ function clearAll() {
 }
 </script>
 <slot name="info" slot="info">
-  <p>Enter your input and click to process. Results appear instantly below.</p>
+  <p>Enter your input and click to process. Results appear instantly.</p>
 </slot>
 </ToolLayout>

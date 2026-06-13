@@ -24,9 +24,10 @@ import Button from '../components/Button.astro';
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
 function process() {
-  const inp = document.getElementById('inp').value;
-  if (!inp) { document.getElementById('out').textContent = '—'; return; }
-  document.getElementById('out').textContent = inp;
+  const v=document.getElementById('inp').value.split(/[,\s]+/).map(Number);
+  if(v.length<2||v.some(isNaN)){document.getElementById('out').textContent='Format: price, discount%';return;}
+  const s=v[0]*v[1]/100,f=v[0]-s;
+  document.getElementById('out').innerHTML='<div class="text-xl font-bold text-brand-400">$'+f.toFixed(2)+'</div><div class="text-xs text-surface-400 mt-1">You save: $'+s.toFixed(2)+' ('+v[1]+'% off)</div>';
 }
 function clearAll() {
   document.getElementById('inp').value = '';
@@ -35,6 +36,6 @@ function clearAll() {
 }
 </script>
 <slot name="info" slot="info">
-  <p>Enter your input and click to process. Results appear instantly below.</p>
+  <p>Enter your input and click to process. Results appear instantly.</p>
 </slot>
 </ToolLayout>

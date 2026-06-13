@@ -23,10 +23,9 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process() {
-  const inp = document.getElementById('inp').value;
-  if (!inp) { document.getElementById('out').textContent = '—'; return; }
-  document.getElementById('out').textContent = inp;
+function process(){
+  const t=document.getElementById('inp').value;if(!t){document.getElementById('out').textContent='Enter text';return;}
+  document.getElementById('out').innerHTML='<code class="text-brand-400 text-lg">'+t.toLowerCase().trim().replace(/[^a-z0-9\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-')+'</code>';
 }
 function clearAll() {
   document.getElementById('inp').value = '';
@@ -35,6 +34,6 @@ function clearAll() {
 }
 </script>
 <slot name="info" slot="info">
-  <p>Enter your input and click to process. Results appear instantly below.</p>
+  <p>Enter your input and click to process. Results appear instantly.</p>
 </slot>
 </ToolLayout>

@@ -23,10 +23,10 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process() {
-  const inp = document.getElementById('inp').value;
-  if (!inp) { document.getElementById('out').textContent = '—'; return; }
-  document.getElementById('out').textContent = inp;
+function process(){
+  const v=document.getElementById('inp').value.split('|').map(s=>s.replace(/[^a-zA-Z]/g,'').toLowerCase().split('').sort().join(''));
+  if(v.length<2){document.getElementById('out').textContent='Format: word1 | word2';return;}
+  document.getElementById('out').innerHTML='<div class="text-xl font-bold '+(v[0]===v[1]?'text-green-400':'text-red-400')+'">'+(v[0]===v[1]?'✓ Anagrams!':'✗ Not anagrams')+'</div>';
 }
 function clearAll() {
   document.getElementById('inp').value = '';
@@ -35,6 +35,6 @@ function clearAll() {
 }
 </script>
 <slot name="info" slot="info">
-  <p>Enter your input and click to process. Results appear instantly below.</p>
+  <p>Enter your input and click to process. Results appear instantly.</p>
 </slot>
 </ToolLayout>

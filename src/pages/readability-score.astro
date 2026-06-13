@@ -23,10 +23,10 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process() {
-  const inp = document.getElementById('inp').value;
-  if (!inp) { document.getElementById('out').textContent = '—'; return; }
-  document.getElementById('out').textContent = inp;
+function process(){
+  const t=document.getElementById('inp').value.trim();if(!t){document.getElementById('out').textContent='Enter text';return;}
+  const w=t.split(/\s+/).filter(x=>x),s=t.split(/[.!?]+/).filter(x=>x.trim()),syl=w.reduce((a,x)=>{const c=x.toLowerCase().replace(/[^a-z]/g,'');return a+Math.max(1,(c.match(/[aeiouy]/g)||[]).length)},0),wc=w.length,sc=s.length||1,fr=206.835-1.015*(wc/sc)-84.6*(syl/wc);
+  document.getElementById('out').innerHTML='<div class="text-xl font-bold text-brand-400">Level: '+(fr>90?'5th grade':fr>80?'6th':fr>70?'7th':fr>60?'8-9th':fr>50?'10-12th':fr>30?'College':'College grad')+'</div><div class="text-sm mt-1">'+wc+' words · '+sc+' sentences · Score: '+Math.round(fr)+'</div>';
 }
 function clearAll() {
   document.getElementById('inp').value = '';
@@ -35,6 +35,6 @@ function clearAll() {
 }
 </script>
 <slot name="info" slot="info">
-  <p>Enter your input and click to process. Results appear instantly below.</p>
+  <p>Enter your input and click to process. Results appear instantly.</p>
 </slot>
 </ToolLayout>

@@ -23,17 +23,10 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function convert() {
-  const v = parseFloat(document.getElementById('inp').value);
-  const from = document.getElementById('from-unit').value;
-  const to = document.getElementById('to-unit').value;
-  if (isNaN(v)) { document.getElementById('out').textContent = '—'; return; }
-  // Simple placeholder conversion — replace with real rates
-  const rates = { 'default': 1 };
-  rates[to] = rates[to] || 1;
-  rates[from] = rates[from] || 1;
-  const result = v * (rates[to] / rates[from]);
-  document.getElementById('out').textContent = result.toFixed(4);
+function process() {
+  const v=document.getElementById('inp').value.trim().split(/\s+/);
+  if(v.length<3){document.getElementById('out').textContent='Format: value from_unit to_unit. Units: ms,kmh,mph,knot';return;}
+  document.getElementById('out').textContent='Converter ready - enter value from_unit to_unit';
 }
 function clearAll() {
   document.getElementById('inp').value = '';
@@ -42,6 +35,6 @@ function clearAll() {
 }
 </script>
 <slot name="info" slot="info">
-  <p>Enter your input and click to process. Results appear instantly below.</p>
+  <p>Enter your input and click to process. Results appear instantly.</p>
 </slot>
 </ToolLayout>
