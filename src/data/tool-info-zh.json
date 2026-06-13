@@ -1,0 +1,2002 @@
+{
+  "password-generator": {
+    "what": "密码生成器是一个免费的在线工具，帮助你Generate strong random passwords。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "为你的应用程序生成安全的凭据、密钥或哈希值",
+      "检查或验证安全配置和加密设置",
+      "学习加密概念和安全最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/random-string/\" class=\"text-primary hover:underline\">随机字符串生成器</a>获取相关功能。"
+  },
+  "timestamp": {
+    "what": "时间戳转换器是一个免费的在线工具，帮助你Convert Unix timestamps to dates。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "安排国际会议时在不同时区之间转换时间",
+      "计算项目规划中的截止日期、持续时间和倒计时",
+      "为旅行、账单或活动规划计算日期差异"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/countdown/\" class=\"text-primary hover:underline\">倒计时器</a>获取相关功能。"
+  },
+  "json-formatter": {
+    "what": "JSON格式化器是一个免费的在线工具，帮助你Format, compress & validate JSON。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "使压缩的代码或数据变得可读，便于调试和审查",
+      "在部署前验证语法并捕获格式错误",
+      "准备干净、风格一致的代码用于文档或分享"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/json-validator/\" class=\"text-primary hover:underline\">JSON验证器</a>获取相关功能。"
+  },
+  "base64": {
+    "what": "Base64编解码器是一个免费的在线工具，帮助你Encode and decode Base64。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "准备数据以便在URL、API或邮件中传输",
+      "编程或调试时在不同进制之间转换",
+      "为安全存储在数据库或文件中编码特殊字符"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/url-encode/\" class=\"text-primary hover:underline\">URL编解码器</a>获取相关功能。"
+  },
+  "url-encode": {
+    "what": "URL编解码器是一个免费的在线工具，帮助你URL encoding and decoding。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "准备数据以便在URL、API或邮件中传输",
+      "编程或调试时在不同进制之间转换",
+      "为安全存储在数据库或文件中编码特殊字符"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/base64/\" class=\"text-primary hover:underline\">Base64编解码器</a>获取相关功能。"
+  },
+  "word-counter": {
+    "what": "字数统计器是一个免费的在线工具，帮助你Count characters, words & lines。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "分析或转换文本，用于写作、编程或数据清理",
+      "批量计数、排序或格式化文本，无需手动编辑",
+      "检查文本属性，如可读性、唯一性或模式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/character-frequency/\" class=\"text-primary hover:underline\">Character Frequency Counter</a>获取相关功能。"
+  },
+  "md5": {
+    "what": "MD5哈希是一个免费的在线工具，帮助你Calculate MD5 hash values。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "下载或传输后验证文件完整性",
+      "生成校验和用于数据去重或对比",
+      "学习不同哈希算法的工作原理及使用场景"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/sha256/\" class=\"text-primary hover:underline\">SHA256哈希</a>获取相关功能。"
+  },
+  "uuid-generator": {
+    "what": "UUID生成器是一个免费的在线工具，帮助你Generate random UUID v4。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "编码过程中快速查阅，无需离开浏览器",
+      "生成样板配置、代码片段或参考文档",
+      "实践中学习开发标准和最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/random-string/\" class=\"text-primary hover:underline\">随机字符串生成器</a>获取相关功能。"
+  },
+  "unicode": {
+    "what": "Unicode转换器是一个免费的在线工具，帮助你Convert between Unicode and Chinese。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "准备数据以便在URL、API或邮件中传输",
+      "编程或调试时在不同进制之间转换",
+      "为安全存储在数据库或文件中编码特殊字符"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/utf8-encoder/\" class=\"text-primary hover:underline\">UTF-8 Encoder</a>获取相关功能。"
+  },
+  "case-converter": {
+    "what": "大小写转换器是一个免费的在线工具，帮助你UPPER, lower, Title & camelCase。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "分析或转换文本，用于写作、编程或数据清理",
+      "批量计数、排序或格式化文本，无需手动编辑",
+      "检查文本属性，如可读性、唯一性或模式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/text-sort/\" class=\"text-primary hover:underline\">文本排序器</a>获取相关功能。"
+  },
+  "qr-code": {
+    "what": "二维码生成器是一个免费的在线工具，帮助你Generate QR codes online。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "创建测试数据、占位内容或样本数据集",
+      "为应用程序生成唯一ID、令牌或随机值",
+      "为项目想出创意名称、提示或想法"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/barcode-generator/\" class=\"text-primary hover:underline\">Barcode Generator</a>获取相关功能。"
+  },
+  "color-picker": {
+    "what": "颜色选择器是一个免费的在线工具，帮助你Pick colors & convert HEX/RGB/HSL。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "设计过程中快速预览CSS效果、颜色或布局",
+      "生成设计素材，如渐变、阴影或颜色调色板",
+      "检查颜色和视觉元素的无障碍合规性"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/color-palette/\" class=\"text-primary hover:underline\">Color Palette Generator</a>获取相关功能。"
+  },
+  "csv-to-json": {
+    "what": "CSV转JSON是一个免费的在线工具，帮助你Convert CSV data to JSON。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "在不同单位制之间工作时转换度量",
+      "在CSV、JSON、XML和YAML等文件格式之间切换",
+      "为工具间的兼容性转换数据表示方式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/json-to-csv/\" class=\"text-primary hover:underline\">JSON转CSV</a>获取相关功能。"
+  },
+  "sha256": {
+    "what": "SHA256哈希是一个免费的在线工具，帮助你Calculate SHA256 hash values。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "下载或传输后验证文件完整性",
+      "生成校验和用于数据去重或对比",
+      "学习不同哈希算法的工作原理及使用场景"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/sha384/\" class=\"text-primary hover:underline\">SHA-384 Hash</a>获取相关功能。"
+  },
+  "html-entity": {
+    "what": "HTML实体编解码是一个免费的在线工具，帮助你Encode and decode HTML entities。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "准备数据以便在URL、API或邮件中传输",
+      "编程或调试时在不同进制之间转换",
+      "为安全存储在数据库或文件中编码特殊字符"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/url-encode/\" class=\"text-primary hover:underline\">URL编解码器</a>获取相关功能。"
+  },
+  "ip-lookup": {
+    "what": "IP查询是一个免费的在线工具，帮助你Lookup public IP & geolocation。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "排查网络问题，查询DNS或IP信息",
+      "学习网络概念，如端口、协议和请求头",
+      "快速参考网络配置和诊断"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/dns-lookup/\" class=\"text-primary hover:underline\">DNS Lookup</a>获取相关功能。"
+  },
+  "countdown": {
+    "what": "倒计时器是一个免费的在线工具，帮助你Custom date countdown timer。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "安排国际会议时在不同时区之间转换时间",
+      "计算项目规划中的截止日期、持续时间和倒计时",
+      "为旅行、账单或活动规划计算日期差异"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/days-until/\" class=\"text-primary hover:underline\">Days Until Calculator</a>获取相关功能。"
+  },
+  "regex": {
+    "what": "正则测试器是一个免费的在线工具，帮助你Test regex patterns with highlighting。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "编码过程中快速查阅，无需离开浏览器",
+      "生成样板配置、代码片段或参考文档",
+      "实践中学习开发标准和最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/text-diff/\" class=\"text-primary hover:underline\">文本差异对比</a>获取相关功能。"
+  },
+  "image-compress": {
+    "what": "图片压缩器是一个免费的在线工具，帮助你Compress images in browser。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "无需安装软件即可快速调整大小、压缩或转换图片",
+      "检查图片元数据，如尺寸、格式和文件大小",
+      "生成二维码或从图片中提取信息"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/image-resizer/\" class=\"text-primary hover:underline\">Image Resizer</a>获取相关功能。"
+  },
+  "number-base": {
+    "what": "进制转换器是一个免费的在线工具，帮助你Binary, Octal, Decimal & Hex。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "检查作业答案或探索数学概念",
+      "无需实体计算器即可进行快速计算",
+      "验证财务、统计或工程计算结果"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/binary-to-decimal/\" class=\"text-primary hover:underline\">Binary to Decimal</a>获取相关功能。"
+  },
+  "text-diff": {
+    "what": "文本差异对比是一个免费的在线工具，帮助你Compare two texts and find differences。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "分析或转换文本，用于写作、编程或数据清理",
+      "批量计数、排序或格式化文本，无需手动编辑",
+      "检查文本属性，如可读性、唯一性或模式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/json-diff/\" class=\"text-primary hover:underline\">JSON Diff Checker</a>获取相关功能。"
+  },
+  "lorem-ipsum": {
+    "what": "Lorem Ipsum生成器是一个免费的在线工具，帮助你Generate placeholder text for designs。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "创建测试数据、占位内容或样本数据集",
+      "为应用程序生成唯一ID、令牌或随机值",
+      "为项目想出创意名称、提示或想法"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/random-string/\" class=\"text-primary hover:underline\">随机字符串生成器</a>获取相关功能。"
+  },
+  "text-sort": {
+    "what": "文本排序器是一个免费的在线工具，帮助你Sort text lines alphabetically。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "分析或转换文本，用于写作、编程或数据清理",
+      "批量计数、排序或格式化文本，无需手动编辑",
+      "检查文本属性，如可读性、唯一性或模式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/case-converter/\" class=\"text-primary hover:underline\">大小写转换器</a>获取相关功能。"
+  },
+  "slug-generator": {
+    "what": "URL Slug生成器是一个免费的在线工具，帮助你Convert text to URL-friendly slugs。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "分析或转换文本，用于写作、编程或数据清理",
+      "批量计数、排序或格式化文本，无需手动编辑",
+      "检查文本属性，如可读性、唯一性或模式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/text-to-slug/\" class=\"text-primary hover:underline\">URL Slug生成器</a>获取相关功能。"
+  },
+  "json-to-csv": {
+    "what": "JSON转CSV是一个免费的在线工具，帮助你Convert JSON data to CSV format。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "在不同单位制之间工作时转换度量",
+      "在CSV、JSON、XML和YAML等文件格式之间切换",
+      "为工具间的兼容性转换数据表示方式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/csv-to-json/\" class=\"text-primary hover:underline\">CSV转JSON</a>获取相关功能。"
+  },
+  "markdown-preview": {
+    "what": "Markdown预览是一个免费的在线工具，帮助你Write and preview Markdown in real time。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "编码过程中快速查阅，无需离开浏览器",
+      "生成样板配置、代码片段或参考文档",
+      "实践中学习开发标准和最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/markdown-to-html/\" class=\"text-primary hover:underline\">Markdown to HTML</a>获取相关功能。"
+  },
+  "jwt-decoder": {
+    "what": "JWT解码器是一个免费的在线工具，帮助你Decode and inspect JWT tokens。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "编码过程中快速查阅，无需离开浏览器",
+      "生成样板配置、代码片段或参考文档",
+      "实践中学习开发标准和最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/base64/\" class=\"text-primary hover:underline\">Base64编解码器</a>获取相关功能。"
+  },
+  "css-minifier": {
+    "what": "CSS压缩器是一个免费的在线工具，帮助你Minify CSS to reduce file size。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "编码过程中快速查阅，无需离开浏览器",
+      "生成样板配置、代码片段或参考文档",
+      "实践中学习开发标准和最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/js-minifier/\" class=\"text-primary hover:underline\">JS压缩器</a>获取相关功能。"
+  },
+  "random-string": {
+    "what": "随机字符串生成器是一个免费的在线工具，帮助你Generate random strings with custom rules。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "创建测试数据、占位内容或样本数据集",
+      "为应用程序生成唯一ID、令牌或随机值",
+      "为项目想出创意名称、提示或想法"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/password-generator/\" class=\"text-primary hover:underline\">密码生成器</a>获取相关功能。"
+  },
+  "percentage-calculator": {
+    "what": "百分比计算器是一个免费的在线工具，帮助你Calculate percentages quickly。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "检查作业答案或探索数学概念",
+      "无需实体计算器即可进行快速计算",
+      "验证财务、统计或工程计算结果"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/discount-calculator/\" class=\"text-primary hover:underline\">Discount Calculator</a>获取相关功能。"
+  },
+  "json-validator": {
+    "what": "JSON验证器是一个免费的在线工具，帮助你Validate and format JSON online。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "使压缩的代码或数据变得可读，便于调试和审查",
+      "在部署前验证语法并捕获格式错误",
+      "准备干净、风格一致的代码用于文档或分享"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/json-formatter/\" class=\"text-primary hover:underline\">JSON格式化器</a>获取相关功能。"
+  },
+  "js-minifier": {
+    "what": "JS压缩器是一个免费的在线工具，帮助你Minify JavaScript to reduce file size。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "编码过程中快速查阅，无需离开浏览器",
+      "生成样板配置、代码片段或参考文档",
+      "实践中学习开发标准和最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/css-minifier/\" class=\"text-primary hover:underline\">CSS压缩器</a>获取相关功能。"
+  },
+  "html-minifier": {
+    "what": "HTML压缩器是一个免费的在线工具，帮助你Minify HTML to reduce page size。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "编码过程中快速查阅，无需离开浏览器",
+      "生成样板配置、代码片段或参考文档",
+      "实践中学习开发标准和最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/css-minifier/\" class=\"text-primary hover:underline\">CSS压缩器</a>获取相关功能。"
+  },
+  "sql-formatter": {
+    "what": "SQL Formatter是一个免费的在线工具，帮助你Format and beautify SQL queries。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "编码过程中快速查阅，无需离开浏览器",
+      "生成样板配置、代码片段或参考文档",
+      "实践中学习开发标准和最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/json-formatter/\" class=\"text-primary hover:underline\">JSON格式化器</a>获取相关功能。"
+  },
+  "url-parser": {
+    "what": "URL Parser是一个免费的在线工具，帮助你Parse and decode URL components。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "编码过程中快速查阅，无需离开浏览器",
+      "生成样板配置、代码片段或参考文档",
+      "实践中学习开发标准和最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/url-encode/\" class=\"text-primary hover:underline\">URL编解码器</a>获取相关功能。"
+  },
+  "http-status": {
+    "what": "HTTP Status Codes是一个免费的在线工具，帮助你Reference for all HTTP status codes。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "排查网络问题，查询DNS或IP信息",
+      "学习网络概念，如端口、协议和请求头",
+      "快速参考网络配置和诊断"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/http-status-dog/\" class=\"text-primary hover:underline\">HTTP Status Code Reference</a>获取相关功能。"
+  },
+  "color-contrast": {
+    "what": "Color Contrast Checker是一个免费的在线工具，帮助你Check WCAG color contrast ratios。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "设计过程中快速预览CSS效果、颜色或布局",
+      "生成设计素材，如渐变、阴影或颜色调色板",
+      "检查颜色和视觉元素的无障碍合规性"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/color-blind/\" class=\"text-primary hover:underline\">Color Blindness Simulator</a>获取相关功能。"
+  },
+  "date-calculator": {
+    "what": "Date Calculator是一个免费的在线工具，帮助你Add or subtract days from a date。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "安排国际会议时在不同时区之间转换时间",
+      "计算项目规划中的截止日期、持续时间和倒计时",
+      "为旅行、账单或活动规划计算日期差异"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/days-until/\" class=\"text-primary hover:underline\">Days Until Calculator</a>获取相关功能。"
+  },
+  "stopwatch": {
+    "what": "Online Stopwatch是一个免费的在线工具，帮助你Precise online stopwatch and timer。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "安排国际会议时在不同时区之间转换时间",
+      "计算项目规划中的截止日期、持续时间和倒计时",
+      "为旅行、账单或活动规划计算日期差异"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/countdown/\" class=\"text-primary hover:underline\">倒计时器</a>获取相关功能。"
+  },
+  "unit-converter": {
+    "what": "Unit Converter是一个免费的在线工具，帮助你Convert between common units。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "检查作业答案或探索数学概念",
+      "无需实体计算器即可进行快速计算",
+      "验证财务、统计或工程计算结果"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/temperature-converter/\" class=\"text-primary hover:underline\">Temperature Converter</a>获取相关功能。"
+  },
+  "text-to-binary": {
+    "what": "Text to Binary Converter是一个免费的在线工具，帮助你Convert text to binary representation。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "准备数据以便在URL、API或邮件中传输",
+      "编程或调试时在不同进制之间转换",
+      "为安全存储在数据库或文件中编码特殊字符"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/binary-to-decimal/\" class=\"text-primary hover:underline\">Binary to Decimal</a>获取相关功能。"
+  },
+  "hex-to-text": {
+    "what": "Hex to Text Converter是一个免费的在线工具，帮助你Convert between hexadecimal and text。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "准备数据以便在URL、API或邮件中传输",
+      "编程或调试时在不同进制之间转换",
+      "为安全存储在数据库或文件中编码特殊字符"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/hex-to-decimal/\" class=\"text-primary hover:underline\">Hex to Decimal</a>获取相关功能。"
+  },
+  "list-randomizer": {
+    "what": "List Randomizer是一个免费的在线工具，帮助你Randomize the order of any list。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "分析或转换文本，用于写作、编程或数据清理",
+      "批量计数、排序或格式化文本，无需手动编辑",
+      "检查文本属性，如可读性、唯一性或模式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/team-generator/\" class=\"text-primary hover:underline\">Random Team Generator</a>获取相关功能。"
+  },
+  "meta-tag-generator": {
+    "what": "Meta Tag Generator是一个免费的在线工具，帮助你Generate SEO meta tags for web pages。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "创建测试数据、占位内容或样本数据集",
+      "为应用程序生成唯一ID、令牌或随机值",
+      "为项目想出创意名称、提示或想法"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/serp-preview/\" class=\"text-primary hover:underline\">Google SERP Preview</a>获取相关功能。"
+  },
+  "text-repeater": {
+    "what": "Text Repeater是一个免费的在线工具，帮助你Repeat text multiple times。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "分析或转换文本，用于写作、编程或数据清理",
+      "批量计数、排序或格式化文本，无需手动编辑",
+      "检查文本属性，如可读性、唯一性或模式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/lorem-ipsum/\" class=\"text-primary hover:underline\">Lorem Ipsum生成器</a>获取相关功能。"
+  },
+  "bmi-calculator": {
+    "what": "BMI Calculator是一个免费的在线工具，帮助你Calculate your Body Mass Index。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "检查作业答案或探索数学概念",
+      "无需实体计算器即可进行快速计算",
+      "验证财务、统计或工程计算结果"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/ideal-weight/\" class=\"text-primary hover:underline\">Ideal Weight Calculator</a>获取相关功能。"
+  },
+  "age-calculator": {
+    "what": "Age Calculator是一个免费的在线工具，帮助你Calculate exact age from birth date。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "安排国际会议时在不同时区之间转换时间",
+      "计算项目规划中的截止日期、持续时间和倒计时",
+      "为旅行、账单或活动规划计算日期差异"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/days-until/\" class=\"text-primary hover:underline\">Days Until Calculator</a>获取相关功能。"
+  },
+  "pomodoro": {
+    "what": "Pomodoro Timer是一个免费的在线工具，帮助你Focus timer using the Pomodoro technique。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "安排国际会议时在不同时区之间转换时间",
+      "计算项目规划中的截止日期、持续时间和倒计时",
+      "为旅行、账单或活动规划计算日期差异"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/countdown/\" class=\"text-primary hover:underline\">倒计时器</a>获取相关功能。"
+  },
+  "morse-code": {
+    "what": "Morse Code Translator是一个免费的在线工具，帮助你Convert text to Morse code and back。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "准备数据以便在URL、API或邮件中传输",
+      "编程或调试时在不同进制之间转换",
+      "为安全存储在数据库或文件中编码特殊字符"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/base64/\" class=\"text-primary hover:underline\">Base64编解码器</a>获取相关功能。"
+  },
+  "emoji-picker": {
+    "what": "Emoji Keyboard是一个免费的在线工具，帮助你Browse and copy emoji characters。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "分析或转换文本，用于写作、编程或数据清理",
+      "批量计数、排序或格式化文本，无需手动编辑",
+      "检查文本属性，如可读性、唯一性或模式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "rot13": {
+    "what": "ROT13 Cipher是一个免费的在线工具，帮助你Encode and decode text with ROT13 cipher。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "准备数据以便在URL、API或邮件中传输",
+      "编程或调试时在不同进制之间转换",
+      "为安全存储在数据库或文件中编码特殊字符"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "ascii-table": {
+    "what": "ASCII Table是一个免费的在线工具，帮助你Complete ASCII character reference table。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "准备数据以便在URL、API或邮件中传输",
+      "编程或调试时在不同进制之间转换",
+      "为安全存储在数据库或文件中编码特殊字符"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "sha1": {
+    "what": "SHA1 Hash Generator是一个免费的在线工具，帮助你Generate SHA1 hash values from text。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "下载或传输后验证文件完整性",
+      "生成校验和用于数据去重或对比",
+      "学习不同哈希算法的工作原理及使用场景"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "sha512": {
+    "what": "SHA512 Hash Generator是一个免费的在线工具，帮助你Generate SHA512 hash values from text。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "下载或传输后验证文件完整性",
+      "生成校验和用于数据去重或对比",
+      "学习不同哈希算法的工作原理及使用场景"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "crc32": {
+    "what": "CRC32 Checksum是一个免费的在线工具，帮助你Calculate CRC32 checksum for text。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "下载或传输后验证文件完整性",
+      "生成校验和用于数据去重或对比",
+      "学习不同哈希算法的工作原理及使用场景"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "text-reverse": {
+    "what": "Text Reverser是一个免费的在线工具，帮助你Reverse any text string instantly。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "分析或转换文本，用于写作、编程或数据清理",
+      "批量计数、排序或格式化文本，无需手动编辑",
+      "检查文本属性，如可读性、唯一性或模式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "duplicate-remover": {
+    "what": "Duplicate Line Remover是一个免费的在线工具，帮助你Remove duplicate lines from text。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "分析或转换文本，用于写作、编程或数据清理",
+      "批量计数、排序或格式化文本，无需手动编辑",
+      "检查文本属性，如可读性、唯一性或模式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "levenshtein-distance": {
+    "what": "Levenshtein Distance是一个免费的在线工具，帮助你Calculate string similarity using Levenshtein distance。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "分析或转换文本，用于写作、编程或数据清理",
+      "批量计数、排序或格式化文本，无需手动编辑",
+      "检查文本属性，如可读性、唯一性或模式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "bytes-converter": {
+    "what": "Bytes Converter是一个免费的在线工具，帮助你Convert between bytes, KB, MB, GB, and TB。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "在不同单位制之间工作时转换度量",
+      "在CSV、JSON、XML和YAML等文件格式之间切换",
+      "为工具间的兼容性转换数据表示方式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "roman-numerals": {
+    "what": "Roman Numerals Converter是一个免费的在线工具，帮助你Convert between Roman numerals and numbers。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "在不同单位制之间工作时转换度量",
+      "在CSV、JSON、XML和YAML等文件格式之间切换",
+      "为工具间的兼容性转换数据表示方式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "timezone-converter": {
+    "what": "Timezone Converter是一个免费的在线工具，帮助你Convert time between different timezones。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "安排国际会议时在不同时区之间转换时间",
+      "计算项目规划中的截止日期、持续时间和倒计时",
+      "为旅行、账单或活动规划计算日期差异"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "cron-parser": {
+    "what": "Cron Expression Parser是一个免费的在线工具，帮助你Parse and explain cron schedule expressions。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "安排国际会议时在不同时区之间转换时间",
+      "计算项目规划中的截止日期、持续时间和倒计时",
+      "为旅行、账单或活动规划计算日期差异"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "day-of-week": {
+    "what": "Day of Week Finder是一个免费的在线工具，帮助你Find what day of the week any date falls on。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "安排国际会议时在不同时区之间转换时间",
+      "计算项目规划中的截止日期、持续时间和倒计时",
+      "为旅行、账单或活动规划计算日期差异"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "sleep-calculator": {
+    "what": "Sleep Cycle Calculator是一个免费的在线工具，帮助你Calculate optimal sleep and wake times based on sleep cycles。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "安排国际会议时在不同时区之间转换时间",
+      "计算项目规划中的截止日期、持续时间和倒计时",
+      "为旅行、账单或活动规划计算日期差异"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "xml-to-json": {
+    "what": "XML to JSON Converter是一个免费的在线工具，帮助你Convert XML data to JSON format。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "在不同单位制之间工作时转换度量",
+      "在CSV、JSON、XML和YAML等文件格式之间切换",
+      "为工具间的兼容性转换数据表示方式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "json-to-xml": {
+    "what": "JSON to XML Converter是一个免费的在线工具，帮助你Convert JSON data to XML format。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "在不同单位制之间工作时转换度量",
+      "在CSV、JSON、XML和YAML等文件格式之间切换",
+      "为工具间的兼容性转换数据表示方式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "xml-formatter": {
+    "what": "XML Formatter是一个免费的在线工具，帮助你Format and beautify XML code。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "使压缩的代码或数据变得可读，便于调试和审查",
+      "在部署前验证语法并捕获格式错误",
+      "准备干净、风格一致的代码用于文档或分享"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "css-beautifier": {
+    "what": "CSS Beautifier是一个免费的在线工具，帮助你Beautify and format CSS code。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "使压缩的代码或数据变得可读，便于调试和审查",
+      "在部署前验证语法并捕获格式错误",
+      "准备干净、风格一致的代码用于文档或分享"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "html-beautifier": {
+    "what": "HTML Beautifier是一个免费的在线工具，帮助你Beautify and format HTML code。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "编码过程中快速查阅，无需离开浏览器",
+      "生成样板配置、代码片段或参考文档",
+      "实践中学习开发标准和最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "js-beautifier": {
+    "what": "JavaScript Beautifier是一个免费的在线工具，帮助你Beautify and format JavaScript/TypeScript code。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "编码过程中快速查阅，无需离开浏览器",
+      "生成样板配置、代码片段或参考文档",
+      "实践中学习开发标准和最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "user-agent-parser": {
+    "what": "User Agent Parser是一个免费的在线工具，帮助你Parse and decode browser user agent strings。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "编码过程中快速查阅，无需离开浏览器",
+      "生成样板配置、代码片段或参考文档",
+      "实践中学习开发标准和最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "mime-lookup": {
+    "what": "MIME Type Lookup是一个免费的在线工具，帮助你Look up MIME types by file extension or type。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "编码过程中快速查阅，无需离开浏览器",
+      "生成样板配置、代码片段或参考文档",
+      "实践中学习开发标准和最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "yaml-to-json": {
+    "what": "YAML to JSON Converter是一个免费的在线工具，帮助你Convert YAML data to JSON format。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "编码过程中快速查阅，无需离开浏览器",
+      "生成样板配置、代码片段或参考文档",
+      "实践中学习开发标准和最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "json-to-yaml": {
+    "what": "JSON to YAML Converter是一个免费的在线工具，帮助你Convert JSON data to YAML format。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "编码过程中快速查阅，无需离开浏览器",
+      "生成样板配置、代码片段或参考文档",
+      "实践中学习开发标准和最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "http-headers-checker": {
+    "what": "HTTP Headers Reference是一个免费的在线工具，帮助你Reference for common HTTP request and response headers。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "排查网络问题，查询DNS或IP信息",
+      "学习网络概念，如端口、协议和请求头",
+      "快速参考网络配置和诊断"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "dns-lookup": {
+    "what": "DNS Lookup是一个免费的在线工具，帮助你Perform DNS record lookups for any domain。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "排查网络问题，查询DNS或IP信息",
+      "学习网络概念，如端口、协议和请求头",
+      "快速参考网络配置和诊断"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "port-checker": {
+    "what": "Port Reference是一个免费的在线工具，帮助你Common TCP/UDP network port numbers reference。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "排查网络问题，查询DNS或IP信息",
+      "学习网络概念，如端口、协议和请求头",
+      "快速参考网络配置和诊断"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "git-cheatsheet": {
+    "what": "Git Cheatsheet是一个免费的在线工具，帮助你Quick reference for common Git commands。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "编码过程中快速查阅，无需离开浏览器",
+      "生成样板配置、代码片段或参考文档",
+      "实践中学习开发标准和最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "hash-compare": {
+    "what": "Hash Compare是一个免费的在线工具，帮助你Compare two hash values side by side。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "为你的应用程序生成安全的凭据、密钥或哈希值",
+      "检查或验证安全配置和加密设置",
+      "学习加密概念和安全最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/text-diff/\" class=\"text-primary hover:underline\">文本差异对比</a>获取相关功能。"
+  },
+  "gradient-generator": {
+    "what": "CSS Gradient Generator是一个免费的在线工具，帮助你Create and preview CSS linear gradients。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "设计过程中快速预览CSS效果、颜色或布局",
+      "生成设计素材，如渐变、阴影或颜色调色板",
+      "检查颜色和视觉元素的无障碍合规性"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/gradient-preview/\" class=\"text-primary hover:underline\">CSS Gradient Preview</a>获取相关功能。"
+  },
+  "random-number": {
+    "what": "Random Number Generator是一个免费的在线工具，帮助你Generate random numbers within a range。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "创建测试数据、占位内容或样本数据集",
+      "为应用程序生成唯一ID、令牌或随机值",
+      "为项目想出创意名称、提示或想法"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/coin-flip/\" class=\"text-primary hover:underline\">Coin Flip Simulator</a>获取相关功能。"
+  },
+  "random-color": {
+    "what": "Random Color Generator是一个免费的在线工具，帮助你Generate random colors with HEX codes。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "创建测试数据、占位内容或样本数据集",
+      "为应用程序生成唯一ID、令牌或随机值",
+      "为项目想出创意名称、提示或想法"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/hex-color-gen/\" class=\"text-primary hover:underline\">Random HEX Color Gen</a>获取相关功能。"
+  },
+  "dice-roller": {
+    "what": "Dice Roller是一个免费的在线工具，帮助你Roll virtual dice for games and RPGs。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "创建测试数据、占位内容或样本数据集",
+      "为应用程序生成唯一ID、令牌或随机值",
+      "为项目想出创意名称、提示或想法"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/coin-flip/\" class=\"text-primary hover:underline\">Coin Flip Simulator</a>获取相关功能。"
+  },
+  "nano-id": {
+    "what": "Nano ID Generator是一个免费的在线工具，帮助你Generate compact, URL-friendly unique IDs。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "创建测试数据、占位内容或样本数据集",
+      "为应用程序生成唯一ID、令牌或随机值",
+      "为项目想出创意名称、提示或想法"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/uuid-generator/\" class=\"text-primary hover:underline\">UUID生成器</a>获取相关功能。"
+  },
+  "password-strength": {
+    "what": "Password Strength Checker是一个免费的在线工具，帮助你Check how strong your password is。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "为你的应用程序生成安全的凭据、密钥或哈希值",
+      "检查或验证安全配置和加密设置",
+      "学习加密概念和安全最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/password-generator/\" class=\"text-primary hover:underline\">密码生成器</a>获取相关功能。"
+  },
+  "entropy-calculator": {
+    "what": "Entropy Calculator是一个免费的在线工具，帮助你Calculate Shannon entropy of text。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "为你的应用程序生成安全的凭据、密钥或哈希值",
+      "检查或验证安全配置和加密设置",
+      "学习加密概念和安全最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/password-strength/\" class=\"text-primary hover:underline\">Password Strength</a>获取相关功能。"
+  },
+  "box-shadow": {
+    "what": "Box Shadow Generator是一个免费的在线工具，帮助你Create CSS box-shadow effects visually。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "设计过程中快速预览CSS效果、颜色或布局",
+      "生成设计素材，如渐变、阴影或颜色调色板",
+      "检查颜色和视觉元素的无障碍合规性"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/border-radius/\" class=\"text-primary hover:underline\">Border Radius Previewer</a>获取相关功能。"
+  },
+  "border-radius": {
+    "what": "Border Radius Previewer是一个免费的在线工具，帮助你Visualize and generate CSS border-radius values。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "设计过程中快速预览CSS效果、颜色或布局",
+      "生成设计素材，如渐变、阴影或颜色调色板",
+      "检查颜色和视觉元素的无障碍合规性"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/box-shadow/\" class=\"text-primary hover:underline\">Box Shadow Generator</a>获取相关功能。"
+  },
+  "image-to-base64": {
+    "what": "Image to Base64是一个免费的在线工具，帮助你Convert images to Base64 data URLs。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "无需安装软件即可快速调整大小、压缩或转换图片",
+      "检查图片元数据，如尺寸、格式和文件大小",
+      "生成二维码或从图片中提取信息"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/base64/\" class=\"text-primary hover:underline\">Base64编解码器</a>获取相关功能。"
+  },
+  "favicon-generator": {
+    "what": "Favicon Generator是一个免费的在线工具，帮助你Generate favicon HTML tags for your website。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "无需安装软件即可快速调整大小、压缩或转换图片",
+      "检查图片元数据，如尺寸、格式和文件大小",
+      "生成二维码或从图片中提取信息"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/meta-tag-generator/\" class=\"text-primary hover:underline\">Meta Tag Generator</a>获取相关功能。"
+  },
+  "svg-viewer": {
+    "what": "SVG Viewer是一个免费的在线工具，帮助你Paste SVG code for live preview。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "无需安装软件即可快速调整大小、压缩或转换图片",
+      "检查图片元数据，如尺寸、格式和文件大小",
+      "生成二维码或从图片中提取信息"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/qr-code/\" class=\"text-primary hover:underline\">二维码生成器</a>获取相关功能。"
+  },
+  "tip-calculator": {
+    "what": "Tip Calculator是一个免费的在线工具，帮助你Calculate tips and split bills easily。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "检查作业答案或探索数学概念",
+      "无需实体计算器即可进行快速计算",
+      "验证财务、统计或工程计算结果"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/split-bill/\" class=\"text-primary hover:underline\">Split Bill Calculator</a>获取相关功能。"
+  },
+  "factorial": {
+    "what": "Factorial Calculator是一个免费的在线工具，帮助你Calculate factorials (n!) for large numbers。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "检查作业答案或探索数学概念",
+      "无需实体计算器即可进行快速计算",
+      "验证财务、统计或工程计算结果"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/exponent-calculator/\" class=\"text-primary hover:underline\">Exponent Calculator</a>获取相关功能。"
+  },
+  "fraction-calculator": {
+    "what": "Fraction Calculator是一个免费的在线工具，帮助你Add, subtract, multiply, and divide fractions。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "检查作业答案或探索数学概念",
+      "无需实体计算器即可进行快速计算",
+      "验证财务、统计或工程计算结果"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/percentage-calculator/\" class=\"text-primary hover:underline\">百分比计算器</a>获取相关功能。"
+  },
+  "mean-median-mode": {
+    "what": "Mean, Median, Mode Calculator是一个免费的在线工具，帮助你Calculate statistical measures from a set of numbers。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "检查作业答案或探索数学概念",
+      "无需实体计算器即可进行快速计算",
+      "验证财务、统计或工程计算结果"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/percentage-calculator/\" class=\"text-primary hover:underline\">百分比计算器</a>获取相关功能。"
+  },
+  "extract-emails": {
+    "what": "Email Extractor是一个免费的在线工具，帮助你Extract email addresses from any text。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "分析或转换文本，用于写作、编程或数据清理",
+      "批量计数、排序或格式化文本，无需手动编辑",
+      "检查文本属性，如可读性、唯一性或模式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/extract-urls/\" class=\"text-primary hover:underline\">URL Extractor</a>获取相关功能。"
+  },
+  "extract-urls": {
+    "what": "URL Extractor是一个免费的在线工具，帮助你Extract URLs and links from any text。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "分析或转换文本，用于写作、编程或数据清理",
+      "批量计数、排序或格式化文本，无需手动编辑",
+      "检查文本属性，如可读性、唯一性或模式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/extract-emails/\" class=\"text-primary hover:underline\">Email Extractor</a>获取相关功能。"
+  },
+  "css-triangle": {
+    "what": "CSS Triangle Generator是一个免费的在线工具，帮助你Generate pure CSS triangles for tooltips and UI。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "设计过程中快速预览CSS效果、颜色或布局",
+      "生成设计素材，如渐变、阴影或颜色调色板",
+      "检查颜色和视觉元素的无障碍合规性"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/css-specificity/\" class=\"text-primary hover:underline\">CSS Specificity Calculator</a>获取相关功能。"
+  },
+  "hmac-generator": {
+    "what": "HMAC Generator是一个免费的在线工具，帮助你Generate HMAC signatures with SHA256。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "下载或传输后验证文件完整性",
+      "生成校验和用于数据去重或对比",
+      "学习不同哈希算法的工作原理及使用场景"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/sha256/\" class=\"text-primary hover:underline\">SHA256哈希</a>获取相关功能。"
+  },
+  "bcrypt-checker": {
+    "what": "Bcrypt Checker是一个免费的在线工具，帮助你Hash passwords with bcrypt and verify hashes。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "为你的应用程序生成安全的凭据、密钥或哈希值",
+      "检查或验证安全配置和加密设置",
+      "学习加密概念和安全最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "试试我们的<a href=\"/password-generator/\" class=\"text-primary hover:underline\">密码生成器</a>获取相关功能。"
+  },
+  "compound-interest": {
+    "what": "Compound Interest Calculator是一个免费的在线工具，帮助你Calculate how your money grows with compound interest over time。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "规划个人财务：贷款、储蓄、投资或预算",
+      "比较不同财务方案，做出明智的理财决策",
+      "快速计算小费、分账、税费或货币换算"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "loan-calculator": {
+    "what": "Loan Calculator是一个免费的在线工具，帮助你Calculate monthly payments, total interest, and amortization schedule。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "规划个人财务：贷款、储蓄、投资或预算",
+      "比较不同财务方案，做出明智的理财决策",
+      "快速计算小费、分账、税费或货币换算"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "currency-converter": {
+    "what": "Currency Converter是一个免费的在线工具，帮助你Convert between world currencies with real-time exchange rates。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "规划个人财务：贷款、储蓄、投资或预算",
+      "比较不同财务方案，做出明智的理财决策",
+      "快速计算小费、分账、税费或货币换算"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "discount-calculator": {
+    "what": "Discount Calculator是一个免费的在线工具，帮助你Calculate sale price, discount percentage, and savings instantly。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "规划个人财务：贷款、储蓄、投资或预算",
+      "比较不同财务方案，做出明智的理财决策",
+      "快速计算小费、分账、税费或货币换算"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "sales-tax": {
+    "what": "Sales Tax Calculator是一个免费的在线工具，帮助你Calculate total price including sales tax for any US state。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "规划个人财务：贷款、储蓄、投资或预算",
+      "比较不同财务方案，做出明智的理财决策",
+      "快速计算小费、分账、税费或货币换算"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "savings-goal": {
+    "what": "Savings Goal Calculator是一个免费的在线工具，帮助你Plan how long to reach your savings goal with monthly contributions。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "规划个人财务：贷款、储蓄、投资或预算",
+      "比较不同财务方案，做出明智的理财决策",
+      "快速计算小费、分账、税费或货币换算"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "hourly-to-salary": {
+    "what": "Hourly to Salary Converter是一个免费的在线工具，帮助你Convert hourly wage to annual salary and vice versa。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "规划个人财务：贷款、储蓄、投资或预算",
+      "比较不同财务方案，做出明智的理财决策",
+      "快速计算小费、分账、税费或货币换算"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "split-bill": {
+    "what": "Split Bill Calculator是一个免费的在线工具，帮助你Split a restaurant bill evenly with tip included。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "规划个人财务：贷款、储蓄、投资或预算",
+      "比较不同财务方案，做出明智的理财决策",
+      "快速计算小费、分账、税费或货币换算"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "macro-calculator": {
+    "what": "Macro Calculator是一个免费的在线工具，帮助你Calculate daily protein, carb, and fat intake based on your goals。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "估算健身指标，如BMI、理想体重或卡路里需求",
+      "为个人健康目标跟踪健康相关计算",
+      "出于教育目的理解基于公式的健康估算"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "one-rep-max": {
+    "what": "One Rep Max Calculator是一个免费的在线工具，帮助你Estimate your one-rep max for bench, squat, and deadlift。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "估算健身指标，如BMI、理想体重或卡路里需求",
+      "为个人健康目标跟踪健康相关计算",
+      "出于教育目的理解基于公式的健康估算"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "pace-calculator": {
+    "what": "Running Pace Calculator是一个免费的在线工具，帮助你Calculate running pace, time, and distance for any race。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "估算健身指标，如BMI、理想体重或卡路里需求",
+      "为个人健康目标跟踪健康相关计算",
+      "出于教育目的理解基于公式的健康估算"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "pregnancy-calculator": {
+    "what": "Pregnancy Due Date Calculator是一个免费的在线工具，帮助你Estimate your baby's due date based on last period or conception。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "估算健身指标，如BMI、理想体重或卡路里需求",
+      "为个人健康目标跟踪健康相关计算",
+      "出于教育目的理解基于公式的健康估算"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "blood-alcohol": {
+    "what": "BAC Calculator是一个免费的在线工具，帮助你Estimate blood alcohol content based on drinks, weight, and time。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "估算健身指标，如BMI、理想体重或卡路里需求",
+      "为个人健康目标跟踪健康相关计算",
+      "出于教育目的理解基于公式的健康估算"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "ideal-weight": {
+    "what": "Ideal Weight Calculator是一个免费的在线工具，帮助你Find your ideal weight range based on height, age, and body frame。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "估算健身指标，如BMI、理想体重或卡路里需求",
+      "为个人健康目标跟踪健康相关计算",
+      "出于教育目的理解基于公式的健康估算"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "temperature-converter": {
+    "what": "Temperature Converter是一个免费的在线工具，帮助你Convert between Celsius, Fahrenheit, and Kelvin instantly。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "在不同单位制之间工作时转换度量",
+      "在CSV、JSON、XML和YAML等文件格式之间切换",
+      "为工具间的兼容性转换数据表示方式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "length-converter": {
+    "what": "Length Converter是一个免费的在线工具，帮助你Convert between meters, feet, inches, miles, and kilometers。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "在不同单位制之间工作时转换度量",
+      "在CSV、JSON、XML和YAML等文件格式之间切换",
+      "为工具间的兼容性转换数据表示方式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "weight-converter": {
+    "what": "Weight Converter是一个免费的在线工具，帮助你Convert between kilograms, pounds, ounces, and stones。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "在不同单位制之间工作时转换度量",
+      "在CSV、JSON、XML和YAML等文件格式之间切换",
+      "为工具间的兼容性转换数据表示方式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "speed-converter": {
+    "what": "Speed Converter是一个免费的在线工具，帮助你Convert between mph, kph, knots, and mach。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "在不同单位制之间工作时转换度量",
+      "在CSV、JSON、XML和YAML等文件格式之间切换",
+      "为工具间的兼容性转换数据表示方式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "area-converter": {
+    "what": "Area Converter是一个免费的在线工具，帮助你Convert between square meters, acres, hectares, and square feet。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "在不同单位制之间工作时转换度量",
+      "在CSV、JSON、XML和YAML等文件格式之间切换",
+      "为工具间的兼容性转换数据表示方式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "volume-converter": {
+    "what": "Volume Converter是一个免费的在线工具，帮助你Convert between liters, gallons, cups, and milliliters。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "在不同单位制之间工作时转换度量",
+      "在CSV、JSON、XML和YAML等文件格式之间切换",
+      "为工具间的兼容性转换数据表示方式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "angle-converter": {
+    "what": "Angle Converter是一个免费的在线工具，帮助你Convert between degrees, radians, and gradians。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "在不同单位制之间工作时转换度量",
+      "在CSV、JSON、XML和YAML等文件格式之间切换",
+      "为工具间的兼容性转换数据表示方式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "cooking-converter": {
+    "what": "Cooking Converter是一个免费的在线工具，帮助你Convert cooking measurements: cups, tablespoons, teaspoons, ml。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "在不同单位制之间工作时转换度量",
+      "在CSV、JSON、XML和YAML等文件格式之间切换",
+      "为工具间的兼容性转换数据表示方式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "pressure-converter": {
+    "what": "Pressure Converter是一个免费的在线工具，帮助你Convert between pascal, bar, psi, and atmospheres。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "在不同单位制之间工作时转换度量",
+      "在CSV、JSON、XML和YAML等文件格式之间切换",
+      "为工具间的兼容性转换数据表示方式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "energy-converter": {
+    "what": "Energy Converter是一个免费的在线工具，帮助你Convert between joules, calories, kWh, and BTUs。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "在不同单位制之间工作时转换度量",
+      "在CSV、JSON、XML和YAML等文件格式之间切换",
+      "为工具间的兼容性转换数据表示方式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "prime-checker": {
+    "what": "Prime Number Checker是一个免费的在线工具，帮助你Check if a number is prime and find nearby primes。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "检查作业答案或探索数学概念",
+      "无需实体计算器即可进行快速计算",
+      "验证财务、统计或工程计算结果"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "gcf-calculator": {
+    "what": "GCF Calculator是一个免费的在线工具，帮助你Find the greatest common factor of two or more numbers。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "检查作业答案或探索数学概念",
+      "无需实体计算器即可进行快速计算",
+      "验证财务、统计或工程计算结果"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "lcm-calculator": {
+    "what": "LCM Calculator是一个免费的在线工具，帮助你Find the least common multiple of two or more numbers。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "检查作业答案或探索数学概念",
+      "无需实体计算器即可进行快速计算",
+      "验证财务、统计或工程计算结果"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "scientific-notation": {
+    "what": "Scientific Notation Converter是一个免费的在线工具，帮助你Convert numbers to and from scientific notation。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "检查作业答案或探索数学概念",
+      "无需实体计算器即可进行快速计算",
+      "验证财务、统计或工程计算结果"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "ratio-simplifier": {
+    "what": "Ratio Simplifier是一个免费的在线工具，帮助你Simplify ratios to their lowest terms instantly。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "检查作业答案或探索数学概念",
+      "无需实体计算器即可进行快速计算",
+      "验证财务、统计或工程计算结果"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "proportion-calculator": {
+    "what": "Proportion Calculator是一个免费的在线工具，帮助你Solve proportions and find the missing value in ratio equations。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "检查作业答案或探索数学概念",
+      "无需实体计算器即可进行快速计算",
+      "验证财务、统计或工程计算结果"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "quadratic-solver": {
+    "what": "Quadratic Equation Solver是一个免费的在线工具，帮助你Solve quadratic equations and find real and complex roots。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "检查作业答案或探索数学概念",
+      "无需实体计算器即可进行快速计算",
+      "验证财务、统计或工程计算结果"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "exponent-calculator": {
+    "what": "Exponent Calculator是一个免费的在线工具，帮助你Calculate powers, roots, and exponential expressions。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "检查作业答案或探索数学概念",
+      "无需实体计算器即可进行快速计算",
+      "验证财务、统计或工程计算结果"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "readability-score": {
+    "what": "Readability Score是一个免费的在线工具，帮助你Check readability with Flesch-Kincaid, Gunning Fog, and SMOG indices。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "分析或转换文本，用于写作、编程或数据清理",
+      "批量计数、排序或格式化文本，无需手动编辑",
+      "检查文本属性，如可读性、唯一性或模式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "palindrome-checker": {
+    "what": "Palindrome Checker是一个免费的在线工具，帮助你Check if a word, phrase, or number reads the same backwards。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "分析或转换文本，用于写作、编程或数据清理",
+      "批量计数、排序或格式化文本，无需手动编辑",
+      "检查文本属性，如可读性、唯一性或模式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "anagram-checker": {
+    "what": "Anagram Checker是一个免费的在线工具，帮助你Check if two words or phrases are anagrams of each other。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "分析或转换文本，用于写作、编程或数据清理",
+      "批量计数、排序或格式化文本，无需手动编辑",
+      "检查文本属性，如可读性、唯一性或模式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "character-frequency": {
+    "what": "Character Frequency Counter是一个免费的在线工具，帮助你Count how many times each character appears in your text。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "分析或转换文本，用于写作、编程或数据清理",
+      "批量计数、排序或格式化文本，无需手动编辑",
+      "检查文本属性，如可读性、唯一性或模式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "markdown-to-html": {
+    "what": "Markdown to HTML是一个免费的在线工具，帮助你Convert Markdown text to clean HTML code instantly。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "分析或转换文本，用于写作、编程或数据清理",
+      "批量计数、排序或格式化文本，无需手动编辑",
+      "检查文本属性，如可读性、唯一性或模式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "text-to-slug": {
+    "what": "URL Slug生成器是一个免费的在线工具，帮助你Convert any text into a clean, SEO-friendly URL slug。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "分析或转换文本，用于写作、编程或数据清理",
+      "批量计数、排序或格式化文本，无需手动编辑",
+      "检查文本属性，如可读性、唯一性或模式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "text-wrap": {
+    "what": "Text Wrapper是一个免费的在线工具，帮助你Wrap text to a specific line width or column count。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "分析或转换文本，用于写作、编程或数据清理",
+      "批量计数、排序或格式化文本，无需手动编辑",
+      "检查文本属性，如可读性、唯一性或模式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "whitespace-remover": {
+    "what": "Whitespace Remover是一个免费的在线工具，帮助你Remove extra spaces, tabs, and blank lines from text。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "分析或转换文本，用于写作、编程或数据清理",
+      "批量计数、排序或格式化文本，无需手动编辑",
+      "检查文本属性，如可读性、唯一性或模式"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "username-generator": {
+    "what": "Username Generator是一个免费的在线工具，帮助你Generate unique, memorable usernames for social media and gaming。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "创建测试数据、占位内容或样本数据集",
+      "为应用程序生成唯一ID、令牌或随机值",
+      "为项目想出创意名称、提示或想法"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "fake-name": {
+    "what": "Fake Name Generator是一个免费的在线工具，帮助你Generate realistic random names for testing and placeholder data。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "创建测试数据、占位内容或样本数据集",
+      "为应用程序生成唯一ID、令牌或随机值",
+      "为项目想出创意名称、提示或想法"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "fake-email": {
+    "what": "Fake Email Generator是一个免费的在线工具，帮助你Generate random email addresses for testing forms and databases。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "创建测试数据、占位内容或样本数据集",
+      "为应用程序生成唯一ID、令牌或随机值",
+      "为项目想出创意名称、提示或想法"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "phone-generator": {
+    "what": "Phone Number Generator是一个免费的在线工具，帮助你Generate random US and international phone numbers for testing。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "创建测试数据、占位内容或样本数据集",
+      "为应用程序生成唯一ID、令牌或随机值",
+      "为项目想出创意名称、提示或想法"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "credit-card-gen": {
+    "what": "Test Credit Card Generator是一个免费的在线工具，帮助你Generate valid-format test credit card numbers (no real money)。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "创建测试数据、占位内容或样本数据集",
+      "为应用程序生成唯一ID、令牌或随机值",
+      "为项目想出创意名称、提示或想法"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "mac-address-gen": {
+    "what": "MAC Address Generator是一个免费的在线工具，帮助你Generate random MAC addresses for network device testing。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "创建测试数据、占位内容或样本数据集",
+      "为应用程序生成唯一ID、令牌或随机值",
+      "为项目想出创意名称、提示或想法"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "ipv6-generator": {
+    "what": "IPv6 Generator是一个免费的在线工具，帮助你Generate random IPv6 addresses in various formats。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "创建测试数据、占位内容或样本数据集",
+      "为应用程序生成唯一ID、令牌或随机值",
+      "为项目想出创意名称、提示或想法"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "hex-color-gen": {
+    "what": "Random HEX Color Generator是一个免费的在线工具，帮助你Generate random colors with their HEX, RGB, and HSL values。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "创建测试数据、占位内容或样本数据集",
+      "为应用程序生成唯一ID、令牌或随机值",
+      "为项目想出创意名称、提示或想法"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "password-phrase": {
+    "what": "Passphrase Generator是一个免费的在线工具，帮助你Generate memorable passphrases using random word combinations。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "创建测试数据、占位内容或样本数据集",
+      "为应用程序生成唯一ID、令牌或随机值",
+      "为项目想出创意名称、提示或想法"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "barcode-generator": {
+    "what": "Barcode Generator是一个免费的在线工具，帮助你Generate EAN-13, UPC-A, and Code-128 barcodes as SVG。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "创建测试数据、占位内容或样本数据集",
+      "为应用程序生成唯一ID、令牌或随机值",
+      "为项目想出创意名称、提示或想法"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "npm-package-json": {
+    "what": "package.json Generator是一个免费的在线工具，帮助你Generate a complete package.json file for your Node.js project。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "编码过程中快速查阅，无需离开浏览器",
+      "生成样板配置、代码片段或参考文档",
+      "实践中学习开发标准和最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "semver-checker": {
+    "what": "Semver Checker是一个免费的在线工具，帮助你Validate and compare semantic version numbers。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "编码过程中快速查阅，无需离开浏览器",
+      "生成样板配置、代码片段或参考文档",
+      "实践中学习开发标准和最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "json-diff": {
+    "what": "JSON Diff Checker是一个免费的在线工具，帮助你Compare two JSON objects and highlight every difference。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "编码过程中快速查阅，无需离开浏览器",
+      "生成样板配置、代码片段或参考文档",
+      "实践中学习开发标准和最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "http-status-dog": {
+    "what": "HTTP Status Code Reference是一个免费的在线工具，帮助你Quick reference for all HTTP status codes with descriptions。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "编码过程中快速查阅，无需离开浏览器",
+      "生成样板配置、代码片段或参考文档",
+      "实践中学习开发标准和最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "ssl-checker": {
+    "what": "SSL Certificate Checker是一个免费的在线工具，帮助你Check a domain's SSL certificate expiry date and issuer info。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "编码过程中快速查阅，无需离开浏览器",
+      "生成样板配置、代码片段或参考文档",
+      "实践中学习开发标准和最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "color-namer": {
+    "what": "CSS Color Name Finder是一个免费的在线工具，帮助你Find the closest named CSS color for any HEX, RGB, or HSL value。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "编码过程中快速查阅，无需离开浏览器",
+      "生成样板配置、代码片段或参考文档",
+      "实践中学习开发标准和最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "css-specificity": {
+    "what": "CSS Specificity Calculator是一个免费的在线工具，帮助你Calculate CSS selector specificity score and compare selectors。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "编码过程中快速查阅，无需离开浏览器",
+      "生成样板配置、代码片段或参考文档",
+      "实践中学习开发标准和最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "html-table-gen": {
+    "what": "HTML Table Generator是一个免费的在线工具，帮助你Generate responsive HTML tables with custom rows and columns。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "编码过程中快速查阅，无需离开浏览器",
+      "生成样板配置、代码片段或参考文档",
+      "实践中学习开发标准和最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "dockerfile-gen": {
+    "what": "Dockerfile Generator是一个免费的在线工具，帮助你Generate a basic Dockerfile for Node.js, Python, or Go projects。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "编码过程中快速查阅，无需离开浏览器",
+      "生成样板配置、代码片段或参考文档",
+      "实践中学习开发标准和最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "gitignore-gen": {
+    "what": ".gitignore Generator是一个免费的在线工具，帮助你Generate a .gitignore file for your project's language and framework。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "编码过程中快速查阅，无需离开浏览器",
+      "生成样板配置、代码片段或参考文档",
+      "实践中学习开发标准和最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "serp-preview": {
+    "what": "Google SERP Preview是一个免费的在线工具，帮助你Preview how your page title and meta description look in Google search results。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "优化你的网站以获得更好的搜索引擎可见性",
+      "生成合适的meta标签、schema标记和结构化数据",
+      "检查影响搜索排名的技术性SEO因素"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "heading-structure": {
+    "what": "Heading Structure Checker是一个免费的在线工具，帮助你Analyze your page's heading hierarchy for SEO best practices。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "优化你的网站以获得更好的搜索引擎可见性",
+      "生成合适的meta标签、schema标记和结构化数据",
+      "检查影响搜索排名的技术性SEO因素"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "alt-text-generator": {
+    "what": "Alt Text Generator是一个免费的在线工具，帮助你Generate descriptive alt text suggestions for your images。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "优化你的网站以获得更好的搜索引擎可见性",
+      "生成合适的meta标签、schema标记和结构化数据",
+      "检查影响搜索排名的技术性SEO因素"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "sitemap-ping": {
+    "what": "Sitemap Ping Tool是一个免费的在线工具，帮助你Ping Google and Bing to notify them of your updated sitemap。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "优化你的网站以获得更好的搜索引擎可见性",
+      "生成合适的meta标签、schema标记和结构化数据",
+      "检查影响搜索排名的技术性SEO因素"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "schema-markup": {
+    "what": "Schema Markup Generator是一个免费的在线工具，帮助你Generate JSON-LD structured data markup for rich search results。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "优化你的网站以获得更好的搜索引擎可见性",
+      "生成合适的meta标签、schema标记和结构化数据",
+      "检查影响搜索排名的技术性SEO因素"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "redirect-checker": {
+    "what": "Redirect Checker是一个免费的在线工具，帮助你Check URL redirect chains and HTTP status codes。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "优化你的网站以获得更好的搜索引擎可见性",
+      "生成合适的meta标签、schema标记和结构化数据",
+      "检查影响搜索排名的技术性SEO因素"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "canonical-checker": {
+    "what": "Canonical URL Checker是一个免费的在线工具，帮助你Check if a page's canonical tag is correctly implemented。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "优化你的网站以获得更好的搜索引擎可见性",
+      "生成合适的meta标签、schema标记和结构化数据",
+      "检查影响搜索排名的技术性SEO因素"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "color-palette": {
+    "what": "Color Palette Generator是一个免费的在线工具，帮助你Generate harmonious color palettes using color theory rules。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "为网页设计、品牌或艺术项目探索色彩组合",
+      "检查色彩选择的无障碍性和对比度",
+      "从单一基础色生成和谐的调色板"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "color-shades": {
+    "what": "Color Shades Generator是一个免费的在线工具，帮助你Generate lighter tints and darker shades from any base color。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "为网页设计、品牌或艺术项目探索色彩组合",
+      "检查色彩选择的无障碍性和对比度",
+      "从单一基础色生成和谐的调色板"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "gradient-preview": {
+    "what": "CSS Gradient Generator是一个免费的在线工具，帮助你Create and preview linear, radial, and conic CSS gradients。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "为网页设计、品牌或艺术项目探索色彩组合",
+      "检查色彩选择的无障碍性和对比度",
+      "从单一基础色生成和谐的调色板"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "color-blind": {
+    "what": "Color Blindness Simulator是一个免费的在线工具，帮助你Simulate how your colors look with different types of color blindness。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "为网页设计、品牌或艺术项目探索色彩组合",
+      "检查色彩选择的无障碍性和对比度",
+      "从单一基础色生成和谐的调色板"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "color-extractor": {
+    "what": "Color Extractor from Image是一个免费的在线工具，帮助你Extract the dominant colors from any image uploaded to your browser。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "为网页设计、品牌或艺术项目探索色彩组合",
+      "检查色彩选择的无障碍性和对比度",
+      "从单一基础色生成和谐的调色板"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "ssh-key-gen": {
+    "what": "SSH Key Fingerprint是一个免费的在线工具，帮助你Calculate and display SSH key fingerprints in MD5 and SHA256。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "为你的应用程序生成安全的凭据、密钥或哈希值",
+      "检查或验证安全配置和加密设置",
+      "学习加密概念和安全最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "ssl-csr-gen": {
+    "what": "CSR Generator是一个免费的在线工具，帮助你Generate Certificate Signing Requests for SSL certificates。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "为你的应用程序生成安全的凭据、密钥或哈希值",
+      "检查或验证安全配置和加密设置",
+      "学习加密概念和安全最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "htpasswd-gen": {
+    "what": "htpasswd Generator是一个免费的在线工具，帮助你Generate Apache htpasswd entries with bcrypt, MD5, or SHA。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "为你的应用程序生成安全的凭据、密钥或哈希值",
+      "检查或验证安全配置和加密设置",
+      "学习加密概念和安全最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "pgp-encrypt": {
+    "what": "PGP Message Encryptor是一个免费的在线工具，帮助你Encrypt and decrypt messages using PGP/GPG in your browser。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "为你的应用程序生成安全的凭据、密钥或哈希值",
+      "检查或验证安全配置和加密设置",
+      "学习加密概念和安全最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "sri-hash": {
+    "what": "SRI Hash Generator是一个免费的在线工具，帮助你Generate Subresource Integrity hashes for script and link tags。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "为你的应用程序生成安全的凭据、密钥或哈希值",
+      "检查或验证安全配置和加密设置",
+      "学习加密概念和安全最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "csp-generator": {
+    "what": "CSP Header Generator是一个免费的在线工具，帮助你Generate Content Security Policy headers for your website。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "为你的应用程序生成安全的凭据、密钥或哈希值",
+      "检查或验证安全配置和加密设置",
+      "学习加密概念和安全最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "2fa-code": {
+    "what": "TOTP Code Generator是一个免费的在线工具，帮助你Generate Time-based One-Time Passwords for two-factor authentication。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "为你的应用程序生成安全的凭据、密钥或哈希值",
+      "检查或验证安全配置和加密设置",
+      "学习加密概念和安全最佳实践"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "coin-flip": {
+    "what": "Coin Flip Simulator是一个免费的在线工具，帮助你Flip a virtual coin with realistic probability and streak tracking。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "为游戏、活动或决策增添随机元素",
+      "为写作、绘画或头脑风暴生成创意提示",
+      "当你需要随机选择时打破决策困难"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "meme-text": {
+    "what": "Meme Text Generator是一个免费的在线工具，帮助你Add impact font text to images and generate shareable memes。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "为游戏、活动或决策增添随机元素",
+      "为写作、绘画或头脑风暴生成创意提示",
+      "当你需要随机选择时打破决策困难"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "truth-dare": {
+    "what": "Truth or Dare Generator是一个免费的在线工具，帮助你Get random truth questions and dares for party games。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "为游戏、活动或决策增添随机元素",
+      "为写作、绘画或头脑风暴生成创意提示",
+      "当你需要随机选择时打破决策困难"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "baby-names": {
+    "what": "Baby Name Generator是一个免费的在线工具，帮助你Find baby names by gender, origin, popularity, and meaning。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "为游戏、活动或决策增添随机元素",
+      "为写作、绘画或头脑风暴生成创意提示",
+      "当你需要随机选择时打破决策困难"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "story-generator": {
+    "what": "Story Prompt Generator是一个免费的在线工具，帮助你Generate creative writing prompts with characters, setting, and conflict。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "为游戏、活动或决策增添随机元素",
+      "为写作、绘画或头脑风暴生成创意提示",
+      "当你需要随机选择时打破决策困难"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "team-generator": {
+    "what": "Random Team Generator是一个免费的在线工具，帮助你Split a list of names into random teams or groups。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "为游戏、活动或决策增添随机元素",
+      "为写作、绘画或头脑风暴生成创意提示",
+      "当你需要随机选择时打破决策困难"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "world-clock": {
+    "what": "World Clock是一个免费的在线工具，帮助你See the current time in major cities across all timezones。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "安排国际会议时在不同时区之间转换时间",
+      "计算项目规划中的截止日期、持续时间和倒计时",
+      "为旅行、账单或活动规划计算日期差异"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "meeting-planner": {
+    "what": "Meeting Time Planner是一个免费的在线工具，帮助你Find the best meeting time across multiple timezones。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "安排国际会议时在不同时区之间转换时间",
+      "计算项目规划中的截止日期、持续时间和倒计时",
+      "为旅行、账单或活动规划计算日期差异"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "work-hours": {
+    "what": "Work Hours Calculator是一个免费的在线工具，帮助你Calculate total work hours, breaks, and overtime pay。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "安排国际会议时在不同时区之间转换时间",
+      "计算项目规划中的截止日期、持续时间和倒计时",
+      "为旅行、账单或活动规划计算日期差异"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "days-until": {
+    "what": "Days Until Calculator是一个免费的在线工具，帮助你Count the days, hours, and minutes until any future date。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "安排国际会议时在不同时区之间转换时间",
+      "计算项目规划中的截止日期、持续时间和倒计时",
+      "为旅行、账单或活动规划计算日期差异"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "weeks-between": {
+    "what": "Weeks Between Dates是一个免费的在线工具，帮助你Calculate the number of weeks and days between any two dates。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "安排国际会议时在不同时区之间转换时间",
+      "计算项目规划中的截止日期、持续时间和倒计时",
+      "为旅行、账单或活动规划计算日期差异"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "binary-to-decimal": {
+    "what": "Binary to Decimal Converter是一个免费的在线工具，帮助你Convert binary numbers to decimal, and decimal to binary。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "准备数据以便在URL、API或邮件中传输",
+      "编程或调试时在不同进制之间转换",
+      "为安全存储在数据库或文件中编码特殊字符"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "hex-to-decimal": {
+    "what": "Hex to Decimal Converter是一个免费的在线工具，帮助你Convert hexadecimal numbers to decimal and back。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "准备数据以便在URL、API或邮件中传输",
+      "编程或调试时在不同进制之间转换",
+      "为安全存储在数据库或文件中编码特殊字符"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "octal-to-decimal": {
+    "what": "Octal to Decimal Converter是一个免费的在线工具，帮助你Convert octal numbers to decimal and decimal to octal。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "准备数据以便在URL、API或邮件中传输",
+      "编程或调试时在不同进制之间转换",
+      "为安全存储在数据库或文件中编码特殊字符"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "utf8-encoder": {
+    "what": "UTF-8 Encoder是一个免费的在线工具，帮助你Encode text to UTF-8 bytes and decode UTF-8 back to text。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "准备数据以便在URL、API或邮件中传输",
+      "编程或调试时在不同进制之间转换",
+      "为安全存储在数据库或文件中编码特殊字符"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "quoted-printable": {
+    "what": "Quoted Printable Encoder是一个免费的在线工具，帮助你Encode and decode text using quoted-printable encoding for email。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "准备数据以便在URL、API或邮件中传输",
+      "编程或调试时在不同进制之间转换",
+      "为安全存储在数据库或文件中编码特殊字符"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "image-resizer": {
+    "what": "Image Resizer是一个免费的在线工具，帮助你Resize images to exact dimensions while preserving aspect ratio。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "无需安装软件即可快速调整大小、压缩或转换图片",
+      "检查图片元数据，如尺寸、格式和文件大小",
+      "生成二维码或从图片中提取信息"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "image-info": {
+    "what": "Image Info Viewer是一个免费的在线工具，帮助你View detailed image metadata: dimensions, file size, color depth, EXIF。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "无需安装软件即可快速调整大小、压缩或转换图片",
+      "检查图片元数据，如尺寸、格式和文件大小",
+      "生成二维码或从图片中提取信息"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "qr-reader": {
+    "what": "QR Code Reader是一个免费的在线工具，帮助你Upload a QR code image and decode its content instantly in your browser。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "无需安装软件即可快速调整大小、压缩或转换图片",
+      "检查图片元数据，如尺寸、格式和文件大小",
+      "生成二维码或从图片中提取信息"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "sha384": {
+    "what": "SHA-384 Hash Generator是一个免费的在线工具，帮助你Generate SHA-384 hash values for any text input。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "下载或传输后验证文件完整性",
+      "生成校验和用于数据去重或对比",
+      "学习不同哈希算法的工作原理及使用场景"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  },
+  "sha3-256": {
+    "what": "SHA3-256 Hash Generator是一个免费的在线工具，帮助你Generate SHA3-256 (Keccak) hash values for cryptographic applications。它完全在浏览器中运行，使用客户端JavaScript，因此你的数据保持私密，永远不会离开你的设备。",
+    "when": [
+      "下载或传输后验证文件完整性",
+      "生成校验和用于数据去重或对比",
+      "学习不同哈希算法的工作原理及使用场景"
+    ],
+    "how": "在上方输入框中输入你的内容，如有设置项可进行调整，然后点击操作按钮。结果即时显示——无需页面刷新，无需等待服务器。所有处理都在你的浏览器本地完成。",
+    "related": "查看我们的<a href=\"/\" class=\"text-primary hover:underline\">完整免费工具集合</a>发现更多实用工具。"
+  }
+}

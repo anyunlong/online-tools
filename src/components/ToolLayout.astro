@@ -6,6 +6,8 @@ import faqData from '../data/faq.json';
 import faqDataZh from '../data/faq-zh.json';
 import toolContent from '../data/tool-content.json';
 import toolContentZh from '../data/tool-content-zh.json';
+import toolInfoEn from '../data/tool-info-en.json';
+import toolInfoZh from '../data/tool-info-zh.json';
 
 export interface Props {
   title: string;
@@ -32,6 +34,10 @@ const tips: string[] = tc?.tips || [];
 const tipsZh: string[] = tcZh?.tips || [];
 const commonMistakes: string[] = tc?.commonMistakes || [];
 const commonMistakesZh: string[] = tcZh?.commonMistakes || [];
+
+// Look up tool info (What/When/How/Related)
+const infoEn = toolInfoEn[toolId];
+const infoZh = toolInfoZh[toolId];
 
 const webAppSchema = {
   '@context': 'https://schema.org',
@@ -117,8 +123,37 @@ const combinedSchema = faqSchema
       <slot />
     </div>
     <div class="mt-8 max-w-3xl">
-      <div class="text-sm text-surface-400 leading-relaxed space-y-3">
-        <slot name="info" />
+      {infoEn && (
+        <>
+          <div class="text-sm text-surface-400 leading-relaxed space-y-3" data-lang="en">
+            <h2 class="text-base font-semibold text-surface-100 mb-2">What is {title}?</h2>
+            <p class="mb-3">{infoEn.what}</p>
+            <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
+            <ul class="list-disc pl-5 mb-3 space-y-1">
+              {infoEn.when.map(item => <li>{item}</li>)}
+            </ul>
+            <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
+            <p class="mb-3">{infoEn.how}</p>
+            <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
+            <p><Fragment set:html={infoEn.related} /></p>
+          </div>
+          {infoZh && (
+            <div class="text-sm text-surface-400 leading-relaxed space-y-3 hidden" data-lang="zh">
+              <h2 class="text-base font-semibold text-surface-100 mb-2">工具介绍</h2>
+              <p class="mb-3">{infoZh.what}</p>
+              <h2 class="text-base font-semibold text-surface-100 mb-2">适用场景</h2>
+              <ul class="list-disc pl-5 mb-3 space-y-1">
+                {infoZh.when.map(item => <li>{item}</li>)}
+              </ul>
+              <h2 class="text-base font-semibold text-surface-100 mb-2">如何使用</h2>
+              <p class="mb-3">{infoZh.how}</p>
+              <h2 class="text-base font-semibold text-surface-100 mb-2">相关工具</h2>
+              <p><Fragment set:html={infoZh.related} /></p>
+            </div>
+          )}
+        </>
+      )}
+      <slot name="info" />
       </div>
       {(deepDive || tips.length > 0 || commonMistakes.length > 0) && (
         <div class="mt-8 space-y-6">
