@@ -24,9 +24,9 @@ import Button from '../components/Button.astro';
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
 function process() {
-  const inp = document.getElementById('inp').value;
-  if (!inp) { document.getElementById('out').textContent = '—'; return; }
-  document.getElementById('out').textContent = inp;
+  const v=parseFloat(document.getElementById('inp').value);
+  if(isNaN(v)){document.getElementById('out').textContent='Enter hourly rate';return;}
+  document.getElementById('out').innerHTML='<div class="text-xl font-bold text-brand-400">$'+(v*2080).toLocaleString()+'</div><div class="text-xs text-surface-400 mt-1">Annual salary (40h/week)</div>';
 }
 function clearAll() {
   document.getElementById('inp').value = '';
@@ -35,6 +35,6 @@ function clearAll() {
 }
 </script>
 <slot name="info" slot="info">
-  <p>Enter your input and click to process. Results appear instantly below.</p>
+  <p>Enter your input and click to process. Results appear instantly.</p>
 </slot>
 </ToolLayout>

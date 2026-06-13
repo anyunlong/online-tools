@@ -24,9 +24,10 @@ import Button from '../components/Button.astro';
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
 function process() {
-  const inp = document.getElementById('inp').value;
-  if (!inp) { document.getElementById('out').textContent = '—'; return; }
-  document.getElementById('out').textContent = inp;
+  const v=document.getElementById('inp').value.split(/[,\s]+/).map(Number);
+  if(v.length<3||v.some(isNaN)){document.getElementById('out').textContent='Format: drinks, weight_kg, hours, gender(0=male,1=female)';return;}
+  const r=(v[3]||0)?0.55:0.68,bac=Math.max(0,(v[0]*14)/(v[1]*1000*r)*100-v[2]*0.015);
+  document.getElementById('out').innerHTML='<div class="text-2xl font-bold '+(bac>0.08?'text-red-400':'text-brand-400')+'">'+bac.toFixed(3)+'%</div><div class="text-sm mt-1">'+(bac<0.03?'Safe':bac<0.08?'Impaired':bac<0.15?'Legally drunk':'Severe')+'</div>';
 }
 function clearAll() {
   document.getElementById('inp').value = '';
@@ -35,6 +36,6 @@ function clearAll() {
 }
 </script>
 <slot name="info" slot="info">
-  <p>Enter your input and click to process. Results appear instantly below.</p>
+  <p>Enter your input and click to process. Results appear instantly.</p>
 </slot>
 </ToolLayout>

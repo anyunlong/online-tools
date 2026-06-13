@@ -23,12 +23,11 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function calc() {
-  const v = document.getElementById('inp').value;
-  if (!v) { document.getElementById('out').textContent = '—'; return; }
-  const n = parseFloat(v);
-  if (isNaN(n)) { document.getElementById('out').textContent = 'Invalid'; return; }
-  document.getElementById('out').textContent = 'Result: ' + n;
+function gcf(a,b){while(b){[a,b]=[b,a%b]}return a}
+function process(){
+  const n=document.getElementById('inp').value.split(/[,\s]+/).map(Number).filter(x=>!isNaN(x)&&x>0);
+  if(n.length<2){document.getElementById('out').textContent='Enter at least 2 numbers';return;}
+  document.getElementById('out').innerHTML='<div class="text-xl font-bold text-brand-400">GCF = '+n.reduce(gcf)+'</div>';
 }
 function clearAll() {
   document.getElementById('inp').value = '';
@@ -37,6 +36,6 @@ function clearAll() {
 }
 </script>
 <slot name="info" slot="info">
-  <p>Enter your input and click to process. Results appear instantly below.</p>
+  <p>Enter your input and click to process. Results appear instantly.</p>
 </slot>
 </ToolLayout>

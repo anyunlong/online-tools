@@ -10,7 +10,7 @@ import Button from '../components/Button.astro';
   keywords={["story generator", "story prompt generator", "fun"]}
 >
   <div class="space-y-4">
-    
+    <div class='text-sm text-surface-400'>Configure options above</div>
     <div class="flex gap-2">
       <Button onclick="generate()">Generate</Button>
       <Button variant="secondary" onclick="copyResult()">Copy</Button>
@@ -18,18 +18,8 @@ import Button from '../components/Button.astro';
     <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
   </div>
 <script is:inline>
-function generate() {
-  const result = 'Generated output for story-generator';
-  document.getElementById('out').textContent = result;
-}
-function copy() {
-  const t = document.getElementById('out').textContent;
-  if (!t) return;
-  navigator.clipboard.writeText(t).then(() => {
-    const btn = document.getElementById('copy-btn');
-    btn.textContent = 'Copied!';
-    setTimeout(() => btn.textContent = 'Copy', 1500);
-  });
+function generate(){
+  document.getElementById('result').textContent='Generated output — customize me!';
 }
 function copyResult() {
   const text = document.getElementById('result').textContent;
@@ -42,6 +32,6 @@ function copyResult() {
 }
 </script>
 <slot name="info" slot="info">
-  <p>Enter your input and click to process. Results appear instantly below.</p>
+  <p>Enter your input and click to process. Results appear instantly.</p>
 </slot>
 </ToolLayout>

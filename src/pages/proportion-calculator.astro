@@ -23,12 +23,10 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function calc() {
-  const v = document.getElementById('inp').value;
-  if (!v) { document.getElementById('out').textContent = '—'; return; }
-  const n = parseFloat(v);
-  if (isNaN(n)) { document.getElementById('out').textContent = 'Invalid'; return; }
-  document.getElementById('out').textContent = 'Result: ' + n;
+function process(){
+  const v=document.getElementById('inp').value.split(/[,\s]+/).map(Number);
+  if(v.length<3||v.some(isNaN)){document.getElementById('out').textContent='Format: a, b, c (solve a:b = c:x)';return;}
+  document.getElementById('out').innerHTML='<div class="text-lg">'+v[0]+' : '+v[1]+' = '+v[2]+' : <span class="text-xl font-bold text-brand-400">'+(v[2]*v[1]/v[0]).toFixed(4)+'</span></div>';
 }
 function clearAll() {
   document.getElementById('inp').value = '';
@@ -37,6 +35,6 @@ function clearAll() {
 }
 </script>
 <slot name="info" slot="info">
-  <p>Enter your input and click to process. Results appear instantly below.</p>
+  <p>Enter your input and click to process. Results appear instantly.</p>
 </slot>
 </ToolLayout>
