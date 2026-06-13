@@ -1,0 +1,702 @@
+[
+  {
+    "id": "compound-interest",
+    "name": "Compound Interest Calculator",
+    "desc": "Calculate how your money grows with compound interest over time",
+    "cat": "Finance",
+    "type": "processor"
+  },
+  {
+    "id": "loan-calculator",
+    "name": "Loan Calculator",
+    "desc": "Calculate monthly payments, total interest, and amortization schedule",
+    "cat": "Finance",
+    "type": "processor"
+  },
+  {
+    "id": "currency-converter",
+    "name": "Currency Converter",
+    "desc": "Convert between world currencies with real-time exchange rates",
+    "cat": "Finance",
+    "type": "processor"
+  },
+  {
+    "id": "discount-calculator",
+    "name": "Discount Calculator",
+    "desc": "Calculate sale price, discount percentage, and savings instantly",
+    "cat": "Finance",
+    "type": "processor"
+  },
+  {
+    "id": "sales-tax",
+    "name": "Sales Tax Calculator",
+    "desc": "Calculate total price including sales tax for any US state",
+    "cat": "Finance",
+    "type": "processor"
+  },
+  {
+    "id": "savings-goal",
+    "name": "Savings Goal Calculator",
+    "desc": "Plan how long to reach your savings goal with monthly contributions",
+    "cat": "Finance",
+    "type": "processor"
+  },
+  {
+    "id": "hourly-to-salary",
+    "name": "Hourly to Salary Converter",
+    "desc": "Convert hourly wage to annual salary and vice versa",
+    "cat": "Finance",
+    "type": "processor"
+  },
+  {
+    "id": "split-bill",
+    "name": "Split Bill Calculator",
+    "desc": "Split a restaurant bill evenly with tip included",
+    "cat": "Finance",
+    "type": "processor"
+  },
+  {
+    "id": "macro-calculator",
+    "name": "Macro Calculator",
+    "desc": "Calculate daily protein, carb, and fat intake based on your goals",
+    "cat": "Health",
+    "type": "processor"
+  },
+  {
+    "id": "one-rep-max",
+    "name": "One Rep Max Calculator",
+    "desc": "Estimate your one-rep max for bench, squat, and deadlift",
+    "cat": "Health",
+    "type": "processor"
+  },
+  {
+    "id": "pace-calculator",
+    "name": "Running Pace Calculator",
+    "desc": "Calculate running pace, time, and distance for any race",
+    "cat": "Health",
+    "type": "processor"
+  },
+  {
+    "id": "pregnancy-calculator",
+    "name": "Pregnancy Due Date Calculator",
+    "desc": "Estimate your baby's due date based on last period or conception",
+    "cat": "Health",
+    "type": "processor"
+  },
+  {
+    "id": "blood-alcohol",
+    "name": "BAC Calculator",
+    "desc": "Estimate blood alcohol content based on drinks, weight, and time",
+    "cat": "Health",
+    "type": "processor"
+  },
+  {
+    "id": "ideal-weight",
+    "name": "Ideal Weight Calculator",
+    "desc": "Find your ideal weight range based on height, age, and body frame",
+    "cat": "Health",
+    "type": "processor"
+  },
+  {
+    "id": "temperature-converter",
+    "name": "Temperature Converter",
+    "desc": "Convert between Celsius, Fahrenheit, and Kelvin instantly",
+    "cat": "Convert",
+    "type": "processor"
+  },
+  {
+    "id": "length-converter",
+    "name": "Length Converter",
+    "desc": "Convert between meters, feet, inches, miles, and kilometers",
+    "cat": "Convert",
+    "type": "processor"
+  },
+  {
+    "id": "weight-converter",
+    "name": "Weight Converter",
+    "desc": "Convert between kilograms, pounds, ounces, and stones",
+    "cat": "Convert",
+    "type": "processor"
+  },
+  {
+    "id": "speed-converter",
+    "name": "Speed Converter",
+    "desc": "Convert between mph, kph, knots, and mach",
+    "cat": "Convert",
+    "type": "processor"
+  },
+  {
+    "id": "area-converter",
+    "name": "Area Converter",
+    "desc": "Convert between square meters, acres, hectares, and square feet",
+    "cat": "Convert",
+    "type": "processor"
+  },
+  {
+    "id": "volume-converter",
+    "name": "Volume Converter",
+    "desc": "Convert between liters, gallons, cups, and milliliters",
+    "cat": "Convert",
+    "type": "processor"
+  },
+  {
+    "id": "angle-converter",
+    "name": "Angle Converter",
+    "desc": "Convert between degrees, radians, and gradians",
+    "cat": "Convert",
+    "type": "processor"
+  },
+  {
+    "id": "cooking-converter",
+    "name": "Cooking Converter",
+    "desc": "Convert cooking measurements: cups, tablespoons, teaspoons, ml",
+    "cat": "Convert",
+    "type": "processor"
+  },
+  {
+    "id": "pressure-converter",
+    "name": "Pressure Converter",
+    "desc": "Convert between pascal, bar, psi, and atmospheres",
+    "cat": "Convert",
+    "type": "processor"
+  },
+  {
+    "id": "energy-converter",
+    "name": "Energy Converter",
+    "desc": "Convert between joules, calories, kWh, and BTUs",
+    "cat": "Convert",
+    "type": "processor"
+  },
+  {
+    "id": "prime-checker",
+    "name": "Prime Number Checker",
+    "desc": "Check if a number is prime and find nearby primes",
+    "cat": "Math",
+    "type": "processor"
+  },
+  {
+    "id": "gcf-calculator",
+    "name": "GCF Calculator",
+    "desc": "Find the greatest common factor of two or more numbers",
+    "cat": "Math",
+    "type": "processor"
+  },
+  {
+    "id": "lcm-calculator",
+    "name": "LCM Calculator",
+    "desc": "Find the least common multiple of two or more numbers",
+    "cat": "Math",
+    "type": "processor"
+  },
+  {
+    "id": "scientific-notation",
+    "name": "Scientific Notation Converter",
+    "desc": "Convert numbers to and from scientific notation",
+    "cat": "Math",
+    "type": "processor"
+  },
+  {
+    "id": "ratio-simplifier",
+    "name": "Ratio Simplifier",
+    "desc": "Simplify ratios to their lowest terms instantly",
+    "cat": "Math",
+    "type": "processor"
+  },
+  {
+    "id": "proportion-calculator",
+    "name": "Proportion Calculator",
+    "desc": "Solve proportions and find the missing value in ratio equations",
+    "cat": "Math",
+    "type": "processor"
+  },
+  {
+    "id": "quadratic-solver",
+    "name": "Quadratic Equation Solver",
+    "desc": "Solve quadratic equations and find real and complex roots",
+    "cat": "Math",
+    "type": "processor"
+  },
+  {
+    "id": "exponent-calculator",
+    "name": "Exponent Calculator",
+    "desc": "Calculate powers, roots, and exponential expressions",
+    "cat": "Math",
+    "type": "processor"
+  },
+  {
+    "id": "readability-score",
+    "name": "Readability Score",
+    "desc": "Check readability with Flesch-Kincaid, Gunning Fog, and SMOG indices",
+    "cat": "Text",
+    "type": "processor"
+  },
+  {
+    "id": "palindrome-checker",
+    "name": "Palindrome Checker",
+    "desc": "Check if a word, phrase, or number reads the same backwards",
+    "cat": "Text",
+    "type": "processor"
+  },
+  {
+    "id": "anagram-checker",
+    "name": "Anagram Checker",
+    "desc": "Check if two words or phrases are anagrams of each other",
+    "cat": "Text",
+    "type": "processor"
+  },
+  {
+    "id": "character-frequency",
+    "name": "Character Frequency Counter",
+    "desc": "Count how many times each character appears in your text",
+    "cat": "Text",
+    "type": "processor"
+  },
+  {
+    "id": "markdown-to-html",
+    "name": "Markdown to HTML",
+    "desc": "Convert Markdown text to clean HTML code instantly",
+    "cat": "Text",
+    "type": "processor"
+  },
+  {
+    "id": "text-to-slug",
+    "name": "URL Slug Generator",
+    "desc": "Convert any text into a clean, SEO-friendly URL slug",
+    "cat": "Text",
+    "type": "processor"
+  },
+  {
+    "id": "text-wrap",
+    "name": "Text Wrapper",
+    "desc": "Wrap text to a specific line width or column count",
+    "cat": "Text",
+    "type": "processor"
+  },
+  {
+    "id": "whitespace-remover",
+    "name": "Whitespace Remover",
+    "desc": "Remove extra spaces, tabs, and blank lines from text",
+    "cat": "Text",
+    "type": "processor"
+  },
+  {
+    "id": "username-generator",
+    "name": "Username Generator",
+    "desc": "Generate unique, memorable usernames for social media and gaming",
+    "cat": "Generator",
+    "type": "generator"
+  },
+  {
+    "id": "fake-name",
+    "name": "Fake Name Generator",
+    "desc": "Generate realistic random names for testing and placeholder data",
+    "cat": "Generator",
+    "type": "generator"
+  },
+  {
+    "id": "fake-email",
+    "name": "Fake Email Generator",
+    "desc": "Generate random email addresses for testing forms and databases",
+    "cat": "Generator",
+    "type": "generator"
+  },
+  {
+    "id": "phone-generator",
+    "name": "Phone Number Generator",
+    "desc": "Generate random US and international phone numbers for testing",
+    "cat": "Generator",
+    "type": "generator"
+  },
+  {
+    "id": "credit-card-gen",
+    "name": "Test Credit Card Generator",
+    "desc": "Generate valid-format test credit card numbers (no real money)",
+    "cat": "Generator",
+    "type": "generator"
+  },
+  {
+    "id": "mac-address-gen",
+    "name": "MAC Address Generator",
+    "desc": "Generate random MAC addresses for network device testing",
+    "cat": "Generator",
+    "type": "generator"
+  },
+  {
+    "id": "ipv6-generator",
+    "name": "IPv6 Generator",
+    "desc": "Generate random IPv6 addresses in various formats",
+    "cat": "Generator",
+    "type": "generator"
+  },
+  {
+    "id": "hex-color-gen",
+    "name": "Random HEX Color Generator",
+    "desc": "Generate random colors with their HEX, RGB, and HSL values",
+    "cat": "Generator",
+    "type": "generator"
+  },
+  {
+    "id": "password-phrase",
+    "name": "Passphrase Generator",
+    "desc": "Generate memorable passphrases using random word combinations",
+    "cat": "Generator",
+    "type": "generator"
+  },
+  {
+    "id": "barcode-generator",
+    "name": "Barcode Generator",
+    "desc": "Generate EAN-13, UPC-A, and Code-128 barcodes as SVG",
+    "cat": "Generator",
+    "type": "generator"
+  },
+  {
+    "id": "npm-package-json",
+    "name": "package.json Generator",
+    "desc": "Generate a complete package.json file for your Node.js project",
+    "cat": "Dev Tools",
+    "type": "generator"
+  },
+  {
+    "id": "semver-checker",
+    "name": "Semver Checker",
+    "desc": "Validate and compare semantic version numbers",
+    "cat": "Dev Tools",
+    "type": "processor"
+  },
+  {
+    "id": "json-diff",
+    "name": "JSON Diff Checker",
+    "desc": "Compare two JSON objects and highlight every difference",
+    "cat": "Dev Tools",
+    "type": "processor"
+  },
+  {
+    "id": "http-status-dog",
+    "name": "HTTP Status Code Reference",
+    "desc": "Quick reference for all HTTP status codes with descriptions",
+    "cat": "Dev Tools",
+    "type": "processor"
+  },
+  {
+    "id": "ssl-checker",
+    "name": "SSL Certificate Checker",
+    "desc": "Check a domain's SSL certificate expiry date and issuer info",
+    "cat": "Dev Tools",
+    "type": "processor"
+  },
+  {
+    "id": "color-namer",
+    "name": "CSS Color Name Finder",
+    "desc": "Find the closest named CSS color for any HEX, RGB, or HSL value",
+    "cat": "Dev Tools",
+    "type": "processor"
+  },
+  {
+    "id": "css-specificity",
+    "name": "CSS Specificity Calculator",
+    "desc": "Calculate CSS selector specificity score and compare selectors",
+    "cat": "Dev Tools",
+    "type": "processor"
+  },
+  {
+    "id": "html-table-gen",
+    "name": "HTML Table Generator",
+    "desc": "Generate responsive HTML tables with custom rows and columns",
+    "cat": "Dev Tools",
+    "type": "generator"
+  },
+  {
+    "id": "dockerfile-gen",
+    "name": "Dockerfile Generator",
+    "desc": "Generate a basic Dockerfile for Node.js, Python, or Go projects",
+    "cat": "Dev Tools",
+    "type": "generator"
+  },
+  {
+    "id": "gitignore-gen",
+    "name": ".gitignore Generator",
+    "desc": "Generate a .gitignore file for your project's language and framework",
+    "cat": "Dev Tools",
+    "type": "generator"
+  },
+  {
+    "id": "serp-preview",
+    "name": "Google SERP Preview",
+    "desc": "Preview how your page title and meta description look in Google search results",
+    "cat": "SEO",
+    "type": "processor"
+  },
+  {
+    "id": "heading-structure",
+    "name": "Heading Structure Checker",
+    "desc": "Analyze your page's heading hierarchy for SEO best practices",
+    "cat": "SEO",
+    "type": "processor"
+  },
+  {
+    "id": "alt-text-generator",
+    "name": "Alt Text Generator",
+    "desc": "Generate descriptive alt text suggestions for your images",
+    "cat": "SEO",
+    "type": "generator"
+  },
+  {
+    "id": "sitemap-ping",
+    "name": "Sitemap Ping Tool",
+    "desc": "Ping Google and Bing to notify them of your updated sitemap",
+    "cat": "SEO",
+    "type": "processor"
+  },
+  {
+    "id": "schema-markup",
+    "name": "Schema Markup Generator",
+    "desc": "Generate JSON-LD structured data markup for rich search results",
+    "cat": "SEO",
+    "type": "generator"
+  },
+  {
+    "id": "redirect-checker",
+    "name": "Redirect Checker",
+    "desc": "Check URL redirect chains and HTTP status codes",
+    "cat": "SEO",
+    "type": "processor"
+  },
+  {
+    "id": "canonical-checker",
+    "name": "Canonical URL Checker",
+    "desc": "Check if a page's canonical tag is correctly implemented",
+    "cat": "SEO",
+    "type": "processor"
+  },
+  {
+    "id": "color-palette",
+    "name": "Color Palette Generator",
+    "desc": "Generate harmonious color palettes using color theory rules",
+    "cat": "Color",
+    "type": "generator"
+  },
+  {
+    "id": "color-shades",
+    "name": "Color Shades Generator",
+    "desc": "Generate lighter tints and darker shades from any base color",
+    "cat": "Color",
+    "type": "generator"
+  },
+  {
+    "id": "gradient-preview",
+    "name": "CSS Gradient Generator",
+    "desc": "Create and preview linear, radial, and conic CSS gradients",
+    "cat": "Color",
+    "type": "generator"
+  },
+  {
+    "id": "color-blind",
+    "name": "Color Blindness Simulator",
+    "desc": "Simulate how your colors look with different types of color blindness",
+    "cat": "Color",
+    "type": "processor"
+  },
+  {
+    "id": "color-extractor",
+    "name": "Color Extractor from Image",
+    "desc": "Extract the dominant colors from any image uploaded to your browser",
+    "cat": "Color",
+    "type": "processor"
+  },
+  {
+    "id": "ssh-key-gen",
+    "name": "SSH Key Fingerprint",
+    "desc": "Calculate and display SSH key fingerprints in MD5 and SHA256",
+    "cat": "Security",
+    "type": "processor"
+  },
+  {
+    "id": "ssl-csr-gen",
+    "name": "CSR Generator",
+    "desc": "Generate Certificate Signing Requests for SSL certificates",
+    "cat": "Security",
+    "type": "generator"
+  },
+  {
+    "id": "htpasswd-gen",
+    "name": "htpasswd Generator",
+    "desc": "Generate Apache htpasswd entries with bcrypt, MD5, or SHA",
+    "cat": "Security",
+    "type": "generator"
+  },
+  {
+    "id": "pgp-encrypt",
+    "name": "PGP Message Encryptor",
+    "desc": "Encrypt and decrypt messages using PGP/GPG in your browser",
+    "cat": "Security",
+    "type": "processor"
+  },
+  {
+    "id": "sri-hash",
+    "name": "SRI Hash Generator",
+    "desc": "Generate Subresource Integrity hashes for script and link tags",
+    "cat": "Security",
+    "type": "processor"
+  },
+  {
+    "id": "csp-generator",
+    "name": "CSP Header Generator",
+    "desc": "Generate Content Security Policy headers for your website",
+    "cat": "Security",
+    "type": "generator"
+  },
+  {
+    "id": "2fa-code",
+    "name": "TOTP Code Generator",
+    "desc": "Generate Time-based One-Time Passwords for two-factor authentication",
+    "cat": "Security",
+    "type": "generator"
+  },
+  {
+    "id": "coin-flip",
+    "name": "Coin Flip Simulator",
+    "desc": "Flip a virtual coin with realistic probability and streak tracking",
+    "cat": "Fun",
+    "type": "generator"
+  },
+  {
+    "id": "meme-text",
+    "name": "Meme Text Generator",
+    "desc": "Add impact font text to images and generate shareable memes",
+    "cat": "Fun",
+    "type": "generator"
+  },
+  {
+    "id": "truth-dare",
+    "name": "Truth or Dare Generator",
+    "desc": "Get random truth questions and dares for party games",
+    "cat": "Fun",
+    "type": "generator"
+  },
+  {
+    "id": "baby-names",
+    "name": "Baby Name Generator",
+    "desc": "Find baby names by gender, origin, popularity, and meaning",
+    "cat": "Fun",
+    "type": "generator"
+  },
+  {
+    "id": "story-generator",
+    "name": "Story Prompt Generator",
+    "desc": "Generate creative writing prompts with characters, setting, and conflict",
+    "cat": "Fun",
+    "type": "generator"
+  },
+  {
+    "id": "team-generator",
+    "name": "Random Team Generator",
+    "desc": "Split a list of names into random teams or groups",
+    "cat": "Fun",
+    "type": "processor"
+  },
+  {
+    "id": "world-clock",
+    "name": "World Clock",
+    "desc": "See the current time in major cities across all timezones",
+    "cat": "Time",
+    "type": "processor"
+  },
+  {
+    "id": "meeting-planner",
+    "name": "Meeting Time Planner",
+    "desc": "Find the best meeting time across multiple timezones",
+    "cat": "Time",
+    "type": "processor"
+  },
+  {
+    "id": "work-hours",
+    "name": "Work Hours Calculator",
+    "desc": "Calculate total work hours, breaks, and overtime pay",
+    "cat": "Time",
+    "type": "processor"
+  },
+  {
+    "id": "days-until",
+    "name": "Days Until Calculator",
+    "desc": "Count the days, hours, and minutes until any future date",
+    "cat": "Time",
+    "type": "processor"
+  },
+  {
+    "id": "weeks-between",
+    "name": "Weeks Between Dates",
+    "desc": "Calculate the number of weeks and days between any two dates",
+    "cat": "Time",
+    "type": "processor"
+  },
+  {
+    "id": "binary-to-decimal",
+    "name": "Binary to Decimal Converter",
+    "desc": "Convert binary numbers to decimal, and decimal to binary",
+    "cat": "Encode/Decode",
+    "type": "processor"
+  },
+  {
+    "id": "hex-to-decimal",
+    "name": "Hex to Decimal Converter",
+    "desc": "Convert hexadecimal numbers to decimal and back",
+    "cat": "Encode/Decode",
+    "type": "processor"
+  },
+  {
+    "id": "octal-to-decimal",
+    "name": "Octal to Decimal Converter",
+    "desc": "Convert octal numbers to decimal and decimal to octal",
+    "cat": "Encode/Decode",
+    "type": "processor"
+  },
+  {
+    "id": "utf8-encoder",
+    "name": "UTF-8 Encoder",
+    "desc": "Encode text to UTF-8 bytes and decode UTF-8 back to text",
+    "cat": "Encode/Decode",
+    "type": "processor"
+  },
+  {
+    "id": "quoted-printable",
+    "name": "Quoted Printable Encoder",
+    "desc": "Encode and decode text using quoted-printable encoding for email",
+    "cat": "Encode/Decode",
+    "type": "processor"
+  },
+  {
+    "id": "image-resizer",
+    "name": "Image Resizer",
+    "desc": "Resize images to exact dimensions while preserving aspect ratio",
+    "cat": "Image",
+    "type": "processor"
+  },
+  {
+    "id": "image-info",
+    "name": "Image Info Viewer",
+    "desc": "View detailed image metadata: dimensions, file size, color depth, EXIF",
+    "cat": "Image",
+    "type": "processor"
+  },
+  {
+    "id": "qr-reader",
+    "name": "QR Code Reader",
+    "desc": "Upload a QR code image and decode its content instantly in your browser",
+    "cat": "Image",
+    "type": "processor"
+  },
+  {
+    "id": "sha384",
+    "name": "SHA-384 Hash Generator",
+    "desc": "Generate SHA-384 hash values for any text input",
+    "cat": "Hash",
+    "type": "processor"
+  },
+  {
+    "id": "sha3-256",
+    "name": "SHA3-256 Hash Generator",
+    "desc": "Generate SHA3-256 (Keccak) hash values for cryptographic applications",
+    "cat": "Hash",
+    "type": "processor"
+  }
+]

@@ -1,0 +1,477 @@
+[
+  {
+    "id": "gcf-calculator",
+    "name_en": "GCF Calculator",
+    "desc_en": "Find the greatest common factor of two or more numbers",
+    "name_zh": "\u6700\u5927\u516c\u56e0\u6570\u8ba1\u7b97\u5668",
+    "desc_zh": "Find the greatest common factor of two or more numbers",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Math",
+    "keywords": [
+      "gcf calculator",
+      "gcf calculator",
+      "math"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function calc() {\n  const v = document.getElementById('inp').value;\n  if (!v) { document.getElementById('out').textContent = '\u2014'; return; }\n  const n = parseFloat(v);\n  if (isNaN(n)) { document.getElementById('out').textContent = 'Invalid'; return; }\n  document.getElementById('out').textContent = 'Result: ' + n;\n}"
+  },
+  {
+    "id": "lcm-calculator",
+    "name_en": "LCM Calculator",
+    "desc_en": "Find the least common multiple of two or more numbers",
+    "name_zh": "\u6700\u5c0f\u516c\u500d\u6570\u8ba1\u7b97\u5668",
+    "desc_zh": "Find the least common multiple of two or more numbers",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Math",
+    "keywords": [
+      "lcm calculator",
+      "lcm calculator",
+      "math"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function calc() {\n  const v = document.getElementById('inp').value;\n  if (!v) { document.getElementById('out').textContent = '\u2014'; return; }\n  const n = parseFloat(v);\n  if (isNaN(n)) { document.getElementById('out').textContent = 'Invalid'; return; }\n  document.getElementById('out').textContent = 'Result: ' + n;\n}"
+  },
+  {
+    "id": "scientific-notation",
+    "name_en": "Scientific Notation Converter",
+    "desc_en": "Convert numbers to and from scientific notation",
+    "name_zh": "\u79d1\u5b66\u8ba1\u6570\u6cd5\u8f6c\u6362\u5668",
+    "desc_zh": "Convert numbers to and from scientific notation",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Math",
+    "keywords": [
+      "scientific notation",
+      "scientific notation converter",
+      "math"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function calc() {\n  const v = document.getElementById('inp').value;\n  if (!v) { document.getElementById('out').textContent = '\u2014'; return; }\n  const n = parseFloat(v);\n  if (isNaN(n)) { document.getElementById('out').textContent = 'Invalid'; return; }\n  document.getElementById('out').textContent = 'Result: ' + n;\n}"
+  },
+  {
+    "id": "ratio-simplifier",
+    "name_en": "Ratio Simplifier",
+    "desc_en": "Simplify ratios to their lowest terms instantly",
+    "name_zh": "\u6bd4\u7387\u5316\u7b80\u5668",
+    "desc_zh": "Simplify ratios to their lowest terms instantly",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Math",
+    "keywords": [
+      "ratio simplifier",
+      "ratio simplifier",
+      "math"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function calc() {\n  const v = document.getElementById('inp').value;\n  if (!v) { document.getElementById('out').textContent = '\u2014'; return; }\n  const n = parseFloat(v);\n  if (isNaN(n)) { document.getElementById('out').textContent = 'Invalid'; return; }\n  document.getElementById('out').textContent = 'Result: ' + n;\n}"
+  },
+  {
+    "id": "proportion-calculator",
+    "name_en": "Proportion Calculator",
+    "desc_en": "Solve proportions and find the missing value in ratio equations",
+    "name_zh": "\u6bd4\u4f8b\u8ba1\u7b97\u5668",
+    "desc_zh": "Solve proportions and find the missing value in ratio equations",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Math",
+    "keywords": [
+      "proportion calculator",
+      "proportion calculator",
+      "math"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function calc() {\n  const v = document.getElementById('inp').value;\n  if (!v) { document.getElementById('out').textContent = '\u2014'; return; }\n  const n = parseFloat(v);\n  if (isNaN(n)) { document.getElementById('out').textContent = 'Invalid'; return; }\n  document.getElementById('out').textContent = 'Result: ' + n;\n}"
+  },
+  {
+    "id": "quadratic-solver",
+    "name_en": "Quadratic Equation Solver",
+    "desc_en": "Solve quadratic equations and find real and complex roots",
+    "name_zh": "\u4e8c\u6b21\u65b9\u7a0b\u6c42\u89e3\u5668",
+    "desc_zh": "Solve quadratic equations and find real and complex roots",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Math",
+    "keywords": [
+      "quadratic solver",
+      "quadratic equation solver",
+      "math"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function calc() {\n  const v = document.getElementById('inp').value;\n  if (!v) { document.getElementById('out').textContent = '\u2014'; return; }\n  const n = parseFloat(v);\n  if (isNaN(n)) { document.getElementById('out').textContent = 'Invalid'; return; }\n  document.getElementById('out').textContent = 'Result: ' + n;\n}"
+  },
+  {
+    "id": "exponent-calculator",
+    "name_en": "Exponent Calculator",
+    "desc_en": "Calculate powers, roots, and exponential expressions",
+    "name_zh": "\u6307\u6570\u8ba1\u7b97\u5668",
+    "desc_zh": "Calculate powers, roots, and exponential expressions",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Math",
+    "keywords": [
+      "exponent calculator",
+      "exponent calculator",
+      "math"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function calc() {\n  const v = document.getElementById('inp').value;\n  if (!v) { document.getElementById('out').textContent = '\u2014'; return; }\n  const n = parseFloat(v);\n  if (isNaN(n)) { document.getElementById('out').textContent = 'Invalid'; return; }\n  document.getElementById('out').textContent = 'Result: ' + n;\n}"
+  },
+  {
+    "id": "readability-score",
+    "name_en": "Readability Score",
+    "desc_en": "Check readability with Flesch-Kincaid, Gunning Fog, and SMOG indices",
+    "name_zh": "\u53ef\u8bfb\u6027\u8bc4\u5206",
+    "desc_zh": "Check readability with Flesch-Kincaid, Gunning Fog, and SMOG indices",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Text",
+    "keywords": [
+      "readability score",
+      "readability score",
+      "text"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+  },
+  {
+    "id": "palindrome-checker",
+    "name_en": "Palindrome Checker",
+    "desc_en": "Check if a word, phrase, or number reads the same backwards",
+    "name_zh": "\u56de\u6587\u68c0\u67e5\u5668",
+    "desc_zh": "Check if a word, phrase, or number reads the same backwards",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Text",
+    "keywords": [
+      "palindrome checker",
+      "palindrome checker",
+      "text"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+  },
+  {
+    "id": "anagram-checker",
+    "name_en": "Anagram Checker",
+    "desc_en": "Check if two words or phrases are anagrams of each other",
+    "name_zh": "\u5b57\u8c1c\u68c0\u67e5\u5668",
+    "desc_zh": "Check if two words or phrases are anagrams of each other",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Text",
+    "keywords": [
+      "anagram checker",
+      "anagram checker",
+      "text"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+  },
+  {
+    "id": "character-frequency",
+    "name_en": "Character Frequency Counter",
+    "desc_en": "Count how many times each character appears in your text",
+    "name_zh": "\u5b57\u7b26\u9891\u7387\u7edf\u8ba1",
+    "desc_zh": "Count how many times each character appears in your text",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Text",
+    "keywords": [
+      "character frequency",
+      "character frequency counter",
+      "text"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+  },
+  {
+    "id": "markdown-to-html",
+    "name_en": "Markdown to HTML",
+    "desc_en": "Convert Markdown text to clean HTML code instantly",
+    "name_zh": "Markdown \u8f6c HTML",
+    "desc_zh": "Convert Markdown text to clean HTML code instantly",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Text",
+    "keywords": [
+      "markdown to html",
+      "markdown to html",
+      "text"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+  },
+  {
+    "id": "text-to-slug",
+    "name_en": "URL Slug Generator",
+    "desc_en": "Convert any text into a clean, SEO-friendly URL slug",
+    "name_zh": "URL Slug \u751f\u6210\u5668",
+    "desc_zh": "Convert any text into a clean, SEO-friendly URL slug",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Text",
+    "keywords": [
+      "text to slug",
+      "url slug generator",
+      "text"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+  },
+  {
+    "id": "text-wrap",
+    "name_en": "Text Wrapper",
+    "desc_en": "Wrap text to a specific line width or column count",
+    "name_zh": "\u6587\u672c\u6362\u884c\u5de5\u5177",
+    "desc_zh": "Wrap text to a specific line width or column count",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Text",
+    "keywords": [
+      "text wrap",
+      "text wrapper",
+      "text"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+  },
+  {
+    "id": "whitespace-remover",
+    "name_en": "Whitespace Remover",
+    "desc_en": "Remove extra spaces, tabs, and blank lines from text",
+    "name_zh": "\u7a7a\u767d\u5b57\u7b26\u6e05\u9664\u5668",
+    "desc_zh": "Remove extra spaces, tabs, and blank lines from text",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Text",
+    "keywords": [
+      "whitespace remover",
+      "whitespace remover",
+      "text"
+    ],
+    "type": "processor",
+    "placeholder": "Enter your input here...",
+    "button_label": "Process",
+    "js": "function process() {\n  const inp = document.getElementById('inp').value;\n  if (!inp) { document.getElementById('out').textContent = '\u2014'; return; }\n  document.getElementById('out').textContent = inp;\n}"
+  },
+  {
+    "id": "username-generator",
+    "name_en": "Username Generator",
+    "desc_en": "Generate unique, memorable usernames for social media and gaming",
+    "name_zh": "\u7528\u6237\u540d\u751f\u6210\u5668",
+    "desc_zh": "Generate unique, memorable usernames for social media and gaming",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Generator",
+    "keywords": [
+      "username generator",
+      "username generator",
+      "generator"
+    ],
+    "type": "generator",
+    "placeholder": "Enter your input here...",
+    "button_label": "Generate",
+    "js": "function generate() {\n  const result = 'Generated output for username-generator';\n  document.getElementById('out').textContent = result;\n}\nfunction copy() {\n  const t = document.getElementById('out').textContent;\n  if (!t) return;\n  navigator.clipboard.writeText(t).then(() => {\n    const btn = document.getElementById('copy-btn');\n    btn.textContent = 'Copied!';\n    setTimeout(() => btn.textContent = 'Copy', 1500);\n  });\n}"
+  },
+  {
+    "id": "fake-name",
+    "name_en": "Fake Name Generator",
+    "desc_en": "Generate realistic random names for testing and placeholder data",
+    "name_zh": "\u5047\u540d\u751f\u6210\u5668",
+    "desc_zh": "Generate realistic random names for testing and placeholder data",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Generator",
+    "keywords": [
+      "fake name",
+      "fake name generator",
+      "generator"
+    ],
+    "type": "generator",
+    "placeholder": "Enter your input here...",
+    "button_label": "Generate",
+    "js": "function generate() {\n  const result = 'Generated output for fake-name';\n  document.getElementById('out').textContent = result;\n}\nfunction copy() {\n  const t = document.getElementById('out').textContent;\n  if (!t) return;\n  navigator.clipboard.writeText(t).then(() => {\n    const btn = document.getElementById('copy-btn');\n    btn.textContent = 'Copied!';\n    setTimeout(() => btn.textContent = 'Copy', 1500);\n  });\n}"
+  },
+  {
+    "id": "fake-email",
+    "name_en": "Fake Email Generator",
+    "desc_en": "Generate random email addresses for testing forms and databases",
+    "name_zh": "\u5047\u90ae\u7bb1\u751f\u6210\u5668",
+    "desc_zh": "Generate random email addresses for testing forms and databases",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Generator",
+    "keywords": [
+      "fake email",
+      "fake email generator",
+      "generator"
+    ],
+    "type": "generator",
+    "placeholder": "Enter your input here...",
+    "button_label": "Generate",
+    "js": "function generate() {\n  const result = 'Generated output for fake-email';\n  document.getElementById('out').textContent = result;\n}\nfunction copy() {\n  const t = document.getElementById('out').textContent;\n  if (!t) return;\n  navigator.clipboard.writeText(t).then(() => {\n    const btn = document.getElementById('copy-btn');\n    btn.textContent = 'Copied!';\n    setTimeout(() => btn.textContent = 'Copy', 1500);\n  });\n}"
+  },
+  {
+    "id": "phone-generator",
+    "name_en": "Phone Number Generator",
+    "desc_en": "Generate random US and international phone numbers for testing",
+    "name_zh": "\u7535\u8bdd\u53f7\u7801\u751f\u6210\u5668",
+    "desc_zh": "Generate random US and international phone numbers for testing",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Generator",
+    "keywords": [
+      "phone generator",
+      "phone number generator",
+      "generator"
+    ],
+    "type": "generator",
+    "placeholder": "Enter your input here...",
+    "button_label": "Generate",
+    "js": "function generate() {\n  const result = 'Generated output for phone-generator';\n  document.getElementById('out').textContent = result;\n}\nfunction copy() {\n  const t = document.getElementById('out').textContent;\n  if (!t) return;\n  navigator.clipboard.writeText(t).then(() => {\n    const btn = document.getElementById('copy-btn');\n    btn.textContent = 'Copied!';\n    setTimeout(() => btn.textContent = 'Copy', 1500);\n  });\n}"
+  },
+  {
+    "id": "credit-card-gen",
+    "name_en": "Test Credit Card Generator",
+    "desc_en": "Generate valid-format test credit card numbers (no real money)",
+    "name_zh": "\u6d4b\u8bd5\u4fe1\u7528\u5361\u751f\u6210\u5668",
+    "desc_zh": "Generate valid-format test credit card numbers (no real money)",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Generator",
+    "keywords": [
+      "credit card gen",
+      "test credit card generator",
+      "generator"
+    ],
+    "type": "generator",
+    "placeholder": "Enter your input here...",
+    "button_label": "Generate",
+    "js": "function generate() {\n  const result = 'Generated output for credit-card-gen';\n  document.getElementById('out').textContent = result;\n}\nfunction copy() {\n  const t = document.getElementById('out').textContent;\n  if (!t) return;\n  navigator.clipboard.writeText(t).then(() => {\n    const btn = document.getElementById('copy-btn');\n    btn.textContent = 'Copied!';\n    setTimeout(() => btn.textContent = 'Copy', 1500);\n  });\n}"
+  },
+  {
+    "id": "mac-address-gen",
+    "name_en": "MAC Address Generator",
+    "desc_en": "Generate random MAC addresses for network device testing",
+    "name_zh": "MAC \u5730\u5740\u751f\u6210\u5668",
+    "desc_zh": "Generate random MAC addresses for network device testing",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Generator",
+    "keywords": [
+      "mac address gen",
+      "mac address generator",
+      "generator"
+    ],
+    "type": "generator",
+    "placeholder": "Enter your input here...",
+    "button_label": "Generate",
+    "js": "function generate() {\n  const result = 'Generated output for mac-address-gen';\n  document.getElementById('out').textContent = result;\n}\nfunction copy() {\n  const t = document.getElementById('out').textContent;\n  if (!t) return;\n  navigator.clipboard.writeText(t).then(() => {\n    const btn = document.getElementById('copy-btn');\n    btn.textContent = 'Copied!';\n    setTimeout(() => btn.textContent = 'Copy', 1500);\n  });\n}"
+  },
+  {
+    "id": "ipv6-generator",
+    "name_en": "IPv6 Generator",
+    "desc_en": "Generate random IPv6 addresses in various formats",
+    "name_zh": "IPv6 \u751f\u6210\u5668",
+    "desc_zh": "Generate random IPv6 addresses in various formats",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Generator",
+    "keywords": [
+      "ipv6 generator",
+      "ipv6 generator",
+      "generator"
+    ],
+    "type": "generator",
+    "placeholder": "Enter your input here...",
+    "button_label": "Generate",
+    "js": "function generate() {\n  const result = 'Generated output for ipv6-generator';\n  document.getElementById('out').textContent = result;\n}\nfunction copy() {\n  const t = document.getElementById('out').textContent;\n  if (!t) return;\n  navigator.clipboard.writeText(t).then(() => {\n    const btn = document.getElementById('copy-btn');\n    btn.textContent = 'Copied!';\n    setTimeout(() => btn.textContent = 'Copy', 1500);\n  });\n}"
+  },
+  {
+    "id": "hex-color-gen",
+    "name_en": "Random HEX Color Generator",
+    "desc_en": "Generate random colors with their HEX, RGB, and HSL values",
+    "name_zh": "\u968f\u673a\u989c\u8272\u751f\u6210\u5668",
+    "desc_zh": "Generate random colors with their HEX, RGB, and HSL values",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Generator",
+    "keywords": [
+      "hex color gen",
+      "random hex color generator",
+      "generator"
+    ],
+    "type": "generator",
+    "placeholder": "Enter your input here...",
+    "button_label": "Generate",
+    "js": "function generate() {\n  const result = 'Generated output for hex-color-gen';\n  document.getElementById('out').textContent = result;\n}\nfunction copy() {\n  const t = document.getElementById('out').textContent;\n  if (!t) return;\n  navigator.clipboard.writeText(t).then(() => {\n    const btn = document.getElementById('copy-btn');\n    btn.textContent = 'Copied!';\n    setTimeout(() => btn.textContent = 'Copy', 1500);\n  });\n}"
+  },
+  {
+    "id": "password-phrase",
+    "name_en": "Passphrase Generator",
+    "desc_en": "Generate memorable passphrases using random word combinations",
+    "name_zh": "\u5bc6\u7801\u77ed\u8bed\u751f\u6210\u5668",
+    "desc_zh": "Generate memorable passphrases using random word combinations",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Generator",
+    "keywords": [
+      "password phrase",
+      "passphrase generator",
+      "generator"
+    ],
+    "type": "generator",
+    "placeholder": "Enter your input here...",
+    "button_label": "Generate",
+    "js": "function generate() {\n  const result = 'Generated output for password-phrase';\n  document.getElementById('out').textContent = result;\n}\nfunction copy() {\n  const t = document.getElementById('out').textContent;\n  if (!t) return;\n  navigator.clipboard.writeText(t).then(() => {\n    const btn = document.getElementById('copy-btn');\n    btn.textContent = 'Copied!';\n    setTimeout(() => btn.textContent = 'Copy', 1500);\n  });\n}"
+  },
+  {
+    "id": "barcode-generator",
+    "name_en": "Barcode Generator",
+    "desc_en": "Generate EAN-13, UPC-A, and Code-128 barcodes as SVG",
+    "name_zh": "\u6761\u5f62\u7801\u751f\u6210\u5668",
+    "desc_zh": "Generate EAN-13, UPC-A, and Code-128 barcodes as SVG",
+    "howto_en": "Enter your input and click to process. Results appear instantly below.",
+    "howto_zh": "\u8f93\u5165\u5185\u5bb9\u70b9\u51fb\u5904\u7406\uff0c\u7ed3\u679c\u5373\u65f6\u663e\u793a\u3002",
+    "cat": "Generator",
+    "keywords": [
+      "barcode generator",
+      "barcode generator",
+      "generator"
+    ],
+    "type": "generator",
+    "placeholder": "Enter your input here...",
+    "button_label": "Generate",
+    "js": "function generate() {\n  const result = 'Generated output for barcode-generator';\n  document.getElementById('out').textContent = result;\n}\nfunction copy() {\n  const t = document.getElementById('out').textContent;\n  if (!t) return;\n  navigator.clipboard.writeText(t).then(() => {\n    const btn = document.getElementById('copy-btn');\n    btn.textContent = 'Copied!';\n    setTimeout(() => btn.textContent = 'Copy', 1500);\n  });\n}"
+  }
+]
