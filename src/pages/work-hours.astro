@@ -23,16 +23,18 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process(){
-  const inp=document.getElementById('inp').value.trim();
-  if(!inp){document.getElementById('out').textContent='Enter input above';return;}
-  document.getElementById('out').textContent='Processing: '+inp.substring(0,100);
+function process() {
+  const v=document.getElementById('inp').value.trim().split(/\n/);
+  if(v.length<2){o('Line 1: HH:MM - HH:MM\nLine 2+: breaks (HH:MM-HH:MM)\nExample:\n09:00 - 17:00\n12:00-13:00');return;}
+  const parse=t=>{const[m,h]=t.split(':');return parseInt(m)*60+parseInt(h);};
+  const work=v[0].split('-').map(t=>parse(t.trim()));
+  let total=work[1]-work[0];
+  for(let i=1;i<v.length;i++){const br=v[i].split('-').map(t=>parse(t.trim()));total-=br[1]-br[0];}
+  const h=Math.floor(total/60),m=total%60;
+  o('Work time: '+h+'h '+(m>0?m+'m':'')+' ('+(total/60).toFixed(2)+' hours)');
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';if(timer)clearInterval(timer);}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

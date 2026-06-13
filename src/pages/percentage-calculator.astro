@@ -18,29 +18,15 @@ import Button from '../components/Button.astro';
     <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
   </div>
 <script is:inline>
-function generate() {
-  const p1 = parseFloat(document.getElementById('p1').value) || 0;
-  const n1 = parseFloat(document.getElementById('n1').value) || 0;
-  const n2 = parseFloat(document.getElementById('n2').value) || 0;
-  const n3 = parseFloat(document.getElementById('n3').value) || 0;
-  const from = parseFloat(document.getElementById('from').value) || 0;
-  const to = parseFloat(document.getElementById('to').value) || 0;
-  let r = '';
-  r += `${p1}% of ${n1} = <b>${(p1/100*n1).toFixed(2)}</b>\n`;
-  if (n3) r += `${n2} is <b>${((n2/n3)*100).toFixed(2)}%</b> of ${n3}\n`;
-  if (from && to) { const change = ((to-from)/from*100); r += `From ${from} to ${to}: <b>${change > 0 ? '+' : ''}${change.toFixed(2)}%</b>\n`; }
-  document.getElementById('result').innerHTML = r.replace(/\n/g, '<br/>');
+function process() {
+  const v=document.getElementById('inp').value.trim().split(/[\s,]+/).map(Number);
+  if(v.length<2||v.some(isNaN)){o('Format: value percentage\nExample: 200 15 → 15% of 200 = 30');return;}
+  const[value,pct]=v;
+  const result=value*pct/100;
+  o(pct+'% of '+value+' = '+result+'\n'+value+' + '+pct+'% = '+(value+result)+'\n'+value+' - '+pct+'% = '+(value-result));
 }
-
-function copyResult() {
-  const text = document.getElementById('result').textContent;
-  if (!text) return;
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('[onclick="copyResult()"]');
-    btn.textContent = 'Copied!';
-    setTimeout(() => btn.textContent = 'Copy', 2000);
-  });
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
 </script>
 <div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Percentage Calculator?</h2>

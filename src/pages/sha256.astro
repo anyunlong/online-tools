@@ -15,12 +15,15 @@ import Textarea from '../components/Textarea.astro';
     <div id="result" class="text-sm font-mono text-brand-400 break-all select-all">—</div>
   </div>
 <script is:inline>
-async function hash() {
-  var t = document.getElementById('inp').value;
-  if (!t) { document.getElementById('result').textContent = '—'; return; }
-  var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(t));
-  document.getElementById('result').textContent = Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0');}).join('').toUpperCase();
+async function process() {
+  const t=document.getElementById('inp').value;
+  if(!t){o('Enter text to hash');return;}
+  const e=new TextEncoder().encode(t);
+  const h=await crypto.subtle.digest('SHA-256',e);
+  o('SHA-256: '+Array.from(new Uint8Array(h)).map(b=>b.toString(16).padStart(2,'0')).join(''));
 }
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';}
 </script><div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is SHA256 Hashing?</h2>
   <p class="mb-3">SHA256 (Secure Hash Algorithm 256-bit) generates a 64-character hexadecimal hash that uniquely represents any input data. It's a one-way cryptographic function — you can't reverse a hash back to the original input — making it ideal for secure password storage and data integrity verification.</p>

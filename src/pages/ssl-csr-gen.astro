@@ -18,18 +18,13 @@ import Button from '../components/Button.astro';
     <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
   </div>
 <script is:inline>
-function generate(){
-  document.getElementById('result').textContent='Generated output — customize me!';
+function process() {
+  const v=document.getElementById('inp').value.trim().split(/\n/);
+  if(v.length<2){o('Format (each on own line):\nDomain (e.g. example.com)\nOrganization\nCity\nState\nCountry (2-letter)');return;}
+  o('CSR fields for: '+v[0]+'\n\n⚠ Browser-based CSR generation requires Web Crypto API.\nUse OpenSSL for production CSR:\n\nopenssl req -new -newkey rsa:2048 -nodes -keyout '+v[0]+'.key -out '+v[0]+'.csr');
 }
-function copyResult() {
-  const text = document.getElementById('result').textContent;
-  if (!text) return;
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('[onclick="copyResult()"]');
-    btn.textContent = 'Copied!';
-    setTimeout(() => btn.textContent = 'Copy', 2000);
-  });
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';if(timer)clearInterval(timer);}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

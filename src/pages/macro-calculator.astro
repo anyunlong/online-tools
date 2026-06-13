@@ -24,16 +24,15 @@ import Button from '../components/Button.astro';
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
 function process() {
-  const v=document.getElementById('inp').value.split(/[,\s]+/).map(Number);
-  if(v.length<2||v.some(isNaN)){document.getElementById('out').textContent='Format: weight_kg, goal (1=lose 2=maintain 3=gain)';return;}
-  const m=[[2.2,1.8,0.8],[1.8,1.2,0.8],[2.0,1.0,1.2]][Math.min(3,Math.max(1,v[1]||2))-1];
-  document.getElementById('out').innerHTML='<div class="grid grid-cols-3 gap-3"><div class="text-center"><div class="text-lg font-bold text-blue-400">'+Math.round(v[0]*m[0])+'g</div><div class="text-xs text-surface-400">Protein</div></div><div class="text-center"><div class="text-lg font-bold text-yellow-400">'+Math.round(v[0]*m[1])+'g</div><div class="text-xs text-surface-400">Carbs</div></div><div class="text-center"><div class="text-lg font-bold text-red-400">'+Math.round(v[0]*m[2])+'g</div><div class="text-xs text-surface-400">Fat</div></div></div>';
+  const v=document.getElementById('inp').value.trim().split(/[\s,]+/).map(Number);
+  if(v.length<4||v.some(isNaN)){o('Format: weight_kg height_cm age gender(M/F)\nExample: 70 175 25 M');return;}
+  const[w,h,a,g]=v;const isM=g===1||(typeof g==='string'&&g.toUpperCase()==='M');
+  const bmr=isM?10*w+6.25*h-5*a+5:10*w+6.25*h-5*a-161;
+  const tdee=bmr*1.55;
+  o('BMR: '+bmr.toFixed(0)+' cal/day\nTDEE (moderate): '+tdee.toFixed(0)+' cal/day\n\nMacros (30/35/35):\nProtein: '+(tdee*0.3/4).toFixed(0)+'g\nCarbs: '+(tdee*0.35/4).toFixed(0)+'g\nFat: '+(tdee*0.35/9).toFixed(0)+'g');
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

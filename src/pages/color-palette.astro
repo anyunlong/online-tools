@@ -18,18 +18,26 @@ import Button from '../components/Button.astro';
     <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
   </div>
 <script is:inline>
-function generate(){
-  document.getElementById('result').textContent='Generated output — customize me!';
-}
-function copyResult() {
-  const text = document.getElementById('result').textContent;
-  if (!text) return;
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('[onclick="copyResult()"]');
-    btn.textContent = 'Copied!';
-    setTimeout(() => btn.textContent = 'Copy', 2000);
+function generate() {
+  const hue=Math.floor(Math.random()*360);
+  const schemes={
+    analogous:[0,30,60,-30,-60],
+    triadic:[0,120,240],
+    tetradic:[0,90,180,270],
+    mono:[0,0,0]
+  };
+  const scheme=schemes[Object.keys(schemes)[Math.floor(Math.random()*4)]];
+  const colors=scheme.map(offset=>(hue+offset+360)%360).map(h=>{
+    const s=40+Math.floor(Math.random()*30);
+    const l=45+Math.floor(Math.random()*20);
+    return'#'+hslToHex(h,s,l);
   });
+  document.getElementById('out').innerHTML=colors.map(c=>'<div style="display:inline-block;width:60px;height:60px;background:'+c+';margin:4px;border-radius:8px" title="'+c+'"></div>').join('')+'<br>'+colors.join(' ');
+  document.getElementById('out').style.display='block';
 }
+function hslToHex(h,s,l){s/=100;l/=100;const a=s*Math.min(l,1-l);const f=n=>{const k=(n+h/30)%12;return Math.round((l-a*Math.max(Math.min(k-3,9-k,1),-1))*255).toString(16).padStart(2,'0')};return f(0)+f(8)+f(4);}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').innerHTML='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

@@ -23,16 +23,22 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
+const units="Kilograms (kg) | Grams (g) | Pounds (lb) | Ounces (oz) | Milligrams (mg) | Tons (t)";
+document.getElementById('inp').placeholder='Format: value from_unit to_unit\nExample: 100 C F\n\n'+units;
+
 function process() {
   const v=document.getElementById('inp').value.trim().split(/\s+/);
-  if(v.length<3){document.getElementById('out').textContent='Format: value from_unit to_unit. Units: kg,g,lb,oz';return;}
-  document.getElementById('out').textContent='Converter ready - enter value from_unit to_unit';
+  if(v.length<3){o('Format: value from_unit to_unit\nExample: 100 C F');return;}
+  const val=parseFloat(v[0]);const from=v[1]?.toLowerCase();const to=v[2]?.toLowerCase();
+  if(isNaN(val)){o('Invalid number');return;}
+  const toKg={kg:1,g:0.001,lb:0.453592,oz:0.0283495,mg:0.000001,t:1000};
+  const fromKg={kg:1,g:1000,lb:2.20462,oz:35.274,mg:1000000,t:0.001};
+  if(!(from in toKg)){o('Unknown from unit');return;}
+  const kg=val*toKg[from];const result=kg*fromKg[to];
+  o(val+' '+from+' = '+result.toFixed(4)+' '+to);
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

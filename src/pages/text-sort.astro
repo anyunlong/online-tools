@@ -23,28 +23,15 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-let sortMode = 'asc';
 function process() {
-  const text = document.getElementById('inp').value;
-  if (!text) return;
-  let lines = text.split('\n').filter(l => l.trim());
-  if (document.getElementById('rmdup')?.checked) lines = [...new Set(lines)];
-  if (sortMode === 'asc') lines.sort((a,b) => a.localeCompare(b));
-  else if (sortMode === 'desc') lines.sort((a,b) => b.localeCompare(a));
-  else lines.sort(() => Math.random() - 0.5);
-  document.getElementById('out').textContent = lines.join('\n');
-  document.getElementById('msg').textContent = `${lines.length} lines sorted`;
-  const btn = document.querySelector('[onclick="process()"]');
-  if (sortMode === 'asc') { sortMode = 'desc'; btn.textContent = 'Sort Z-A'; }
-  else if (sortMode === 'desc') { sortMode = 'random'; btn.textContent = 'Shuffle'; }
-  else { sortMode = 'asc'; btn.textContent = 'Sort A-Z'; }
+  const lines=document.getElementById('inp').value.split(/\n/).filter(l=>l.trim());
+  const dedup=document.getElementById('dedup')?.checked;
+  let sorted=lines.sort((a,b)=>a.localeCompare(b));
+  if(dedup) sorted=[...new Set(sorted)];
+  o(sorted.join('\n'));
 }
-
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
 </script>
 <div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Text Line Sorter?</h2>

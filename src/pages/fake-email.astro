@@ -18,17 +18,19 @@ import Button from '../components/Button.astro';
     <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
   </div>
 <script is:inline>
-function generate(){
-  document.getElementById('result').textContent='Generated output — customize me!';
+const domains=['gmail.com','outlook.com','yahoo.com','proton.me','icloud.com','mail.com','zoho.com','fastmail.com','tutanota.com','live.com'];
+function generate() {
+  const r=arr=>arr[Math.floor(Math.random()*arr.length)];
+  const names=['john.doe','jane.smith','alex.wilson','sam.brown','taylor.jones','morgan.lee','casey.chen','riley.park','jordan.kim','avery.davis'];
+  const n=r(names)+(Math.floor(Math.random()*900)+100);
+  document.getElementById('result').value=n+'@'+r(domains);
 }
 function copyResult() {
-  const text = document.getElementById('result').textContent;
-  if (!text) return;
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('[onclick="copyResult()"]');
-    btn.textContent = 'Copied!';
-    setTimeout(() => btn.textContent = 'Copy', 2000);
-  });
+  const el=document.getElementById('result');
+  if(!el||!el.value) return;
+  el.select();document.execCommand('copy');
+  document.getElementById('msg').textContent='Copied!';
+  setTimeout(()=>document.getElementById('msg').textContent='',2000);
 }
 </script>
 <slot name="info" slot="info">

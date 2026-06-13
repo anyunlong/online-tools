@@ -23,17 +23,18 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process(){
-  const v=document.getElementById('inp').value.split(/[,\s]+/).map(Number);
-  if(v.length<2||v.some(isNaN)){document.getElementById('out').textContent='Format: base, exponent';return;}
-  const r=Math.pow(v[0],v[1]);
-  document.getElementById('out').innerHTML='<div class="text-xl font-bold text-brand-400">'+v[0]+'<sup>'+v[1]+'</sup> = '+r.toFixed(6)+'</div>';
+function process() {
+  const v=document.getElementById('inp').value.trim().split(/[\s,]+/).map(Number);
+  if(v.length<2||v.some(isNaN)){o('Format: base exponent\nExample: 2 10 → 1024');return;}
+  const result=Math.pow(v[0],v[1]);
+  if(!isFinite(result)){o('Result is too large or infinite');return;}
+  if(Number.isInteger(v[0])&&Number.isInteger(v[1])&&v[1]>=0&&result<1e15)
+    o(v[0]+'^'+v[1]+' = '+result.toLocaleString('fullwide',{useGrouping:false}));
+  else
+    o(v[0]+'^'+v[1]+' = '+result.toExponential(6)+' ('+result.toLocaleString('fullwide',{maximumFractionDigits:10})+')');
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

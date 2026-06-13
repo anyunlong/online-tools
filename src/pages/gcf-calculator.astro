@@ -23,17 +23,16 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function gcf(a,b){while(b){[a,b]=[b,a%b]}return a}
-function process(){
-  const n=document.getElementById('inp').value.split(/[,\s]+/).map(Number).filter(x=>!isNaN(x)&&x>0);
-  if(n.length<2){document.getElementById('out').textContent='Enter at least 2 numbers';return;}
-  document.getElementById('out').innerHTML='<div class="text-xl font-bold text-brand-400">GCF = '+n.reduce(gcf)+'</div>';
+function gcd(a,b){return b===0?a:gcd(b,a%b);}
+function process() {
+  const v=document.getElementById('inp').value.trim().split(/[,\s]+/).map(Number).filter(n=>!isNaN(n));
+  if(v.length<2){o('Enter at least 2 numbers separated by commas or spaces');return;}
+  let result=v[0];
+  for(let i=1;i<v.length;i++) result=gcd(result,v[i]);
+  o('GCF of ['+v.join(', ')+'] = '+result);
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

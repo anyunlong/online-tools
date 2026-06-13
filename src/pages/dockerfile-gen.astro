@@ -18,17 +18,22 @@ import Button from '../components/Button.astro';
     <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
   </div>
 <script is:inline>
-function generate(){
-  document.getElementById('result').textContent='Generated output — customize me!';
+function generate() {
+  const lang=(document.getElementById('lang')?.value||'node').toLowerCase();
+  const templates={
+    node:'FROM node:20-alpine\nWORKDIR /app\nCOPY package*.json ./\nRUN npm ci --only=production\nCOPY . .\nEXPOSE 3000\nCMD ["node","index.js"]',
+    python:'FROM python:3.12-slim\nWORKDIR /app\nCOPY requirements.txt .\nRUN pip install --no-cache-dir -r requirements.txt\nCOPY . .\nEXPOSE 8000\nCMD ["python","app.py"]',
+    go:'FROM golang:1.21-alpine AS builder\nWORKDIR /app\nCOPY go.mod go.sum ./\nRUN go mod download\nCOPY . .\nRUN go build -o main .\nFROM alpine:latest\nCOPY --from=builder /app/main .\nEXPOSE 8080\nCMD ["./main"]',
+    nginx:'FROM nginx:alpine\nCOPY . /usr/share/nginx/html\nEXPOSE 80\nCMD ["nginx","-g","daemon off;"]'
+  };
+  document.getElementById('result').value=templates[lang]||templates.node;
 }
 function copyResult() {
-  const text = document.getElementById('result').textContent;
-  if (!text) return;
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('[onclick="copyResult()"]');
-    btn.textContent = 'Copied!';
-    setTimeout(() => btn.textContent = 'Copy', 2000);
-  });
+  const el=document.getElementById('result');
+  if(!el||!el.value) return;
+  el.select();document.execCommand('copy');
+  document.getElementById('msg').textContent='Copied!';
+  setTimeout(()=>document.getElementById('msg').textContent='',2000);
 }
 </script>
 <slot name="info" slot="info">

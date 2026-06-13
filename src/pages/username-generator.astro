@@ -18,17 +18,26 @@ import Button from '../components/Button.astro';
     <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
   </div>
 <script is:inline>
-function generate(){
-  document.getElementById('result').textContent='Generated output — customize me!';
+function generate() {
+  const adj=['swift','brave','cool','epic','keen','lone','mega','nova','pale','rare','sage','tiny','wild','zeal','bold','calm','dark','fair','glow','hype'];
+  const noun=['wolf','hawk','fox','bear','lion','deer','owl','lynx','orca','puma','dove','crow','frog','seal','wren','crab','ray','elk','bat','eel'];
+  const r=arr=>arr[Math.floor(Math.random()*arr.length)];
+  const n=Math.floor(Math.random()*9000)+1000;
+  const styles=[
+    r(adj)+r(noun)+n,
+    r(adj)+'_'+r(noun),
+    r(noun)+n,
+    'the_'+r(adj)+'_'+r(noun),
+    r(adj)+'.'+r(noun)+n,
+  ];
+  document.getElementById('result').value=styles[Math.floor(Math.random()*styles.length)];
 }
 function copyResult() {
-  const text = document.getElementById('result').textContent;
-  if (!text) return;
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('[onclick="copyResult()"]');
-    btn.textContent = 'Copied!';
-    setTimeout(() => btn.textContent = 'Copy', 2000);
-  });
+  const el=document.getElementById('result');
+  if(!el||!el.value) return;
+  el.select();document.execCommand('copy');
+  document.getElementById('msg').textContent='Copied!';
+  setTimeout(()=>document.getElementById('msg').textContent='',2000);
 }
 </script>
 <slot name="info" slot="info">

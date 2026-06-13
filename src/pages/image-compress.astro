@@ -24,24 +24,30 @@ import ToolLayout from '../components/ToolLayout.astro';
     <img id="preview" class="max-w-full rounded-xl mt-3 hidden shadow-lg" />
   </div>
 <script is:inline>
-async function compress() {
-  var f = document.getElementById('file').files[0];
-  if (!f) return;
-  document.getElementById('orig-size').textContent = (f.size / 1024).toFixed(1) + ' KB';
-  var img = await createImageBitmap(f);
-  var c = document.getElementById('canvas');
-  c.width = img.width;
-  c.height = img.height;
-  c.getContext('2d').drawImage(img, 0, 0);
-  c.toBlob(function(b) {
-    document.getElementById('new-size').textContent = (b.size / 1024).toFixed(1) + ' KB';
-    document.getElementById('result-area').classList.remove('hidden');
-    var u = URL.createObjectURL(b);
-    var p = document.getElementById('preview');
-    p.src = u;
-    p.classList.remove('hidden');
-  }, 'image/webp', 0.6);
+function process() {
+  document.getElementById('out').innerHTML='<input type="file" id="imgFile" accept="image/*" onchange="compressImg()" style="color:#fff"><br><label style="font-size:0.85em">Quality: <input id="imgQ" value="60" style="width:60px;background:#1a1a2e;color:#fff;border:1px solid #333;padding:4px">%</label><div id="compressResult" style="margin-top:10px"></div>';
 }
+function compressImg() {
+  const file=document.getElementById('imgFile').files[0];
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=function(e){
+    const img=new Image();
+    img.onload=function(){
+      const canvas=document.createElement('canvas');
+      canvas.width=img.width;canvas.height=img.height;
+      const ctx=canvas.getContext('2d');ctx.drawImage(img,0,0);
+      const q=parseInt(document.getElementById('imgQ').value)/100||0.6;
+      const dataUrl=canvas.toDataURL('image/jpeg',q);
+      const sizeBytes=Math.round(dataUrl.length*3/4);
+      document.getElementById('compressResult').innerHTML='<p>Original: '+(file.size/1024).toFixed(1)+' KB</p><p>Compressed: '+(sizeBytes/1024).toFixed(1)+' KB ('+((1-sizeBytes/file.size)*100).toFixed(0)+'% smaller)</p><img src="'+dataUrl+'" style="max-width:100%;border-radius:8px"><br><a href="'+dataUrl+'" download="compressed.jpg" style="color:#3B82F6;font-size:0.85em">⬇ Download</a>';
+    };
+    img.src=e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').innerHTML='';}
 </script><div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is an Image Compressor?</h2>
   <p class="mb-3">An image compressor reduces the file size of PNG, JPEG, and WebP images by adjusting quality settings — all done directly in your browser. Smaller images load faster on websites, take up less storage space, and are easier to share.</p>

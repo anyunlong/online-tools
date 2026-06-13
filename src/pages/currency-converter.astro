@@ -23,19 +23,18 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-const R={USD:1,EUR:0.92,GBP:0.79,JPY:149.5,CNY:7.24,CAD:1.36,AUD:1.53,INR:83.1};
+const rates={USD:1,EUR:0.92,GBP:0.79,JPY:149.5,CNY:7.24,INR:83.1,CAD:1.36,AUD:1.52,CHF:0.88,MXN:17.1,BRL:4.97,KRW:1320,SGD:1.34,HKD:7.82};
 function process() {
   const v=document.getElementById('inp').value.trim().split(/\s+/);
-  if(v.length<2){document.getElementById('out').textContent='Format: amount FROM TO (e.g. 100 USD EUR)';return;}
-  const amt=parseFloat(v[0]),from=v[1].toUpperCase(),to=(v[2]||'USD').toUpperCase();
-  if(isNaN(amt)||!R[from]||!R[to]){document.getElementById('out').textContent='Invalid. Try: 100 USD EUR';return;}
-  document.getElementById('out').innerHTML='<span class="text-xl font-bold text-brand-400">'+(amt*R[to]/R[from]).toFixed(2)+'</span> <span class="text-surface-400">'+to+'</span>';
+  if(v.length<3){o('Format: amount from_currency to_currency\nExample: 100 USD EUR\nAvailable: '+Object.keys(rates).join(', '));return;}
+  const val=parseFloat(v[0]),from=v[1].toUpperCase(),to=v[2].toUpperCase();
+  if(isNaN(val)||!rates[from]||!rates[to]){o('Invalid. Available currencies: '+Object.keys(rates).join(', '));return;}
+  const usd=val/rates[from];
+  const result=usd*rates[to];
+  o(val+' '+from+' = '+result.toFixed(2)+' '+to+'\n(Reference rates, not live)');
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

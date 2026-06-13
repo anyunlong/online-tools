@@ -23,16 +23,22 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process(){
-  const inp=document.getElementById('inp').value.trim();
-  if(!inp){document.getElementById('out').textContent='Enter input above';return;}
-  document.getElementById('out').textContent='Processing: '+inp.substring(0,100);
+function process() {
+  const html=document.getElementById('inp').value;
+  const headings=html.match(/<h[1-6][^>]*>[^<]*<\/h[1-6]>/gi)||[];
+  if(!headings.length){o('No headings found. Paste HTML content to analyze.');return;}
+  let r='Heading Structure:\n';
+  headings.forEach(h=>{
+    const lvl=h.match(/<h([1-6])/i)[1];
+    const txt=h.replace(/<[^>]+>/g,'');
+    r+='  '+'  '.repeat(parseInt(lvl)-1)+'H'+lvl+': '+txt+'\n';
+  });
+  const h1s=headings.filter(h=>/h1/i.test(h)).length;
+  r+='\n'+headings.length+' headings total'+(h1s!==1?' ⚠ '+h1s+' H1 tags (should be exactly 1)':' ✓ Single H1');
+  o(r);
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').innerHTML='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

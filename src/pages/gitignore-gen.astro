@@ -18,17 +18,22 @@ import Button from '../components/Button.astro';
     <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
   </div>
 <script is:inline>
-function generate(){
-  document.getElementById('result').textContent='Generated output — customize me!';
+function generate() {
+  const lang=(document.getElementById('lang')?.value||'node').toLowerCase();
+  const ignores={
+    node:'node_modules/\nnpm-debug.log*\n.env\n.env.*\ndist/\nbuild/\n.DS_Store\n*.log\ncoverage/\n.nyc_output/\ntmp/\n.vscode/',
+    python:'__pycache__/\n*.py[cod]\n*.so\n.env\n.env.*\nvenv/\n.venv/\ndist/\nbuild/\n*.egg-info/\n.pytest_cache/\n.DS_Store\n*.log',
+    java:'target/\n*.class\n*.jar\n*.war\n.gradle/\nbuild/\n.idea/\n*.iml\n.classpath\n.project\n.settings/\nbin/\n.DS_Store',
+    go:'*.exe\n*.exe~\n*.dll\n*.so\n*.dylib\n*.test\n*.out\nvendor/\n.env\n.env.*\n.DS_Store'
+  };
+  document.getElementById('result').value=ignores[lang]||ignores.node;
 }
 function copyResult() {
-  const text = document.getElementById('result').textContent;
-  if (!text) return;
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('[onclick="copyResult()"]');
-    btn.textContent = 'Copied!';
-    setTimeout(() => btn.textContent = 'Copy', 2000);
-  });
+  const el=document.getElementById('result');
+  if(!el||!el.value) return;
+  el.select();document.execCommand('copy');
+  document.getElementById('msg').textContent='Copied!';
+  setTimeout(()=>document.getElementById('msg').textContent='',2000);
 }
 </script>
 <slot name="info" slot="info">

@@ -18,17 +18,19 @@ import Button from '../components/Button.astro';
     <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
   </div>
 <script is:inline>
-function generate(){
-  document.getElementById('result').textContent='Generated output — customize me!';
+const protagonists=['A retired spy','An AI robot','A time traveler','A street magician','A chef','A detective','A librarian','A hacker'];
+const settings=['in a cyberpunk city','on a deserted island','in a parallel universe','during a zombie apocalypse','in ancient Rome','aboard a spaceship','in a haunted mansion','in a flooded world'];
+const twists=['discovers a hidden truth','must save the world','finds an unlikely ally','uncovers a conspiracy','falls through a portal','receives a mysterious letter','learns they are the chosen one','must make an impossible choice'];
+function generate() {
+  const r=arr=>arr[Math.floor(Math.random()*arr.length)];
+  document.getElementById('result').value=r(protagonists)+' '+r(settings)+' '+r(twists)+'.';
 }
 function copyResult() {
-  const text = document.getElementById('result').textContent;
-  if (!text) return;
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('[onclick="copyResult()"]');
-    btn.textContent = 'Copied!';
-    setTimeout(() => btn.textContent = 'Copy', 2000);
-  });
+  const el=document.getElementById('result');
+  if(!el||!el.value) return;
+  el.select();document.execCommand('copy');
+  document.getElementById('msg').textContent='Copied!';
+  setTimeout(()=>document.getElementById('msg').textContent='',2000);
 }
 </script>
 <slot name="info" slot="info">

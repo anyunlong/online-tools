@@ -18,40 +18,15 @@ import Button from '../components/Button.astro';
     <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
   </div>
 <script is:inline>
-const WORDS = ['lorem','ipsum','dolor','sit','amet','consectetur','adipiscing','elit','sed','do','eiusmod','tempor','incididunt','ut','labore','et','dolore','magna','aliqua','enim','ad','minim','veniam','quis','nostrud','exercitation','ullamco','laboris','nisi','ut','aliquip','ex','ea','commodo','consequat','duis','aute','irure','in','reprehenderit','voluptate','velit','esse','cillum','fugiat','nulla','pariatur','excepteur','sint','occaecat','cupidatat','non','proident','sunt','culpa','qui','officia','deserunt','mollit','anim','id','est','laborum'];
-function generate() {
-  const type = document.getElementById('type').value;
-  const count = parseInt(document.getElementById('count').value) || 3;
-  let result = '';
-  if (type === 'paragraphs') {
-    for (let p = 0; p < count; p++) {
-      const len = 30 + Math.floor(Math.random() * 40);
-      let words = [];
-      for (let i = 0; i < len; i++) words.push(WORDS[Math.floor(Math.random() * WORDS.length)]);
-      result += words[0].charAt(0).toUpperCase() + words[0].slice(1) + ' ' + words.slice(1).join(' ') + '.\n\n';
-    }
-  } else if (type === 'sentences') {
-    for (let s = 0; s < count; s++) {
-      const len = 8 + Math.floor(Math.random() * 12);
-      let words = [];
-      for (let i = 0; i < len; i++) words.push(WORDS[Math.floor(Math.random() * WORDS.length)]);
-      result += words[0].charAt(0).toUpperCase() + words[0].slice(1) + ' ' + words.slice(1).join(' ') + '. ';
-    }
-  } else {
-    for (let i = 0; i < count; i++) result += WORDS[Math.floor(Math.random() * WORDS.length)] + ' ';
-  }
-  document.getElementById('result').textContent = result.trim();
+const words='lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum'.split(' ');
+function process() {
+  const v=document.getElementById('inp').value.trim();
+  const count=parseInt(v)||100;
+  if(count<1||count>10000){o('Enter a number 1-10000');return;}
+  const ws=[];for(let i=0;i<count;i++)ws.push(words[i%words.length]);ws[0]=ws[0].charAt(0).toUpperCase()+ws[0].slice(1);
+  o(ws.join(' ')+'.');
 }
-
-function copyResult() {
-  const text = document.getElementById('result').textContent;
-  if (!text) return;
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('[onclick="copyResult()"]');
-    btn.textContent = 'Copied!';
-    setTimeout(() => btn.textContent = 'Copy', 2000);
-  });
-}
+function o(t){document.getElementById('out').textContent=t;}
 </script>
 <div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Lorem Ipsum Generator?</h2>

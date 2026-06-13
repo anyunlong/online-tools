@@ -23,16 +23,13 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process(){
-  const inp=document.getElementById('inp').value.trim();
-  if(!inp){document.getElementById('out').textContent='Enter input above';return;}
-  document.getElementById('out').textContent='Processing: '+inp.substring(0,100);
+function process() {
+  const v=document.getElementById('inp').value.trim().split(/\n/);
+  const title=(v[0]||'Page Title').slice(0,60),url=(v[1]||'example.com/page'),desc=(v[2]||'Meta description').slice(0,160);
+  document.getElementById('out').innerHTML='<div style="font-size:1.2em;color:#8ab4f8;text-decoration:none">'+title+'</div><div style="color:#bdc1c6;font-size:0.85em">'+url+'</div><div style="color:#9aa0a6;font-size:0.85em">'+desc+'</div><br><span style="font-size:10px;color:#666">Title: '+title.length+'/60 | Desc: '+desc.length+'/160</span>';
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').innerHTML='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

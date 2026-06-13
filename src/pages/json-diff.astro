@@ -23,16 +23,19 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process(){
-  const inp=document.getElementById('inp').value.trim();
-  if(!inp){document.getElementById('out').textContent='Enter input above';return;}
-  document.getElementById('out').textContent='Processing: '+inp.substring(0,100);
+function process() {
+  const v=document.getElementById('inp').value.split(/\n---\n|\n\n\n/);
+  if(v.length<2){o('Paste two JSON objects separated by ---');return;}
+  try{
+    const a=JSON.parse(v[0]),b=JSON.parse(v[1]);
+    const diff={};
+    for(const k in a){if(!(k in b))diff[k]={old:a[k],new:'[REMOVED]'};else if(JSON.stringify(a[k])!==JSON.stringify(b[k]))diff[k]={old:a[k],new:b[k]};}
+    for(const k in b){if(!(k in a))diff[k]={old:'[NONE]',new:b[k]};}
+    o(Object.keys(diff).length?JSON.stringify(diff,null,2):'No differences found ✓');
+  }catch(e){o('Invalid JSON: '+e.message);}
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').innerHTML='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

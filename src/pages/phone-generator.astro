@@ -18,17 +18,19 @@ import Button from '../components/Button.astro';
     <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
   </div>
 <script is:inline>
-function generate(){
-  document.getElementById('result').textContent='Generated output — customize me!';
+function generate() {
+  const cc=['+1','+44','+61','+49','+33','+81','+86','+91','+55','+7'];
+  const r=()=>Math.floor(Math.random()*10);
+  const num=Array.from({length:9},r).join('');
+  const fmt='('+num.slice(0,3)+') '+num.slice(3,6)+'-'+num.slice(6);
+  document.getElementById('result').value=cc[Math.floor(Math.random()*cc.length)]+' '+fmt;
 }
 function copyResult() {
-  const text = document.getElementById('result').textContent;
-  if (!text) return;
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('[onclick="copyResult()"]');
-    btn.textContent = 'Copied!';
-    setTimeout(() => btn.textContent = 'Copy', 2000);
-  });
+  const el=document.getElementById('result');
+  if(!el||!el.value) return;
+  el.select();document.execCommand('copy');
+  document.getElementById('msg').textContent='Copied!';
+  setTimeout(()=>document.getElementById('msg').textContent='',2000);
 }
 </script>
 <slot name="info" slot="info">

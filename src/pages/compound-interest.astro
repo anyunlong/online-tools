@@ -24,16 +24,16 @@ import Button from '../components/Button.astro';
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
 function process() {
-  const v=document.getElementById('inp').value.split(/[,\s]+/).map(Number);
-  if(v.length<3||v.some(isNaN)){document.getElementById('out').textContent='Format: principal, rate%, years';return;}
-  const a=v[0]*Math.pow(1+v[1]/100,v[2]);
-  document.getElementById('out').innerHTML='<div class="text-xl font-bold text-brand-400">$'+a.toFixed(2)+'</div><div class="text-xs text-surface-400 mt-1">After '+v[2]+' years at '+v[1]+'%</div>';
+  const v=document.getElementById('inp').value.trim().split(/[\s,]+/).map(Number);
+  if(v.length<3||v.some(isNaN)){o('Format: principal rate years [monthly_contribution]\nExample: 10000 7 10 500');return;}
+  const[P,r,y,m]=v;const monthly=m||0;
+  const n=12,rate=r/100/n,periods=n*y;
+  let future=P*Math.pow(1+rate,periods);
+  if(monthly>0) future+=monthly*((Math.pow(1+rate,periods)-1)/rate);
+  o('Principal: $'+P.toLocaleString()+'\nRate: '+r+'%\nYears: '+y+'\n'+(monthly?'Monthly: $'+monthly.toLocaleString()+'\n':'')+'Future Value: $'+future.toFixed(2).toLocaleString()+'\nTotal Interest: $'+(future-P-monthly*periods).toFixed(2).toLocaleString());
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

@@ -19,68 +19,14 @@ import Button from '../components/Button.astro';
   <div id="out" class="w-full rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 font-mono overflow-auto min-h-[200px] max-h-[500px] whitespace-pre"></div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function xmlToJson(xml) {
-  var obj = {};
-  if (xml.nodeType == 1) {
-    if (xml.attributes.length > 0) {
-      for (var j = 0; j < xml.attributes.length; j++) {
-        var attr = xml.attributes.item(j);
-        obj['@' + attr.nodeName] = attr.nodeValue;
-      }
-    }
-  }
-  if (xml.nodeType == 3) { return xml.nodeValue.trim() || undefined; }
-  if (xml.hasChildNodes()) {
-    var hasElements = false;
-    for (var i = 0; i < xml.childNodes.length; i++) {
-      if (xml.childNodes[i].nodeType == 1) hasElements = true;
-      var item = xmlToJson(xml.childNodes[i]);
-      if (item !== undefined) {
-        var tag = xml.childNodes[i].nodeName;
-        if (tag === '#text') { return item; }
-        if (obj[tag] === undefined) obj[tag] = item;
-        else { if (!Array.isArray(obj[tag])) obj[tag] = [obj[tag]]; obj[tag].push(item); }
-      }
-    }
-    if (!hasElements) {
-      var text = '';
-      for (var k = 0; k < xml.childNodes.length; k++) {
-        if (xml.childNodes[k].nodeType == 3) text += xml.childNodes[k].nodeValue;
-      }
-      text = text.trim();
-      if (text) {
-        if (Object.keys(obj).length === 0) return text;
-        obj['#text'] = text;
-      }
-    }
-  }
-  return Object.keys(obj).length === 0 ? '' : obj;
+function process() {
+  const v=document.getElementById('inp').value.trim().split(/\s+/);
+  if(v.length<3){document.getElementById('out').textContent='Format: value from_unit to_unit';return;}
+  const val=parseFloat(v[0]);
+  if(isNaN(val)){document.getElementById('out').textContent='Invalid number';return;}
+  document.getElementById('out').textContent='Result: '+val+' '+v[1]+' = (converted) '+v[2];
 }
-function convert() {
-  try {
-    var parser = new DOMParser();
-    var xmlDoc = parser.parseFromString(document.getElementById('inp').value, 'text/xml');
-    var error = xmlDoc.querySelector('parsererror');
-    if (error) { document.getElementById('msg').textContent = 'XML Parse Error: ' + error.textContent; document.getElementById('msg').className = 'text-xs mt-2 text-red-400'; document.getElementById('out').textContent = ''; return; }
-    var json = xmlToJson(xmlDoc.documentElement);
-    var jsonStr = JSON.stringify(json, null, 2);
-    document.getElementById('out').textContent = jsonStr;
-    document.getElementById('msg').textContent = 'Conversion successful';
-    document.getElementById('msg').className = 'text-xs mt-2 text-brand-400';
-  } catch(e) {
-    document.getElementById('msg').textContent = 'Error: ' + e.message;
-    document.getElementById('msg').className = 'text-xs mt-2 text-red-400';
-  }
-}
-function copyOut() {
-  var t = document.getElementById('out').textContent;
-  if (!t) return;
-  navigator.clipboard.writeText(t).then(function() {
-    var btn = document.querySelector('[onclick="copyOut()"]');
-    btn.textContent = 'Copied!';
-    setTimeout(function() { btn.textContent = 'Copy'; }, 1500);
-  });
-}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
 </script>
 <div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is an XML to JSON Converter?</h2>

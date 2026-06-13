@@ -16,23 +16,21 @@ import Button from '../components/Button.astro';
   </div>
   <div id="qr-area" class="mt-5 flex justify-center"></div>
 <script is:inline>
-function genQR() {
-  var t = document.getElementById('url').value;
-  if (!t) return;
-  var api = 'https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=' + encodeURIComponent(t);
-  var area = document.getElementById('qr-area');
-  area.innerHTML = '';
-  var img = document.createElement('img');
-  img.src = api; img.alt = 'QR Code'; img.className = 'border rounded-lg'; img.loading = 'lazy';
-  img.onerror = function() {
-    var p = document.createElement('p');
-    p.textContent = '\u751f\u6210\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u8f93\u5165';
-    p.style.color = '#f87171';
-    area.innerHTML = ''; area.appendChild(p);
-  };
-  area.appendChild(img);
+function generate() {
+  const v=document.getElementById('inp').value.trim();
+  if(!v){o('Enter text or URL to encode');return;}
+  // Use Google Charts API for QR (fallback since no library)
+  const url='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data='+encodeURIComponent(v);
+  document.getElementById('out').innerHTML='<img src="'+url+'" alt="QR Code" style="max-width:200px;display:block;margin:10px auto">';
 }
-genQR();
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').innerHTML='';}
+function copyResult() {
+  const el=document.getElementById('result');
+  if(!el||!el.value) return;
+  el.select();document.execCommand('copy');
+  document.getElementById('msg').textContent='Copied!';
+  setTimeout(()=>document.getElementById('msg').textContent='',2000);
+}
 </script><div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is a QR Code Generator?</h2>
   <p class="mb-3">A QR code (Quick Response code) is a two-dimensional barcode that can store text, URLs, contact information, or other data that smartphones can instantly scan and read. Our generator creates QR codes from any text input right in your browser.</p>

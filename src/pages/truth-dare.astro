@@ -18,17 +18,20 @@ import Button from '../components/Button.astro';
     <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
   </div>
 <script is:inline>
-function generate(){
-  document.getElementById('result').textContent='Generated output — customize me!';
+const truths=['What is your most embarrassing moment?','Have you ever lied to your best friend?','What is your biggest fear?','What is the last thing you searched?','Have you ever cheated on a test?','What is the funniest thing you have ever done?','Do you have a secret talent?','What is your guilty pleasure?'];
+const dares=['Do 10 pushups right now','Speak in an accent for the next 3 rounds','Text your last selfie to a random contact','Do your best impression of someone in this room','Dance with no music for 30 seconds','Let someone else post on your social media','Eat a spoonful of a random condiment','Call a friend and sing Happy Birthday'];
+function generate() {
+  const type=document.getElementById('type')?.value;
+  const t=Math.random()<0.5;
+  const result=t?truths[Math.floor(Math.random()*truths.length)]:dares[Math.floor(Math.random()*dares.length)];
+  document.getElementById('result').value=(t?'[TRUTH] ':'[DARE] ')+result;
 }
 function copyResult() {
-  const text = document.getElementById('result').textContent;
-  if (!text) return;
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('[onclick="copyResult()"]');
-    btn.textContent = 'Copied!';
-    setTimeout(() => btn.textContent = 'Copy', 2000);
-  });
+  const el=document.getElementById('result');
+  if(!el||!el.value) return;
+  el.select();document.execCommand('copy');
+  document.getElementById('msg').textContent='Copied!';
+  setTimeout(()=>document.getElementById('msg').textContent='',2000);
 }
 </script>
 <slot name="info" slot="info">

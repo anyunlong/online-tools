@@ -23,20 +23,18 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process(){
-  const v=document.getElementById('inp').value.split(/[,\s]+/).map(Number);
-  if(v.length<3||v.some(isNaN)){document.getElementById('out').textContent='Format: a, b, c (ax²+bx+c=0)';return;}
-  if(v[0]===0){document.getElementById('out').textContent='a cannot be 0';return;}
-  const d=v[1]*v[1]-4*v[0]*v[2];
-  if(d>0){const r1=(-v[1]+Math.sqrt(d))/(2*v[0]),r2=(-v[1]-Math.sqrt(d))/(2*v[0]);document.getElementById('out').innerHTML='<div class="text-brand-400">Two real roots:</div><div class="text-lg font-bold">x₁='+r1.toFixed(4)+'</div><div class="text-lg font-bold">x₂='+r2.toFixed(4)+'</div>';}
-  else if(d===0){document.getElementById('out').innerHTML='<div class="text-brand-400">One real root:</div><div class="text-lg font-bold">x='+(-v[1]/(2*v[0])).toFixed(4)+'</div>';}
-  else{const r=-v[1]/(2*v[0]),im=Math.sqrt(-d)/(2*v[0]);document.getElementById('out').innerHTML='<div class="text-brand-400">Complex roots:</div><div class="text-lg font-bold">x='+r.toFixed(4)+' ± '+im.toFixed(4)+'i</div>';}
+function process() {
+  const v=document.getElementById('inp').value.trim().split(/[\s,]+/).map(Number);
+  if(v.length<3||v.some(isNaN)){o('Format: a b c for ax²+bx+c=0\nExample: 1 -5 6 → x=2 or x=3');return;}
+  const[a,b,c]=v;
+  if(a===0){o('Not a quadratic (a=0). Linear solution: x='+(-c/b).toFixed(4));return;}
+  const d=b*b-4*a*c;
+  if(d>0){const x1=(-b+Math.sqrt(d))/(2*a),x2=(-b-Math.sqrt(d))/(2*a);o('Two real roots:\nx₁ = '+x1.toFixed(4)+'\nx₂ = '+x2.toFixed(4));}
+  else if(d===0){o('One double root: x = '+(-b/(2*a)).toFixed(4));}
+  else{const real=(-b/(2*a)).toFixed(4),imag=(Math.sqrt(-d)/(2*a)).toFixed(4);o('Complex roots:\nx₁ = '+real+' + '+imag+'i\nx₂ = '+real+' - '+imag+'i');}
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

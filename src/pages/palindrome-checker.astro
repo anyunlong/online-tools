@@ -23,16 +23,14 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process(){
-  const t=document.getElementById('inp').value.replace(/[^a-zA-Z0-9]/g,'').toLowerCase();if(!t){document.getElementById('out').textContent='Enter text';return;}
-  const p=t===t.split('').reverse().join('');
-  document.getElementById('out').innerHTML='<div class="text-xl font-bold '+(p?'text-green-400':'text-red-400')+'">'+(p?'✓ Palindrome!':'✗ Not palindrome')+'</div>';
+function process() {
+  const t=document.getElementById('inp').value.replace(/[^a-zA-Z0-9]/g,'').toLowerCase();
+  if(!t){o('Enter text to check');return;}
+  const isPal=t===t.split('').reverse().join('');
+  o('"'+t+'" is '+(isPal?'a PALINDROME ✓':'NOT a palindrome ✗')+'\nLength: '+t.length+' characters');
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

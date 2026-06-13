@@ -24,33 +24,19 @@ import Button from '../components/Button.astro';
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
 function process() {
-  const text1 = document.getElementById('inp').value;
-  const text2 = document.getElementById('inp2') ? document.getElementById('inp2').value : '';
-  if (!text1 && !text2) return;
-  const lines1 = text1.split('\n');
-  const lines2 = text2.split('\n');
-  const maxLen = Math.max(lines1.length, lines2.length);
-  let html = '';
-  for (let i = 0; i < maxLen; i++) {
-    const l1 = lines1[i] || '';
-    const l2 = lines2[i] || '';
-    if (l1 === l2) {
-      html += `<div class="text-surface-300">${esc(l1)}</div>`;
-    } else {
-      if (l1) html += `<div class="bg-red-900/30 text-red-300">- ${esc(l1)}</div>`;
-      if (l2) html += `<div class="bg-green-900/30 text-green-300">+ ${esc(l2)}</div>`;
-    }
+  const v=document.getElementById('inp').value.split(/\n---\n|\n\n\n/);
+  if(v.length<2){o('Paste two texts separated by --- on its own line');return;}
+  const a=v[0].split(/\n/),b=v[1].split(/\n/);
+  let r='';
+  const max=Math.max(a.length,b.length);
+  for(let i=0;i<max;i++){
+    if(a[i]===b[i])r+='  '+a[i]+'\n';
+    else r+='- '+((a[i]||'(empty)')+'\n+ '+(b[i]||'(empty)')+'\n');
   }
-  document.getElementById('out').innerHTML = html;
-  document.getElementById('msg').textContent = `Found ${lines1.length} vs ${lines2.length} lines`;
+  o(r);
 }
-function esc(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
 </script>
 <div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Text Diff Checker?</h2>

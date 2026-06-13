@@ -23,16 +23,20 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process(){
-  const inp=document.getElementById('inp').value.trim();
-  if(!inp){document.getElementById('out').textContent='Enter input above';return;}
-  document.getElementById('out').textContent='Processing: '+inp.substring(0,100);
+function process() {
+  const v=document.getElementById('inp').value;
+  let r='';
+  for(let i=0;i<v.length;i++){
+    const c=v.charCodeAt(i);
+    if(c===61)r+='=3D';
+    else if((c>=33&&c<=60)||(c>=62&&c<=126)||c===9||c===32)r+=v[i];
+    else if(c===13&&v[i+1]==='\n'){r+='\r\n';i++;}
+    else r+='='+c.toString(16).toUpperCase().padStart(2,'0');
+  }
+  o(r);
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

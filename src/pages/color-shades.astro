@@ -18,18 +18,23 @@ import Button from '../components/Button.astro';
     <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
   </div>
 <script is:inline>
-function generate(){
-  document.getElementById('result').textContent='Generated output — customize me!';
+function process() {
+  const hex=document.getElementById('inp').value.trim().replace('#','');
+  if(!/^[0-9a-fA-F]{6}$/.test(hex)){o('Enter a valid hex color (e.g. #3B82F6)');return;}
+  const r=parseInt(hex.slice(0,2),16),g=parseInt(hex.slice(2,4),16),b=parseInt(hex.slice(4,6),16);
+  const shades=[900,800,700,600,500,400,300,200,100,50];
+  const cols=shades.map(s=>{
+    const f=s===500?1:s>500?s/500/2:s/500;
+    const l=s>500?Math.min(1,f):Math.max(0,f);
+    const t=s>500?1-l:l;
+    const nr=Math.round(r*t+(s>500?255:0)*l),ng=Math.round(g*t+(s>500?255:0)*l),nb=Math.round(b*t+(s>500?255:0)*l);
+    const h='#'+nr.toString(16).padStart(2,'0')+ng.toString(16).padStart(2,'0')+nb.toString(16).padStart(2,'0');
+    return'<div style="display:inline-block;width:50px;text-align:center;font-size:10px"><div style="width:50px;height:40px;background:'+h+';border-radius:4px;margin:2px"></div>'+s+'<br>'+h+'</div>';
+  }).join('');
+  document.getElementById('out').innerHTML=cols;
 }
-function copyResult() {
-  const text = document.getElementById('result').textContent;
-  if (!text) return;
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('[onclick="copyResult()"]');
-    btn.textContent = 'Copied!';
-    setTimeout(() => btn.textContent = 'Copy', 2000);
-  });
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').innerHTML='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

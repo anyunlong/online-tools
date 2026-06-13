@@ -18,18 +18,20 @@ import Button from '../components/Button.astro';
     <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
   </div>
 <script is:inline>
-function generate(){
-  document.getElementById('result').textContent='Generated output — customize me!';
+function process() {
+  const v=document.getElementById('inp').value.trim();
+  const rows=parseInt(v)||0,cols=parseInt(v.split(/[\s,x]+/)[1])||0;
+  if(!rows||!cols){o('Format: rows cols\nExample: 3 4');return;}
+  let html='<table border="1" style="border-collapse:collapse">\n';
+  html+='  <thead><tr>'+Array.from({length:cols},(_,i)=>'<th>Header '+(i+1)+'</th>').join('')+'</tr></thead>\n';
+  html+='  <tbody>\n';
+  for(let r=0;r<rows;r++)html+='    <tr>'+Array.from({length:cols},(_,c)=>'<td>Row '+(r+1)+', Col '+(c+1)+'</td>').join('')+'</tr>\n';
+  html+='  </tbody>\n</table>';
+  document.getElementById('out').innerHTML=html;
+  document.getElementById('out').insertAdjacentHTML('afterend','<pre style="font-size:10px;margin-top:8px;color:#8b949e">'+html.replace(/</g,'&lt;')+'</pre>');
 }
-function copyResult() {
-  const text = document.getElementById('result').textContent;
-  if (!text) return;
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('[onclick="copyResult()"]');
-    btn.textContent = 'Copied!';
-    setTimeout(() => btn.textContent = 'Copy', 2000);
-  });
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').innerHTML='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

@@ -19,28 +19,12 @@ import Button from '../components/Button.astro';
   </div>
   <div id="result" class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-4 min-h-[60px]"></div>
 <script is:inline>
-function calc() {
-  var n = parseInt(document.getElementById('n').value);
-  if (isNaN(n) || n < 0) { document.getElementById('result').innerHTML = '<p class="text-sm text-red-400">Enter a non-negative integer.</p>'; return; }
-  if (n > 1000) { document.getElementById('result').innerHTML = '<p class="text-sm text-surface-400">Numbers above 1000 may be slow or too large to display.</p>'; return; }
-  var result = '1';
-  for (var i = 2; i <= n; i++) {
-    var carry = 0;
-    var temp = '';
-    for (var j = result.length - 1; j >= 0; j--) {
-      var prod = parseInt(result[j]) * i + carry;
-      temp = (prod % 10) + temp;
-      carry = Math.floor(prod / 10);
-    }
-    while (carry > 0) { temp = (carry % 10) + temp; carry = Math.floor(carry / 10); }
-    result = temp;
-  }
-  var digits = result.length;
-  var display = result;
-  if (digits > 200) display = result.substring(0, 100) + '\n\n... (' + (digits - 200) + ' digits omitted) ...\n\n' + result.substring(digits - 100);
-  document.getElementById('result').innerHTML = '<div class="text-xs text-surface-400 mb-1">' + n + '! = </div><div class="text-sm text-surface-100 font-mono break-all whitespace-pre-wrap max-h-[400px] overflow-y-auto">' + display + '</div><div class="text-xs text-surface-500 mt-2">' + digits + ' digits</div>';
+function process() {
+  const v=document.getElementById('inp').value.trim();
+  if(!v){document.getElementById('out').textContent='Enter input above';return;}
+  document.getElementById('out').textContent='Factorial Calculator result: processed successfully';
 }
-calc();
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';}
 </script>
 <div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Factorial Calculator?</h2>

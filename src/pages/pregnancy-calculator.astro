@@ -24,17 +24,16 @@ import Button from '../components/Button.astro';
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
 function process() {
-  const d=document.getElementById('inp').value;
-  if(!d){document.getElementById('out').textContent='Enter date (YYYY-MM-DD)';return;}
-  const due=new Date(d);due.setDate(due.getDate()+280);
-  const diff=Math.floor((new Date()-new Date(d))/86400000),w=Math.floor(diff/7),dd=diff%7;
-  document.getElementById('out').innerHTML='<div class="text-lg font-bold text-brand-400">Due: '+due.toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'})+'</div><div class="text-sm mt-1">'+w+'w '+dd+'d pregnant ('+(40-w)+'w to go)</div>';
+  const v=document.getElementById('inp').value.trim();
+  const lmp=new Date(v);
+  if(isNaN(lmp.getTime())){o('Enter first day of last period (YYYY-MM-DD)\nExample: 2025-03-15');return;}
+  const due=new Date(lmp);due.setDate(due.getDate()+280);
+  const today=new Date();
+  const weeks=Math.floor((today-lmp)/(7*24*60*60*1000));
+  o('LMP: '+lmp.toLocaleDateString()+'\nEstimated Due Date: '+due.toLocaleDateString()+'\nGestation: '+weeks+' weeks'+(weeks>=40?' (Full term!)':'')+'\n\n⚠ This is an estimate. Consult your healthcare provider.');
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

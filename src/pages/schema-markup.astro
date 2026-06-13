@@ -18,18 +18,20 @@ import Button from '../components/Button.astro';
     <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
   </div>
 <script is:inline>
-function generate(){
-  document.getElementById('result').textContent='Generated output — customize me!';
+function process() {
+  const v=document.getElementById('inp').value.trim().split(/\n/);
+  if(v.length<4){o('Format:\nType (Article/Product/FAQ/Organization)\nName\nDescription\nURL');return;}
+  const[type,name,desc,url]=v;
+  const schemas={
+    Article:{'@type':'Article',headline:name,description:desc,url:url,author:{'@type':'Organization',name:'Site Name'}},
+    Product:{'@type':'Product',name:name,description:desc,offers:{'@type':'Offer',url:url,priceCurrency:'USD'}},
+    FAQ:{'@type':'FAQPage',mainEntity:[{'@type':'Question',name:'Sample question?',acceptedAnswer:{'@type':'Answer',text:'Sample answer.'}}]},
+    Organization:{'@type':'Organization',name:name,description:desc,url:url}
+  };
+  o(JSON.stringify({'@context':'https://schema.org',...(schemas[type]||schemas.Article)},null,2));
 }
-function copyResult() {
-  const text = document.getElementById('result').textContent;
-  if (!text) return;
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('[onclick="copyResult()"]');
-    btn.textContent = 'Copied!';
-    setTimeout(() => btn.textContent = 'Copy', 2000);
-  });
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').innerHTML='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

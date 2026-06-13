@@ -23,16 +23,11 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process(){
-  const inp=document.getElementById('inp').value.trim();
-  if(!inp){document.getElementById('out').textContent='Enter input above';return;}
-  document.getElementById('out').textContent='Processing: '+inp.substring(0,100);
+function process() {
+  document.getElementById('out').innerHTML='<p style="color:#8b949e;font-size:0.85em">Shows your local time converted to major business timezones.</p><table style="width:100%;font-size:0.8em;border-collapse:collapse">'+['UTC','America/New_York','America/Los_Angeles','Europe/London','Europe/Berlin','Asia/Dubai','Asia/Shanghai','Asia/Tokyo','Australia/Sydney'].map(tz=>{try{return'<tr><td style="padding:4px 0;color:#8b949e">'+tz+'</td><td>'+new Date().toLocaleString('en-US',{timeZone:tz,weekday:'short',hour:'2-digit',minute:'2-digit'})+'</td></tr>';}catch(e){return'<tr><td>'+tz+'</td><td>N/A</td></tr>';}}).join('')+'</table>';
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';if(timer)clearInterval(timer);}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>
