@@ -133,6 +133,15 @@ const navLinks = [
         }
       }
     });
+    // Toggle data-lang visibility
+    document.querySelectorAll('[data-lang]').forEach(function(el) {
+      var elLang = el.getAttribute('data-lang');
+      if (elLang === langKey) {
+        el.classList.remove('hidden');
+      } else {
+        el.classList.add('hidden');
+      }
+    });
   }
 
   function switchLang(target) {

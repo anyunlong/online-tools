@@ -45,6 +45,15 @@
         }
       }
     });
+    // Toggle data-lang visibility
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      const elLang = el.getAttribute('data-lang');
+      if (elLang === lang) {
+        el.classList.remove('hidden');
+      } else {
+        el.classList.add('hidden');
+      }
+    });
   }
 
   // Init

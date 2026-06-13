@@ -3,7 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
 import faqData from '../data/faq.json';
+import faqDataZh from '../data/faq-zh.json';
 import toolContent from '../data/tool-content.json';
+import toolContentZh from '../data/tool-content-zh.json';
 
 export interface Props {
   title: string;
@@ -19,12 +21,17 @@ const toolId = Astro.url.pathname.replace(/^\/|\/$/g, '') || 'index';
 
 // Look up FAQ entries for this tool
 const faqEntries: Array<{ q: string; a: string }> = faqData[toolId] || [];
+const faqEntriesZh: Array<{ q: string; a: string }> = faqDataZh[toolId] || [];
 
 // Look up content expansion for this tool
 const tc = toolContent[toolId];
+const tcZh = toolContentZh[toolId];
 const deepDive: string | null = tc?.deepDive || null;
+const deepDiveZh: string | null = tcZh?.deepDive || null;
 const tips: string[] = tc?.tips || [];
+const tipsZh: string[] = tcZh?.tips || [];
 const commonMistakes: string[] = tc?.commonMistakes || [];
+const commonMistakesZh: string[] = tcZh?.commonMistakes || [];
 
 const webAppSchema = {
   '@context': 'https://schema.org',
@@ -117,23 +124,33 @@ const combinedSchema = faqSchema
         <div class="mt-8 space-y-6">
           {deepDive && (
             <div>
-              <h2 class="text-lg font-semibold text-white mb-3">Deep Dive: How {title} Works</h2>
-              <div class="text-sm text-surface-400 leading-relaxed">{deepDive}</div>
+              <h2 class="text-lg font-semibold text-white mb-3" data-lang="en">Deep Dive: How {title} Works</h2>
+              <h2 class="text-lg font-semibold text-white mb-3 hidden" data-lang="zh">深度解析：{title}的工作原理</h2>
+              <div class="text-sm text-surface-400 leading-relaxed" data-lang="en">{deepDive}</div>
+              <div class="text-sm text-surface-400 leading-relaxed hidden" data-lang="zh">{deepDiveZh || deepDive}</div>
             </div>
           )}
           {tips.length > 0 && (
             <div>
-              <h2 class="text-base font-semibold text-surface-200 mb-2">Pro Tips</h2>
-              <ul class="list-disc pl-5 space-y-1 text-sm text-surface-400">
+              <h2 class="text-base font-semibold text-surface-200 mb-2" data-lang="en">Pro Tips</h2>
+              <h2 class="text-base font-semibold text-surface-200 mb-2 hidden" data-lang="zh">实用技巧</h2>
+              <ul class="list-disc pl-5 space-y-1 text-sm text-surface-400" data-lang="en">
                 {tips.map(tip => <li>{tip}</li>)}
+              </ul>
+              <ul class="list-disc pl-5 space-y-1 text-sm text-surface-400 hidden" data-lang="zh">
+                {(tipsZh.length > 0 ? tipsZh : tips).map(tip => <li>{tip}</li>)}
               </ul>
             </div>
           )}
           {commonMistakes.length > 0 && (
             <div>
-              <h2 class="text-base font-semibold text-surface-200 mb-2">Common Mistakes to Avoid</h2>
-              <ul class="list-disc pl-5 space-y-1 text-sm text-surface-400">
+              <h2 class="text-base font-semibold text-surface-200 mb-2" data-lang="en">Common Mistakes to Avoid</h2>
+              <h2 class="text-base font-semibold text-surface-200 mb-2 hidden" data-lang="zh">常见错误</h2>
+              <ul class="list-disc pl-5 space-y-1 text-sm text-surface-400" data-lang="en">
                 {commonMistakes.map(m => <li>{m}</li>)}
+              </ul>
+              <ul class="list-disc pl-5 space-y-1 text-sm text-surface-400 hidden" data-lang="zh">
+                {(commonMistakesZh.length > 0 ? commonMistakesZh : commonMistakes).map(m => <li>{m}</li>)}
               </ul>
             </div>
           )}
@@ -141,9 +158,18 @@ const combinedSchema = faqSchema
       )}
       {faqEntries.length > 0 && (
         <div class="mt-8 border-t border-surface-700/30 pt-6">
-          <h2 class="text-lg font-semibold text-white mb-4">Frequently Asked Questions</h2>
-          <div class="space-y-4">
+          <h2 class="text-lg font-semibold text-white mb-4" data-lang="en">Frequently Asked Questions</h2>
+          <h2 class="text-lg font-semibold text-white mb-4 hidden" data-lang="zh">常见问题</h2>
+          <div class="space-y-4" data-lang="en">
             {faqEntries.map(entry => (
+              <details class="group border border-surface-700/20 rounded-lg bg-surface-800/50">
+                <summary class="cursor-pointer px-4 py-3 text-sm font-medium text-surface-200 hover:text-white transition-colors select-none">{entry.q}</summary>
+                <div class="px-4 pb-3 text-sm text-surface-400 leading-relaxed">{entry.a}</div>
+              </details>
+            ))}
+          </div>
+          <div class="space-y-4 hidden" data-lang="zh">
+            {(faqEntriesZh.length > 0 ? faqEntriesZh : faqEntries).map(entry => (
               <details class="group border border-surface-700/20 rounded-lg bg-surface-800/50">
                 <summary class="cursor-pointer px-4 py-3 text-sm font-medium text-surface-200 hover:text-white transition-colors select-none">{entry.q}</summary>
                 <div class="px-4 pb-3 text-sm text-surface-400 leading-relaxed">{entry.a}</div>
