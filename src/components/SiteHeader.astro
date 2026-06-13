@@ -47,12 +47,6 @@ const navLinks = [
         />
       </div>
 
-      <!-- Lang switcher -->
-      <div id="lang-switcher-group" class="flex items-center rounded-lg border border-surface-700 bg-surface-800/50 p-0.5 text-xs font-medium">
-        <button data-lang-btn="EN" class="lang-btn rounded-md px-2 py-1 transition-colors bg-brand-500 text-white" aria-pressed="true">EN</button>
-        <button data-lang-btn="中文" class="lang-btn rounded-md px-2 py-1 transition-colors text-surface-400 hover:text-white" aria-pressed="false">中文</button>
-      </div>
-
       <!-- Mobile menu toggle -->
       <button id="mobile-menu-btn" class="inline-flex items-center justify-center rounded-md p-2 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground md:hidden bg-transparent border-0 cursor-pointer" aria-label="Toggle menu">
         <span id="mobile-menu-icon" class="text-lg leading-none">☰</span>
@@ -98,68 +92,5 @@ const navLinks = [
     });
   });
 
-  function getLang() {
-    var saved = localStorage.getItem('lang');
-    if (saved) return saved;
-    var browserLang = navigator.language && navigator.language.startsWith('zh') ? 'zh' : 'en';
-    return browserLang;
-  }
-
-  function setLangUI(lang) {
-    var btns = document.querySelectorAll('.lang-btn');
-    var activeClass = 'bg-brand-500 text-white';
-    var inactiveClass = 'text-surface-400 hover:text-white';
-    btns.forEach(function(btn) {
-      var btnLang = btn.getAttribute('data-lang-btn');
-      var isEN = lang === 'en' && btnLang === 'EN';
-      var isZH = lang === 'zh' && btnLang === '\u4e2d\u6587';
-      btn.className = 'lang-btn rounded-md px-2 py-1 transition-colors ' + (isEN || isZH ? activeClass : inactiveClass);
-      btn.setAttribute('aria-pressed', isEN || isZH ? 'true' : 'false');
-    });
-  }
-
-  function applyTranslations() {
-    var lang = getLang();
-    var langKey = lang === 'zh' ? 'zh' : 'en';
-    document.documentElement.lang = langKey;
-    document.querySelectorAll('[data-i18n]').forEach(function(el) {
-      var key = el.getAttribute('data-i18n');
-      var text = window.__I18N__ && window.__I18N__[langKey] && window.__I18N__[langKey][key];
-      if (text) {
-        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-          el.placeholder = text;
-        } else {
-          el.textContent = text;
-        }
-      }
-    });
-    // Toggle data-lang visibility
-    document.querySelectorAll('[data-lang]').forEach(function(el) {
-      var elLang = el.getAttribute('data-lang');
-      if (elLang === langKey) {
-        el.classList.remove('hidden');
-      } else {
-        el.classList.add('hidden');
-      }
-    });
-  }
-
-  function switchLang(target) {
-    var next = target === 'EN' ? 'en' : 'zh';
-    localStorage.setItem('lang', next);
-    document.documentElement.lang = next;
-    setLangUI(next);
-    applyTranslations();
-  }
-
-  document.querySelectorAll('.lang-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      switchLang(btn.getAttribute('data-lang-btn') || 'EN');
-    });
-  });
-
-  document.addEventListener('DOMContentLoaded', function() {
-    setLangUI(getLang());
-    applyTranslations();
-  });
+</script>
 </script>
