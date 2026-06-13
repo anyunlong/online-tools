@@ -2,7 +2,6 @@
 import '../styles/global.css';
 import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
-import { en, zh, deepGet } from '../i18n/utils.js';
 
 export interface Props {
   title: string;
@@ -13,32 +12,11 @@ export interface Props {
 
 const { title, description, image, schema } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url.origin).href;
-const zhUrl = new URL('/zh' + Astro.url.pathname, Astro.site || Astro.url.origin).href;
-
-// Build flat key map for client-side i18n: { "en": { "site.name": "Online Toolbox", ... }, "zh": {...} }
-function flatten(obj: any, prefix = ''): Record<string, string> {
-  const result: Record<string, string> = {};
-  for (const [k, v] of Object.entries(obj)) {
-    const key = prefix ? `${prefix}.${k}` : k;
-    if (typeof v === 'object' && v !== null && !Array.isArray(v)) {
-      Object.assign(result, flatten(v, key));
-    } else {
-      result[key] = String(v);
-    }
-  }
-  return result;
-}
-
-const i18nFlat = JSON.stringify({ en: flatten(en), zh: flatten(zh) });
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Auto-detect language before page renders to avoid flash -->
-    <script>
-      (function(){var l=localStorage.getItem('lang');if(!l){l=navigator.language&&navigator.language.startsWith('zh')?'zh':'en'}document.documentElement.lang=l})();
-    </script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1227912870935783"
      crossorigin="anonymous"></script>
     <meta charset="UTF-8" />
@@ -58,13 +36,7 @@ const i18nFlat = JSON.stringify({ en: flatten(en), zh: flatten(zh) });
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <link rel="alternate" hreflang="en" href={canonicalURL} />
-    <link rel="alternate" hreflang="zh" href={zhUrl} />
-    <link rel="alternate" hreflang="x-default" href={canonicalURL} />
     {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>}
-    <script define:vars={{ i18nData: JSON.parse(i18nFlat) }}>
-      window.__I18N__ = i18nData;
-    </script>
   </head>
   <body class="min-h-screen flex flex-col bg-surface-950">
     <Analytics />
