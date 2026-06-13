@@ -24,16 +24,16 @@ import Button from '../components/Button.astro';
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
 function process() {
-  const v=document.getElementById('inp').value.split(/[,\s]+/).map(Number);
-  if(v.length<3||v.some(isNaN)){document.getElementById('out').textContent='Format: amount, rate%, months';return;}
-  const mr=v[1]/1200,pmt=v[0]*mr*Math.pow(1+mr,v[2])/(Math.pow(1+mr,v[2])-1);
-  document.getElementById('out').innerHTML='<div class="text-xl font-bold text-brand-400">$'+pmt.toFixed(2)+'</div><div class="text-xs text-surface-400 mt-1">Monthly payment</div><div class="text-sm mt-1">Total: $'+(pmt*v[2]).toFixed(2)+'</div>';
+  const v=document.getElementById('inp').value.trim().split(/[\s,]+/).map(Number);
+  if(v.length<3||v.some(isNaN)){o('Format: loan_amount rate% years\nExample: 250000 4.5 30');return;}
+  const[P,r,y]=v;
+  const rate=r/100/12,periods=y*12;
+  const monthly=P*(rate*Math.pow(1+rate,periods))/(Math.pow(1+rate,periods)-1);
+  const total=monthly*periods;
+  o('Loan: $'+P.toLocaleString()+'\nRate: '+r+'%\nTerm: '+y+' years\nMonthly Payment: $'+monthly.toFixed(2)+'\nTotal Paid: $'+total.toFixed(2)+'\nTotal Interest: $'+(total-P).toFixed(2));
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

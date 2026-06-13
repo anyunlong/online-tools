@@ -20,16 +20,18 @@ import Button from '../components/Button.astro';
     <Button variant="secondary" onclick="decode()">Decode</Button>
   </div>
 <script is:inline>
-function encode() {
-  const d = document.createElement('div');
-  d.appendChild(document.createTextNode(document.getElementById('inp').value));
-  document.getElementById('out').value = d.innerHTML;
+function process() {
+  const v=document.getElementById('inp').value;
+  if(v.startsWith('&')||v.includes('&#')){
+    const txt=document.createElement('textarea');txt.innerHTML=v;
+    o('Decoded: '+txt.value);
+  }else{
+    const div=document.createElement('div');div.textContent=v;
+    o('Encoded: '+div.innerHTML);
+  }
 }
-function decode() {
-  const d = document.createElement('div');
-  d.innerHTML = document.getElementById('inp').value;
-  document.getElementById('out').value = d.textContent;
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';}
 </script><div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is HTML Entity Encoding?</h2>
   <p class="mb-3">HTML entity encoding converts special characters like `<`, `>`, `&`, and quotes into their safe HTML entity equivalents (such as &amp;lt;, &amp;gt;, and &amp;amp;). This prevents browsers from interpreting these characters as HTML markup, which is critical for web security.</p>

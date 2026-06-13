@@ -23,16 +23,16 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process(){
-  const inp=document.getElementById('inp').value.trim();
-  if(!inp){document.getElementById('out').textContent='Enter input above';return;}
-  document.getElementById('out').textContent='Processing: '+inp.substring(0,100);
+function process() {
+  document.getElementById('out').innerHTML='Upload an image to extract dominant colors. This demo picks a random palette. <br><button onclick="generatePalette()" style="margin-top:8px;padding:6px 12px;background:#3B82F6;color:#fff;border:none;border-radius:6px;cursor:pointer">Generate Demo Palette</button>';
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
+function generatePalette() {
+  const hue=Math.floor(Math.random()*360);
+  const colors=Array.from({length:5},(_,i)=>'#'+(function(h){const s=50+Math.random()*30,l=40+Math.random()*30;const a=s*Math.min(l,1-l)/100;const f=n=>{const k=(n+h/30)%12;return Math.round((l-a*Math.max(Math.min(k-3,9-k,1),-1))*255).toString(16).padStart(2,'0')};return f(0)+f(8)+f(4)})(hue+i*40));
+  document.getElementById('out').innerHTML=colors.map(c=>'<div style="display:inline-block;width:60px;height:60px;background:'+c+';margin:6px;border-radius:50%" title="'+c+'"></div>').join('')+'<br><span style="font-size:10px">'+colors.join(' · ')+'</span>';
 }
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').innerHTML='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

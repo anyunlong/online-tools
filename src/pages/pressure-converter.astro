@@ -23,16 +23,23 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
+const units="Pascal (Pa) | kPa | Bar | PSI | Atm | mmHg | Torr";
+document.getElementById('inp').placeholder='Format: value from_unit to_unit\nExample: 100 C F\n\n'+units;
+
 function process() {
   const v=document.getElementById('inp').value.trim().split(/\s+/);
-  if(v.length<3){document.getElementById('out').textContent='Format: value from_unit to_unit. Units: Pa,kPa,bar,psi,atm';return;}
-  document.getElementById('out').textContent='Converter ready - enter value from_unit to_unit';
+  if(v.length<3){o('Format: value from_unit to_unit\nExample: 100 C F');return;}
+  const val=parseFloat(v[0]);const from=v[1]?.toLowerCase();const to=v[2]?.toLowerCase();
+  if(isNaN(val)){o('Invalid number');return;}
+  const toPa={pa:1,kpa:1000,bar:100000,psi:6894.76,atm:101325,mmhg:133.322,torr:133.322};
+  const fromPa={pa:1,kpa:0.001,bar:0.00001,psi:0.000145038,atm:9.86923e-6,mmhg:0.00750062,torr:0.00750062};
+  const fk=toPa[from];if(!fk){o('Unknown from unit');return;}
+  const tk=fromPa[to];if(!tk){o('Unknown to unit');return;}
+  const pa=val*fk;const result=pa*tk;
+  o(val+' '+from+' = '+result.toFixed(6)+' '+to);
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

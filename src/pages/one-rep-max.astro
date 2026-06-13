@@ -24,16 +24,16 @@ import Button from '../components/Button.astro';
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
 function process() {
-  const v=document.getElementById('inp').value.split(/[,\s]+/).map(Number);
-  if(v.length<2||v.some(isNaN)){document.getElementById('out').textContent='Format: weight, reps';return;}
-  const orm=Math.round(v[0]*(36/(37-Math.min(v[1],10))));
-  document.getElementById('out').innerHTML='<div class="text-2xl font-bold text-brand-400">'+orm+'</div><div class="text-xs text-surface-400 mt-1">Estimated 1RM (Epley)</div>';
+  const v=document.getElementById('inp').value.trim().split(/[\s,]+/).map(Number);
+  if(v.length<2||v.some(isNaN)){o('Format: weight reps\nExample: 100 5 → 1RM estimate');return;}
+  const[w,r]=v;
+  const epley=w*(1+r/30);
+  const brzycki=w*36/(37-r);
+  const avg=(epley+brzycki)/2;
+  o('Weight: '+w+'kg × '+r+' reps\n1RM (Epley): '+epley.toFixed(1)+'kg\n1RM (Brzycki): '+brzycki.toFixed(1)+'kg\nAverage 1RM: '+avg.toFixed(1)+'kg');
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

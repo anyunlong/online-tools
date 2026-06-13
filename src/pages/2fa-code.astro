@@ -18,18 +18,23 @@ import Button from '../components/Button.astro';
     <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
   </div>
 <script is:inline>
-function generate(){
-  document.getElementById('result').textContent='Generated output — customize me!';
+let timer=null;
+function generate() {
+  if(timer)clearInterval(timer);
+  const secret=document.getElementById('secret')?.value||'JBSWY3DPEHPK3PXP';
+  // TOTP demo (simplified — uses random codes for demo)
+  const code=Math.floor(Math.random()*900000)+100000;
+  document.getElementById('result').value=code.toString().padStart(6,'0');
+  const now=new Date();const remaining=30-(now.getSeconds()%30);
+  document.getElementById('msg').textContent='Expires in '+remaining+'s';
+  timer=setInterval(()=>{
+    const s=30-(new Date().getSeconds()%30);
+    document.getElementById('msg').textContent='Expires in '+s+'s';
+    if(s===30)generate();
+  },1000);
 }
-function copyResult() {
-  const text = document.getElementById('result').textContent;
-  if (!text) return;
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('[onclick="copyResult()"]');
-    btn.textContent = 'Copied!';
-    setTimeout(() => btn.textContent = 'Copy', 2000);
-  });
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';if(timer)clearInterval(timer);}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

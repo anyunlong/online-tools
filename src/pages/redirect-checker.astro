@@ -23,16 +23,13 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process(){
-  const inp=document.getElementById('inp').value.trim();
-  if(!inp){document.getElementById('out').textContent='Enter input above';return;}
-  document.getElementById('out').textContent='Processing: '+inp.substring(0,100);
+function process() {
+  const url=document.getElementById('inp').value.trim();
+  if(!url){o('Enter a URL to check for redirects');return;}
+  o('Enter a URL to trace redirect chains.\n\nThis would use fetch with redirect: "manual" in a full implementation.\n\nExample URL: https://bit.ly/short-link\n\nRedirect chains are important for SEO — avoid chains longer than 3 hops.');
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').innerHTML='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

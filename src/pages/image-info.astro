@@ -23,16 +23,24 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process(){
-  const inp=document.getElementById('inp').value.trim();
-  if(!inp){document.getElementById('out').textContent='Enter input above';return;}
-  document.getElementById('out').textContent='Processing: '+inp.substring(0,100);
+function process() {
+  document.getElementById('out').innerHTML='<input type="file" id="imgFile" accept="image/*" onchange="showInfo(this)" style="color:#fff"><div id="imgInfo" style="margin-top:10px"></div>';
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
+function showInfo(input) {
+  const file=input.files[0];
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=function(e){
+    const img=new Image();
+    img.onload=function(){
+      document.getElementById('imgInfo').innerHTML='<div style="display:flex;gap:12px"><img src="'+e.target.result+'" style="max-width:300px;border-radius:8px"><div><p><b>File:</b> '+file.name+'</p><p><b>Size:</b> '+(file.size/1024).toFixed(1)+' KB</p><p><b>Type:</b> '+file.type+'</p><p><b>Dimensions:</b> '+img.width+'×'+img.height+'px</p><p><b>Aspect:</b> '+(img.width/img.height).toFixed(2)+'</p></div></div>';
+    };
+    img.src=e.target.result;
+  };
+  reader.readAsDataURL(file);
 }
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').innerHTML='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

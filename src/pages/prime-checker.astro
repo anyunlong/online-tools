@@ -23,18 +23,19 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function isPrime(n){if(n<2)return!1;if(n===2)return!0;if(n%2===0)return!1;for(let i=3;i*i<=n;i+=2)if(n%i===0)return!1;return!0}
-function process(){
-  const n=parseInt(document.getElementById('inp').value);
-  if(isNaN(n)||n<1){document.getElementById('out').textContent='Enter a number';return;}
-  const p=isPrime(n);let nx=n+1;while(!isPrime(nx))nx++;let pv=n-1;while(pv>1&&!isPrime(pv))pv--;
-  document.getElementById('out').innerHTML='<div class="text-xl font-bold '+(p?'text-green-400':'text-red-400')+'">'+n+' is '+(p?'PRIME':'NOT prime')+'</div><div class="text-sm mt-1">Next: '+nx+(pv>1?' | Prev: '+pv:'')+'</div>';
+function process() {
+  const v=document.getElementById('inp').value.trim();
+  const n=parseInt(v);
+  if(isNaN(n)||n<0){o('Enter a positive integer');return;}
+  if(n<2){o(n+' is NOT prime (by definition, primes are > 1)');return;}
+  if(n===2){o('2 IS prime — the only even prime number');return;}
+  if(n%2===0){o(n+' is NOT prime (divisible by 2)');return;}
+  const limit=Math.sqrt(n);
+  for(let i=3;i<=limit;i+=2){if(n%i===0){o(n+' is NOT prime (divisible by '+i+')');return;}}
+  o(n+' IS a prime number');
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

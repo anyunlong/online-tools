@@ -23,16 +23,17 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process(){
-  const v=document.getElementById('inp').value.split(/[,\s]+/).map(Number);
-  if(v.length<3||v.some(isNaN)){document.getElementById('out').textContent='Format: a, b, c (solve a:b = c:x)';return;}
-  document.getElementById('out').innerHTML='<div class="text-lg">'+v[0]+' : '+v[1]+' = '+v[2]+' : <span class="text-xl font-bold text-brand-400">'+(v[2]*v[1]/v[0]).toFixed(4)+'</span></div>';
+function process() {
+  const v=document.getElementById('inp').value.trim().split(/[\s,]+/);
+  if(v.length<3){o('Format: a b c (solves a/b = c/x)\nExample: 3 4 9 → 3/4 = 9/12');return;}
+  const a=parseFloat(v[0]),b=parseFloat(v[1]),c=parseFloat(v[2]);
+  if(isNaN(a)||isNaN(b)||isNaN(c)){o('Enter three valid numbers');return;}
+  if(b===0){o('Denominator cannot be zero');return;}
+  const x=(c*b)/a;
+  o(a+' / '+b+' = '+c+' / x\nx = '+x+'\nCheck: '+a+'/'+b+' = '+(a/b).toFixed(4)+' | '+c+'/'+x+' = '+(c/x).toFixed(4));
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

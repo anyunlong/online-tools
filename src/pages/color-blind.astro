@@ -23,16 +23,24 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process(){
-  const inp=document.getElementById('inp').value.trim();
-  if(!inp){document.getElementById('out').textContent='Enter input above';return;}
-  document.getElementById('out').textContent='Processing: '+inp.substring(0,100);
+function process() {
+  const hex=document.getElementById('inp').value.trim().replace('#','');
+  if(!/^[0-9a-fA-F]{6}$/.test(hex)){o('Enter a hex color (e.g. #FF0000)');return;}
+  const r=parseInt(hex.slice(0,2),16),g=parseInt(hex.slice(2,4),16),b=parseInt(hex.slice(4,6),16);
+  // Protanopia simulation
+  const pr=r*0.567+g*0.433,pb=r*0.558+b*0.442;
+  // Deuteranopia
+  const dr=r*0.625+g*0.375,db=r*0.7+b*0.3;
+  // Tritanopia
+  const tr=r*0.95+g*0.05,tg=g*0.433+b*0.567;
+  const pCol='#'+Math.round(Math.min(255,pr)).toString(16).padStart(2,'0')+Math.round(g).toString(16).padStart(2,'0')+Math.round(Math.min(255,pb)).toString(16).padStart(2,'0');
+  const dCol='#'+Math.round(Math.min(255,dr)).toString(16).padStart(2,'0')+Math.round(g).toString(16).padStart(2,'0')+Math.round(Math.min(255,db)).toString(16).padStart(2,'0');
+  const tCol='#'+Math.round(Math.min(255,tr)).toString(16).padStart(2,'0')+Math.round(Math.min(255,tg)).toString(16).padStart(2,'0')+Math.round(b).toString(16).padStart(2,'0');
+  const box=h=>'<div style="display:inline-block;width:80px;margin:4px"><div style="width:80px;height:50px;background:'+h+';border-radius:6px"></div><div style="font-size:9px;text-align:center">'+h+'</div></div>';
+  document.getElementById('out').innerHTML='<div style="display:flex;flex-wrap:wrap">'+box('#'+hex)+box(pCol)+box(dCol)+box(tCol)+'</div><div style="font-size:10px;color:#8b949e;margin-top:8px">Original | Protanopia | Deuteranopia | Tritanopia</div>';
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').innerHTML='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

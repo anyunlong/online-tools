@@ -23,17 +23,16 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process(){
-  const t=document.getElementById('inp').value;if(!t){document.getElementById('out').textContent='Enter text';return;}
-  const f={};for(const c of t)f[c]=(f[c]||0)+1;
-  const s=Object.entries(f).sort((a,b)=>b[1]-a[1]).slice(0,15);
-  document.getElementById('out').innerHTML='<table class="w-full text-xs">'+s.map(([c,n])=>'<tr><td class="py-1 pr-3 font-mono">'+(c===' '?'␣':c==='\n'?'↵':c)+'</td><td class="py-1">'+n+'</td><td class="py-1"><div class="bg-brand-500/30 h-2 rounded" style="width:'+(n/s[0][1]*100)+'%"></div></td></tr>').join('')+'</table>';
+function process() {
+  const t=document.getElementById('inp').value;
+  if(!t){o('Enter text to analyze');return;}
+  const freq={};for(const c of t){freq[c]=(freq[c]||0)+1;}
+  const sorted=Object.entries(freq).sort((a,b)=>b[1]-a[1]);
+  const lines=sorted.slice(0,20).map(([c,n])=>c===' '?'[space]':c==='\n'?'[newline]':c==='\t'?'[tab]':c+' : '+n);
+  o('Character frequency (top 20):\n'+lines.join('\n')+'\n\nTotal unique chars: '+sorted.length);
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

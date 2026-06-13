@@ -18,17 +18,28 @@ import Button from '../components/Button.astro';
     <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
   </div>
 <script is:inline>
-function generate(){
-  document.getElementById('result').textContent='Generated output — customize me!';
+function generate() {
+  // Generate valid Luhn credit card numbers (test format only)
+  const prefixes={visa:'4',mc:'5',amex:'37',disc:'6011'};
+  const types=['visa','mc','amex','disc'];
+  const type=types[Math.floor(Math.random()*types.length)];
+  const prefix=prefixes[type];
+  let num=prefix;
+  const len=type==='amex'?15:16;
+  while(num.length<len-1)num+=Math.floor(Math.random()*10);
+  // Luhn checksum
+  let sum=0;let alt=1;
+  for(let i=num.length-1;i>=0;i--){let d=parseInt(num[i]);if(alt)d*=2;if(d>9)d-=9;sum+=d;alt=!alt;}
+  const check=(10-(sum%10))%10;
+  const full=num+check;
+  document.getElementById('result').value=full.replace(/(\d{4})/g,'$1 ').trim()+' ('+type.toUpperCase()+' test)';
 }
 function copyResult() {
-  const text = document.getElementById('result').textContent;
-  if (!text) return;
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('[onclick="copyResult()"]');
-    btn.textContent = 'Copied!';
-    setTimeout(() => btn.textContent = 'Copy', 2000);
-  });
+  const el=document.getElementById('result');
+  if(!el||!el.value) return;
+  el.select();document.execCommand('copy');
+  document.getElementById('msg').textContent='Copied!';
+  setTimeout(()=>document.getElementById('msg').textContent='',2000);
 }
 </script>
 <slot name="info" slot="info">

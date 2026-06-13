@@ -23,16 +23,24 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
+const units="Meters (m) | Kilometers (km) | Miles (mi) | Feet (ft) | Inches (in) | Centimeters (cm) | Millimeters (mm) | Yards (yd)";
+document.getElementById('inp').placeholder='Format: value from_unit to_unit\nExample: 100 C F\n\n'+units;
+
 function process() {
   const v=document.getElementById('inp').value.trim().split(/\s+/);
-  if(v.length<3){document.getElementById('out').textContent='Format: value from_unit to_unit. Units: m,km,cm,mm,mi,ft,in';return;}
-  document.getElementById('out').textContent='Converter ready - enter value from_unit to_unit';
+  if(v.length<3){o('Format: value from_unit to_unit\nExample: 100 C F');return;}
+  const val=parseFloat(v[0]);const from=v[1]?.toLowerCase();const to=v[2]?.toLowerCase();
+  if(isNaN(val)){o('Invalid number');return;}
+  const toM={m:1,km:1000,mi:1609.344,ft:0.3048,in:0.0254,cm:0.01,mm:0.001,yd:0.9144};
+  const fromM={m:1,km:0.001,mi:0.000621371,ft:3.28084,in:39.3701,cm:100,mm:1000,yd:1.09361};
+  if(!(from in toM)){o('Unknown from unit');return;}
+  if(!(to in fromM)){o('Unknown to unit');return;}
+  const meters=val*toM[from];
+  const result=meters*fromM[to];
+  o(val+' '+from+' = '+result.toFixed(4)+' '+to);
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

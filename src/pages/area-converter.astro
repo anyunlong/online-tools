@@ -23,16 +23,23 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
+const units="Square meters (m²) | Square km (km²) | Square feet (ft²) | Acres | Hectares | Square miles (mi²) | Square yards (yd²)";
+document.getElementById('inp').placeholder='Format: value from_unit to_unit\nExample: 100 C F\n\n'+units;
+
 function process() {
   const v=document.getElementById('inp').value.trim().split(/\s+/);
-  if(v.length<3){document.getElementById('out').textContent='Format: value from_unit to_unit. Units: m2,km2,ha,acre,ft2';return;}
-  document.getElementById('out').textContent='Converter ready - enter value from_unit to_unit';
+  if(v.length<3){o('Format: value from_unit to_unit\nExample: 100 C F');return;}
+  const val=parseFloat(v[0]);const from=v[1]?.toLowerCase();const to=v[2]?.toLowerCase();
+  if(isNaN(val)){o('Invalid number');return;}
+  const toM2={'m2':1,'m²':1,'km2':1e6,'km²':1e6,'ft2':0.092903,'ft²':0.092903,acre:4046.86,ha:10000,mi2:2589988,'mi²':2589988,'yd2':0.836127,'yd²':0.836127};
+  const fromM2={'m2':1,'m²':1,'km2':1e-6,'km²':1e-6,'ft2':10.7639,'ft²':10.7639,acre:0.000247105,ha:0.0001,mi2:3.861e-7,'mi²':3.861e-7,'yd2':1.19599,'yd²':1.19599};
+  const fk=toM2[from];if(!fk){o('Unknown from unit');return;}
+  const tk=fromM2[to];if(!tk){o('Unknown to unit');return;}
+  const m2=val*fk;const result=m2*tk;
+  o(val+' '+from+' = '+result.toFixed(4)+' '+to);
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

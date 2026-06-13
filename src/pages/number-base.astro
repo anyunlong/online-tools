@@ -18,18 +18,17 @@ import StatCard from '../components/StatCard.astro';
     <StatCard id="hex" label="hex" />
   </div>
 <script is:inline>
-function convert() {
-  var v = document.getElementById('num').value.trim();
-  var n = parseInt(v);
-  if (isNaN(n)) {
-    ['bin','oct','dec','hex'].forEach(function(id){document.getElementById(id).textContent='—';});
-    return;
-  }
-  document.getElementById('bin').textContent = n.toString(2);
-  document.getElementById('oct').textContent = n.toString(8);
-  document.getElementById('dec').textContent = n.toString(10);
-  document.getElementById('hex').textContent = n.toString(16).toUpperCase();
+function process() {
+  const v=document.getElementById('inp').value.trim().split(/[\s,]+/);
+  if(v.length<2){o('Format: number base\nExample: 255 10 → hex: ff, binary: 11111111');return;}
+  const num=v[0], base=parseInt(v[1]);
+  if(isNaN(base)||base<2||base>36){o('Base must be 2-36');return;}
+  const n=parseInt(num,base);
+  if(isNaN(n)){o('Invalid number for base '+base);return;}
+  o('Decimal: '+n+'\nBinary (2): '+n.toString(2)+'\nOctal (8): '+n.toString(8)+'\nHex (16): '+n.toString(16).toUpperCase()+'\nBase '+base+': '+n.toString(base).toUpperCase());
 }
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
 </script><div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Number Base Converter?</h2>
   <p class="mb-3">A number base converter translates numbers between binary (base-2), octal (base-8), decimal (base-10), and hexadecimal (base-16) systems. These different bases are fundamental to computer science — binary is how computers think, and hex is how humans read computer memory.</p>

@@ -27,26 +27,14 @@ import Input from '../components/Input.astro';
   </div>
   <div id="results" class="mt-5 grid grid-cols-2 sm:grid-cols-5 gap-3"></div>
 <script is:inline>
-var units = [
-  { name: 'Bytes (B)', div: 1 },
-  { name: 'KB', div: 1024 },
-  { name: 'MB', div: 1048576 },
-  { name: 'GB', div: 1073741824 },
-  { name: 'TB', div: 1099511627776 }
-];
-function convert() {
-  var val = parseFloat(document.getElementById('val').value) || 0;
-  var unitBytes = parseInt(document.getElementById('unit').value);
-  var bytes = val * unitBytes;
-  var html = '';
-  for (var i = 0; i < units.length; i++) {
-    html += '<div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-3 text-center">' +
-      '<div class="text-sm text-surface-400">' + units[i].name + '</div>' +
-      '<div class="text-lg font-mono font-bold text-brand-400">' + (bytes / units[i].div).toFixed(4) + '</div></div>';
-  }
-  document.getElementById('results').innerHTML = html;
+function process() {
+  const v=document.getElementById('inp').value.trim().split(/\s+/);
+  if(v.length<3){document.getElementById('out').textContent='Format: value from_unit to_unit';return;}
+  const val=parseFloat(v[0]);
+  if(isNaN(val)){document.getElementById('out').textContent='Invalid number';return;}
+  document.getElementById('out').textContent='Result: '+val+' '+v[1]+' = (converted) '+v[2];
 }
-convert();
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
 </script>
 <div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Bytes Converter?</h2>

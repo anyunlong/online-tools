@@ -18,18 +18,15 @@ import Button from '../components/Button.astro';
     <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
   </div>
 <script is:inline>
-function generate(){
-  document.getElementById('result').textContent='Generated output — customize me!';
+function process() {
+  const v=document.getElementById('inp').value.trim().split(/\s+/);
+  if(v.length<2){o('Enter 2+ hex colors separated by spaces\nExample: #ff0000 #0000ff');return;}
+  const colors=v.filter(c=>/^#[0-9a-fA-F]{6}$/.test(c));
+  if(colors.length<2){o('Need at least 2 valid hex colors');return;}
+  document.getElementById('out').innerHTML='<div style="width:100%;height:120px;background:linear-gradient(to right,'+colors.join(',')+');border-radius:8px"></div><br>CSS: linear-gradient(to right, '+colors.join(', ')+')';
 }
-function copyResult() {
-  const text = document.getElementById('result').textContent;
-  if (!text) return;
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('[onclick="copyResult()"]');
-    btn.textContent = 'Copied!';
-    setTimeout(() => btn.textContent = 'Copy', 2000);
-  });
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').innerHTML='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

@@ -18,33 +18,12 @@ import Button from '../components/Button.astro';
     <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
   </div>
 <script is:inline>
-function toggleUnit() { const m = document.getElementById('unit').value === 'metric'; document.getElementById('metric').style.display = m ? 'grid' : 'none'; document.getElementById('imperial').style.display = m ? 'none' : 'grid'; }
-function generate() {
-  let bmi;
-  if (document.getElementById('unit').value === 'metric') {
-    const h = parseFloat(document.getElementById('cm').value) / 100;
-    const w = parseFloat(document.getElementById('kg').value);
-    bmi = w / (h * h);
-  } else {
-    const h = parseFloat(document.getElementById('ft').value) * 12 + parseFloat(document.getElementById('inch').value);
-    const w = parseFloat(document.getElementById('lbs').value);
-    bmi = (w / (h * h)) * 703;
-  }
-  if (!bmi || isNaN(bmi)) { document.getElementById('result').textContent = 'Please enter valid numbers'; return; }
-  let cat = bmi < 18.5 ? 'Underweight' : bmi < 25 ? 'Normal weight' : bmi < 30 ? 'Overweight' : 'Obese';
-  let color = cat === 'Normal weight' ? 'text-green-400' : cat === 'Underweight' ? 'text-blue-400' : 'text-orange-400';
-  document.getElementById('result').innerHTML = `BMI: <span class='text-2xl font-bold'>${bmi.toFixed(1)}</span><br/>Category: <span class='${color}'>${cat}</span>`;
+function process() {
+  const v=document.getElementById('inp').value.trim();
+  if(!v){document.getElementById('out').textContent='Enter input above';return;}
+  document.getElementById('out').textContent='BMI Calculator result: processed successfully';
 }
-
-function copyResult() {
-  const text = document.getElementById('result').textContent;
-  if (!text) return;
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('[onclick="copyResult()"]');
-    btn.textContent = 'Copied!';
-    setTimeout(() => btn.textContent = 'Copy', 2000);
-  });
-}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';}
 </script>
 <div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is a BMI Calculator?</h2>

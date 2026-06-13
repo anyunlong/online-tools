@@ -23,16 +23,24 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
+const units="Joules (J) | Kilojoules (kJ) | Calories (cal) | kcal | Watt-hours (Wh) | kWh | BTU | eV";
+document.getElementById('inp').placeholder='Format: value from_unit to_unit\nExample: 100 C F\n\n'+units;
+
 function process() {
   const v=document.getElementById('inp').value.trim().split(/\s+/);
-  if(v.length<3){document.getElementById('out').textContent='Format: value from_unit to_unit. Units: J,kJ,cal,kcal,kWh';return;}
-  document.getElementById('out').textContent='Converter ready - enter value from_unit to_unit';
+  if(v.length<3){o('Format: value from_unit to_unit\nExample: 100 C F');return;}
+  const val=parseFloat(v[0]);const from=v[1]?.toLowerCase();const to=v[2]?.toLowerCase();
+  if(isNaN(val)){o('Invalid number');return;}
+  const toJ={j:1,kj:1000,cal:4.184,kcal:4184,wh:3600,kwh:3600000,btu:1055.06,ev:1.602176634e-19};
+  const fromJ={j:1,kj:0.001,cal:0.239006,kcal:0.000239006,wh:0.000277778,kwh:2.77778e-7,btu:0.000947817,ev:6.2415e18};
+  const fk=toJ[from];if(!fk){o('Unknown from unit');return;}
+  const tk=fromJ[to];if(!tk){o('Unknown to unit');return;}
+  const j=val*fk;const result=j*tk;
+  if(Math.abs(result)<0.0001||Math.abs(result)>1e15) o(result.toExponential(6)+' '+to);
+  else o(result.toFixed(4)+' '+to);
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

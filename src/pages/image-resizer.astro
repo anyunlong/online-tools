@@ -23,16 +23,31 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process(){
-  const inp=document.getElementById('inp').value.trim();
-  if(!inp){document.getElementById('out').textContent='Enter input above';return;}
-  document.getElementById('out').textContent='Processing: '+inp.substring(0,100);
+function process() {
+  document.getElementById('out').innerHTML='<p style="color:#8b949e">Select an image file to resize.</p><input type="file" id="imgFile" accept="image/*" onchange="resizeImage()" style="color:#fff"><br><br><label style="font-size:0.85em">Width: <input id="imgW" value="800" style="width:70px;background:#1a1a2e;color:#fff;border:1px solid #333;padding:4px">px</label><br><label style="font-size:0.85em">Quality: <input id="imgQ" value="80" style="width:70px;background:#1a1a2e;color:#fff;border:1px solid #333;padding:4px">%</label>';
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
+function resizeImage() {
+  const file=document.getElementById('imgFile').files[0];
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=function(e){
+    const img=new Image();
+    img.onload=function(){
+      const canvas=document.createElement('canvas');
+      const w=parseInt(document.getElementById('imgW').value)||800;
+      const ratio=w/img.width;
+      canvas.width=w;canvas.height=Math.round(img.height*ratio);
+      const ctx=canvas.getContext('2d');ctx.drawImage(img,0,0,canvas.width,canvas.height);
+      const q=parseInt(document.getElementById('imgQ').value)/100||0.8;
+      const dataUrl=canvas.toDataURL('image/jpeg',q);
+      document.getElementById('out').innerHTML='<p>Original: '+img.width+'×'+img.height+'</p><p>Resized: '+w+'×'+canvas.height+'</p><img src="'+dataUrl+'" style="max-width:100%;border-radius:8px;margin-top:10px"><br><a href="'+dataUrl+'" download="resized.jpg" style="color:#3B82F6;font-size:0.85em">⬇ Download</a>';
+    };
+    img.src=e.target.result;
+  };
+  reader.readAsDataURL(file);
 }
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').innerHTML='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

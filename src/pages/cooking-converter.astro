@@ -23,16 +23,23 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
+const units="Cups | Tablespoons (tbsp) | Teaspoons (tsp) | Milliliters (mL) | Fluid ounces (fl oz) | Grams (g) - approximate";
+document.getElementById('inp').placeholder='Format: value from_unit to_unit\nExample: 100 C F\n\n'+units;
+
 function process() {
   const v=document.getElementById('inp').value.trim().split(/\s+/);
-  if(v.length<3){document.getElementById('out').textContent='Format: value from_unit to_unit. Units: cup,tbsp,tsp,mL';return;}
-  document.getElementById('out').textContent='Converter ready - enter value from_unit to_unit';
+  if(v.length<3){o('Format: value from_unit to_unit\nExample: 100 C F');return;}
+  const val=parseFloat(v[0]);const from=v[1]?.toLowerCase();const to=v[2]?.toLowerCase();
+  if(isNaN(val)){o('Invalid number');return;}
+  const toCup={cup:1,cups:1,tbsp:0.0625,tsp:0.0208333,ml:0.00422675,floz:0.125,g:0.00422675};
+  const fromCup={cup:1,cups:1,tbsp:16,tsp:48,ml:236.588,floz:8,g:236.588};
+  const fk=toCup[from];if(!fk){o('Unknown from unit');return;}
+  const tk=fromCup[to];if(!tk){o('Unknown to unit');return;}
+  const cups=val*fk;const result=cups*tk;
+  o(val+' '+from+' = '+result.toFixed(2)+' '+to);
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

@@ -23,16 +23,17 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process(){
-  const inp=document.getElementById('inp').value.trim();
-  if(!inp){document.getElementById('out').textContent='Enter input above';return;}
-  document.getElementById('out').textContent='Processing: '+inp.substring(0,100);
+function process() {
+  const names=document.getElementById('inp').value.trim().split(/[\n,]+/).filter(n=>n.trim());
+  const teams=parseInt(document.getElementById('teams')?.value)||2;
+  if(names.length<2){o('Enter names separated by commas or newlines');return;}
+  const shuffled=[...names].sort(()=>Math.random()-0.5);
+  const result=Array.from({length:teams},(_,i)=>({team:i+1,members:[]}));
+  shuffled.forEach((n,i)=>result[i%teams].members.push(n));
+  o(result.map(t=>'Team '+t.team+': '+t.members.join(', ')).join('\n')+'\n\nShuffled: '+shuffled.join(', '));
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

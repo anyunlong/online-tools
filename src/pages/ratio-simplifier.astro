@@ -23,18 +23,18 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function gcf(a,b){while(b){[a,b]=[b,a%b]}return Math.abs(a)}
-function process(){
-  const p=document.getElementById('inp').value.split(/[:\/]/);
-  if(p.length!==2){document.getElementById('out').textContent='Enter ratio like 12:8';return;}
-  const a=parseInt(p[0]),b=parseInt(p[1]);if(isNaN(a)||isNaN(b)||b===0){document.getElementById('out').textContent='Invalid';return;}
-  const g=gcf(a,b);document.getElementById('out').innerHTML='<div class="text-xl font-bold text-brand-400">'+a/g+' : '+b/g+'</div>';
+function gcd(a,b){return b===0?a:gcd(b,a%b);}
+function process() {
+  const v=document.getElementById('inp').value.trim().split(/[:\/\s]+/);
+  if(v.length<2){o('Format: a:b or a/b (e.g. 12:16)');return;}
+  const a=parseInt(v[0]), b=parseInt(v[1]);
+  if(isNaN(a)||isNaN(b)||b===0){o('Enter two valid integers (second cannot be 0)');return;}
+  const g=gcd(Math.abs(a),Math.abs(b));
+  const sign=(a<0&&b<0)?'':(a<0||b<0)?'-':'';
+  o(a+':'+b+' simplifies to '+sign+Math.abs(a/g)+':'+Math.abs(b/g));
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

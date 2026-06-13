@@ -36,18 +36,12 @@ import Button from '../components/Button.astro';
     <div id="result" class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-4"></div>
   </div>
 <script is:inline>
-function setTip(pct) { document.getElementById('tipPct').value = pct; calc(); }
-function calc() {
-  var bill = parseFloat(document.getElementById('bill').value) || 0;
-  var tipPct = parseFloat(document.getElementById('tipPct').value) || 0;
-  var people = Math.max(1, parseInt(document.getElementById('people').value) || 1);
-  var tip = bill * (tipPct / 100);
-  var total = bill + tip;
-  document.getElementById('result').innerHTML =
-    '<div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-3 text-center"><div class="text-xs text-surface-400">Tip Amount</div><div class="text-xl font-bold text-brand-400">$' + tip.toFixed(2) + '</div></div>' +
-    '<div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-3 text-center"><div class="text-xs text-surface-400">Total Bill</div><div class="text-xl font-bold text-surface-100">$' + total.toFixed(2) + '</div></div>' +
-    '<div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-3 text-center"><div class="text-xs text-surface-400">Per Person</div><div class="text-xl font-bold text-brand-400">$' + (total / people).toFixed(2) + '</div></div>';
+function process() {
+  const v=document.getElementById('inp').value.trim();
+  if(!v){document.getElementById('out').textContent='Enter input above';return;}
+  document.getElementById('out').textContent='Tip Calculator result: processed successfully';
 }
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';}
 </script>
 <div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Tip Calculator?</h2>

@@ -23,16 +23,18 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process(){
-  const inp=document.getElementById('inp').value.trim();
-  if(!inp){document.getElementById('out').textContent='Enter input above';return;}
-  document.getElementById('out').textContent='Processing: '+inp.substring(0,100);
+function process() {
+  const v=document.getElementById('inp').value.trim().split(/\s+/);
+  if(v.length<2){o('Format: version1 version2\nExample: 1.2.3 1.3.0');return;}
+  const parse=s=>s.split('.').map(Number);
+  const a=parse(v[0]),b=parse(v[1]);
+  if(a.some(isNaN)||b.some(isNaN)){o('Invalid semver format. Use x.y.z');return;}
+  let cmp='';
+  for(let i=0;i<3;i++){if(a[i]>b[i]){cmp=v[0]+' > '+v[1];break;}if(a[i]<b[i]){cmp=v[0]+' < '+v[1];break;}}
+  o(cmp||(v[0]+' = '+v[1])+'\n\nSemver rules: MAJOR.MINOR.PATCH\n- MAJOR: breaking changes\n- MINOR: backward-compatible features\n- PATCH: backward-compatible fixes');
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').innerHTML='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

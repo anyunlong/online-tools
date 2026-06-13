@@ -21,18 +21,24 @@ import Button from '../components/Button.astro';
   <div id="ts-result" class="mt-4 text-sm bg-surface-800/40 border border-surface-700/30 rounded-xl p-3 min-h-[40px] text-surface-200"></div>
   <div id="current" class="text-xs text-surface-500 mt-2"></div>
 <script is:inline>
-function tsToDate() {
-  var v = document.getElementById('ts').value;
-  var d = new Date(v.length > 10 ? v * 1 : v * 1000);
-  document.getElementById('ts-result').textContent = d.toLocaleString('zh-CN', {timeZone: 'Asia/Shanghai'});
+function process() {
+  const v=document.getElementById('inp').value.trim();
+  document.getElementById('out').textContent='';
+  // Try as timestamp
+  const ts=parseInt(v);
+  if(!isNaN(ts)&&v.length>=10){
+    const d=new Date(ts*(v.length>10?1:1000));
+    document.getElementById('out').textContent+='Timestamp → Date:\n'+d.toLocaleString('en-US',{timeZone:'UTC'})+' UTC\n'+d.toLocaleString('en-US')+' Local\nISO: '+d.toISOString()+'\n';
+  }
+  // Try as date
+  const dt=new Date(v);
+  if(!isNaN(dt.getTime())){
+    document.getElementById('out').textContent+='\nDate → Timestamp:\nSeconds: '+Math.floor(dt.getTime()/1000)+'\nMilliseconds: '+dt.getTime();
+  }
+  if(!document.getElementById('out').textContent) o('Enter a Unix timestamp or date string');
 }
-function dateToTs() {
-  var v = document.getElementById('dt').value;
-  document.getElementById('ts-result').textContent = 'sec: ' + Math.floor(new Date(v).getTime() / 1000) + ' | ms: ' + new Date(v).getTime();
-}
-document.getElementById('current').textContent = 'Current timestamp (sec): ' + Math.floor(Date.now() / 1000);
-var now = new Date();
-document.getElementById('dt').value = now.toISOString().slice(0, 16);
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';if(timer)clearInterval(timer);}
 </script>
 <div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Timestamp Converter?</h2>

@@ -18,29 +18,18 @@ import Button from '../components/Button.astro';
     <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
   </div>
 <script is:inline>
+const chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{}|;:,.<>?';
 function generate() {
-  const len = parseInt(document.getElementById('len').value) || 32;
-  let chars = '';
-  if (document.getElementById('upper').checked) chars += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  if (document.getElementById('lower').checked) chars += 'abcdefghijklmnopqrstuvwxyz';
-  if (document.getElementById('nums').checked) chars += '0123456789';
-  if (document.getElementById('sym').checked) chars += '!@#$%^&*()_+-=[]{}|;:,.<>?';
-  if (!chars) { document.getElementById('result').textContent = 'Select at least one character type'; return; }
-  let result = '';
-  const arr = new Uint32Array(len);
-  crypto.getRandomValues(arr);
-  for (let i = 0; i < len; i++) result += chars[arr[i] % chars.length];
-  document.getElementById('result').textContent = result;
+  const len=parseInt(document.getElementById('len')?.value)||16;
+  let s='';for(let i=0;i<len;i++)s+=chars[Math.floor(Math.random()*chars.length)];
+  document.getElementById('result').value=s;
 }
-
 function copyResult() {
-  const text = document.getElementById('result').textContent;
-  if (!text) return;
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('[onclick="copyResult()"]');
-    btn.textContent = 'Copied!';
-    setTimeout(() => btn.textContent = 'Copy', 2000);
-  });
+  const el=document.getElementById('result');
+  if(!el||!el.value) return;
+  el.select();document.execCommand('copy');
+  document.getElementById('msg').textContent='Copied!';
+  setTimeout(()=>document.getElementById('msg').textContent='',2000);
 }
 </script>
 <div slot="info">

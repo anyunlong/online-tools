@@ -23,17 +23,21 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process(){
+function process() {
   const v=document.getElementById('inp').value.trim();
-  if(!v){document.getElementById('out').textContent='Enter a number';return;}
-  const n=parseFloat(v);if(isNaN(n)){document.getElementById('out').textContent='Invalid';return;}
-  document.getElementById('out').innerHTML='<div class="text-lg font-bold text-brand-400">'+n.toExponential(6)+'</div><div class="text-sm text-surface-400">Standard: '+n.toLocaleString('en-US',{maximumFractionDigits:10})+'</div>';
+  // Try parsing as scientific notation first
+  if(v.includes('e')||v.includes('E')||v.includes('×')){
+    const cleaned=v.replace(/×10[\^]?/i,'e');
+    const n=parseFloat(cleaned);
+    if(!isNaN(n)){o('Standard: '+n.toLocaleString('fullwide',{maximumFractionDigits:20}));return;}
+  }
+  // Try as regular number, convert to scientific
+  const n=parseFloat(v);
+  if(isNaN(n)){o('Enter a valid number or scientific notation (e.g. 6.022e23)');return;}
+  o('Scientific: '+n.toExponential(6)+'\nStandard: '+n.toLocaleString('fullwide',{maximumFractionDigits:20}));
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

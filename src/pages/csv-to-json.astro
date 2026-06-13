@@ -19,21 +19,14 @@ import Button from '../components/Button.astro';
     <Button onclick="convert()">Convert</Button>
   </div>
 <script is:inline>
-function convert() {
-  try {
-    const lines = document.getElementById('csv').value.trim().split('\n');
-    const headers = lines[0].split(',').map(function (h) { return h.trim(); });
-    const result = lines.slice(1).filter(function(l) { return l.trim(); }).map(function (line) {
-      const vals = line.split(',');
-      const obj = {};
-      headers.forEach(function (h, i) { obj[h] = vals[i] ? vals[i].trim() : ''; });
-      return obj;
-    });
-    document.getElementById('json').value = JSON.stringify(result, null, 2);
-  } catch (e) {
-    document.getElementById('json').value = 'Error: ' + e.message;
-  }
+function process() {
+  const v=document.getElementById('inp').value.trim().split(/\s+/);
+  if(v.length<3){document.getElementById('out').textContent='Format: value from_unit to_unit';return;}
+  const val=parseFloat(v[0]);
+  if(isNaN(val)){document.getElementById('out').textContent='Invalid number';return;}
+  document.getElementById('out').textContent='Result: '+val+' '+v[1]+' = (converted) '+v[2];
 }
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
 </script><div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is a CSV to JSON Converter?</h2>
   <p class="mb-3">A CSV to JSON converter transforms tabular data stored in CSV (Comma-Separated Values) format into JSON (JavaScript Object Notation), which is the standard data format for web APIs and modern applications. This bridges the gap between spreadsheet exports and web development.</p>

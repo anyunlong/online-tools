@@ -23,16 +23,22 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process(){
-  const t=document.getElementById('inp').value,w=parseInt(document.getElementById('inp').dataset.width)||80;if(!t){document.getElementById('out').textContent='Enter text';return;}
-  let r='',l='';for(const wd of t.split(' ')){if(l&&l.length+wd.length+1>w){r+=l+'\n';l=wd}else l=l?(l+' '+wd):wd}r+=l;
-  document.getElementById('out').innerHTML='<pre class="font-mono text-xs">'+r.replace(/</g,'&lt;')+'</pre>';
+function process() {
+  const v=document.getElementById('inp').value.trim().split(/\n/);
+  const width=parseInt(v[0])||80;
+  if(v.length<2){o('First line: wrap width\nFollowing lines: text to wrap');return;}
+  const text=v.slice(1).join(' ');
+  const words=text.split(/\s+/);
+  let line='',result='';
+  for(const w of words){
+    if(line.length+w.length+1<=width)line+=(line?' ':'')+w;
+    else{result+=line+'\n';line=w;}
+  }
+  result+=line;
+  o(result);
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

@@ -18,17 +18,21 @@ import Button from '../components/Button.astro';
     <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
   </div>
 <script is:inline>
-function generate(){
-  document.getElementById('result').textContent='Generated output — customize me!';
+function generate() {
+  // Simple Code 128-like barcode
+  const code=Math.floor(Math.random()*9000000000000)+1000000000000;
+  document.getElementById('result').value='EAN-13: '+code;
+  const svg='<svg xmlns="http://www.w3.org/2000/svg" width="200" height="60"><rect width="200" height="60" fill="white"/>';
+  let x=10;const s=code.toString();
+  for(let i=0;i<s.length;i++){const w=parseInt(s[i])%3+1;svg+='<rect x="'+x+'" y="5" width="'+w+'" height="45" fill="black"/>';x+=w+1;}
+  document.getElementById('result').insertAdjacentHTML('afterend','<div style="margin-top:10px;background:white;padding:8px;border-radius:8px">'+svg+'</svg></div>');
 }
 function copyResult() {
-  const text = document.getElementById('result').textContent;
-  if (!text) return;
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('[onclick="copyResult()"]');
-    btn.textContent = 'Copied!';
-    setTimeout(() => btn.textContent = 'Copy', 2000);
-  });
+  const el=document.getElementById('result');
+  if(!el||!el.value) return;
+  el.select();document.execCommand('copy');
+  document.getElementById('msg').textContent='Copied!';
+  setTimeout(()=>document.getElementById('msg').textContent='',2000);
 }
 </script>
 <slot name="info" slot="info">

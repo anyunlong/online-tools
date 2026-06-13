@@ -23,16 +23,13 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process(){
-  const inp=document.getElementById('inp').value.trim();
-  if(!inp){document.getElementById('out').textContent='Enter input above';return;}
-  document.getElementById('out').textContent='Processing: '+inp.substring(0,100);
+function process() {
+  const url=document.getElementById('inp').value.trim().replace(/^https?:\/\//,'');
+  if(!url){o('Enter domain to check (e.g. google.com)');return;}
+  o('Checking: '+url+'\n\n⚠ Browser can\'t perform SSL checks directly.\nUse: openssl s_client -connect '+url+':443 -servername '+url+'\n\nFor online check: ssllabs.com/ssltest/');
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').innerHTML='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

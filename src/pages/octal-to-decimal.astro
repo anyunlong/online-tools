@@ -23,16 +23,14 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process(){
-  const inp=document.getElementById('inp').value.trim();
-  if(!inp){document.getElementById('out').textContent='Enter input above';return;}
-  document.getElementById('out').textContent='Processing: '+inp.substring(0,100);
+function process() {
+  const v=document.getElementById('inp').value.trim();
+  if(/^[0-7]+$/.test(v)){const n=parseInt(v,8);o('Octal '+v+' = Decimal '+n+'\nHex: '+n.toString(16).toUpperCase());}
+  else if(/^\d+$/.test(v)){const n=parseInt(v);o('Decimal '+n+' = Octal '+n.toString(8));}
+  else{o('Enter an octal number (digits 0-7) or decimal number');}
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

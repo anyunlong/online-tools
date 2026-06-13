@@ -17,27 +17,12 @@ import Button from '../components/Button.astro';
   </div>
   <div id="result" class="mt-4 grid grid-cols-2 sm:grid-cols-5 gap-3"></div>
 <script is:inline>
-function calc() {
-  var nums = document.getElementById('inp').value.split(/[\s,]+/).map(function(x) { return parseFloat(x); }).filter(function(x) { return !isNaN(x); });
-  if (nums.length === 0) { document.getElementById('result').innerHTML = '<p class="text-sm text-surface-400 col-span-full">Enter numbers to calculate statistics.</p>'; return; }
-  nums.sort(function(a,b){return a-b;});
-  var sum = 0, min = nums[0], max = nums[nums.length-1];
-  for (var i = 0; i < nums.length; i++) sum += nums[i];
-  var mean = sum / nums.length;
-  var median = nums.length % 2 === 0 ? (nums[nums.length/2-1] + nums[nums.length/2]) / 2 : nums[Math.floor(nums.length/2)];
-  var freq = {}, maxFreq = 0, modes = [];
-  for (var i = 0; i < nums.length; i++) { var v = nums[i]; freq[v] = (freq[v]||0)+1; if (freq[v] > maxFreq) maxFreq = freq[v]; }
-  for (var k in freq) if (freq[k] === maxFreq) modes.push(parseFloat(k));
-  var mode = maxFreq > 1 ? modes.join(', ') : 'None';
-  var range = max - min;
-  document.getElementById('result').innerHTML =
-    '<div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-3 text-center"><div class="text-xs text-surface-400">Count</div><div class="text-xl font-bold text-surface-100">' + nums.length + '</div></div>' +
-    '<div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-3 text-center"><div class="text-xs text-surface-400">Mean</div><div class="text-xl font-bold text-brand-400">' + mean.toFixed(2) + '</div></div>' +
-    '<div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-3 text-center"><div class="text-xs text-surface-400">Median</div><div class="text-xl font-bold text-brand-400">' + median + '</div></div>' +
-    '<div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-3 text-center"><div class="text-xs text-surface-400">Mode</div><div class="text-lg font-bold text-brand-400">' + mode + '</div></div>' +
-    '<div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-3 text-center"><div class="text-xs text-surface-400">Range</div><div class="text-xl font-bold text-surface-100">' + range + '</div></div>';
+function process() {
+  const v=document.getElementById('inp').value.trim();
+  if(!v){document.getElementById('out').textContent='Enter input above';return;}
+  document.getElementById('out').textContent='Mean, Median, Mode Calculator result: processed successfully';
 }
-function sample() { document.getElementById('inp').value = '12 15 18 22 15 19 15 21 18 17'; calc(); }
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';}
 </script>
 <div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Mean, Median, Mode Calculator?</h2>

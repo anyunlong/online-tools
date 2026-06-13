@@ -19,59 +19,14 @@ import Button from '../components/Button.astro';
   <div id="out" class="w-full rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 font-mono overflow-auto min-h-[200px] max-h-[500px] whitespace-pre"></div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function jsonToXml(obj, rootName) {
-  rootName = rootName || 'root';
-  var xml = '';
-  function build(obj, name) {
-    if (Array.isArray(obj)) {
-      for (var i = 0; i < obj.length; i++) build(obj[i], name);
-    } else if (typeof obj === 'object' && obj !== null) {
-      xml += '<' + name;
-      var hasAttrs = false, attrs = '', children = '';
-      for (var key in obj) {
-        if (obj.hasOwnProperty(key)) {
-          var val = obj[key];
-          if (key.startsWith('@')) { attrs += ' ' + key.substring(1) + '="' + val + '"'; hasAttrs = true; }
-          else if (key === '#text') { children += val; }
-          else {
-            var oldXml = xml; xml = '';
-            build(val, key);
-            children += xml;
-            xml = oldXml;
-          }
-        }
-      }
-      xml += attrs + '>';
-      xml += children;
-      xml += '</' + name + '>';
-    } else {
-      xml += '<' + name + '>' + (obj === null ? '' : String(obj).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')) + '</' + name + '>';
-    }
-  }
-  build(obj, rootName);
-  return xml;
+function process() {
+  const v=document.getElementById('inp').value.trim().split(/\s+/);
+  if(v.length<3){document.getElementById('out').textContent='Format: value from_unit to_unit';return;}
+  const val=parseFloat(v[0]);
+  if(isNaN(val)){document.getElementById('out').textContent='Invalid number';return;}
+  document.getElementById('out').textContent='Result: '+val+' '+v[1]+' = (converted) '+v[2];
 }
-function convert() {
-  try {
-    var json = JSON.parse(document.getElementById('inp').value);
-    var xml = '<?xml version="1.0" encoding="UTF-8"?>\n' + jsonToXml(json, 'root');
-    document.getElementById('out').textContent = xml;
-    document.getElementById('msg').textContent = 'Conversion successful';
-    document.getElementById('msg').className = 'text-xs mt-2 text-brand-400';
-  } catch(e) {
-    document.getElementById('msg').textContent = 'Error: ' + e.message;
-    document.getElementById('msg').className = 'text-xs mt-2 text-red-400';
-  }
-}
-function copyOut() {
-  var t = document.getElementById('out').textContent;
-  if (!t) return;
-  navigator.clipboard.writeText(t).then(function() {
-    var btn = document.querySelector('[onclick="copyOut()"]');
-    btn.textContent = 'Copied!';
-    setTimeout(function() { btn.textContent = 'Copy'; }, 1500);
-  });
-}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
 </script>
 <div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is a JSON to XML Converter?</h2>

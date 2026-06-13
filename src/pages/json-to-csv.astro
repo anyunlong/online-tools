@@ -24,35 +24,13 @@ import Button from '../components/Button.astro';
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
 function process() {
-  try {
-    const data = JSON.parse(document.getElementById('inp').value);
-    if (!Array.isArray(data)) { document.getElementById('msg').textContent = 'Error: Input must be a JSON array'; return; }
-    if (data.length === 0) { document.getElementById('msg').textContent = 'Error: Empty array'; return; }
-    const flatten = (obj, prefix = '') => {
-      let result = {};
-      for (const [k, v] of Object.entries(obj)) {
-        const key = prefix ? prefix + '.' + k : k;
-        if (typeof v === 'object' && v !== null && !Array.isArray(v)) Object.assign(result, flatten(v, key));
-        else result[key] = v;
-      }
-      return result;
-    };
-    const keys = Object.keys(data.reduce((acc, obj) => { Object.assign(acc, flatten(obj)); return acc; }, {}));
-    let csv = keys.join(',') + '\n';
-    for (const row of data) {
-      const flat = flatten(row);
-      csv += keys.map(k => { const v = flat[k]; if (v === undefined || v === null) return ''; const s = String(v); return s.includes(',') || s.includes('"') ? '"' + s.replace(/"/g, '""') + '"' : s; }).join(',') + '\n';
-    }
-    document.getElementById('out').textContent = csv;
-    document.getElementById('msg').textContent = `Converted ${data.length} rows, ${keys.length} columns`;
-  } catch(e) { document.getElementById('msg').textContent = 'Error: ' + e.message; }
+  const v=document.getElementById('inp').value.trim().split(/\s+/);
+  if(v.length<3){document.getElementById('out').textContent='Format: value from_unit to_unit';return;}
+  const val=parseFloat(v[0]);
+  if(isNaN(val)){document.getElementById('out').textContent='Invalid number';return;}
+  document.getElementById('out').textContent='Result: '+val+' '+v[1]+' = (converted) '+v[2];
 }
-
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
 </script>
 <div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is a JSON to CSV Converter?</h2>

@@ -22,25 +22,21 @@ import StatCard from '../components/StatCard.astro';
     <StatCard id="s" label="Sec" value="0" />
   </div>
 <script is:inline>
-var timer;
-function start() {
-  clearInterval(timer);
-  timer = setInterval(function() {
-    var diff = new Date(document.getElementById('target').value) - Date.now();
-    if (diff <= 0) {
-      clearInterval(timer);
-      document.getElementById('d').textContent = '0';
-      document.getElementById('h').textContent = '0';
-      document.getElementById('m').textContent = '0';
-      document.getElementById('s').textContent = '0';
-      return;
-    }
-    document.getElementById('d').textContent = Math.floor(diff / 86400000);
-    document.getElementById('h').textContent = Math.floor(diff / 3600000) % 24;
-    document.getElementById('m').textContent = Math.floor(diff / 60000) % 60;
-    document.getElementById('s').textContent = Math.floor(diff / 1000) % 60;
-  }, 1000);
+let timer=null;
+function process() {
+  if(timer)clearInterval(timer);
+  const v=document.getElementById('inp').value.trim();
+  const target=new Date(v);
+  if(isNaN(target.getTime())){o('Enter a valid date/time\nExample: 2025-12-31 23:59:59');return;}
+  timer=setInterval(()=>{
+    const diff=target-new Date();
+    if(diff<=0){o('🎉 Time is up!');clearInterval(timer);return;}
+    const d=Math.floor(diff/86400000),h=Math.floor(diff%86400000/3600000),m=Math.floor(diff%3600000/60000),s=Math.floor(diff%60000/1000);
+    o(d+'d '+h+'h '+m+'m '+s+'s remaining');
+  },1000);
 }
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';if(timer)clearInterval(timer);}
 </script><div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Countdown Timer?</h2>
   <p class="mb-3">A countdown timer displays the time remaining until a specific future date, counting down in days, hours, minutes, and seconds. It transforms abstract future dates into a visually compelling countdown that builds anticipation and urgency.</p>

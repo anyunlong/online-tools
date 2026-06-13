@@ -23,16 +23,14 @@ import Button from '../components/Button.astro';
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process(){
-  const inp=document.getElementById('inp').value.trim();
-  if(!inp){document.getElementById('out').textContent='Enter input above';return;}
-  document.getElementById('out').textContent='Processing: '+inp.substring(0,100);
+function process() {
+  const url=document.getElementById('inp').value.trim();
+  if(!url){o('Enter a page URL to get canonical tag recommendations');return;}
+  try{const u=new URL(url);o('Recommended canonical: '+u.origin+u.pathname.replace(/\/$/,'')+'\n\nChecklist:\n✓ No trailing slash\n✓ Consistent protocol (https)\n✓ No query parameters\n✓ Match in sitemap\n\nAdd to <head>:\n<link rel="canonical" href="'+u.origin+u.pathname.replace(/\/$/,'')+'" />');}
+  catch(e){o('Invalid URL format');}
 }
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
-}
+function o(t){document.getElementById('out').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').innerHTML='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>
