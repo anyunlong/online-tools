@@ -2,6 +2,8 @@
 import ToolCard from './ToolCard.astro';
 import tools from '../data/tools.json';
 
+const INITIAL_COUNT = 24;
+
 const catOrder = [
   'Encode/Decode', 'Hash', 'Text', 'Time', 'Dev Tools',
   'Convert', 'Formatter', 'Generator', 'Security', 'Design',
@@ -68,11 +70,19 @@ const categories = catOrder.filter(cat => tools.some(t => t.cat === cat));
     </div>
 
     <div id="tools-grid" class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-      {tools.map(tool => (
-        <div data-cat={tool.cat} data-name={tool.name} data-desc={tool.desc} class="tool-card-wrapper">
+      {tools.map((tool, index) => (
+        <div data-cat={tool.cat} data-name={tool.name} data-desc={tool.desc} class={"tool-card-wrapper" + (index >= INITIAL_COUNT ? " hidden" : "")}>
           <ToolCard tool={tool} />
         </div>
       ))}
+    </div>
+
+    <div id="load-more-wrap" class="mt-8 text-center">
+      <button id="load-more-btn" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 text-white font-medium shadow-lg shadow-brand-500/20 hover:from-brand-400 hover:to-brand-500 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
+        <span>Show More Tools</span>
+        <span>↓</span>
+      </button>
+      <p id="load-more-hint" class="mt-3 text-sm text-muted-foreground"></p>
     </div>
 
     <div id="tools-empty" class="hidden rounded-xl border border-dashed border-border py-16 text-center text-muted-foreground">
@@ -82,6 +92,7 @@ const categories = catOrder.filter(cat => tools.some(t => t.cat === cat));
 </section>
 
 <script>
+  var INITIAL_COUNT = 24;
   var searchInput = document.getElementById('tools-search');
   var toolsCount = document.getElementById('tools-count');
   var toolsGrid = document.getElementById('tools-grid');
@@ -126,7 +137,64 @@ const categories = catOrder.filter(cat => tools.some(t => t.cat === cat));
       if (toolsGrid) toolsGrid.classList.remove('hidden');
       if (toolsEmpty) toolsEmpty.classList.add('hidden');
     }
+
+    shownCount = 0;
+    var visibleWrappers = Array.from(cardWrappers).filter(function(w) {
+      return w.style.display !== 'none';
+    });
+    visibleWrappers.forEach(function(w, i) {
+      if (i >= INITIAL_COUNT) {
+        w.classList.add('hidden');
+        shownCount = INITIAL_COUNT;
+      } else {
+        w.classList.remove('hidden');
+        shownCount = i + 1;
+      }
+    });
+    updateLoadMore();
   }
+
+  var loadMoreBtn = document.getElementById('load-more-btn');
+  var loadMoreWrap = document.getElementById('load-more-wrap');
+  var loadMoreHint = document.getElementById('load-more-hint');
+  var shownCount = INITIAL_COUNT;
+  var totalVisible = 0;
+
+  function updateLoadMore() {
+    var allWrappers = document.querySelectorAll('.tool-card-wrapper');
+    var visibleWrappers = Array.from(allWrappers).filter(function(w) {
+      return w.style.display !== 'none';
+    });
+    totalVisible = visibleWrappers.length;
+
+    if (shownCount >= totalVisible) {
+      if (loadMoreWrap) loadMoreWrap.style.display = 'none';
+    } else {
+      if (loadMoreWrap) loadMoreWrap.style.display = '';
+      var remaining = totalVisible - shownCount;
+      if (loadMoreHint) loadMoreHint.textContent = remaining + ' more tool' + (remaining !== 1 ? 's' : '') + ' available';
+    }
+  }
+
+  function showMoreTools() {
+    var allWrappers = document.querySelectorAll('.tool-card-wrapper');
+    var visibleWrappers = Array.from(allWrappers).filter(function(w) {
+      return w.style.display !== 'none';
+    });
+
+    var toShow = visibleWrappers.slice(shownCount, shownCount + 12);
+    toShow.forEach(function(w) {
+      w.classList.remove('hidden');
+    });
+    shownCount += toShow.length;
+    updateLoadMore();
+  }
+
+  if (loadMoreBtn) {
+    loadMoreBtn.addEventListener('click', showMoreTools);
+  }
+
+  updateLoadMore();
 
   if (searchInput) {
     searchInput.addEventListener('input', filterTools);
