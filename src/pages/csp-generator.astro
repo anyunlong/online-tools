@@ -10,19 +10,150 @@ import Button from '../components/Button.astro';
   keywords={["csp generator", "csp header generator", "security"]}
 >
   <div class="space-y-4">
-    <div class='text-sm text-surface-400'>Configure options above</div>
+    <div class="space-y-3">
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5 font-medium text-brand-400">Directive: default-src</label>
+        <div class="flex flex-wrap gap-2">
+          <label class="text-xs text-surface-300 flex items-center gap-1"><input type="checkbox" id="default_self" checked class="accent-brand-500" /> 'self'</label>
+          <label class="text-xs text-surface-300 flex items-center gap-1"><input type="checkbox" id="default_none" class="accent-brand-500" /> 'none'</label>
+          <input id="default_custom" type="text" placeholder="custom origins" class="bg-surface-800 border border-surface-600 rounded px-2 py-0.5 text-xs text-surface-100 w-40" />
+        </div>
+      </div>
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Directive: script-src</label>
+        <div class="flex flex-wrap gap-2 items-center">
+          <label class="text-xs text-surface-300 flex items-center gap-1"><input type="checkbox" id="script_self" checked class="accent-brand-500" /> 'self'</label>
+          <label class="text-xs text-surface-300 flex items-center gap-1"><input type="checkbox" id="script_inline" class="accent-brand-500" /> 'unsafe-inline'</label>
+          <label class="text-xs text-surface-300 flex items-center gap-1"><input type="checkbox" id="script_eval" class="accent-brand-500" /> 'unsafe-eval'</label>
+          <input id="script_custom" type="text" placeholder="cdn.example.com" class="bg-surface-800 border border-surface-600 rounded px-2 py-0.5 text-xs text-surface-100 w-40" />
+        </div>
+      </div>
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Directive: style-src</label>
+        <div class="flex flex-wrap gap-2 items-center">
+          <label class="text-xs text-surface-300 flex items-center gap-1"><input type="checkbox" id="style_self" checked class="accent-brand-500" /> 'self'</label>
+          <label class="text-xs text-surface-300 flex items-center gap-1"><input type="checkbox" id="style_inline" class="accent-brand-500" /> 'unsafe-inline'</label>
+          <input id="style_custom" type="text" placeholder="fonts.googleapis.com" class="bg-surface-800 border border-surface-600 rounded px-2 py-0.5 text-xs text-surface-100 w-40" />
+        </div>
+      </div>
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Directive: img-src</label>
+        <div class="flex flex-wrap gap-2 items-center">
+          <label class="text-xs text-surface-300 flex items-center gap-1"><input type="checkbox" id="img_self" checked class="accent-brand-500" /> 'self'</label>
+          <label class="text-xs text-surface-300 flex items-center gap-1"><input type="checkbox" id="img_data" checked class="accent-brand-500" /> data:</label>
+          <label class="text-xs text-surface-300 flex items-center gap-1"><input type="checkbox" id="img_https" class="accent-brand-500" /> https:</label>
+          <input id="img_custom" type="text" placeholder="images.cdn.com" class="bg-surface-800 border border-surface-600 rounded px-2 py-0.5 text-xs text-surface-100 w-40" />
+        </div>
+      </div>
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Directive: font-src</label>
+        <div class="flex flex-wrap gap-2 items-center">
+          <label class="text-xs text-surface-300 flex items-center gap-1"><input type="checkbox" id="font_self" checked class="accent-brand-500" /> 'self'</label>
+          <label class="text-xs text-surface-300 flex items-center gap-1"><input type="checkbox" id="font_gstatic" class="accent-brand-500" /> fonts.gstatic.com</label>
+          <input id="font_custom" type="text" placeholder="custom font CDN" class="bg-surface-800 border border-surface-600 rounded px-2 py-0.5 text-xs text-surface-100 w-40" />
+        </div>
+      </div>
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Directive: connect-src</label>
+        <div class="flex flex-wrap gap-2 items-center">
+          <label class="text-xs text-surface-300 flex items-center gap-1"><input type="checkbox" id="connect_self" checked class="accent-brand-500" /> 'self'</label>
+          <input id="connect_custom" type="text" placeholder="api.example.com" class="bg-surface-800 border border-surface-600 rounded px-2 py-0.5 text-xs text-surface-100 w-40" />
+        </div>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <div>
+          <label class="text-sm text-surface-300 block mb-1.5">frame-ancestors</label>
+          <select id="frame_ancestors" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 w-full">
+            <option value="'none'" selected>'none'</option>
+            <option value="'self'">'self'</option>
+            <option value="*">*</option>
+          </select>
+        </div>
+        <div>
+          <label class="text-sm text-surface-300 block mb-1.5">base-uri</label>
+          <select id="base_uri" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 w-full">
+            <option value="'self'" selected>'self'</option>
+            <option value="'none'">'none'</option>
+          </select>
+        </div>
+        <div>
+          <label class="text-sm text-surface-300 block mb-1.5">form-action</label>
+          <select id="form_action" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 w-full">
+            <option value="'self'" selected>'self'</option>
+            <option value="'none'">'none'</option>
+          </select>
+        </div>
+      </div>
+    </div>
     <div class="flex gap-2">
       <Button onclick="generate()">Generate</Button>
       <Button variant="secondary" onclick="copyResult()">Copy</Button>
     </div>
-    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
+    <textarea id="result" readonly class="w-full min-h-[200px] rounded-xl border border-surface-600 bg-surface-800 p-4 text-sm text-surface-100 font-mono whitespace-pre-wrap break-all resize-y"></textarea>
   </div>
 <script is:inline>
-function process() {
-  o('Content-Security-Policy:\n  default-src \'self\';\n  script-src \'self\' \'unsafe-inline\';\n  style-src \'self\' \'unsafe-inline\';\n  img-src \'self\' data: https:;\n  font-src \'self\';\n  connect-src \'self\';\n  frame-ancestors \'none\';\n  base-uri \'self\';\n  form-action \'self\';\n\n⚠ Review directives before deploying.\n\'unsafe-inline\' weakens CSP — consider nonces/hashes in production.');
+function getSrc(id) {
+  var val = document.getElementById(id).value.trim();
+  return val ? val : '';
 }
-function o(t){document.getElementById('out').textContent=t;}
-function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';if(timer)clearInterval(timer);}
+
+function buildDirective(baseId, parts) {
+  var sources = [];
+  parts.forEach(function(p) {
+    var el = document.getElementById(baseId + '_' + p);
+    if (el) {
+      if (el.type === 'checkbox' && el.checked) sources.push(p);
+      else if (el.type === 'text' && el.value.trim()) sources.push(el.value.trim());
+    }
+  });
+  var customId = baseId + '_custom';
+  var custom = document.getElementById(customId);
+  if (custom && custom.value.trim()) {
+    custom.value.trim().split(/[\s,]+/).forEach(function(s) { if (s) sources.push(s); });
+  }
+  return sources.join(' ');
+}
+
+function generate() {
+  var policies = [];
+
+  var defParts = [];
+  if (document.getElementById('default_self').checked) defParts.push("'self'");
+  if (document.getElementById('default_none').checked) defParts = ["'none'"];
+  var defCustom = getSrc('default_custom');
+  if (defCustom) defParts.push(defCustom);
+  if (defParts.length) policies.push('default-src ' + defParts.join(' '));
+
+  var script = buildDirective('script', ["'self'", "'unsafe-inline'", "'unsafe-eval'"]);
+  if (script) policies.push('script-src ' + script);
+
+  var style = buildDirective('style', ["'self'", "'unsafe-inline'"]);
+  if (style) policies.push('style-src ' + style);
+
+  var img = buildDirective('img', ["'self'", 'data:', 'https:']);
+  if (img) policies.push('img-src ' + img);
+
+  var font = buildDirective('font', ["'self'", 'fonts.gstatic.com']);
+  if (font) policies.push('font-src ' + font);
+
+  var connect = buildDirective('connect', ["'self'"]);
+  if (connect) policies.push('connect-src ' + connect);
+
+  policies.push('frame-ancestors ' + document.getElementById('frame_ancestors').value);
+  policies.push('base-uri ' + document.getElementById('base_uri').value);
+  policies.push('form-action ' + document.getElementById('form_action').value);
+
+  var csp = policies.join('; ');
+  var meta = '<meta http-equiv="Content-Security-Policy" content="' + csp + '">';
+
+  document.getElementById('result').value =
+    '# HTTP Header\nContent-Security-Policy: ' + csp + '\n\n' +
+    '# Meta Tag\n' + meta;
+}
+
+function copyResult() {
+  navigator.clipboard.writeText(document.getElementById('result').value);
+}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

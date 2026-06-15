@@ -19,14 +19,49 @@ import Button from '../components/Button.astro';
   </div>
 <script is:inline>
 const words='lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum'.split(' ');
-function process() {
-  const v=document.getElementById('inp').value.trim();
-  const count=parseInt(v)||100;
-  if(count<1||count>10000){o('Enter a number 1-10000');return;}
-  const ws=[];for(let i=0;i<count;i++)ws.push(words[i%words.length]);ws[0]=ws[0].charAt(0).toUpperCase()+ws[0].slice(1);
-  o(ws.join(' ')+'.');
+
+function randomWord() { return words[Math.floor(Math.random() * words.length)]; }
+
+function randomSentence() {
+  var len = 5 + Math.floor(Math.random() * 11);
+  var arr = [];
+  for (var i = 0; i < len; i++) arr.push(randomWord());
+  arr[0] = arr[0].charAt(0).toUpperCase() + arr[0].slice(1);
+  return arr.join(' ') + '.';
 }
-function o(t){document.getElementById('out').textContent=t;}
+
+function randomParagraph() {
+  var sentences = 3 + Math.floor(Math.random() * 5);
+  var arr = [];
+  for (var i = 0; i < sentences; i++) arr.push(randomSentence());
+  return arr.join(' ');
+}
+
+function generate() {
+  var type = document.getElementById('type').value;
+  var count = parseInt(document.getElementById('count').value, 10);
+  if (isNaN(count) || count < 1) count = 3;
+  if (count > 100) count = 100;
+
+  var html = '';
+  if (type === 'paragraphs') {
+    for (var i = 0; i < count; i++) html += '<p class="mb-2">' + randomParagraph() + '</p>';
+  } else if (type === 'sentences') {
+    html = '<p>' + Array.from({length: count}, function() { return randomSentence(); }).join(' ') + '</p>';
+  } else {
+    var arr = [];
+    for (var i = 0; i < count; i++) arr.push(randomWord());
+    arr[0] = arr[0].charAt(0).toUpperCase() + arr[0].slice(1);
+    html = '<p>' + arr.join(' ') + '.</p>';
+  }
+
+  document.getElementById('result').innerHTML = html;
+}
+
+function copyResult() {
+  var text = document.getElementById('result').innerText;
+  navigator.clipboard.writeText(text);
+}
 </script>
 <div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Lorem Ipsum Generator?</h2>

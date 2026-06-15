@@ -10,25 +10,65 @@ import Button from '../components/Button.astro';
   keywords={["ipv6 generator", "ipv6 generator", "generator"]}
 >
   <div class="space-y-4">
-    <div class='text-sm text-surface-400'>Configure options above</div>
+    <div class="flex gap-4 flex-wrap">
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Type</label>
+        <select id="type" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100">
+          <option value="random">Random (Global)</option>
+          <option value="link-local">Link-local (fe80::)</option>
+          <option value="ula">Unique-local (fc00::/fd00::)</option>
+        </select>
+      </div>
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Count</label>
+        <select id="count" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100">
+          <option value="1">1</option><option value="3" selected>3</option><option value="5">5</option><option value="10">10</option>
+        </select>
+      </div>
+    </div>
     <div class="flex gap-2">
       <Button onclick="generate()">Generate</Button>
       <Button variant="secondary" onclick="copyResult()">Copy</Button>
     </div>
-    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
+    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-600 bg-surface-800 p-4 text-sm text-surface-100 font-mono whitespace-pre-wrap break-all"></div>
   </div>
 <script is:inline>
-function generate() {
-  const r=()=>Math.floor(Math.random()*65536).toString(16).padStart(4,'0');
-  const ip=Array.from({length:8},r).join(':');
-  document.getElementById('result').value=ip;
+function rand16() {
+  var buf = new Uint16Array(1);
+  crypto.getRandomValues(buf);
+  return buf[0].toString(16);
 }
+
+function generateAddress(type) {
+  var groups = [];
+  for (var i = 0; i < 8; i++) groups.push(rand16());
+  if (type === 'link-local') {
+    groups[0] = 'fe80';
+    groups[1] = '0';
+    groups[2] = '0';
+    groups[3] = '0';
+  } else if (type === 'ula') {
+    var buf = new Uint8Array(1);
+    crypto.getRandomValues(buf);
+    groups[0] = 'fc' + buf[0].toString(16).padStart(2, '0');
+  }
+  return groups.join(':');
+}
+
+function generate() {
+  var type = document.getElementById('type').value;
+  var count = parseInt(document.getElementById('count').value, 10);
+  var addrs = [];
+  for (var i = 0; i < count; i++) {
+    addrs.push(generateAddress(type));
+  }
+  var labels = { random: 'Global', 'link-local': 'Link-local', ula: 'Unique-local' };
+  document.getElementById('result').textContent = addrs.join('\n') + '\n\nType: ' + labels[type];
+}
+
 function copyResult() {
-  const el=document.getElementById('result');
-  if(!el||!el.value) return;
-  el.select();document.execCommand('copy');
-  document.getElementById('msg').textContent='Copied!';
-  setTimeout(()=>document.getElementById('msg').textContent='',2000);
+  var text = document.getElementById('result').textContent;
+  navigator.clipboard.writeText(text);
 }
 </script>
 <slot name="info" slot="info">

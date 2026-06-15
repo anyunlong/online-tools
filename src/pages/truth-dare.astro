@@ -10,28 +10,129 @@ import Button from '../components/Button.astro';
   keywords={["truth dare", "truth or dare generator", "fun"]}
 >
   <div class="space-y-4">
-    <div class='text-sm text-surface-400'>Configure options above</div>
+    <div class="flex gap-4 flex-wrap">
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Type</label>
+        <select id="type" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100">
+          <option value="random">Random</option>
+          <option value="truth">Truth</option>
+          <option value="dare">Dare</option>
+        </select>
+      </div>
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Count</label>
+        <select id="count" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100">
+          <option value="1">1</option><option value="3" selected>3</option><option value="5">5</option><option value="10">10</option>
+        </select>
+      </div>
+    </div>
     <div class="flex gap-2">
       <Button onclick="generate()">Generate</Button>
       <Button variant="secondary" onclick="copyResult()">Copy</Button>
     </div>
-    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
+    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-600 bg-surface-800 p-4 text-sm text-surface-100 font-mono whitespace-pre-wrap break-all"></div>
   </div>
 <script is:inline>
-const truths=['What is your most embarrassing moment?','Have you ever lied to your best friend?','What is your biggest fear?','What is the last thing you searched?','Have you ever cheated on a test?','What is the funniest thing you have ever done?','Do you have a secret talent?','What is your guilty pleasure?'];
-const dares=['Do 10 pushups right now','Speak in an accent for the next 3 rounds','Text your last selfie to a random contact','Do your best impression of someone in this room','Dance with no music for 30 seconds','Let someone else post on your social media','Eat a spoonful of a random condiment','Call a friend and sing Happy Birthday'];
-function generate() {
-  const type=document.getElementById('type')?.value;
-  const t=Math.random()<0.5;
-  const result=t?truths[Math.floor(Math.random()*truths.length)]:dares[Math.floor(Math.random()*dares.length)];
-  document.getElementById('result').value=(t?'[TRUTH] ':'[DARE] ')+result;
+var truths = [
+  'What is the most embarrassing thing you have ever done?',
+  'Have you ever lied to your best friend to get out of plans?',
+  'What is your biggest irrational fear?',
+  'What is the last thing you searched on your phone?',
+  'Have you ever cheated on a test or exam?',
+  'What is the most trouble you have ever been in?',
+  'Do you have a secret talent nobody knows about?',
+  'What is your guilty pleasure TV show or music?',
+  'Who was your first crush and did they ever find out?',
+  'What is the worst date you have ever been on?',
+  'Have you ever pretended to like a gift you hated?',
+  'What is the longest you have gone without showering?',
+  'Have you ever sent a text to the wrong person? What did it say?',
+  'What is the most embarrassing thing in your room right now?',
+  'Have you ever snooped through someone else phone?',
+  'What is a habit you have that annoys others?',
+  'Have you ever ghosted someone? Why?',
+  'What is the dumbest thing you have done on a dare?',
+  'Have you ever had a fake online profile?',
+  'What is the weirdest food combination you secretly enjoy?',
+  'When was the last time you cried and why?',
+  'What is the most awkward encounter you have had?',
+  'Have you ever eavesdropped on a conversation?',
+  'What is one thing you would change about your appearance?',
+  'Have you ever lied about your age? When and why?',
+  'What is the most childish thing you still do?',
+  'Have you ever pretended to know a stranger?',
+  'What song do you sing in the shower?',
+  'Have you ever blamed a fart on someone else?',
+  'What is the worst fashion choice you have ever made?',
+  'Have you ever been caught talking to yourself?',
+  'What is the last lie you told?',
+  'Have you ever Googled yourself? What did you find?'
+];
+
+var dares = [
+  'Do 10 pushups right now',
+  'Speak in an accent for the next 3 rounds',
+  'Text your last selfie to a random contact',
+  'Do your best impression of someone in this room',
+  'Dance with no music for 30 seconds',
+  'Let someone else draw on your face with a pen',
+  'Post an embarrassing selfie on your social media',
+  'Call a friend and sing Happy Birthday to them',
+  'Do a handstand or try for 15 seconds',
+  'Let someone write a status update on your phone',
+  'Eat a spoonful of hot sauce or a spicy snack',
+  'Hold an ice cube in your hand until it melts',
+  'Do your best animal impression for 20 seconds',
+  'Wear your shirt inside out for the next hour',
+  'Send a voice message to someone in a silly voice',
+  'Balance a book on your head and walk across the room',
+  'Do the worm dance (or your best attempt)',
+  'Recite the alphabet backwards without looking',
+  'Let someone style your hair however they want',
+  'Attempt to juggle three items for 30 seconds',
+  'Prank call a friend and keep a straight face',
+  'Take a bite of something without using your hands',
+  'Do a dramatic slow-motion walk across the room',
+  'Speak only in questions for the next 2 minutes',
+  'Mimic a famous movie scene from memory',
+  'Close your eyes and draw a portrait of someone',
+  'Follow an online dance tutorial for 1 minute',
+  'Do 20 jumping jacks while singing a nursery rhyme',
+  'Try to lick your elbow for 30 seconds',
+  'Stand on one foot with your eyes closed for 1 minute',
+  'Tell a joke with a completely straight face',
+  'Do a runway walk across the room with commentary'
+];
+
+function rand(arr) {
+  var buf = new Uint32Array(1);
+  crypto.getRandomValues(buf);
+  return arr[buf[0] % arr.length];
 }
+
+function generate() {
+  var type = document.getElementById('type').value;
+  var count = parseInt(document.getElementById('count').value, 10);
+  var items = [];
+  var used = {};
+  for (var i = 0; i < count; i++) {
+    var isTruth;
+    if (type === 'truth') isTruth = true;
+    else if (type === 'dare') isTruth = false;
+    else isTruth = Math.random() > 0.5;
+    var pool = isTruth ? truths : dares;
+    var item;
+    var tries = 0;
+    do { item = rand(pool); tries++; } while (used[item] && tries < 30);
+    used[item] = true;
+    items.push((isTruth ? '[TRUTH] ' : '[DARE] ') + item);
+  }
+  document.getElementById('result').textContent = items.join('\n\n');
+}
+
 function copyResult() {
-  const el=document.getElementById('result');
-  if(!el||!el.value) return;
-  el.select();document.execCommand('copy');
-  document.getElementById('msg').textContent='Copied!';
-  setTimeout(()=>document.getElementById('msg').textContent='',2000);
+  var text = document.getElementById('result').textContent;
+  navigator.clipboard.writeText(text);
 }
 </script>
 <slot name="info" slot="info">

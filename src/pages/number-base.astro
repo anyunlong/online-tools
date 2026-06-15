@@ -10,25 +10,57 @@ import StatCard from '../components/StatCard.astro';
   category="Math"
   keywords={["base", "binary", "hex", "convert"]}
 >
-  <Input id="num" class="w-full tool-area" placeholder="Enter a number" oninput="convert()" />
-  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
-    <StatCard id="bin" label="binary" />
-    <StatCard id="oct" label="Octal" />
-    <StatCard id="dec" label="Decimal" />
-    <StatCard id="hex" label="hex" />
+  <div class="space-y-4">
+    <div class="flex gap-4 items-end">
+      <div class="flex-1">
+        <label class="text-sm text-surface-300 block mb-1.5">Number</label>
+        <input id="num" type="text" placeholder="Enter a number" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 font-mono w-full" oninput="convert()" />
+      </div>
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">From Base</label>
+        <select id="fromBase" onchange="convert()" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100">
+          <option value="16">HEX (16)</option>
+          <option value="10" selected>Decimal (10)</option>
+          <option value="8">Octal (8)</option>
+          <option value="2">Binary (2)</option>
+        </select>
+      </div>
+    </div>
+    <div id="result" class="grid grid-cols-2 sm:grid-cols-4 gap-3"></div>
   </div>
 <script is:inline>
-function process() {
-  const v=document.getElementById('inp').value.trim().split(/[\s,]+/);
-  if(v.length<2){o('Format: number base\nExample: 255 10 → hex: ff, binary: 11111111');return;}
-  const num=v[0], base=parseInt(v[1]);
-  if(isNaN(base)||base<2||base>36){o('Base must be 2-36');return;}
-  const n=parseInt(num,base);
-  if(isNaN(n)){o('Invalid number for base '+base);return;}
-  o('Decimal: '+n+'\nBinary (2): '+n.toString(2)+'\nOctal (8): '+n.toString(8)+'\nHex (16): '+n.toString(16).toUpperCase()+'\nBase '+base+': '+n.toString(base).toUpperCase());
+function convert() {
+  var numStr = document.getElementById('num').value.trim();
+  var fromBase = parseInt(document.getElementById('fromBase').value, 10);
+  if (!numStr) {
+    document.getElementById('result').innerHTML = '';
+    return;
+  }
+  var val = parseInt(numStr, fromBase);
+  if (isNaN(val)) {
+    document.getElementById('result').innerHTML = '<div class="col-span-full text-sm text-surface-400">Invalid number for the selected base</div>';
+    return;
+  }
+
+  var bases = [
+    { label: 'Binary (2)', value: val.toString(2) },
+    { label: 'Octal (8)', value: val.toString(8) },
+    { label: 'Decimal (10)', value: val.toString(10) },
+    { label: 'Hex (16)', value: val.toString(16).toUpperCase() }
+  ];
+
+  var html = '';
+  bases.forEach(function(b) {
+    var isActive = parseInt(b.label.match(/\d+/)[0], 10) === fromBase;
+    html += '<div class="' + (isActive ? 'bg-brand-500/10 border-brand-500/30' : 'bg-surface-800/50 border-surface-700/30') + ' border rounded-lg p-3 text-center">';
+    html += '<div class="text-xs text-surface-400">' + b.label + '</div>';
+    html += '<div class="text-sm font-mono ' + (isActive ? 'text-brand-400' : 'text-surface-100') + ' mt-1 break-all">' + b.value + '</div>';
+    html += '</div>';
+  });
+  document.getElementById('result').innerHTML = html;
 }
-function o(t){document.getElementById('out').textContent=t;}
-function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
+
+convert();
 </script><div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Number Base Converter?</h2>
   <p class="mb-3">A number base converter translates numbers between binary (base-2), octal (base-8), decimal (base-10), and hexadecimal (base-16) systems. These different bases are fundamental to computer science — binary is how computers think, and hex is how humans read computer memory.</p>

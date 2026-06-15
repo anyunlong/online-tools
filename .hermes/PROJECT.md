@@ -1,6 +1,6 @@
 # 4uses.com — Online Tools 项目全貌
 
-> 最后更新：2026-06-07
+> 最后更新：2026-06-14
 
 ## 项目背景
 
@@ -24,7 +24,10 @@
 | Vercel Analytics | ✅ | Web Analytics + Speed Insights |
 | 域名绑定 | ✅ | 4uses.com + HTTPS |
 | SEO 优化 | ✅ | sitemap/robots/JSON-LD/canonical |
-| Search Console | ✅ | HTML 文件验证 |
+| Search Console | ⏳ | 验证修复中（2页"已抓取-未编入索引"，已点重新验证） |
+| 翻墙方案 | ✅ | 飞鸟云订阅（38节点，VLESS+HY2，~174GB）替代 VPS |
+| VPS | ❌ 已销毁 | 0 实例，0 费用 |
+| 自动巡检 | ✅ | 每日 9:00 健康检查 + Bing 索引数 → 飞书 |
 | FAQPage Schema | ✅ | 100 工具 × 3 QA = 13,261 词 |
 | 内容扩写 | ✅ | Deep Dive + Tips + Mistakes = 20,693 词 |
 | **每页词数** | **541 词** | 从 155 提升 249% |

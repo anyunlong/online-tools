@@ -19,12 +19,28 @@ import Button from '../components/Button.astro';
   </div>
   <div id="result" class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-4 min-h-[60px]"></div>
 <script is:inline>
-function process() {
-  const v=document.getElementById('inp').value.trim();
-  if(!v){document.getElementById('out').textContent='Enter input above';return;}
-  document.getElementById('out').textContent='Factorial Calculator result: processed successfully';
+function calc() {
+  var n = parseInt(document.getElementById('n').value, 10);
+  if (isNaN(n) || n < 0) {
+    document.getElementById('result').textContent = 'Enter a non-negative integer';
+    return;
+  }
+  if (n > 10000) {
+    document.getElementById('result').textContent = 'Number too large (max 10000)';
+    return;
+  }
+
+  var result = 1n;
+  for (var i = 2n; i <= BigInt(n); i++) {
+    result *= i;
+  }
+
+  var str = result.toString();
+  document.getElementById('result').innerHTML =
+    '<div class="text-sm text-surface-400">' + n + '! =</div>' +
+    '<div class="text-lg font-mono text-brand-400 break-all mt-1">' + str + '</div>' +
+    '<div class="text-xs text-surface-500 mt-2">' + str.length + ' digits</div>';
 }
-function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';}
 </script>
 <div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Factorial Calculator?</h2>

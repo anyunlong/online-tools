@@ -9,7 +9,11 @@ import ToolLayout from '../components/ToolLayout.astro';
   keywords={["image", "compress", "online"]}
 >
   <div class="space-y-4">
-    <input type="file" id="file" accept="image/*" class="text-sm text-surface-300 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:bg-brand-500 file:text-white hover:file:bg-brand-400 file:cursor-pointer file:transition-colors" onchange="compress()" />
+    <input type="file" id="file" accept="image/*" class="text-sm text-surface-300 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:bg-brand-500 file:text-white hover:file:bg-brand-400 file:cursor-pointer file:transition-colors" onchange="compress()" />
+    <div>
+      <label class="text-sm text-surface-300 block mb-1.5">Quality: <span id="qualityVal">60</span>%</label>
+      <input id="quality" type="range" min="10" max="90" value="60" oninput="document.getElementById('qualityVal').textContent=this.value; compress()" class="accent-brand-500 w-full max-w-xs" />
+    </div>
     <div class="grid grid-cols-2 gap-4 text-sm hidden" id="result-area">
       <div class="bg-surface-800/40 border border-surface-700/30 rounded-xl p-3">
         <div class="text-xs text-surface-400">Original</div>
@@ -21,33 +25,47 @@ import ToolLayout from '../components/ToolLayout.astro';
       </div>
     </div>
     <canvas id="canvas" class="hidden"></canvas>
-    <img id="preview" class="max-w-full rounded-xl mt-3 hidden shadow-lg" />
+    <div id="preview-wrap" class="max-w-full rounded-xl mt-3 hidden">
+      <img id="preview" class="max-w-full rounded-xl shadow-lg" />
+      <a id="download-link" href="#" download="compressed.jpg" class="inline-block mt-2 text-sm text-brand-400 hover:underline">Download Compressed Image</a>
+    </div>
   </div>
 <script is:inline>
-function process() {
-  document.getElementById('out').innerHTML='<input type="file" id="imgFile" accept="image/*" onchange="compressImg()" style="color:#fff"><br><label style="font-size:0.85em">Quality: <input id="imgQ" value="60" style="width:60px;background:#1a1a2e;color:#fff;border:1px solid #333;padding:4px">%</label><div id="compressResult" style="margin-top:10px"></div>';
-}
-function compressImg() {
-  const file=document.getElementById('imgFile').files[0];
-  if(!file)return;
-  const reader=new FileReader();
-  reader.onload=function(e){
-    const img=new Image();
-    img.onload=function(){
-      const canvas=document.createElement('canvas');
-      canvas.width=img.width;canvas.height=img.height;
-      const ctx=canvas.getContext('2d');ctx.drawImage(img,0,0);
-      const q=parseInt(document.getElementById('imgQ').value)/100||0.6;
-      const dataUrl=canvas.toDataURL('image/jpeg',q);
-      const sizeBytes=Math.round(dataUrl.length*3/4);
-      document.getElementById('compressResult').innerHTML='<p>Original: '+(file.size/1024).toFixed(1)+' KB</p><p>Compressed: '+(sizeBytes/1024).toFixed(1)+' KB ('+((1-sizeBytes/file.size)*100).toFixed(0)+'% smaller)</p><img src="'+dataUrl+'" style="max-width:100%;border-radius:8px"><br><a href="'+dataUrl+'" download="compressed.jpg" style="color:#3B82F6;font-size:0.85em">⬇ Download</a>';
+var currentFile = null;
+var currentDataUrl = '';
+
+function compress() {
+  var file = document.getElementById('file').files[0];
+  if (!file) return;
+  currentFile = file;
+  var quality = parseInt(document.getElementById('quality').value, 10) / 100;
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var img = new Image();
+    img.onload = function() {
+      var canvas = document.getElementById('canvas');
+      canvas.width = img.width;
+      canvas.height = img.height;
+      var ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+      currentDataUrl = canvas.toDataURL('image/jpeg', quality);
+
+      var sizeBytes = Math.round(currentDataUrl.length * 3 / 4);
+      var origKB = (file.size / 1024).toFixed(1);
+      var newKB = (sizeBytes / 1024).toFixed(1);
+      var pct = ((1 - sizeBytes / file.size) * 100).toFixed(0);
+
+      document.getElementById('result-area').classList.remove('hidden');
+      document.getElementById('orig-size').textContent = origKB + ' KB';
+      document.getElementById('new-size').textContent = newKB + ' KB (' + pct + '% smaller)';
+      document.getElementById('preview').src = currentDataUrl;
+      document.getElementById('preview-wrap').classList.remove('hidden');
+      document.getElementById('download-link').href = currentDataUrl;
     };
-    img.src=e.target.result;
+    img.src = e.target.result;
   };
   reader.readAsDataURL(file);
 }
-function o(t){document.getElementById('out').textContent=t;}
-function clearAll(){document.getElementById('inp').value='';document.getElementById('out').innerHTML='';}
 </script><div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is an Image Compressor?</h2>
   <p class="mb-3">An image compressor reduces the file size of PNG, JPEG, and WebP images by adjusting quality settings — all done directly in your browser. Smaller images load faster on websites, take up less storage space, and are easier to share.</p>

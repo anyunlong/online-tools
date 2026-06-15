@@ -10,27 +10,63 @@ import Button from '../components/Button.astro';
   keywords={["coin flip", "coin flip simulator", "fun"]}
 >
   <div class="space-y-4">
-    <div class='text-sm text-surface-400'>Configure options above</div>
+    <div>
+      <label class="text-sm text-surface-300 block mb-1.5">Number of Flips</label>
+      <select id="count" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100">
+        <option value="1">1</option><option value="5" selected>5</option><option value="10">10</option><option value="20">20</option><option value="50">50</option><option value="100">100</option>
+      </select>
+    </div>
     <div class="flex gap-2">
-      <Button onclick="generate()">Generate</Button>
+      <Button onclick="generate()">Flip</Button>
       <Button variant="secondary" onclick="copyResult()">Copy</Button>
     </div>
-    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
+    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-600 bg-surface-800 p-4 text-sm text-surface-100 font-mono whitespace-pre-wrap break-all"></div>
   </div>
 <script is:inline>
-function generate() {
-  const result=Math.random()<0.5?'Heads 🪙':'Tails 🦅';
-  document.getElementById('result').value=result;
-  const el=document.getElementById('result');
-  el.style.fontSize='2em';el.style.textAlign='center';el.style.padding='20px 0';
-  setTimeout(()=>{el.style.fontSize='';el.style.padding='';},3000);
+function randInt(max) {
+  var buf = new Uint32Array(1);
+  crypto.getRandomValues(buf);
+  return buf[0] % max;
 }
+
+function generate() {
+  var count = parseInt(document.getElementById('count').value, 10);
+  var flips = [];
+  var heads = 0;
+  var tails = 0;
+  var longestHeads = 0;
+  var longestTails = 0;
+  var currentHeads = 0;
+  var currentTails = 0;
+
+  for (var i = 0; i < count; i++) {
+    var isHeads = randInt(2) === 0;
+    flips.push(isHeads ? 'H' : 'T');
+    if (isHeads) {
+      heads++;
+      currentHeads++;
+      currentTails = 0;
+      if (currentHeads > longestHeads) longestHeads = currentHeads;
+    } else {
+      tails++;
+      currentTails++;
+      currentHeads = 0;
+      if (currentTails > longestTails) longestTails = currentTails;
+    }
+  }
+
+  var result = flips.join(' ');
+  result += '\n\n';
+  result += 'Heads: ' + heads + ' (' + (heads / count * 100).toFixed(1) + '%)\n';
+  result += 'Tails: ' + tails + ' (' + (tails / count * 100).toFixed(1) + '%)\n';
+  result += 'Longest Heads streak: ' + longestHeads + '\n';
+  result += 'Longest Tails streak: ' + longestTails;
+  document.getElementById('result').textContent = result;
+}
+
 function copyResult() {
-  const el=document.getElementById('result');
-  if(!el||!el.value) return;
-  el.select();document.execCommand('copy');
-  document.getElementById('msg').textContent='Copied!';
-  setTimeout(()=>document.getElementById('msg').textContent='',2000);
+  var text = document.getElementById('result').textContent;
+  navigator.clipboard.writeText(text);
 }
 </script>
 <slot name="info" slot="info">

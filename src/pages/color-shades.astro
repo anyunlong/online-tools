@@ -10,31 +10,108 @@ import Button from '../components/Button.astro';
   keywords={["color shades", "color shades generator", "color"]}
 >
   <div class="space-y-4">
-    <div class='text-sm text-surface-400'>Configure options above</div>
+    <div class="flex gap-4 flex-wrap items-end">
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Base Color</label>
+        <input id="baseColor" type="color" value="#3b82f6" onchange="generate()" class="w-12 h-10 rounded cursor-pointer border-0 bg-transparent" />
+      </div>
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Steps</label>
+        <select id="steps" onchange="generate()" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100">
+          <option value="5">5 steps</option><option value="7">7 steps</option><option value="9" selected>9 steps</option><option value="11">11 steps</option>
+        </select>
+      </div>
+      <label class="text-xs text-surface-300 flex items-center gap-1 pb-2">
+        <input type="checkbox" id="includeBase" checked onchange="generate()" class="accent-brand-500" /> Include base
+      </label>
+    </div>
     <div class="flex gap-2">
       <Button onclick="generate()">Generate</Button>
       <Button variant="secondary" onclick="copyResult()">Copy</Button>
     </div>
-    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
+    <div id="swatches" class="flex flex-wrap gap-1.5"></div>
+    <textarea id="result" readonly class="w-full min-h-[80px] rounded-xl border border-surface-600 bg-surface-800 p-4 text-sm text-surface-100 font-mono whitespace-pre-wrap break-all resize-y"></textarea>
   </div>
 <script is:inline>
-function process() {
-  const hex=document.getElementById('inp').value.trim().replace('#','');
-  if(!/^[0-9a-fA-F]{6}$/.test(hex)){o('Enter a valid hex color (e.g. #3B82F6)');return;}
-  const r=parseInt(hex.slice(0,2),16),g=parseInt(hex.slice(2,4),16),b=parseInt(hex.slice(4,6),16);
-  const shades=[900,800,700,600,500,400,300,200,100,50];
-  const cols=shades.map(s=>{
-    const f=s===500?1:s>500?s/500/2:s/500;
-    const l=s>500?Math.min(1,f):Math.max(0,f);
-    const t=s>500?1-l:l;
-    const nr=Math.round(r*t+(s>500?255:0)*l),ng=Math.round(g*t+(s>500?255:0)*l),nb=Math.round(b*t+(s>500?255:0)*l);
-    const h='#'+nr.toString(16).padStart(2,'0')+ng.toString(16).padStart(2,'0')+nb.toString(16).padStart(2,'0');
-    return'<div style="display:inline-block;width:50px;text-align:center;font-size:10px"><div style="width:50px;height:40px;background:'+h+';border-radius:4px;margin:2px"></div>'+s+'<br>'+h+'</div>';
-  }).join('');
-  document.getElementById('out').innerHTML=cols;
+function hexToRgb(hex) {
+  return {
+    r: parseInt(hex.slice(1, 3), 16),
+    g: parseInt(hex.slice(3, 5), 16),
+    b: parseInt(hex.slice(5, 7), 16)
+  };
 }
-function o(t){document.getElementById('out').textContent=t;}
-function clearAll(){document.getElementById('inp').value='';document.getElementById('out').innerHTML='';}
+
+function rgbToHex(r, g, b) {
+  return '#' + [r, g, b].map(function(v) {
+    return Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, '0');
+  }).join('');
+}
+
+function mixColors(c1, c2, ratio) {
+  return {
+    r: c1.r + (c2.r - c1.r) * ratio,
+    g: c1.g + (c2.g - c1.g) * ratio,
+    b: c1.b + (c2.b - c1.b) * ratio
+  };
+}
+
+function generate() {
+  var hex = document.getElementById('baseColor').value;
+  var totalSteps = parseInt(document.getElementById('steps').value, 10);
+  var includeBase = document.getElementById('includeBase').checked;
+  var rgb = hexToRgb(hex);
+
+  var white = { r: 255, g: 255, b: 255 };
+  var black = { r: 0, g: 0, b: 0 };
+
+  var shades = [];
+
+  if (includeBase) {
+    var lightSteps = Math.ceil((totalSteps - 1) / 2);
+    var darkSteps = Math.floor((totalSteps - 1) / 2);
+
+    for (var i = lightSteps; i > 0; i--) {
+      var t = i / (lightSteps + 1);
+      var mix = mixColors(rgb, white, t);
+      shades.push({ hex: rgbToHex(mix.r, mix.g, mix.b), label: String(100 * (i)) });
+    }
+
+    shades.push({ hex: hex, label: '500' });
+
+    for (var j = 1; j <= darkSteps; j++) {
+      var t2 = j / (darkSteps + 1);
+      var mix2 = mixColors(rgb, black, t2);
+      shades.push({ hex: rgbToHex(mix2.r, mix2.g, mix2.b), label: String(500 + j * 100) });
+    }
+  } else {
+    for (var k = 0; k < totalSteps; k++) {
+      var t3 = k / (totalSteps - 1);
+      var mix3 = mixColors(white, black, t3);
+      var blendRatio = Math.sin(t3 * Math.PI);
+      var r = rgb.r * (1 - blendRatio) + mix3.r * blendRatio;
+      var g = rgb.g * (1 - blendRatio) + mix3.g * blendRatio;
+      var b = rgb.b * (1 - blendRatio) + mix3.b * blendRatio;
+      shades.push({ hex: rgbToHex(r, g, b), label: String(Math.round((1 - t3) * 900 + t3 * 50)) });
+    }
+  }
+
+  var swatchHtml = shades.map(function(s) {
+    var textColor = hexToRgb(s.hex).r * 0.299 + hexToRgb(s.hex).g * 0.587 + hexToRgb(s.hex).b * 0.114 > 150 ? '#000' : '#fff';
+    return '<div style="text-align:center;width:60px;">' +
+      '<div style="background:' + s.hex + ';color:' + textColor + ';width:60px;height:50px;border-radius:6px;cursor:pointer;font-size:10px;font-family:monospace;display:flex;align-items:center;justify-content:center;" ' +
+      'onclick="navigator.clipboard.writeText(\'' + s.hex + '\')" title="Click to copy">' + s.hex + '</div>' +
+      '<div style="font-size:10px;color:#888;margin-top:3px;">' + s.label + '</div></div>';
+  }).join('');
+
+  document.getElementById('swatches').innerHTML = swatchHtml;
+  document.getElementById('result').value = shades.map(function(s) { return s.hex; }).join('\n');
+}
+
+function copyResult() {
+  navigator.clipboard.writeText(document.getElementById('result').value);
+}
+
+generate();
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

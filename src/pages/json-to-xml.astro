@@ -10,23 +10,70 @@ import Button from '../components/Button.astro';
   category="Convert"
   keywords={["json", "xml", "convert"]}
 >
-  <Textarea id="inp" placeholder="Paste JSON here..." rows="12" class="tool-area" />
-  <div class="flex gap-2 mt-4">
+  <textarea id="input" placeholder='{"root":{"item":[{"name":"Alice","age":"30"},{"name":"Bob","age":"25"}]}}' rows="10" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 font-mono w-full resize-y"></textarea>
+  <div class="flex gap-2 mt-3">
     <Button onclick="convert()">Convert to XML</Button>
     <Button variant="secondary" onclick="copyOut()">Copy</Button>
   </div>
-  <div class="text-xs text-surface-400 mt-3 mb-1">XML Output:</div>
-  <div id="out" class="w-full rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 font-mono overflow-auto min-h-[200px] max-h-[500px] whitespace-pre"></div>
-  <div id="msg" class="text-xs mt-2 text-surface-400"></div>
+  <textarea id="result" readonly class="mt-3 w-full min-h-[200px] rounded-xl border border-surface-600 bg-surface-800 p-4 text-sm text-surface-100 font-mono whitespace-pre-wrap break-all resize-y"></textarea>
 <script is:inline>
-function process() {
-  const v=document.getElementById('inp').value.trim().split(/\s+/);
-  if(v.length<3){document.getElementById('out').textContent='Format: value from_unit to_unit';return;}
-  const val=parseFloat(v[0]);
-  if(isNaN(val)){document.getElementById('out').textContent='Invalid number';return;}
-  document.getElementById('out').textContent='Result: '+val+' '+v[1]+' = (converted) '+v[2];
+function escapeXml(str) {
+  return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
-function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
+
+function jsonToXml(obj, rootName) {
+  if (typeof obj === 'string' || typeof obj === 'number' || typeof obj === 'boolean') {
+    return escapeXml(String(obj));
+  }
+  if (obj === null) return '';
+  var xml = '';
+
+  for (var key in obj) {
+    if (!obj.hasOwnProperty(key)) continue;
+    var val = obj[key];
+    var tag = isNaN(key) ? key : 'item';
+
+    if (Array.isArray(val)) {
+      val.forEach(function(item) {
+        xml += '<' + tag + '>' + jsonToXml(item, tag) + '</' + tag + '>';
+      });
+    } else if (typeof val === 'object' && val !== null) {
+      xml += '<' + tag + '>' + jsonToXml(val, tag) + '</' + tag + '>';
+    } else {
+      xml += '<' + tag + '>' + escapeXml(String(val)) + '</' + tag + '>';
+    }
+  }
+  return xml;
+}
+
+function convert() {
+  var input = document.getElementById('input').value.trim();
+  if (!input) {
+    document.getElementById('result').value = 'Paste JSON above.';
+    return;
+  }
+  try {
+    var obj = JSON.parse(input);
+    var xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
+    if (typeof obj === 'object' && !Array.isArray(obj)) {
+      var keys = Object.keys(obj);
+      if (keys.length === 1) {
+        xml += '<' + keys[0] + '>\n' + jsonToXml(obj[keys[0]], keys[0]) + '\n</' + keys[0] + '>';
+      } else {
+        xml += '<root>\n' + jsonToXml(obj, 'root') + '\n</root>';
+      }
+    } else {
+      xml += '<root>\n' + jsonToXml(obj, 'root') + '\n</root>';
+    }
+    document.getElementById('result').value = xml;
+  } catch (e) {
+    document.getElementById('result').value = 'Invalid JSON: ' + e.message;
+  }
+}
+
+function copyOut() {
+  navigator.clipboard.writeText(document.getElementById('result').value);
+}
 </script>
 <div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is a JSON to XML Converter?</h2>

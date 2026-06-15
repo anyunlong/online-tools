@@ -10,34 +10,85 @@ import Button from '../components/Button.astro';
   keywords={["username generator", "username generator", "generator"]}
 >
   <div class="space-y-4">
-    <div class='text-sm text-surface-400'>Configure options above</div>
+    <div class="flex gap-4 flex-wrap">
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Style</label>
+        <select id="style" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100">
+          <option value="cool">Cool</option>
+          <option value="funny">Funny</option>
+          <option value="professional">Professional</option>
+          <option value="gaming">Gaming</option>
+        </select>
+      </div>
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Count</label>
+        <select id="count" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100">
+          <option value="1">1</option><option value="5" selected>5</option><option value="10">10</option><option value="20">20</option>
+        </select>
+      </div>
+    </div>
     <div class="flex gap-2">
       <Button onclick="generate()">Generate</Button>
       <Button variant="secondary" onclick="copyResult()">Copy</Button>
     </div>
-    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
+    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-600 bg-surface-800 p-4 text-sm text-surface-100 font-mono whitespace-pre-wrap break-all"></div>
   </div>
 <script is:inline>
-function generate() {
-  const adj=['swift','brave','cool','epic','keen','lone','mega','nova','pale','rare','sage','tiny','wild','zeal','bold','calm','dark','fair','glow','hype'];
-  const noun=['wolf','hawk','fox','bear','lion','deer','owl','lynx','orca','puma','dove','crow','frog','seal','wren','crab','ray','elk','bat','eel'];
-  const r=arr=>arr[Math.floor(Math.random()*arr.length)];
-  const n=Math.floor(Math.random()*9000)+1000;
-  const styles=[
-    r(adj)+r(noun)+n,
-    r(adj)+'_'+r(noun),
-    r(noun)+n,
-    'the_'+r(adj)+'_'+r(noun),
-    r(adj)+'.'+r(noun)+n,
-  ];
-  document.getElementById('result').value=styles[Math.floor(Math.random()*styles.length)];
+var adjCool = ['swift','brave','cool','epic','keen','lone','mega','nova','pale','rare','sage','tiny','wild','zeal','void','flux','zen','echo','apex','crisp','prism','drift','shade','blitz','frost'];
+var adjFunny = ['sleepy','clumsy','wobbly','sneezy','goofy','funky','wonky','loopy','zany','whacky','bouncy','squishy','dingy','noodly','cheesy','pickle','banana','potato','muffin','waffle','nugget','burrito','taco','nacho','sushi'];
+var adjPro = ['pro','expert','senior','lead','chief','elite','prime','alpha','master','direct','exec','global','tech','data','cloud','code','stack','scale','build','deploy'];
+var adjGaming = ['shadow','phantom','toxic','savage','ninja','ghost','reaper','storm','venom','blaze','fury','frost','cobra','viper','raven','hawk','dragon','titan','demon','doom','void','chaos','havoc','wrath','slayer'];
+
+var nounCool = ['wolf','hawk','fox','bear','lion','deer','owl','lynx','orca','puma','dove','crow','eagle','falcon','tiger','raven','cobra','viper','shark','whale'];
+var nounFunny = ['pants','socks','toast','noodle','pickle','banana','burrito','taco','muffin','waffle','nacho','sushi','pizza','spoon','potato','cheese','donut','cookie','pancake','bacon'];
+var nounPro = ['dev','coder','engineer','analyst','architect','designer','builder','maker','hacker','founder','consultant','manager','lead','expert','guru'];
+var nounGaming = ['slayer','hunter','warrior','assassin','knight','mage','wizard','ranger','rogue','paladin','berserker','sniper','gladiator','champion','raider','warlord','destroyer','conqueror','guardian','avenger'];
+
+function rand(arr) {
+  var buf = new Uint32Array(1);
+  crypto.getRandomValues(buf);
+  return arr[buf[0] % arr.length];
 }
+
+function randomNum() {
+  var buf = new Uint32Array(1);
+  crypto.getRandomValues(buf);
+  return String(buf[0] % 9000 + 100);
+}
+
+function generateUsername(style) {
+  var adj, noun, patterns;
+  switch (style) {
+    case 'cool': adj = adjCool; noun = nounCool; patterns = ['{adj}{noun}', '{adj}_{noun}', '{noun}_{adj}', '{adj}{num}']; break;
+    case 'funny': adj = adjFunny; noun = nounFunny; patterns = ['{adj}{noun}', '{adj}_{noun}', '{adj}{noun}{num}', 'the_{adj}_{noun}']; break;
+    case 'professional': adj = adjPro; noun = nounPro; patterns = ['{adj}.{noun}', '{adj}_{noun}', '{noun}.{adj}', '{adj}{noun}']; break;
+    case 'gaming': adj = adjGaming; noun = nounGaming; patterns = ['x{adj}{noun}', '{adj}{noun}x', '{adj}.{noun}', '{noun}_{adj}{num}']; break;
+  }
+  var pat = rand(patterns);
+  var a = rand(adj);
+  var n = rand(noun);
+  var num = randomNum();
+  return pat.replace('{adj}', a).replace('{noun}', n).replace('{num}', num);
+}
+
+function generate() {
+  var style = document.getElementById('style').value;
+  var count = parseInt(document.getElementById('count').value, 10);
+  var names = [];
+  var used = {};
+  for (var i = 0; i < count; i++) {
+    var name;
+    var tries = 0;
+    do { name = generateUsername(style); tries++; } while (used[name] && tries < 50);
+    used[name] = true;
+    names.push(name);
+  }
+  document.getElementById('result').textContent = names.join('\n');
+}
+
 function copyResult() {
-  const el=document.getElementById('result');
-  if(!el||!el.value) return;
-  el.select();document.execCommand('copy');
-  document.getElementById('msg').textContent='Copied!';
-  setTimeout(()=>document.getElementById('msg').textContent='',2000);
+  var text = document.getElementById('result').textContent;
+  navigator.clipboard.writeText(text);
 }
 </script>
 <slot name="info" slot="info">

@@ -10,28 +10,72 @@ import Button from '../components/Button.astro';
   category="Security"
   keywords={["ssh key gen", "ssh key fingerprint", "security"]}
 >
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-    <Textarea id="inp" label="Input" placeholder="Enter your input here..." rows="12" class="tool-area" />
-    <div>
-      <label for="out" class="text-sm text-surface-300 mb-1.5 block font-medium">Output</label>
-      <div id="out" class="w-full h-72 rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 overflow-auto font-mono"></div>
+  <div class="space-y-4">
+    <div class="flex gap-4 flex-wrap items-end">
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Key Type</label>
+        <select id="keyType" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100">
+          <option value="ed25519" selected>ED25519 (Recommended)</option>
+          <option value="rsa4096">RSA 4096-bit</option>
+          <option value="ecdsa">ECDSA P-256</option>
+        </select>
+      </div>
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Key Name</label>
+        <input id="keyName" type="text" value="id_ed25519" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 w-40" />
+      </div>
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Comment (email)</label>
+        <input id="comment" type="text" value="user@hostname" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 w-48" />
+      </div>
     </div>
+    <div class="flex gap-2">
+      <Button onclick="generate()">Generate Command</Button>
+    </div>
+    <textarea id="result" readonly class="w-full min-h-[250px] rounded-xl border border-surface-600 bg-surface-800 p-4 text-sm text-surface-100 font-mono whitespace-pre-wrap break-all resize-y"></textarea>
   </div>
-  <div class="flex gap-2 mt-4">
-    <Button onclick="process()">Process</Button>
-    <Button variant="secondary" onclick="clearAll()">Clear</Button>
-  </div>
-  <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
 function generate() {
-  // SSH key fingerprint demo (not actual keygen - use ssh-keygen for real keys)
-  const types=['ssh-rsa','ssh-ed25519','ecdsa-sha2-nistp256'];
-  const type=types[Math.floor(Math.random()*3)];
-  const r=()=>Math.random().toString(36).substring(2,15)+Math.random().toString(36).substring(2,15);
-  document.getElementById('result').value=type+' AAAAB3NzaC1yc2EAAAADAQABAAABAQ'+r()+r().substring(0,10)+' comment@host';
+  var keyType = document.getElementById('keyType').value;
+  var keyName = document.getElementById('keyName').value.trim() || 'id_ed25519';
+  var comment = document.getElementById('comment').value.trim() || 'user@hostname';
+  var output = '';
+
+  if (keyType === 'ed25519') {
+    output += 'ssh-keygen -t ed25519 -f ~/.ssh/' + keyName + ' -C "' + comment + '"\n\n';
+    output += 'Algorithm: Ed25519 (Edwards-curve Digital Signature Algorithm)\n';
+    output += 'Key size: 256-bit\n';
+    output += 'Security: Very strong, fast performance\n';
+    output += 'Compatibility: OpenSSH 6.5+ (most modern systems)\n';
+    output += 'Recommendation: Best choice for most use cases\n';
+  } else if (keyType === 'rsa4096') {
+    output += 'ssh-keygen -t rsa -b 4096 -f ~/.ssh/' + keyName + ' -C "' + comment + '"\n\n';
+    output += 'Algorithm: RSA (Rivest-Shamir-Adleman)\n';
+    output += 'Key size: 4096-bit\n';
+    output += 'Security: Very strong (with 4096-bit key)\n';
+    output += 'Compatibility: Universally compatible\n';
+    output += 'Recommendation: Use ED25519 instead if supported\n';
+  } else {
+    output += 'ssh-keygen -t ecdsa -b 256 -f ~/.ssh/' + keyName + ' -C "' + comment + '"\n\n';
+    output += 'Algorithm: ECDSA (Elliptic Curve Digital Signature Algorithm)\n';
+    output += 'Curve: NIST P-256\n';
+    output += 'Security: Strong, lightweight\n';
+    output += 'Compatibility: OpenSSH 5.7+\n';
+  }
+
+  output += '\n# After generation:\n';
+  output += '# Show public key: cat ~/.ssh/' + keyName + '.pub\n';
+  output += '# Copy to clipboard (macOS): pbcopy < ~/.ssh/' + keyName + '.pub\n';
+  output += '# Copy to clipboard (Linux): xclip -sel clip < ~/.ssh/' + keyName + '.pub\n';
+  output += '# Add to SSH agent: ssh-add ~/.ssh/' + keyName + '\n';
+  output += '# Copy to remote host: ssh-copy-id -i ~/.ssh/' + keyName + ' user@remote\n\n';
+  output += '# Or manually add the public key to the remote server:\n';
+  output += '# cat ~/.ssh/' + keyName + '.pub | ssh user@remote "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"';
+
+  document.getElementById('result').value = output;
 }
-function o(t){document.getElementById('out').textContent=t;}
-function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';if(timer)clearInterval(timer);}
+
+generate();
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

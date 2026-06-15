@@ -10,37 +10,48 @@ import Button from '../components/Button.astro';
   category="Image"
   keywords={["image info", "image info viewer", "image"]}
 >
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-    <Textarea id="inp" label="Input" placeholder="Enter your input here..." rows="12" class="tool-area" />
-    <div>
-      <label for="out" class="text-sm text-surface-300 mb-1.5 block font-medium">Output</label>
-      <div id="out" class="w-full h-72 rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 overflow-auto font-mono"></div>
+  <div class="space-y-4">
+    <input type="file" id="file" accept="image/*" class="text-sm text-surface-300 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:bg-brand-500 file:text-white hover:file:bg-brand-400 file:cursor-pointer file:transition-colors" onchange="showInfo()" />
+    <div id="result" class="w-full min-h-[200px] rounded-xl border border-surface-600 bg-surface-800 p-4 text-sm text-surface-100 font-mono whitespace-pre-wrap break-all"></div>
+    <div id="preview-wrap" class="hidden flex justify-center">
+      <img id="preview" class="max-w-full max-h-80 rounded-xl border border-surface-600 shadow-lg" />
     </div>
   </div>
-  <div class="flex gap-2 mt-4">
-    <Button onclick="process()">Process</Button>
-    <Button variant="secondary" onclick="clearAll()">Clear</Button>
-  </div>
-  <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process() {
-  document.getElementById('out').innerHTML='<input type="file" id="imgFile" accept="image/*" onchange="showInfo(this)" style="color:#fff"><div id="imgInfo" style="margin-top:10px"></div>';
-}
-function showInfo(input) {
-  const file=input.files[0];
-  if(!file)return;
-  const reader=new FileReader();
-  reader.onload=function(e){
-    const img=new Image();
-    img.onload=function(){
-      document.getElementById('imgInfo').innerHTML='<div style="display:flex;gap:12px"><img src="'+e.target.result+'" style="max-width:300px;border-radius:8px"><div><p><b>File:</b> '+file.name+'</p><p><b>Size:</b> '+(file.size/1024).toFixed(1)+' KB</p><p><b>Type:</b> '+file.type+'</p><p><b>Dimensions:</b> '+img.width+'×'+img.height+'px</p><p><b>Aspect:</b> '+(img.width/img.height).toFixed(2)+'</p></div></div>';
+function showInfo() {
+  var file = document.getElementById('file').files[0];
+  if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var img = new Image();
+    img.onload = function() {
+      var kb = (file.size / 1024).toFixed(1);
+      var aspect = (img.width / img.height).toFixed(2);
+      var aspectLabel = '';
+      if (Math.abs(img.width / img.height - 16 / 9) < 0.01) aspectLabel = ' (16:9)';
+      else if (Math.abs(img.width / img.height - 4 / 3) < 0.01) aspectLabel = ' (4:3)';
+      else if (Math.abs(img.width / img.height - 1) < 0.01) aspectLabel = ' (1:1 Square)';
+      else if (img.width > img.height) aspectLabel = ' (Landscape)';
+      else aspectLabel = ' (Portrait)';
+
+      var megapixels = ((img.width * img.height) / 1000000).toFixed(1);
+      var info = '';
+      info += 'File Name:  ' + file.name + '\n';
+      info += 'File Size:  ' + kb + ' KB (' + file.size.toLocaleString() + ' bytes)\n';
+      info += 'MIME Type:  ' + (file.type || 'unknown') + '\n';
+      info += 'Dimensions: ' + img.width + ' \u00D7 ' + img.height + ' px\n';
+      info += 'Megapixels: ' + megapixels + ' MP\n';
+      info += 'Aspect:     ' + aspect + aspectLabel + '\n';
+      info += 'Last Modified: ' + new Date(file.lastModified).toLocaleString();
+
+      document.getElementById('result').textContent = info;
+      document.getElementById('preview').src = e.target.result;
+      document.getElementById('preview-wrap').classList.remove('hidden');
     };
-    img.src=e.target.result;
+    img.src = e.target.result;
   };
   reader.readAsDataURL(file);
 }
-function o(t){document.getElementById('out').textContent=t;}
-function clearAll(){document.getElementById('inp').value='';document.getElementById('out').innerHTML='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

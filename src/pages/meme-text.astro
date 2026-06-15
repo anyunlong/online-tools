@@ -10,27 +10,123 @@ import Button from '../components/Button.astro';
   keywords={["meme text", "meme text generator", "fun"]}
 >
   <div class="space-y-4">
-    <div class='text-sm text-surface-400'>Configure options above</div>
-    <div class="flex gap-2">
-      <Button onclick="generate()">Generate</Button>
-      <Button variant="secondary" onclick="copyResult()">Copy</Button>
+    <div class="space-y-3">
+      <div>
+        <label class="text-sm text-surface-300 block mb-1">Top Text</label>
+        <input id="top" type="text" value="TOP TEXT" maxlength="80" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 w-full font-bold" />
+      </div>
+      <div>
+        <label class="text-sm text-surface-300 block mb-1">Bottom Text</label>
+        <input id="bottom" type="text" value="BOTTOM TEXT" maxlength="80" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 w-full font-bold" />
+      </div>
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Font Size: <span id="fontSizeVal">48</span>px</label>
+        <input id="fontSize" type="range" min="20" max="80" value="48" oninput="document.getElementById('fontSizeVal').textContent=this.value" class="accent-brand-500 w-full" />
+      </div>
     </div>
-    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
+    <div class="flex gap-2">
+      <Button onclick="generate()">Render</Button>
+      <Button variant="secondary" onclick="downloadMeme()">Download</Button>
+    </div>
+    <div class="flex justify-center">
+      <canvas id="memeCanvas" width="600" height="400" class="rounded-xl border border-surface-600 max-w-full"></canvas>
+    </div>
+    <div id="result" class="hidden"></div>
   </div>
 <script is:inline>
+function wrapText(ctx, text, maxWidth) {
+  var words = text.toUpperCase().split(' ');
+  var lines = [];
+  var current = '';
+  for (var i = 0; i < words.length; i++) {
+    var test = current ? current + ' ' + words[i] : words[i];
+    if (ctx.measureText(test).width > maxWidth && current) {
+      lines.push(current);
+      current = words[i];
+    } else {
+      current = test;
+    }
+  }
+  if (current) lines.push(current);
+  return lines;
+}
+
+function drawMeme() {
+  var canvas = document.getElementById('memeCanvas');
+  var ctx = canvas.getContext('2d');
+  var topText = document.getElementById('top').value.toUpperCase();
+  var bottomText = document.getElementById('bottom').value.toUpperCase();
+  var fontSize = parseInt(document.getElementById('fontSize').value, 10);
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Background
+  var gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+  gradient.addColorStop(0, '#1e293b');
+  gradient.addColorStop(1, '#0f172a');
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Dashed border to look like meme template
+  ctx.strokeStyle = '#334155';
+  ctx.setLineDash([8, 8]);
+  ctx.lineWidth = 2;
+  ctx.strokeRect(10, 10, canvas.width - 20, canvas.height - 20);
+  ctx.setLineDash([]);
+
+  // Draw text
+  ctx.font = 'bold ' + fontSize + 'px Impact, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+
+  if (topText) {
+    var topLines = wrapText(ctx, topText, canvas.width - 80);
+    var topY = 20;
+    topLines.forEach(function(line) {
+      ctx.strokeStyle = '#000';
+      ctx.lineWidth = Math.max(3, fontSize / 12);
+      ctx.strokeText(line, canvas.width / 2, topY);
+      ctx.fillStyle = '#fff';
+      ctx.fillText(line, canvas.width / 2, topY);
+      topY += fontSize * 1.1;
+    });
+  }
+
+  if (bottomText) {
+    var bottomLines = wrapText(ctx, bottomText, canvas.width - 80);
+    var totalH = bottomLines.length * fontSize * 1.1;
+    var bottomY = canvas.height - 20 - totalH;
+    bottomLines.forEach(function(line) {
+      ctx.strokeStyle = '#000';
+      ctx.lineWidth = Math.max(3, fontSize / 12);
+      ctx.strokeText(line, canvas.width / 2, bottomY);
+      ctx.fillStyle = '#fff';
+      ctx.fillText(line, canvas.width / 2, bottomY);
+      bottomY += fontSize * 1.1;
+    });
+  }
+}
+
 function generate() {
-  const top=document.getElementById('top')?.value||'TOP TEXT';
-  const bottom=document.getElementById('bottom')?.value||'BOTTOM TEXT';
-  document.getElementById('result').value=''+top+'\n'+bottom+'';
-  document.getElementById('out').innerHTML='<div style="text-align:center;font-size:1.5em;font-weight:900;color:#fff;text-shadow:2px 2px 0 #000;-webkit-text-stroke:1px black">'+top+'<br>'+bottom+'</div><p style="font-size:10px;color:#8b949e;margin-top:8px">Meme text generated — use with any image!</p>';
+  drawMeme();
 }
+
+function downloadMeme() {
+  drawMeme();
+  var canvas = document.getElementById('memeCanvas');
+  var link = document.createElement('a');
+  link.download = 'meme-text.png';
+  link.href = canvas.toDataURL();
+  link.click();
+}
+
 function copyResult() {
-  const el=document.getElementById('result');
-  if(!el||!el.value) return;
-  el.select();document.execCommand('copy');
-  document.getElementById('msg').textContent='Copied!';
-  setTimeout(()=>document.getElementById('msg').textContent='',2000);
+  navigator.clipboard.writeText(
+    document.getElementById('top').value + '\n' + document.getElementById('bottom').value
+  );
 }
+
+drawMeme();
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

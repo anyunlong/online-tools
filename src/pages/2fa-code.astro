@@ -10,31 +10,119 @@ import Button from '../components/Button.astro';
   keywords={["2fa code", "totp code generator", "security"]}
 >
   <div class="space-y-4">
-    <div class='text-sm text-surface-400'>Configure options above</div>
+    <div class="space-y-3">
+      <div>
+        <label class="text-sm text-surface-300 block mb-1">Secret Key (Base32)</label>
+        <input id="secret" type="text" value="JBSWY3DPEHPK3PXP" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 font-mono w-full" />
+      </div>
+      <div class="flex gap-4">
+        <div>
+          <label class="text-sm text-surface-300 block mb-1.5">Time Step (s)</label>
+          <select id="step" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100">
+            <option value="30" selected>30</option><option value="60">60</option>
+          </select>
+        </div>
+      </div>
+    </div>
     <div class="flex gap-2">
-      <Button onclick="generate()">Generate</Button>
+      <Button onclick="generate()">Generate Code</Button>
       <Button variant="secondary" onclick="copyResult()">Copy</Button>
     </div>
-    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
+    <div id="result" class="w-full min-h-[120px] rounded-xl border border-surface-600 bg-surface-800 p-4 text-center">
+      <div id="code" class="text-4xl font-bold text-brand-400 font-mono tracking-widest">------</div>
+      <div id="progressBar" class="mt-3 bg-surface-700 rounded-full h-2 mx-auto max-w-[200px] overflow-hidden">
+        <div id="progressFill" class="bg-brand-500 h-full rounded-full transition-all" style="width:100%"></div>
+      </div>
+      <div id="timer" class="text-xs text-surface-400 mt-2">30s</div>
+    </div>
   </div>
 <script is:inline>
-let timer=null;
-function generate() {
-  if(timer)clearInterval(timer);
-  const secret=document.getElementById('secret')?.value||'JBSWY3DPEHPK3PXP';
-  // TOTP demo (simplified — uses random codes for demo)
-  const code=Math.floor(Math.random()*900000)+100000;
-  document.getElementById('result').value=code.toString().padStart(6,'0');
-  const now=new Date();const remaining=30-(now.getSeconds()%30);
-  document.getElementById('msg').textContent='Expires in '+remaining+'s';
-  timer=setInterval(()=>{
-    const s=30-(new Date().getSeconds()%30);
-    document.getElementById('msg').textContent='Expires in '+s+'s';
-    if(s===30)generate();
-  },1000);
+var totpTimer = null;
+
+function base32ToBytes(b32) {
+  var alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+  var cleaned = b32.toUpperCase().replace(/[^A-Z2-7=]/g, '');
+  var bits = '';
+  for (var i = 0; i < cleaned.length; i++) {
+    var c = cleaned[i];
+    if (c === '=') continue;
+    var val = alphabet.indexOf(c);
+    bits += val.toString(2).padStart(5, '0');
+  }
+  var bytes = [];
+  for (var i = 0; i + 8 <= bits.length; i += 8) {
+    bytes.push(parseInt(bits.substring(i, i + 8), 2));
+  }
+  return new Uint8Array(bytes);
 }
-function o(t){document.getElementById('out').textContent=t;}
-function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';if(timer)clearInterval(timer);}
+
+function int64ToBytes(num) {
+  var buf = new ArrayBuffer(8);
+  var view = new DataView(buf);
+  view.setBigInt64(0, BigInt(num), false);
+  return new Uint8Array(buf);
+}
+
+async function hmacSha1(key, message) {
+  var cryptoKey = await crypto.subtle.importKey('raw', key, { name: 'HMAC', hash: { name: 'SHA-1' } }, false, ['sign']);
+  var sig = await crypto.subtle.sign('HMAC', cryptoKey, message);
+  return new Uint8Array(sig);
+}
+
+function totp(hmacResult, digits) {
+  var offset = hmacResult[hmacResult.length - 1] & 0x0f;
+  var binary = ((hmacResult[offset] & 0x7f) << 24) |
+    ((hmacResult[offset + 1] & 0xff) << 16) |
+    ((hmacResult[offset + 2] & 0xff) << 8) |
+    (hmacResult[offset + 3] & 0xff);
+  var otp = binary % Math.pow(10, digits);
+  return otp.toString().padStart(digits, '0');
+}
+
+async function generate() {
+  if (totpTimer) clearInterval(totpTimer);
+
+  var secret = document.getElementById('secret').value.trim();
+  var step = parseInt(document.getElementById('step').value, 10);
+
+  if (!secret) {
+    document.getElementById('code').textContent = '------';
+    document.getElementById('timer').textContent = 'Enter secret key';
+    return;
+  }
+
+  async function updateCode() {
+    var now = Math.floor(Date.now() / 1000);
+    var counter = Math.floor(now / step);
+    var remaining = step - (now % step);
+    var key = base32ToBytes(secret);
+    var message = int64ToBytes(counter);
+    var hmac = await hmacSha1(key, message);
+    var code = totp(hmac, 6);
+
+    document.getElementById('code').textContent = code;
+    document.getElementById('timer').textContent = remaining + 's';
+    var pct = (remaining / step) * 100;
+    document.getElementById('progressFill').style.width = pct + '%';
+    if (remaining <= 5) {
+      document.getElementById('progressFill').style.background = '#ef4444';
+    } else {
+      document.getElementById('progressFill').style.background = '';
+    }
+  }
+
+  await updateCode();
+  totpTimer = setInterval(updateCode, 1000);
+}
+
+function copyResult() {
+  var code = document.getElementById('code').textContent;
+  if (code && code !== '------') {
+    navigator.clipboard.writeText(code);
+  }
+}
+
+generate();
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

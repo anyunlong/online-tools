@@ -10,21 +10,82 @@ import Button from '../components/Button.astro';
   keywords={["alt text generator", "alt text generator", "seo"]}
 >
   <div class="space-y-4">
-    <div class='text-sm text-surface-400'>Configure options above</div>
+    <div class="space-y-3">
+      <div>
+        <label class="text-sm text-surface-300 block mb-1">Image Description</label>
+        <textarea id="desc" rows="4" placeholder="Describe the image: e.g. A golden retriever puppy running through a field of sunflowers at sunset" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 w-full resize-y"></textarea>
+      </div>
+      <div>
+        <label class="text-sm text-surface-300 block mb-1">Keywords (comma separated)</label>
+        <input id="keywords" type="text" placeholder="dog, puppy, nature, sunset" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 w-full" />
+      </div>
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Style</label>
+        <select id="style" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100">
+          <option value="descriptive">Descriptive</option>
+          <option value="concise">Concise (&lt;80 chars)</option>
+          <option value="seo">SEO-Optimized</option>
+          <option value="all">All Three</option>
+        </select>
+      </div>
+    </div>
     <div class="flex gap-2">
       <Button onclick="generate()">Generate</Button>
       <Button variant="secondary" onclick="copyResult()">Copy</Button>
     </div>
-    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
+    <textarea id="result" readonly class="w-full min-h-[150px] rounded-xl border border-surface-600 bg-surface-800 p-4 text-sm text-surface-100 whitespace-pre-wrap break-all resize-y"></textarea>
   </div>
 <script is:inline>
-function process() {
-  const v=document.getElementById('inp').value.trim();
-  if(!v){o('Describe the image content. Generate 3 alt text options.');return;}
-  o('Alt text options for: "'+v+'"\n\n1. '+v+' - descriptive and concise\n2. Image showing '+v.toLowerCase()+' in context\n3. '+v+' - illustration/diagram');
+function generate() {
+  var desc = document.getElementById('desc').value.trim();
+  var keywords = document.getElementById('keywords').value.trim();
+  var style = document.getElementById('style').value;
+
+  if (!desc) {
+    document.getElementById('result').value = 'Enter an image description above.';
+    return;
+  }
+
+  var kw = keywords ? keywords.split(',').map(function(k) { return k.trim(); }) : [];
+  var descLower = desc.toLowerCase();
+
+  var descriptive = '';
+  var kwStr = kw.length ? ' Featuring ' + kw.slice(0, 3).join(', ') + '.' : '';
+
+  if (style === 'descriptive' || style === 'all') {
+    descriptive = desc.charAt(0).toUpperCase() + desc.slice(1) + '.' + kwStr;
+  }
+
+  var concise = '';
+  if (style === 'concise' || style === 'all') {
+    var short = desc.split(' ').slice(0, 8).join(' ');
+    concise = short.charAt(0).toUpperCase() + short.slice(1);
+    if (desc.split(' ').length > 8) concise += '...';
+    if (kw.length) concise += ' (' + kw[0] + ')';
+  }
+
+  var seo = '';
+  if (style === 'seo' || style === 'all') {
+    var kws = kw.length ? kw.join(' - ') + ' - ' : '';
+    seo = kws + desc.charAt(0).toUpperCase() + desc.slice(1);
+    if (seo.length > 125) {
+      seo = kws + desc.charAt(0).toUpperCase() + desc.slice(1).substring(0, 120 - kws.length - 3) + '...';
+    }
+    seo += '.';
+  }
+
+  var output = [];
+  if (style === 'descriptive') output = [descriptive];
+  else if (style === 'concise') output = [concise];
+  else if (style === 'seo') output = [seo];
+  else output = ['[Descriptive] ' + descriptive, '[Concise] ' + concise, '[SEO] ' + seo];
+
+  document.getElementById('result').value = output.join('\n\n');
 }
-function o(t){document.getElementById('out').textContent=t;}
-function clearAll(){document.getElementById('inp').value='';document.getElementById('out').innerHTML='';}
+
+function copyResult() {
+  navigator.clipboard.writeText(document.getElementById('result').value);
+}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

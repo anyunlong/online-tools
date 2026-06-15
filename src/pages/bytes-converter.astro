@@ -12,29 +12,60 @@ import Input from '../components/Input.astro';
   <div class="flex gap-3 items-end flex-wrap">
     <div class="flex-1 min-w-[120px]">
       <label for="val" class="text-sm text-surface-300 mb-1.5 block font-medium">Value</label>
-      <Input id="val" type="number" value="1" class="w-full" oninput="convert()" />
+      <input id="val" type="number" value="1" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 w-full" oninput="convert()" />
     </div>
     <div>
       <label for="unit" class="text-sm text-surface-300 mb-1.5 block font-medium">Unit</label>
-      <select id="unit" class="rounded-xl border border-surface-700 bg-surface-800/50 px-3 py-2 text-sm text-surface-100" onchange="convert()">
+      <select id="unit" class="rounded-lg border border-surface-600 bg-surface-800 px-3 py-2 text-sm text-surface-100" onchange="convert()">
         <option value="1">Bytes (B)</option>
         <option value="1024">Kilobytes (KB)</option>
         <option value="1048576">Megabytes (MB)</option>
         <option value="1073741824">Gigabytes (GB)</option>
         <option value="1099511627776">Terabytes (TB)</option>
+        <option value="1125899906842624">Petabytes (PB)</option>
       </select>
     </div>
   </div>
-  <div id="results" class="mt-5 grid grid-cols-2 sm:grid-cols-5 gap-3"></div>
+  <div id="results" class="mt-5 grid grid-cols-2 sm:grid-cols-3 gap-3"></div>
 <script is:inline>
-function process() {
-  const v=document.getElementById('inp').value.trim().split(/\s+/);
-  if(v.length<3){document.getElementById('out').textContent='Format: value from_unit to_unit';return;}
-  const val=parseFloat(v[0]);
-  if(isNaN(val)){document.getElementById('out').textContent='Invalid number';return;}
-  document.getElementById('out').textContent='Result: '+val+' '+v[1]+' = (converted) '+v[2];
+var units = [
+  { label: 'Bytes (B)', factor: 1 },
+  { label: 'Kilobytes (KB)', factor: 1024 },
+  { label: 'Megabytes (MB)', factor: 1048576 },
+  { label: 'Gigabytes (GB)', factor: 1073741824 },
+  { label: 'Terabytes (TB)', factor: 1099511627776 },
+  { label: 'Petabytes (PB)', factor: 1125899906842624 }
+];
+
+function formatBytes(bytes) {
+  if (bytes >= 1e15) return (bytes / 1e15).toFixed(2) + ' PB';
+  if (bytes >= 1e12) return (bytes / 1e12).toFixed(2) + ' TB';
+  if (bytes >= 1e9) return (bytes / 1e9).toFixed(2) + ' GB';
+  if (bytes >= 1e6) return (bytes / 1e6).toFixed(2) + ' MB';
+  if (bytes >= 1024) return (bytes / 1024).toFixed(2) + ' KB';
+  return bytes + ' B';
 }
-function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
+
+function convert() {
+  var val = parseFloat(document.getElementById('val').value);
+  var factor = parseFloat(document.getElementById('unit').value);
+  if (isNaN(val) || isNaN(factor)) {
+    document.getElementById('results').innerHTML = '';
+    return;
+  }
+  var bytes = val * factor;
+  var html = '';
+  units.forEach(function(u) {
+    var converted = bytes / u.factor;
+    html += '<div class="bg-surface-800/50 border border-surface-700/30 rounded-lg p-3 text-center">';
+    html += '<div class="text-xs text-surface-400">' + u.label + '</div>';
+    html += '<div class="text-sm font-mono text-surface-100 mt-1 break-all">' + (u.factor === factor ? '<span class="text-brand-400 font-bold">' + formatBytes(bytes) + '</span>' : formatBytes(bytes)) + '</div>';
+    html += '</div>';
+  });
+  document.getElementById('results').innerHTML = html;
+}
+
+convert();
 </script>
 <div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Bytes Converter?</h2>

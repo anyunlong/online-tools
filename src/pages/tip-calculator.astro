@@ -36,12 +36,41 @@ import Button from '../components/Button.astro';
     <div id="result" class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-4"></div>
   </div>
 <script is:inline>
-function process() {
-  const v=document.getElementById('inp').value.trim();
-  if(!v){document.getElementById('out').textContent='Enter input above';return;}
-  document.getElementById('out').textContent='Tip Calculator result: processed successfully';
+function calc() {
+  var bill = parseFloat(document.getElementById('bill').value);
+  var tipPct = parseFloat(document.getElementById('tipPct').value);
+  var people = parseInt(document.getElementById('people').value, 10);
+
+  if (isNaN(bill) || isNaN(tipPct) || isNaN(people) || people < 1 || bill < 0) {
+    document.getElementById('result').innerHTML = '<div class="col-span-full text-sm text-surface-400">Enter valid numbers</div>';
+    return;
+  }
+
+  var tipAmount = bill * tipPct / 100;
+  var total = bill + tipAmount;
+  var perPerson = total / people;
+
+  document.getElementById('result').innerHTML =
+    '<div class="bg-surface-800/60 rounded-lg p-3 text-center">' +
+      '<div class="text-xs text-surface-400">Tip</div>' +
+      '<div class="text-lg font-bold text-brand-400">$' + tipAmount.toFixed(2) + '</div>' +
+    '</div>' +
+    '<div class="bg-surface-800/60 rounded-lg p-3 text-center">' +
+      '<div class="text-xs text-surface-400">Total</div>' +
+      '<div class="text-lg font-bold text-surface-100">$' + total.toFixed(2) + '</div>' +
+    '</div>' +
+    '<div class="bg-surface-800/60 rounded-lg p-3 text-center">' +
+      '<div class="text-xs text-surface-400">Per Person</div>' +
+      '<div class="text-lg font-bold text-surface-100">$' + perPerson.toFixed(2) + '</div>' +
+    '</div>';
 }
-function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';}
+
+function setTip(pct) {
+  document.getElementById('tipPct').value = pct;
+  calc();
+}
+
+calc();
 </script>
 <div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Tip Calculator?</h2>

@@ -21,24 +21,37 @@ import Button from '../components/Button.astro';
   <div id="ts-result" class="mt-4 text-sm bg-surface-800/40 border border-surface-700/30 rounded-xl p-3 min-h-[40px] text-surface-200"></div>
   <div id="current" class="text-xs text-surface-500 mt-2"></div>
 <script is:inline>
-function process() {
-  const v=document.getElementById('inp').value.trim();
-  document.getElementById('out').textContent='';
-  // Try as timestamp
-  const ts=parseInt(v);
-  if(!isNaN(ts)&&v.length>=10){
-    const d=new Date(ts*(v.length>10?1:1000));
-    document.getElementById('out').textContent+='Timestamp → Date:\n'+d.toLocaleString('en-US',{timeZone:'UTC'})+' UTC\n'+d.toLocaleString('en-US')+' Local\nISO: '+d.toISOString()+'\n';
-  }
-  // Try as date
-  const dt=new Date(v);
-  if(!isNaN(dt.getTime())){
-    document.getElementById('out').textContent+='\nDate → Timestamp:\nSeconds: '+Math.floor(dt.getTime()/1000)+'\nMilliseconds: '+dt.getTime();
-  }
-  if(!document.getElementById('out').textContent) o('Enter a Unix timestamp or date string');
+function tsToDate() {
+  var ts = document.getElementById('ts').value.trim();
+  if (!ts) { document.getElementById('ts-result').textContent = 'Enter a Unix timestamp'; return; }
+  var val = parseInt(ts, 10);
+  if (isNaN(val)) { document.getElementById('ts-result').textContent = 'Invalid timestamp'; return; }
+
+  var ms = ts.length > 10 ? val : val * 1000;
+  var d = new Date(ms);
+
+  document.getElementById('ts-result').innerHTML =
+    '<div class="text-brand-400 font-bold">' + d.toLocaleString('en-US') + '</div>' +
+    '<div class="text-xs text-surface-400 mt-1">UTC: ' + d.toISOString() + '</div>' +
+    '<div class="text-xs text-surface-400">Unix (s): ' + Math.floor(ms / 1000) + '</div>';
 }
-function o(t){document.getElementById('out').textContent=t;}
-function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';if(timer)clearInterval(timer);}
+
+function dateToTs() {
+  var dt = document.getElementById('dt').value;
+  if (!dt) { document.getElementById('ts-result').textContent = 'Select a date and time'; return; }
+  var d = new Date(dt);
+  var s = Math.floor(d.getTime() / 1000);
+
+  document.getElementById('ts-result').innerHTML =
+    '<div class="text-brand-400 font-bold">' + d.toLocaleString('en-US') + '</div>' +
+    '<div class="text-xs text-surface-400 mt-1">Timestamp (s): ' + s + '</div>' +
+    '<div class="text-xs text-surface-400">Timestamp (ms): ' + d.getTime() + '</div>';
+}
+
+(function() {
+  var now = Math.floor(Date.now() / 1000);
+  document.getElementById('current').textContent = 'Current Unix timestamp: ' + now;
+})();
 </script>
 <div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Timestamp Converter?</h2>
