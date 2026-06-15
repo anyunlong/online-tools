@@ -1,53 +1,119 @@
 ---
 import ToolLayout from '../components/ToolLayout.astro';
-import Input from '../components/Input.astro';
 import Button from '../components/Button.astro';
-import StatCard from '../components/StatCard.astro';
 ---
 
 <ToolLayout
   title="Countdown Timer"
   description="Custom date countdown timer"
   category="Time"
-  keywords={["countdown", "timer", "date"]}
+  keywords={["countdown", "timer", "date", "countdown timer"]}
 >
-  <div class="flex items-center gap-3 flex-wrap">
-    <Input id="target" type="datetime-local" />
-    <Button onclick="start()">Start</Button>
-  </div>
-  <div class="grid grid-cols-4 gap-3 mt-5">
-    <StatCard id="d" label="Days" value="0" />
-    <StatCard id="h" label="Hrs" value="0" />
-    <StatCard id="m" label="Min" value="0" />
-    <StatCard id="s" label="Sec" value="0" />
+  <div class="space-y-6">
+    <div class="flex flex-col sm:flex-row gap-3 items-start">
+      <div class="flex-1">
+        <label for="target-date" class="block text-sm text-surface-200 mb-1.5 font-medium">Target Date & Time</label>
+        <input
+          id="target-date"
+          type="datetime-local"
+          class="w-full h-10 rounded-xl border border-surface-600 bg-surface-800 px-3 text-sm text-surface-100 focus:border-brand-500 focus:ring-1 focus:ring-brand-500/30 focus:outline-none"
+        />
+      </div>
+      <div class="flex gap-2 pt-5">
+        <Button onclick="startCountdown()">Start</Button>
+        <Button variant="secondary" onclick="stopCountdown()">Stop</Button>
+      </div>
+    </div>
+    
+    <div class="grid grid-cols-4 gap-3">
+      <div class="text-center p-4 rounded-xl bg-surface-800/50 border border-surface-700">
+        <div id="days" class="text-3xl font-bold text-brand-400">0</div>
+        <div class="text-xs text-surface-400 mt-1">Days</div>
+      </div>
+      <div class="text-center p-4 rounded-xl bg-surface-800/50 border border-surface-700">
+        <div id="hours" class="text-3xl font-bold text-brand-400">0</div>
+        <div class="text-xs text-surface-400 mt-1">Hours</div>
+      </div>
+      <div class="text-center p-4 rounded-xl bg-surface-800/50 border border-surface-700">
+        <div id="minutes" class="text-3xl font-bold text-brand-400">0</div>
+        <div class="text-xs text-surface-400 mt-1">Minutes</div>
+      </div>
+      <div class="text-center p-4 rounded-xl bg-surface-800/50 border border-surface-700">
+        <div id="seconds" class="text-3xl font-bold text-brand-400">0</div>
+        <div class="text-xs text-surface-400 mt-1">Seconds</div>
+      </div>
+    </div>
+    
+    <div id="countdown-msg" class="text-center text-sm text-surface-400"></div>
   </div>
 <script is:inline>
-let timer=null;
-function process() {
-  if(timer)clearInterval(timer);
-  const v=document.getElementById('inp').value.trim();
-  const target=new Date(v);
-  if(isNaN(target.getTime())){o('Enter a valid date/time\nExample: 2025-12-31 23:59:59');return;}
-  timer=setInterval(()=>{
-    const diff=target-new Date();
-    if(diff<=0){o('🎉 Time is up!');clearInterval(timer);return;}
-    const d=Math.floor(diff/86400000),h=Math.floor(diff%86400000/3600000),m=Math.floor(diff%3600000/60000),s=Math.floor(diff%60000/1000);
-    o(d+'d '+h+'h '+m+'m '+s+'s remaining');
-  },1000);
+var countdownTimer = null;
+
+function startCountdown() {
+  var input = document.getElementById('target-date').value;
+  var msgEl = document.getElementById('countdown-msg');
+  
+  if (!input) {
+    msgEl.textContent = 'Please select a target date and time';
+    msgEl.className = 'text-center text-sm text-red-400';
+    return;
+  }
+  
+  var target = new Date(input);
+  if (isNaN(target.getTime())) {
+    msgEl.textContent = 'Invalid date';
+    msgEl.className = 'text-center text-sm text-red-400';
+    return;
+  }
+  
+  if (target <= new Date()) {
+    msgEl.textContent = 'Target date must be in the future';
+    msgEl.className = 'text-center text-sm text-red-400';
+    return;
+  }
+  
+  msgEl.textContent = '';
+  if (countdownTimer) clearInterval(countdownTimer);
+  
+  updateDisplay(target);
+  countdownTimer = setInterval(function() {
+    updateDisplay(target);
+  }, 1000);
 }
-function o(t){document.getElementById('out').textContent=t;}
-function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';if(timer)clearInterval(timer);}
-</script><div slot="info">
-  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Countdown Timer?</h2>
-  <p class="mb-3">A countdown timer displays the time remaining until a specific future date, counting down in days, hours, minutes, and seconds. It transforms abstract future dates into a visually compelling countdown that builds anticipation and urgency.</p>
-  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
-  <ul class="list-disc pl-5 mb-3 space-y-1">
-    <li>Building excitement for product launches, event openings, or holiday celebrations</li>
-    <li>Tracking deadlines for project submissions, exams, or important personal milestones</li>
-  </ul>
-  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
-  <p class="mb-3">Select a target date and time, and the countdown displays the remaining time in real time.</p>
-  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
-  <p>Try our <a href="/stopwatch/" class="text-primary hover:underline">Online Stopwatch</a> for measuring elapsed time instead of counting down.</p>
-</div>
+
+function updateDisplay(target) {
+  var diff = target - new Date();
+  var msgEl = document.getElementById('countdown-msg');
+  
+  if (diff <= 0) {
+    clearInterval(countdownTimer);
+    document.getElementById('days').textContent = '0';
+    document.getElementById('hours').textContent = '0';
+    document.getElementById('minutes').textContent = '0';
+    document.getElementById('seconds').textContent = '0';
+    msgEl.textContent = '🎉 Time is up!';
+    msgEl.className = 'text-center text-lg font-semibold text-green-400';
+    return;
+  }
+  
+  var d = Math.floor(diff / 86400000);
+  var h = Math.floor((diff % 86400000) / 3600000);
+  var m = Math.floor((diff % 3600000) / 60000);
+  var s = Math.floor((diff % 60000) / 1000);
+  
+  document.getElementById('days').textContent = d;
+  document.getElementById('hours').textContent = h;
+  document.getElementById('minutes').textContent = m;
+  document.getElementById('seconds').textContent = s;
+}
+
+function stopCountdown() {
+  if (countdownTimer) {
+    clearInterval(countdownTimer);
+    countdownTimer = null;
+  }
+  document.getElementById('countdown-msg').textContent = 'Countdown stopped';
+  document.getElementById('countdown-msg').className = 'text-center text-sm text-surface-400';
+}
+</script>
 </ToolLayout>

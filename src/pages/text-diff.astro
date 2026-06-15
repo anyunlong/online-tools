@@ -1,6 +1,5 @@
 ---
 import ToolLayout from '../components/ToolLayout.astro';
-import Textarea from '../components/Textarea.astro';
 import Button from '../components/Button.astro';
 ---
 
@@ -8,47 +7,88 @@ import Button from '../components/Button.astro';
   title="Text Diff Checker"
   description="Compare two texts and find differences"
   category="Text"
-  keywords={["diff", "compare", "text"]}
+  keywords={["diff", "compare", "text", "difference checker"]}
 >
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-    <Textarea id="inp" label="Input" placeholder="Paste original text here..." rows="12" class="tool-area" />
+  <div class="space-y-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label for="text1" class="block text-sm text-surface-200 mb-1.5 font-medium">Original Text</label>
+        <textarea
+          id="text1"
+          rows="12"
+          placeholder="Paste original text here..."
+          class="w-full rounded-xl border border-surface-600 bg-surface-800 p-3 text-sm text-surface-100 font-mono placeholder:text-surface-500 focus:border-brand-500 focus:ring-1 focus:ring-brand-500/30 focus:outline-none transition-all resize-y"
+        ></textarea>
+      </div>
+      <div>
+        <label for="text2" class="block text-sm text-surface-200 mb-1.5 font-medium">Modified Text</label>
+        <textarea
+          id="text2"
+          rows="12"
+          placeholder="Paste modified text here..."
+          class="w-full rounded-xl border border-surface-600 bg-surface-800 p-3 text-sm text-surface-100 font-mono placeholder:text-surface-500 focus:border-brand-500 focus:ring-1 focus:ring-brand-500/30 focus:outline-none transition-all resize-y"
+        ></textarea>
+      </div>
+    </div>
+    <div class="flex gap-2">
+      <Button onclick="compareTexts()">Compare</Button>
+      <Button variant="secondary" onclick="clearAll()">Clear</Button>
+    </div>
     <div>
-      <label for="out" class="text-sm text-surface-300 mb-1.5 block font-medium">Output</label>
-      <div id="out" class="w-full h-72 rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 overflow-auto font-mono"></div>
+      <label class="block text-sm text-surface-200 mb-1.5 font-medium">Differences</label>
+      <div
+        id="diff-out"
+        class="w-full min-h-[200px] rounded-xl border border-surface-600 bg-surface-800 p-4 text-sm font-mono whitespace-pre-wrap break-all"
+      ></div>
     </div>
   </div>
-  <div class="flex gap-2 mt-4">
-    <Button onclick="process()">Compare</Button>
-    <Button variant="secondary" onclick="clearAll()">Clear</Button>
-  </div>
-  <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process() {
-  const v=document.getElementById('inp').value.split(/\n---\n|\n\n\n/);
-  if(v.length<2){o('Paste two texts separated by --- on its own line');return;}
-  const a=v[0].split(/\n/),b=v[1].split(/\n/);
-  let r='';
-  const max=Math.max(a.length,b.length);
-  for(let i=0;i<max;i++){
-    if(a[i]===b[i])r+='  '+a[i]+'\n';
-    else r+='- '+((a[i]||'(empty)')+'\n+ '+(b[i]||'(empty)')+'\n');
+function compareTexts() {
+  var t1 = document.getElementById('text1').value;
+  var t2 = document.getElementById('text2').value;
+  var out = document.getElementById('diff-out');
+  
+  if (!t1.trim() && !t2.trim()) {
+    out.innerHTML = '<span class="text-surface-500">Enter text in both panels to compare</span>';
+    return;
   }
-  o(r);
+  
+  var lines1 = t1.split('\n');
+  var lines2 = t2.split('\n');
+  var maxLen = Math.max(lines1.length, lines2.length);
+  var html = '';
+  var hasDiff = false;
+  
+  for (var i = 0; i < maxLen; i++) {
+    var l1 = lines1[i] || '';
+    var l2 = lines2[i] || '';
+    
+    if (l1 === l2) {
+      html += '<div class="text-surface-400">  ' + escapeHtml(l1) + '</div>';
+    } else {
+      hasDiff = true;
+      if (l1) html += '<div class="text-red-400 bg-red-900/20 px-1 -mx-1">- ' + escapeHtml(l1) + '</div>';
+      if (l2) html += '<div class="text-green-400 bg-green-900/20 px-1 -mx-1">+ ' + escapeHtml(l2) + '</div>';
+    }
+  }
+  
+  if (!hasDiff) {
+    out.innerHTML = '<div class="text-green-400">✅ Texts are identical</div>';
+  } else {
+    out.innerHTML = html;
+  }
 }
-function o(t){document.getElementById('out').textContent=t;}
-function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
+
+function escapeHtml(text) {
+  var div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+function clearAll() {
+  document.getElementById('text1').value = '';
+  document.getElementById('text2').value = '';
+  document.getElementById('diff-out').innerHTML = '';
+}
 </script>
-<div slot="info">
-  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Text Diff Checker?</h2>
-  <p class="mb-3">A text diff checker compares two blocks of text side by side and highlights every difference — additions, deletions, and modifications. It's the same concept as the `git diff` command developers use daily, but in an easy web interface anyone can use.</p>
-  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
-  <ul class="list-disc pl-5 mb-3 space-y-1">
-    <li>Comparing different versions of a document, contract, or article to spot changes</li>
-    <li>Reviewing code changes or configuration file updates before deploying</li>
-  </ul>
-  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
-  <p class="mb-3">Paste original and modified text into the two panels, then click Compare to highlight the differences.</p>
-  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
-  <p>Try our <a href="/regex/" class="text-primary hover:underline">Regex Tester</a> for finding patterns within a single block of text.</p>
-</div>
 </ToolLayout>
