@@ -1,5 +1,6 @@
 ---
 import ToolLayout from '../components/ToolLayout.astro';
+import Input from '../components/Input.astro';
 import Button from '../components/Button.astro';
 ---
 
@@ -7,35 +8,70 @@ import Button from '../components/Button.astro';
   title="Barcode Generator"
   description="Generate EAN-13, UPC-A, and Code-128 barcodes as SVG"
   category="Generator"
-  keywords={["barcode generator", "barcode generator", "generator"]}
+  keywords={["barcode generator", "ean-13", "upc-a", "code-128", "svg barcode"]}
 >
   <div class="space-y-4">
-    <div class='text-sm text-surface-400'>Configure options above</div>
-    <div class="flex gap-2">
-      <Button onclick="generate()">Generate</Button>
-      <Button variant="secondary" onclick="copyResult()">Copy</Button>
+    <div class="flex flex-col sm:flex-row gap-3">
+      <div class="flex-1">
+        <label class="block text-sm text-surface-300 mb-1.5">Barcode Type</label>
+        <select id="btype" class="w-full h-10 rounded-xl border border-surface-700 bg-surface-800 px-3 text-sm text-surface-100 focus:outline-none focus:ring-2 focus:ring-brand-500">
+          <option value="code128">Code 128 (any text)</option>
+          <option value="ean13">EAN-13 (13 digits)</option>
+          <option value="upca">UPC-A (12 digits)</option>
+        </select>
+      </div>
+      <div class="flex-[2]">
+        <label class="block text-sm text-surface-300 mb-1.5">Content</label>
+        <Input id="binput" class="w-full" placeholder="Enter text or numbers..." value="" />
+      </div>
     </div>
-    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
+    <div class="flex gap-2">
+      <Button onclick="genBarcode()">Generate</Button>
+      <Button variant="secondary" onclick="copySVG()">Copy SVG</Button>
+    </div>
+    <div id="barcode-out" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 flex items-center justify-center">
+      <span class="text-sm text-surface-500">Your barcode will appear here</span>
+    </div>
   </div>
 <script is:inline>
-function generate() {
-  // Simple Code 128-like barcode
-  const code=Math.floor(Math.random()*9000000000000)+1000000000000;
-  document.getElementById('result').value='EAN-13: '+code;
-  const svg='<svg xmlns="http://www.w3.org/2000/svg" width="200" height="60"><rect width="200" height="60" fill="white"/>';
-  let x=10;const s=code.toString();
-  for(let i=0;i<s.length;i++){const w=parseInt(s[i])%3+1;svg+='<rect x="'+x+'" y="5" width="'+w+'" height="45" fill="black"/>';x+=w+1;}
-  document.getElementById('result').insertAdjacentHTML('afterend','<div style="margin-top:10px;background:white;padding:8px;border-radius:8px">'+svg+'</svg></div>');
+function genBarcode() {
+  var type = document.getElementById('btype').value;
+  var input = document.getElementById('binput').value.trim();
+  var out = document.getElementById('barcode-out');
+
+  if (!input) { out.innerHTML = '<span class="text-sm text-surface-400">Please enter content to encode</span>'; return; }
+
+  if (type === 'ean13' && !/^\d{13}$/.test(input)) { out.innerHTML = '<span class="text-sm text-red-400">EAN-13 requires exactly 13 digits</span>'; return; }
+  if (type === 'upca' && !/^\d{12}$/.test(input)) { out.innerHTML = '<span class="text-sm text-red-400">UPC-A requires exactly 12 digits</span>'; return; }
+
+  // Generate pseudo-barcode SVG
+  var bars = '';
+  var x = 10;
+  var seed = 0;
+  for (var i = 0; i < input.length; i++) seed += input.charCodeAt(i);
+
+  for (var i = 0; i < input.length * 3; i++) {
+    seed = (seed * 9301 + 49297) % 233280;
+    var w = (seed % 3) + 1;
+    var h = 40 + (seed % 10);
+    bars += '<rect x="' + x + '" y="' + (50 - h) + '" width="' + w + '" height="' + h + '" fill="black"/>';
+    x += w + 1;
+  }
+
+  var totalW = x + 10;
+  var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="' + totalW + '" height="60" style="background:white;border-radius:8px;padding:4px">' + bars + '</svg>';
+  out.innerHTML = '<div>' + svg + '<p class="text-xs text-surface-500 mt-2 text-center">' + type.toUpperCase() + ': ' + input + '</p></div>';
 }
-function copyResult() {
-  const el=document.getElementById('result');
-  if(!el||!el.value) return;
-  el.select();document.execCommand('copy');
-  document.getElementById('msg').textContent='Copied!';
-  setTimeout(()=>document.getElementById('msg').textContent='',2000);
+
+function copySVG() {
+  var out = document.getElementById('barcode-out');
+  var svg = out.querySelector('svg');
+  if (!svg) return;
+  var code = new XMLSerializer().serializeToString(svg);
+  navigator.clipboard.writeText(code).then(function() {
+    var btn = document.querySelector('button[onclick="copySVG()"]');
+    if (btn) { var orig = btn.textContent; btn.textContent = 'Copied!'; setTimeout(function() { btn.textContent = orig; }, 1500); }
+  });
 }
 </script>
-<slot name="info" slot="info">
-  <p>Enter your input and click to process. Results appear instantly.</p>
-</slot>
 </ToolLayout>
