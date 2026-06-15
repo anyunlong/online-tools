@@ -16,20 +16,11 @@ import Button from '../components/Button.astro';
   </div>
   <div id="qr-area" class="mt-5 flex justify-center"></div>
 <script is:inline>
-function generate() {
-  const v=document.getElementById('inp').value.trim();
-  if(!v){o('Enter text or URL to encode');return;}
-  // Use Google Charts API for QR (fallback since no library)
+function genQR() {
+  const v=document.getElementById('url').value.trim();
+  if(!v){document.getElementById('qr-area').innerHTML='<p class="text-surface-400 text-sm">Enter text or URL to encode</p>';return;}
   const url='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data='+encodeURIComponent(v);
-  document.getElementById('out').innerHTML='<img src="'+url+'" alt="QR Code" style="max-width:200px;display:block;margin:10px auto">';
-}
-function clearAll(){document.getElementById('inp').value='';document.getElementById('out').innerHTML='';}
-function copyResult() {
-  const el=document.getElementById('result');
-  if(!el||!el.value) return;
-  el.select();document.execCommand('copy');
-  document.getElementById('msg').textContent='Copied!';
-  setTimeout(()=>document.getElementById('msg').textContent='',2000);
+  document.getElementById('qr-area').innerHTML='<img src="'+url+'" alt="QR Code" style="max-width:200px;display:block;margin:10px auto">';
 }
 </script><div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is a QR Code Generator?</h2>
