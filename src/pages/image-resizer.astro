@@ -10,44 +10,88 @@ import Button from '../components/Button.astro';
   category="Image"
   keywords={["image resizer", "image resizer", "image"]}
 >
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-    <Textarea id="inp" label="Input" placeholder="Enter your input here..." rows="12" class="tool-area" />
-    <div>
-      <label for="out" class="text-sm text-surface-300 mb-1.5 block font-medium">Output</label>
-      <div id="out" class="w-full h-72 rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 overflow-auto font-mono"></div>
+  <div class="space-y-4">
+    <input type="file" id="file" accept="image/*" class="text-sm text-surface-300 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:bg-brand-500 file:text-white hover:file:bg-brand-400 file:cursor-pointer file:transition-colors" onchange="loadImage()" />
+    <div class="flex gap-4 flex-wrap items-end">
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Width (px)</label>
+        <input id="imgW" type="number" value="800" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 w-24" oninput="resizeImage()" />
+      </div>
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Height (px)</label>
+        <input id="imgH" type="number" value="" placeholder="auto" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 w-24" oninput="resizeImage()" />
+      </div>
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Quality: <span id="qualityVal">80</span>%</label>
+        <input id="quality" type="range" min="10" max="100" value="80" oninput="document.getElementById('qualityVal').textContent=this.value; resizeImage()" class="accent-brand-500 w-32" />
+      </div>
+      <label class="text-xs text-surface-300 flex items-center gap-1 pb-2">
+        <input type="checkbox" id="keepAspect" checked class="accent-brand-500" /> Keep aspect ratio
+      </label>
+    </div>
+    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-600 bg-surface-800 p-4 text-sm text-surface-100 font-mono whitespace-pre-wrap break-all"></div>
+    <div id="preview-wrap" class="hidden flex justify-center">
+      <img id="preview" class="max-w-full max-h-80 rounded-xl border border-surface-600 shadow-lg" />
+      <a id="download-link" href="#" download="resized.jpg" class="inline-block mt-2 text-sm text-brand-400 hover:underline ml-4">Download Resized Image</a>
     </div>
   </div>
-  <div class="flex gap-2 mt-4">
-    <Button onclick="process()">Process</Button>
-    <Button variant="secondary" onclick="clearAll()">Clear</Button>
-  </div>
-  <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process() {
-  document.getElementById('out').innerHTML='<p style="color:#8b949e">Select an image file to resize.</p><input type="file" id="imgFile" accept="image/*" onchange="resizeImage()" style="color:#fff"><br><br><label style="font-size:0.85em">Width: <input id="imgW" value="800" style="width:70px;background:#1a1a2e;color:#fff;border:1px solid #333;padding:4px">px</label><br><label style="font-size:0.85em">Quality: <input id="imgQ" value="80" style="width:70px;background:#1a1a2e;color:#fff;border:1px solid #333;padding:4px">%</label>';
-}
-function resizeImage() {
-  const file=document.getElementById('imgFile').files[0];
-  if(!file)return;
-  const reader=new FileReader();
-  reader.onload=function(e){
-    const img=new Image();
-    img.onload=function(){
-      const canvas=document.createElement('canvas');
-      const w=parseInt(document.getElementById('imgW').value)||800;
-      const ratio=w/img.width;
-      canvas.width=w;canvas.height=Math.round(img.height*ratio);
-      const ctx=canvas.getContext('2d');ctx.drawImage(img,0,0,canvas.width,canvas.height);
-      const q=parseInt(document.getElementById('imgQ').value)/100||0.8;
-      const dataUrl=canvas.toDataURL('image/jpeg',q);
-      document.getElementById('out').innerHTML='<p>Original: '+img.width+'×'+img.height+'</p><p>Resized: '+w+'×'+canvas.height+'</p><img src="'+dataUrl+'" style="max-width:100%;border-radius:8px;margin-top:10px"><br><a href="'+dataUrl+'" download="resized.jpg" style="color:#3B82F6;font-size:0.85em">⬇ Download</a>';
+var originalImg = null;
+
+function loadImage() {
+  var file = document.getElementById('file').files[0];
+  if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var img = new Image();
+    img.onload = function() {
+      originalImg = img;
+      document.getElementById('imgW').value = img.width;
+      document.getElementById('imgH').value = img.height;
+      resizeImage();
     };
-    img.src=e.target.result;
+    img.src = e.target.result;
   };
   reader.readAsDataURL(file);
 }
-function o(t){document.getElementById('out').textContent=t;}
-function clearAll(){document.getElementById('inp').value='';document.getElementById('out').innerHTML='';}
+
+function resizeImage() {
+  if (!originalImg) {
+    document.getElementById('result').textContent = 'Select an image file first.';
+    return;
+  }
+  var w = parseInt(document.getElementById('imgW').value, 10);
+  var h = parseInt(document.getElementById('imgH').value, 10);
+  var keepAspect = document.getElementById('keepAspect').checked;
+  var quality = parseInt(document.getElementById('quality').value, 10) / 100;
+
+  if (isNaN(w) || w <= 0) {
+    document.getElementById('result').textContent = 'Enter a valid width.';
+    return;
+  }
+
+  if (keepAspect || isNaN(h) || h <= 0) {
+    h = Math.round(originalImg.height * (w / originalImg.width));
+    document.getElementById('imgH').value = h;
+  }
+
+  var canvas = document.createElement('canvas');
+  canvas.width = w;
+  canvas.height = h;
+  var ctx = canvas.getContext('2d');
+  ctx.drawImage(originalImg, 0, 0, w, h);
+  var dataUrl = canvas.toDataURL('image/jpeg', quality);
+
+  var sizeBytes = Math.round(dataUrl.length * 3 / 4);
+  var info = 'Original: ' + originalImg.width + '\u00D7' + originalImg.height + '\n';
+  info += 'Resized:  ' + w + '\u00D7' + h + '\n';
+  info += 'Size:     ' + (sizeBytes / 1024).toFixed(1) + ' KB';
+
+  document.getElementById('result').textContent = info;
+  document.getElementById('preview').src = dataUrl;
+  document.getElementById('preview-wrap').classList.remove('hidden');
+  document.getElementById('download-link').href = dataUrl;
+}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

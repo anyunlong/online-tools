@@ -10,28 +10,53 @@ import Button from '../components/Button.astro';
   keywords={["fake name", "fake name generator", "generator"]}
 >
   <div class="space-y-4">
-    <div class='text-sm text-surface-400'>Configure options above</div>
+    <div class="flex gap-4 flex-wrap">
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Gender</label>
+        <select id="gender" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100">
+          <option value="any">Any</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Count</label>
+        <select id="count" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100">
+          <option value="1">1</option><option value="5" selected>5</option><option value="10">10</option><option value="20">20</option>
+        </select>
+      </div>
+    </div>
     <div class="flex gap-2">
       <Button onclick="generate()">Generate</Button>
       <Button variant="secondary" onclick="copyResult()">Copy</Button>
     </div>
-    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
+    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-600 bg-surface-800 p-4 text-sm text-surface-100 font-mono whitespace-pre-wrap break-all"></div>
   </div>
 <script is:inline>
-const firstM=['James','John','Robert','Michael','William','David','Richard','Joseph','Thomas','Charles','Chris','Daniel','Matthew','Anthony','Mark','Donald','Steven','Paul','Andrew','Joshua','Kenneth','Kevin','Brian','George','Edward'];
-const firstF=['Mary','Patricia','Jennifer','Linda','Barbara','Elizabeth','Susan','Jessica','Sarah','Karen','Nancy','Lisa','Betty','Margaret','Sandra','Ashley','Kimberly','Emily','Donna','Michelle'];
-const last=['Smith','Johnson','Williams','Brown','Jones','Garcia','Miller','Davis','Rodriguez','Martinez','Hernandez','Lopez','Gonzalez','Wilson','Anderson','Thomas','Taylor','Moore','Jackson','Martin','Lee','Perez','Thompson','White','Harris'];
-function generate() {
-  const r=arr=>arr[Math.floor(Math.random()*arr.length)];
-  const first=Math.random()>0.5?r(firstM):r(firstF);
-  document.getElementById('result').value=first+' '+r(last);
+var firstMale = ['James','John','Robert','Michael','William','David','Richard','Joseph','Thomas','Charles','Christopher','Daniel','Matthew','Anthony','Mark','Donald','Steven','Paul','Andrew','Joshua','Kenneth','Kevin','Brian','George','Edward','Ronald','Timothy','Jason','Jeffrey','Ryan','Jacob','Gary','Nicholas','Eric','Jonathan','Stephen','Larry','Justin','Scott','Brandon','Benjamin','Samuel','Gregory','Frank','Alexander','Raymond','Patrick','Jack'];
+var firstFemale = ['Mary','Patricia','Jennifer','Linda','Barbara','Elizabeth','Susan','Jessica','Sarah','Karen','Nancy','Lisa','Betty','Margaret','Sandra','Ashley','Kimberly','Emily','Donna','Michelle','Dorothy','Carol','Amanda','Melissa','Deborah','Stephanie','Rebecca','Sharon','Laura','Cynthia','Kathleen','Amy','Shirley','Angela','Helen','Anna','Brenda','Pamela','Nicole','Emma','Samantha','Katherine','Christine','Debra','Rachel','Carolyn','Janet','Catherine','Maria','Heather'];
+var lastNames = ['Smith','Johnson','Williams','Brown','Jones','Garcia','Miller','Davis','Rodriguez','Martinez','Hernandez','Lopez','Gonzalez','Wilson','Anderson','Thomas','Taylor','Moore','Jackson','Martin','Lee','Perez','Thompson','White','Harris','Sanchez','Clark','Ramirez','Lewis','Robinson','Walker','Young','Allen','King','Wright','Scott','Torres','Nguyen','Hill','Flores','Green','Adams','Nelson','Baker','Hall','Rivera','Campbell','Mitchell','Carter','Roberts'];
+
+function rand(arr) {
+  var buf = new Uint32Array(1);
+  crypto.getRandomValues(buf);
+  return arr[buf[0] % arr.length];
 }
+
+function generate() {
+  var gender = document.getElementById('gender').value;
+  var count = parseInt(document.getElementById('count').value, 10);
+  var names = [];
+  for (var i = 0; i < count; i++) {
+    var first = gender === 'male' ? rand(firstMale) : gender === 'female' ? rand(firstFemale) : (Math.random() > 0.5 ? rand(firstMale) : rand(firstFemale));
+    names.push(first + ' ' + rand(lastNames));
+  }
+  document.getElementById('result').textContent = names.join('\n');
+}
+
 function copyResult() {
-  const el=document.getElementById('result');
-  if(!el||!el.value) return;
-  el.select();document.execCommand('copy');
-  document.getElementById('msg').textContent='Copied!';
-  setTimeout(()=>document.getElementById('msg').textContent='',2000);
+  var text = document.getElementById('result').textContent;
+  navigator.clipboard.writeText(text);
 }
 </script>
 <slot name="info" slot="info">

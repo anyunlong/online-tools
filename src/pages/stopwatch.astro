@@ -10,32 +10,76 @@ import Button from '../components/Button.astro';
   keywords={["stopwatch", "timer", "clock", "lap"]}
 >
   <div class="space-y-4">
-    
-    <div class="flex gap-2">
-      <Button onclick="generate()"></Button>
-      <Button variant="secondary" onclick="copyResult()">Copy</Button>
+    <div id="display" class="text-center py-6">
+      <div class="text-5xl font-bold text-surface-100 font-mono tracking-wider">00:00:00.00</div>
+      <div class="text-xs text-surface-500 mt-2">HOURS : MINUTES : SECONDS . CS</div>
     </div>
-    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
+    <div class="flex gap-2 justify-center flex-wrap">
+      <button id="btn-start" onclick="toggle()" class="px-6 py-2.5 rounded-xl bg-brand-500 text-white font-medium hover:bg-brand-400 transition-colors">Start</button>
+      <button onclick="lap()" class="px-5 py-2.5 rounded-xl bg-surface-800 text-surface-200 border border-surface-600 hover:border-brand-500/50 hover:text-brand-400 transition-colors">Lap</button>
+      <button onclick="reset()" class="px-5 py-2.5 rounded-xl bg-surface-800 text-surface-200 border border-surface-600 hover:border-brand-500/50 hover:text-brand-400 transition-colors">Reset</button>
+    </div>
+    <div id="laps" class="w-full max-h-[200px] overflow-y-auto rounded-xl border border-surface-600 bg-surface-800 p-3 text-sm font-mono space-y-1"></div>
   </div>
 <script is:inline>
-let running = false, startTime = 0, elapsed = 0, interval;
-function generate() {
-  if (!running) { startTime = Date.now() - elapsed; interval = setInterval(update, 10); running = true; }
-  else { clearInterval(interval); elapsed = Date.now() - startTime; running = false; }
-}
-function lap() { const el = document.getElementById('laps'); if (!el) return; const t = formatTime(elapsed || (Date.now() - startTime)); el.innerHTML += `<div class='text-sm text-surface-400 py-1 border-b border-surface-800/50'>Lap: ${t}</div>`; }
-function resetTimer() { clearInterval(interval); running = false; startTime = 0; elapsed = 0; document.getElementById('result').textContent = '00:00:00.00'; const el = document.getElementById('laps'); if (el) el.innerHTML = ''; }
-function update() { elapsed = Date.now() - startTime; document.getElementById('result').textContent = formatTime(elapsed); }
-function formatTime(ms) { const h = Math.floor(ms / 3600000); const m = Math.floor((ms % 3600000) / 60000); const s = Math.floor((ms % 60000) / 1000); const cs = Math.floor((ms % 1000) / 10); return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}.${String(cs).padStart(2,'0')}`; }
+var running = false;
+var startTime = 0;
+var elapsed = 0;
+var interval = null;
+var lapCount = 0;
 
-function copyResult() {
-  const text = document.getElementById('result').textContent;
-  if (!text) return;
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('[onclick="copyResult()"]');
-    btn.textContent = 'Copied!';
-    setTimeout(() => btn.textContent = 'Copy', 2000);
-  });
+function toggle() {
+  if (!running) {
+    startTime = Date.now() - elapsed;
+    interval = setInterval(update, 10);
+    running = true;
+    var btn = document.getElementById('btn-start');
+    btn.textContent = 'Stop';
+    btn.className = 'px-6 py-2.5 rounded-xl bg-red-500 text-white font-medium hover:bg-red-400 transition-colors';
+  } else {
+    clearInterval(interval);
+    elapsed = Date.now() - startTime;
+    running = false;
+    var btn = document.getElementById('btn-start');
+    btn.textContent = 'Start';
+    btn.className = 'px-6 py-2.5 rounded-xl bg-brand-500 text-white font-medium hover:bg-brand-400 transition-colors';
+  }
+}
+
+function lap() {
+  if (!running && elapsed === 0) return;
+  lapCount++;
+  var t = running ? Date.now() - startTime : elapsed;
+  var div = document.createElement('div');
+  div.className = 'text-sm text-surface-400 py-1 px-2 border-b border-surface-700/30 flex justify-between';
+  div.innerHTML = '<span>Lap ' + lapCount + '</span><span class="text-surface-200">' + formatTime(t) + '</span>';
+  var lapsEl = document.getElementById('laps');
+  lapsEl.insertBefore(div, lapsEl.firstChild);
+}
+
+function reset() {
+  clearInterval(interval);
+  running = false;
+  elapsed = 0;
+  lapCount = 0;
+  document.getElementById('display').querySelector('div').textContent = '00:00:00.00';
+  document.getElementById('laps').innerHTML = '';
+  var btn = document.getElementById('btn-start');
+  btn.textContent = 'Start';
+  btn.className = 'px-6 py-2.5 rounded-xl bg-brand-500 text-white font-medium hover:bg-brand-400 transition-colors';
+}
+
+function update() {
+  elapsed = Date.now() - startTime;
+  document.getElementById('display').querySelector('div').textContent = formatTime(elapsed);
+}
+
+function formatTime(ms) {
+  var h = Math.floor(ms / 3600000);
+  var m = Math.floor((ms % 3600000) / 60000);
+  var s = Math.floor((ms % 60000) / 1000);
+  var cs = Math.floor((ms % 1000) / 10);
+  return [h, m, s].map(function(v) { return String(v).padStart(2, '0'); }).join(':') + '.' + String(cs).padStart(2, '0');
 }
 </script>
 <div slot="info">

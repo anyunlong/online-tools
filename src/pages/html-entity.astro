@@ -11,27 +11,36 @@ import Button from '../components/Button.astro';
   category="Encode/Decode"
   keywords={["html", "entity", "escape"]}
 >
-  <DualPane>
-    <Textarea id="inp" slot="input" label="Input" placeholder="<div>&amp;</div>" rows="10" />
-    <Textarea id="out" slot="output" label="Output" rows="10" readonly />
-  </DualPane>
-  <div class="flex gap-2 mt-4">
-    <Button onclick="encode()">Encode</Button>
-    <Button variant="secondary" onclick="decode()">Decode</Button>
+  <div class="space-y-4">
+    <div>
+      <label class="text-sm text-surface-300 block mb-1">Input Text</label>
+      <textarea id="input" rows="8" placeholder="<div class=&quot;example&quot;>Hello &amp; welcome!</div>" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 font-mono w-full resize-y"></textarea>
+    </div>
+    <div class="flex gap-2">
+      <Button onclick="encode()">Encode</Button>
+      <Button variant="secondary" onclick="decode()">Decode</Button>
+      <Button variant="secondary" size="sm" onclick="copyResult()">Copy</Button>
+    </div>
+    <textarea id="result" readonly class="w-full min-h-[150px] rounded-xl border border-surface-600 bg-surface-800 p-4 text-sm text-surface-100 font-mono whitespace-pre-wrap break-all resize-y"></textarea>
   </div>
 <script is:inline>
-function process() {
-  const v=document.getElementById('inp').value;
-  if(v.startsWith('&')||v.includes('&#')){
-    const txt=document.createElement('textarea');txt.innerHTML=v;
-    o('Decoded: '+txt.value);
-  }else{
-    const div=document.createElement('div');div.textContent=v;
-    o('Encoded: '+div.innerHTML);
-  }
+function encode() {
+  var input = document.getElementById('input').value;
+  var div = document.createElement('div');
+  div.appendChild(document.createTextNode(input));
+  document.getElementById('result').value = div.innerHTML;
 }
-function o(t){document.getElementById('out').textContent=t;}
-function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';}
+
+function decode() {
+  var input = document.getElementById('input').value;
+  var div = document.createElement('div');
+  div.innerHTML = input;
+  document.getElementById('result').value = div.textContent || div.innerText;
+}
+
+function copyResult() {
+  navigator.clipboard.writeText(document.getElementById('result').value);
+}
 </script><div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is HTML Entity Encoding?</h2>
   <p class="mb-3">HTML entity encoding converts special characters like `<`, `>`, `&`, and quotes into their safe HTML entity equivalents (such as &amp;lt;, &amp;gt;, and &amp;amp;). This prevents browsers from interpreting these characters as HTML markup, which is critical for web security.</p>

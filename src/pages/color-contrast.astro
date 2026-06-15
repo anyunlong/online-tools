@@ -10,51 +10,69 @@ import Button from '../components/Button.astro';
   category="Design"
   keywords={["color", "contrast", "wcag", "accessibility"]}
 >
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-    <Textarea id="inp" label="Input" placeholder="" rows="12" class="tool-area" />
-    <div>
-      <label for="out" class="text-sm text-surface-300 mb-1.5 block font-medium">Output</label>
-      <div id="out" class="w-full h-72 rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 overflow-auto font-mono"></div>
+  <div class="space-y-4">
+    <div class="flex gap-4 flex-wrap items-end">
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Foreground Color</label>
+        <input id="fg" type="color" value="#000000" onchange="checkContrast()" class="w-12 h-10 rounded cursor-pointer border-0 bg-transparent" />
+        <span class="text-xs text-surface-400 ml-1">#000000</span>
+      </div>
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Background Color</label>
+        <input id="bg" type="color" value="#ffffff" onchange="checkContrast()" class="w-12 h-10 rounded cursor-pointer border-0 bg-transparent" />
+        <span class="text-xs text-surface-400 ml-1">#FFFFFF</span>
+      </div>
     </div>
+    <div id="preview" class="flex items-center justify-center rounded-xl border border-surface-600 p-8 transition-all" style="background:#ffffff">
+      <span class="text-2xl font-bold transition-all" style="color:#000000">Sample Text</span>
+    </div>
+    <div id="result" class="w-full rounded-xl border border-surface-600 bg-surface-800 p-4 text-sm text-surface-100 font-mono whitespace-pre-wrap min-h-[120px]"></div>
   </div>
-  <div class="flex gap-2 mt-4">
-    <Button onclick="process()">Check Contrast</Button>
-    <Button variant="secondary" onclick="clearAll()">Clear</Button>
-  </div>
-  <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process() {
-  const fg = document.getElementById('fg')?.value || '#000000';
-  const bg = document.getElementById('bg')?.value || '#ffffff';
-  const l1 = getLuminance(fg);
-  const l2 = getLuminance(bg);
-  const ratio = (Math.max(l1,l2) + 0.05) / (Math.min(l1,l2) + 0.05);
-  let out = `Contrast Ratio: ${ratio.toFixed(2)}:1\n\n`;
-  out += `Normal Text:\n`;
-  out += `  AA (4.5:1): ${ratio >= 4.5 ? 'PASS' : 'FAIL'}\n`;
-  out += `  AAA (7:1): ${ratio >= 7 ? 'PASS' : 'FAIL'}\n\n`;
-  out += `Large Text:\n`;
-  out += `  AA (3:1): ${ratio >= 3 ? 'PASS' : 'FAIL'}\n`;
-  out += `  AAA (4.5:1): ${ratio >= 4.5 ? 'PASS' : 'FAIL'}`;
-  document.getElementById('out').textContent = out;
-  document.getElementById('msg').textContent = '';
-}
 function hexToRgb(hex) {
-  hex = hex.replace('#','');
-  if (hex.length === 3) hex = hex.split('').map(c=>c+c).join('');
-  return [parseInt(hex.substr(0,2),16),parseInt(hex.substr(2,2),16),parseInt(hex.substr(4,2),16)];
-}
-function getLuminance(hex) {
-  const [r,g,b] = hexToRgb(hex);
-  const [rs,gs,bs] = [r,g,b].map(v=>{v/=255;return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4)});
-  return 0.2126*rs+0.7152*gs+0.0722*bs;
+  hex = hex.replace('#', '');
+  if (hex.length === 3) hex = hex.split('').map(function(c) { return c + c; }).join('');
+  return [
+    parseInt(hex.substr(0, 2), 16),
+    parseInt(hex.substr(2, 2), 16),
+    parseInt(hex.substr(4, 2), 16)
+  ];
 }
 
-function clearAll() {
-  document.getElementById('inp').value = '';
-  document.getElementById('out').innerHTML = '';
-  document.getElementById('msg').textContent = '';
+function getLuminance(hex) {
+  var rgb = hexToRgb(hex);
+  var rs = rgb[0] / 255, gs = rgb[1] / 255, bs = rgb[2] / 255;
+  [rs, gs, bs] = [rs, gs, bs].map(function(v) {
+    return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+  });
+  return 0.2126 * rs + 0.7152 * gs + 0.0722 * bs;
 }
+
+function checkContrast() {
+  var fg = document.getElementById('fg').value;
+  var bg = document.getElementById('bg').value;
+  var l1 = getLuminance(fg);
+  var l2 = getLuminance(bg);
+  var ratio = (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
+
+  document.getElementById('preview').style.background = bg;
+  document.getElementById('preview').querySelector('span').style.color = fg;
+
+  var pass = '<span class="text-green-400">PASS</span>';
+  var fail = '<span class="text-red-400">FAIL</span>';
+
+  var out = 'Contrast Ratio: ' + ratio.toFixed(2) + ':1\n\n';
+  out += 'Normal Text:\n';
+  out += '  AA  (4.5:1): ' + (ratio >= 4.5 ? pass : fail) + '\n';
+  out += '  AAA (7:1):   ' + (ratio >= 7 ? pass : fail) + '\n\n';
+  out += 'Large Text (18px+ or 14px bold):\n';
+  out += '  AA  (3:1):   ' + (ratio >= 3 ? pass : fail) + '\n';
+  out += '  AAA (4.5:1): ' + (ratio >= 4.5 ? pass : fail);
+
+  document.getElementById('result').innerHTML = out.replace(/\n/g, '<br>');
+}
+
+checkContrast();
 </script>
 <div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Color Contrast Checker?</h2>

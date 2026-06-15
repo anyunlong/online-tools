@@ -10,20 +10,154 @@ import Button from '../components/Button.astro';
   keywords={["unit", "converter", "metric", "imperial"]}
 >
   <div class="space-y-4">
-    <div class='flex flex-wrap gap-3 items-end'><div><label class='text-sm text-surface-300 block mb-1'>Category</label><select id='cat' onchange='updateUnits()' class='bg-surface-800 border border-surface-700 rounded-lg px-3 py-1.5 text-sm text-surface-100'><option value='length'>Length</option><option value='weight'>Weight</option><option value='temp'>Temperature</option><option value='area'>Area</option><option value='volume'>Volume</option><option value='speed'>Speed</option></select></div><div><label class='text-sm text-surface-300 block mb-1'>Value</label><input id='val' type='number' value='1' class='bg-surface-800 border border-surface-700 rounded-lg px-3 py-1.5 text-sm text-surface-100 w-28' /></div><div><label class='text-sm text-surface-300 block mb-1'>From</label><select id='from' class='bg-surface-800 border border-surface-700 rounded-lg px-3 py-1.5 text-sm text-surface-100'></select></div></div>
-    <div class="flex gap-2">
-      <Button onclick="generate()">Convert</Button>
-      <Button variant="secondary" onclick="copyResult()">Copy</Button>
+    <div class="flex flex-wrap gap-3 items-end">
+      <div>
+        <label class="text-sm text-surface-300 block mb-1">Category</label>
+        <select id="cat" onchange="updateUnits()" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100">
+          <option value="length" selected>Length</option>
+          <option value="weight">Weight / Mass</option>
+          <option value="temperature">Temperature</option>
+          <option value="area">Area</option>
+          <option value="volume">Volume</option>
+          <option value="speed">Speed</option>
+        </select>
+      </div>
+      <div>
+        <label class="text-sm text-surface-300 block mb-1">Value</label>
+        <input id="val" type="number" value="1" oninput="convert()" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 w-28" />
+      </div>
+      <div>
+        <label class="text-sm text-surface-300 block mb-1">From</label>
+        <select id="from" onchange="convert()" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100"></select>
+      </div>
     </div>
-    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
+    <div class="flex gap-2">
+      <button onclick="convert()" class="px-4 py-2 rounded-lg bg-brand-500 text-white text-sm font-medium hover:bg-brand-400 transition-colors">Convert</button>
+      <button onclick="copyResult()" class="px-4 py-2 rounded-lg bg-surface-800 text-surface-300 border border-surface-600 text-sm hover:border-brand-500 hover:text-brand-400 transition-colors">Copy</button>
+    </div>
+    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-600 bg-surface-800 p-4 text-sm text-surface-100 font-mono whitespace-pre-wrap"></div>
   </div>
 <script is:inline>
-function process() {
-  const v=document.getElementById('inp').value.trim();
-  if(!v){document.getElementById('out').textContent='Enter input above';return;}
-  document.getElementById('out').textContent='Unit Converter result: processed successfully';
+var unitData = {
+  length: {
+    units: [
+      { name: 'Meter (m)', factor: 1 },
+      { name: 'Kilometer (km)', factor: 1000 },
+      { name: 'Centimeter (cm)', factor: 0.01 },
+      { name: 'Millimeter (mm)', factor: 0.001 },
+      { name: 'Mile (mi)', factor: 1609.344 },
+      { name: 'Yard (yd)', factor: 0.9144 },
+      { name: 'Foot (ft)', factor: 0.3048 },
+      { name: 'Inch (in)', factor: 0.0254 }
+    ]
+  },
+  weight: {
+    units: [
+      { name: 'Kilogram (kg)', factor: 1 },
+      { name: 'Gram (g)', factor: 0.001 },
+      { name: 'Milligram (mg)', factor: 0.000001 },
+      { name: 'Pound (lb)', factor: 0.453592 },
+      { name: 'Ounce (oz)', factor: 0.0283495 },
+      { name: 'Stone (st)', factor: 6.35029 },
+      { name: 'Ton (metric)', factor: 1000 }
+    ]
+  },
+  temperature: {
+    units: [
+      { name: 'Celsius (\u00B0C)', id: 'c' },
+      { name: 'Fahrenheit (\u00B0F)', id: 'f' },
+      { name: 'Kelvin (K)', id: 'k' }
+    ]
+  },
+  area: {
+    units: [
+      { name: 'Square Meter (m\u00B2)', factor: 1 },
+      { name: 'Square Kilometer (km\u00B2)', factor: 1000000 },
+      { name: 'Hectare (ha)', factor: 10000 },
+      { name: 'Acre', factor: 4046.86 },
+      { name: 'Square Mile (mi\u00B2)', factor: 2589988 },
+      { name: 'Square Foot (ft\u00B2)', factor: 0.092903 },
+      { name: 'Square Inch (in\u00B2)', factor: 0.00064516 }
+    ]
+  },
+  volume: {
+    units: [
+      { name: 'Liter (L)', factor: 1 },
+      { name: 'Milliliter (mL)', factor: 0.001 },
+      { name: 'Cubic Meter (m\u00B3)', factor: 1000 },
+      { name: 'Gallon (US)', factor: 3.78541 },
+      { name: 'Quart (US)', factor: 0.946353 },
+      { name: 'Pint (US)', factor: 0.473176 },
+      { name: 'Cup', factor: 0.236588 },
+      { name: 'Fluid Ounce (US)', factor: 0.0295735 }
+    ]
+  },
+  speed: {
+    units: [
+      { name: 'm/s', factor: 1 },
+      { name: 'km/h', factor: 0.277778 },
+      { name: 'mph (mi/h)', factor: 0.44704 },
+      { name: 'knot', factor: 0.514444 },
+      { name: 'Mach', factor: 343 }
+    ]
+  }
+};
+
+function updateUnits() {
+  var cat = document.getElementById('cat').value;
+  var sel = document.getElementById('from');
+  var units = unitData[cat].units;
+  sel.innerHTML = units.map(function(u, i) {
+    return '<option value="' + i + '">' + u.name + '</option>';
+  }).join('');
+  convert();
 }
-function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';}
+
+function convert() {
+  var cat = document.getElementById('cat').value;
+  var val = parseFloat(document.getElementById('val').value);
+  var fromIdx = parseInt(document.getElementById('from').value, 10);
+  var units = unitData[cat].units;
+  var fromUnit = units[fromIdx];
+
+  if (isNaN(val)) {
+    document.getElementById('result').textContent = 'Enter a valid number.';
+    return;
+  }
+
+  var lines = [];
+  if (cat === 'temperature') {
+    var celsius;
+    if (fromUnit.id === 'c') celsius = val;
+    else if (fromUnit.id === 'f') celsius = (val - 32) * 5 / 9;
+    else celsius = val - 273.15;
+
+    units.forEach(function(u) {
+      var result;
+      if (u.id === 'c') result = celsius;
+      else if (u.id === 'f') result = celsius * 9 / 5 + 32;
+      else result = celsius + 273.15;
+      var isFrom = u.id === fromUnit.id;
+      lines.push((isFrom ? '\u25B6 ' : '  ') + u.name + ': ' + (isFrom ? val : result.toFixed(4)));
+    });
+  } else {
+    var baseVal = val * fromUnit.factor;
+    units.forEach(function(u) {
+      var result = baseVal / u.factor;
+      var isFrom = u.name === fromUnit.name;
+      lines.push((isFrom ? '\u25B6 ' : '  ') + u.name + ': ' + (isFrom ? val : result.toFixed(6).replace(/\.?0+$/, '')));
+    });
+  }
+
+  document.getElementById('result').textContent = lines.join('\n');
+}
+
+function copyResult() {
+  var text = document.getElementById('result').textContent;
+  navigator.clipboard.writeText(text);
+}
+
+updateUnits();
 </script>
 <div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Unit Converter?</h2>

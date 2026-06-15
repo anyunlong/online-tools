@@ -10,25 +10,105 @@ import Button from '../components/Button.astro';
   keywords={["baby names", "baby name generator", "fun"]}
 >
   <div class="space-y-4">
-    <div class='text-sm text-surface-400'>Configure options above</div>
+    <div class="flex gap-4 flex-wrap">
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Gender</label>
+        <select id="gender" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100">
+          <option value="any">Any</option>
+          <option value="boy">Boy</option>
+          <option value="girl">Girl</option>
+        </select>
+      </div>
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Count</label>
+        <select id="count" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100">
+          <option value="1">1</option><option value="3" selected>3</option><option value="5">5</option><option value="10">10</option>
+        </select>
+      </div>
+    </div>
     <div class="flex gap-2">
       <Button onclick="generate()">Generate</Button>
       <Button variant="secondary" onclick="copyResult()">Copy</Button>
     </div>
-    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
+    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-600 bg-surface-800 p-4 text-sm text-surface-100 font-mono whitespace-pre-wrap break-all"></div>
   </div>
 <script is:inline>
-const names=['Liam','Noah','Oliver','James','Elijah','Mateo','Lucas','Henry','Aiden','Ethan','Olivia','Emma','Charlotte','Amelia','Sophia','Mia','Isabella','Ava','Evelyn','Luna','Aurora','Nova','Willow','Hazel','Iris','Freya','Jade','Ruby','Rose','Pearl'];
-function generate() {
-  const r=()=>names[Math.floor(Math.random()*names.length)];
-  document.getElementById('result').value='Boy: '+r()+' | Girl: '+r()+' | Neutral: '+r();
+var boyNames = [
+  {name:'Liam', meaning:'Strong-willed warrior'},
+  {name:'Noah', meaning:'Rest and comfort'},
+  {name:'Oliver', meaning:'Olive tree, peace'},
+  {name:'James', meaning:'Supplanter'},
+  {name:'Elijah', meaning:'Yahweh is my God'},
+  {name:'Mateo', meaning:'Gift of God'},
+  {name:'Lucas', meaning:'Bringer of light'},
+  {name:'Henry', meaning:'Ruler of the home'},
+  {name:'Aiden', meaning:'Little fire'},
+  {name:'Ethan', meaning:'Strong and firm'},
+  {name:'Sebastian', meaning:'Revered and respected'},
+  {name:'Julian', meaning:'Youthful'},
+  {name:'Leo', meaning:'Brave lion'},
+  {name:'Caleb', meaning:'Wholehearted devotion'},
+  {name:'Ezra', meaning:'Helper'},
+  {name:'Owen', meaning:'Young warrior'},
+  {name:'Felix', meaning:'Happy and fortunate'},
+  {name:'Milo', meaning:'Soldier or merciful'},
+  {name:'Jasper', meaning:'Treasurer'},
+  {name:'Silas', meaning:'Forest dweller'},
+  {name:'Archer', meaning:'Bowman'},
+  {name:'Theo', meaning:'Divine gift'},
+  {name:'Kai', meaning:'Sea'},
+  {name:'Rowan', meaning:'Little redhead'},
+  {name:'Finn', meaning:'Fair and white'}
+];
+var girlNames = [
+  {name:'Olivia', meaning:'Olive tree, symbol of peace'},
+  {name:'Emma', meaning:'Universal and whole'},
+  {name:'Charlotte', meaning:'Free woman'},
+  {name:'Amelia', meaning:'Industrious and striving'},
+  {name:'Sophia', meaning:'Wisdom'},
+  {name:'Mia', meaning:'Mine or beloved'},
+  {name:'Isabella', meaning:'Devoted to God'},
+  {name:'Ava', meaning:'Life and bird'},
+  {name:'Evelyn', meaning:'Wished-for child'},
+  {name:'Luna', meaning:'Moon'},
+  {name:'Aurora', meaning:'Dawn'},
+  {name:'Nova', meaning:'New and bright'},
+  {name:'Willow', meaning:'Graceful and resilient'},
+  {name:'Hazel', meaning:'The hazelnut tree'},
+  {name:'Iris', meaning:'Rainbow'},
+  {name:'Freya', meaning:'Noble lady'},
+  {name:'Jade', meaning:'Precious green stone'},
+  {name:'Ruby', meaning:'Deep red gemstone'},
+  {name:'Rose', meaning:'Beautiful flower'},
+  {name:'Pearl', meaning:'Precious jewel of the sea'},
+  {name:'Stella', meaning:'Star'},
+  {name:'Ivy', meaning:'Faithfulness'},
+  {name:'Maeve', meaning:'She who intoxicates'},
+  {name:'Elsie', meaning:'Pledged to God'},
+  {name:'Clara', meaning:'Bright and clear'}
+];
+
+function rand(arr) {
+  var buf = new Uint32Array(1);
+  crypto.getRandomValues(buf);
+  return arr[buf[0] % arr.length];
 }
+
+function generate() {
+  var gender = document.getElementById('gender').value;
+  var count = parseInt(document.getElementById('count').value, 10);
+  var pool = gender === 'boy' ? boyNames : gender === 'girl' ? girlNames : boyNames.concat(girlNames);
+  var shown = [];
+  for (var i = 0; i < count; i++) {
+    var pick = rand(pool);
+    shown.push(pick.name + ' \u2014 ' + pick.meaning);
+  }
+  document.getElementById('result').textContent = shown.join('\n');
+}
+
 function copyResult() {
-  const el=document.getElementById('result');
-  if(!el||!el.value) return;
-  el.select();document.execCommand('copy');
-  document.getElementById('msg').textContent='Copied!';
-  setTimeout(()=>document.getElementById('msg').textContent='',2000);
+  var text = document.getElementById('result').textContent;
+  navigator.clipboard.writeText(text);
 }
 </script>
 <slot name="info" slot="info">

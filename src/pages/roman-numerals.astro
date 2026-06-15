@@ -10,24 +10,120 @@ import Button from '../components/Button.astro';
   category="Convert"
   keywords={["roman", "numerals", "convert", "numbers"]}
 >
-  <div class="flex gap-3 mb-4">
-    <Button onclick="setMode('toRoman')" id="btn-roman">Number → Roman</Button>
-    <Button variant="secondary" onclick="setMode('toNum')" id="btn-num">Roman → Number</Button>
-  </div>
-  <Input id="inp" placeholder="Enter a number (1-3999)..." class="w-full" oninput="convert()" />
-  <div class="mt-4">
-    <div class="text-xs text-surface-400 mb-1">Result:</div>
-    <div id="out" class="w-full rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-lg text-brand-400 font-mono text-center min-h-[48px]"></div>
+  <div class="space-y-4">
+    <div class="flex gap-3 mb-2">
+      <button onclick="setMode('toRoman')" id="btn-roman" class="cat-pill shrink-0 rounded-full border px-4 py-2 text-sm font-medium transition-colors border-primary bg-primary text-primary-foreground">Number \u2192 Roman</button>
+      <button onclick="setMode('toNum')" id="btn-num" class="cat-pill shrink-0 rounded-full border px-4 py-2 text-sm font-medium transition-colors border-border bg-secondary/60 text-muted-foreground hover:text-foreground">Roman \u2192 Number</button>
+    </div>
+    <input id="inp" type="text" placeholder="Enter a number (1-3999)..." class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 font-mono w-full" oninput="convert()" />
+    <div class="mt-4">
+      <div class="text-xs text-surface-400 mb-1">Result:</div>
+      <div id="out" class="w-full rounded-xl border border-surface-600 bg-surface-800 py-4 px-4 text-lg text-brand-400 font-mono text-center min-h-[56px] flex items-center justify-center"></div>
+    </div>
+    <div class="flex gap-2">
+      <Button variant="secondary" size="sm" onclick="copyResult()">Copy</Button>
+    </div>
   </div>
 <script is:inline>
-function process() {
-  const v=document.getElementById('inp').value.trim().split(/\s+/);
-  if(v.length<3){document.getElementById('out').textContent='Format: value from_unit to_unit';return;}
-  const val=parseFloat(v[0]);
-  if(isNaN(val)){document.getElementById('out').textContent='Invalid number';return;}
-  document.getElementById('out').textContent='Result: '+val+' '+v[1]+' = (converted) '+v[2];
+var mode = 'toRoman';
+
+var romanMap = [
+  { value: 1000, numeral: 'M' },
+  { value: 900, numeral: 'CM' },
+  { value: 500, numeral: 'D' },
+  { value: 400, numeral: 'CD' },
+  { value: 100, numeral: 'C' },
+  { value: 90, numeral: 'XC' },
+  { value: 50, numeral: 'L' },
+  { value: 40, numeral: 'XL' },
+  { value: 10, numeral: 'X' },
+  { value: 9, numeral: 'IX' },
+  { value: 5, numeral: 'V' },
+  { value: 4, numeral: 'IV' },
+  { value: 1, numeral: 'I' }
+];
+
+function numberToRoman(num) {
+  if (num <= 0 || num > 3999 || !Number.isInteger(num)) return null;
+  var result = '';
+  var remaining = num;
+  romanMap.forEach(function(r) {
+    while (remaining >= r.value) {
+      result += r.numeral;
+      remaining -= r.value;
+    }
+  });
+  return result;
 }
-function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
+
+function romanToNumber(roman) {
+  var values = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
+  var sum = 0;
+  var upper = roman.toUpperCase();
+  for (var i = 0; i < upper.length; i++) {
+    var current = values[upper[i]];
+    var next = values[upper[i + 1]];
+    if (!current) return null;
+    if (next && current < next) {
+      sum -= current;
+    } else {
+      sum += current;
+    }
+  }
+  return sum;
+}
+
+function setMode(m) {
+  mode = m;
+  var btnRoman = document.getElementById('btn-roman');
+  var btnNum = document.getElementById('btn-num');
+  var activeClass = 'cat-pill shrink-0 rounded-full border px-4 py-2 text-sm font-medium transition-colors border-primary bg-primary text-primary-foreground';
+  var inactiveClass = 'cat-pill shrink-0 rounded-full border px-4 py-2 text-sm font-medium transition-colors border-border bg-secondary/60 text-muted-foreground hover:text-foreground';
+
+  if (m === 'toRoman') {
+    btnRoman.className = activeClass;
+    btnNum.className = inactiveClass;
+    document.getElementById('inp').placeholder = 'Enter a number (1-3999)...';
+  } else {
+    btnNum.className = activeClass;
+    btnRoman.className = inactiveClass;
+    document.getElementById('inp').placeholder = 'Enter Roman numerals (e.g. MCMXCIX)...';
+  }
+  convert();
+}
+
+function convert() {
+  var input = document.getElementById('inp').value.trim();
+  if (!input) {
+    document.getElementById('out').textContent = '';
+    return;
+  }
+  if (mode === 'toRoman') {
+    var num = parseInt(input, 10);
+    if (isNaN(num)) {
+      document.getElementById('out').textContent = 'Enter a valid integer (1-3999)';
+      return;
+    }
+    var roman = numberToRoman(num);
+    if (!roman) {
+      document.getElementById('out').textContent = 'Number must be 1-3999';
+      return;
+    }
+    document.getElementById('out').textContent = roman;
+  } else {
+    var result = romanToNumber(input);
+    if (result === null || result === 0) {
+      document.getElementById('out').textContent = 'Invalid Roman numerals';
+      return;
+    }
+    document.getElementById('out').textContent = result.toString();
+  }
+}
+
+function copyResult() {
+  var text = document.getElementById('out').textContent;
+  if (text) navigator.clipboard.writeText(text);
+}
 </script>
 <div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Roman Numerals Converter?</h2>

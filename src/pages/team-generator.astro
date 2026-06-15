@@ -10,30 +10,101 @@ import Button from '../components/Button.astro';
   category="Fun"
   keywords={["team generator", "random team generator", "fun"]}
 >
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-    <Textarea id="inp" label="Input" placeholder="Enter your input here..." rows="12" class="tool-area" />
+  <div class="space-y-4">
     <div>
-      <label for="out" class="text-sm text-surface-300 mb-1.5 block font-medium">Output</label>
-      <div id="out" class="w-full h-72 rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 overflow-auto font-mono"></div>
+      <label class="text-sm text-surface-300 block mb-1">Members (one per line)</label>
+      <textarea id="names" rows="8" placeholder="Alice&#10;Bob&#10;Charlie&#10;David&#10;Eve&#10;Frank" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 font-mono w-full resize-y"></textarea>
     </div>
+    <div class="flex gap-4 items-end">
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Split by</label>
+        <select id="splitBy" onchange="toggleTeamInput()" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100">
+          <option value="teams" selected>Number of Teams</option>
+          <option value="members">Members per Team</option>
+        </select>
+      </div>
+      <div id="numWrap">
+        <label class="text-sm text-surface-300 block mb-1.5">Number of Teams</label>
+        <select id="numTeams" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100">
+          <option value="2" selected>2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="8">8</option>
+        </select>
+      </div>
+    </div>
+    <div class="flex gap-2">
+      <Button onclick="generate()">Generate Teams</Button>
+      <Button variant="secondary" onclick="copyResult()">Copy</Button>
+    </div>
+    <div id="result" class="w-full min-h-[120px] rounded-xl border border-surface-600 bg-surface-800 p-4 text-sm text-surface-100 font-mono whitespace-pre-wrap break-all"></div>
   </div>
-  <div class="flex gap-2 mt-4">
-    <Button onclick="process()">Process</Button>
-    <Button variant="secondary" onclick="clearAll()">Clear</Button>
-  </div>
-  <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process() {
-  const names=document.getElementById('inp').value.trim().split(/[\n,]+/).filter(n=>n.trim());
-  const teams=parseInt(document.getElementById('teams')?.value)||2;
-  if(names.length<2){o('Enter names separated by commas or newlines');return;}
-  const shuffled=[...names].sort(()=>Math.random()-0.5);
-  const result=Array.from({length:teams},(_,i)=>({team:i+1,members:[]}));
-  shuffled.forEach((n,i)=>result[i%teams].members.push(n));
-  o(result.map(t=>'Team '+t.team+': '+t.members.join(', ')).join('\n')+'\n\nShuffled: '+shuffled.join(', '));
+function randInt(max) {
+  var buf = new Uint32Array(1);
+  crypto.getRandomValues(buf);
+  return buf[0] % max;
 }
-function o(t){document.getElementById('out').textContent=t;}
-function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';}
+
+function shuffle(arr) {
+  var a = arr.slice();
+  for (var i = a.length - 1; i > 0; i--) {
+    var j = randInt(i + 1);
+    var t = a[i]; a[i] = a[j]; a[j] = t;
+  }
+  return a;
+}
+
+function toggleTeamInput() {
+  var mode = document.getElementById('splitBy').value;
+  var wrap = document.getElementById('numWrap');
+  wrap.querySelector('label').textContent = mode === 'teams' ? 'Number of Teams' : 'Members per Team';
+  var sel = document.getElementById('numTeams');
+  if (mode === 'members') {
+    sel.innerHTML = '<option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5" selected>5</option><option value="6">6</option><option value="8">8</option>';
+  } else {
+    sel.innerHTML = '<option value="2" selected>2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="8">8</option>';
+  }
+}
+
+function generate() {
+  var names = document.getElementById('names').value.trim().split('\n').filter(function(n) { return n.trim(); });
+  if (names.length < 2) {
+    document.getElementById('result').textContent = 'Enter at least 2 names (one per line).';
+    return;
+  }
+
+  var mode = document.getElementById('splitBy').value;
+  var numVal = parseInt(document.getElementById('numTeams').value, 10);
+  var shuffled = shuffle(names);
+
+  var teams = [];
+  var numTeams;
+  if (mode === 'teams') {
+    numTeams = Math.min(numVal, shuffled.length);
+    for (var i = 0; i < numTeams; i++) teams.push([]);
+    shuffled.forEach(function(n, i) {
+      teams[i % numTeams].push(n);
+    });
+  } else {
+    var perTeam = Math.max(1, numVal);
+    numTeams = Math.ceil(shuffled.length / perTeam);
+    for (var i = 0; i < shuffled.length; i++) {
+      var ti = Math.floor(i / perTeam);
+      if (!teams[ti]) teams[ti] = [];
+      teams[ti].push(shuffled[i]);
+    }
+  }
+
+  var output = '';
+  teams.forEach(function(t, i) {
+    output += 'Team ' + (i + 1) + ' (' + t.length + '): ' + t.join(', ') + '\n';
+  });
+
+  document.getElementById('result').textContent = output;
+}
+
+function copyResult() {
+  var text = document.getElementById('result').textContent;
+  navigator.clipboard.writeText(text);
+}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

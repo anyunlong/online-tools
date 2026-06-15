@@ -10,27 +10,69 @@ import Button from '../components/Button.astro';
   keywords={["phone generator", "phone number generator", "generator"]}
 >
   <div class="space-y-4">
-    <div class='text-sm text-surface-400'>Configure options above</div>
+    <div class="flex gap-4 flex-wrap">
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Country</label>
+        <select id="country" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100">
+          <option value="US">United States (+1)</option>
+          <option value="UK">United Kingdom (+44)</option>
+          <option value="CN">China (+86)</option>
+        </select>
+      </div>
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Count</label>
+        <select id="count" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100">
+          <option value="1">1</option><option value="5" selected>5</option><option value="10">10</option><option value="20">20</option>
+        </select>
+      </div>
+    </div>
     <div class="flex gap-2">
       <Button onclick="generate()">Generate</Button>
       <Button variant="secondary" onclick="copyResult()">Copy</Button>
     </div>
-    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
+    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-600 bg-surface-800 p-4 text-sm text-surface-100 font-mono whitespace-pre-wrap break-all"></div>
   </div>
 <script is:inline>
-function generate() {
-  const cc=['+1','+44','+61','+49','+33','+81','+86','+91','+55','+7'];
-  const r=()=>Math.floor(Math.random()*10);
-  const num=Array.from({length:9},r).join('');
-  const fmt='('+num.slice(0,3)+') '+num.slice(3,6)+'-'+num.slice(6);
-  document.getElementById('result').value=cc[Math.floor(Math.random()*cc.length)]+' '+fmt;
+function randInt(max) {
+  var buf = new Uint32Array(1);
+  crypto.getRandomValues(buf);
+  return buf[0] % max;
 }
+
+function generateUS() {
+  var npa = '555';
+  var nxx = String(randInt(900) + 100);
+  var xxxx = String(randInt(10000)).padStart(4, '0');
+  return '+1 (' + npa + ') ' + nxx + '-' + xxxx;
+}
+
+function generateUK() {
+  var prefix = ['070','071','074','075','077','078','079'][randInt(7)];
+  var block = String(randInt(1000000)).padStart(6, '0');
+  return '+44 ' + prefix + ' ' + block.slice(0,3) + ' ' + block.slice(3);
+}
+
+function generateCN() {
+  var prefixes = ['130','131','132','133','134','135','136','137','138','139','150','151','152','155','156','157','158','159','180','181','182','183','185','186','187','188','189'];
+  var prefix = prefixes[randInt(prefixes.length)];
+  var tail = String(randInt(100000000)).padStart(8, '0');
+  return '+86 ' + prefix + ' ' + tail.slice(0,4) + ' ' + tail.slice(4);
+}
+
+function generate() {
+  var country = document.getElementById('country').value;
+  var count = parseInt(document.getElementById('count').value, 10);
+  var fns = { US: generateUS, UK: generateUK, CN: generateCN };
+  var phones = [];
+  for (var i = 0; i < count; i++) {
+    phones.push(fns[country]());
+  }
+  document.getElementById('result').textContent = phones.join('\n');
+}
+
 function copyResult() {
-  const el=document.getElementById('result');
-  if(!el||!el.value) return;
-  el.select();document.execCommand('copy');
-  document.getElementById('msg').textContent='Copied!';
-  setTimeout(()=>document.getElementById('msg').textContent='',2000);
+  var text = document.getElementById('result').textContent;
+  navigator.clipboard.writeText(text);
 }
 </script>
 <slot name="info" slot="info">

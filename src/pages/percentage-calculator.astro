@@ -18,15 +18,43 @@ import Button from '../components/Button.astro';
     <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
   </div>
 <script is:inline>
-function process() {
-  const v=document.getElementById('inp').value.trim().split(/[\s,]+/).map(Number);
-  if(v.length<2||v.some(isNaN)){o('Format: value percentage\nExample: 200 15 → 15% of 200 = 30');return;}
-  const[value,pct]=v;
-  const result=value*pct/100;
-  o(pct+'% of '+value+' = '+result+'\n'+value+' + '+pct+'% = '+(value+result)+'\n'+value+' - '+pct+'% = '+(value-result));
+function generate() {
+  var lines = [];
+
+  var p1 = parseFloat(document.getElementById('p1').value);
+  var n1 = parseFloat(document.getElementById('n1').value);
+  if (!isNaN(p1) && !isNaN(n1)) {
+    lines.push(p1 + '% of ' + n1 + ' = ' + (n1 * p1 / 100).toFixed(2));
+  }
+
+  var n2 = parseFloat(document.getElementById('n2').value);
+  var n3 = parseFloat(document.getElementById('n3').value);
+  if (!isNaN(n2) && !isNaN(n3) && n3 !== 0) {
+    lines.push(n2 + ' is ' + ((n2 / n3) * 100).toFixed(2) + '% of ' + n3);
+  }
+
+  var from = parseFloat(document.getElementById('from').value);
+  var to = parseFloat(document.getElementById('to').value);
+  if (!isNaN(from) && !isNaN(to) && from !== 0) {
+    var change = ((to - from) / from) * 100;
+    var label = change >= 0 ? 'increase' : 'decrease';
+    lines.push('From ' + from + ' to ' + to + ' = ' + Math.abs(change).toFixed(2) + '% ' + label);
+  }
+
+  if (lines.length === 0) {
+    document.getElementById('result').textContent = 'Enter numbers above';
+    return;
+  }
+
+  document.getElementById('result').innerHTML = lines.map(function(r) {
+    return '<div class="mb-1">' + r + '</div>';
+  }).join('');
 }
-function o(t){document.getElementById('out').textContent=t;}
-function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
+
+function copyResult() {
+  var text = document.getElementById('result').innerText;
+  navigator.clipboard.writeText(text);
+}
 </script>
 <div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Percentage Calculator?</h2>

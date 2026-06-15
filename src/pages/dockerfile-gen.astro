@@ -10,30 +10,94 @@ import Button from '../components/Button.astro';
   keywords={["dockerfile gen", "dockerfile generator", "dev tools"]}
 >
   <div class="space-y-4">
-    <div class='text-sm text-surface-400'>Configure options above</div>
+    <div class="flex gap-4 flex-wrap items-end">
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Base Image</label>
+        <select id="lang" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100">
+          <option value="node" selected>Node.js</option>
+          <option value="python">Python</option>
+          <option value="go">Go</option>
+          <option value="nginx">Nginx</option>
+        </select>
+      </div>
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Port</label>
+        <input id="port" type="number" value="3000" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 w-24" />
+      </div>
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Work Dir</label>
+        <input id="workdir" type="text" value="/app" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 w-32" />
+      </div>
+      <label class="text-xs text-surface-300 flex items-center gap-1 pb-2">
+        <input type="checkbox" id="multistage" class="accent-brand-500" /> Multi-stage
+      </label>
+    </div>
     <div class="flex gap-2">
       <Button onclick="generate()">Generate</Button>
       <Button variant="secondary" onclick="copyResult()">Copy</Button>
     </div>
-    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
+    <textarea id="result" readonly class="w-full min-h-[250px] rounded-xl border border-surface-600 bg-surface-800 p-4 text-sm text-surface-100 font-mono whitespace-pre-wrap break-all resize-y"></textarea>
   </div>
 <script is:inline>
 function generate() {
-  const lang=(document.getElementById('lang')?.value||'node').toLowerCase();
-  const templates={
-    node:'FROM node:20-alpine\nWORKDIR /app\nCOPY package*.json ./\nRUN npm ci --only=production\nCOPY . .\nEXPOSE 3000\nCMD ["node","index.js"]',
-    python:'FROM python:3.12-slim\nWORKDIR /app\nCOPY requirements.txt .\nRUN pip install --no-cache-dir -r requirements.txt\nCOPY . .\nEXPOSE 8000\nCMD ["python","app.py"]',
-    go:'FROM golang:1.21-alpine AS builder\nWORKDIR /app\nCOPY go.mod go.sum ./\nRUN go mod download\nCOPY . .\nRUN go build -o main .\nFROM alpine:latest\nCOPY --from=builder /app/main .\nEXPOSE 8080\nCMD ["./main"]',
-    nginx:'FROM nginx:alpine\nCOPY . /usr/share/nginx/html\nEXPOSE 80\nCMD ["nginx","-g","daemon off;"]'
-  };
-  document.getElementById('result').value=templates[lang]||templates.node;
+  var lang = document.getElementById('lang').value;
+  var port = document.getElementById('port').value || '3000';
+  var workdir = document.getElementById('workdir').value || '/app';
+  var multi = document.getElementById('multistage').checked;
+  var dockerfile = '';
+
+  if (lang === 'node') {
+    dockerfile = 'FROM node:20-alpine\n';
+    if (multi) {
+      dockerfile += 'AS builder\n';
+    }
+    dockerfile += 'WORKDIR ' + workdir + '\n';
+    dockerfile += 'COPY package*.json ./\n';
+    dockerfile += 'RUN npm ci' + (multi ? '' : ' --only=production') + '\n';
+    dockerfile += 'COPY . .\n';
+    if (multi) {
+      dockerfile += 'RUN npm run build\n\n';
+      dockerfile += 'FROM node:20-alpine\n';
+      dockerfile += 'WORKDIR ' + workdir + '\n';
+      dockerfile += 'COPY --from=builder ' + workdir + '/dist ./dist\n';
+      dockerfile += 'COPY --from=builder ' + workdir + '/package*.json ./\n';
+      dockerfile += 'RUN npm ci --only=production\n';
+    }
+    dockerfile += 'EXPOSE ' + port + '\n';
+    dockerfile += 'CMD ["node", "index.js"]';
+  } else if (lang === 'python') {
+    dockerfile = 'FROM python:3.12-slim\n';
+    dockerfile += 'WORKDIR ' + workdir + '\n';
+    dockerfile += 'COPY requirements.txt .\n';
+    dockerfile += 'RUN pip install --no-cache-dir -r requirements.txt\n';
+    dockerfile += 'COPY . .\n';
+    dockerfile += 'EXPOSE ' + port + '\n';
+    dockerfile += 'CMD ["python", "app.py"]';
+  } else if (lang === 'go') {
+    dockerfile = 'FROM golang:1.22-alpine AS builder\n';
+    dockerfile += 'WORKDIR ' + workdir + '\n';
+    dockerfile += 'COPY go.mod go.sum ./\n';
+    dockerfile += 'RUN go mod download\n';
+    dockerfile += 'COPY . .\n';
+    dockerfile += 'RUN CGO_ENABLED=0 GOOS=linux go build -o main .\n\n';
+    dockerfile += 'FROM alpine:latest\n';
+    dockerfile += 'RUN apk --no-cache add ca-certificates\n';
+    dockerfile += 'WORKDIR /app\n';
+    dockerfile += 'COPY --from=builder ' + workdir + '/main .\n';
+    dockerfile += 'EXPOSE ' + port + '\n';
+    dockerfile += 'CMD ["./main"]';
+  } else if (lang === 'nginx') {
+    dockerfile = 'FROM nginx:alpine\n';
+    dockerfile += 'COPY . /usr/share/nginx/html\n';
+    dockerfile += 'EXPOSE ' + port + '\n';
+    dockerfile += 'CMD ["nginx", "-g", "daemon off;"]';
+  }
+
+  document.getElementById('result').value = dockerfile;
 }
+
 function copyResult() {
-  const el=document.getElementById('result');
-  if(!el||!el.value) return;
-  el.select();document.execCommand('copy');
-  document.getElementById('msg').textContent='Copied!';
-  setTimeout(()=>document.getElementById('msg').textContent='',2000);
+  navigator.clipboard.writeText(document.getElementById('result').value);
 }
 </script>
 <slot name="info" slot="info">

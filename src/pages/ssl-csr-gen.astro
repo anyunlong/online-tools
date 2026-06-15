@@ -10,21 +10,101 @@ import Button from '../components/Button.astro';
   keywords={["ssl csr gen", "csr generator", "security"]}
 >
   <div class="space-y-4">
-    <div class='text-sm text-surface-400'>Configure options above</div>
+    <div class="space-y-3">
+      <div>
+        <label class="text-sm text-surface-300 block mb-1">Common Name (Domain)</label>
+        <input id="cn" type="text" placeholder="example.com" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 w-full" />
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div>
+          <label class="text-sm text-surface-300 block mb-1">Organization (O)</label>
+          <input id="org" type="text" placeholder="Acme Corp" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 w-full" />
+        </div>
+        <div>
+          <label class="text-sm text-surface-300 block mb-1">Organizational Unit (OU)</label>
+          <input id="ou" type="text" placeholder="Engineering" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 w-full" />
+        </div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div>
+          <label class="text-sm text-surface-300 block mb-1">City / Locality (L)</label>
+          <input id="city" type="text" placeholder="San Francisco" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 w-full" />
+        </div>
+        <div>
+          <label class="text-sm text-surface-300 block mb-1">State / Province (ST)</label>
+          <input id="state" type="text" placeholder="California" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 w-full" />
+        </div>
+        <div>
+          <label class="text-sm text-surface-300 block mb-1">Country (C) 2-letter</label>
+          <input id="country" type="text" placeholder="US" maxlength="2" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 w-full" />
+        </div>
+      </div>
+      <div>
+        <label class="text-sm text-surface-300 block mb-1">Email Address</label>
+        <input id="email" type="email" placeholder="admin@example.com" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 w-full" />
+      </div>
+      <div>
+        <label class="text-sm text-surface-300 block mb-1">Key Size</label>
+        <select id="keysize" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100">
+          <option value="2048" selected>RSA 2048</option>
+          <option value="4096">RSA 4096</option>
+          <option value="ec256">ECDSA P-256</option>
+          <option value="ec384">ECDSA P-384</option>
+        </select>
+      </div>
+    </div>
     <div class="flex gap-2">
       <Button onclick="generate()">Generate</Button>
       <Button variant="secondary" onclick="copyResult()">Copy</Button>
     </div>
-    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
+    <textarea id="result" readonly class="w-full min-h-[200px] rounded-xl border border-surface-600 bg-surface-800 p-4 text-sm text-surface-100 font-mono whitespace-pre-wrap break-all resize-y"></textarea>
   </div>
 <script is:inline>
-function process() {
-  const v=document.getElementById('inp').value.trim().split(/\n/);
-  if(v.length<2){o('Format (each on own line):\nDomain (e.g. example.com)\nOrganization\nCity\nState\nCountry (2-letter)');return;}
-  o('CSR fields for: '+v[0]+'\n\n⚠ Browser-based CSR generation requires Web Crypto API.\nUse OpenSSL for production CSR:\n\nopenssl req -new -newkey rsa:2048 -nodes -keyout '+v[0]+'.key -out '+v[0]+'.csr');
+function getVal(id) { return document.getElementById(id).value.trim(); }
+
+function generate() {
+  var cn = getVal('cn') || 'example.com';
+  var org = getVal('org');
+  var ou = getVal('ou');
+  var city = getVal('city');
+  var state = getVal('state');
+  var country = getVal('country');
+  var email = getVal('email');
+  var keysize = document.getElementById('keysize').value;
+
+  var subject = '/C=' + (country || 'US') + '/ST=' + (state || 'State') + '/L=' + (city || 'City') + '/O=' + (org || 'Organization');
+  if (ou) subject += '/OU=' + ou;
+  subject += '/CN=' + cn;
+  if (email) subject += '/emailAddress=' + email;
+
+  var keyCmd, csrCmd;
+  if (keysize === 'ec256') {
+    keyCmd = 'openssl ecparam -genkey -name prime256v1 -out ' + cn + '.key';
+    csrCmd = 'openssl req -new -key ' + cn + '.key -out ' + cn + '.csr -subj "' + subject + '"';
+  } else if (keysize === 'ec384') {
+    keyCmd = 'openssl ecparam -genkey -name secp384r1 -out ' + cn + '.key';
+    csrCmd = 'openssl req -new -key ' + cn + '.key -out ' + cn + '.csr -subj "' + subject + '"';
+  } else {
+    keyCmd = 'openssl genrsa -out ' + cn + '.key ' + keysize;
+    csrCmd = 'openssl req -new -key ' + cn + '.key -out ' + cn + '.csr -subj "' + subject + '"';
+  }
+
+  var output = '# Certificate Signing Request for: ' + cn + '\n\n';
+  output += '## Subject String\n' + subject + '\n\n';
+  output += '## Generate Private Key\n' + keyCmd + '\n\n';
+  output += '## Generate CSR\n' + csrCmd + '\n\n';
+  output += '## Or One-Liner (RSA only)\n';
+  output += 'openssl req -new -newkey rsa:' + keysize + ' -nodes -keyout ' + cn + '.key -out ' + cn + '.csr -subj "' + subject + '"\n\n';
+  output += '## Verify CSR\nopenssl req -text -noout -verify -in ' + cn + '.csr\n\n';
+  output += 'Note: Run these commands on your server. Browser-based CSR generation requires the Web Crypto API for actual key generation.';
+
+  document.getElementById('result').value = output;
 }
-function o(t){document.getElementById('out').textContent=t;}
-function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';if(timer)clearInterval(timer);}
+
+function copyResult() {
+  var text = document.getElementById('result').value;
+  navigator.clipboard.writeText(text);
+}
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

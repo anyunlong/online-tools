@@ -10,23 +10,100 @@ import Button from '../components/Button.astro';
   category="Convert"
   keywords={["xml", "json", "convert"]}
 >
-  <Textarea id="inp" placeholder="Paste XML here..." rows="12" class="tool-area" />
-  <div class="flex gap-2 mt-4">
+  <textarea id="input" placeholder='<root><item><name>Alice</name><age>30</age></item><item><name>Bob</name><age>25</age></item></root>' rows="10" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 font-mono w-full resize-y"></textarea>
+  <div class="flex gap-2 mt-3">
     <Button onclick="convert()">Convert to JSON</Button>
     <Button variant="secondary" onclick="copyOut()">Copy</Button>
   </div>
-  <div class="text-xs text-surface-400 mt-3 mb-1">JSON Output:</div>
-  <div id="out" class="w-full rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 font-mono overflow-auto min-h-[200px] max-h-[500px] whitespace-pre"></div>
-  <div id="msg" class="text-xs mt-2 text-surface-400"></div>
+  <textarea id="result" readonly class="mt-3 w-full min-h-[200px] rounded-xl border border-surface-600 bg-surface-800 p-4 text-sm text-surface-100 font-mono whitespace-pre-wrap break-all resize-y"></textarea>
 <script is:inline>
-function process() {
-  const v=document.getElementById('inp').value.trim().split(/\s+/);
-  if(v.length<3){document.getElementById('out').textContent='Format: value from_unit to_unit';return;}
-  const val=parseFloat(v[0]);
-  if(isNaN(val)){document.getElementById('out').textContent='Invalid number';return;}
-  document.getElementById('out').textContent='Result: '+val+' '+v[1]+' = (converted) '+v[2];
+function xmlToJson(xml) {
+  var parser = new DOMParser();
+  var doc = parser.parseFromString(xml, 'text/xml');
+  var errorNode = doc.querySelector('parsererror');
+  if (errorNode) throw new Error('Invalid XML');
+
+  function parseNode(node) {
+    if (node.nodeType === 3) { // text
+      var text = node.textContent.trim();
+      return text || '';
+    }
+    if (node.nodeType !== 1) return ''; // not element
+
+    var obj = {};
+    var hasAttrs = node.attributes && node.attributes.length > 0;
+    if (hasAttrs) {
+      for (var i = 0; i < node.attributes.length; i++) {
+        obj['@' + node.attributes[i].name] = node.attributes[i].value;
+      }
+    }
+
+    var children = [];
+    var textContent = '';
+    for (var i = 0; i < node.childNodes.length; i++) {
+      var child = node.childNodes[i];
+      if (child.nodeType === 3) {
+        textContent += child.textContent;
+      } else if (child.nodeType === 1) {
+        children.push(child);
+      }
+    }
+    textContent = textContent.trim();
+
+    // Collect children by tag name
+    var childMap = {};
+    children.forEach(function(child) {
+      var tag = child.tagName;
+      if (!childMap[tag]) childMap[tag] = [];
+      childMap[tag].push(parseNode(child));
+    });
+
+    // Merge children into obj
+    for (var tag in childMap) {
+      if (childMap[tag].length === 1) {
+        obj[tag] = childMap[tag][0];
+      } else {
+        obj[tag] = childMap[tag];
+      }
+    }
+
+    // If no children and no attrs, return text
+    if (!hasAttrs && Object.keys(childMap).length === 0) {
+      return textContent;
+    }
+    if (textContent && Object.keys(obj).length === 0) {
+      return textContent;
+    }
+    if (textContent && !hasAttrs && Object.keys(childMap).length === 0) {
+      return textContent;
+    }
+    if (textContent) {
+      obj['#text'] = textContent;
+    }
+
+    return obj;
+  }
+
+  return parseNode(doc.documentElement);
 }
-function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
+
+function convert() {
+  var input = document.getElementById('input').value.trim();
+  if (!input) {
+    document.getElementById('result').value = 'Paste XML above.';
+    return;
+  }
+  try {
+    var json = xmlToJson(input);
+    document.getElementById('result').value = JSON.stringify(json, null, 2);
+  } catch (e) {
+    document.getElementById('result').value = 'Error: ' + e.message;
+  }
+}
+
+function copyOut() {
+  navigator.clipboard.writeText(document.getElementById('result').value);
+}
 </script>
 <div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is an XML to JSON Converter?</h2>

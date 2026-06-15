@@ -10,28 +10,149 @@ import Button from '../components/Button.astro';
   keywords={["schema markup", "schema markup generator", "seo"]}
 >
   <div class="space-y-4">
-    <div class='text-sm text-surface-400'>Configure options above</div>
+    <div>
+      <label class="text-sm text-surface-300 block mb-1.5">Schema Type</label>
+      <select id="schemaType" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100" onchange="toggleFields()">
+        <option value="Article">Article</option>
+        <option value="Product">Product</option>
+        <option value="Event">Event</option>
+        <option value="Person">Person</option>
+        <option value="FAQ">FAQ Page</option>
+        <option value="Organization">Organization</option>
+      </select>
+    </div>
+    <div id="fields" class="space-y-3"></div>
     <div class="flex gap-2">
       <Button onclick="generate()">Generate</Button>
       <Button variant="secondary" onclick="copyResult()">Copy</Button>
     </div>
-    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
+    <textarea id="result" readonly class="w-full min-h-[200px] rounded-xl border border-surface-600 bg-surface-800 p-4 text-sm text-surface-100 font-mono whitespace-pre-wrap break-all resize-y"></textarea>
   </div>
 <script is:inline>
-function process() {
-  const v=document.getElementById('inp').value.trim().split(/\n/);
-  if(v.length<4){o('Format:\nType (Article/Product/FAQ/Organization)\nName\nDescription\nURL');return;}
-  const[type,name,desc,url]=v;
-  const schemas={
-    Article:{'@type':'Article',headline:name,description:desc,url:url,author:{'@type':'Organization',name:'Site Name'}},
-    Product:{'@type':'Product',name:name,description:desc,offers:{'@type':'Offer',url:url,priceCurrency:'USD'}},
-    FAQ:{'@type':'FAQPage',mainEntity:[{'@type':'Question',name:'Sample question?',acceptedAnswer:{'@type':'Answer',text:'Sample answer.'}}]},
-    Organization:{'@type':'Organization',name:name,description:desc,url:url}
-  };
-  o(JSON.stringify({'@context':'https://schema.org',...(schemas[type]||schemas.Article)},null,2));
+var fieldDefs = {
+  Article: [
+    { id: 'headline', label: 'Headline', placeholder: 'Article title' },
+    { id: 'authorName', label: 'Author Name', placeholder: 'Jane Smith' },
+    { id: 'datePublished', label: 'Date Published', type: 'date' },
+    { id: 'image', label: 'Image URL', placeholder: 'https://example.com/image.jpg' },
+    { id: 'publisher', label: 'Publisher Name', placeholder: 'Example News' }
+  ],
+  Product: [
+    { id: 'name', label: 'Product Name', placeholder: 'Widget Pro' },
+    { id: 'description', label: 'Description', placeholder: 'A high-quality widget' },
+    { id: 'price', label: 'Price', type: 'number', placeholder: '29.99' },
+    { id: 'currency', label: 'Currency', placeholder: 'USD' },
+    { id: 'availability', label: 'Availability', placeholder: 'https://schema.org/InStock' },
+    { id: 'brand', label: 'Brand', placeholder: 'Acme Corp' }
+  ],
+  Event: [
+    { id: 'name', label: 'Event Name', placeholder: 'Summer Music Festival' },
+    { id: 'startDate', label: 'Start Date', type: 'datetime-local' },
+    { id: 'endDate', label: 'End Date', type: 'datetime-local' },
+    { id: 'location', label: 'Location Name', placeholder: 'City Convention Center' },
+    { id: 'address', label: 'Street Address', placeholder: '123 Main St' },
+    { id: 'offerPrice', label: 'Ticket Price', type: 'number', placeholder: '49.99' }
+  ],
+  Person: [
+    { id: 'name', label: 'Name', placeholder: 'John Doe' },
+    { id: 'jobTitle', label: 'Job Title', placeholder: 'Software Engineer' },
+    { id: 'organization', label: 'Organization', placeholder: 'Tech Company Inc' },
+    { id: 'email', label: 'Email', type: 'email', placeholder: 'john@example.com' },
+    { id: 'url', label: 'Website URL', placeholder: 'https://johndoe.com' }
+  ],
+  FAQ: [
+    { id: 'q1', label: 'Question 1', placeholder: 'What is the return policy?' },
+    { id: 'a1', label: 'Answer 1', placeholder: 'Returns are accepted within 30 days.' },
+    { id: 'q2', label: 'Question 2', placeholder: 'Do you offer free shipping?' },
+    { id: 'a2', label: 'Answer 2', placeholder: 'Free shipping on orders over $50.' },
+    { id: 'q3', label: 'Question 3', placeholder: 'How can I contact support?' },
+    { id: 'a3', label: 'Answer 3', placeholder: 'Email us at support@example.com.' }
+  ],
+  Organization: [
+    { id: 'name', label: 'Organization Name', placeholder: 'Acme Corporation' },
+    { id: 'description', label: 'Description', placeholder: 'A global leader in innovation' },
+    { id: 'url', label: 'Website URL', placeholder: 'https://example.com' },
+    { id: 'logo', label: 'Logo URL', placeholder: 'https://example.com/logo.png' },
+    { id: 'email', label: 'Contact Email', type: 'email', placeholder: 'info@example.com' }
+  ]
+};
+
+function makeField(def) {
+  var html = '<div><label class="text-sm text-surface-300 block mb-1">' + def.label + '</label>';
+  html += '<input id="fld_' + def.id + '" type="' + (def.type || 'text') + '" placeholder="' + (def.placeholder || '') + '"';
+  if (def.type === 'number') html += ' step="0.01"';
+  html += ' class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 w-full" /></div>';
+  return html;
 }
-function o(t){document.getElementById('out').textContent=t;}
-function clearAll(){document.getElementById('inp').value='';document.getElementById('out').innerHTML='';}
+
+function toggleFields() {
+  var type = document.getElementById('schemaType').value;
+  var container = document.getElementById('fields');
+  var defs = fieldDefs[type] || [];
+  container.innerHTML = defs.map(makeField).join('');
+}
+
+function getFieldVal(id) { return document.getElementById('fld_' + id).value.trim(); }
+
+function generate() {
+  var type = document.getElementById('schemaType').value;
+  var schema = { '@context': 'https://schema.org', '@type': type };
+  switch (type) {
+    case 'Article':
+      schema.headline = getFieldVal('headline') || 'Article Title';
+      schema.author = { '@type': 'Person', name: getFieldVal('authorName') || 'Author' };
+      schema.datePublished = getFieldVal('datePublished') || '';
+      schema.image = getFieldVal('image') || '';
+      schema.publisher = { '@type': 'Organization', name: getFieldVal('publisher') || 'Publisher' };
+      break;
+    case 'Product':
+      schema.name = getFieldVal('name') || 'Product';
+      schema.description = getFieldVal('description') || '';
+      var price = parseFloat(getFieldVal('price'));
+      schema.offers = { '@type': 'Offer', price: isNaN(price) ? '0' : String(price), priceCurrency: getFieldVal('currency') || 'USD', availability: getFieldVal('availability') || 'https://schema.org/InStock' };
+      schema.brand = { '@type': 'Brand', name: getFieldVal('brand') || '' };
+      break;
+    case 'Event':
+      schema.name = getFieldVal('name') || 'Event';
+      schema.startDate = getFieldVal('startDate') || '';
+      schema.endDate = getFieldVal('endDate') || '';
+      schema.location = { '@type': 'Place', name: getFieldVal('location') || '', address: { '@type': 'PostalAddress', streetAddress: getFieldVal('address') || '' } };
+      var offerPrice = parseFloat(getFieldVal('offerPrice'));
+      if (!isNaN(offerPrice)) schema.offers = { '@type': 'Offer', price: String(offerPrice), priceCurrency: 'USD' };
+      break;
+    case 'Person':
+      schema.name = getFieldVal('name') || 'Person';
+      schema.jobTitle = getFieldVal('jobTitle') || '';
+      schema.worksFor = { '@type': 'Organization', name: getFieldVal('organization') || '' };
+      schema.email = getFieldVal('email') || '';
+      schema.url = getFieldVal('url') || '';
+      break;
+    case 'FAQ':
+      var mainEntity = [];
+      for (var i = 1; i <= 3; i++) {
+        var q = getFieldVal('q' + i);
+        var a = getFieldVal('a' + i);
+        if (q && a) mainEntity.push({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } });
+      }
+      schema.mainEntity = mainEntity;
+      break;
+    case 'Organization':
+      schema.name = getFieldVal('name') || 'Organization';
+      schema.description = getFieldVal('description') || '';
+      schema.url = getFieldVal('url') || '';
+      schema.logo = getFieldVal('logo') || '';
+      schema.email = getFieldVal('email') || '';
+      break;
+  }
+  document.getElementById('result').value = JSON.stringify(schema, null, 2);
+}
+
+function copyResult() {
+  var text = document.getElementById('result').value;
+  navigator.clipboard.writeText(text);
+}
+
+toggleFields();
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

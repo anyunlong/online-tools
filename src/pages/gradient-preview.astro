@@ -10,23 +10,86 @@ import Button from '../components/Button.astro';
   keywords={["gradient preview", "css gradient generator", "color"]}
 >
   <div class="space-y-4">
-    <div class='text-sm text-surface-400'>Configure options above</div>
-    <div class="flex gap-2">
-      <Button onclick="generate()">Generate</Button>
-      <Button variant="secondary" onclick="copyResult()">Copy</Button>
+    <div class="flex gap-4 flex-wrap items-end">
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Color 1</label>
+        <input id="color1" type="color" value="#3b82f6" class="w-12 h-10 rounded cursor-pointer border-0 bg-transparent" />
+      </div>
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Color 2</label>
+        <input id="color2" type="color" value="#8b5cf6" class="w-12 h-10 rounded cursor-pointer border-0 bg-transparent" />
+      </div>
+      <div>
+        <label class="text-sm text-surface-300 block mb-1.5">Type</label>
+        <select id="gradType" onchange="updatePreview()" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100">
+          <option value="linear" selected>Linear</option>
+          <option value="radial">Radial</option>
+          <option value="conic">Conic</option>
+        </select>
+      </div>
+      <div id="angleWrap">
+        <label class="text-sm text-surface-300 block mb-1.5">Angle</label>
+        <input id="angle" type="range" min="0" max="360" value="90" oninput="updatePreview()" class="accent-brand-500 w-24" />
+        <span id="angleVal" class="text-xs text-surface-400 ml-1">90°</span>
+      </div>
     </div>
-    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
+    <div>
+      <label class="text-sm text-surface-300 block mb-1.5">Additional Color Stops (comma separated hex)</label>
+      <input id="stops" type="text" placeholder="#ef4444, #10b981" oninput="updatePreview()" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 w-full" />
+    </div>
+    <div class="flex gap-2">
+      <Button onclick="generate()">Generate CSS</Button>
+      <Button variant="secondary" onclick="copyResult()">Copy CSS</Button>
+    </div>
+    <div id="preview" class="w-full h-40 rounded-xl border border-surface-600"></div>
+    <textarea id="result" readonly class="w-full min-h-[80px] rounded-xl border border-surface-600 bg-surface-800 p-4 text-sm text-surface-100 font-mono whitespace-pre-wrap break-all resize-y"></textarea>
   </div>
 <script is:inline>
-function process() {
-  const v=document.getElementById('inp').value.trim().split(/\s+/);
-  if(v.length<2){o('Enter 2+ hex colors separated by spaces\nExample: #ff0000 #0000ff');return;}
-  const colors=v.filter(c=>/^#[0-9a-fA-F]{6}$/.test(c));
-  if(colors.length<2){o('Need at least 2 valid hex colors');return;}
-  document.getElementById('out').innerHTML='<div style="width:100%;height:120px;background:linear-gradient(to right,'+colors.join(',')+');border-radius:8px"></div><br>CSS: linear-gradient(to right, '+colors.join(', ')+')';
+function updatePreview() {
+  var type = document.getElementById('gradType').value;
+  var color1 = document.getElementById('color1').value;
+  var color2 = document.getElementById('color2').value;
+  var angle = document.getElementById('angle').value;
+  var stops = document.getElementById('stops').value.trim();
+
+  var allColors = [color1];
+  if (stops) {
+    stops.split(',').forEach(function(s) { var t = s.trim(); if (t) allColors.push(t); });
+  }
+  allColors.push(color2);
+
+  var angleWrap = document.getElementById('angleWrap');
+  var angleVal = document.getElementById('angleVal');
+  if (type === 'linear') {
+    angleWrap.style.display = '';
+    angleVal.textContent = angle + '\u00B0';
+  } else {
+    angleWrap.style.display = 'none';
+  }
+
+  var bg;
+  if (type === 'linear') {
+    bg = 'linear-gradient(' + angle + 'deg, ' + allColors.join(', ') + ')';
+  } else if (type === 'radial') {
+    bg = 'radial-gradient(circle, ' + allColors.join(', ') + ')';
+  } else {
+    bg = 'conic-gradient(from ' + angle + 'deg, ' + allColors.join(', ') + ')';
+  }
+  document.getElementById('preview').style.background = bg;
+
+  var css = 'background: ' + bg + ';';
+  document.getElementById('result').value = css;
 }
-function o(t){document.getElementById('out').textContent=t;}
-function clearAll(){document.getElementById('inp').value='';document.getElementById('out').innerHTML='';}
+
+function generate() {
+  updatePreview();
+}
+
+function copyResult() {
+  navigator.clipboard.writeText(document.getElementById('result').value);
+}
+
+updatePreview();
 </script>
 <slot name="info" slot="info">
   <p>Enter your input and click to process. Results appear instantly.</p>

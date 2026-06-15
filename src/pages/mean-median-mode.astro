@@ -10,19 +10,68 @@ import Button from '../components/Button.astro';
   category="Math"
   keywords={["mean", "median", "mode", "statistics"]}
 >
-  <Textarea id="inp" placeholder="Enter numbers separated by commas, spaces, or newlines..." rows="6" class="tool-area" />
+  <textarea id="inp" placeholder="Enter numbers separated by commas, spaces, or newlines..." rows="6" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 font-mono w-full resize-y"></textarea>
   <div class="flex gap-2 mt-4">
     <Button onclick="calc()">Calculate</Button>
     <Button variant="secondary" onclick="sample()">Load Sample</Button>
   </div>
-  <div id="result" class="mt-4 grid grid-cols-2 sm:grid-cols-5 gap-3"></div>
+  <div id="result" class="mt-4 w-full rounded-xl border border-surface-600 bg-surface-800 p-4 text-sm text-surface-100 font-mono whitespace-pre-wrap min-h-[120px]"></div>
 <script is:inline>
-function process() {
-  const v=document.getElementById('inp').value.trim();
-  if(!v){document.getElementById('out').textContent='Enter input above';return;}
-  document.getElementById('out').textContent='Mean, Median, Mode Calculator result: processed successfully';
+function parseNumbers() {
+  var text = document.getElementById('inp').value;
+  return text.split(/[\s,\n]+/).map(function(v) { return parseFloat(v); }).filter(function(v) { return !isNaN(v); });
 }
-function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';}
+
+function calc() {
+  var nums = parseNumbers();
+  if (nums.length === 0) {
+    document.getElementById('result').textContent = 'Enter numbers separated by commas or spaces.';
+    return;
+  }
+
+  nums.sort(function(a, b) { return a - b; });
+  var sum = nums.reduce(function(a, b) { return a + b; }, 0);
+  var mean = sum / nums.length;
+
+  var median;
+  var mid = Math.floor(nums.length / 2);
+  if (nums.length % 2 === 0) {
+    median = (nums[mid - 1] + nums[mid]) / 2;
+  } else {
+    median = nums[mid];
+  }
+
+  var freq = {};
+  nums.forEach(function(n) { freq[n] = (freq[n] || 0) + 1; });
+  var maxFreq = 0;
+  var modes = [];
+  for (var k in freq) {
+    if (freq[k] > maxFreq) { maxFreq = freq[k]; modes = [k]; }
+    else if (freq[k] === maxFreq) { modes.push(k); }
+  }
+  var mode = modes.length === nums.length ? 'No mode (all values equal)' : modes.join(', ');
+
+  var variance = nums.reduce(function(s, n) { return s + Math.pow(n - mean, 2); }, 0) / nums.length;
+  var stdDev = Math.sqrt(variance);
+
+  var output = '';
+  output += 'Count:     ' + nums.length + '\n';
+  output += 'Sum:       ' + sum + '\n';
+  output += 'Mean:      ' + mean.toFixed(4) + '\n';
+  output += 'Median:    ' + median + '\n';
+  output += 'Mode:      ' + mode + '\n';
+  output += 'Min:       ' + nums[0] + '\n';
+  output += 'Max:       ' + nums[nums.length - 1] + '\n';
+  output += 'Range:     ' + (nums[nums.length - 1] - nums[0]) + '\n';
+  output += 'Std Dev:   ' + stdDev.toFixed(4);
+
+  document.getElementById('result').textContent = output;
+}
+
+function sample() {
+  document.getElementById('inp').value = '85, 92, 78, 95, 88, 78, 92, 85, 90, 78, 88, 95, 92, 78, 85';
+  calc();
+}
 </script>
 <div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Mean, Median, Mode Calculator?</h2>

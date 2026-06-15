@@ -10,30 +10,56 @@ import Button from '../components/Button.astro';
   keywords={["gitignore gen", ".gitignore generator", "dev tools"]}
 >
   <div class="space-y-4">
-    <div class='text-sm text-surface-400'>Configure options above</div>
+    <div>
+      <label class="text-sm text-surface-300 block mb-2">Categories</label>
+      <div class="grid grid-cols-2 sm:grid-cols-5 gap-x-4 gap-y-2">
+        <label class="text-xs text-surface-300 flex items-center gap-1.5"><input type="checkbox" id="cat_node" checked class="accent-brand-500" /> Node.js</label>
+        <label class="text-xs text-surface-300 flex items-center gap-1.5"><input type="checkbox" id="cat_python" class="accent-brand-500" /> Python</label>
+        <label class="text-xs text-surface-300 flex items-center gap-1.5"><input type="checkbox" id="cat_java" class="accent-brand-500" /> Java</label>
+        <label class="text-xs text-surface-300 flex items-center gap-1.5"><input type="checkbox" id="cat_go" class="accent-brand-500" /> Go</label>
+        <label class="text-xs text-surface-300 flex items-center gap-1.5"><input type="checkbox" id="cat_rust" class="accent-brand-500" /> Rust</label>
+        <label class="text-xs text-surface-300 flex items-center gap-1.5"><input type="checkbox" id="cat_cpp" class="accent-brand-500" /> C/C++</label>
+        <label class="text-xs text-surface-300 flex items-center gap-1.5"><input type="checkbox" id="cat_vscode" checked class="accent-brand-500" /> VS Code</label>
+        <label class="text-xs text-surface-300 flex items-center gap-1.5"><input type="checkbox" id="cat_macos" checked class="accent-brand-500" /> macOS</label>
+        <label class="text-xs text-surface-300 flex items-center gap-1.5"><input type="checkbox" id="cat_linux" class="accent-brand-500" /> Linux</label>
+        <label class="text-xs text-surface-300 flex items-center gap-1.5"><input type="checkbox" id="cat_windows" class="accent-brand-500" /> Windows</label>
+      </div>
+    </div>
     <div class="flex gap-2">
       <Button onclick="generate()">Generate</Button>
       <Button variant="secondary" onclick="copyResult()">Copy</Button>
     </div>
-    <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
+    <textarea id="result" readonly class="w-full min-h-[250px] rounded-xl border border-surface-600 bg-surface-800 p-4 text-sm text-surface-100 font-mono whitespace-pre-wrap break-all resize-y"></textarea>
   </div>
 <script is:inline>
+var ignores = {
+  node: 'node_modules/\nnpm-debug.log*\nyarn-debug.log*\nyarn-error.log*\npnpm-debug.log*\n.env\n.env.*\ndist/\nbuild/\ncoverage/\n.nyc_output/\ntmp/',
+  python: '__pycache__/\n*.py[cod]\n*.so\n.venv/\nvenv/\n*.egg-info/\ndist/\nbuild/\n.pytest_cache/\n.mypy_cache/\n*.egg',
+  java: 'target/\n*.class\n*.jar\n*.war\n.gradle/\nbuild/\n*.iml\n.classpath\n.project\n.settings/\nbin/',
+  go: '*.exe\n*.exe~\n*.dll\n*.so\n*.dylib\n*.test\n*.out\nvendor/',
+  rust: 'target/\nCargo.lock\n**/*.rs.bk',
+  cpp: '*.o\n*.obj\n*.exe\n*.out\n*.app\nbuild/\nMakefile\nCMakeCache.txt\nCMakeFiles/\ncmake_install.cmake',
+  vscode: '.vscode/',
+  macos: '.DS_Store\n.AppleDouble\n.LSOverride\nIcon\n._*\n.DocumentRevisions-V100\n.fseventsd\n.Spotlight-V100\n.TemporaryItems\n.Trashes\n.VolumeIcon.icns\n.com.apple.timemachine.donotpresent',
+  linux: '*~\n.directory\n.Trash-*',
+  windows: 'Thumbs.db\nThumbs.db:encryptable\nehthumbs.db\nehthumbs_vista.db\n*.stackdump\n[Dd]esktop.ini\n$RECYCLE.BIN/\n*.cab\n*.msi\n*.msix\n*.msm\n*.msp\n*.lnk'
+};
+
 function generate() {
-  const lang=(document.getElementById('lang')?.value||'node').toLowerCase();
-  const ignores={
-    node:'node_modules/\nnpm-debug.log*\n.env\n.env.*\ndist/\nbuild/\n.DS_Store\n*.log\ncoverage/\n.nyc_output/\ntmp/\n.vscode/',
-    python:'__pycache__/\n*.py[cod]\n*.so\n.env\n.env.*\nvenv/\n.venv/\ndist/\nbuild/\n*.egg-info/\n.pytest_cache/\n.DS_Store\n*.log',
-    java:'target/\n*.class\n*.jar\n*.war\n.gradle/\nbuild/\n.idea/\n*.iml\n.classpath\n.project\n.settings/\nbin/\n.DS_Store',
-    go:'*.exe\n*.exe~\n*.dll\n*.so\n*.dylib\n*.test\n*.out\nvendor/\n.env\n.env.*\n.DS_Store'
-  };
-  document.getElementById('result').value=ignores[lang]||ignores.node;
+  var cats = ['node','python','java','go','rust','cpp','vscode','macos','linux','windows'];
+  var rules = ['# Generated .gitignore\n'];
+  cats.forEach(function(c) {
+    var el = document.getElementById('cat_' + c);
+    if (el && el.checked && ignores[c]) {
+      rules.push('\n# ' + c.charAt(0).toUpperCase() + c.slice(1));
+      rules.push(ignores[c]);
+    }
+  });
+  document.getElementById('result').value = rules.join('\n').trim();
 }
+
 function copyResult() {
-  const el=document.getElementById('result');
-  if(!el||!el.value) return;
-  el.select();document.execCommand('copy');
-  document.getElementById('msg').textContent='Copied!';
-  setTimeout(()=>document.getElementById('msg').textContent='',2000);
+  navigator.clipboard.writeText(document.getElementById('result').value);
 }
 </script>
 <slot name="info" slot="info">
