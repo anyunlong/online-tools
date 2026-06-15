@@ -1,6 +1,5 @@
 ---
 import ToolLayout from '../components/ToolLayout.astro';
-import Textarea from '../components/Textarea.astro';
 import Button from '../components/Button.astro';
 ---
 
@@ -8,42 +7,55 @@ import Button from '../components/Button.astro';
   title="Text Line Sorter"
   description="Sort text lines alphabetically"
   category="Text"
-  keywords={["sort", "order", "alphabetize", "lines"]}
+  keywords={["sort", "order", "alphabetize", "lines", "text sorter"]}
 >
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-    <Textarea id="inp" label="Input" placeholder="Paste lines to sort..." rows="12" class="tool-area" />
+  <div class="space-y-4">
     <div>
-      <label for="out" class="text-sm text-surface-300 mb-1.5 block font-medium">Output</label>
-      <div id="out" class="w-full h-72 rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 overflow-auto font-mono"></div>
+      <label for="inp" class="block text-sm text-surface-200 mb-1.5 font-medium">Input</label>
+      <textarea
+        id="inp"
+        rows="10"
+        placeholder="Paste lines to sort, one per line..."
+        class="w-full rounded-xl border border-surface-600 bg-surface-800 p-3 text-sm text-surface-100 font-mono placeholder:text-surface-500 focus:border-brand-500 focus:ring-1 focus:ring-brand-500/30 focus:outline-none transition-all resize-y"
+      ></textarea>
+    </div>
+    <div class="flex items-center gap-4">
+      <label class="flex items-center gap-2 text-sm text-surface-300 cursor-pointer">
+        <input type="checkbox" id="dedup" class="accent-brand-500 w-4 h-4" />
+        Remove duplicates
+      </label>
+      <label class="flex items-center gap-2 text-sm text-surface-300 cursor-pointer">
+        <input type="checkbox" id="reverse" class="accent-brand-500 w-4 h-4" />
+        Z-A (reverse)
+      </label>
+    </div>
+    <div class="flex gap-2">
+      <Button onclick="processLines()">Sort A-Z</Button>
+      <Button variant="secondary" onclick="clearAll()">Clear</Button>
+    </div>
+    <div>
+      <label class="block text-sm text-surface-200 mb-1.5 font-medium">Output</label>
+      <div
+        id="out"
+        class="w-full min-h-[200px] rounded-xl border border-surface-600 bg-surface-800 p-3 text-sm text-surface-100 font-mono whitespace-pre-wrap break-all"
+      ></div>
     </div>
   </div>
-  <div class="flex gap-2 mt-4">
-    <Button onclick="process()">Sort A-Z</Button>
-    <Button variant="secondary" onclick="clearAll()">Clear</Button>
-  </div>
-  <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process() {
-  const lines=document.getElementById('inp').value.split(/\n/).filter(l=>l.trim());
-  const dedup=document.getElementById('dedup')?.checked;
-  let sorted=lines.sort((a,b)=>a.localeCompare(b));
-  if(dedup) sorted=[...new Set(sorted)];
-  o(sorted.join('\n'));
+function processLines() {
+  var raw = document.getElementById('inp').value;
+  if (!raw.trim()) { document.getElementById('out').textContent = ''; return; }
+  var lines = raw.split('\n').filter(function(l) { return l.trim() !== ''; });
+  var dedup = document.getElementById('dedup').checked;
+  var reverse = document.getElementById('reverse').checked;
+  lines.sort(function(a, b) { return a.localeCompare(b); });
+  if (reverse) lines.reverse();
+  if (dedup) { var seen = {}; var unique = []; for (var i = 0; i < lines.length; i++) { if (!seen[lines[i]]) { seen[lines[i]] = true; unique.push(lines[i]); } } lines = unique; }
+  document.getElementById('out').textContent = lines.join('\n');
 }
-function o(t){document.getElementById('out').textContent=t;}
-function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';document.getElementById('msg').textContent='';}
+function clearAll() {
+  document.getElementById('inp').value = '';
+  document.getElementById('out').textContent = '';
+}
 </script>
-<div slot="info">
-  <h2 class="text-base font-semibold text-surface-100 mb-2">What is a Text Line Sorter?</h2>
-  <p class="mb-3">A text line sorter arranges lines of text in alphabetical order (ascending or descending) or randomizes them. It can also remove duplicate lines, making it a powerful tool for cleaning up and organizing lists, references, and data.</p>
-  <h2 class="text-base font-semibold text-surface-100 mb-2">When to Use</h2>
-  <ul class="list-disc pl-5 mb-3 space-y-1">
-    <li>Alphabetizing bibliographies, reference lists, or glossaries for academic papers</li>
-    <li>Deduplicating and organizing mailing lists, inventory items, or keyword collections</li>
-  </ul>
-  <h2 class="text-base font-semibold text-surface-100 mb-2">How to Use</h2>
-  <p class="mb-3">Paste your list (one item per line), choose a sort order, and click Sort to organize the lines.</p>
-  <h2 class="text-base font-semibold text-surface-100 mb-2">Related Tools</h2>
-  <p>Try our <a href="/word-counter/" class="text-primary hover:underline">Word Counter</a> for analyzing text statistics alongside sorting.</p>
-</div>
 </ToolLayout>
