@@ -16,20 +16,22 @@ import Button from '../components/Button.astro';
       <Button variant="secondary" onclick="copyResult()">Copy</Button>
     </div>
     <div id="result" class="w-full min-h-[80px] rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-sm text-surface-100 font-mono break-all"></div>
+    <div id="msg" class="text-xs text-surface-400"></div>
   </div>
 <script is:inline>
 const chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{}|;:,.<>?';
 function generate() {
   const len=parseInt(document.getElementById('len')?.value)||16;
   let s='';for(let i=0;i<len;i++)s+=chars[Math.floor(Math.random()*chars.length)];
-  document.getElementById('result').value=s;
+  document.getElementById('result').textContent=s;
 }
 function copyResult() {
   const el=document.getElementById('result');
-  if(!el||!el.value) return;
-  el.select();document.execCommand('copy');
-  document.getElementById('msg').textContent='Copied!';
-  setTimeout(()=>document.getElementById('msg').textContent='',2000);
+  if(!el||!el.textContent) return;
+  navigator.clipboard.writeText(el.textContent).then(function(){
+    document.getElementById('msg').textContent='Copied!';
+    setTimeout(function(){document.getElementById('msg').textContent='';},2000);
+  });
 }
 </script>
 <div slot="info">

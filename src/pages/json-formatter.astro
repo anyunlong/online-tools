@@ -18,12 +18,12 @@ import Button from '../components/Button.astro';
     </div>
   </div>
   <div class="flex gap-2 mt-4">
-    <Button onclick="format()">Format</Button>
-    <Button variant="secondary" onclick="compress()">Compress</Button>
+    <Button onclick="formatJSON()">Format</Button>
+    <Button variant="secondary" onclick="compressJSON()">Compress</Button>
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function format() {
+function formatJSON() {
   try {
     const j = JSON.parse(document.getElementById('inp').value);
     document.getElementById('out').textContent = JSON.stringify(j, null, 2);
@@ -34,7 +34,7 @@ function format() {
     document.getElementById('msg').className = 'text-xs mt-2 text-red-400';
   }
 }
-function compress() {
+function compressJSON() {
   try {
     document.getElementById('out').textContent = JSON.stringify(JSON.parse(document.getElementById('inp').value));
   } catch (e) {

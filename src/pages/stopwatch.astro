@@ -17,7 +17,7 @@ import Button from '../components/Button.astro';
     <div class="flex gap-2 justify-center flex-wrap">
       <button id="btn-start" onclick="toggle()" class="px-6 py-2.5 rounded-xl bg-brand-500 text-white font-medium hover:bg-brand-400 transition-colors">Start</button>
       <button onclick="lap()" class="px-5 py-2.5 rounded-xl bg-surface-800 text-surface-200 border border-surface-600 hover:border-brand-500/50 hover:text-brand-400 transition-colors">Lap</button>
-      <button onclick="reset()" class="px-5 py-2.5 rounded-xl bg-surface-800 text-surface-200 border border-surface-600 hover:border-brand-500/50 hover:text-brand-400 transition-colors">Reset</button>
+      <button onclick="resetStopwatch()" class="px-5 py-2.5 rounded-xl bg-surface-800 text-surface-200 border border-surface-600 hover:border-brand-500/50 hover:text-brand-400 transition-colors">Reset</button>
     </div>
     <div id="laps" class="w-full max-h-[200px] overflow-y-auto rounded-xl border border-surface-600 bg-surface-800 p-3 text-sm font-mono space-y-1"></div>
   </div>
@@ -57,7 +57,7 @@ function lap() {
   lapsEl.insertBefore(div, lapsEl.firstChild);
 }
 
-function reset() {
+function resetStopwatch() {
   clearInterval(interval);
   running = false;
   elapsed = 0;
