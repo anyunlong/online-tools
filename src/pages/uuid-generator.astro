@@ -16,7 +16,7 @@ import Button from '../components/Button.astro';
       class="text-xl font-mono bg-surface-800/40 border border-surface-700/30 rounded-xl p-5 mt-4 text-brand-400 min-h-[56px] select-all break-all"
     ></div>
     <button
-      onclick="copy()"
+      onclick="copyUUID()"
       class="text-xs bg-surface-800 text-surface-300 border border-surface-700 rounded-lg px-3 py-1.5 hover:bg-surface-700 hover:text-white transition-colors mt-3"
     >Copy</button>
   </div>
@@ -24,7 +24,7 @@ import Button from '../components/Button.astro';
 function gen() {
   document.getElementById('result').textContent = crypto.randomUUID();
 }
-function copy() {
+function copyUUID() {
   var el = document.getElementById('result');
   navigator.clipboard.writeText(el.textContent);
 }

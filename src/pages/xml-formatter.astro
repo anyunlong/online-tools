@@ -12,7 +12,7 @@ import Button from '../components/Button.astro';
 >
   <Textarea id="inp" placeholder="Paste XML code..." rows="12" class="tool-area" />
   <div class="flex gap-2 mt-4">
-    <Button onclick="format()">Format XML</Button>
+    <Button onclick="formatXML()">Format XML</Button>
     <Button variant="secondary" onclick="copyOut()">Copy</Button>
   </div>
   <div class="text-xs text-surface-400 mt-3 mb-1">Formatted Output:</div>
@@ -44,18 +44,7 @@ function formatXml(xml, indent) {
   }
   return formatted.trim();
 }
-function format() {
-  try {
-    var xml = document.getElementById('inp').value.trim();
-    var formatted = formatXml(xml);
-    document.getElementById('out').textContent = formatted;
-    document.getElementById('msg').textContent = 'Formatting complete';
-    document.getElementById('msg').className = 'text-xs mt-2 text-brand-400';
-  } catch(e) {
-    document.getElementById('msg').textContent = 'Error: ' + e.message;
-    document.getElementById('msg').className = 'text-xs mt-2 text-red-400';
-  }
-}
+function formatXML() {
 function copyOut() {
   var t = document.getElementById('out').textContent;
   if (!t) return;
