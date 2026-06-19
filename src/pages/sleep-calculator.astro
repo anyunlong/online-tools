@@ -1,7 +1,5 @@
 ---
 import ToolLayout from '../components/ToolLayout.astro';
-import Input from '../components/Input.astro';
-import Button from '../components/Button.astro';
 ---
 
 <ToolLayout
@@ -13,12 +11,12 @@ import Button from '../components/Button.astro';
   <div class="space-y-4">
     <p class="text-sm text-surface-400">Average sleep cycle: 90 minutes. Aim for 5-6 full cycles (7.5-9 hours).</p>
     <div class="flex gap-3 mb-2">
-      <Button onclick="setMode('wake')" id="btn-wake">I want to wake up at...</Button>
-      <Button variant="secondary" onclick="setMode('sleep')" id="btn-sleep">I'm going to bed at...</Button>
+      <button onclick="setMode('wake')" id="btn-wake" class="inline-flex items-center justify-center font-medium rounded-xl transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer bg-gradient-to-r from-brand-500 to-brand-600 text-white hover:from-brand-400 hover:to-brand-500 shadow-lg shadow-brand-500/20 px-4 py-2 text-sm">I want to wake up at...</button>
+      <button onclick="setMode('sleep')" id="btn-sleep" class="inline-flex items-center justify-center font-medium rounded-xl transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer bg-surface-800 text-surface-200 border border-surface-700 hover:bg-surface-700 hover:text-white hover:border-surface-600 px-4 py-2 text-sm">I'm going to bed at...</button>
     </div>
     <div>
       <label for="time-inp" class="text-sm text-surface-300 mb-1.5 block font-medium" id="time-label">Wake-up time</label>
-      <Input id="time-inp" type="time" value="07:00" class="w-full" oninput="calc()" />
+    <input id="time-inp" type="time" value="07:00" class="bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 w-full" oninput="calc()" />
     </div>
     <div id="results" class="grid grid-cols-2 sm:grid-cols-3 gap-3"></div>
     <p class="text-xs text-surface-500" id="recommendation"></p>

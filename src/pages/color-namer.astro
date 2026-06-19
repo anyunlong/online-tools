@@ -18,23 +18,26 @@ import Button from '../components/Button.astro';
     </div>
   </div>
   <div class="flex gap-2 mt-4">
-    <Button onclick="process()">Process</Button>
+    <Button onclick="findColorName()">Find</Button>
     <Button variant="secondary" onclick="clearAll()">Clear</Button>
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
-function process() {
-  const hex=document.getElementById('inp').value.trim().replace('#','');
+function findColorName() {
+  var hex = document.getElementById('inp').value.trim().replace('#','');
   if(!/^[0-9a-fA-F]{6}$/.test(hex)){o('Enter hex color (e.g. #3B82F6)');return;}
-  const colors={FF0000:'Red',00FF00:'Lime',0000FF:'Blue',FFFF00:'Yellow',FF00FF:'Magenta',00FFFF:'Cyan',FFA500:'Orange',800080:'Purple',008000:'Green',000080:'Navy',A52A2A:'Brown',808080:'Gray',FFC0CB:'Pink',3B82F6:'Blue (Tailwind)',10B981:'Emerald',F59E0B:'Amber',EF4444:'Red (Tailwind)',8B5CF6:'Violet',EC4899:'Pink (Tailwind)',6366F1:'Indigo'};
-  const r=parseInt(hex.slice(0,2),16),g=parseInt(hex.slice(2,4),16),b=parseInt(hex.slice(4,6),16);
-  let closest='',minDist=Infinity;
-  for(const[h,name] of Object.entries(colors)){
-    const hr=parseInt(h.slice(0,2),16),hg=parseInt(h.slice(2,4),16),hb=parseInt(h.slice(4,6),16);
-    const dist=Math.sqrt((r-hr)**2+(g-hg)**2+(b-hb)**2);
-    if(dist<minDist){minDist=dist;closest=name;}
+  var colors = {FF0000:'Red',00FF00:'Lime',0000FF:'Blue',FFFF00:'Yellow',FF00FF:'Magenta',00FFFF:'Cyan',FFA500:'Orange',800080:'Purple',008000:'Green',000080:'Navy',A52A2A:'Brown',808080:'Gray',FFC0CB:'Pink',3B82F6:'Blue (Tailwind)',10B981:'Emerald',F59E0B:'Amber',EF4444:'Red (Tailwind)',8B5CF6:'Violet',EC4899:'Pink (Tailwind)',6366F1:'Indigo'};
+  var r = parseInt(hex.slice(0,2),16), g = parseInt(hex.slice(2,4),16), b = parseInt(hex.slice(4,6),16);
+  var closest = '', minDist = Infinity;
+  var entries = Object.entries(colors);
+  for (var i = 0; i < entries.length; i++) {
+    var h = entries[i][0];
+    var name = entries[i][1];
+    var hr = parseInt(h.slice(0,2),16), hg = parseInt(h.slice(2,4),16), hb = parseInt(h.slice(4,6),16);
+    var dist = Math.sqrt(Math.pow(r - hr, 2) + Math.pow(g - hg, 2) + Math.pow(b - hb, 2));
+    if (dist < minDist) { minDist = dist; closest = name; }
   }
-  o('#'+hex+'\nRGB('+r+','+g+','+b+')\nClosest named color: '+closest);
+  o('#' + hex + '\nRGB(' + r + ',' + g + ',' + b + ')\nClosest named color: ' + closest);
 }
 function o(t){document.getElementById('out').textContent=t;}
 function clearAll(){document.getElementById('inp').value='';document.getElementById('out').innerHTML='';}

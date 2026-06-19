@@ -68,14 +68,14 @@ function generate() {
   var genre = document.getElementById('genre').value;
   var count = parseInt(document.getElementById('count').value, 10);
   if (genre === 'any') {
-    var genres = ['scifi','fantasy','mystery','romance','horror'];
-    genre = genres[rand(new Uint32Array(crypto.getRandomValues(new Uint32Array(1)))[0] % genres.length)];
+  var genres = ['scifi','fantasy','mystery','romance','horror'];
+  genre = genres[rand(genres)];
   }
   var prompts = [];
   for (var i = 0; i < count; i++) {
     var g = genre;
     if (document.getElementById('genre').value === 'any') {
-      g = ['scifi','fantasy','mystery','romance','horror'][rand(['scifi','fantasy','mystery','romance','horror'])];
+      g = rand(genres);
     }
     var c = rand(characters[g]);
     var s = rand(settings[g]);
