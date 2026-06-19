@@ -45,6 +45,17 @@ function formatXml(xml, indent) {
   return formatted.trim();
 }
 function formatXML() {
+  try {
+    var xml = document.getElementById('inp').value.trim();
+    var formatted = formatXml(xml);
+    document.getElementById('out').textContent = formatted;
+    document.getElementById('msg').textContent = 'Formatting complete';
+    document.getElementById('msg').className = 'text-xs mt-2 text-brand-400';
+  } catch(e) {
+    document.getElementById('msg').textContent = 'Error: ' + e.message;
+    document.getElementById('msg').className = 'text-xs mt-2 text-red-400';
+  }
+}
 function copyOut() {
   var t = document.getElementById('out').textContent;
   if (!t) return;
