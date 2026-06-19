@@ -57,9 +57,11 @@ function convert() {
   var html = '';
   units.forEach(function(u) {
     var converted = bytes / u.factor;
-    html += '<div class="bg-surface-800/50 border border-surface-700/30 rounded-lg p-3 text-center">';
+    var display = converted < 0.001 && converted > 0 ? converted.toExponential(4) : converted.toFixed(6).replace(/0+$/, '').replace(/\.$/, '');
+    var isCurrent = u.factor === factor;
+    html += '<div class="bg-surface-800/50 border ' + (isCurrent ? 'border-brand-500/50' : 'border-surface-700/30') + ' rounded-lg p-3 text-center">';
     html += '<div class="text-xs text-surface-400">' + u.label + '</div>';
-    html += '<div class="text-sm font-mono text-surface-100 mt-1 break-all">' + (u.factor === factor ? '<span class="text-brand-400 font-bold">' + formatBytes(bytes) + '</span>' : formatBytes(bytes)) + '</div>';
+    html += '<div class="text-sm font-mono ' + (isCurrent ? 'text-brand-400 font-bold' : 'text-surface-100') + ' mt-1 break-all">' + display + '</div>';
     html += '</div>';
   });
   document.getElementById('results').innerHTML = html;
