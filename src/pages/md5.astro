@@ -10,7 +10,7 @@ import StatCard from '../components/StatCard.astro';
   category="Hash"
   keywords={["md5", "hash", "hash"]}
 >
-  <Textarea id="inp" placeholder="Enter text" rows="8" oninput="hash()" class="tool-area" />
+  <Textarea id="inp" placeholder="Enter text" rows="8" oninput="process()" class="tool-area" />
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
     <StatCard id="md5-32" label="MD5 (32-bit)" />
     <StatCard id="md5-16" label="MD5 (16-bit)" />
@@ -27,8 +27,8 @@ function process() {
   if(!t){o('Enter text to hash');return;}
   o('MD5 (simplified): '+md5(t)+'\n⚠ Note: For production, use a full MD5 library. MD5 is not cryptographically secure.');
 }
-function o(t){document.getElementById('out').textContent=t;}
-function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';}
+function o(t){document.getElementById('md5-32').textContent=t;}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('md5-32').textContent='';}
 </script>
 <div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is MD5 Hashing?</h2>
