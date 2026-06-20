@@ -22,7 +22,7 @@ import Button from '../components/Button.astro';
     <div id="out" class="w-full rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-sm text-surface-100 font-mono break-all min-h-[48px]"></div>
     <p class="text-xs text-surface-500 mt-1">Uses bcrypt with cost factor 12 (standard for secure password hashing).</p>
   </div>
-<script src="https://cdn.jsdelivr.net/npm/bcryptjs@2.4.3/dist/bcrypt.min.js"></script>
+<script is:inline src="https://cdn.jsdelivr.net/npm/bcryptjs@2.4.3/dist/bcrypt.min.js"></script>
 <script is:inline>
 async function hash() {
   var pwd = document.getElementById('pwd').value;
