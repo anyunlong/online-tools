@@ -28,19 +28,20 @@ async function process() {
   const v=document.getElementById('inp').value;
   if(!v){o('Enter a message to encrypt.');return;}
   try {
-    // Generate a new key pair for demo
-    const { privateKey, publicKey } = await openpgp.generateKey({
-      type: 'ecc',
-      curve: 'curve25519',
-      userIDs: [{ name: 'Demo User', email: 'demo@4uses.com' }],
+    // Generate a new key pair for demo (OpenPGP.js v4 API)
+    const options = {
+      numBits: 2048,
+      userIds: [{ name: 'Demo User', email: 'demo@4uses.com' }],
       passphrase: ''
-    });
+    };
+    const { key: privateKey, publicKeyArmored } = await openpgp.generateKey(options);
+    const publicKey = await openpgp.key.readArmored(publicKeyArmored);
     
     // Encrypt the message
-    const message = await openpgp.createMessage({ text: v });
+    const message = await openpgp.message.fromText(v);
     const encrypted = await openpgp.encrypt({
       message: message,
-      encryptionKeys: publicKey
+      publicKeys: publicKey.keys
     });
     
     o('PGP Encrypted Message:\n\n' + encrypted);
