@@ -22,7 +22,7 @@ import Button from '../components/Button.astro';
     <Button variant="secondary" onclick="clearAll()">Clear</Button>
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
-<script is:inline src="https://cdn.jsdelivr.net/npm/openpgp@5.11.1/dist/openpgp.min.js"></script>
+<script is:inline src="/openpgp.min.js"></script>
 <script is:inline>
 async function process() {
   const v=document.getElementById('inp').value;
