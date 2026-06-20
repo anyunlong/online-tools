@@ -22,14 +22,34 @@ import Button from '../components/Button.astro';
     <Button variant="secondary" onclick="clearAll()">Clear</Button>
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
+<script src="https://cdn.jsdelivr.net/npm/openpgp@5.11.1/dist/openpgp.min.js"></script>
 <script is:inline>
-function process() {
+async function process() {
   const v=document.getElementById('inp').value;
-  if(!v){o('Enter message to encrypt. Browser PGP requires OpenPGP.js library.');return;}
-  o('⚠ Browser-based PGP encryption requires the OpenPGP.js library.\n\nYour message: '+v.slice(0,50)+(v.length>50?'...':'')+'\n\nFor production use:\n- Install GnuPG: brew install gnupg\n- Encrypt: gpg --encrypt --recipient user@example.com file.txt');
+  if(!v){o('Enter a message to encrypt.');return;}
+  try {
+    // Generate a new key pair for demo
+    const { privateKey, publicKey } = await openpgp.generateKey({
+      type: 'ecc',
+      curve: 'curve25519',
+      userIDs: [{ name: 'Demo User', email: 'demo@4uses.com' }],
+      passphrase: ''
+    });
+    
+    // Encrypt the message
+    const message = await openpgp.createMessage({ text: v });
+    const encrypted = await openpgp.encrypt({
+      message: message,
+      encryptionKeys: publicKey
+    });
+    
+    o('PGP Encrypted Message:\n\n' + encrypted);
+  } catch(e) {
+    o('Error: ' + e.message);
+  }
 }
 function o(t){document.getElementById('out').textContent=t;}
-function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';if(timer)clearInterval(timer);}
+function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';}
 </script>
 <slot name="info" slot="info">
   <p>Enter your data above — the result is computed instantly in your browser. No server upload needed.</p>
