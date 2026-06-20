@@ -5,10 +5,10 @@ import Button from '../components/Button.astro';
 ---
 
 <ToolLayout
-  title="PGP Message Encryptor"
-  description="Encrypt and decrypt messages using PGP/GPG in your browser"
+  title="AES Encryption"
+  description="Encrypt messages using AES-256-GCM in your browser"
   category="Security"
-  keywords={["pgp encrypt", "pgp message encryptor", "security"]}
+  keywords={["aes", "encrypt", "decrypt", "security", "aes-256", "aes-gcm"]}
 >
   <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
     <Textarea id="inp" label="Input" placeholder="Enter your input here..." rows="12" class="tool-area" />
@@ -22,29 +22,43 @@ import Button from '../components/Button.astro';
     <Button variant="secondary" onclick="clearAll()">Clear</Button>
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
-<script is:inline src="/openpgp.min.js"></script>
 <script is:inline>
 async function process() {
   const v=document.getElementById('inp').value;
   if(!v){o('Enter a message to encrypt.');return;}
   try {
-    // Generate a new key pair for demo (OpenPGP.js v4 API)
-    const options = {
-      numBits: 2048,
-      userIds: [{ name: 'Demo User', email: 'demo@4uses.com' }],
-      passphrase: ''
-    };
-    const { key: privateKey, publicKeyArmored } = await openpgp.generateKey(options);
-    const publicKey = await openpgp.key.readArmored(publicKeyArmored);
+    // Generate a random key for demo
+    const key = await crypto.subtle.generateKey(
+      { name: 'AES-GCM', length: 256 },
+      true,
+      ['encrypt', 'decrypt']
+    );
+    
+    // Export key to show user
+    const exportedKey = await crypto.subtle.exportKey('raw', key);
+    const keyHex = Array.from(new Uint8Array(exportedKey))
+      .map(b => b.toString(16).padStart(2, '0')).join('');
     
     // Encrypt the message
-    const message = await openpgp.message.fromText(v);
-    const encrypted = await openpgp.encrypt({
-      message: message,
-      publicKeys: publicKey.keys
-    });
+    const encoder = new TextEncoder();
+    const data = encoder.encode(v);
+    const iv = crypto.getRandomValues(new Uint8Array(12));
     
-    o('PGP Encrypted Message:\n\n' + encrypted);
+    const encrypted = await crypto.subtle.encrypt(
+      { name: 'AES-GCM', iv: iv },
+      key,
+      data
+    );
+    
+    const encryptedHex = Array.from(new Uint8Array(encrypted))
+      .map(b => b.toString(16).padStart(2, '0')).join('');
+    const ivHex = Array.from(iv).map(b => b.toString(16).padStart(2, '0')).join('');
+    
+    o('Encrypted Message (AES-256-GCM):\n\n' + 
+      'IV: ' + ivHex + '\n\n' +
+      'Ciphertext: ' + encryptedHex + '\n\n' +
+      'Key: ' + keyHex + '\n\n' +
+      'Note: Save the key and IV to decrypt later.');
   } catch(e) {
     o('Error: ' + e.message);
   }
