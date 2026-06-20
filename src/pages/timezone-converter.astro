@@ -38,8 +38,41 @@ function convert() {
   if (!dtVal) { document.getElementById('result').textContent = 'Select a date and time'; return; }
   var fromTz = document.getElementById('from-tz').value;
   var toTz = document.getElementById('to-tz').value;
-  var d = new Date(dtVal);
-  document.getElementById('result').textContent = d.toLocaleString('en-US', { timeZone: toTz, dateStyle: 'full', timeStyle: 'long' });
+  
+  // Parse input directly (YYYY-MM-DDTHH:MM)
+  var m = dtVal.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})$/);
+  if (!m) return;
+  
+  var Y = +m[1], Mo = +m[2]-1, D = +m[3], H = +m[4], Mi = +m[5];
+  
+  // Step 1: Treat the input wall-clock time as UTC temporarily
+  var testDate = new Date(Date.UTC(Y, Mo, D, H, Mi));
+  
+  // Step 2: What wall-clock does this same moment show in the "From" timezone?
+  var wallStr = testDate.toLocaleString('en-CA', {
+    timeZone: fromTz,
+    year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', second: '2-digit',
+    hour12: false
+  });
+  // en-CA format: "2026-06-20, 16:20:00"
+  
+  var w = wallStr.match(/(\d{4})-(\d{2})-(\d{2}),\s+(\d{2}):(\d{2}):(\d{2})/);
+  if (!w) return;
+  
+  var wallMs = Date.UTC(+w[1], +w[2]-1, +w[3], +w[4], +w[5], +w[6]);
+  var inputMs = Date.UTC(Y, Mo, D, H, Mi, 0);
+  var diff = inputMs - wallMs; // How much to shift to treat input as fromTz time
+  
+  // Step 3: Apply the shift to get the correct UTC moment
+  var utcDate = new Date(testDate.getTime() + diff);
+  
+  // Step 4: Format in target timezone
+  document.getElementById('result').textContent = utcDate.toLocaleString('en-US', {
+    timeZone: toTz,
+    dateStyle: 'full',
+    timeStyle: 'long'
+  });
 }
 var now = new Date();
 document.getElementById('dt').value = now.toISOString().slice(0, 16);
