@@ -15,20 +15,21 @@ import StatCard from '../components/StatCard.astro';
     <StatCard id="md5-32" label="MD5 (32-bit)" />
     <StatCard id="md5-16" label="MD5 (16-bit)" />
   </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 <script is:inline>
-function md5(s){
-  function r(n,c){return(n<<c)|(n>>>(32-c));}
-  function q(a,b,c,d,x,s,t){return r(a+(b&c|~b&d)+x+t,s)+b;}
-  // MD5 implementation (simplified for demo - use library for production)
-  return Array.from(new Uint8Array(new TextEncoder().encode(s))).map(b=>b.toString(16).padStart(2,'0')).join('').slice(0,32).padEnd(32,'0');
-}
 function process() {
   const t=document.getElementById('inp').value;
   if(!t){o('Enter text to hash');return;}
-  o('MD5 (simplified): '+md5(t)+'\n⚠ Note: For production, use a full MD5 library. MD5 is not cryptographically secure.');
+  const hash = CryptoJS.MD5(t).toString();
+  document.getElementById('md5-32').textContent = hash;
+  document.getElementById('md5-16').textContent = hash.substring(8, 24);
 }
 function o(t){document.getElementById('md5-32').textContent=t;}
-function clearAll(){document.getElementById('inp').value='';document.getElementById('md5-32').textContent='';}
+function clearAll(){
+  document.getElementById('inp').value='';
+  document.getElementById('md5-32').textContent='—';
+  document.getElementById('md5-16').textContent='—';
+}
 </script>
 <div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is MD5 Hashing?</h2>
