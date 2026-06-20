@@ -223,7 +223,7 @@ function buildEn() {
     'ssh-key-gen': { name: 'SSH Key Fingerprint', desc: 'Calculate and display SSH key fingerprints in MD5 and SHA256', howto: 'Enter your input and click to process. Results appear instantly below.' },
     'ssl-csr-gen': { name: 'CSR Generator', desc: 'Generate Certificate Signing Requests for SSL certificates', howto: 'Enter your input and click to process. Results appear instantly below.' },
     'htpasswd-gen': { name: 'htpasswd Generator', desc: 'Generate Apache htpasswd entries with bcrypt, MD5, or SHA', howto: 'Enter your input and click to process. Results appear instantly below.' },
-    'pgp-encrypt': { name: 'PGP Message Encryptor', desc: 'Encrypt and decrypt messages using PGP/GPG in your browser', howto: 'Enter your input and click to process. Results appear instantly below.' },
+    'aes-encryption': { name: 'PGP Message Encryptor', desc: 'Encrypt and decrypt messages using PGP/GPG in your browser', howto: 'Enter your input and click to process. Results appear instantly below.' },
     'sri-hash': { name: 'SRI Hash Generator', desc: 'Generate Subresource Integrity hashes for script and link tags', howto: 'Enter your input and click to process. Results appear instantly below.' },
     'csp-generator': { name: 'CSP Header Generator', desc: 'Generate Content Security Policy headers for your website', howto: 'Enter your input and click to process. Results appear instantly below.' },
     '2fa-code': { name: 'TOTP Code Generator', desc: 'Generate Time-based One-Time Passwords for two-factor authentication', howto: 'Enter your input and click to process. Results appear instantly below.' },

@@ -1050,9 +1050,9 @@
     "cat": "Security"
   },
   {
-    "id": "pgp-encrypt",
-    "name": "PGP Message Encryptor",
-    "desc": "Encrypt and decrypt messages using PGP/GPG in your browser",
+    "id": "aes-encryption",
+    "name": "AES Encryption",
+    "desc": "Encrypt messages using AES-256-GCM in your browser",
     "cat": "Security"
   },
   {

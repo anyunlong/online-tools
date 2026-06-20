@@ -1749,7 +1749,7 @@
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
     "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
   },
-  "pgp-encrypt": {
+  "aes-encryption": {
     "what": "PGP Message Encryptor is a free online tool that helps you encrypt and decrypt messages using pgp/gpg in your browser. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
     "when": [
       "Generating secure credentials, keys, or hashes for your applications",

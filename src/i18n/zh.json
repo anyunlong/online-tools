@@ -851,9 +851,9 @@
       "name": "htpasswd生成器",
       "desc": "生成Apache htpasswd格式的密码条目"
     },
-    "pgp-encrypt": {
-      "name": "PGP加密参考",
-      "desc": "查看PGP/GPG加密命令和说明"
+    "aes-encryption": {
+      "name": "AES加密",
+      "desc": "在浏览器中使用AES-256-GCM加密消息"
     },
     "sri-hash": {
       "name": "SRI哈希生成器",

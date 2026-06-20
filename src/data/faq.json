@@ -2449,7 +2449,7 @@
       "a": "Follow your organization's security policy for credential rotation. As a general guideline: passwords every 90 days, API keys and tokens upon suspected compromise, SSH keys every 6-12 months, and hashed values only when the underlying data changes. The htpasswd Generator makes regeneration quick and easy whenever rotation is needed."
     }
   ],
-  "pgp-encrypt": [
+  "aes-encryption": [
     {
       "q": "Is it safe to generate security credentials using an online tool?",
       "a": "Yes, the PGP Message Encryptor runs entirely in your browser using client-side JavaScript. Keys, hashes, and credentials are generated locally and never transmitted to any server. For maximum security, use tools that are open-source (so you can inspect the code) and operate offline-capable. Always generate sensitive credentials on trusted devices."
