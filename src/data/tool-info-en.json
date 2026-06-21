@@ -530,14 +530,14 @@
     "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
   },
   "sha512": {
-    "what": "SHA512 Hash Generator is a free online tool that helps you generate sha512 hash values from text. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "SHA-512 Hash Generator creates a SHA-512 hash from any text input. SHA-512 is a cryptographic hash function that produces a 128-character hex digest, widely used for file integrity verification and digital signatures.",
     "when": [
-      "Verifying file integrity after downloads or transfers",
-      "Generating checksums for data deduplication or comparison",
-      "Learning how different hash algorithms work and when to use each"
+      "Generating SHA-512 checksums to verify file integrity after downloads",
+      "Creating secure password hashes for application storage (with proper salting)",
+      "Comparing file hashes to detect data corruption or unauthorized modifications"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Enter text or paste file content into the input and click Generate. The tool computes the SHA-512 hash and displays the 128-character hex result.",
+    "related": "Compare with <a href=\"/sha256/\" class=\"text-primary hover:underline\">SHA-256 Generator</a> or <a href=\"/md5/\" class=\"text-primary hover:underline\">MD5 Generator</a>. Use <a href=\"/hash-compare/\" class=\"text-primary hover:underline\">Hash Compare</a> to check two hashes."
   },
   "crc32": {
     "what": "CRC32 Checksum is a free online tool that helps you calculate crc32 checksum for text. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -680,34 +680,34 @@
     "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
   },
   "html-beautifier": {
-    "what": "HTML Beautifier is a free online tool that helps you beautify and format html code. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "HTML Beautifier formats and indents messy HTML code. Fix inconsistent spacing, proper nesting, and clean up minified HTML in one click.",
     "when": [
-      "Quick lookups during coding sessions without leaving your browser",
-      "Generating boilerplate configs, snippets, or reference documentation",
-      "Learning about development standards and best practices hands-on"
+      "Cleaning up minified HTML from templates, CMS output, or email HTML for debugging",
+      "Formatting HTML code snippets for documentation, blog posts, or code reviews",
+      "Making generated HTML human-readable and maintainable"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Paste unformatted HTML and click Beautify. The tool properly indents nested elements, adds line breaks, and organizes attributes.",
+    "related": "Also try <a href=\"/css-beautifier/\" class=\"text-primary hover:underline\">CSS Beautifier</a>, <a href=\"/js-beautifier/\" class=\"text-primary hover:underline\">JavaScript Beautifier</a>, and <a href=\"/html-minifier/\" class=\"text-primary hover:underline\">HTML Minifier</a>."
   },
   "js-beautifier": {
-    "what": "JavaScript Beautifier is a free online tool that helps you beautify and format javascript/typescript code. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "JavaScript Beautifier formats and indents messy JS code for better readability. Clean up minified JavaScript, fix inconsistent indentation, and make code maintainable.",
     "when": [
-      "Quick lookups during coding sessions without leaving your browser",
-      "Generating boilerplate configs, snippets, or reference documentation",
-      "Learning about development standards and best practices hands-on"
+      "Debugging minified JavaScript by formatting it into readable code",
+      "Cleaning up JavaScript snippets for documentation, blog posts, or code reviews",
+      "Formatting AI-generated or copied JS code into a consistent, readable style"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Paste your JavaScript code and click Beautify. The tool properly indents, adds line breaks, and formats the code for readability.",
+    "related": "Also try <a href=\"/css-beautifier/\" class=\"text-primary hover:underline\">CSS Beautifier</a>, <a href=\"/html-beautifier/\" class=\"text-primary hover:underline\">HTML Beautifier</a>, or <a href=\"/js-minifier/\" class=\"text-primary hover:underline\">JavaScript Minifier</a> to compress."
   },
   "user-agent-parser": {
-    "what": "User Agent Parser is a free online tool that helps you parse and decode browser user agent strings. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "User Agent Parser is a free online tool that identifies browser, device, OS, and bot info from any user agent string. Perfect for debugging analytics and bot detection.",
     "when": [
-      "Quick lookups during coding sessions without leaving your browser",
-      "Generating boilerplate configs, snippets, or reference documentation",
-      "Learning about development standards and best practices hands-on"
+      "Debugging browser-specific issues by identifying the exact browser version from a user agent string",
+      "Testing whether your analytics or bot detection correctly identifies crawlers like Googlebot",
+      "Verifying user agent spoofing or checking how your site appears to different devices"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Paste a user agent string and click Parse. The tool extracts browser, version, OS, device type, and whether it's a mobile device or bot.",
+    "related": "Try our <a href=\"/http-headers-checker/\" class=\"text-primary hover:underline\">HTTP Headers Checker</a> for request headers, or <a href=\"/redirect-checker/\" class=\"text-primary hover:underline\">Redirect Checker</a> for URL chains."
   },
   "mime-lookup": {
     "what": "MIME Type Lookup is a free online tool that helps you look up mime types by file extension or type. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1450,14 +1450,14 @@
     "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
   },
   "mac-address-gen": {
-    "what": "MAC Address Generator is a free online tool that helps you generate random mac addresses for network device testing. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "MAC Address Generator creates random MAC addresses in various formats. Perfect for network testing, virtualization setups, and hardware simulation.",
     "when": [
-      "Creating test data, placeholder content, or sample datasets",
-      "Generating unique IDs, tokens, or random values for applications",
-      "Coming up with creative names, prompts, or ideas for projects"
+      "Generating random MAC addresses for virtual machines and Docker containers",
+      "Testing network software that filters or tracks MAC addresses",
+      "Creating placeholder MAC addresses for documentation or configuration examples"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Select your preferred format (colon-separated, hyphen-separated, or Cisco-style) and click Generate. The tool outputs valid MAC addresses with random OUI and NIC portions.",
+    "related": "For more network tools, try <a href=\"/ipv6-generator/\" class=\"text-primary hover:underline\">IPv6 Address Generator</a> or <a href=\"/port-checker/\" class=\"text-primary hover:underline\">Port Checker</a>."
   },
   "ipv6-generator": {
     "what": "IPv6 Generator is a free online tool that helps you generate random ipv6 addresses in various formats. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1470,24 +1470,24 @@
     "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
   },
   "hex-color-gen": {
-    "what": "Random HEX Color Generator is a free online tool that helps you generate random colors with their hex, rgb, and hsl values. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "Hex Color Generator creates random hex color codes (#RRGGBB) with one click. Perfect for design inspiration, UI mockups, and exploring new palettes.",
     "when": [
-      "Creating test data, placeholder content, or sample datasets",
-      "Generating unique IDs, tokens, or random values for applications",
-      "Coming up with creative names, prompts, or ideas for projects"
+      "Finding new color ideas for web design, UI mockups, or branding projects",
+      "Generating random colors to test design themes and color combinations quickly",
+      "Exploring the hex color spectrum for creative projects, art, or data visualization"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Click Generate and instantly get a random hex color with live preview. Keep clicking until you find the perfect color, then copy the code.",
+    "related": "Explore more with <a href=\"/color-palette/\" class=\"text-primary hover:underline\">Color Palette Generator</a> for curated combos, or <a href=\"/color-shades/\" class=\"text-primary hover:underline\">Color Shades</a> for tonal variations."
   },
   "password-phrase": {
-    "what": "Passphrase Generator is a free online tool that helps you generate memorable passphrases using random word combinations. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "Passphrase Generator creates strong, memorable passphrases using random word combinations. Phrases like 'correct-horse-battery-staple' are easier to remember and harder to crack.",
     "when": [
-      "Creating test data, placeholder content, or sample datasets",
-      "Generating unique IDs, tokens, or random values for applications",
-      "Coming up with creative names, prompts, or ideas for projects"
+      "Creating master passwords for password managers that need to be both secure and memorable",
+      "Generating Wi-Fi, server, or admin account passwords that users can actually type correctly",
+      "Replacing weak passwords with passphrases resistant to dictionary attacks"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Choose your word count (4-8 words) and separator style. Click Generate and get a random passphrase from a large dictionary of common words.",
+    "related": "For traditional passwords try <a href=\"/password-generator/\" class=\"text-primary hover:underline\">Password Generator</a>. Check strength with <a href=\"/password-strength/\" class=\"text-primary hover:underline\">Password Strength Checker</a>."
   },
   "barcode-generator": {
     "what": "Barcode Generator is a free online tool that helps you generate ean-13, upc-a, and code-128 barcodes as svg. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1572,14 +1572,14 @@
     "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
   },
   "html-table-gen": {
-    "what": "HTML Table Generator is a free online tool that helps you generate responsive html tables with custom rows and columns. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "HTML Table Generator is a free online tool that creates clean, responsive HTML tables from your data. It generates complete table code with proper &lt;table&gt;, &lt;thead&gt;, &lt;tbody&gt;, and &lt;tr&gt; tags.",
     "when": [
-      "Quick lookups during coding sessions without leaving your browser",
-      "Generating boilerplate configs, snippets, or reference documentation",
-      "Learning about development standards and best practices hands-on"
+      "Building data tables for web pages, dashboards, or documentation without writing HTML by hand",
+      "Creating responsive pricing tables, feature comparisons, or schedule grids for your website",
+      "Converting spreadsheet data into properly structured HTML tables for display on the web"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Enter your data in rows and columns, customize the table style, and click Generate. The tool outputs clean HTML code you can copy directly into your website.",
+    "related": "Try our <a href=\"/csv-to-json/\" class=\"text-primary hover:underline\">CSV to JSON Converter</a> for data transformation, or <a href=\"/html-beautifier/\" class=\"text-primary hover:underline\">HTML Beautifier</a> to clean up your code."
   },
   "dockerfile-gen": {
     "what": "Dockerfile Generator is a free online tool that helps you generate a basic dockerfile for node.js, python, or go projects. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1642,34 +1642,34 @@
     "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
   },
   "schema-markup": {
-    "what": "Schema Markup Generator is a free online tool that helps you generate json-ld structured data markup for rich search results. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "Schema Markup Generator creates structured data JSON-LD for rich search results. Supports Article, Product, FAQ, LocalBusiness, Review, and more schemas.",
     "when": [
-      "Optimizing your website for better search engine visibility",
-      "Generating proper meta tags, schema markup, and structured data",
-      "Checking technical SEO factors that affect your search rankings"
+      "Adding rich snippet structured data to blog posts, product pages, or local business listings",
+      "Generating FAQPage and HowTo schema to get featured in Google search results",
+      "Testing and validating schema markup before deploying to production"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Select your content type, fill in the fields, and click Generate. The tool outputs ready-to-use JSON-LD for your page's <head> section.",
+    "related": "Validate with <a href=\"/serp-preview/\" class=\"text-primary hover:underline\">SERP Preview Tool</a>, or check <a href=\"/canonical-checker/\" class=\"text-primary hover:underline\">Canonical Tags</a>."
   },
   "redirect-checker": {
-    "what": "Redirect Checker is a free online tool that helps you check url redirect chains and http status codes. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "Redirect Checker traces HTTP redirect chains and shows each step. Check 301, 302, 307, 308 redirects, detect loops, and verify URL forwarding.",
     "when": [
-      "Optimizing your website for better search engine visibility",
-      "Generating proper meta tags, schema markup, and structured data",
-      "Checking technical SEO factors that affect your search rankings"
+      "Verifying that old URLs properly redirect to new pages after a site migration or redesign",
+      "Debugging redirect chains that slow down page load times across multiple hops",
+      "Checking that affiliate links, short URLs, or external redirects land on the correct destination"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Enter a URL and click Check. The tool follows the redirect chain step by step, showing each status code and destination.",
+    "related": "Try <a href=\"/canonical-checker/\" class=\"text-primary hover:underline\">Canonical Checker</a> for canonical tags, or <a href=\"/http-status/\" class=\"text-primary hover:underline\">HTTP Status Lookup</a> for status codes."
   },
   "canonical-checker": {
-    "what": "Canonical URL Checker is a free online tool that helps you check if a page's canonical tag is correctly implemented. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "Canonical Checker inspects the rel=canonical tag on any webpage. Helps SEO professionals verify canonical URLs to prevent duplicate content issues.",
     "when": [
-      "Optimizing your website for better search engine visibility",
-      "Generating proper meta tags, schema markup, and structured data",
-      "Checking technical SEO factors that affect your search rankings"
+      "Auditing your website for duplicate content caused by missing or wrong canonical tags",
+      "Verifying canonical tags point to the correct preferred URL after a site restructure",
+      "Checking competitor or partner sites to understand their canonicalization strategy"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Enter a URL and click Check. The tool fetches the page, extracts the canonical link tag, and reports the canonical URL.",
+    "related": "Pair with <a href=\"/redirect-checker/\" class=\"text-primary hover:underline\">Redirect Checker</a> for full URL audit, or <a href=\"/heading-structure/\" class=\"text-primary hover:underline\">Heading Structure Checker</a> for on-page SEO."
   },
   "color-palette": {
     "what": "Color Palette Generator is a free online tool that helps you generate harmonious color palettes using color theory rules. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1792,14 +1792,14 @@
     "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
   },
   "coin-flip": {
-    "what": "Coin Flip Simulator is a free online tool that helps you flip a virtual coin with realistic probability and streak tracking. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "Coin Flip Simulator lets you flip a virtual coin for heads or tails. Uses cryptographically secure randomness for fair 50/50 results.",
     "when": [
-      "Adding randomness to games, activities, or decision-making",
-      "Generating creative prompts for writing, drawing, or brainstorming",
-      "Breaking decision paralysis when you just need a random pick"
+      "Making quick decisions when you can't choose between two options",
+      "Simulating sports coin tosses for fantasy leagues or game simulations",
+      "Settling friendly arguments or bets with a fair, random outcome"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Click the coin or press Flip. The coin animates and lands showing heads or tails, with a running tally of results.",
+    "related": "For more random fun, try <a href=\"/dice-roller/\" class=\"text-primary hover:underline\">Dice Roller</a> or <a href=\"/truth-dare/\" class=\"text-primary hover:underline\">Truth or Dare Generator</a>."
   },
   "meme-text": {
     "what": "Meme Text Generator is a free online tool that helps you add impact font text to images and generate shareable memes. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1812,14 +1812,14 @@
     "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
   },
   "truth-dare": {
-    "what": "Truth or Dare Generator is a free online tool that helps you get random truth questions and dares for party games. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "Truth or Dare Generator creates random truth questions and dares for parties, game nights, and social gatherings. Multiple difficulty levels and categories.",
     "when": [
-      "Adding randomness to games, activities, or decision-making",
-      "Generating creative prompts for writing, drawing, or brainstorming",
-      "Breaking decision paralysis when you just need a random pick"
+      "Starting a truth or dare game at parties without scrambling to think of questions",
+      "Adding variety to game nights with fresh, unexpected prompts",
+      "Breaking the ice at social gatherings with fun, lighthearted questions"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Select your difficulty level (Easy, Medium, Extreme) and click Truth or Dare. The tool randomly picks from a curated list.",
+    "related": "Keep the fun going with <a href=\"/story-generator/\" class=\"text-primary hover:underline\">Story Generator</a> or <a href=\"/coin-flip/\" class=\"text-primary hover:underline\">Coin Flip</a> for quick decisions."
   },
   "baby-names": {
     "what": "Baby Name Generator is a free online tool that helps you find baby names by gender, origin, popularity, and meaning. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1842,14 +1842,14 @@
     "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
   },
   "team-generator": {
-    "what": "Random Team Generator is a free online tool that helps you split a list of names into random teams or groups. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "Team Generator randomly divides a list of names into teams. Great for classroom activities, workplace team building, sports, and group projects.",
     "when": [
-      "Adding randomness to games, activities, or decision-making",
-      "Generating creative prompts for writing, drawing, or brainstorming",
-      "Breaking decision paralysis when you just need a random pick"
+      "Splitting a classroom into random groups for activities or discussions",
+      "Creating balanced teams for workplace hackathons, workshops, or competitions",
+      "Dividing friends into teams for sports, game nights, or multiplayer activities"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Enter the list of names (one per line), choose the number of teams, and click Generate. The tool randomly assigns each person to a team.",
+    "related": "Also try <a href=\"/list-randomizer/\" class=\"text-primary hover:underline\">List Randomizer</a> to shuffle any list, or <a href=\"/random-number/\" class=\"text-primary hover:underline\">Random Number Generator</a> for number picks."
   },
   "world-clock": {
     "what": "World Clock is a free online tool that helps you see the current time in major cities across all timezones. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
