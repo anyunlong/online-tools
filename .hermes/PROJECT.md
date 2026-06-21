@@ -11,30 +11,23 @@
 - **技术栈**：Astro 5 + Tailwind CSS，纯静态 SSG
 - **策略**：不做头部大词，专攻长尾小词（每个日搜索 100-300），AI 批量生成工具页面
 
+> 最后更新：2026-06-21
+
 ## 当前进度
 
 | 项目 | 状态 | 备注 |
 |------|------|------|
-| 框架搭建 | ✅ | 首页 + **200 工具**，16 大分类 |
-| 首页重构 | ✅ | v0 设计：Hero/搜索/卡片/精选 |
-| 英文化 + i18n | ✅ | 中英双语切换 |
-| JS 内联 | ✅ | 全静态无外部依赖 |
-| GitHub 推送 | ✅ | SSH 443 直连（4s） |
-| Vercel 部署 | ✅ | 自动部署 + Preview |
-| Vercel Analytics | ✅ | Web Analytics + Speed Insights |
-| 域名绑定 | ✅ | 4uses.com + HTTPS |
-| SEO 优化 | ✅ | sitemap/robots/JSON-LD/canonical |
-| Search Console | ⏳ | 验证修复中（2页"已抓取-未编入索引"，已点重新验证） |
-| 翻墙方案 | ✅ | 飞鸟云订阅（38节点，VLESS+HY2，~174GB）替代 VPS |
+| 框架搭建 | ✅ | 首页 + **203 工具**，210 页面 |
+| 工具质量 | ✅ | 4 轮 bug 修复：空按钮×2、MD5假算法、sha256 DOM错、PGP→AES、时区错、bcrypt假算法、99页占位文字、uuid copy反馈 |
+| 翻墙方案 | ✅ | 飞鸟云订阅（38节点，VLESS+HY2）替代 VPS |
 | VPS | ❌ 已销毁 | 0 实例，0 费用 |
-| 自动巡检 | ✅ | 每日 9:00 健康检查 + Bing 索引数 → 飞书 |
-| FAQPage Schema | ✅ | 100 工具 × 3 QA = 13,261 词 |
-| 内容扩写 | ✅ | Deep Dive + Tips + Mistakes = 20,693 词 |
-| **每页词数** | **541 词** | 从 155 提升 249% |
-| Blog 栏目 | ✅ | 5 篇文章在线 |
-| AdSense | ❌ | 被拒（关联已停用账号） |
-| Media.net | 🔜 | AdSense 替代方案 |
-| 日 UV | ~3 | 目标 50-100（3 个月） |
+| AdSense | ❌ | 被拒（关联已停用账号），后续走 Media.net |
+| Media.net | 🔜 | 等日均 UV 200+ 时申请 |
+| Search Console | ⏳ | 仍在沙盒期，Google爬取中 |
+| **日 UV** | **~7** | 累计 105 访客 / 15 天，PV ~1100 |
+| 沙盒阶段 | 第 2 周 | 预期 4-8 周出沙盒 |
+| Email 转发 | ✅ | hello@4uses.com → Gmail（Cloudflare Email Routing） |
+| Git email | ✅ | 已修正为 chinaanyunlong@gmail.com，历史已重写 |
 
 ## 项目文件关键路径
 

@@ -10,26 +10,76 @@ import Button from '../components/Button.astro';
   category="Time"
   keywords={["meeting planner", "meeting time planner", "time"]}
 >
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-    <Textarea id="inp" label="Input" placeholder="Enter your input here..." rows="12" class="tool-area" />
-    <div>
-      <label for="out" class="text-sm text-surface-300 mb-1.5 block font-medium">Output</label>
-      <div id="out" class="w-full h-72 rounded-xl border border-surface-700 bg-surface-800/50 p-3 text-xs text-surface-100 overflow-auto font-mono"></div>
+  <div class="space-y-4">
+    <div class="flex flex-col sm:flex-row gap-3">
+      <div class="flex-1">
+        <label for="mtg-dt" class="text-sm text-surface-300 mb-1.5 block font-medium">Meeting Date & Time</label>
+        <input id="mtg-dt" type="datetime-local" class="w-full h-10 rounded-xl border border-surface-600 bg-surface-800 px-3 text-sm text-surface-100 focus:border-brand-500 focus:ring-1 focus:ring-brand-500/30 focus:outline-none" />
+      </div>
+      <div class="sm:w-48">
+        <label for="mtg-tz" class="text-sm text-surface-300 mb-1.5 block font-medium">Your Timezone</label>
+        <select id="mtg-tz" class="w-full h-10 rounded-xl border border-surface-600 bg-surface-800 px-3 text-sm text-surface-100 focus:border-brand-500 focus:outline-none">
+          <option value="UTC">UTC</option>
+          <option value="America/New_York">US Eastern</option>
+          <option value="America/Chicago">US Central</option>
+          <option value="America/Denver">US Mountain</option>
+          <option value="America/Los_Angeles">US Pacific</option>
+          <option value="Europe/London">London</option>
+          <option value="Europe/Berlin">Berlin</option>
+          <option value="Europe/Moscow">Moscow</option>
+          <option value="Asia/Dubai">Dubai</option>
+          <option value="Asia/Shanghai" selected>Shanghai</option>
+          <option value="Asia/Tokyo">Tokyo</option>
+          <option value="Asia/Kolkata">India</option>
+          <option value="Australia/Sydney">Sydney</option>
+        </select>
+      </div>
     </div>
+    <Button onclick="process()">Show Times</Button>
+    <div id="out" class="w-full rounded-xl border border-surface-700 bg-surface-800/50 p-4 text-xs font-mono min-h-[100px]"></div>
+    <div id="msg" class="text-xs mt-2 text-surface-400"></div>
   </div>
-  <div class="flex gap-2 mt-4">
-    <Button onclick="process()">Process</Button>
-    <Button variant="secondary" onclick="clearAll()">Clear</Button>
-  </div>
-  <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
 function process() {
-  document.getElementById('out').innerHTML='<p style="color:#8b949e;font-size:0.85em">Shows your local time converted to major business timezones.</p><table style="width:100%;font-size:0.8em;border-collapse:collapse">'+['UTC','America/New_York','America/Los_Angeles','Europe/London','Europe/Berlin','Asia/Dubai','Asia/Shanghai','Asia/Tokyo','Australia/Sydney'].map(tz=>{try{return'<tr><td style="padding:4px 0;color:#8b949e">'+tz+'</td><td>'+new Date().toLocaleString('en-US',{timeZone:tz,weekday:'short',hour:'2-digit',minute:'2-digit'})+'</td></tr>';}catch(e){return'<tr><td>'+tz+'</td><td>N/A</td></tr>';}}).join('')+'</table>';
+  var dt = document.getElementById('mtg-dt').value;
+  var tz = document.getElementById('mtg-tz').value;
+  if (!dt) { document.getElementById('out').innerHTML = '<span style="color:#8b949e">Select a date and time first.</span>'; return; }
+  
+  // Parse input as being in the selected timezone
+  var m = dt.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})$/);
+  if (!m) return;
+  var testDate = new Date(Date.UTC(+m[1], +m[2]-1, +m[3], +m[4], +m[5]));
+  var wallStr = testDate.toLocaleString('en-CA', { timeZone: tz, year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit', second:'2-digit', hour12: false });
+  var w = wallStr.match(/(\d{4})-(\d{2})-(\d{2}),\s+(\d{2}):(\d{2}):(\d{2})/);
+  if (!w) return;
+  var wallMs = Date.UTC(+w[1], +w[2]-1, +w[3], +w[4], +w[5], +w[6]);
+  var inputMs = Date.UTC(+m[1], +m[2]-1, +m[3], +m[4], +m[5], 0);
+  var utcDate = new Date(testDate.getTime() + (inputMs - wallMs));
+  
+  var timezones = ['UTC','America/New_York','America/Los_Angeles','Europe/London','Europe/Berlin','Europe/Moscow','Asia/Dubai','Asia/Shanghai','Asia/Tokyo','Asia/Kolkata','Australia/Sydney'];
+  var rows = timezones.map(function(tzName) {
+    try {
+      var t = utcDate.toLocaleString('en-US', { timeZone: tzName, weekday:'short', hour:'2-digit', minute:'2-digit', hour12: false });
+      var d = utcDate.toLocaleString('en-US', { timeZone: tzName, month:'short', day:'numeric' });
+      var hrs = parseInt(t.split(':')[0]);
+      var isBiz = hrs >= 9 && hrs < 17;
+      var bg = isBiz ? 'background:#1a3a2a' : '';
+      var icon = isBiz ? '💼' : '🌙';
+      return '<tr style="'+bg+'"><td style="padding:6px 8px;color:#8b949e">'+icon+' '+tzName+'</td><td style="padding:6px 8px;color:#e2e8f0;text-align:right">'+t+'</td><td style="padding:6px 8px;color:#64748b;text-align:right">'+d+'</td></tr>';
+    } catch(e) {
+      return '<tr><td style="padding:6px 8px;color:#8b949e">'+tzName+'</td><td style="padding:6px 8px;color:#e2e8f0">N/A</td><td></td></tr>';
+    }
+  }).join('');
+  
+  document.getElementById('out').innerHTML = '<table style="width:100%;border-collapse:collapse">' +
+    '<thead><tr style="border-bottom:1px solid #334155"><th style="padding:8px;text-align:left;color:#64748b;font-weight:400">Timezone</th><th style="padding:8px;text-align:right;color:#64748b;font-weight:400">Time</th><th style="padding:8px;text-align:right;color:#64748b;font-weight:400">Date</th></tr></thead><tbody>' +
+    rows + '</tbody></table>' +
+    '<p style="margin-top:12px;font-size:0.75em;color:#64748b">💼 = Business hours (9am-5pm local) &nbsp; 🌙 = Outside business hours</p>';
 }
-function o(t){document.getElementById('out').textContent=t;}
-function clearAll(){document.getElementById('inp').value='';document.getElementById('out').textContent='';if(timer)clearInterval(timer);}
+(function() {
+  var now = new Date();
+  document.getElementById('mtg-dt').value = now.toISOString().slice(0, 16);
+  process();
+})();
 </script>
-<slot name="info" slot="info">
-  <p>Enter your data above — the result is computed instantly in your browser. No server upload needed.</p>
-</slot>
 </ToolLayout>
