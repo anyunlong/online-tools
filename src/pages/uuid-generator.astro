@@ -26,7 +26,12 @@ function gen() {
 }
 function copyUUID() {
   var el = document.getElementById('result');
-  navigator.clipboard.writeText(el.textContent);
+  if (!el.textContent) return;
+  navigator.clipboard.writeText(el.textContent).then(function() {
+    var btn = document.querySelector('[onclick="copyUUID()"]');
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = 'Copy'; }, 2000);
+  });
 }
 gen();
 </script>
