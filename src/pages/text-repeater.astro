@@ -29,13 +29,14 @@ function generate() {
 }
 
 function copyResult() {
-  const text = document.getElementById('result').textContent;
-  if (!text) return;
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('[onclick="copyResult()"]');
+  navigator.clipboard.writeText(document.getElementById('result').value || document.getElementById('result').textContent);
+  var btn = document.querySelector('[onclick="copyResult()"]');
+  if (btn) {
+    var orig = btn.textContent;
     btn.textContent = 'Copied!';
-    setTimeout(() => btn.textContent = 'Copy', 2000);
-  });
+    setTimeout(function() { btn.textContent = orig; }, 2000);
+  }
+});
 }
 </script>
 <div slot="info">

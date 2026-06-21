@@ -59,7 +59,13 @@ function generate() {
 }
 
 function copyResult() {
-  navigator.clipboard.writeText(document.getElementById('result').value);
+  navigator.clipboard.writeText(document.getElementById('result').value || document.getElementById('result').textContent);
+  var btn = document.querySelector('[onclick="copyResult()"]');
+  if (btn) {
+    var orig = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = orig; }, 2000);
+  }
 }
 </script>
 <slot name="info" slot="info">

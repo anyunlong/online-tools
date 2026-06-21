@@ -121,9 +121,13 @@ function downloadMeme() {
 }
 
 function copyResult() {
-  navigator.clipboard.writeText(
-    document.getElementById('top').value + '\n' + document.getElementById('bottom').value
-  );
+  navigator.clipboard.writeText((document.getElementById('top').value || document.getElementById('top').textContent || document.getElementById('bottom').value || document.getElementById('bottom').textContent));
+  var btn = document.querySelector('[onclick="copyResult()"]');
+  if (btn) {
+    var orig = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = orig; }, 2000);
+  }
 }
 
 drawMeme();

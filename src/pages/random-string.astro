@@ -26,11 +26,14 @@ function generate() {
   document.getElementById('result').textContent=s;
 }
 function copyResult() {
-  const el=document.getElementById('result');
-  if(!el||!el.textContent) return;
-  navigator.clipboard.writeText(el.textContent).then(function(){
-    document.getElementById('msg').textContent='Copied!';
-    setTimeout(function(){document.getElementById('msg').textContent='';},2000);
+  navigator.clipboard.writeText((document.getElementById('result').value || document.getElementById('result').textContent || document.getElementById('msg').value || document.getElementById('msg').textContent || document.getElementById('msg').value || document.getElementById('msg').textContent));
+  var btn = document.querySelector('[onclick="copyResult()"]');
+  if (btn) {
+    var orig = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = orig; }, 2000);
+  }
+},2000);
   });
 }
 </script>

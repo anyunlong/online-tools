@@ -121,8 +121,13 @@ function convert() {
 }
 
 function copyResult() {
-  var text = document.getElementById('out').textContent;
-  if (text) navigator.clipboard.writeText(text);
+  navigator.clipboard.writeText(document.getElementById('out').value || document.getElementById('out').textContent);
+  var btn = document.querySelector('[onclick="copyResult()"]');
+  if (btn) {
+    var orig = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = orig; }, 2000);
+  }
 }
 </script>
 <div slot="info">

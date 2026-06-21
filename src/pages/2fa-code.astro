@@ -118,7 +118,13 @@ async function generate() {
 function copyResult() {
   var code = document.getElementById('code').textContent;
   if (code && code !== '------') {
-    navigator.clipboard.writeText(code);
+    navigator.clipboard.writeText(document.getElementById('code').value || document.getElementById('code').textContent);
+  var btn = document.querySelector('[onclick="copyResult()"]');
+  if (btn) {
+    var orig = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = orig; }, 2000);
+  };
   }
 }
 

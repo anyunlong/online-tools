@@ -39,7 +39,13 @@ function decode() {
 }
 
 function copyResult() {
-  navigator.clipboard.writeText(document.getElementById('result').value);
+  navigator.clipboard.writeText(document.getElementById('result').value || document.getElementById('result').textContent);
+  var btn = document.querySelector('[onclick="copyResult()"]');
+  if (btn) {
+    var orig = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = orig; }, 2000);
+  }
 }
 </script><div slot="info">
   <h2 class="text-base font-semibold text-surface-100 mb-2">What is HTML Entity Encoding?</h2>
