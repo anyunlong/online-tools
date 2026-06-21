@@ -70,13 +70,13 @@
     "related": "Try our <a href=\"/sha256/\" class=\"text-primary hover:underline\">SHA256 Hash</a> for related functionality."
   },
   "uuid-generator": {
-    "what": "UUID Generator is a free online tool that helps you generate random uuid v4. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "UUID Generator creates version 4 (random) UUIDs in standard 8-4-4-4-12 format. Generate one or multiple UUIDs instantly for database keys, API identifiers, or distributed systems.",
     "when": [
-      "Quick lookups during coding sessions without leaving your browser",
-      "Generating boilerplate configs, snippets, or reference documentation",
-      "Learning about development standards and best practices hands-on"
+      "Creating unique identifiers for database primary keys in distributed systems",
+      "Generating API resource IDs that don't require a central authority",
+      "Producing unique session tokens, transaction IDs, or correlation IDs for logging"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
+    "how": "Click Generate to create a new UUID v4. Use the quantity selector to generate multiple UUIDs at once for bulk operations.",
     "related": "Try our <a href=\"/random-string/\" class=\"text-primary hover:underline\">Random String Generator</a> for related functionality."
   },
   "unicode": {
@@ -100,13 +100,13 @@
     "related": "Try our <a href=\"/text-sort/\" class=\"text-primary hover:underline\">Text Line Sorter</a> for related functionality."
   },
   "qr-code": {
-    "what": "QR Code Generator is a free online tool that helps you generate qr codes online. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "QR Code Generator creates scannable QR codes from any text, URL, or data. Customize with colors, sizes, and error correction levels for print or digital use.",
     "when": [
-      "Creating test data, placeholder content, or sample datasets",
-      "Generating unique IDs, tokens, or random values for applications",
-      "Coming up with creative names, prompts, or ideas for projects"
+      "Creating QR codes for restaurant menus, event tickets, or business cards",
+      "Generating QR codes that link to websites, download pages, or Wi-Fi login networks",
+      "Adding QR code stickers to product packaging for digital content links"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
+    "how": "Enter your URL or text, choose the size and error correction level, and click Generate. Download the QR code as PNG or SVG for printing or digital use.",
     "related": "Try our <a href=\"/barcode-generator/\" class=\"text-primary hover:underline\">Barcode Generator</a> for related functionality."
   },
   "color-picker": {
@@ -170,13 +170,13 @@
     "related": "Try our <a href=\"/days-until/\" class=\"text-primary hover:underline\">Days Until Calculator</a> for related functionality."
   },
   "regex": {
-    "what": "Regex Tester is a free online tool that helps you test regex patterns with highlighting. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "Regex Tester lets you build, test, and debug regular expressions in real-time. See matches, groups, and replacements as you type your pattern.",
     "when": [
-      "Quick lookups during coding sessions without leaving your browser",
-      "Generating boilerplate configs, snippets, or reference documentation",
-      "Learning about development standards and best practices hands-on"
+      "Testing and debugging regular expressions before using them in code",
+      "Learning regex syntax by experimenting with patterns and seeing live match results",
+      "Validating input formats like email, phone, or zip code patterns during development"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
+    "how": "Enter your regex pattern in the top field and test text below. The tool highlights matches in real-time and shows captured groups.",
     "related": "Try our <a href=\"/text-diff/\" class=\"text-primary hover:underline\">Text Diff Checker</a> for related functionality."
   },
   "image-compress": {
@@ -210,13 +210,13 @@
     "related": "Try our <a href=\"/json-diff/\" class=\"text-primary hover:underline\">JSON Diff Checker</a> for related functionality."
   },
   "lorem-ipsum": {
-    "what": "Lorem Ipsum Generator is a free online tool that helps you generate placeholder text for designs. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "Lorem Ipsum Generator creates placeholder text for design mockups, layout testing, and print proofs. Generate by words, sentences, or paragraphs.",
     "when": [
-      "Creating test data, placeholder content, or sample datasets",
-      "Generating unique IDs, tokens, or random values for applications",
-      "Coming up with creative names, prompts, or ideas for projects"
+      "Filling design mockups with realistic-looking text for client presentations",
+      "Testing website layouts with varying amounts of content to check responsiveness",
+      "Creating placeholder copy for print proofs, brochures, and marketing materials"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
+    "how": "Choose your preferred generation method (words, sentences, or paragraphs), set the count, and click Generate. Copy the placeholder text directly into your design.",
     "related": "Try our <a href=\"/random-string/\" class=\"text-primary hover:underline\">Random String Generator</a> for related functionality."
   },
   "text-sort": {
@@ -250,43 +250,43 @@
     "related": "Try our <a href=\"/csv-to-json/\" class=\"text-primary hover:underline\">CSV to JSON</a> for related functionality."
   },
   "markdown-preview": {
-    "what": "Markdown Preview is a free online tool that helps you write and preview markdown in real time. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "Markdown Preview renders your Markdown as formatted HTML in real-time. See exactly how your README, documentation, or blog post will look before publishing.",
     "when": [
-      "Quick lookups during coding sessions without leaving your browser",
-      "Generating boilerplate configs, snippets, or reference documentation",
-      "Learning about development standards and best practices hands-on"
+      "Previewing GitHub README files and documentation before committing",
+      "Writing and formatting Markdown blog posts with live HTML preview",
+      "Learning Markdown syntax by typing and seeing the rendered result instantly"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
+    "how": "Type or paste Markdown in the left panel. The right panel shows the rendered HTML in real-time with support for headings, lists, code blocks, tables, and images.",
     "related": "Try our <a href=\"/markdown-to-html/\" class=\"text-primary hover:underline\">Markdown to HTML</a> for related functionality."
   },
   "jwt-decoder": {
-    "what": "JWT Decoder is a free online tool that helps you decode and inspect jwt tokens. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "JWT Decoder inspects JSON Web Tokens and decodes the header and payload. Verify token structure, check expiration, and inspect claims — all client-side.",
     "when": [
-      "Quick lookups during coding sessions without leaving your browser",
-      "Generating boilerplate configs, snippets, or reference documentation",
-      "Learning about development standards and best practices hands-on"
+      "Debugging authentication issues by inspecting JWT token contents and claims",
+      "Verifying JWT expiration dates, issuer, and audience claims during development",
+      "Learning about JWT structure by decoding tokens and examining header algorithms"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
+    "how": "Paste a JWT token and click Decode. The tool shows the decoded header, payload, and signature information without sending your token to any server.",
     "related": "Try our <a href=\"/base64/\" class=\"text-primary hover:underline\">Base64 Encoder</a> for related functionality."
   },
   "css-minifier": {
-    "what": "CSS Minifier is a free online tool that helps you minify css to reduce file size. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "CSS Minifier compresses CSS code by removing whitespace, comments, and redundant syntax. Reduces file size by 30-60% for faster page loads and better performance scores.",
     "when": [
-      "Quick lookups during coding sessions without leaving your browser",
-      "Generating boilerplate configs, snippets, or reference documentation",
-      "Learning about development standards and best practices hands-on"
+      "Optimizing CSS files before deploying to production for faster page load times",
+      "Reducing CSS bundle sizes in web performance optimization workflows",
+      "Preparing minified CSS for CDN delivery, email templates, or inline styles"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
+    "how": "Paste your CSS code and click Minify. The tool strips comments, whitespace, and unnecessary characters while preserving all functionality.",
     "related": "Try our <a href=\"/js-minifier/\" class=\"text-primary hover:underline\">JavaScript Minifier</a> for related functionality."
   },
   "random-string": {
-    "what": "Random String Generator is a free online tool that helps you generate random strings with custom rules. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "Random String Generator creates cryptographically random strings with customizable length and character sets. Perfect for API keys, session tokens, and passwords.",
     "when": [
-      "Creating test data, placeholder content, or sample datasets",
-      "Generating unique IDs, tokens, or random values for applications",
-      "Coming up with creative names, prompts, or ideas for projects"
+      "Generating secure API keys and tokens for application authentication",
+      "Creating random session identifiers or CSRF tokens for web security",
+      "Producing random test strings with specific character requirements for validation testing"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
+    "how": "Set the desired length and select which character types to include (uppercase, lowercase, numbers, symbols). Click Generate to get your random string.",
     "related": "Try our <a href=\"/password-generator/\" class=\"text-primary hover:underline\">Password Generator</a> for related functionality."
   },
   "percentage-calculator": {
@@ -310,43 +310,43 @@
     "related": "Try our <a href=\"/json-formatter/\" class=\"text-primary hover:underline\">JSON Formatter</a> for related functionality."
   },
   "js-minifier": {
-    "what": "JavaScript Minifier is a free online tool that helps you minify javascript to reduce file size. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "JavaScript Minifier compresses JS code by removing whitespace, comments, and shortening variable names where safe. Reduces file size for faster page loads.",
     "when": [
-      "Quick lookups during coding sessions without leaving your browser",
-      "Generating boilerplate configs, snippets, or reference documentation",
-      "Learning about development standards and best practices hands-on"
+      "Optimizing JavaScript bundles before deploying to production",
+      "Reducing third-party script sizes for better page performance",
+      "Preparing minified JavaScript for CDN delivery or inline script tags"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
+    "how": "Paste your JavaScript code and click Minify. The tool removes unnecessary characters while preserving functionality.",
     "related": "Try our <a href=\"/css-minifier/\" class=\"text-primary hover:underline\">CSS Minifier</a> for related functionality."
   },
   "html-minifier": {
-    "what": "HTML Minifier is a free online tool that helps you minify html to reduce page size. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "HTML Minifier compresses HTML by removing whitespace, comments, and optional tags. Reduces page size for faster loading and better Core Web Vitals scores.",
     "when": [
-      "Quick lookups during coding sessions without leaving your browser",
-      "Generating boilerplate configs, snippets, or reference documentation",
-      "Learning about development standards and best practices hands-on"
+      "Optimizing HTML output before deploying to production servers",
+      "Reducing page weight for better Lighthouse performance scores",
+      "Minifying email HTML templates to stay within size limits"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
+    "how": "Paste your HTML and click Minify. The tool removes unnecessary whitespace, comments, and optional closing tags while preserving document structure.",
     "related": "Try our <a href=\"/css-minifier/\" class=\"text-primary hover:underline\">CSS Minifier</a> for related functionality."
   },
   "sql-formatter": {
-    "what": "SQL Formatter is a free online tool that helps you format and beautify sql queries. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "SQL Formatter beautifies SQL queries with proper indentation, keyword capitalization, and line breaks. Supports MySQL, PostgreSQL, SQL Server, and SQLite dialects.",
     "when": [
-      "Quick lookups during coding sessions without leaving your browser",
-      "Generating boilerplate configs, snippets, or reference documentation",
-      "Learning about development standards and best practices hands-on"
+      "Formatting long, messy SQL queries for better readability and maintenance",
+      "Standardizing SQL code style across a team or project codebase",
+      "Debugging complex JOIN queries by visualizing the structure with proper indentation"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
+    "how": "Paste your SQL query and click Format. The tool capitalizes keywords, indents clauses, and adds line breaks for maximum readability.",
     "related": "Try our <a href=\"/json-formatter/\" class=\"text-primary hover:underline\">JSON Formatter</a> for related functionality."
   },
   "url-parser": {
-    "what": "URL Parser is a free online tool that helps you parse and decode url components. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "URL Parser breaks down any URL into its components: protocol, hostname, path, query parameters, and hash fragment. Understand how any URL is structured.",
     "when": [
-      "Quick lookups during coding sessions without leaving your browser",
-      "Generating boilerplate configs, snippets, or reference documentation",
-      "Learning about development standards and best practices hands-on"
+      "Debugging URL routing issues by examining the full URL structure and parameters",
+      "Extracting query string parameters from complex marketing or tracking URLs",
+      "Learning URL anatomy — understanding the difference between hostname, path, and fragment"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
+    "how": "Paste any URL and click Parse. The tool shows each component: scheme, host, port, path, query string, and fragment identifier.",
     "related": "Try our <a href=\"/url-encode/\" class=\"text-primary hover:underline\">URL Encoder</a> for related functionality."
   },
   "http-status": {
@@ -430,13 +430,13 @@
     "related": "Try our <a href=\"/team-generator/\" class=\"text-primary hover:underline\">Random Team Generator</a> for related functionality."
   },
   "meta-tag-generator": {
-    "what": "Meta Tag Generator is a free online tool that helps you generate seo meta tags for web pages. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "Meta Tag Generator creates HTML meta tags for SEO, social sharing, and mobile optimization. Generates title, description, Open Graph, Twitter Cards, and viewport meta tags.",
     "when": [
-      "Creating test data, placeholder content, or sample datasets",
-      "Generating unique IDs, tokens, or random values for applications",
-      "Coming up with creative names, prompts, or ideas for projects"
+      "Adding SEO meta tags to new web pages for better search engine visibility",
+      "Generating Open Graph and Twitter Card meta tags for social media sharing previews",
+      "Creating complete head section meta tags for HTML email templates or landing pages"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
+    "how": "Fill in your page title, description, and optional social sharing fields. The tool generates ready-to-paste HTML meta tags for your page's <head> section.",
     "related": "Try our <a href=\"/serp-preview/\" class=\"text-primary hover:underline\">Google SERP Preview</a> for related functionality."
   },
   "text-repeater": {
@@ -497,7 +497,7 @@
       "Checking text properties like readability, uniqueness, or patterns"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/case-converter/\" class=\"text-primary hover:underline\">Case Converter</a> or <a href=\"/text-sort/\" class=\"text-primary hover:underline\">Text Line Sorter</a> for related functionality."
   },
   "rot13": {
     "what": "ROT13 Cipher is a free online tool that helps you encode and decode text with rot13 cipher. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -507,7 +507,7 @@
       "Encoding special characters for safe storage in databases or files"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/base64/\" class=\"text-primary hover:underline\">Base64 Encoder</a> or <a href=\"/unicode/\" class=\"text-primary hover:underline\">Unicode Converter</a> for related functionality."
   },
   "ascii-table": {
     "what": "ASCII Table is a free online tool that helps you complete ascii character reference table. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -517,7 +517,7 @@
       "Encoding special characters for safe storage in databases or files"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/morse-code/\" class=\"text-primary hover:underline\">Morse Code Translator</a> or <a href=\"/base64/\" class=\"text-primary hover:underline\">Base64 Encoder</a> for related functionality."
   },
   "sha1": {
     "what": "SHA1 Hash Generator is a free online tool that helps you generate sha1 hash values from text. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -527,7 +527,7 @@
       "Learning how different hash algorithms work and when to use each"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/sha256/\" class=\"text-primary hover:underline\">SHA256 Hash</a> or <a href=\"/md5/\" class=\"text-primary hover:underline\">MD5 Hash</a> for related functionality."
   },
   "sha512": {
     "what": "SHA-512 Hash Generator creates a SHA-512 hash from any text input. SHA-512 is a cryptographic hash function that produces a 128-character hex digest, widely used for file integrity verification and digital signatures.",
@@ -547,7 +547,7 @@
       "Learning how different hash algorithms work and when to use each"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/hmac-generator/\" class=\"text-primary hover:underline\">HMAC Generator</a> or <a href=\"/sha512/\" class=\"text-primary hover:underline\">SHA512 Hash Generator</a> for related functionality."
   },
   "text-reverse": {
     "what": "Text Reverser is a free online tool that helps you reverse any text string instantly. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -557,7 +557,7 @@
       "Checking text properties like readability, uniqueness, or patterns"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/whitespace-remover/\" class=\"text-primary hover:underline\">Whitespace Remover</a> or <a href=\"/text-repeater/\" class=\"text-primary hover:underline\">Text Repeater</a> for related functionality."
   },
   "duplicate-remover": {
     "what": "Duplicate Line Remover is a free online tool that helps you remove duplicate lines from text. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -567,7 +567,7 @@
       "Checking text properties like readability, uniqueness, or patterns"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/markdown-to-html/\" class=\"text-primary hover:underline\">Markdown to HTML</a> or <a href=\"/case-converter/\" class=\"text-primary hover:underline\">Case Converter</a> for related functionality."
   },
   "levenshtein-distance": {
     "what": "Levenshtein Distance is a free online tool that helps you calculate string similarity using levenshtein distance. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -577,7 +577,7 @@
       "Checking text properties like readability, uniqueness, or patterns"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/whitespace-remover/\" class=\"text-primary hover:underline\">Whitespace Remover</a> or <a href=\"/extract-emails/\" class=\"text-primary hover:underline\">Email Extractor</a> for related functionality."
   },
   "bytes-converter": {
     "what": "Bytes Converter is a free online tool that helps you convert between bytes, kb, mb, gb, and tb. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -587,7 +587,7 @@
       "Translating data representations for compatibility between tools"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/area-converter/\" class=\"text-primary hover:underline\">Area Converter</a> or <a href=\"/energy-converter/\" class=\"text-primary hover:underline\">Energy Converter</a> for related functionality."
   },
   "roman-numerals": {
     "what": "Roman Numerals Converter is a free online tool that helps you convert between roman numerals and numbers. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -597,7 +597,7 @@
       "Translating data representations for compatibility between tools"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/xml-to-json/\" class=\"text-primary hover:underline\">XML to JSON Converter</a> or <a href=\"/pressure-converter/\" class=\"text-primary hover:underline\">Pressure Converter</a> for related functionality."
   },
   "timezone-converter": {
     "what": "Timezone Converter is a free online tool that helps you convert time between different timezones. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -607,7 +607,7 @@
       "Figuring out date differences for travel, billing, or event planning"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/pomodoro/\" class=\"text-primary hover:underline\">Pomodoro Timer</a> or <a href=\"/work-hours/\" class=\"text-primary hover:underline\">Work Hours Calculator</a> for related functionality."
   },
   "cron-parser": {
     "what": "Cron Expression Parser is a free online tool that helps you parse and explain cron schedule expressions. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -617,7 +617,7 @@
       "Figuring out date differences for travel, billing, or event planning"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/date-calculator/\" class=\"text-primary hover:underline\">Date Calculator</a> or <a href=\"/sleep-calculator/\" class=\"text-primary hover:underline\">Sleep Cycle Calculator</a> for related functionality."
   },
   "day-of-week": {
     "what": "Day of Week Finder is a free online tool that helps you find what day of the week any date falls on. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -627,7 +627,7 @@
       "Figuring out date differences for travel, billing, or event planning"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/countdown/\" class=\"text-primary hover:underline\">Countdown Timer</a> or <a href=\"/date-calculator/\" class=\"text-primary hover:underline\">Date Calculator</a> for related functionality."
   },
   "sleep-calculator": {
     "what": "Sleep Cycle Calculator is a free online tool that helps you calculate optimal sleep and wake times based on sleep cycles. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -637,7 +637,7 @@
       "Figuring out date differences for travel, billing, or event planning"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/meeting-planner/\" class=\"text-primary hover:underline\">Meeting Time Planner</a> or <a href=\"/stopwatch/\" class=\"text-primary hover:underline\">Online Stopwatch</a> for related functionality."
   },
   "xml-to-json": {
     "what": "XML to JSON Converter is a free online tool that helps you convert xml data to json format. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -647,7 +647,7 @@
       "Translating data representations for compatibility between tools"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/roman-numerals/\" class=\"text-primary hover:underline\">Roman Numerals Converter</a> or <a href=\"/bytes-converter/\" class=\"text-primary hover:underline\">Bytes Converter</a> for related functionality."
   },
   "json-to-xml": {
     "what": "JSON to XML Converter is a free online tool that helps you convert json data to xml format. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -657,7 +657,7 @@
       "Translating data representations for compatibility between tools"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/volume-converter/\" class=\"text-primary hover:underline\">Volume Converter</a> or <a href=\"/angle-converter/\" class=\"text-primary hover:underline\">Angle Converter</a> for related functionality."
   },
   "xml-formatter": {
     "what": "XML Formatter is a free online tool that helps you format and beautify xml code. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -667,7 +667,7 @@
       "Preparing clean, consistently styled code for documentation or sharing"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/css-beautifier/\" class=\"text-primary hover:underline\">CSS Beautifier</a> or <a href=\"/json-validator/\" class=\"text-primary hover:underline\">JSON Validator</a> for related functionality."
   },
   "css-beautifier": {
     "what": "CSS Beautifier is a free online tool that helps you beautify and format css code. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -677,7 +677,7 @@
       "Preparing clean, consistently styled code for documentation or sharing"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/json-validator/\" class=\"text-primary hover:underline\">JSON Validator</a> or <a href=\"/json-formatter/\" class=\"text-primary hover:underline\">JSON Formatter</a> for related functionality."
   },
   "html-beautifier": {
     "what": "HTML Beautifier formats and indents messy HTML code. Fix inconsistent spacing, proper nesting, and clean up minified HTML in one click.",
@@ -710,34 +710,34 @@
     "related": "Try our <a href=\"/http-headers-checker/\" class=\"text-primary hover:underline\">HTTP Headers Checker</a> for request headers, or <a href=\"/redirect-checker/\" class=\"text-primary hover:underline\">Redirect Checker</a> for URL chains."
   },
   "mime-lookup": {
-    "what": "MIME Type Lookup is a free online tool that helps you look up mime types by file extension or type. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "MIME Type Lookup lets you search for MIME types by file extension or description. Find the correct Content-Type header for any file format.",
     "when": [
-      "Quick lookups during coding sessions without leaving your browser",
-      "Generating boilerplate configs, snippets, or reference documentation",
-      "Learning about development standards and best practices hands-on"
+      "Configuring web server MIME types for proper file delivery",
+      "Checking the correct Content-Type header to use in API responses",
+      "Debugging file download issues caused by incorrect MIME type configuration"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Enter a file extension (.pdf, .jpg, .json, etc.) or search by format name. The tool returns the standard MIME type and a brief description.",
+    "related": "Also try our <a href=\"/html-table-gen/\" class=\"text-primary hover:underline\">HTML Table Generator</a> or <a href=\"/json-to-yaml/\" class=\"text-primary hover:underline\">JSON to YAML Converter</a> for related functionality."
   },
   "yaml-to-json": {
-    "what": "YAML to JSON Converter is a free online tool that helps you convert yaml data to json format. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "YAML to JSON Converter transforms YAML data into valid JSON format, and vice versa. Handles nested structures, arrays, and common formatting differences.",
     "when": [
-      "Quick lookups during coding sessions without leaving your browser",
-      "Generating boilerplate configs, snippets, or reference documentation",
-      "Learning about development standards and best practices hands-on"
+      "Converting YAML configuration files to JSON for applications that require JSON input",
+      "Translating between YAML and JSON when migrating between different tool configurations",
+      "Verifying that YAML data converts correctly to JSON without data loss"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Paste YAML or JSON in the input panel and click Convert. The tool shows the converted format in the output panel with syntax highlighting.",
+    "related": "Also try our <a href=\"/color-namer/\" class=\"text-primary hover:underline\">CSS Color Name Finder</a> or <a href=\"/uuid-generator/\" class=\"text-primary hover:underline\">UUID Generator</a> for related functionality."
   },
   "json-to-yaml": {
-    "what": "JSON to YAML Converter is a free online tool that helps you convert json data to yaml format. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "JSON to YAML Converter transforms JSON into YAML format and back. Maintains data structure while adapting to each format's syntax.",
     "when": [
-      "Quick lookups during coding sessions without leaving your browser",
-      "Generating boilerplate configs, snippets, or reference documentation",
-      "Learning about development standards and best practices hands-on"
+      "Converting JSON configuration to YAML for tools like Docker Compose, Ansible, or CI/CD pipelines",
+      "Translating between data formats when switching between different configuration management systems",
+      "Preparing JSON data for systems that require human-readable YAML format"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Paste JSON or YAML and click Convert. The tool preserves data types and structure during conversion.",
+    "related": "Also try our <a href=\"/markdown-preview/\" class=\"text-primary hover:underline\">Markdown Preview</a> or <a href=\"/uuid-generator/\" class=\"text-primary hover:underline\">UUID Generator</a> for related functionality."
   },
   "http-headers-checker": {
     "what": "HTTP Headers Reference is a free online tool that helps you reference for common http request and response headers. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -747,7 +747,7 @@
       "Quick reference for network configuration and diagnostics"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/ip-lookup/\" class=\"text-primary hover:underline\">IP Lookup</a> or <a href=\"/port-checker/\" class=\"text-primary hover:underline\">Port Reference</a> for related functionality."
   },
   "dns-lookup": {
     "what": "DNS Lookup is a free online tool that helps you perform dns record lookups for any domain. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -757,7 +757,7 @@
       "Quick reference for network configuration and diagnostics"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/http-headers-checker/\" class=\"text-primary hover:underline\">HTTP Headers Reference</a> or <a href=\"/port-checker/\" class=\"text-primary hover:underline\">Port Reference</a> for related functionality."
   },
   "port-checker": {
     "what": "Port Reference is a free online tool that helps you common tcp/udp network port numbers reference. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -767,17 +767,17 @@
       "Quick reference for network configuration and diagnostics"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/dns-lookup/\" class=\"text-primary hover:underline\">DNS Lookup</a> or <a href=\"/ip-lookup/\" class=\"text-primary hover:underline\">IP Lookup</a> for related functionality."
   },
   "git-cheatsheet": {
-    "what": "Git Cheatsheet is a free online tool that helps you quick reference for common git commands. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "Git Cheatsheet provides quick reference for common Git commands — commit, branch, merge, rebase, stash, and more. Search or browse commands by category.",
     "when": [
-      "Quick lookups during coding sessions without leaving your browser",
-      "Generating boilerplate configs, snippets, or reference documentation",
-      "Learning about development standards and best practices hands-on"
+      "Looking up Git commands quickly during development without leaving your browser",
+      "Learning Git basics — branching, merging, committing, and pushing to remote repositories",
+      "Remembering the exact syntax for less common Git operations like rebase or cherry-pick"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Browse commands by category or use the search to find specific Git operations. Each command shows the syntax, description, and common options.",
+    "related": "Also try our <a href=\"/npm-package-json/\" class=\"text-primary hover:underline\">package.json Generator</a> or <a href=\"/user-agent-parser/\" class=\"text-primary hover:underline\">User Agent Parser</a> for related functionality."
   },
   "hash-compare": {
     "what": "Hash Compare is a free online tool that helps you compare two hash values side by side. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -800,23 +800,23 @@
     "related": "Try our <a href=\"/gradient-preview/\" class=\"text-primary hover:underline\">CSS Gradient Preview</a> for related functionality."
   },
   "random-number": {
-    "what": "Random Number Generator is a free online tool that helps you generate random numbers within a range. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "Random Number Generator produces random numbers within any range you specify. Generate one number or a list, with support for integers and decimals.",
     "when": [
-      "Creating test data, placeholder content, or sample datasets",
-      "Generating unique IDs, tokens, or random values for applications",
-      "Coming up with creative names, prompts, or ideas for projects"
+      "Picking random winners for giveaways, raffles, or contests within a numeric range",
+      "Generating random numbers for game mechanics, dice alternatives, or coin flips",
+      "Creating random values for simulations, sampling, or statistical analysis"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
+    "how": "Enter the minimum and maximum values, choose integer or decimal, and click Generate. Use the quantity selector to generate multiple numbers at once.",
     "related": "Try our <a href=\"/coin-flip/\" class=\"text-primary hover:underline\">Coin Flip Simulator</a> for related functionality."
   },
   "random-color": {
-    "what": "Random Color Generator is a free online tool that helps you generate random colors with hex codes. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "Random Color Generator produces random hex color codes (#RRGGBB) for design inspiration. See the color preview and copy the code in one click.",
     "when": [
-      "Creating test data, placeholder content, or sample datasets",
-      "Generating unique IDs, tokens, or random values for applications",
-      "Coming up with creative names, prompts, or ideas for projects"
+      "Finding color inspiration for UI design, branding, or art projects",
+      "Generating random accent colors to test against your existing design palette",
+      "Exploring the color spectrum to discover unexpected color combinations"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
+    "how": "Click Generate to get a random hex color. The tool shows a live color preview and the hex code. Keep clicking to explore different colors.",
     "related": "Try our <a href=\"/hex-color-gen/\" class=\"text-primary hover:underline\">Random HEX Color Gen</a> for related functionality."
   },
   "dice-roller": {
@@ -830,13 +830,13 @@
     "related": "Try our <a href=\"/coin-flip/\" class=\"text-primary hover:underline\">Coin Flip</a> for 50/50 decisions, or <a href=\"/random-number/\" class=\"text-primary hover:underline\">Random Number Generator</a> for custom numeric ranges."
   },
   "nano-id": {
-    "what": "Nano ID Generator is a free online tool that helps you generate compact, url-friendly unique ids. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "Nano ID Generator creates compact, URL-safe unique IDs using the nano ID algorithm. Shorter than UUIDs but still collision-resistant — perfect for short URLs and object keys.",
     "when": [
-      "Creating test data, placeholder content, or sample datasets",
-      "Generating unique IDs, tokens, or random values for applications",
-      "Coming up with creative names, prompts, or ideas for projects"
+      "Generating short, URL-safe IDs for database records in web applications",
+      "Creating compact unique identifiers for short URLs, pastebin links, or file names",
+      "Replacing UUIDs with shorter nano IDs for better readability in logs and URLs"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
+    "how": "Select the desired ID length (default 21 characters) and click Generate. Nano IDs use a 64-character alphabet for compact, collision-resistant identifiers.",
     "related": "Try our <a href=\"/uuid-generator/\" class=\"text-primary hover:underline\">UUID Generator</a> for related functionality."
   },
   "password-strength": {
@@ -1007,7 +1007,7 @@
       "Quickly calculating tips, splits, taxes, or currency conversions"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/discount-calculator/\" class=\"text-primary hover:underline\">Discount Calculator</a> or <a href=\"/loan-calculator/\" class=\"text-primary hover:underline\">Loan Calculator</a> for related functionality."
   },
   "loan-calculator": {
     "what": "Loan Calculator is a free online tool that helps you calculate monthly payments, total interest, and amortization schedule. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1017,7 +1017,7 @@
       "Quickly calculating tips, splits, taxes, or currency conversions"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/discount-calculator/\" class=\"text-primary hover:underline\">Discount Calculator</a> or <a href=\"/savings-goal/\" class=\"text-primary hover:underline\">Savings Goal Calculator</a> for related functionality."
   },
   "currency-converter": {
     "what": "Currency Converter is a free online tool that helps you convert between world currencies with real-time exchange rates. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1027,7 +1027,7 @@
       "Quickly calculating tips, splits, taxes, or currency conversions"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/hourly-to-salary/\" class=\"text-primary hover:underline\">Hourly to Salary Converter</a> or <a href=\"/loan-calculator/\" class=\"text-primary hover:underline\">Loan Calculator</a> for related functionality."
   },
   "discount-calculator": {
     "what": "Discount Calculator is a free online tool that helps you calculate sale price, discount percentage, and savings instantly. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1037,7 +1037,7 @@
       "Quickly calculating tips, splits, taxes, or currency conversions"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/compound-interest/\" class=\"text-primary hover:underline\">Compound Interest Calculator</a> or <a href=\"/hourly-to-salary/\" class=\"text-primary hover:underline\">Hourly to Salary Converter</a> for related functionality."
   },
   "sales-tax": {
     "what": "Sales Tax Calculator is a free online tool that helps you calculate total price including sales tax for any us state. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1047,7 +1047,7 @@
       "Quickly calculating tips, splits, taxes, or currency conversions"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/savings-goal/\" class=\"text-primary hover:underline\">Savings Goal Calculator</a> or <a href=\"/loan-calculator/\" class=\"text-primary hover:underline\">Loan Calculator</a> for related functionality."
   },
   "savings-goal": {
     "what": "Savings Goal Calculator is a free online tool that helps you plan how long to reach your savings goal with monthly contributions. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1057,7 +1057,7 @@
       "Quickly calculating tips, splits, taxes, or currency conversions"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/compound-interest/\" class=\"text-primary hover:underline\">Compound Interest Calculator</a> or <a href=\"/split-bill/\" class=\"text-primary hover:underline\">Split Bill Calculator</a> for related functionality."
   },
   "hourly-to-salary": {
     "what": "Hourly to Salary Converter is a free online tool that helps you convert hourly wage to annual salary and vice versa. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1067,7 +1067,7 @@
       "Quickly calculating tips, splits, taxes, or currency conversions"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/currency-converter/\" class=\"text-primary hover:underline\">Currency Converter</a> or <a href=\"/split-bill/\" class=\"text-primary hover:underline\">Split Bill Calculator</a> for related functionality."
   },
   "split-bill": {
     "what": "Split Bill Calculator is a free online tool that helps you split a restaurant bill evenly with tip included. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1077,7 +1077,7 @@
       "Quickly calculating tips, splits, taxes, or currency conversions"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/compound-interest/\" class=\"text-primary hover:underline\">Compound Interest Calculator</a> or <a href=\"/hourly-to-salary/\" class=\"text-primary hover:underline\">Hourly to Salary Converter</a> for related functionality."
   },
   "macro-calculator": {
     "what": "Macro Calculator is a free online tool that helps you calculate daily protein, carb, and fat intake based on your goals. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1087,7 +1087,7 @@
       "Understanding formula-based health estimates for educational purposes"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/pace-calculator/\" class=\"text-primary hover:underline\">Running Pace Calculator</a> or <a href=\"/pregnancy-calculator/\" class=\"text-primary hover:underline\">Pregnancy Due Date Calculator</a> for related functionality."
   },
   "one-rep-max": {
     "what": "One Rep Max Calculator is a free online tool that helps you estimate your one-rep max for bench, squat, and deadlift. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1097,7 +1097,7 @@
       "Understanding formula-based health estimates for educational purposes"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/pace-calculator/\" class=\"text-primary hover:underline\">Running Pace Calculator</a> or <a href=\"/macro-calculator/\" class=\"text-primary hover:underline\">Macro Calculator</a> for related functionality."
   },
   "pace-calculator": {
     "what": "Running Pace Calculator is a free online tool that helps you calculate running pace, time, and distance for any race. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1107,7 +1107,7 @@
       "Understanding formula-based health estimates for educational purposes"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/pregnancy-calculator/\" class=\"text-primary hover:underline\">Pregnancy Due Date Calculator</a> or <a href=\"/ideal-weight/\" class=\"text-primary hover:underline\">Ideal Weight Calculator</a> for related functionality."
   },
   "pregnancy-calculator": {
     "what": "Pregnancy Due Date Calculator is a free online tool that helps you estimate your baby's due date based on last period or conception. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1117,7 +1117,7 @@
       "Understanding formula-based health estimates for educational purposes"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/one-rep-max/\" class=\"text-primary hover:underline\">One Rep Max Calculator</a> or <a href=\"/pace-calculator/\" class=\"text-primary hover:underline\">Running Pace Calculator</a> for related functionality."
   },
   "blood-alcohol": {
     "what": "BAC Calculator is a free online tool that helps you estimate blood alcohol content based on drinks, weight, and time. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1127,7 +1127,7 @@
       "Understanding formula-based health estimates for educational purposes"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/macro-calculator/\" class=\"text-primary hover:underline\">Macro Calculator</a> or <a href=\"/ideal-weight/\" class=\"text-primary hover:underline\">Ideal Weight Calculator</a> for related functionality."
   },
   "ideal-weight": {
     "what": "Ideal Weight Calculator is a free online tool that helps you find your ideal weight range based on height, age, and body frame. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1137,7 +1137,7 @@
       "Understanding formula-based health estimates for educational purposes"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/pregnancy-calculator/\" class=\"text-primary hover:underline\">Pregnancy Due Date Calculator</a> or <a href=\"/macro-calculator/\" class=\"text-primary hover:underline\">Macro Calculator</a> for related functionality."
   },
   "temperature-converter": {
     "what": "Temperature Converter is a free online tool that helps you convert between celsius, fahrenheit, and kelvin instantly. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1147,7 +1147,7 @@
       "Translating data representations for compatibility between tools"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/bytes-converter/\" class=\"text-primary hover:underline\">Bytes Converter</a> or <a href=\"/cooking-converter/\" class=\"text-primary hover:underline\">Cooking Converter</a> for related functionality."
   },
   "length-converter": {
     "what": "Length Converter is a free online tool that helps you convert between meters, feet, inches, miles, and kilometers. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1157,7 +1157,7 @@
       "Translating data representations for compatibility between tools"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/pressure-converter/\" class=\"text-primary hover:underline\">Pressure Converter</a> or <a href=\"/temperature-converter/\" class=\"text-primary hover:underline\">Temperature Converter</a> for related functionality."
   },
   "weight-converter": {
     "what": "Weight Converter is a free online tool that helps you convert between kilograms, pounds, ounces, and stones. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1167,7 +1167,7 @@
       "Translating data representations for compatibility between tools"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/xml-to-json/\" class=\"text-primary hover:underline\">XML to JSON Converter</a> or <a href=\"/temperature-converter/\" class=\"text-primary hover:underline\">Temperature Converter</a> for related functionality."
   },
   "speed-converter": {
     "what": "Speed Converter is a free online tool that helps you convert between mph, kph, knots, and mach. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1177,7 +1177,7 @@
       "Translating data representations for compatibility between tools"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/csv-to-json/\" class=\"text-primary hover:underline\">CSV to JSON</a> or <a href=\"/weight-converter/\" class=\"text-primary hover:underline\">Weight Converter</a> for related functionality."
   },
   "area-converter": {
     "what": "Area Converter is a free online tool that helps you convert between square meters, acres, hectares, and square feet. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1187,7 +1187,7 @@
       "Translating data representations for compatibility between tools"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/pressure-converter/\" class=\"text-primary hover:underline\">Pressure Converter</a> or <a href=\"/length-converter/\" class=\"text-primary hover:underline\">Length Converter</a> for related functionality."
   },
   "volume-converter": {
     "what": "Volume Converter is a free online tool that helps you convert between liters, gallons, cups, and milliliters. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1197,7 +1197,7 @@
       "Translating data representations for compatibility between tools"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/csv-to-json/\" class=\"text-primary hover:underline\">CSV to JSON</a> or <a href=\"/weight-converter/\" class=\"text-primary hover:underline\">Weight Converter</a> for related functionality."
   },
   "angle-converter": {
     "what": "Angle Converter is a free online tool that helps you convert between degrees, radians, and gradians. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1207,7 +1207,7 @@
       "Translating data representations for compatibility between tools"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/json-to-csv/\" class=\"text-primary hover:underline\">JSON to CSV Converter</a> or <a href=\"/speed-converter/\" class=\"text-primary hover:underline\">Speed Converter</a> for related functionality."
   },
   "cooking-converter": {
     "what": "Cooking Converter is a free online tool that helps you convert cooking measurements: cups, tablespoons, teaspoons, ml. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1217,7 +1217,7 @@
       "Translating data representations for compatibility between tools"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/volume-converter/\" class=\"text-primary hover:underline\">Volume Converter</a> or <a href=\"/csv-to-json/\" class=\"text-primary hover:underline\">CSV to JSON</a> for related functionality."
   },
   "pressure-converter": {
     "what": "Pressure Converter is a free online tool that helps you convert between pascal, bar, psi, and atmospheres. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1227,7 +1227,7 @@
       "Translating data representations for compatibility between tools"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/length-converter/\" class=\"text-primary hover:underline\">Length Converter</a> or <a href=\"/roman-numerals/\" class=\"text-primary hover:underline\">Roman Numerals Converter</a> for related functionality."
   },
   "energy-converter": {
     "what": "Energy Converter is a free online tool that helps you convert between joules, calories, kwh, and btus. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1237,7 +1237,7 @@
       "Translating data representations for compatibility between tools"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/roman-numerals/\" class=\"text-primary hover:underline\">Roman Numerals Converter</a> or <a href=\"/csv-to-json/\" class=\"text-primary hover:underline\">CSV to JSON</a> for related functionality."
   },
   "prime-checker": {
     "what": "Prime Number Checker is a free online tool that helps you check if a number is prime and find nearby primes. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1247,7 +1247,7 @@
       "Verifying financial, statistical, or engineering computations"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/mean-median-mode/\" class=\"text-primary hover:underline\">Mean, Median, Mode Calculator</a> or <a href=\"/tip-calculator/\" class=\"text-primary hover:underline\">Tip Calculator</a> for related functionality."
   },
   "gcf-calculator": {
     "what": "GCF Calculator is a free online tool that helps you find the greatest common factor of two or more numbers. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1257,7 +1257,7 @@
       "Verifying financial, statistical, or engineering computations"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/exponent-calculator/\" class=\"text-primary hover:underline\">Exponent Calculator</a> or <a href=\"/ratio-simplifier/\" class=\"text-primary hover:underline\">Ratio Simplifier</a> for related functionality."
   },
   "lcm-calculator": {
     "what": "LCM Calculator is a free online tool that helps you find the least common multiple of two or more numbers. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1267,7 +1267,7 @@
       "Verifying financial, statistical, or engineering computations"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/factorial/\" class=\"text-primary hover:underline\">Factorial Calculator</a> or <a href=\"/tip-calculator/\" class=\"text-primary hover:underline\">Tip Calculator</a> for related functionality."
   },
   "scientific-notation": {
     "what": "Scientific Notation Converter is a free online tool that helps you convert numbers to and from scientific notation. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1277,7 +1277,7 @@
       "Verifying financial, statistical, or engineering computations"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/gcf-calculator/\" class=\"text-primary hover:underline\">GCF Calculator</a> or <a href=\"/prime-checker/\" class=\"text-primary hover:underline\">Prime Number Checker</a> for related functionality."
   },
   "ratio-simplifier": {
     "what": "Ratio Simplifier is a free online tool that helps you simplify ratios to their lowest terms instantly. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1287,7 +1287,7 @@
       "Verifying financial, statistical, or engineering computations"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/exponent-calculator/\" class=\"text-primary hover:underline\">Exponent Calculator</a> or <a href=\"/number-base/\" class=\"text-primary hover:underline\">Number Base Converter</a> for related functionality."
   },
   "proportion-calculator": {
     "what": "Proportion Calculator is a free online tool that helps you solve proportions and find the missing value in ratio equations. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1297,7 +1297,7 @@
       "Verifying financial, statistical, or engineering computations"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/mean-median-mode/\" class=\"text-primary hover:underline\">Mean, Median, Mode Calculator</a> or <a href=\"/bmi-calculator/\" class=\"text-primary hover:underline\">BMI Calculator</a> for related functionality."
   },
   "quadratic-solver": {
     "what": "Quadratic Equation Solver is a free online tool that helps you solve quadratic equations and find real and complex roots. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1307,7 +1307,7 @@
       "Verifying financial, statistical, or engineering computations"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/tip-calculator/\" class=\"text-primary hover:underline\">Tip Calculator</a> or <a href=\"/factorial/\" class=\"text-primary hover:underline\">Factorial Calculator</a> for related functionality."
   },
   "exponent-calculator": {
     "what": "Exponent Calculator is a free online tool that helps you calculate powers, roots, and exponential expressions. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1317,7 +1317,7 @@
       "Verifying financial, statistical, or engineering computations"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/percentage-calculator/\" class=\"text-primary hover:underline\">Percentage Calculator</a> or <a href=\"/ratio-simplifier/\" class=\"text-primary hover:underline\">Ratio Simplifier</a> for related functionality."
   },
   "readability-score": {
     "what": "Readability Score is a free online tool that helps you check readability with flesch-kincaid, gunning fog, and smog indices. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1327,7 +1327,7 @@
       "Checking text properties like readability, uniqueness, or patterns"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/text-sort/\" class=\"text-primary hover:underline\">Text Line Sorter</a> or <a href=\"/text-reverse/\" class=\"text-primary hover:underline\">Text Reverser</a> for related functionality."
   },
   "palindrome-checker": {
     "what": "Palindrome Checker is a free online tool that helps you check if a word, phrase, or number reads the same backwards. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1337,7 +1337,7 @@
       "Checking text properties like readability, uniqueness, or patterns"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/slug-generator/\" class=\"text-primary hover:underline\">URL Slug Generator</a> or <a href=\"/markdown-to-html/\" class=\"text-primary hover:underline\">Markdown to HTML</a> for related functionality."
   },
   "anagram-checker": {
     "what": "Anagram Checker is a free online tool that helps you check if two words or phrases are anagrams of each other. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1347,7 +1347,7 @@
       "Checking text properties like readability, uniqueness, or patterns"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/slug-generator/\" class=\"text-primary hover:underline\">URL Slug Generator</a> or <a href=\"/extract-emails/\" class=\"text-primary hover:underline\">Email Extractor</a> for related functionality."
   },
   "character-frequency": {
     "what": "Character Frequency Counter is a free online tool that helps you count how many times each character appears in your text. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1357,7 +1357,7 @@
       "Checking text properties like readability, uniqueness, or patterns"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/list-randomizer/\" class=\"text-primary hover:underline\">List Randomizer</a> or <a href=\"/text-diff/\" class=\"text-primary hover:underline\">Text Diff Checker</a> for related functionality."
   },
   "markdown-to-html": {
     "what": "Markdown to HTML is a free online tool that helps you convert markdown text to clean html code instantly. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1367,7 +1367,7 @@
       "Checking text properties like readability, uniqueness, or patterns"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/levenshtein-distance/\" class=\"text-primary hover:underline\">Levenshtein Distance</a> or <a href=\"/list-randomizer/\" class=\"text-primary hover:underline\">List Randomizer</a> for related functionality."
   },
   "text-to-slug": {
     "what": "URL Slug Generator is a free online tool that helps you convert any text into a clean, seo-friendly url slug. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1377,7 +1377,7 @@
       "Checking text properties like readability, uniqueness, or patterns"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/duplicate-remover/\" class=\"text-primary hover:underline\">Duplicate Line Remover</a> or <a href=\"/case-converter/\" class=\"text-primary hover:underline\">Case Converter</a> for related functionality."
   },
   "text-wrap": {
     "what": "Text Wrapper is a free online tool that helps you wrap text to a specific line width or column count. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1387,7 +1387,7 @@
       "Checking text properties like readability, uniqueness, or patterns"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/character-frequency/\" class=\"text-primary hover:underline\">Character Frequency Counter</a> or <a href=\"/text-repeater/\" class=\"text-primary hover:underline\">Text Repeater</a> for related functionality."
   },
   "whitespace-remover": {
     "what": "Whitespace Remover is a free online tool that helps you remove extra spaces, tabs, and blank lines from text. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1397,57 +1397,58 @@
       "Checking text properties like readability, uniqueness, or patterns"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/readability-score/\" class=\"text-primary hover:underline\">Readability Score</a> or <a href=\"/anagram-checker/\" class=\"text-primary hover:underline\">Anagram Checker</a> for related functionality."
   },
   "username-generator": {
-    "what": "Username Generator is a free online tool that helps you generate unique, memorable usernames for social media and gaming. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "Username Generator creates available-sounding usernames for social media, gaming, and online accounts. Combines adjectives, nouns, and numbers for unique handles.",
     "when": [
-      "Creating test data, placeholder content, or sample datasets",
-      "Generating unique IDs, tokens, or random values for applications",
-      "Coming up with creative names, prompts, or ideas for projects"
+      "Creating a unique username for a new social media or gaming account",
+      "Brainstorming creative handle ideas when your first choices are taken",
+      "Generating consistent username patterns for test accounts in development"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Click Generate to get a random username. Options include style (adjective+noun, mixed case, with numbers) and length preference.",
+    "related": "Also try our <a href=\"/barcode-generator/\" class=\"text-primary hover:underline\">Barcode Generator</a> or <a href=\"/dice-roller/\" class=\"text-primary hover:underline\">Dice Roller</a> for related functionality."
   },
   "fake-name": {
-    "what": "Fake Name Generator is a free online tool that helps you generate realistic random names for testing and placeholder data. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "Fake Name Generator creates realistic random names for testing, prototyping, and placeholder content. Generates first and last names with optional middle names and initials.",
     "when": [
-      "Creating test data, placeholder content, or sample datasets",
-      "Generating unique IDs, tokens, or random values for applications",
-      "Coming up with creative names, prompts, or ideas for projects"
+      "Generating placeholder names for UI mockups, wireframes, and design prototypes",
+      "Creating test user accounts with realistic name data for QA testing",
+      "Coming up with character names for stories, games, or creative writing",
+      "Populating demo databases with authentic-looking user profiles"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Click Generate to get a random full name. Choose options for gender, culture/region, and whether to include middle names or initials.",
+    "related": "Also try our <a href=\"/barcode-generator/\" class=\"text-primary hover:underline\">Barcode Generator</a> or <a href=\"/credit-card-gen/\" class=\"text-primary hover:underline\">Test Credit Card Generator</a> for related functionality."
   },
   "fake-email": {
-    "what": "Fake Email Generator is a free online tool that helps you generate random email addresses for testing forms and databases. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "Fake Email Generator creates realistic disposable email addresses for testing signup flows, email validation, and form submissions without using real addresses.",
     "when": [
-      "Creating test data, placeholder content, or sample datasets",
-      "Generating unique IDs, tokens, or random values for applications",
-      "Coming up with creative names, prompts, or ideas for projects"
+      "Testing user registration and email verification flows during development",
+      "Populating test accounts with realistic email addresses for QA environments",
+      "Protecting your real email when signing up for trial services or newsletters"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Click Generate to get a random email address with a realistic username and domain. Copy it directly or click to generate a new one.",
+    "related": "Also try our <a href=\"/hex-color-gen/\" class=\"text-primary hover:underline\">Random HEX Color Generator</a> or <a href=\"/random-color/\" class=\"text-primary hover:underline\">Random Color Generator</a> for related functionality."
   },
   "phone-generator": {
-    "what": "Phone Number Generator is a free online tool that helps you generate random us and international phone numbers for testing. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "Phone Number Generator creates valid-format phone numbers for testing and prototyping. Supports US, UK, and international number formats.",
     "when": [
-      "Creating test data, placeholder content, or sample datasets",
-      "Generating unique IDs, tokens, or random values for applications",
-      "Coming up with creative names, prompts, or ideas for projects"
+      "Populating development databases with realistic phone numbers for QA testing",
+      "Testing phone number validation in registration and contact forms",
+      "Creating demo accounts with properly formatted international phone numbers"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Select a country format and click Generate. The tool outputs a valid-format phone number with proper country code and area code.",
+    "related": "Also try our <a href=\"/lorem-ipsum/\" class=\"text-primary hover:underline\">Lorem Ipsum Generator</a> or <a href=\"/random-number/\" class=\"text-primary hover:underline\">Random Number Generator</a> for related functionality."
   },
   "credit-card-gen": {
-    "what": "Test Credit Card Generator is a free online tool that helps you generate valid-format test credit card numbers (no real money). It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "Credit Card Generator creates valid-format test credit card numbers for development and testing. Uses Luhn-algorithm valid numbers from major card networks — never generates real or usable card data.",
     "when": [
-      "Creating test data, placeholder content, or sample datasets",
-      "Generating unique IDs, tokens, or random values for applications",
-      "Coming up with creative names, prompts, or ideas for projects"
+      "Validating payment gateway integration with correctly formatted test card numbers",
+      "Testing credit card input form validation during e-commerce development",
+      "Populating QA environments with realistic-looking payment data for testing"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Select a card network (Visa, Mastercard, Amex, Discover) and click Generate. The tool outputs a Luhn-valid card number with correct prefix and format for testing.",
+    "related": "Also try our <a href=\"/phone-generator/\" class=\"text-primary hover:underline\">Phone Number Generator</a> or <a href=\"/username-generator/\" class=\"text-primary hover:underline\">Username Generator</a> for related functionality."
   },
   "mac-address-gen": {
     "what": "MAC Address Generator creates random MAC addresses in various formats. Perfect for network testing, virtualization setups, and hardware simulation.",
@@ -1460,14 +1461,14 @@
     "related": "For more network tools, try <a href=\"/ipv6-generator/\" class=\"text-primary hover:underline\">IPv6 Address Generator</a> or <a href=\"/port-checker/\" class=\"text-primary hover:underline\">Port Checker</a>."
   },
   "ipv6-generator": {
-    "what": "IPv6 Generator is a free online tool that helps you generate random ipv6 addresses in various formats. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "IPv6 Address Generator creates random valid IPv6 addresses for network testing and configuration. Generates standard 8-group hexadecimal format with proper addressing.",
     "when": [
-      "Creating test data, placeholder content, or sample datasets",
-      "Generating unique IDs, tokens, or random values for applications",
-      "Coming up with creative names, prompts, or ideas for projects"
+      "Generating test IPv6 addresses for network configuration and router testing",
+      "Creating sample IPv6 addresses for documentation and network diagrams",
+      "Testing IPv6 validation in software that supports the new internet protocol"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Click Generate to create a random valid IPv6 address in standard colon-hexadecimal notation. Choose options for specific address types if needed.",
+    "related": "Also try our <a href=\"/meta-tag-generator/\" class=\"text-primary hover:underline\">Meta Tag Generator</a> or <a href=\"/fake-name/\" class=\"text-primary hover:underline\">Fake Name Generator</a> for related functionality."
   },
   "hex-color-gen": {
     "what": "Hex Color Generator creates random hex color codes (#RRGGBB) with one click. Perfect for design inspiration, UI mockups, and exploring new palettes.",
@@ -1490,24 +1491,24 @@
     "related": "For traditional passwords try <a href=\"/password-generator/\" class=\"text-primary hover:underline\">Password Generator</a>. Check strength with <a href=\"/password-strength/\" class=\"text-primary hover:underline\">Password Strength Checker</a>."
   },
   "barcode-generator": {
-    "what": "Barcode Generator is a free online tool that helps you generate ean-13, upc-a, and code-128 barcodes as svg. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "Barcode Generator creates customizable barcodes in multiple formats including EAN-13, Code 128, QR codes, and UPC-A. Perfect for product labels, inventory tags, and point-of-sale systems.",
     "when": [
-      "Creating test data, placeholder content, or sample datasets",
-      "Generating unique IDs, tokens, or random values for applications",
-      "Coming up with creative names, prompts, or ideas for projects"
+      "Generating EAN-13 or UPC-A barcodes for retail product packaging and labels",
+      "Creating QR codes for marketing materials, event tickets, or contactless menus",
+      "Adding barcodes to inventory management systems for warehouse tracking"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Select your barcode type (EAN-13, Code 128, QR, UPC-A), enter your data, and click Generate. The tool creates a printable barcode image you can download or copy.",
+    "related": "Also try our <a href=\"/lorem-ipsum/\" class=\"text-primary hover:underline\">Lorem Ipsum Generator</a> or <a href=\"/random-string/\" class=\"text-primary hover:underline\">Random String Generator</a> for related functionality."
   },
   "npm-package-json": {
-    "what": "package.json Generator is a free online tool that helps you generate a complete package.json file for your node.js project. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "package.json Generator creates a valid package.json file for your Node.js project with proper fields for name, version, scripts, dependencies, and more.",
     "when": [
-      "Quick lookups during coding sessions without leaving your browser",
-      "Generating boilerplate configs, snippets, or reference documentation",
-      "Learning about development standards and best practices hands-on"
+      "Initializing a new Node.js project with a properly formatted package.json",
+      "Setting up project metadata, scripts, and dependency fields for npm publishing",
+      "Creating a package.json template with best practices for open-source packages"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Fill in your project name, description, version, and select your dependencies. The tool generates a valid package.json ready to use.",
+    "related": "Also try our <a href=\"/html-table-gen/\" class=\"text-primary hover:underline\">HTML Table Generator</a> or <a href=\"/markdown-preview/\" class=\"text-primary hover:underline\">Markdown Preview</a> for related functionality."
   },
   "semver-checker": {
     "what": "Semver Checker is a free online tool that validates and compares semantic version numbers following the SemVer 2.0.0 specification. It takes two version strings (like 2.1.3 and 2.2.0) and compares them numerically by MAJOR, MINOR, and PATCH segments. All processing happens locally in your browser — no data is sent to any server.",
@@ -1522,54 +1523,54 @@
     "related": "See also our <a href=\"/cron-parser/\" class=\"text-primary hover:underline\">Cron Parser</a> for scheduling, <a href=\"/hash-compare/\" class=\"text-primary hover:underline\">Hash Compare</a> for file integrity, and more <a href=\"/\" class=\"text-primary hover:underline\">free developer tools</a>."
   },
   "json-diff": {
-    "what": "JSON Diff Checker is a free online tool that helps you compare two json objects and highlight every difference. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "JSON Diff compares two JSON objects side by side and highlights the differences. Shows added, removed, and changed fields with color-coded output.",
     "when": [
-      "Quick lookups during coding sessions without leaving your browser",
-      "Generating boilerplate configs, snippets, or reference documentation",
-      "Learning about development standards and best practices hands-on"
+      "Comparing API responses between different versions to identify breaking changes",
+      "Debugging why two JSON configurations produce different results",
+      "Reviewing JSON data changes in code reviews or data migration verification"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Paste the original JSON in the left panel and the modified JSON in the right panel. The tool highlights all differences with color coding.",
+    "related": "Also try our <a href=\"/sql-formatter/\" class=\"text-primary hover:underline\">SQL Formatter</a> or <a href=\"/js-minifier/\" class=\"text-primary hover:underline\">JavaScript Minifier</a> for related functionality."
   },
   "http-status-dog": {
-    "what": "HTTP Status Code Reference is a free online tool that helps you quick reference for all http status codes with descriptions. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "HTTP Status Dog shows HTTP status codes with cute dog photos. Browse or search status codes from 100 to 511 with descriptions and example images.",
     "when": [
-      "Quick lookups during coding sessions without leaving your browser",
-      "Generating boilerplate configs, snippets, or reference documentation",
-      "Learning about development standards and best practices hands-on"
+      "Looking up what an HTTP status code means during API development or debugging",
+      "Learning HTTP status codes by category — informational, success, redirect, client error, server error",
+      "Checking the correct status code to return from your API endpoint"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Click on any status code or search by number. The tool shows the code meaning, description, and a fun dog photo representing that status.",
+    "related": "Also try our <a href=\"/uuid-generator/\" class=\"text-primary hover:underline\">UUID Generator</a> or <a href=\"/jwt-decoder/\" class=\"text-primary hover:underline\">JWT Decoder</a> for related functionality."
   },
   "ssl-checker": {
-    "what": "SSL Certificate Checker is a free online tool that helps you check a domain's ssl certificate expiry date and issuer info. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "SSL Certificate Checker verifies the SSL/TLS certificate of any website. Shows issuer, validity period, subject, and certificate chain.",
     "when": [
-      "Quick lookups during coding sessions without leaving your browser",
-      "Generating boilerplate configs, snippets, or reference documentation",
-      "Learning about development standards and best practices hands-on"
+      "Checking if your website's SSL certificate is valid and properly installed",
+      "Verifying certificate expiration dates to avoid browser security warnings",
+      "Debugging SSL handshake issues by inspecting the certificate chain"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Enter a website URL and click Check. The tool connects to the server and displays the certificate details including issuer, validity dates, and supported protocols.",
+    "related": "Also try our <a href=\"/js-beautifier/\" class=\"text-primary hover:underline\">JavaScript Beautifier</a> or <a href=\"/css-specificity/\" class=\"text-primary hover:underline\">CSS Specificity Calculator</a> for related functionality."
   },
   "color-namer": {
-    "what": "CSS Color Name Finder is a free online tool that helps you find the closest named css color for any hex, rgb, or hsl value. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "Color Namer identifies the closest named color for any hex, RGB, or HSL value. Know exactly what to call #FF6B6B — it's 'Pastel Red' not just 'sort of pinkish'.",
     "when": [
-      "Quick lookups during coding sessions without leaving your browser",
-      "Generating boilerplate configs, snippets, or reference documentation",
-      "Learning about development standards and best practices hands-on"
+      "Finding the standard name for a color when writing CSS, design docs, or brand guidelines",
+      "Naming custom colors in design systems or UI component libraries",
+      "Translating between hex codes and human-readable color names for client presentations"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Enter a hex color code, RGB value, or use the color picker. The tool shows the closest named color, its hex code, and color swatch.",
+    "related": "Also try our <a href=\"/yaml-to-json/\" class=\"text-primary hover:underline\">YAML to JSON Converter</a> or <a href=\"/css-minifier/\" class=\"text-primary hover:underline\">CSS Minifier</a> for related functionality."
   },
   "css-specificity": {
-    "what": "CSS Specificity Calculator is a free online tool that helps you calculate css selector specificity score and compare selectors. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "CSS Specificity Calculator helps you understand and calculate CSS selector specificity scores. Know which rule wins when multiple selectors target the same element.",
     "when": [
-      "Quick lookups during coding sessions without leaving your browser",
-      "Generating boilerplate configs, snippets, or reference documentation",
-      "Learning about development standards and best practices hands-on"
+      "Debugging CSS when styles aren't applying as expected due to specificity conflicts",
+      "Learning how CSS specificity works — inline styles, IDs, classes, and elements",
+      "Planning CSS architecture to avoid specificity wars in large stylesheets"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Enter a CSS selector (e.g., '.container #main div.active') and click Calculate. The tool shows the specificity score broken down by category: inline, ID, class, and element.",
+    "related": "Also try our <a href=\"/yaml-to-json/\" class=\"text-primary hover:underline\">YAML to JSON Converter</a> or <a href=\"/regex/\" class=\"text-primary hover:underline\">Regex Tester</a> for related functionality."
   },
   "html-table-gen": {
     "what": "HTML Table Generator is a free online tool that creates clean, responsive HTML tables from your data. It generates complete table code with proper &lt;table&gt;, &lt;thead&gt;, &lt;tbody&gt;, and &lt;tr&gt; tags.",
@@ -1582,24 +1583,24 @@
     "related": "Try our <a href=\"/csv-to-json/\" class=\"text-primary hover:underline\">CSV to JSON Converter</a> for data transformation, or <a href=\"/html-beautifier/\" class=\"text-primary hover:underline\">HTML Beautifier</a> to clean up your code."
   },
   "dockerfile-gen": {
-    "what": "Dockerfile Generator is a free online tool that helps you generate a basic dockerfile for node.js, python, or go projects. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "Dockerfile Generator creates production-ready Dockerfile templates for common frameworks and languages. Supports Node.js, Python, Go, Ruby, Java, PHP, and static sites.",
     "when": [
-      "Quick lookups during coding sessions without leaving your browser",
-      "Generating boilerplate configs, snippets, or reference documentation",
-      "Learning about development standards and best practices hands-on"
+      "Setting up Docker containers for a new project without writing Dockerfiles from scratch",
+      "Creating multi-stage Docker builds for optimized production images",
+      "Generating Dockerfile boilerplate with best practices for your tech stack"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Select your language/framework (Node.js, Python, Go, etc.), choose production or development mode, and click Generate. The tool outputs a ready-to-use Dockerfile.",
+    "related": "Also try our <a href=\"/css-specificity/\" class=\"text-primary hover:underline\">CSS Specificity Calculator</a> or <a href=\"/html-table-gen/\" class=\"text-primary hover:underline\">HTML Table Generator</a> for related functionality."
   },
   "gitignore-gen": {
-    "what": ".gitignore Generator is a free online tool that helps you generate a .gitignore file for your project's language and framework. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "Gitignore Generator creates .gitignore files for your project based on your tech stack. Prevents committing dependency folders, build outputs, and sensitive configuration files.",
     "when": [
-      "Quick lookups during coding sessions without leaving your browser",
-      "Generating boilerplate configs, snippets, or reference documentation",
-      "Learning about development standards and best practices hands-on"
+      "Setting up a new project and creating the initial .gitignore file",
+      "Adding gitignore rules for a new framework or language mid-project",
+      "Learning which files and folders should never be committed to version control"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Select your languages and frameworks from the list (Node.js, Python, Java, macOS, Windows, etc.) and click Generate. The tool combines all relevant gitignore rules into one file.",
+    "related": "Also try our <a href=\"/css-minifier/\" class=\"text-primary hover:underline\">CSS Minifier</a> or <a href=\"/js-beautifier/\" class=\"text-primary hover:underline\">JavaScript Beautifier</a> for related functionality."
   },
   "serp-preview": {
     "what": "Google SERP Preview is a free online tool that helps you preview how your page title and meta description look in google search results. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1609,7 +1610,7 @@
       "Checking technical SEO factors that affect your search rankings"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/redirect-checker/\" class=\"text-primary hover:underline\">Redirect Checker</a> or <a href=\"/sitemap-ping/\" class=\"text-primary hover:underline\">Sitemap Ping Tool</a> for related functionality."
   },
   "heading-structure": {
     "what": "Heading Structure Checker is a free online tool that helps you analyze your page's heading hierarchy for seo best practices. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1619,7 +1620,7 @@
       "Checking technical SEO factors that affect your search rankings"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/schema-markup/\" class=\"text-primary hover:underline\">Schema Markup Generator</a> or <a href=\"/redirect-checker/\" class=\"text-primary hover:underline\">Redirect Checker</a> for related functionality."
   },
   "alt-text-generator": {
     "what": "Alt Text Generator is a free online tool that helps you generate descriptive alt text suggestions for your images. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1629,7 +1630,7 @@
       "Checking technical SEO factors that affect your search rankings"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/schema-markup/\" class=\"text-primary hover:underline\">Schema Markup Generator</a> or <a href=\"/canonical-checker/\" class=\"text-primary hover:underline\">Canonical URL Checker</a> for related functionality."
   },
   "sitemap-ping": {
     "what": "Sitemap Ping Tool is a free online tool that helps you ping google and bing to notify them of your updated sitemap. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1639,7 +1640,7 @@
       "Checking technical SEO factors that affect your search rankings"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/heading-structure/\" class=\"text-primary hover:underline\">Heading Structure Checker</a> or <a href=\"/canonical-checker/\" class=\"text-primary hover:underline\">Canonical URL Checker</a> for related functionality."
   },
   "schema-markup": {
     "what": "Schema Markup Generator creates structured data JSON-LD for rich search results. Supports Article, Product, FAQ, LocalBusiness, Review, and more schemas.",
@@ -1679,7 +1680,7 @@
       "Generating harmonious color palettes from a single base color"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/color-extractor/\" class=\"text-primary hover:underline\">Color Extractor from Image</a> or <a href=\"/gradient-preview/\" class=\"text-primary hover:underline\">CSS Gradient Generator</a> for related functionality."
   },
   "color-shades": {
     "what": "Color Shades Generator is a free online tool that helps you generate lighter tints and darker shades from any base color. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1689,7 +1690,7 @@
       "Generating harmonious color palettes from a single base color"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/color-extractor/\" class=\"text-primary hover:underline\">Color Extractor from Image</a> or <a href=\"/color-palette/\" class=\"text-primary hover:underline\">Color Palette Generator</a> for related functionality."
   },
   "gradient-preview": {
     "what": "CSS Gradient Generator is a free online tool that helps you create and preview linear, radial, and conic css gradients. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1699,7 +1700,7 @@
       "Generating harmonious color palettes from a single base color"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/color-extractor/\" class=\"text-primary hover:underline\">Color Extractor from Image</a> or <a href=\"/color-palette/\" class=\"text-primary hover:underline\">Color Palette Generator</a> for related functionality."
   },
   "color-blind": {
     "what": "Color Blindness Simulator is a free online tool that helps you simulate how your colors look with different types of color blindness. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1709,7 +1710,7 @@
       "Generating harmonious color palettes from a single base color"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/color-extractor/\" class=\"text-primary hover:underline\">Color Extractor from Image</a> or <a href=\"/gradient-preview/\" class=\"text-primary hover:underline\">CSS Gradient Generator</a> for related functionality."
   },
   "color-extractor": {
     "what": "Color Extractor from Image is a free online tool that helps you extract the dominant colors from any image uploaded to your browser. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1719,7 +1720,7 @@
       "Generating harmonious color palettes from a single base color"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/color-shades/\" class=\"text-primary hover:underline\">Color Shades Generator</a> or <a href=\"/color-palette/\" class=\"text-primary hover:underline\">Color Palette Generator</a> for related functionality."
   },
   "ssh-key-gen": {
     "what": "SSH Key Fingerprint is a free online tool that helps you calculate and display ssh key fingerprints in md5 and sha256. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1729,7 +1730,7 @@
       "Learning about cryptographic concepts and security best practices"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/sri-hash/\" class=\"text-primary hover:underline\">SRI Hash Generator</a> or <a href=\"/hash-compare/\" class=\"text-primary hover:underline\">Hash Compare</a> for related functionality."
   },
   "ssl-csr-gen": {
     "what": "CSR Generator is a free online tool that helps you generate certificate signing requests for ssl certificates. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1739,7 +1740,7 @@
       "Learning about cryptographic concepts and security best practices"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/hash-compare/\" class=\"text-primary hover:underline\">Hash Compare</a> or <a href=\"/htpasswd-gen/\" class=\"text-primary hover:underline\">htpasswd Generator</a> for related functionality."
   },
   "htpasswd-gen": {
     "what": "htpasswd Generator is a free online tool that helps you generate apache htpasswd entries with bcrypt, md5, or sha. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1749,7 +1750,7 @@
       "Learning about cryptographic concepts and security best practices"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/sri-hash/\" class=\"text-primary hover:underline\">SRI Hash Generator</a> or <a href=\"/ssh-key-gen/\" class=\"text-primary hover:underline\">SSH Key Fingerprint</a> for related functionality."
   },
   "aes-encryption": {
     "what": "PGP Message Encryptor is a free online tool that helps you encrypt and decrypt messages using pgp/gpg in your browser. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1759,7 +1760,7 @@
       "Learning about cryptographic concepts and security best practices"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/htpasswd-gen/\" class=\"text-primary hover:underline\">htpasswd Generator</a> or <a href=\"/csp-generator/\" class=\"text-primary hover:underline\">CSP Header Generator</a> for related functionality."
   },
   "sri-hash": {
     "what": "SRI Hash Generator is a free online tool that helps you generate subresource integrity hashes for script and link tags. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1769,7 +1770,7 @@
       "Learning about cryptographic concepts and security best practices"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/ssh-key-gen/\" class=\"text-primary hover:underline\">SSH Key Fingerprint</a> or <a href=\"/csp-generator/\" class=\"text-primary hover:underline\">CSP Header Generator</a> for related functionality."
   },
   "csp-generator": {
     "what": "CSP Header Generator is a free online tool that helps you generate content security policy headers for your website. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1779,7 +1780,7 @@
       "Learning about cryptographic concepts and security best practices"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/password-generator/\" class=\"text-primary hover:underline\">Password Generator</a> or <a href=\"/hash-compare/\" class=\"text-primary hover:underline\">Hash Compare</a> for related functionality."
   },
   "2fa-code": {
     "what": "TOTP Code Generator is a free online tool that helps you generate time-based one-time passwords for two-factor authentication. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1789,7 +1790,7 @@
       "Learning about cryptographic concepts and security best practices"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/ssl-csr-gen/\" class=\"text-primary hover:underline\">CSR Generator</a> or <a href=\"/ssh-key-gen/\" class=\"text-primary hover:underline\">SSH Key Fingerprint</a> for related functionality."
   },
   "coin-flip": {
     "what": "Coin Flip Simulator lets you flip a virtual coin for heads or tails. Uses cryptographically secure randomness for fair 50/50 results.",
@@ -1809,7 +1810,7 @@
       "Breaking decision paralysis when you just need a random pick"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/baby-names/\" class=\"text-primary hover:underline\">Baby Name Generator</a> or <a href=\"/truth-dare/\" class=\"text-primary hover:underline\">Truth or Dare Generator</a> for related functionality."
   },
   "truth-dare": {
     "what": "Truth or Dare Generator creates random truth questions and dares for parties, game nights, and social gatherings. Multiple difficulty levels and categories.",
@@ -1829,7 +1830,7 @@
       "Breaking decision paralysis when you just need a random pick"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/coin-flip/\" class=\"text-primary hover:underline\">Coin Flip Simulator</a> or <a href=\"/meme-text/\" class=\"text-primary hover:underline\">Meme Text Generator</a> for related functionality."
   },
   "story-generator": {
     "what": "Story Prompt Generator is a free online tool that helps you generate creative writing prompts with characters, setting, and conflict. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1839,7 +1840,7 @@
       "Breaking decision paralysis when you just need a random pick"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/truth-dare/\" class=\"text-primary hover:underline\">Truth or Dare Generator</a> or <a href=\"/team-generator/\" class=\"text-primary hover:underline\">Random Team Generator</a> for related functionality."
   },
   "team-generator": {
     "what": "Team Generator randomly divides a list of names into teams. Great for classroom activities, workplace team building, sports, and group projects.",
@@ -1859,7 +1860,7 @@
       "Figuring out date differences for travel, billing, or event planning"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/day-of-week/\" class=\"text-primary hover:underline\">Day of Week Finder</a> or <a href=\"/pomodoro/\" class=\"text-primary hover:underline\">Pomodoro Timer</a> for related functionality."
   },
   "meeting-planner": {
     "what": "Meeting Time Planner is a free online tool that helps you find the best meeting time across multiple timezones. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1869,7 +1870,7 @@
       "Figuring out date differences for travel, billing, or event planning"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/date-calculator/\" class=\"text-primary hover:underline\">Date Calculator</a> or <a href=\"/age-calculator/\" class=\"text-primary hover:underline\">Age Calculator</a> for related functionality."
   },
   "work-hours": {
     "what": "Work Hours Calculator is a free online tool that helps you calculate total work hours, breaks, and overtime pay. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1879,7 +1880,7 @@
       "Figuring out date differences for travel, billing, or event planning"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/timezone-converter/\" class=\"text-primary hover:underline\">Timezone Converter</a> or <a href=\"/timestamp/\" class=\"text-primary hover:underline\">Timestamp Converter</a> for related functionality."
   },
   "days-until": {
     "what": "Days Until Calculator is a free online tool that helps you count the days, hours, and minutes until any future date. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1889,7 +1890,7 @@
       "Figuring out date differences for travel, billing, or event planning"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/cron-parser/\" class=\"text-primary hover:underline\">Cron Expression Parser</a> or <a href=\"/world-clock/\" class=\"text-primary hover:underline\">World Clock</a> for related functionality."
   },
   "weeks-between": {
     "what": "Weeks Between Dates is a free online tool that helps you calculate the number of weeks and days between any two dates. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1899,7 +1900,7 @@
       "Figuring out date differences for travel, billing, or event planning"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/work-hours/\" class=\"text-primary hover:underline\">Work Hours Calculator</a> or <a href=\"/date-calculator/\" class=\"text-primary hover:underline\">Date Calculator</a> for related functionality."
   },
   "binary-to-decimal": {
     "what": "Binary to Decimal Converter is a free online tool that helps you convert binary numbers to decimal, and decimal to binary. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1909,7 +1910,7 @@
       "Encoding special characters for safe storage in databases or files"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/hex-to-decimal/\" class=\"text-primary hover:underline\">Hex to Decimal Converter</a> or <a href=\"/rot13/\" class=\"text-primary hover:underline\">ROT13 Cipher</a> for related functionality."
   },
   "hex-to-decimal": {
     "what": "Hex to Decimal Converter is a free online tool that helps you convert hexadecimal numbers to decimal and back. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1919,7 +1920,7 @@
       "Encoding special characters for safe storage in databases or files"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/octal-to-decimal/\" class=\"text-primary hover:underline\">Octal to Decimal Converter</a> or <a href=\"/unicode/\" class=\"text-primary hover:underline\">Unicode Converter</a> for related functionality."
   },
   "octal-to-decimal": {
     "what": "Octal to Decimal Converter is a free online tool that helps you convert octal numbers to decimal and decimal to octal. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1929,7 +1930,7 @@
       "Encoding special characters for safe storage in databases or files"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/utf8-encoder/\" class=\"text-primary hover:underline\">UTF-8 Encoder</a> or <a href=\"/unicode/\" class=\"text-primary hover:underline\">Unicode Converter</a> for related functionality."
   },
   "utf8-encoder": {
     "what": "UTF-8 Encoder is a free online tool that helps you encode text to utf-8 bytes and decode utf-8 back to text. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1939,7 +1940,7 @@
       "Encoding special characters for safe storage in databases or files"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/base64/\" class=\"text-primary hover:underline\">Base64 Encoder</a> or <a href=\"/quoted-printable/\" class=\"text-primary hover:underline\">Quoted Printable Encoder</a> for related functionality."
   },
   "quoted-printable": {
     "what": "Quoted Printable Encoder is a free online tool that helps you encode and decode text using quoted-printable encoding for email. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1949,7 +1950,7 @@
       "Encoding special characters for safe storage in databases or files"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/url-encode/\" class=\"text-primary hover:underline\">URL Encoder</a> or <a href=\"/text-to-binary/\" class=\"text-primary hover:underline\">Text to Binary Converter</a> for related functionality."
   },
   "image-resizer": {
     "what": "Image Resizer is a free online tool that helps you resize images to exact dimensions while preserving aspect ratio. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1959,7 +1960,7 @@
       "Generating QR codes or extracting information from images"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/qr-reader/\" class=\"text-primary hover:underline\">QR Code Reader</a> or <a href=\"/favicon-generator/\" class=\"text-primary hover:underline\">Favicon Generator</a> for related functionality."
   },
   "image-info": {
     "what": "Image Info Viewer is a free online tool that helps you view detailed image metadata: dimensions, file size, color depth, exif. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1969,7 +1970,7 @@
       "Generating QR codes or extracting information from images"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/image-compress/\" class=\"text-primary hover:underline\">Image Compressor</a> or <a href=\"/image-resizer/\" class=\"text-primary hover:underline\">Image Resizer</a> for related functionality."
   },
   "qr-reader": {
     "what": "QR Code Reader is a free online tool that helps you upload a qr code image and decode its content instantly in your browser. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1979,7 +1980,7 @@
       "Generating QR codes or extracting information from images"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/image-compress/\" class=\"text-primary hover:underline\">Image Compressor</a> or <a href=\"/image-resizer/\" class=\"text-primary hover:underline\">Image Resizer</a> for related functionality."
   },
   "sha384": {
     "what": "SHA-384 Hash Generator is a free online tool that helps you generate sha-384 hash values for any text input. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1989,7 +1990,7 @@
       "Learning how different hash algorithms work and when to use each"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/sha512/\" class=\"text-primary hover:underline\">SHA512 Hash Generator</a> or <a href=\"/sha1/\" class=\"text-primary hover:underline\">SHA1 Hash Generator</a> for related functionality."
   },
   "sha3-256": {
     "what": "SHA3-256 Hash Generator is a free online tool that helps you generate sha3-256 (keccak) hash values for cryptographic applications. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
@@ -1999,6 +2000,6 @@
       "Learning how different hash algorithms work and when to use each"
     ],
     "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "related": "Also try our <a href=\"/sha512/\" class=\"text-primary hover:underline\">SHA512 Hash Generator</a> or <a href=\"/hmac-generator/\" class=\"text-primary hover:underline\">HMAC Generator</a> for related functionality."
   }
 }
