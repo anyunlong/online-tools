@@ -20,9 +20,46 @@ import Button from '../components/Button.astro';
   <div class="flex gap-2 mt-4">
     <Button onclick="formatJSON()">Format</Button>
     <Button variant="secondary" onclick="compressJSON()">Compress</Button>
+    <Button variant="ghost" size="sm" onclick="generateSample()">Generate Sample</Button>
   </div>
   <div id="msg" class="text-xs mt-2 text-surface-400"></div>
 <script is:inline>
+function generateSample() {
+  const sample = {
+    user: {
+      id: 28471,
+      name: "Alex Chen",
+      email: "alex.chen@example.com",
+      isActive: true,
+      age: 32,
+      role: "Senior Developer",
+      department: "Engineering",
+      address: {
+        street: "425 Pine Street",
+        city: "San Francisco",
+        state: "CA",
+        zipCode: "94105",
+        country: "USA"
+      },
+      skills: ["JavaScript", "Python", "Go", "Docker", "Kubernetes"],
+      projects: [
+        { name: "API Gateway", stars: 1284, language: "Go", isPrivate: false },
+        { name: "Data Pipeline", stars: 563, language: "Python", isPrivate: true },
+        { name: "Frontend Kit", stars: 2891, language: "TypeScript", isPrivate: false }
+      ],
+      metadata: {
+        lastLogin: "2026-06-20T14:32:11Z",
+        accountAge: 847,
+        isVerified: true,
+        notes: null
+      }
+    }
+  };
+  document.getElementById('inp').value = JSON.stringify(sample, null, 2);
+  document.getElementById('out').innerHTML = '';
+  document.getElementById('msg').textContent = '✓ Sample JSON loaded — click Format to prettify';
+  document.getElementById('msg').className = 'text-xs mt-2 text-brand-400';
+}
 function formatJSON() {
   try {
     const j = JSON.parse(document.getElementById('inp').value);
