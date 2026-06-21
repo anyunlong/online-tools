@@ -820,14 +820,14 @@
     "related": "Try our <a href=\"/hex-color-gen/\" class=\"text-primary hover:underline\">Random HEX Color Gen</a> for related functionality."
   },
   "dice-roller": {
-    "what": "Dice Roller is a free online tool that helps you roll virtual dice for games and rpgs. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "Dice Roller simulates rolling polyhedral dice — d4, d6, d8, d10, d12, d20, and d100 — directly in your browser. Uses cryptographically secure randomness from Crypto.getRandomValues() for fair rolls. Highlights critical successes (max roll) and critical failures (1) in green and red.",
     "when": [
-      "Creating test data, placeholder content, or sample datasets",
-      "Generating unique IDs, tokens, or random values for applications",
-      "Coming up with creative names, prompts, or ideas for projects"
+      "Rolling initiative, attack rolls, and skill checks for Dungeons & Dragons sessions without physical dice",
+      "Board game nights when you've lost the original dice or need extras",
+      "Quick random decisions — who goes first, what happens next, or settling a debate"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Try our <a href=\"/coin-flip/\" class=\"text-primary hover:underline\">Coin Flip Simulator</a> for related functionality."
+    "how": "Click any die button to roll it. The result shows the number with colored highlights — green for max roll (critical success), red for 1 (critical failure). Your roll history appears below for quick reference.",
+    "related": "Try our <a href=\"/coin-flip/\" class=\"text-primary hover:underline\">Coin Flip</a> for 50/50 decisions, or <a href=\"/random-number/\" class=\"text-primary hover:underline\">Random Number Generator</a> for custom numeric ranges."
   },
   "nano-id": {
     "what": "Nano ID Generator is a free online tool that helps you generate compact, url-friendly unique ids. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
