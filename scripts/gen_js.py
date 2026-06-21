@@ -1128,10 +1128,21 @@ def js_security(tool):
   const b64=btoa(v[0]+':'+v[1]);
   o('Username: '+v[0]+'\\nPassword: '+v[1]+'\\n\\nhtpasswd entry:\\n'+v[0]+':{SHA}'+b64+'\\n\\n⚠ For production, use:\\nhtpasswd -c .htpasswd '+v[0]);
 }''',
-        "pgp-encrypt": '''function process() {
+        "aes-encryption": '''async function process() {
   const v=document.getElementById('inp').value;
-  if(!v){o('Enter message to encrypt. Browser PGP requires OpenPGP.js library.');return;}
-  o('⚠ Browser-based PGP encryption requires the OpenPGP.js library.\\n\\nYour message: '+v.slice(0,50)+(v.length>50?'...':'')+'\\n\\nFor production use:\\n- Install GnuPG: brew install gnupg\\n- Encrypt: gpg --encrypt --recipient user@example.com file.txt');
+  if(!v){o('Enter a message to encrypt.');return;}
+  try {
+    const key = await crypto.subtle.generateKey({ name: 'AES-GCM', length: 256 }, true, ['encrypt', 'decrypt']);
+    const exportedKey = await crypto.subtle.exportKey('raw', key);
+    const keyHex = Array.from(new Uint8Array(exportedKey)).map(b=>b.toString(16).padStart(2,'0')).join('');
+    const encoder = new TextEncoder();
+    const data = encoder.encode(v);
+    const iv = crypto.getRandomValues(new Uint8Array(12));
+    const encrypted = await crypto.subtle.encrypt({ name: 'AES-GCM', iv: iv }, key, data);
+    const encryptedHex = Array.from(new Uint8Array(encrypted)).map(b=>b.toString(16).padStart(2,'0')).join('');
+    const ivHex = Array.from(iv).map(b=>b.toString(16).padStart(2,'0')).join('');
+    o('Encrypted (AES-256-GCM):\\nIV: '+ivHex+'\\nCiphertext: '+encryptedHex+'\\nKey: '+keyHex+'\\nSave key+IV to decrypt.');
+  } catch(e) { o('Error: '+e.message); }
 }''',
         "sri-hash": '''async function process() {
   const v=document.getElementById('inp').value.trim();

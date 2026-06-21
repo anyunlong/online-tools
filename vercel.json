@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/pgp-encrypt",
+      "destination": "/aes-encryption",
+      "permanent": true
+    },
+    {
+      "source": "/pgp-encrypt/",
+      "destination": "/aes-encryption",
+      "permanent": true
+    }
+  ]
+}

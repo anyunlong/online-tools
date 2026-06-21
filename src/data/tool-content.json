@@ -1848,15 +1848,17 @@
     ]
   },
   "semver-checker": {
-    "deepDive": "Semver Checker is a developer utility that streamlines common programming and DevOps tasks—the kind of small but frequent operations that eat into productive coding time. Every developer has experienced the friction of switching contexts: opening a terminal, remembering the exact command syntax, installing a CLI tool, or searching Stack Overflow for a one-liner. The Semver Checker eliminates this friction by providing instant, browser-based access to specialized development functions. It follows current web standards, RFC specifications, and industry best practices, generating output that's ready to use in production environments. All processing happens client-side, so proprietary code, API keys, or sensitive configuration never leaves your machine. The tool is designed for the most common use case—quick, ad-hoc operations—while acknowledging that complex workflows and automation scenarios are better served by CLI tools and CI/CD integration. For learning, prototyping, debugging, and one-off tasks, a good browser-based dev tool is often faster than installing and configuring a command-line equivalent.",
+    "deepDive": "Semantic Versioning (SemVer) is a formal specification for assigning version numbers to software releases. It was created by Tom Preston-Werner in 2013 to solve the problem of 'dependency hell' — where upgrading one package could silently break another.\n\nThe core of SemVer is the MAJOR.MINOR.PATCH triplet. Given a version number 2.4.1, for example:\n- 2 (MAJOR): Version 2 introduced breaking changes from version 1\n- 4 (MINOR): Four backward-compatible feature releases have been made since version 2.0\n- 1 (PATCH): One bug fix release since version 2.4\n\nWhen comparing versions, the rules are straightforward: compare MAJOR first; if equal, compare MINOR; if equal, compare PATCH. A version like 2.0.0 is always greater than 1.999.999 because the MAJOR segment takes precedence.\n\nPre-release versions like 1.0.0-alpha or 2.0.0-rc.1 have lower precedence than the release version (1.0.0-alpha < 1.0.0). Build metadata like 1.0.0+build.1234 is ignored for comparison but preserved for informational purposes.\n\nMost package ecosystems enforce SemVer — npm, RubyGems, Packagist (PHP), Crates.io (Rust), and NuGet (.NET) all use or recommend it. Understanding SemVer is essential for any developer who publishes open-source packages or manages dependencies.",
     "tips": [
-      "Keep a browser tab with your most-used dev tools open during coding sessions for quick access",
-      "Cross-reference generated output with official documentation when using for production systems",
-      "Save commonly used configurations as snippets in your code editor for even faster access"
+      "Always bump MAJOR version for breaking changes, even if it seems minor — your users' tests will thank you",
+      "Use pre-release identifiers (like 1.0.0-beta.2) for development builds and release candidates",
+      "Start with 0.1.0 for the first release of a new project (0.y.z means unstable public API)",
+      "Pin your dependencies to MAJOR.MINOR to safely get patch updates without breaking changes"
     ],
     "commonMistakes": [
-      "Copying generated configuration without understanding each setting—know what each line does",
-      "Using development-oriented configurations in production without hardening (enabling debug mode, exposing ports, etc.)"
+      "Confusing MINOR and PATCH — adding new features requires a MINOR bump, not a PATCH",
+      "Changing public API without a MAJOR bump — even removing one optional parameter is a breaking change",
+      "Skipping version numbers during development (e.g., jumping from 1.0.0 to 2.0.0 without proper build testing)"
     ]
   },
   "json-diff": {

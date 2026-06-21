@@ -1510,14 +1510,16 @@
     "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
   },
   "semver-checker": {
-    "what": "Semver Checker is a free online tool that helps you validate and compare semantic version numbers. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",
+    "what": "Semver Checker is a free online tool that validates and compares semantic version numbers following the SemVer 2.0.0 specification. It takes two version strings (like 2.1.3 and 2.2.0) and compares them numerically by MAJOR, MINOR, and PATCH segments. All processing happens locally in your browser — no data is sent to any server.",
     "when": [
-      "Quick lookups during coding sessions without leaving your browser",
-      "Generating boilerplate configs, snippets, or reference documentation",
-      "Learning about development standards and best practices hands-on"
+      "Verifying that a package version follows correct semver format before publishing",
+      "Checking whether a dependency update is a breaking change (MAJOR), new feature (MINOR), or bug fix (PATCH)",
+      "Comparing npm package versions to understand upgrade impact",
+      "Debugging version conflicts in your project's dependency tree",
+      "Learning semantic versioning rules for open-source packages"
     ],
-    "how": "Enter your input in the field above, adjust any settings if available, and click the action button. Results appear instantly—no page reload, no server wait. All processing happens locally in your browser.",
-    "related": "Check out our <a href=\"/\" class=\"text-primary hover:underline\">full collection of free tools</a> to discover more utilities."
+    "how": "Type two version numbers separated by a space or newline in the input field (e.g., '1.2.3 2.0.0'), then click Process. The tool parses both versions and shows which is greater, lesser, or if they're equal. It also displays what each segment means — MAJOR for breaking changes, MINOR for features, PATCH for fixes.",
+    "related": "See also our <a href=\"/cron-parser/\" class=\"text-primary hover:underline\">Cron Parser</a> for scheduling, <a href=\"/hash-compare/\" class=\"text-primary hover:underline\">Hash Compare</a> for file integrity, and more <a href=\"/\" class=\"text-primary hover:underline\">free developer tools</a>."
   },
   "json-diff": {
     "what": "JSON Diff Checker is a free online tool that helps you compare two json objects and highlight every difference. It runs entirely in your browser using client-side JavaScript, so your data stays private and never leaves your device.",

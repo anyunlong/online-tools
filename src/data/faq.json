@@ -2115,16 +2115,20 @@
   ],
   "semver-checker": [
     {
-      "q": "Does the Semver Checker follow the latest standards and best practices?",
-      "a": "Yes, the Semver Checker is designed to follow current web standards, RFC specifications, and industry best practices. When generating configuration files or code snippets, it adheres to the latest stable specifications. For standards that evolve (like security protocols), the tool targets the most recent widely-adopted version."
+      "q": "What is semantic versioning (SemVer)?",
+      "a": "Semantic Versioning is a versioning scheme that uses a three-part number format: MAJOR.MINOR.PATCH. Increment the MAJOR version for breaking API changes, the MINOR version for backward-compatible new features, and the PATCH version for backward-compatible bug fixes. Before version 1.0.0 (major version zero), anything may change at any time. This system, defined at semver.org, helps developers understand the impact of dependency updates just by looking at the version number."
     },
     {
-      "q": "Can I use the Semver Checker in my CI/CD pipeline or development workflow?",
-      "a": "The Semver Checker is a browser-based tool best suited for quick lookups, ad-hoc generation, and learning. For CI/CD integration, consider command-line equivalents or programmatic libraries that can be called from build scripts. However, the tool is excellent for prototyping, debugging, and exploring configuration options before committing to code."
+      "q": "How do I compare two semver versions?",
+      "a": "Enter two version numbers separated by a space (e.g., '1.2.3 1.3.0') and click Process. The tool compares them numerically by MAJOR, then MINOR, then PATCH. The result shows which version is greater, less, or if they're equal. For example, 2.0.0 > 1.9.9 because MAJOR version 2 is greater than 1, regardless of MINOR and PATCH numbers."
     },
     {
-      "q": "How does the Semver Checker compare to the equivalent command-line tool?",
-      "a": "Browser-based tools offer instant access without installation, making them ideal for quick tasks on any device. Command-line tools typically offer more advanced features, batch processing, and automation capabilities. The Semver Checker is optimized for the 80% use case—fast, accessible, and zero-setup—while CLI tools serve power users and automated workflows."
+      "q": "What do MAJOR, MINOR, and PATCH mean in practice?",
+      "a": "MAJOR version changes indicate breaking changes — existing code that worked with the old version may not work with the new one. MINOR version changes add new functionality in a backward-compatible way — your existing code still works, but you gain access to new features. PATCH version changes are for backward-compatible bug fixes — no new features, just fixes that don't break existing functionality."
+    },
+    {
+      "q": "What about pre-release versions and build metadata?",
+      "a": "SemVer also supports pre-release identifiers (e.g., 1.0.0-alpha, 2.0.0-rc.1) and build metadata (e.g., 1.0.0+build.20240101). Pre-release versions have lower precedence than the normal version. Build metadata is ignored when comparing precedence. Our checker handles these formats and compares them correctly."
     }
   ],
   "json-diff": [
